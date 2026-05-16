@@ -1,182 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CyberShield Executive OS | Maximum Justice Cybersecurity</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield Executive OS v5.2 | Maximum Justice Cybersecurity</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="shell">
-    <aside class="brand-rail">
-      <img src="assets/MJC%20Logo%202026.png" alt="Maximum Justice Cybersecurity official MJC shield logo" class="logo" />
-      <div>
-        <p class="eyebrow">Maximum Justice Cybersecurity</p>
-        <h1>CyberShield Executive OS</h1>
-        <p class="rail-copy">Cyber decision intelligence for leadership teams that need clarity, ownership, evidence, and next-best actions.</p>
-      </div>
-      <nav class="rail-nav" aria-label="Primary">
-        <button data-tab="overview" class="nav-btn active">Command Center</button>
-        <button data-tab="actions" class="nav-btn">Action Engine</button>
-        <button data-tab="memory" class="nav-btn">Governance Memory</button>
-        <button data-tab="roadmap" class="nav-btn">Roadmap Automation</button>
-        <button data-tab="compliance" class="nav-btn">Compliance Mapping</button>
-        <button data-tab="reports" class="nav-btn">Board-Ready Outputs</button>
-        <button data-tab="services" class="nav-btn">MJC Value Add</button>
-      </nav>
-    </aside>
-
-    <main class="main">
-      <section class="hero card">
+  <div id="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo" class="brand-logo" />
         <div>
-          <p class="eyebrow">Cyber Decision Intelligence Platform</p>
-          <h2>Turn cyber, AI governance, and operational risk into executive decisions.</h2>
-          <p>CyberShield helps leadership understand what matters, why it matters, who owns it, and what should happen next.</p>
+          <p class="eyebrow">Maximum Justice Cybersecurity</p>
+          <h1>CyberShield Executive OS</h1>
         </div>
-        <div class="hero-actions">
-          <button class="primary" id="startAssessment">Run Executive Assessment</button>
-          <button class="secondary" id="resetDemo">Reset Demo</button>
+      </div>
+      <div class="topbar-actions">
+        <button class="ghost-btn" id="editOnboardingBtn">Edit Onboarding</button>
+        <button class="ghost-btn danger-outline" id="resetDemoBtn">Reset Demo</button>
+      </div>
+    </header>
+
+    <main id="onboardingView" class="setup-layout">
+      <section class="setup-main">
+        <div class="setup-progress">
+          <span id="stepLabel">Step 1 of 6</span>
+          <div class="progress-track"><div id="progressFill"></div></div>
+        </div>
+
+        <section class="setup-card" data-step="1">
+          <p class="eyebrow">First-time setup</p>
+          <h2>Tell CyberShield who it is protecting.</h2>
+          <p class="support-copy">This creates the baseline context for readiness, governance, compliance, exposure, and operational ownership.</p>
+          <div class="form-grid">
+            <label>First name<input id="firstName" type="text" value="Max" /></label>
+            <label>Organization name<input id="orgName" type="text" value="Acme Health Partners" /></label>
+            <label>Estimated organization value
+              <select id="orgValue">
+                <option value="250000">Under $500K</option>
+                <option value="750000">$500K - $1M</option>
+                <option value="3000000" selected>$1M - $5M</option>
+                <option value="7500000">$5M - $10M</option>
+                <option value="55000000">$10M - $100M</option>
+                <option value="125000000">$100M+</option>
+              </select>
+            </label>
+            <label>Industry
+              <select id="industrySelect">
+                <option value="healthcare">Healthcare</option>
+                <option value="defense">Defense Contractor</option>
+                <option value="financial">Financial Services</option>
+                <option value="legal">Legal</option>
+                <option value="technology">Technology</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="retail">Retail / E-commerce</option>
+                <option value="education">Education</option>
+                <option value="nonprofit">Nonprofit</option>
+                <option value="general">General SMB</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="setup-card hidden" data-step="2">
+          <p class="eyebrow">Recommended safeguards based on industry</p>
+          <h2>Select the primary governance framework.</h2>
+          <p class="support-copy" id="frameworkRecommendationText">CyberShield recommends the strongest starting framework based on the selected industry.</p>
+          <div id="frameworkCards" class="choice-grid"></div>
+        </section>
+
+        <section class="setup-card hidden" data-step="3">
+          <p class="eyebrow">Baseline posture</p>
+          <h2>How mature is the current security operation?</h2>
+          <p class="support-copy">Use the help icon on each posture card for a plain-English executive definition.</p>
+          <div id="postureCards" class="choice-grid maturity-grid"></div>
+        </section>
+
+        <section class="setup-card hidden" data-step="4">
+          <p class="eyebrow">Operational readiness</p>
+          <h2>Answer the assessment questions.</h2>
+          <p class="support-copy">These answers drive readiness, exposure, the action queue, roadmap sequencing, and reporting.</p>
+          <div id="assessmentQuestions" class="assessment-list"></div>
+        </section>
+
+        <section class="setup-card hidden" data-step="5">
+          <p class="eyebrow">Operational readiness and evidence maturity</p>
+          <h2>How mature is your operational evidence?</h2>
+          <p class="support-copy">CyberShield evaluates whether evidence exists, whether it works in practice, and whether leadership can rely on it during audit, incident, vendor, or board review.</p>
+          <div id="evidenceDomainCards" class="evidence-domain-grid"></div>
+          <div class="form-grid evidence-controls">
+            <label>Overall evidence maturity
+              <select id="artifactState">
+                <option value="minimal">Minimal / Informal</option>
+                <option value="partial" selected>Partially Documented</option>
+                <option value="operationalized">Operationalized</option>
+                <option value="validated">Validated & Tested</option>
+                <option value="executive-ready">Executive-Ready</option>
+              </select>
+            </label>
+            <label>Score confidence
+              <select id="confidenceSelect">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="strong">Strong</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="setup-card hidden" data-step="6">
+          <p class="eyebrow">Assign operational ownership</p>
+          <h2>CyberShield recommends the owner. You can change it.</h2>
+          <p class="support-copy">Recommended ownership prevents “unassigned” governance from becoming hidden business risk.</p>
+          <div id="ownershipList" class="ownership-list"></div>
+        </section>
+
+        <div class="setup-actions">
+          <button id="prevStep" class="ghost-btn">Back</button>
+          <button id="nextStep" class="primary-btn">Continue</button>
         </div>
       </section>
 
-      <section class="onboarding card" id="onboarding">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">First-time setup</p>
-            <h2>Tell CyberShield who it is protecting.</h2>
-          </div>
-          <span class="progress-pill">Step <span id="stepNum">1</span> of 6</span>
-        </div>
+      <aside class="setup-pane">
+        <p class="eyebrow">First-time setup</p>
+        <h3 id="setupPaneTitle">Organization identity</h3>
+        <p id="setupPaneBody">Only setup guidance appears here during onboarding.  The advisor pane appears after the command center is created.</p>
+        <ul id="setupPaneBullets"></ul>
+      </aside>
+    </main>
 
-        <div class="wizard-grid">
-          <div class="wizard-panel">
-            <div class="wizard-step active" data-step="1">
-              <label>First name <input id="firstName" placeholder="Max" /></label>
-              <label>Organization name <input id="orgName" placeholder="Maximum Justice Cybersecurity" /></label>
-              <label>Estimated organization value
-                <select id="orgValue">
-                  <option value="250000">Under $500K</option>
-                  <option value="750000">$500K - $1M</option>
-                  <option value="3000000">$1M - $5M</option>
-                  <option value="7500000">$5M - $10M</option>
-                  <option value="50000000">$10M - $100M</option>
-                  <option value="150000000">$100M+</option>
-                </select>
-              </label>
-              <label>Industry
-                <select id="industry">
-                  <option>Healthcare</option>
-                  <option>Defense Contractor</option>
-                  <option>Financial Services</option>
-                  <option>Legal</option>
-                  <option>Technology</option>
-                  <option>Manufacturing</option>
-                  <option>Retail / E-commerce</option>
-                  <option>Education</option>
-                  <option>Nonprofit</option>
-                  <option selected>General SMB</option>
-                </select>
-              </label>
-            </div>
+    <main id="platformView" class="platform-layout hidden">
+      <nav class="tabbar" id="tabbar">
+        <button class="tab active" data-tab="command">Command Center</button>
+        <button class="tab" data-tab="actions">Next Best Actions</button>
+        <button class="tab" data-tab="memory">Governance Memory</button>
+        <button class="tab" data-tab="roadmap">Roadmap Automation</button>
+        <button class="tab" data-tab="compliance">Compliance Mapping</button>
+        <button class="tab" data-tab="mjc">MJC Value Add</button>
+        <button class="tab" data-tab="reports">Board-Ready Outputs</button>
+      </nav>
 
-            <div class="wizard-step" data-step="2">
-              <h3>Select the primary governance framework.</h3>
-              <p class="muted">CyberShield auto-highlights the recommended starting framework based on industry.</p>
-              <div class="framework-grid" id="frameworkGrid"></div>
-            </div>
-
-            <div class="wizard-step" data-step="3">
-              <h3>Baseline posture</h3>
-              <p class="muted">Choose the closest current operating state.</p>
-              <div class="choice-grid">
-                <button class="choice" data-posture="Reactive" title="Issues are handled after they become urgent.">Reactive</button>
-                <button class="choice" data-posture="Developing" title="Some controls exist, but ownership and evidence are inconsistent.">Developing</button>
-                <button class="choice" data-posture="Managed" title="Core controls and responsibilities are documented and reviewed.">Managed</button>
-                <button class="choice selected" data-posture="Resilient" title="Controls are tested, measured, and used for leadership decisions.">Resilient</button>
+      <section class="content-area">
+        <section class="content-main">
+          <div class="tab-panel active" id="commandPanel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Executive command center</p>
+                <h2 id="commandTitle">Organization Readiness</h2>
               </div>
+              <button class="primary-btn small" id="generateExecutiveRiskSummary">Generate Executive Risk Summary</button>
             </div>
 
-            <div class="wizard-step" data-step="4">
-              <h3>Operational readiness</h3>
-              <div class="slider-row"><span>Incident readiness</span><input type="range" id="incident" min="0" max="100" value="55" /></div>
-              <div class="slider-row"><span>Ownership clarity</span><input type="range" id="ownership" min="0" max="100" value="45" /></div>
-              <div class="slider-row"><span>AI control boundary</span><input type="range" id="aiBoundary" min="0" max="100" value="35" /></div>
-              <div class="slider-row"><span>Vendor governance</span><input type="range" id="vendor" min="0" max="100" value="50" /></div>
-            </div>
+            <div id="journeyStrip" class="journey-strip"></div>
 
-            <div class="wizard-step" data-step="5">
-              <h3>Operational readiness and evidence maturity</h3>
-              <label>Overall evidence maturity
-                <select id="evidence">
-                  <option value="15">Minimal / Informal</option>
-                  <option value="40" selected>Partially Documented</option>
-                  <option value="65">Operationalized</option>
-                  <option value="82">Validated & Tested</option>
-                  <option value="95">Executive-Ready</option>
-                </select>
-              </label>
-              <label>Score confidence
-                <select id="confidence">
-                  <option value="Low">Low</option>
-                  <option value="Medium" selected>Medium</option>
-                  <option value="Strong">Strong</option>
-                </select>
-              </label>
-            </div>
-
-            <div class="wizard-step" data-step="6">
-              <h3>Assign operational ownership</h3>
-              <p class="muted">CyberShield recommends owners.  You can change them.</p>
-              <div id="ownerGrid" class="owner-grid"></div>
-            </div>
-
-            <div class="wizard-actions">
-              <button class="secondary" id="backBtn">Back</button>
-              <button class="primary" id="nextBtn">Continue</button>
-            </div>
-          </div>
-
-          <aside class="setup-guidance">
-            <p class="eyebrow">First-Time Setup Guidance</p>
-            <h3 id="setupTitle">Organization identity</h3>
-            <p id="setupCopy">Only setup guidance appears here during onboarding.  The advisor pane appears after the command center is created.</p>
-          </aside>
-        </div>
-      </section>
-
-      <section class="dashboard hidden" id="dashboard">
-        <div class="content-area">
-          <div class="tab-panel active" id="overview">
-            <div class="section-head"><div><p class="eyebrow">Executive command center</p><h2><span id="orgOut">Organization</span> Readiness</h2></div><button class="primary generate-report">Generate Executive Risk Summary</button></div>
             <div class="metric-grid">
-              <button class="metric card" data-advisor="posture"><span>Current Risk Posture</span><strong id="riskPosture">Elevated</strong><small>Operational risk needs executive attention.</small></button>
-              <button class="metric card" data-advisor="exposure"><span>Estimated Operational Exposure</span><strong id="exposureOut">$0</strong><small id="exposurePct">0% of organization value</small></button>
-              <button class="metric card" data-advisor="readiness"><span>Readiness Score</span><strong id="readinessOut">0%</strong><small>Based on assessment, evidence, confidence, and ownership.</small></button>
-              <button class="metric card" data-advisor="confidence"><span>Score Confidence</span><strong id="confidenceOut">Medium</strong><small>Evidence is directionally useful but needs validation.</small></button>
+              <article class="metric-card clickable" data-guidance="riskPosture">
+                <span class="metric-label">Current Risk Posture</span>
+                <strong id="riskPosture" class="status-red">Elevated</strong>
+                <p>Operational risk needs executive attention.</p>
+              </article>
+              <article class="metric-card clickable" data-guidance="exposureMetric">
+                <span class="metric-label">Estimated Operational Exposure</span>
+                <strong id="exposureValue">$0</strong>
+                <p id="exposurePercent">0% of organization value</p>
+              </article>
+              <article class="metric-card clickable" data-guidance="readinessMetric">
+                <span class="metric-label">Readiness Score</span>
+                <strong id="readinessScore">0%</strong>
+                <p>Based on assessment, evidence, confidence, and ownership.</p>
+              </article>
+              <article class="metric-card clickable" data-guidance="confidenceMetric">
+                <span class="metric-label">Score Confidence</span>
+                <strong id="scoreConfidence">Medium</strong>
+                <p>Evidence is directionally useful but needs validation.</p>
+              </article>
             </div>
-            <div class="card"><h3>Executive Priorities</h3><div id="priorityList" class="stack"></div></div>
+
+            <section id="actionEngineBlock" class="action-engine-block"></section>
+
+            <h3>Executive Priorities</h3>
+            <div id="priorityCards" class="priority-list"></div>
           </div>
 
-          <div class="tab-panel" id="actions"><p class="eyebrow">Execution engine</p><h2>Next Best Actions</h2><div id="actionList" class="stack"></div></div>
-          <div class="tab-panel" id="memory"><p class="eyebrow">Institutional cyber continuity</p><h2>Governance Memory</h2><div id="memoryList" class="stack"></div></div>
-          <div class="tab-panel" id="roadmap"><p class="eyebrow">Operational sequencing</p><h2>Roadmap Automation</h2><div id="roadmapList" class="timeline"></div></div>
-          <div class="tab-panel" id="compliance"><p class="eyebrow">Framework-aware governance</p><h2>Compliance Mapping</h2><div id="complianceList" class="stack"></div></div>
-          <div class="tab-panel" id="services"><p class="eyebrow">Operational acceleration, not generic consulting</p><h2>MJC Value Add</h2><div id="serviceList" class="service-grid"></div></div>
-          <div class="tab-panel" id="reports"><p class="eyebrow">Board-ready outputs</p><h2>Reports and Artifacts</h2><div id="reportList" class="service-grid"></div><div class="card report-preview"><h3>Executive Summary Preview</h3><pre id="reportPreview">Select a report to generate the online preview.  You can download it or email it after generation.</pre></div></div>
-        </div>
+          <div class="tab-panel" id="actionsPanel">
+            <div class="section-head"><div><p class="eyebrow">Execution engine</p><h2>Next Best Actions</h2></div></div>
+            <div id="actionCards" class="card-grid"></div>
+          </div>
 
-        <aside class="advisor card" id="advisor">
-          <p class="eyebrow">Operational guidance</p>
+          <div class="tab-panel" id="memoryPanel">
+            <div class="section-head"><div><p class="eyebrow">Institutional cyber continuity</p><h2>Governance Memory</h2></div></div>
+            <div id="memoryCards" class="card-grid"></div>
+          </div>
+
+          <div class="tab-panel" id="roadmapPanel">
+            <div class="section-head"><div><p class="eyebrow">Operational sequencing</p><h2>Roadmap Automation</h2></div></div>
+            <div id="roadmapCards" class="roadmap-grid"></div>
+          </div>
+
+          <div class="tab-panel" id="compliancePanel">
+            <div class="section-head"><div><p class="eyebrow">Framework-aware governance</p><h2>Compliance Mapping</h2></div></div>
+            <div id="complianceCards" class="card-grid"></div>
+          </div>
+
+          <div class="tab-panel" id="mjcPanel">
+            <div class="section-head"><div><p class="eyebrow">Operational acceleration, not generic consulting</p><h2>MJC Value Add</h2></div></div>
+            <div id="mjcCards" class="card-grid"></div>
+          </div>
+
+          <div class="tab-panel" id="reportsPanel">
+            <div class="section-head"><div><p class="eyebrow">Board-ready outputs</p><h2>Reports and Artifacts</h2></div></div>
+            <div id="reportCards" class="card-grid reports-grid"></div>
+            <div id="reportPreview" class="report-preview">
+              <h3>Executive Summary Preview</h3>
+              <p>Select a report to generate the online preview.  You can download it or email it after generation.</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="advisor-pane">
+          <p class="eyebrow" id="advisorEyebrow">Operational guidance</p>
           <h3 id="advisorTitle">What this means</h3>
           <p id="advisorMeaning">Select a metric, priority, journey stage, roadmap item, compliance gap, report, or MJC service to see specific guidance.</p>
-          <h4>Why this matters</h4><p id="advisorWhy">CyberShield translates security state into business action, ownership, and executive clarity.</p>
-          <h4>Next best action</h4><p id="advisorNext">Start with the highest-ranked action in the Action Engine.</p>
-          <h4>MJC value add</h4><p id="advisorMjc">Maximum Justice Cybersecurity can convert the selected issue into owners, cadence, evidence, and executive reporting.</p>
-          <div class="advisor-actions"><button class="secondary" id="downloadGuidance">Download Guidance</button><button class="secondary" id="emailGuidance">Email Guidance</button></div>
+          <div class="advisor-block">
+            <h4>Why this matters</h4>
+            <p id="advisorWhy">CyberShield translates security state into business action, ownership, and executive clarity.</p>
+          </div>
+          <div class="advisor-block">
+            <h4>Next best action</h4>
+            <p id="advisorNext">Start with the highest-ranked action in the Action Engine.</p>
+          </div>
+          <div class="advisor-block">
+            <h4>MJC value add</h4>
+            <p id="advisorMJC">Maximum Justice Cybersecurity can convert the selected issue into owners, cadence, evidence, and executive reporting.</p>
+          </div>
+          <div class="advisor-actions">
+            <button class="ghost-btn small" id="downloadCurrentAdvisor">Download Guidance</button>
+            <button class="ghost-btn small" id="emailCurrentAdvisor">Email Guidance</button>
+          </div>
         </aside>
       </section>
     </main>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
