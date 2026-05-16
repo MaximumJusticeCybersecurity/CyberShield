@@ -1,5 +1,4 @@
-import logoUrl from '../assets/MJC Logo 2026.png';
-import { ShieldCheck } from 'lucide-react';
+import { RotateCcw, ShieldCheck } from 'lucide-react';
 import { useCyberShield } from '../state/useCyberShieldState';
 
 const nav = [
@@ -11,12 +10,22 @@ const nav = [
 ];
 
 export function Header() {
-  const { activeView, setActiveView } = useCyberShield();
+  const { activeView, setActiveView, resetPlatformData } = useCyberShield();
 
   return (
     <header className="header-shell">
       <div className="brand-block">
-        <img src={logoUrl} alt="Maximum Justice Cybersecurity logo" className="brand-logo" />
+        <img
+          src="./assets/mjc-logo-2026.png"
+          alt="Maximum Justice Cybersecurity logo"
+          className="brand-logo"
+          onError={(event) => {
+            event.currentTarget.style.display = 'none';
+            const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+            if (fallback) fallback.style.display = 'grid';
+          }}
+        />
+        <div className="brand-logo-fallback" aria-hidden="true">MJC</div>
         <div>
           <p className="eyebrow">Maximum Justice Cybersecurity</p>
           <h1>CyberShield</h1>
@@ -29,7 +38,12 @@ export function Header() {
           </button>
         ))}
       </nav>
-      <div className="header-status"><ShieldCheck size={18} /> Decision Intelligence MVP</div>
+      <div className="header-actions">
+        <button className="reset-btn" onClick={resetPlatformData} title="Reset demo data safely">
+          <RotateCcw size={16} /> Reset
+        </button>
+        <div className="header-status"><ShieldCheck size={18} /> Decision Intelligence MVP</div>
+      </div>
     </header>
   );
 }

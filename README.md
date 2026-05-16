@@ -1,64 +1,48 @@
-# CyberShield vNext Phase 4 GitHub Package
+# CyberShield vNext Phase 4 Hotfix Package
 
-CyberShield is an executive Cyber Decision Intelligence Platform for Maximum Justice Cybersecurity.  This package is a GitHub-ready React/Vite MVP implementation that turns the Phase 1 through Phase 4 doctrine into a working frontend foundation.
+CyberShield is the Maximum Justice Cybersecurity Cyber Decision Intelligence Platform MVP.
 
-## What is included
+This package includes fixes for two production blockers:
 
-- Executive landing experience
-- Executive operational dashboard
-- Action Engine queue
-- Governance Memory timeline
-- AI Governance Control Boundary view
-- Executive Reporting Center with print/PDF-ready behavior
-- Dynamic Advisor Intelligence Pane
-- Official MJC logo asset only
-- Responsive dark executive SaaS interface
-- Modular source architecture
+1. The reset button could corrupt local demo state and produce a blank screen
+2. The official MJC logo was not reliably rendering in the top-left header on GitHub Pages
 
-## Install
+## Quick Start
 
 ```bash
 npm install
-npm run dev
+npm run build
+npm run preview
 ```
 
-## Build
+## Important Files
+
+- `public/assets/mjc-logo-2026.png` — official MJC logo used by the header
+- `src/components/Header.tsx` — top-left logo placement and safe reset button
+- `src/state/useCyberShieldState.tsx` — guarded state persistence and reset logic
+- `src/components/ErrorBoundary.tsx` — prevents blank-screen failure from bad local state
+- `docs/HOTFIX_RESET_AND_LOGO.md` — details of the bug fixes
+
+## GitHub Pages
+
+The Vite config uses:
+
+```ts
+base: './'
+```
+
+This keeps assets working when deployed under:
+
+```text
+https://maximumjusticecybersecurity.github.io/cybershield/
+```
+
+## Validation
+
+Run:
 
 ```bash
 npm run build
 ```
 
-The production output will be created in `dist/`.
-
-## GitHub Pages deployment
-
-This project is configured with `base: './'` in `vite.config.ts` so the built files can run from GitHub Pages subpaths.
-
-Typical workflow:
-
-```bash
-npm install
-npm run build
-```
-
-Then deploy the `dist/` folder to the GitHub Pages branch or use your preferred GitHub Pages action.
-
-## Official brand asset
-
-The package uses only:
-
-`src/assets/MJC Logo 2026.png`
-
-Do not replace it with placeholder shields, transparent alternates, or CS abbreviations.
-
-## Strategic doctrine
-
-CyberShield must continuously answer:
-
-- What matters?
-- Why does it matter?
-- What should happen next?
-- Who owns the response?
-- What happens if ignored?
-
-The Action Engine is the center of gravity.  The dashboard exists to create executive decisions, not merely display cybersecurity data.
+The package has been build-tested successfully before delivery.
