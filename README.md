@@ -1,31 +1,34 @@
-# CyberShield OS v5.5 Static GitHub Pages Package
+# CyberShield OS v5.6 Static GitHub Pages Package
 
-Clean static package for the CyberShield public GitHub Pages site.
+Clean static package for MaximumJusticeCybersecurity/CyberShield.
 
-## Files to keep in the repository root
+## What changed in v5.6
+
+- No scoring, posture values, confidence values, exposure values, or cost ranges appear during onboarding.
+- After assessment submission, onboarding disappears and the user lands on a dedicated Executive View.
+- Executive View is a short, low-scroll decision brief.
+- Added likely cost exposure ranges based on organization value range, exposure, compliance pressure, and data sensitivity.
+- Reintroduced 12 stoplight dashboard bubbles with heat bars and white position dots.
+- Every highlighted/clickable bubble, card, metric, report, and action now does something.
+- Added advisor-pane behavior for metrics, risks, actions, reports, and dashboard bubbles.
+- Added ADA-conscious font stack, contrast, focus states, minimum 44px click targets, responsive layouts, reduced-motion support, and semantic structure.
+- Added bot-readable metadata, JSON-LD, and AI/bot brief page.
+- Static only: no Vite, React, build step, TypeScript, package.json, or dependency chain.
+
+## Deploy
+
+1. Keep `.git/`
+2. Delete old repo files and folders from the repository root
+3. Copy these files into the repository root
+4. Commit and push to `main`
+5. GitHub Pages source: `main` branch, `/root`
+6. Hard refresh Firefox with `Ctrl + Shift + R`
+
+## Files
+
 - `index.html`
 - `styles.css`
 - `app.js`
 - `assets/mjc-logo-2026.png`
-- `README.md`
 - `robots.txt`
 - `sitemap.xml`
-
-## Critical build correction
-CyberShield must not show any scoring during onboarding.  This build locks all score, posture, exposure, confidence, and readiness values until the user submits the Executive Assessment.
-
-## Deployment
-1. Delete old repository contents except `.git/`
-2. Copy this package into the repository root
-3. Commit and push
-4. GitHub Pages source should be `main` branch and `/root`
-5. Hard refresh the site with `Ctrl + Shift + R`
-
-## Validation checklist
-- No score appears in onboarding before submission
-- Assessment has six steps and shows progress
-- Dashboard unlocks only after submission
-- Advisor pane updates when clicking metrics, risks, actions, reports, services, and method cards
-- Reports preview, download, email, and print
-- MJC logo appears in the top-left corner
-- No build tooling or package dependencies are required
