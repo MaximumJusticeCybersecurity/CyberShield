@@ -1,42 +1,67 @@
-# CyberShield Executive OS v5.2
+# CyberShield Clean Static GitHub Pages Package
 
-Static GitHub Pages package for Maximum Justice Cybersecurity.
+This is a clean-slate static package for the CyberShield public GitHub Pages site.
 
-## Files
+It intentionally avoids Vite, React build tooling, TypeScript compilation, and package dependencies so GitHub Pages cannot white-screen because of a missing `/src/main.tsx` dev entrypoint.
+
+## Files to keep in the repo root
+
 - `index.html`
 - `styles.css`
 - `app.js`
 - `assets/mjc-logo-2026.png`
+- `README.md`
+- `robots.txt`
+- `sitemap.xml`
 
-## v5.2 Purpose
-This release rebuilds from the stable platform structure and carefully re-adds the v5 intelligence layer without breaking navigation or tab content.
+## Files and folders to delete before deploying this version
 
-## Fixes
-- Restores populated tab content across:
-  - Next Best Actions
-  - Governance Memory
-  - Roadmap Automation
-  - Compliance Mapping
-  - MJC Value Add
-  - Board-Ready Outputs
-- Keeps the 1–8 journey strip under the command title, but makes each step clickable and routed
-- Journey step clicks now open the relevant tab/panel
-- Right advisor pane updates with unique content for clicked journey stages, metrics, priorities, actions, memory items, roadmap items, compliance cards, MJC services, and reports
-- Report cards include Generate, Download, and Email buttons
-- Board-ready report preview remains visible on screen
-- Action Engine ranks next best actions by exposure, posture, confidence, ownership, industry sensitivity, and workflow age
-- Estimated organization value uses executive ranges:
-  - Under $500K
-  - $500K - $1M
-  - $1M - $5M
-  - $5M - $10M
-  - $10M - $100M
-  - $100M+
-- Step 2 framework recommendation dynamically highlights the correct framework by industry
-- Step 3 posture cards include help bubbles
-- Step 5 is rebuilt as Operational Readiness and Evidence Maturity
-- Step 6 auto-selects recommended owners
-- Uses the official non-transparent MJC logo with clean path-safe filename
+Delete these from the repository root if present:
 
-## Deploy
-Upload all files to the GitHub Pages repository root or `/docs` folder, depending on repo settings.
+- `src/`
+- `dist/`
+- `node_modules/`
+- `public/`
+- `architecture/`
+- `docs/`
+- `google-apps-script/`
+- `package.json`
+- `package-lock.json`
+- `vite.config.ts`
+- `tsconfig.json`
+- `manifest.webmanifest`
+- `assets-placeholder.txt`
+- any old hashed `/assets/index-*.js` or `/assets/index-*.css` files
+
+## Why this fixes the blank white screen
+
+The prior repository mixed multiple application generations:
+
+- Vite React source files
+- old `app.js` and `styles.css`
+- `public/assets`
+- old `/assets` folders
+- several configs and historical builds
+
+GitHub Pages serves static files.  If `index.html` points to `/src/main.tsx`, the browser cannot execute that TypeScript source directly, and the page can render blank.
+
+This package uses plain browser-safe files only:
+
+```html
+<link rel="stylesheet" href="styles.css">
+<script src="app.js"></script>
+<img src="assets/mjc-logo-2026.png">
+```
+
+## Deployment
+
+1. Delete old repository contents except `.git/`
+2. Copy the contents of this package into the repository root
+3. Commit and push
+4. GitHub Pages source should be `main` branch and `/root`
+5. Open `https://maximumjusticecybersecurity.github.io/cybershield/`
+6. Hard refresh with `Ctrl + Shift + R`
+
+## Validation
+
+Open `index.html` locally in a browser before pushing.  You should see the CyberShield page and the MJC logo in the top-left corner.
