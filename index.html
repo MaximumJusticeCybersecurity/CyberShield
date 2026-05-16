@@ -3,162 +3,294 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CyberShield by Maximum Justice Cybersecurity. Cyber Decision Intelligence for executive leadership." />
-  <title>CyberShield | Maximum Justice Cybersecurity</title>
+  <meta name="description" content="CyberShield by Maximum Justice Cybersecurity. Executive cyber decision intelligence, AI governance, operational trust posture, and board-ready reporting." />
+  <title>CyberShield OS v5.5 | Maximum Justice Cybersecurity</title>
   <link rel="icon" href="assets/mjc-logo-2026.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <noscript>
-    <div class="noscript">CyberShield requires JavaScript to run.</div>
-  </noscript>
+  <noscript><div class="noscript">CyberShield requires JavaScript to run.</div></noscript>
 
-  <div id="app">
+  <div id="appShell">
     <header class="topbar">
       <a class="brand" href="#overview" aria-label="CyberShield home">
-        <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo" class="brand-logo" onerror="this.style.display='none';document.querySelector('.brand-fallback').style.display='grid';" />
-        <span class="brand-fallback" aria-hidden="true">MJC</span>
-        <span class="brand-text">
-          <strong>CyberShield</strong>
-          <small>Maximum Justice Cybersecurity</small>
-        </span>
+        <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo" class="brand-logo" />
+        <span class="brand-copy"><strong>CyberShield</strong><small>Maximum Justice Cybersecurity</small></span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#overview">Overview</a>
+        <a href="#assessment">Assessment</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#actions">Actions</a>
-        <a href="#ai-governance">AI Governance</a>
         <a href="#reports">Reports</a>
       </nav>
-      <button id="resetBtn" class="ghost-btn" type="button">Reset Demo Data</button>
+      <button id="resetBtn" class="btn ghost" type="button">Reset</button>
     </header>
 
     <main>
-      <section id="overview" class="hero section-grid">
-        <div>
+      <section id="overview" class="hero section-pad">
+        <div class="hero-copy">
           <p class="eyebrow">Cyber Decision Intelligence Platform</p>
-          <h1>Turn cyber risk, AI governance, and operational readiness into executive decisions.</h1>
-          <p class="hero-copy">CyberShield helps leadership understand what matters, why it matters, who owns it, and what should happen next.</p>
-          <div class="cta-row">
-            <a class="primary-btn" href="#assessment">Run Executive Assessment</a>
-            <a class="secondary-btn" href="#reports">Preview Board Report</a>
+          <h1>Turn cyber risk, AI governance, and operational uncertainty into executive decisions.</h1>
+          <p class="lead">CyberShield is an operational trust system for leadership teams.  It converts short-form organizational inputs into decision intelligence, assigned ownership, next-best actions, and board-ready reporting.</p>
+          <div class="button-row">
+            <a class="btn primary" href="#assessment">Start Executive Assessment</a>
+            <a class="btn secondary" href="#method">See How It Works</a>
           </div>
         </div>
-        <div class="hero-panel glass-card">
-          <div class="score-ring" aria-label="Cyber Health score 72 percent"><span id="cyberScore">72</span><small>%</small></div>
-          <h2>Operational Trust Posture</h2>
-          <p>Developing resilience with elevated AI governance exposure and moderate ownership clarity.</p>
-          <div class="status-row"><span class="dot yellow"></span>Governance stability: Moderate</div>
-          <div class="status-row"><span class="dot red"></span>AI control boundary: Elevated exposure</div>
-          <div class="status-row"><span class="dot green"></span>Reporting readiness: Operational</div>
-        </div>
-      </section>
-
-      <section id="assessment" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Guided Intake</p>
-          <h2>Executive Assessment</h2>
-          <p>Use the short intake below to personalize the dashboard without collecting sensitive production security data.</p>
-        </div>
-        <div class="assessment glass-card">
-          <label>Organization Type
-            <select id="industrySelect">
-              <option value="SMB">SMB / Mid-Market</option>
-              <option value="Healthcare">Healthcare</option>
-              <option value="Defense">Defense / Federal Contractor</option>
-              <option value="Financial">Financial Services</option>
-              <option value="Technology">Technology</option>
-              <option value="Manufacturing">Manufacturing</option>
-            </select>
-          </label>
-          <label>Evidence Maturity
-            <select id="evidenceSelect">
-              <option value="partial">Partial evidence</option>
-              <option value="weak">Weak or aging evidence</option>
-              <option value="strong">Strong evidence</option>
-            </select>
-          </label>
-          <label>AI Usage
-            <select id="aiSelect">
-              <option value="moderate">Some approved AI usage</option>
-              <option value="high">Shadow AI likely</option>
-              <option value="low">Limited AI usage</option>
-            </select>
-          </label>
-          <button id="generateBtn" class="primary-btn" type="button">Generate Executive View</button>
-        </div>
-      </section>
-
-      <section class="metrics section-grid compact">
-        <article class="metric-card glass-card">
-          <span class="metric-label">Cyber Health</span>
-          <strong id="healthMetric">72%</strong>
-          <small id="healthText">Developing</small>
-        </article>
-        <article class="metric-card glass-card">
-          <span class="metric-label">AI Governance</span>
-          <strong id="aiMetric">58%</strong>
-          <small id="aiText">Elevated exposure</small>
-        </article>
-        <article class="metric-card glass-card">
-          <span class="metric-label">Ownership Clarity</span>
-          <strong id="ownerMetric">64%</strong>
-          <small>Developing</small>
-        </article>
-        <article class="metric-card glass-card">
-          <span class="metric-label">Framework Lens</span>
-          <strong id="frameworkMetric">CIS</strong>
-          <small id="frameworkText">Recommended</small>
-        </article>
-      </section>
-
-      <section id="actions" class="section dashboard-grid">
-        <div class="main-column">
-          <div class="section-heading small">
-            <p class="eyebrow">Action Engine</p>
-            <h2>Top Next-Best Actions</h2>
-          </div>
-          <div id="actionList" class="card-list"></div>
-        </div>
-        <aside class="advisor glass-card">
-          <p class="eyebrow">Advisor Intelligence</p>
-          <h2 id="advisorTitle">What this means</h2>
-          <p id="advisorBody">CyberShield is prioritizing actions based on governance maturity, AI exposure, evidence quality, and ownership clarity.</p>
-          <div class="advisor-box">
-            <strong>Recommended MJC path</strong>
-            <p id="advisorPath">Executive CyberShield Review with vCISO advisory support.</p>
-          </div>
+        <aside class="briefing-card glass">
+          <div class="briefing-top"><span class="live-dot"></span><span>Executive Briefing Mode</span></div>
+          <h2>No score before evidence.</h2>
+          <p>CyberShield will not display operational posture, readiness, confidence, or exposure values until the assessment is submitted.</p>
+          <div class="briefing-row"><span class="status neutral"></span><strong>Current state:</strong><span>Awaiting input</span></div>
+          <div class="briefing-row"><span class="status neutral"></span><strong>Scoring:</strong><span>Locked during onboarding</span></div>
+          <div class="briefing-row"><span class="status neutral"></span><strong>Output:</strong><span>Generated after submission</span></div>
         </aside>
       </section>
 
-      <section id="ai-governance" class="section section-grid">
-        <div class="glass-card">
-          <p class="eyebrow">AI Governance</p>
-          <h2>Control Boundary</h2>
-          <p>CyberShield evaluates whether AI usage remains inside an auditable operational control boundary.</p>
-          <ul class="clean-list">
-            <li><span class="dot red"></span>Shadow AI monitoring needs formal ownership</li>
-            <li><span class="dot yellow"></span>Prompt leakage controls are partially defined</li>
-            <li><span class="dot green"></span>Board reporting pathway is available</li>
-          </ul>
+      <section id="method" class="section-pad">
+        <div class="section-heading">
+          <p class="eyebrow">Operating Doctrine</p>
+          <h2>Built like an intelligence briefing room, not another alert dashboard.</h2>
+          <p>Every screen must answer what matters, why it matters, what happens next, and who owns the decision.</p>
         </div>
-        <div class="glass-card boundary-card">
-          <div class="boundary-ring">AI</div>
-          <p>Human oversight, data sensitivity, evidence retention, and approval workflows determine readiness.</p>
+        <div class="method-grid">
+          <article class="glass method-card" data-advisor="profile"><span>01</span><h3>Profile</h3><p>Capture business context, compliance sensitivity, AI usage, and operating dependency.</p></article>
+          <article class="glass method-card" data-advisor="trust"><span>02</span><h3>Trust State</h3><p>Evaluate evidence maturity, ownership clarity, incident readiness, and decision confidence.</p></article>
+          <article class="glass method-card" data-advisor="actions"><span>03</span><h3>Action Engine</h3><p>Rank the next actions by exposure, urgency, owner, compliance pressure, and expected risk reduction.</p></article>
+          <article class="glass method-card" data-advisor="report"><span>04</span><h3>Report</h3><p>Generate board-ready outputs with assumptions, limitations, service pathway, and next decision.</p></article>
         </div>
       </section>
 
-      <section id="reports" class="section">
+      <section id="assessment" class="section-pad">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Guided Intake</p>
+          <h2>Executive Assessment</h2>
+          <p>Six short steps.  No posture score, readiness score, confidence score, or exposure value appears until you submit the assessment.</p>
+        </div>
+        <div class="wizard-shell glass">
+          <div class="wizard-progress" aria-label="Assessment progress"><span id="progressBar"></span></div>
+          <div class="wizard-meta"><span id="stepLabel">Step 1 of 6</span><span id="scoreLock">Scoring locked until submission</span></div>
+
+          <form id="assessmentForm" novalidate>
+            <section class="wizard-step active" data-step="0">
+              <h3>Organization profile</h3>
+              <p>Use ranges.  CyberShield does not need exact revenue, employee count, or sensitive production details for this prototype.</p>
+              <label>Organization name <input id="orgName" name="orgName" type="text" placeholder="Example: Acme Health Group" autocomplete="organization" /></label>
+              <label>Industry / operating environment
+                <select id="industry" name="industry">
+                  <option value="SMB">SMB / Mid-Market</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Defense">Defense / Federal Contractor</option>
+                  <option value="Financial">Financial Services</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Technology">Technology / SaaS</option>
+                  <option value="Nonprofit">Nonprofit / Association</option>
+                </select>
+              </label>
+              <label>Organization value range
+                <select id="valueRange" name="valueRange">
+                  <option value="Under $10M">Under $10M</option>
+                  <option value="$10M - $50M">$10M - $50M</option>
+                  <option value="$50M - $250M">$50M - $250M</option>
+                  <option value="$250M+">$250M+</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="wizard-step" data-step="1">
+              <h3>Regulatory and decision pressure</h3>
+              <p>Select the primary pressure lens.  CyberShield will recommend the framework lens after submission.</p>
+              <label>Compliance sensitivity
+                <select id="compliance" name="compliance">
+                  <option value="baseline">Baseline business risk</option>
+                  <option value="regulated">Regulated customer or contractual exposure</option>
+                  <option value="highly-regulated">Highly regulated / audit-sensitive</option>
+                </select>
+              </label>
+              <label>Most important leadership concern
+                <select id="concern" name="concern">
+                  <option value="uncertainty">Too much uncertainty around cyber priorities</option>
+                  <option value="ai">AI usage is moving faster than governance</option>
+                  <option value="audit">Audit or customer security questions are increasing</option>
+                  <option value="incident">Incident response ownership is unclear</option>
+                  <option value="vendor">Vendor and third-party exposure is unclear</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="wizard-step" data-step="2">
+              <h3>Evidence maturity</h3>
+              <p>Evidence determines confidence.  CyberShield separates what is known from what is inferred.</p>
+              <label>Current cyber evidence state
+                <select id="evidence" name="evidence">
+                  <option value="weak">Mostly informal, stale, or scattered</option>
+                  <option value="partial" selected>Some current evidence, but incomplete</option>
+                  <option value="strong">Current, organized, and reviewable</option>
+                </select>
+              </label>
+              <label>Policy and control documentation
+                <select id="controls" name="controls">
+                  <option value="low">Mostly missing or generic</option>
+                  <option value="moderate" selected>Partially defined</option>
+                  <option value="high">Defined, reviewed, and owned</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="wizard-step" data-step="3">
+              <h3>AI governance boundary</h3>
+              <p>AI risk is treated as a control-boundary problem, not a novelty feature.</p>
+              <label>AI usage posture
+                <select id="aiUsage" name="aiUsage">
+                  <option value="low">Limited or controlled AI usage</option>
+                  <option value="moderate" selected>Approved AI usage exists, governance still forming</option>
+                  <option value="high">Shadow AI likely or already known</option>
+                </select>
+              </label>
+              <label>Data sensitivity exposed to AI workflows
+                <select id="dataSensitivity" name="dataSensitivity">
+                  <option value="low">Low sensitivity</option>
+                  <option value="moderate" selected>Some sensitive business or customer data</option>
+                  <option value="high">Regulated, confidential, legal, health, financial, or controlled data</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="wizard-step" data-step="4">
+              <h3>Operational readiness and ownership</h3>
+              <p>This step focuses on who can act, what evidence exists, and whether leadership can move during disruption.</p>
+              <label>Incident response readiness
+                <select id="irReadiness" name="irReadiness">
+                  <option value="low">No tested plan</option>
+                  <option value="moderate" selected>Plan exists, limited testing</option>
+                  <option value="high">Tested plan with executive decision rights</option>
+                </select>
+              </label>
+              <label>Owner clarity
+                <select id="ownerClarity" name="ownerClarity">
+                  <option value="low">Unclear or unassigned</option>
+                  <option value="moderate" selected>Some owners known, gaps remain</option>
+                  <option value="high">Named owners and escalation paths</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="wizard-step" data-step="5">
+              <h3>Advisor path</h3>
+              <p>CyberShield will auto-recommend owners and a service pathway.  Unknown fields are acceptable.</p>
+              <label>Preferred executive owner
+                <select id="execOwner" name="execOwner">
+                  <option value="Auto-recommend owner">Auto-recommend owner</option>
+                  <option value="CEO">CEO</option>
+                  <option value="COO">COO</option>
+                  <option value="CIO / IT Lead">CIO / IT Lead</option>
+                  <option value="CFO">CFO</option>
+                  <option value="General Counsel">General Counsel</option>
+                </select>
+              </label>
+              <label>Support interest
+                <select id="supportPath" name="supportPath">
+                  <option value="Executive CyberShield Review">Executive CyberShield Review</option>
+                  <option value="vCISO Advisory">vCISO Advisory</option>
+                  <option value="AI Governance Boundary Review">AI Governance Boundary Review</option>
+                  <option value="Compliance Readiness Sprint">Compliance Readiness Sprint</option>
+                  <option value="Incident Readiness Review">Incident Readiness Review</option>
+                </select>
+              </label>
+            </section>
+
+            <div class="wizard-actions">
+              <button id="prevStep" class="btn secondary" type="button">Back</button>
+              <button id="nextStep" class="btn primary" type="button">Next</button>
+              <button id="submitAssessment" class="btn primary submit" type="submit">Generate Executive View</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section-pad gated hidden" aria-live="polite">
+        <div class="section-heading">
+          <p class="eyebrow">Generated Executive View</p>
+          <h2 id="dashboardTitle">Operational Trust Posture</h2>
+          <p id="dashboardSubcopy">Based on your submitted inputs.  CyberShield does not claim external verification in this prototype.</p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric glass" data-panel="posture"><span>Operational Trust Posture</span><strong id="trustScore">--</strong><small id="trustBand">Awaiting data</small></article>
+          <article class="metric glass" data-panel="ai"><span>AI Governance Boundary</span><strong id="aiScore">--</strong><small id="aiBand">Awaiting data</small></article>
+          <article class="metric glass" data-panel="confidence"><span>Score Confidence</span><strong id="confidenceScore">--</strong><small id="confidenceBand">Awaiting data</small></article>
+          <article class="metric glass" data-panel="exposure"><span>Operational Exposure</span><strong id="exposureScore">--</strong><small id="exposureBand">Awaiting data</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="glass panel">
+            <div class="panel-head"><div><p class="eyebrow">Executive Risks</p><h3>Top 3 risks requiring leadership attention</h3></div><span id="frameworkBadge" class="pill neutral">Framework pending</span></div>
+            <div id="riskList" class="stack-list"></div>
+          </section>
+
+          <aside id="advisorPane" class="glass advisor-pane">
+            <p class="eyebrow">Advisor Pane</p>
+            <h3 id="advisorTitle">Select a metric, risk, action, report, or service</h3>
+            <dl>
+              <dt>What this means</dt><dd id="advisorMeans">Generated guidance appears after assessment submission.</dd>
+              <dt>Why this matters</dt><dd id="advisorMatters">CyberShield keeps decision context attached to the item you select.</dd>
+              <dt>Next best action</dt><dd id="advisorAction">Run the assessment, then select an item.</dd>
+              <dt>MJC value add</dt><dd id="advisorMJC">Maximum Justice Cybersecurity provides vCISO, Security SME, and Cybersecurity SME support to turn findings into governed execution.</dd>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section id="actions" class="section-pad gated hidden">
+        <div class="section-heading">
+          <p class="eyebrow">Action Engine</p>
+          <h2>Ranked next-best actions</h2>
+          <p>Actions are ranked by exposure, ownership, compliance sensitivity, governance age, AI boundary risk, and effort-to-impact.</p>
+        </div>
+        <div id="actionList" class="action-grid"></div>
+      </section>
+
+      <section id="memory" class="section-pad gated hidden">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Governance Memory</p>
+          <h2>Institutional cyber memory</h2>
+          <p>For the static prototype, governance memory is stored locally in the browser.  Production should use secure storage, consent, RBAC, audit logging, and tenant separation.</p>
+        </div>
+        <div id="memoryList" class="memory-grid"></div>
+      </section>
+
+      <section id="services" class="section-pad gated hidden">
+        <div class="section-heading">
+          <p class="eyebrow">MJC Service Pathway</p>
+          <h2>Recommended support based on the generated posture</h2>
+        </div>
+        <div id="serviceList" class="method-grid"></div>
+      </section>
+
+      <section id="reports" class="section-pad gated hidden">
         <div class="section-heading">
           <p class="eyebrow">Executive Reporting</p>
-          <h2>Board-Ready Outputs</h2>
-          <p>Generate a concise executive risk summary that can be printed or saved to PDF from the browser.</p>
+          <h2>Board-ready outputs</h2>
+          <p>Each report supports on-screen preview, download, and email handoff.  Browser print can save the preview as PDF.</p>
         </div>
-        <div class="reports-grid">
-          <article class="report-card glass-card"><h3>Executive Risk Summary</h3><p>Top risks, ownership gaps, decision implications, and next-best actions.</p></article>
-          <article class="report-card glass-card"><h3>AI Governance Assessment</h3><p>AI exposure, control boundary posture, and executive accountability.</p></article>
-          <article class="report-card glass-card"><h3>Operational Trust Assessment</h3><p>Governance maturity, resilience indicators, and leadership actions.</p></article>
+        <div class="report-layout">
+          <div id="reportCards" class="report-cards"></div>
+          <article class="glass report-preview">
+            <div class="panel-head"><div><p class="eyebrow">Preview</p><h3 id="reportTitle">Executive Risk Summary</h3></div><button id="printReport" class="btn secondary" type="button">Print / Save PDF</button></div>
+            <pre id="reportPreview"></pre>
+            <div class="button-row"><button id="downloadReport" class="btn primary" type="button">Download Report</button><a id="emailReport" class="btn secondary" href="#">Email Report</a></div>
+          </article>
         </div>
-        <button id="printBtn" class="primary-btn" type="button">Print / Save Executive Report</button>
+      </section>
+
+      <section id="cta" class="section-pad gated hidden">
+        <div class="glass final-cta">
+          <p class="eyebrow">Next Decision</p>
+          <h2>Review these findings with Maximum Justice Cybersecurity.</h2>
+          <p>Use the generated output as the starting point for an Executive CyberShield Review, AI Governance Boundary Review, or vCISO advisory engagement.</p>
+          <a class="btn primary" href="https://maximumjusticecybersecurity.com" target="_blank" rel="noopener">Talk to Maximum Justice Cybersecurity</a>
+        </div>
       </section>
     </main>
   </div>
