@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var STORAGE='cybershield.v5.6.payload';
+  var STORAGE='cybershield.v5.7.payload';
   var state={step:0,payload:null,report:'executive'};
   var $=function(id){return document.getElementById(id)};
   var routes=['overview','assessment','executive','dashboard','actions','reports','botBrief'];
@@ -21,7 +21,7 @@
   function clearPayload(){try{localStorage.removeItem(STORAGE)}catch(e){}}
   function getInputs(){
     return {
-      orgName:($('orgName').value||'Your Organization').trim(),industry:$('industry').value,valueRange:$('valueRange').value,
+      personName:($('personName').value||'Executive').trim().split(/\s+/)[0],orgName:($('orgName').value||'Your Organization').trim(),industry:$('industry').value,valueRange:$('valueRange').value,
       compliance:$('compliance').value,concern:$('concern').value,evidence:$('evidence').value,controls:$('controls').value,
       aiUsage:$('aiUsage').value,dataSensitivity:$('dataSensitivity').value,incident:$('incident').value,ownerClarity:$('ownerClarity').value,
       owner:$('owner').value,reviewGoal:$('reviewGoal').value,date:new Date().toLocaleDateString()
@@ -43,7 +43,7 @@
     if(value>=75)return ['Resilient','green']; if(value>=45)return ['Developing','yellow']; return ['Elevated','red'];
   }
   function ownerFor(i,type){
-    if(i.owner && i.owner!=='Auto-recommend')return i.owner;
+    if(i.owner)return i.owner;
     if(type==='ai')return 'CIO / vCISO'; if(type==='money')return 'CFO'; if(type==='legal')return 'General Counsel'; if(type==='incident')return 'COO / vCISO'; return 'CEO';
   }
   function exposureRange(i,s){
@@ -60,6 +60,17 @@
     if(i.compliance==='highly-regulated')return ['NIST CSF + Control Evidence','The organization needs a control language that leadership, IT, legal, and auditors can share.'];
     return ['NIST CSF Executive Lens','Use a practical governance framework without creating compliance theater.'];
   }
+
+  function goalProfile(i){
+    var profiles={
+      'Executive CyberShield Review':['Executive CyberShield Review','Executive Decision Map','Decision posture, ownership, exposure, confidence, and reportable next moves'],
+      'AI Governance Boundary Review':['AI Governance Boundary Review','AI Governance Control Map','AI usage, data sensitivity, approved-use boundary, control evidence, and accountability'],
+      'Cyber Readiness Diagnostic':['Cyber Readiness Diagnostic','Cyber Readiness Map','Evidence, controls, incident readiness, compliance lens, and prioritized remediation'],
+      'Operational Trust Assessment':['Operational Trust Assessment','Operational Trust Map','Trust posture, governance rhythm, decision velocity, exposure, and owner clarity']
+    };
+    return profiles[i.reviewGoal]||profiles['Executive CyberShield Review'];
+  }
+
   function riskItems(i,s){
     var risks=[];
     if(s.exposure>48)risks.push({title:'Operational exposure may exceed leadership tolerance',body:'Likely exposure range is high enough to require executive review and risk treatment.',owner:ownerFor(i,'money'),sev:band(s.exposure,true)[1],route:'dashboard'});
@@ -80,21 +91,46 @@
     ];
   }
   function bubbles(i,s){
-    var exp=exposureRange(i,s), f=framework(i)[0];
-    return [
-      ['Operational Trust Posture',s.trust,'%',band(s.trust),'Measures how ready leadership is to make defensible cyber decisions from evidence, owners, controls, and incident readiness.','posture'],
-      ['AI Governance Boundary',s.ai,'%',band(s.ai),'Measures whether AI usage, data sensitivity, and controls sit inside a governed operating boundary.','ai'],
-      ['Score Confidence',s.confidence,'%',band(s.confidence),'Measures how much the generated output depends on current evidence instead of assumptions.','confidence'],
-      ['Operational Exposure',s.exposure,'%',band(s.exposure,true),'Higher means greater likely business exposure from cyber, AI, compliance, or incident gaps.','exposure'],
+    var exp=exposureRange(i,s), f=framework(i)[0], g=goalProfile(i)[0];
+    var base={
+      exec:[
+        ['Operational Trust Posture',s.trust,'%',band(s.trust),'Measures how ready leadership is to make defensible cyber decisions from evidence, owners, controls, and incident readiness.','posture'],
+        ['AI Governance Boundary',s.ai,'%',band(s.ai),'Measures whether AI usage, data sensitivity, and controls sit inside a governed operating boundary.','ai'],
+        ['Score Confidence',s.confidence,'%',band(s.confidence),'Measures how much the generated output depends on current evidence instead of assumptions.','confidence'],
+        ['Operational Exposure',s.exposure,'%',band(s.exposure,true),'Higher means greater likely business exposure from cyber, AI, compliance, or incident gaps.','exposure']
+      ],
+      ai:[
+        ['AI Governance Boundary',s.ai,'%',band(s.ai),'Shows whether AI usage, sensitive data, policy, owners, and evidence are inside a control boundary.','ai'],
+        ['Data Sensitivity',i.dataSensitivity==='low'?28:i.dataSensitivity==='moderate'?58:86,'%',band(100-(i.dataSensitivity==='low'?28:i.dataSensitivity==='moderate'?58:86)),'Higher sensitivity increases consequence if AI, vendor, identity, or access controls fail.','data'],
+        ['Approved-Use Control',vmap[i.controls],'%',band(vmap[i.controls]),'Shows whether AI rules are documented, owned, and reviewable rather than informal.','controls'],
+        ['Evidence Confidence',s.confidence,'%',band(s.confidence),'Shows whether AI governance decisions can be defended with current evidence.','confidence']
+      ],
+      readiness:[
+        ['Cyber Readiness',Math.round((s.trust+vmap[i.incident]+vmap[i.controls])/3),'%',band(Math.round((s.trust+vmap[i.incident]+vmap[i.controls])/3)),'Measures readiness across controls, evidence, ownership, and incident response.','posture'],
+        ['Incident Readiness',vmap[i.incident],'%',band(vmap[i.incident]),'Ability to coordinate leadership, containment, communications, and recovery during disruption.','incident'],
+        ['Control Documentation',vmap[i.controls],'%',band(vmap[i.controls]),'Whether policies and controls are generic, partial, or owned and reviewable.','controls'],
+        ['Compliance Lens',i.compliance==='baseline'?70:i.compliance==='regulated'?55:38,'%',band(i.compliance==='baseline'?70:i.compliance==='regulated'?55:38),f+' is the recommended operating lens from the submitted context.','compliance']
+      ],
+      trust:[
+        ['Operational Trust Posture',s.trust,'%',band(s.trust),'Measures how ready leadership is to make defensible cyber decisions.','posture'],
+        ['Ownership Clarity',vmap[i.ownerClarity],'%',band(vmap[i.ownerClarity]),'Whether cyber, AI, and operational risk decisions have named accountable owners.','ownership'],
+        ['Decision Velocity',Math.round((s.trust+s.confidence)/2),'%',band(Math.round((s.trust+s.confidence)/2)),'How quickly leadership can move without creating chaos, guessing, or bypassing controls.','velocity'],
+        ['Evidence Maturity',vmap[i.evidence],'%',band(vmap[i.evidence]),'How organized, current, and reviewable the cyber evidence appears from submitted inputs.','evidence']
+      ]
+    };
+    var starter=g.indexOf('AI Governance')>=0?base.ai:g.indexOf('Cyber Readiness')>=0?base.readiness:g.indexOf('Operational Trust')>=0?base.trust:base.exec;
+    var common=[
       ['Likely Cost Exposure',null,'',band(100-s.exposure),'Estimated range: '+money(exp[0])+' to '+money(exp[1])+' based on value range, exposure, compliance, and data sensitivity.','cost'],
+      ['Operational Exposure',s.exposure,'%',band(s.exposure,true),'Higher means greater likely business exposure from cyber, AI, compliance, or incident gaps.','exposure'],
       ['Evidence Maturity',vmap[i.evidence],'%',band(vmap[i.evidence]),'How organized, current, and reviewable the cyber evidence appears from submitted inputs.','evidence'],
-      ['Incident Readiness',vmap[i.incident],'%',band(vmap[i.incident]),'Ability to coordinate leadership, containment, communications, and recovery during disruption.','incident'],
       ['Ownership Clarity',vmap[i.ownerClarity],'%',band(vmap[i.ownerClarity]),'Whether cyber, AI, and operational risk decisions have named accountable owners.','ownership'],
       ['Control Documentation',vmap[i.controls],'%',band(vmap[i.controls]),'Whether policies and controls are generic, partial, or owned and reviewable.','controls'],
       ['Compliance Lens',i.compliance==='baseline'?70:i.compliance==='regulated'?55:38,'%',band(i.compliance==='baseline'?70:i.compliance==='regulated'?55:38),f+' is the recommended operating lens from the submitted context.','compliance'],
       ['Data Sensitivity',i.dataSensitivity==='low'?28:i.dataSensitivity==='moderate'?58:86,'%',band(100-(i.dataSensitivity==='low'?28:i.dataSensitivity==='moderate'?58:86)),'Higher sensitivity increases consequence if AI, vendor, identity, or access controls fail.','data'],
       ['Decision Velocity',Math.round((s.trust+s.confidence)/2),'%',band(Math.round((s.trust+s.confidence)/2)),'How quickly leadership can move without creating chaos, guessing, or bypassing controls.','velocity']
     ];
+    var seen={}, out=[]; starter.concat(common).forEach(function(x){if(!seen[x[5]]){seen[x[5]]=1;out.push(x)}});
+    return out.slice(0,12);
   }
   function makePayload(){var i=getInputs(), s=score(i); return {inputs:i,scores:s,risks:riskItems(i,s),actions:actions(i,s),range:exposureRange(i,s),framework:framework(i),created:new Date().toISOString()};}
   function setRoute(route){
@@ -112,19 +148,25 @@
   function setAdvisor(title,means,matters,action,mjc){
     $('advisorTitle').textContent=title; $('advisorMeans').textContent=means; $('advisorMatters').textContent=matters; $('advisorAction').textContent=action; $('advisorMJC').textContent=mjc;
   }
+  function showDetail(title,means,matters,action,mjc){
+    setAdvisor(title,means,matters,action,mjc);
+    if($('detailModal')){ $('detailTitle').textContent=title; $('detailMeans').textContent=means; $('detailMatters').textContent=matters; $('detailAction').textContent=action; $('detailMJC').textContent=mjc; $('detailModal').classList.remove('hidden'); }
+  }
+  function closeDetail(){ if($('detailModal')) $('detailModal').classList.add('hidden'); }
   function attachRouteClicks(){document.querySelectorAll('[data-route]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();setRoute(el.getAttribute('data-route'))})})}
   function renderAll(){
     var p=state.payload; document.querySelectorAll('.requires-data').forEach(function(el){el.classList.toggle('disabled',!p)});
     $('assessmentNav').classList.toggle('hidden',!!p);
     if(!p){setAdvisor('Awaiting assessment','No executive output has been generated yet.','CyberShield does not infer posture before inputs are submitted.','Complete the assessment.','MJC can facilitate a vCISO-led CyberShield review once inputs exist.');return;}
-    var i=p.inputs,s=p.scores, exp=p.range;
-    $('execTitle').textContent=i.orgName+' Executive Decision Brief';
-    $('execSub').textContent='Generated '+i.date+' using submitted inputs. Likely exposure range: '+money(exp[0])+' to '+money(exp[1])+'. Framework lens: '+p.framework[0]+'.';
+    var i=p.inputs,s=p.scores, exp=p.range, gp=goalProfile(i);
+    $('execTitle').textContent=i.personName+' Executive Decision Brief';
+    $('execSub').textContent='Generated '+i.date+' using submitted inputs for '+i.orgName+'. Likely exposure range: '+money(exp[0])+' to '+money(exp[1])+'. Framework lens: '+p.framework[0]+'.';
+    $('dashEyebrow').textContent=gp[0]; $('dashTitle').textContent=gp[1]; $('dashIntro').textContent=gp[2]+'. Click any bubble to open its explanation in the advisor pane.';
     var core=[['Operational Trust',s.trust,'posture'],['AI Governance',s.ai,'ai'],['Confidence',s.confidence,'confidence'],['Exposure',s.exposure,'exposure']];
     $('execMetrics').innerHTML=core.map(function(m){var b=band(m[1],m[0]==='Exposure'); return metricHtml(m[0],m[1],b,m[2]);}).join('');
-    $('execRisks').innerHTML=p.risks.map(function(r,idx){return '<button class="risk-pill '+r.sev+'" data-risk="'+idx+'"><h3>'+html(r.title)+'</h3><p>'+html(r.body)+'</p><span class="pill '+r.sev+'">Owner: '+html(r.owner)+'</span></button>'}).join('');
+    $('execRisks').innerHTML=p.risks.map(function(r,idx){return '<button class="risk-pill '+r.sev+'" data-risk="'+idx+'"><h3>'+html(r.title)+'</h3><p>'+html(r.body)+'</p><span class="pill owner-pill">Owner: '+html(r.owner)+'</span></button>'}).join('');
     $('bubbleGrid').innerHTML=bubbles(i,s).map(function(b){return bubbleHtml(b)}).join('');
-    $('actionList').innerHTML=p.actions.map(function(a,idx){return '<button class="action-card '+a.sev+'" data-action="'+idx+'"><h3>'+html(a.title)+'</h3><p>'+html(a.body)+'</p><span class="pill '+a.sev+'">Owner: '+html(a.owner)+'</span> <span class="pill green">Risk reduction '+html(a.reduction)+'</span></button>'}).join('');
+    $('actionList').innerHTML=p.actions.map(function(a,idx){return '<button class="action-card '+a.sev+'" data-action="'+idx+'"><h3>'+html(a.title)+'</h3><p>'+html(a.body)+'</p><span class="pill owner-pill">Owner: '+html(a.owner)+'</span> <span class="pill green">Risk reduction '+html(a.reduction)+'</span></button>'}).join('');
     renderReports(); bindGeneratedClicks();
     setAdvisor('Executive View','This screen is the compressed decision brief, designed to avoid long scrolling.','Executives need the smallest useful picture: posture, AI governance, confidence, exposure, top risks, owner, and next action.','Click any metric or risk to drill into the dashboard, action engine, or report.','MJC converts this brief into an Executive CyberShield Review and governed execution plan.');
   }
@@ -134,13 +176,13 @@
     $('reportSelector').innerHTML=Object.keys(reports).map(function(k){return '<button class="report-card '+(k===state.report?'active':'')+'" data-report="'+k+'"><h3>'+reports[k][0]+'</h3><p>'+reports[k][1]+'</p></button>'}).join('');
     var text=reportText(state.report); $('reportTitle').textContent=reports[state.report][0]; $('reportText').textContent=text; $('emailReport').href='mailto:?subject='+encodeURIComponent('CyberShield '+reports[state.report][0])+'&body='+encodeURIComponent(text.slice(0,1800));
   }
-  function reportText(type){var p=state.payload;if(!p)return '';var i=p.inputs,s=p.scores,exp=p.range;return 'CYBERSHIELD '+reports[type][0].toUpperCase()+'\nPrepared for: '+i.orgName+'\nPrepared by: Maximum Justice Cybersecurity\nDate: '+i.date+'\n\nEXECUTIVE SUMMARY\nCyberShield generated this report from user-submitted inputs. It does not claim verified telemetry ingestion. Current posture: Operational Trust '+s.trust+'%, AI Governance '+s.ai+'%, Confidence '+s.confidence+'%, Operational Exposure '+s.exposure+'%. Likely exposure range: '+money(exp[0])+' to '+money(exp[1])+'.\n\nWHAT THIS MEANS\n'+i.orgName+' needs a tighter operating model for cyber decisions, AI governance, evidence maturity, ownership, and executive reporting. Recommended framework lens: '+p.framework[0]+'. '+p.framework[1]+'\n\nTOP RISKS\n'+p.risks.map(function(r,n){return (n+1)+'. '+r.title+'\n   Owner: '+r.owner+'\n   Why it matters: '+r.body}).join('\n')+'\n\nNEXT-BEST ACTIONS\n'+p.actions.map(function(a,n){return (n+1)+'. '+a.title+'\n   Owner: '+a.owner+'\n   Expected risk reduction: '+a.reduction+'\n   Rationale: '+a.body}).join('\n')+'\n\nASSUMPTIONS AND LIMITATIONS\nThis prototype uses submitted answers only. It does not collect sensitive production data, ingest live telemetry, validate evidence, provide legal advice, or make autonomous decisions. Customer-entered data is separate from inferred analysis.\n\nMJC SUPPORT PATH\nRecommended next step: '+i.reviewGoal+'. MJC can support vCISO advisory, security assessment, AI governance implementation, incident readiness, compliance readiness, and executive reporting.';}
+  function reportText(type){var p=state.payload;if(!p)return '';var i=p.inputs,s=p.scores,exp=p.range;return 'CYBERSHIELD '+reports[type][0].toUpperCase()+'\nPrepared for: '+i.personName+' at '+i.orgName+'\nPrepared by: Maximum Justice Cybersecurity\nDate: '+i.date+'\n\nEXECUTIVE SUMMARY\nCyberShield generated this report from user-submitted inputs. It does not claim verified telemetry ingestion. Current posture: Operational Trust '+s.trust+'%, AI Governance '+s.ai+'%, Confidence '+s.confidence+'%, Operational Exposure '+s.exposure+'%. Likely exposure range: '+money(exp[0])+' to '+money(exp[1])+'.\n\nWHAT THIS MEANS\n'+i.orgName+' needs a tighter operating model for cyber decisions, AI governance, evidence maturity, ownership, and executive reporting. Recommended framework lens: '+p.framework[0]+'. '+p.framework[1]+'\n\nTOP RISKS\n'+p.risks.map(function(r,n){return (n+1)+'. '+r.title+'\n   Owner: '+r.owner+'\n   Why it matters: '+r.body}).join('\n')+'\n\nNEXT-BEST ACTIONS\n'+p.actions.map(function(a,n){return (n+1)+'. '+a.title+'\n   Owner: '+a.owner+'\n   Expected risk reduction: '+a.reduction+'\n   Rationale: '+a.body}).join('\n')+'\n\nASSUMPTIONS AND LIMITATIONS\nThis prototype uses submitted answers only. It does not collect sensitive production data, ingest live telemetry, validate evidence, provide legal advice, or make autonomous decisions. Customer-entered data is separate from inferred analysis.\n\nMJC SUPPORT PATH\nRecommended next step: '+i.reviewGoal+'. MJC can support vCISO advisory, security assessment, AI governance implementation, incident readiness, compliance readiness, and executive reporting.';}
   function bindGeneratedClicks(){
     document.querySelectorAll('[data-panel]').forEach(function(el){el.onclick=function(){var key=el.dataset.panel;var p=state.payload;setRoute('dashboard');advisorFor(key,p)}});
-    document.querySelectorAll('[data-risk]').forEach(function(el){el.onclick=function(){var r=state.payload.risks[Number(el.dataset.risk)];setRoute(r.route);setAdvisor(r.title,'This is one of the top three executive risks generated from the assessment.',r.body,'Assign '+r.owner+' and select a risk treatment path: mitigate, transfer, accept, escalate, or investigate.','MJC can validate evidence, define decision rights, and create a 30-day remediation sprint.')}});
+    document.querySelectorAll('[data-risk]').forEach(function(el){el.onclick=function(){var r=state.payload.risks[Number(el.dataset.risk)];setRoute(r.route);showDetail(r.title,'This is one of the top three executive risks generated from the assessment.',r.body,'Assign '+r.owner+' and select a risk treatment path: mitigate, transfer, accept, escalate, or investigate.','MJC can validate evidence, define decision rights, and create a 30-day remediation sprint.')}});
     document.querySelectorAll('[data-bubble]').forEach(function(el){el.onclick=function(){advisorFor(el.dataset.bubble,state.payload)}});
-    document.querySelectorAll('[data-action]').forEach(function(el){el.onclick=function(){var a=state.payload.actions[Number(el.dataset.action)];setAdvisor(a.title,'This is a ranked next-best action from the CyberShield Action Engine.',a.body,'Give '+a.owner+' a deadline, evidence requirement, and review cadence.','MJC can convert this action into a governed execution plan with measurable outcomes.')}});
-    document.querySelectorAll('[data-report]').forEach(function(el){el.onclick=function(){state.report=el.dataset.report;renderReports();setAdvisor(reports[state.report][0],'This report packages the assessment into an executive-ready artifact.',reports[state.report][1],'Preview it, print/save PDF, download TXT, or email it for review.','MJC can tailor this report for board, audit, compliance, legal, or leadership use.')}});
+    document.querySelectorAll('[data-action]').forEach(function(el){el.onclick=function(){var a=state.payload.actions[Number(el.dataset.action)];showDetail(a.title,'This is a ranked next-best action from the CyberShield Action Engine.',a.body,'Give '+a.owner+' a deadline, evidence requirement, and review cadence. Open Reports for a shareable action record.','MJC can convert this action into a governed execution plan with measurable outcomes.')}});
+    document.querySelectorAll('[data-report]').forEach(function(el){el.onclick=function(){state.report=el.dataset.report;renderReports();bindGeneratedClicks();showDetail(reports[state.report][0],'This report packages the assessment into an executive-ready artifact.',reports[state.report][1],'Preview it, print/save PDF, download TXT, or email it for review.','MJC can tailor this report for board, audit, compliance, legal, or leadership use.')}});
   }
   function advisorFor(key,p){var map={
     posture:['Operational Trust Posture','This is not a technical health score. It estimates leadership readiness to make defensible cyber decisions.','A high number means evidence, controls, owners, and readiness are aligned. A low number means leadership may be guessing under pressure.','Open the top risks and assign treatment owners.','MJC provides vCISO-led operating model design and evidence validation.'],
@@ -154,7 +196,7 @@
     controls:['Control Documentation','This reflects whether control language is real, current, and owned.','Generic policies do not create resilience or audit defensibility.','Replace generic policies with role-owned controls.','MJC can build practical policy and control packages.'],
     compliance:['Compliance Lens','This identifies the operating framework that best matches the context.','Frameworks help leadership share a common control language without creating checkbox theater.','Build a practical roadmap around the selected lens.','MJC can align NIST, CMMC, HIPAA, GLBA, and customer security expectations.'],
     data:['Data Sensitivity','This reflects the potential consequence of mishandling data.','Sensitive data increases AI, vendor, legal, and incident exposure.','Map sensitive data flows and AI/tool access.','MJC can support data governance and AI boundary design.'],
-    velocity:['Decision Velocity','This estimates how quickly leadership can act without chaos.','Fast bad decisions and slow good decisions both create operational risk.','Create decision gates and escalation thresholds.','MJC can define decision gates, authority, and board reporting.']}; var a=map[key]||map.posture; setAdvisor(a[0],a[1],a[2],a[3],a[4]);}
+    velocity:['Decision Velocity','This estimates how quickly leadership can act without chaos.','Fast bad decisions and slow good decisions both create operational risk.','Create decision gates and escalation thresholds.','MJC can define decision gates, authority, and board reporting.']}; var a=map[key]||map.posture; showDetail(a[0],a[1],a[2],a[3],a[4]);}
   function boot(){
     state.payload=readPayload(); renderStep(); attachRouteClicks(); renderAll();
     var initial=(location.hash||'#overview').slice(1); if(state.payload && initial==='assessment')initial='executive'; setRoute(initial);
@@ -163,6 +205,7 @@
     $('resetBtn').onclick=function(){clearPayload();state={step:0,payload:null,report:'executive'};renderStep();renderAll();setRoute('assessment')};
     $('printReport').onclick=function(){window.print()};
     $('downloadReport').onclick=function(){var text=$('reportText').textContent||'';var blob=new Blob([text],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='CyberShield-'+reports[state.report][0].replace(/\s+/g,'-')+'.txt';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},0)};
+    $('closeDetail').onclick=closeDetail; $('detailOk').onclick=closeDetail; $('detailModal').addEventListener('click',function(e){if(e.target===$('detailModal'))closeDetail();});
   }
   try{if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot()}catch(err){document.body.innerHTML='<main style="max-width:900px;margin:4rem auto;padding:2rem;color:white;background:#07111f;border:1px solid #74d7ff;border-radius:24px;font-family:Arial,sans-serif"><h1>CyberShield Recovery Mode</h1><p>The app caught a startup error instead of showing a blank white screen.</p><pre style="white-space:pre-wrap;color:#ffd5d5">'+html(err&&err.message?err.message:err)+'</pre><button onclick="localStorage.clear();location.reload()" style="min-height:44px;padding:12px 18px;border-radius:999px;border:0;background:#74d7ff;font-weight:800">Clear Local Data and Reload</button></main>'}
 })();

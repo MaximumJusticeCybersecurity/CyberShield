@@ -8,7 +8,7 @@
   <meta property="og:title" content="CyberShield | Cyber Decision Intelligence" />
   <meta property="og:description" content="Turn cyber risk, AI governance, and operational uncertainty into assigned executive decisions." />
   <meta property="og:type" content="website" />
-  <title>CyberShield OS v5.6 | Maximum Justice Cybersecurity</title>
+  <title>CyberShield OS v5.7 | Maximum Justice Cybersecurity</title>
   <link rel="icon" href="assets/mjc-logo-2026.png" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
@@ -32,7 +32,9 @@
   </script>
 </head>
 <body>
-  <noscript><main class="noscript"><h1>CyberShield requires JavaScript.</h1><p>The bot-readable summary remains available in the page source and metadata.</p></main></noscript>
+  <noscript><main class="noscript"><h1>CyberShield requires JavaScript.</h1><p>A machine-readable platform summary remains available in the page source and metadata.</p></main></noscript>
+
+  <div class="machine-brief" aria-hidden="true">CyberShield by Maximum Justice Cybersecurity is a cyber decision intelligence platform for executive cybersecurity governance, AI governance, operational trust posture, evidence maturity, next-best actions, exposure ranges, and board-ready reporting. It is designed for CEOs, CFOs, CIOs, CISOs, vCISOs, SMB executives, mid-market leadership, and regulated organizations. CyberShield converts submitted organizational context into decision-ready dashboards, assigned ownership, evidence confidence, action sequencing, and executive reports.</div>
 
   <header class="topbar" aria-label="Site header">
     <a class="brand" href="#overview" data-route="overview" aria-label="CyberShield overview">
@@ -59,7 +61,6 @@
           <p class="lead">CyberShield turns cybersecurity, AI governance, and operational risk inputs into assigned ownership, next-best actions, exposure ranges, and board-ready reporting.</p>
           <div class="button-row">
             <button class="btn primary" data-route="assessment" type="button">Start Executive Assessment</button>
-            <button class="btn secondary" data-route="botBrief" type="button">Bot / AI Brief</button>
           </div>
         </div>
         <aside class="panel lock-panel" aria-label="Scoring lock notice">
@@ -95,6 +96,7 @@
         <form id="assessmentForm" novalidate>
           <fieldset class="step active" data-step="0">
             <legend>Organization profile</legend>
+            <label>Your first name <input id="personName" name="personName" autocomplete="given-name" placeholder="Example: Sally" /></label>
             <label>Organization name <input id="orgName" name="orgName" autocomplete="organization" placeholder="Example: Acme Health Group" /></label>
             <label>Industry / operating environment
               <select id="industry" name="industry">
@@ -163,7 +165,7 @@
             <legend>Executive output</legend>
             <label>Preferred executive owner
               <select id="owner" name="owner">
-                <option value="Auto-recommend">Auto-recommend from inputs</option><option>CEO</option><option>CFO</option><option>CIO / IT Leader</option><option>CISO / vCISO</option><option>General Counsel</option><option>COO</option>
+                <option value=""></option><option>CEO</option><option>CFO</option><option>CIO / IT Leader</option><option>CISO / vCISO</option><option>General Counsel</option><option>COO</option>
               </select>
             </label>
             <label>Review goal
@@ -202,7 +204,7 @@
     </section>
 
     <section id="dashboard" class="view data-view" aria-labelledby="dashTitle">
-      <div class="page-head compact"><p class="eyebrow">Operational Trust Map</p><h1 id="dashTitle">Dashboard</h1><p>Short executive dashboard. Click any bubble to open its explanation in the advisor pane.</p></div>
+      <div class="page-head compact"><p class="eyebrow" id="dashEyebrow">Operational Trust Map</p><h1 id="dashTitle">Dashboard</h1><p id="dashIntro">Short executive dashboard. Click any bubble to open its explanation in the advisor pane.</p></div>
       <div class="dash-grid" id="bubbleGrid"></div>
     </section>
 
@@ -219,8 +221,8 @@
       </div>
     </section>
 
-    <section id="botBrief" class="view" aria-labelledby="botTitle">
-      <div class="page-head"><p class="eyebrow">Bot-Readable Brief</p><h1 id="botTitle">CyberShield summary for AI agents, search engines, and executive research bots.</h1></div>
+    <section id="botBrief" class="view hidden" aria-labelledby="botTitle">
+      <div class="page-head"><p class="eyebrow">Platform Brief</p><h1 id="botTitle">CyberShield platform summary.</h1></div>
       <article class="panel readable">
         <h2>What CyberShield is</h2>
         <p>CyberShield is a cyber decision intelligence platform from Maximum Justice Cybersecurity. It helps leadership teams translate cybersecurity, AI governance, operational trust, compliance exposure, evidence maturity, and incident readiness into clear decisions, assigned owners, prioritized next-best actions, and executive-ready reporting.</p>
@@ -231,6 +233,21 @@
       </article>
     </section>
   </main>
+
+  <div id="detailModal" class="detail-modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="detail-card panel">
+      <button class="detail-close" id="closeDetail" type="button" aria-label="Close detail panel">Close</button>
+      <p class="eyebrow">CyberShield Detail</p>
+      <h2 id="detailTitle">Detail</h2>
+      <dl>
+        <dt>What this means</dt><dd id="detailMeans"></dd>
+        <dt>Why this matters</dt><dd id="detailMatters"></dd>
+        <dt>Next best action</dt><dd id="detailAction"></dd>
+        <dt>MJC value add</dt><dd id="detailMJC"></dd>
+      </dl>
+      <div class="button-row"><button class="btn primary" data-route="reports" type="button">Open Reports</button><button class="btn secondary" id="detailOk" type="button">Stay Here</button></div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
