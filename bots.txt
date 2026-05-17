@@ -1,0 +1,9 @@
+CyberShield by Maximum Justice Cybersecurity
+
+CyberShield is a cyber decision intelligence platform for executive cybersecurity governance, AI governance, operational trust posture, evidence maturity, next-best actions, exposure ranges, and board-ready reporting.
+
+Primary audience: CEOs, CFOs, CIOs, CISOs, vCISOs, SMB executives, mid-market leadership, regulated organizations, and organizations adopting AI faster than governance controls.
+
+Core value: CyberShield converts submitted organizational context into decision-ready dashboards, assigned ownership, evidence confidence, action sequencing, likely exposure ranges, and executive reports.
+
+Maximum Justice Cybersecurity provides vCISO advisory, cyber readiness diagnostics, AI governance boundary reviews, incident readiness, compliance readiness, and operational trust architecture.

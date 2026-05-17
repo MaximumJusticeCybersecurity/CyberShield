@@ -18,3 +18,45 @@
   .report-preview pre{white-space:pre-wrap!important;font-family:Arial,Verdana,sans-serif!important;font-size:10.5pt!important;color:#000!important;background:#fff!important;border:0!important;padding:0!important;max-height:none!important;overflow:visible!important}
 }
 .detail-modal{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:80;display:grid;place-items:center;padding:22px}.detail-card{max-width:760px;width:min(760px,100%);position:relative}.detail-card h2{margin:0 0 8px}.detail-card dt{font-weight:900;color:#fff;margin-top:12px}.detail-card dd{margin:2px 0 0;color:#fff}.detail-close{position:absolute;right:18px;top:18px;border:1px solid #00e5ff;background:#102f4f;color:#7ff3ff;border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer}
+/* v5.8 visibility and contrast fixes */
+.machine-brief{position:absolute!important;left:-99999px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+.metric-card .value,.bubble .value,.risk-pill .value,.action-card .value,.report-card .value{color:#fff!important;text-shadow:none!important}
+.metric-card small,.bubble p,.risk-pill p,.action-card p,.report-card p,.page-head p,#execSub,.range-label,.advisor dd,.info-card span,.readable p,.metric-card,.bubble,.risk-pill,.action-card,.report-card{color:#fff!important}
+.pill,.red,.yellow,.green{color:#fff!important}
+.owner,.owner-tag,[data-owner]{color:#74d7ff!important;font-weight:900!important}
+.report-card.active,.report-card[aria-selected="true"]{border-color:#74d7ff!important;box-shadow:0 0 0 2px rgba(116,215,255,.35),0 12px 30px rgba(0,0,0,.28)!important}
+@media print{.machine-brief{display:none!important}}
+
+
+/* v5.9 regression fixes: report buttons must stay reusable; action/readout text must remain bright white across all stoplight cards. */
+.action-card p,
+.action-card h3,
+.action-card span,
+.action-card .pill,
+.action-card.red p,
+.action-card.yellow p,
+.action-card.green p,
+.risk-pill p,
+.bubble p,
+.metric-card small,
+.metric-card .value,
+.bubble .value,
+.report-card p,
+.report-card h3{
+  color:#ffffff!important;
+}
+.action-card .owner-pill,
+.owner-pill{
+  color:#7ff3ff!important;
+  border-color:#00e5ff!important;
+}
+.report-card.active,
+.report-card:active,
+.report-card:focus-visible{
+  border-color:#00e5ff!important;
+  background:#102f4f!important;
+  color:#ffffff!important;
+}
+@media print{
+  .detail-modal{display:none!important;}
+}

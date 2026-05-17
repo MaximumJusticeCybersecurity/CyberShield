@@ -3,7 +3,7 @@
   var STORAGE='cybershield.v5.7.payload';
   var state={step:0,payload:null,report:'executive'};
   var $=function(id){return document.getElementById(id)};
-  var routes=['overview','assessment','executive','dashboard','actions','reports','botBrief'];
+  var routes=['overview','assessment','executive','dashboard','actions','reports'];
   var reports={
     executive:['Executive Risk Summary','Board-ready decision brief with posture, exposure range, risks, actions, and assumptions'],
     board:['Board Report','Compressed oversight summary for governance and fiduciary review'],
@@ -159,7 +159,7 @@
     $('assessmentNav').classList.toggle('hidden',!!p);
     if(!p){setAdvisor('Awaiting assessment','No executive output has been generated yet.','CyberShield does not infer posture before inputs are submitted.','Complete the assessment.','MJC can facilitate a vCISO-led CyberShield review once inputs exist.');return;}
     var i=p.inputs,s=p.scores, exp=p.range, gp=goalProfile(i);
-    $('execTitle').textContent=i.personName+' Executive Decision Brief';
+    $('execTitle').textContent=(i.orgName||'Organization')+' Executive Decision Brief';
     $('execSub').textContent='Generated '+i.date+' using submitted inputs for '+i.orgName+'. Likely exposure range: '+money(exp[0])+' to '+money(exp[1])+'. Framework lens: '+p.framework[0]+'.';
     $('dashEyebrow').textContent=gp[0]; $('dashTitle').textContent=gp[1]; $('dashIntro').textContent=gp[2]+'. Click any bubble to open its explanation in the advisor pane.';
     var core=[['Operational Trust',s.trust,'posture'],['AI Governance',s.ai,'ai'],['Confidence',s.confidence,'confidence'],['Exposure',s.exposure,'exposure']];
@@ -172,6 +172,16 @@
   }
   function metricHtml(label,val,b,type){return '<button class="metric-card" data-panel="'+type+'"><small>'+html(label)+'</small><div class="value">'+val+'%</div><div class="heat" aria-hidden="true"><span class="heat-dot" style="left:'+val+'%"></span></div><div class="range-label"><span>Red</span><span>Yellow</span><span>Green</span></div><span class="pill '+b[1]+'">'+b[0]+'</span></button>'}
   function bubbleHtml(b){var label=b[0],val=b[1],unit=b[2],bandObj=b[3],body=b[4],key=b[5]; var dot=val===null?50:val; var value=val===null?'Range':val+unit; return '<button class="bubble '+bandObj[1]+'" data-bubble="'+key+'"><div class="bubble-top"><h2>'+html(label)+'</h2><span class="pill '+bandObj[1]+'">'+bandObj[0]+'</span></div><div class="value">'+html(value)+'</div><div class="heat" aria-hidden="true"><span class="heat-dot" style="left:'+dot+'%"></span></div><div class="range-label"><span>Red</span><span>Yellow</span><span>Green</span></div><p>'+html(body)+'</p></button>'}
+
+  function selectReport(key){
+    if(!reports[key])return;
+    state.report=key;
+    renderReports();
+    document.querySelectorAll('[data-report]').forEach(function(el){
+      el.onclick=function(){selectReport(el.dataset.report)};
+    });
+  }
+
   function renderReports(){
     $('reportSelector').innerHTML=Object.keys(reports).map(function(k){return '<button class="report-card '+(k===state.report?'active':'')+'" data-report="'+k+'"><h3>'+reports[k][0]+'</h3><p>'+reports[k][1]+'</p></button>'}).join('');
     var text=reportText(state.report); $('reportTitle').textContent=reports[state.report][0]; $('reportText').textContent=text; $('emailReport').href='mailto:?subject='+encodeURIComponent('CyberShield '+reports[state.report][0])+'&body='+encodeURIComponent(text.slice(0,1800));
@@ -182,7 +192,7 @@
     document.querySelectorAll('[data-risk]').forEach(function(el){el.onclick=function(){var r=state.payload.risks[Number(el.dataset.risk)];setRoute(r.route);showDetail(r.title,'This is one of the top three executive risks generated from the assessment.',r.body,'Assign '+r.owner+' and select a risk treatment path: mitigate, transfer, accept, escalate, or investigate.','MJC can validate evidence, define decision rights, and create a 30-day remediation sprint.')}});
     document.querySelectorAll('[data-bubble]').forEach(function(el){el.onclick=function(){advisorFor(el.dataset.bubble,state.payload)}});
     document.querySelectorAll('[data-action]').forEach(function(el){el.onclick=function(){var a=state.payload.actions[Number(el.dataset.action)];showDetail(a.title,'This is a ranked next-best action from the CyberShield Action Engine.',a.body,'Give '+a.owner+' a deadline, evidence requirement, and review cadence. Open Reports for a shareable action record.','MJC can convert this action into a governed execution plan with measurable outcomes.')}});
-    document.querySelectorAll('[data-report]').forEach(function(el){el.onclick=function(){state.report=el.dataset.report;renderReports();bindGeneratedClicks();showDetail(reports[state.report][0],'This report packages the assessment into an executive-ready artifact.',reports[state.report][1],'Preview it, print/save PDF, download TXT, or email it for review.','MJC can tailor this report for board, audit, compliance, legal, or leadership use.')}});
+    document.querySelectorAll('[data-report]').forEach(function(el){el.onclick=function(){selectReport(el.dataset.report)}});
   }
   function advisorFor(key,p){var map={
     posture:['Operational Trust Posture','This is not a technical health score. It estimates leadership readiness to make defensible cyber decisions.','A high number means evidence, controls, owners, and readiness are aligned. A low number means leadership may be guessing under pressure.','Open the top risks and assign treatment owners.','MJC provides vCISO-led operating model design and evidence validation.'],

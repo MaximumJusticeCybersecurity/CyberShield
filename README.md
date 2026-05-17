@@ -1,8 +1,8 @@
-# CyberShield OS v5.7 Static GitHub Pages Package
+# CyberShield OS v5.9 Static GitHub Pages Package
 
 Clean static CyberShield package for GitHub Pages. No Vite, React, build step, TypeScript, or dependency installation required.
 
-## v5.7 fixes
+## v5.9 fixes
 
 - Removed visible Bot / AI Brief button and moved platform summary into machine-readable hidden source content and metadata
 - Added first-name personalization for the Executive Decision Brief
@@ -35,3 +35,17 @@ Clean static CyberShield package for GitHub Pages. No Vite, React, build step, T
 5. Open the GitHub Pages URL
 6. Hard refresh Firefox with `Ctrl + Shift + R`
 
+
+
+## v5.9 Patch
+- Removed human-visible bot / AI brief language from the UI
+- Added hidden machine-readable brief and bots.txt for non-human readers
+- Changed Executive View title to use Organization Name + Executive Decision Brief
+- Kept the executive first name in the generated subline for personalization
+- Forced executive metric values, dashboard scores, and colored bubble text to bright white
+
+
+OS v5.9 patch notes:
+- Fixed executive report selector so users can click multiple reports without needing a hard refresh.
+- Removed report-selection modal behavior that could block subsequent report clicks.
+- Forced action card body text and stoplight card content to bright white for readability.
