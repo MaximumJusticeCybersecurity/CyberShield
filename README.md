@@ -49,3 +49,11 @@ OS v5.9 patch notes:
 - Fixed executive report selector so users can click multiple reports without needing a hard refresh.
 - Removed report-selection modal behavior that could block subsequent report clicks.
 - Forced action card body text and stoplight card content to bright white for readability.
+
+
+## OS v6.0 additions
+- Adds Action Orchestration Engine queue in Executive View.
+- Adds Organizational Memory snapshot.
+- Keeps onboarding score-free until submission.
+- Keeps bot-readable artifacts hidden from the human UI.
+- Preserves static GitHub Pages deployment with no build step.

@@ -1,0 +1,15 @@
+{
+  "name": "CyberShield",
+  "provider": "Maximum Justice Cybersecurity",
+  "category": "Cybersecurity governance infrastructure for SMB leadership",
+  "purpose": "Turn cyber risk, AI governance, compliance pressure, and operational uncertainty into assigned ownership, next-best actions, organizational memory, and executive-ready reports.",
+  "core_modules": [
+    "Executive Decision Brief",
+    "Action Orchestration Engine",
+    "Organizational Memory Layer",
+    "Operational Trust Map",
+    "AI Governance Boundary Review",
+    "Executive Reporting Engine"
+  ],
+  "human_ui_note": "This file is intended for machine-readable discovery and does not display in the visible user interface."
+}

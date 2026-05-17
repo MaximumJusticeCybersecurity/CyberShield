@@ -60,3 +60,25 @@
 @media print{
   .detail-modal{display:none!important;}
 }
+
+/* v6.0 operational orchestration, memory, and calmer executive command center */
+:root{--font:"Atkinson Hyperlegible","Inter","IBM Plex Sans","Source Sans 3",Arial,sans-serif;}
+body{font-family:var(--font);}
+.hero h1{font-size:clamp(2.1rem,4.4vw,4.25rem);}
+.exec-command-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.85fr);gap:16px;margin-top:16px;}
+.exec-command-grid h2,.memory-section h2{font-size:1.05rem;margin:0 0 10px;color:#fff;letter-spacing:.01em;}
+.queue-list{display:grid;gap:10px;}
+.queue-item{border:1px solid var(--line);background:#0c1d32;color:#fff;border-radius:16px;text-align:left;cursor:pointer;padding:14px;display:grid;gap:6px;min-height:84px;}
+.queue-item b{color:#fff;font-size:.98rem;}
+.queue-item span{color:#fff;font-size:.86rem;}
+.memory-section{margin-top:16px;}
+.memory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.memory-card{border:1px solid var(--line);background:#09182a;color:#fff;border-radius:16px;cursor:pointer;text-align:left;padding:14px;display:grid;gap:7px;}
+.memory-card b,.memory-card strong,.memory-card span{color:#fff;}
+.memory-card strong{font-size:1.1rem;}
+.action-meta{display:block;color:#fff!important;font-size:.82rem;margin-top:10px;line-height:1.4;}
+.metric-card .value,.bubble .value,.action-card p,.risk-pill p,.queue-item span,.memory-card span{color:#fff!important;}
+.metric-card:focus-visible,.bubble:focus-visible,.action-card:focus-visible,.risk-pill:focus-visible,.queue-item:focus-visible,.memory-card:focus-visible,.report-card:focus-visible,.btn:focus-visible{outline:3px solid #00e5ff;outline-offset:3px;}
+@media(max-width:1200px){.exec-command-grid{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.memory-grid{grid-template-columns:1fr}.hero h1{font-size:2rem}.exec-command-grid{gap:12px}}
+@media print{.queue-list,.memory-grid{display:block!important}.queue-item,.memory-card{break-inside:avoid!important}}

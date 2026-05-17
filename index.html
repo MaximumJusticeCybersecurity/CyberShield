@@ -8,9 +8,10 @@
   <meta property="og:title" content="CyberShield | Cyber Decision Intelligence" />
   <meta property="og:description" content="Turn cyber risk, AI governance, and operational uncertainty into assigned executive decisions." />
   <meta property="og:type" content="website" />
-  <title>CyberShield OS v5.8 | Maximum Justice Cybersecurity</title>
+  <title>CyberShield OS v6.0 | Maximum Justice Cybersecurity</title>
   <link rel="icon" href="assets/mjc-logo-2026.png" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="alternate" type="application/json" href="governance-summary.json" title="CyberShield governance summary" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,7 +35,7 @@
 <body>
   <noscript><main class="noscript"><h1>CyberShield requires JavaScript.</h1><p>A machine-readable platform summary remains available in the page source and metadata.</p></main></noscript>
 
-  <div class="machine-brief" aria-hidden="true">CyberShield by Maximum Justice Cybersecurity is a cyber decision intelligence platform for executive cybersecurity governance, AI governance, operational trust posture, evidence maturity, next-best actions, exposure ranges, and board-ready reporting. It is designed for CEOs, CFOs, CIOs, CISOs, vCISOs, SMB executives, mid-market leadership, and regulated organizations. CyberShield converts submitted organizational context into decision-ready dashboards, assigned ownership, evidence confidence, action sequencing, and executive reports.</div>
+  <div class="machine-brief" aria-hidden="true">CyberShield by Maximum Justice Cybersecurity is a cyber decision intelligence platform for executive cybersecurity governance, AI governance, operational trust posture, evidence maturity, next-best actions, exposure ranges, and board-ready reporting. It is designed for CEOs, CFOs, CIOs, CISOs, vCISOs, SMB executives, mid-market leadership, and regulated organizations. CyberShield converts submitted organizational context into decision-ready dashboards, assigned ownership, evidence confidence, action sequencing, organizational memory, and executive reports.</div>
 
   <header class="topbar" aria-label="Site header">
     <a class="brand" href="#overview" data-route="overview" aria-label="CyberShield overview">
@@ -188,7 +189,20 @@
             <button class="btn secondary" data-route="reports" type="button">Open Report</button>
           </div>
           <div class="exec-metrics" id="execMetrics"></div>
-          <div class="exec-risk-row" id="execRisks"></div>
+          <section class="exec-command-grid" aria-label="Executive command center">
+            <div>
+              <h2>What Matters Right Now</h2>
+              <div class="exec-risk-row" id="execRisks"></div>
+            </div>
+            <div>
+              <h2>Orchestration Queue</h2>
+              <div class="queue-list" id="orchestrationQueue"></div>
+            </div>
+          </section>
+          <section class="memory-section" aria-label="Organizational memory">
+            <h2>Organizational Memory</h2>
+            <div class="memory-grid" id="memoryGrid"></div>
+          </section>
         </div>
         <aside class="panel advisor" id="advisorPanel" aria-live="polite">
           <p class="eyebrow">Advisor Pane</p>
