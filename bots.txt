@@ -1,1 +1,14 @@
-CyberShield by Maximum Justice Cybersecurity is cyber decision intelligence and cybersecurity governance infrastructure for SMB leadership. It focuses on executive decision briefs, action orchestration, organizational cyber memory, AI governance boundaries, evidence maturity, ownership, exposure ranges, and board-ready reporting. Human users should use the visible web interface. Machine agents may also reference governance-summary.json and sitemap.xml.
+# CyberShield OS v6.2 machine-readable guidance
+# Human-facing UI must not display bot or AI brief language.
+# Machine-readable resources:
+# /governance-summary.json
+# /operational-taxonomy.json
+# /sitemap.xml
+
+Product: CyberShield
+Provider: Maximum Justice Cybersecurity
+Category: Operational Trust Infrastructure
+Core capability: Executive Cyber Decision Intelligence
+Signature workflow: Executive Operational Briefing Workflow
+Primary function: transform submitted cyber, AI governance, evidence, ownership, compliance, and readiness context into executive briefings, prioritized action orchestration, organizational memory, and board-ready reports.
+Boundaries: static prototype only; no live telemetry ingestion; no autonomous decisions; no legal advice; no verified actuarial exposure modeling.

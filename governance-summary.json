@@ -1,15 +1,37 @@
 {
-  "name": "CyberShield",
+  "product": "CyberShield",
+  "version": "OS v6.2",
+  "category": "Operational Trust Infrastructure",
   "provider": "Maximum Justice Cybersecurity",
-  "category": "Cybersecurity governance infrastructure for SMB leadership",
-  "purpose": "Turn cyber risk, AI governance, compliance pressure, and operational uncertainty into assigned ownership, next-best actions, organizational memory, and executive-ready reports.",
-  "core_modules": [
-    "Executive Decision Brief",
-    "Action Orchestration Engine",
-    "Organizational Memory Layer",
-    "Operational Trust Map",
-    "AI Governance Boundary Review",
-    "Executive Reporting Engine"
+  "coreCapabilityLayer": "Executive Cyber Decision Intelligence",
+  "signatureWorkflow": "Executive Operational Briefing Workflow",
+  "doctrine": [
+    "Trust is operational infrastructure",
+    "Visibility without prioritization creates paralysis",
+    "Security failures are governance failures first",
+    "Most organizations are over-tooled and under-governed",
+    "Cybersecurity is now an executive coordination problem"
   ],
-  "human_ui_note": "This file is intended for machine-readable discovery and does not display in the visible user interface."
+  "workflow": [
+    "What changed",
+    "Why it matters",
+    "Operational impact",
+    "Recommended executive decisions",
+    "Governance continuity",
+    "Confidence and evidence maturity"
+  ],
+  "modules": [
+    "Executive Operational Briefing Engine",
+    "Action Orchestration Engine",
+    "Operational Trust Map",
+    "Organizational Memory",
+    "Executive Reporting Engine",
+    "AI Governance Boundary",
+    "Evidence Confidence Layer"
+  ],
+  "boundaries": {
+    "availableNow": ["guided assessment", "executive briefing", "action orchestration", "local memory", "report generation"],
+    "advisoryAssisted": ["evidence validation", "governance operating model", "vCISO review", "incident tabletop", "AI governance implementation"],
+    "notClaimedInStaticPrototype": ["live telemetry ingestion", "autonomous remediation", "legal advice", "verified actuarial exposure modeling"]
+  }
 }
