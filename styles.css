@@ -125,3 +125,21 @@ select option{background:#07172a;color:#fff}
 @media print{
   body{background:#fff;color:#000}.site-header,.hero-panel,.assessment-panel,.primary-nav,.mobile-nav-toggle,.report-tabs,.report-actions,.advisor-drawer,.site-footer,.view-panel:not([data-view-panel="reports"]){display:none!important}.view-panel[data-view-panel="reports"]{display:block!important}.app-shell{max-width:100%;padding:0}.report-preview{box-shadow:none;border:none;color:#000}.report-preview *{color:#000!important}
 }
+
+/* v7.1 release-blocking fixes */
+.time-row{
+  background:linear-gradient(135deg, rgba(5,18,36,.98), rgba(10,35,63,.94)) !important;
+  border:1px solid rgba(32,199,255,.38) !important;
+  box-shadow:0 16px 40px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.time-row b{
+  color:#20c7ff !important;
+  background:rgba(32,199,255,.13);
+  border:1px solid rgba(32,199,255,.26);
+  border-radius:12px;
+  padding:.38rem .45rem;
+  text-align:center;
+}
+.time-row span{color:#ffffff !important;line-height:1.45}
+.report-preview h2,.report-preview h3,.report-preview p,.report-preview li,.report-preview strong{color:#fff}
+.report-tab.active{color:#07111f;background:linear-gradient(135deg,#20c7ff,#59f6a8);border-color:rgba(32,199,255,.75)}

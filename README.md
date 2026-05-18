@@ -1,4 +1,4 @@
-# CyberShield OS v7 — Omega Trust Architecture
+# CyberShield OS v7.1.1 — Omega Trust Architecture
 
 Static GitHub Pages package for Maximum Justice Cybersecurity.
 

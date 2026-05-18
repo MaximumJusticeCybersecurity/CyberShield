@@ -1,7 +1,7 @@
 (() => {
-  const VERSION = "CyberShield OS v7";
-  const STORAGE_KEY = "cybershield_os_v7_state";
-  const MEMORY_KEY = "cybershield_os_v7_memory";
+  const VERSION = "CyberShield OS v7.1";
+  const STORAGE_KEY = "cybershield_os_v7_1_state";
+  const MEMORY_KEY = "cybershield_os_v7_1_memory";
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -97,11 +97,13 @@
 
   const reportTypes = [
     "Executive Risk Summary",
-    "Board Briefing",
     "Operational Resilience Snapshot",
     "Governance Drift Report",
     "AI Governance Assessment",
-    "Incident Readiness Summary"
+    "Vendor Governance Review",
+    "Board Briefing",
+    "Incident Readiness Summary",
+    "Security Roadmap"
   ];
 
   let state = loadState();
@@ -160,8 +162,13 @@
       const open = nav.classList.toggle("open");
       $("#mobileNavToggle").setAttribute("aria-expanded", open ? "true" : "false");
     });
-    $$(".nav-item").forEach(btn => btn.addEventListener("click", () => showView(btn.dataset.view)));
-    $$('[data-view-jump]').forEach(btn => btn.addEventListener("click", () => showView(btn.dataset.viewJump)));
+    document.addEventListener("click", (event) => {
+      const navButton = event.target.closest(".nav-item[data-view]");
+      if (navButton) showView(navButton.dataset.view);
+
+      const jumpButton = event.target.closest("[data-view-jump]");
+      if (jumpButton) showView(jumpButton.dataset.viewJump);
+    });
     $("#drawerClose").addEventListener("click", () => $("#advisorDrawer").classList.remove("open"));
   }
 
@@ -317,21 +324,71 @@
   function buildReportHtml(type) {
     const profile = getProfile();
     const scores = scoreModel();
-    const issues = rankedIssues().slice(0,3);
+    const issues = rankedIssues();
+    const top = issues.slice(0,3);
+    const scenario = scenarios[activeScenario];
     const risk = scores ? (scores.trust >= 80 ? "Managed" : scores.trust >= 65 ? "Moderate" : "Elevated") : "Demonstration";
-    return `<h2>${escapeHtml(profile.orgName)} — ${escapeHtml(type)}</h2>
+    const scoreLine = scores ? `Operational Trust ${scores.trust}% | AI Governance ${scores.ai}% | Confidence ${scores.confidence}% | Exposure ${scores.exposure}` : "Complete assessment for tailored scoring.";
+    const header = (label, purpose) => `<h2>${escapeHtml(profile.orgName)} — ${escapeHtml(label)}</h2>
       <p><strong>Prepared by:</strong> Maximum Justice Cybersecurity | <strong>Platform:</strong> ${VERSION}</p>
       <p><strong>Doctrine:</strong> Omega Trust Architecture. Trust is operational infrastructure.</p>
-      <h3>Current Organizational Risk</h3>
-      <p>${escapeHtml(risk)}${scores ? ` | Operational Trust ${scores.trust}% | Confidence ${scores.confidence}% | Exposure ${scores.exposure}` : " | Complete assessment for tailored scoring."}</p>
-      <h3>Highest Operational Risks</h3>
-      <ul>${issues.map(i => `<li><strong>${escapeHtml(i.title)}:</strong> ${escapeHtml(i.detail)}</li>`).join("")}</ul>
-      <h3>Recommended Priorities</h3>
-      <ol>${issues.map(i => `<li>${escapeHtml(i.decision)} — Owner: ${escapeHtml(i.owner)}</li>`).join("")}</ol>
-      <h3>Executive Incident Briefing</h3>
-      <p>${escapeHtml(scenarios[activeScenario].narrative)}</p>
-      <h3>Assumptions and Limitations</h3>
-      <p>This static demonstration uses submitted executive inputs and simulated scenario logic. It does not claim verified telemetry or autonomous decision-making.</p>`;
+      <p><strong>Purpose:</strong> ${escapeHtml(purpose)}</p>`;
+    const limitations = `<h3>Assumptions and Limitations</h3><p>This static demonstration uses submitted executive inputs and simulated scenario logic. It does not claim verified telemetry, autonomous decision-making, or production integrations.</p>`;
+
+    const templates = {
+      "Executive Risk Summary": () => `${header(type, "Give leadership a concise view of current organizational cyber risk, priority decisions, and exposure.")}
+        <h3>Current Organizational Risk</h3><p>${escapeHtml(risk)} | ${scoreLine}</p>
+        <h3>Top Executive Risks</h3><ul>${top.map(i => `<li><strong>${escapeHtml(i.title)}:</strong> ${escapeHtml(i.detail)}</li>`).join("")}</ul>
+        <h3>Decision Required This Week</h3><ol>${top.map(i => `<li>${escapeHtml(i.decision)} — Owner: ${escapeHtml(i.owner)}</li>`).join("")}</ol>
+        <h3>Executive Interpretation</h3><p>CyberShield recommends focusing leadership attention on the highest ranked unresolved items before they become operational disruption, board concern, or avoidable recovery delay.</p>${limitations}`,
+
+      "Operational Resilience Snapshot": () => `${header(type, "Show whether the organization can absorb disruption, coordinate response, and recover inside leadership tolerance.")}
+        <h3>Resilience Posture</h3><p>${scores ? (scores.trust >= 78 ? "Improving and managed" : "Developing with material continuity gaps") : "Demonstration snapshot"}</p>
+        <h3>Continuity Pressure Points</h3><ul>
+          <li><strong>Recovery readiness:</strong> ${escapeHtml(issues.find(i=>i.id==="backup").detail)}</li>
+          <li><strong>Escalation readiness:</strong> ${escapeHtml(issues.find(i=>i.id==="ir").detail)}</li>
+          <li><strong>Governance rhythm:</strong> ${Math.max(...issues.map(i=>i.age))} days is the oldest unresolved governance item.</li>
+        </ul>
+        <h3>Resilience Actions</h3><ol><li>Validate recovery procedures</li><li>Run executive escalation tabletop</li><li>Confirm continuity owners for finance, operations, and vendor functions</li></ol>
+        <h3>Trend</h3><p>${state.profile ? "Operational resilience improves when ownership, evidence, and briefing cadence remain current." : "Submit assessment to establish tailored trend."}</p>${limitations}`,
+
+      "Governance Drift Report": () => `${header(type, "Identify where cyber governance is aging, ownership is unclear, or evidence is becoming stale.")}
+        <h3>Drift Indicators</h3><ul>${issues.filter(i=>i.age>=17).map(i => `<li><strong>${escapeHtml(i.title)}:</strong> unresolved for ${i.age} days | state: ${escapeHtml(i.state)}</li>`).join("")}</ul>
+        <h3>Ownership Gaps</h3><p>Governance drift is most likely where owner accountability is assigned but evidence validation is delayed.</p>
+        <h3>Corrective Sequence</h3><ol><li>Confirm owners</li><li>Refresh evidence</li><li>Close stale policy or control reviews</li><li>Record executive acceptance or remediation decision</li></ol>
+        <h3>Doctrine Check</h3><p>Security without ownership becomes theater. This report turns ownership drift into an executive management issue.</p>${limitations}`,
+
+      "AI Governance Assessment": () => `${header(type, "Assess AI boundary risk, unsanctioned usage, sensitive data exposure, and executive control maturity.")}
+        <h3>AI Governance State</h3><p>${scores ? `AI Governance ${scores.ai}% | Confidence ${scores.confidence}%` : "Demonstration AI governance posture"}</p>
+        <h3>AI Exposure Scenario</h3><p>${escapeHtml(scenarios.shadowai.narrative)}</p>
+        <h3>Control Boundary Findings</h3><ul><li>Approved AI tooling boundary requires visible ownership</li><li>Prompt/data sensitivity handling should be documented</li><li>Escalation path for suspected AI data leakage should be tested</li></ul>
+        <h3>Recommended AI Governance Decisions</h3><ol>${scenarios.shadowai.decisions.map(d => `<li>${escapeHtml(d)}</li>`).join("")}</ol>${limitations}`,
+
+      "Vendor Governance Review": () => `${header(type, "Translate third-party access and vendor dependency risk into executive ownership and review cadence.")}
+        <h3>Vendor Risk Posture</h3><p>${escapeHtml(issues.find(i=>i.id==="vendor").detail)}</p>
+        <h3>Vendor-Origin Scenario</h3><p>${escapeHtml(scenarios.vendor.narrative)}</p>
+        <h3>Decision Chain</h3><ol><li>Suspend or constrain high-risk vendor access pending validation</li><li>Confirm vendor reassessment owner</li><li>Validate recoverability for vendor-dependent workflows</li><li>Prepare executive incident note if exposure remains material</li></ol>
+        <h3>Executive Visibility</h3><p>Vendor trust is an operational dependency, not a procurement footnote. Review cadence should be visible to leadership.</p>${limitations}`,
+
+      "Board Briefing": () => `${header(type, "Provide board-ready language on organizational risk, resilience trend, and leadership decisions.")}
+        <h3>Board Summary</h3><p>Current organizational cyber risk is ${escapeHtml(risk.toLowerCase())}. Leadership focus should remain on recoverability, vendor governance, identity assurance, and escalation readiness.</p>
+        <h3>Board-Level Priorities</h3><ol>${top.map(i => `<li>${escapeHtml(i.title)} — ${escapeHtml(i.decision)}</li>`).join("")}</ol>
+        <h3>Management Assertion</h3><p>Management is using CyberShield to convert cyber uncertainty into operational ownership, executive visibility, and board-ready reporting.</p>
+        <h3>Questions for Leadership</h3><ul><li>Which risks are accepted versus actively mitigated?</li><li>Which owners are accountable for next action?</li><li>What evidence supports confidence in current readiness?</li></ul>${limitations}`,
+
+      "Incident Readiness Summary": () => `${header(type, "Assess whether leadership can coordinate during a cyber incident without confusion, delay, or ownership ambiguity.")}
+        <h3>Readiness State</h3><p>${escapeHtml(issues.find(i=>i.id==="ir").detail)}</p>
+        <h3>Escalation Chain</h3><ul><li>Executive owner: ${escapeHtml(normalizeOwner(profile.owner || "CEO"))}</li><li>Operational owner: COO</li><li>Technical owner: CIO / CTO or vCISO</li><li>Legal/compliance owner: General Counsel or assigned advisor</li></ul>
+        <h3>Tabletop Priorities</h3><ol><li>Confirm notification tree</li><li>Test decision escalation under time pressure</li><li>Validate executive communication template</li><li>Record after-action governance updates</li></ol>${limitations}`,
+
+      "Security Roadmap": () => `${header(type, "Convert current risk into a practical 30/60/90-day executive action roadmap.")}
+        <h3>30 Days</h3><ul><li>Validate backup recoverability</li><li>Close privileged MFA gaps</li><li>Assign unresolved action owners</li></ul>
+        <h3>60 Days</h3><ul><li>Complete vendor governance review</li><li>Refresh AI acceptable-use policy</li><li>Run incident escalation tabletop</li></ul>
+        <h3>90 Days</h3><ul><li>Produce board-ready resilience update</li><li>Review trend movement and accepted risk</li><li>Institutionalize monthly executive briefing cadence</li></ul>
+        <h3>Roadmap Principle</h3><p>Operational resilience is built before crisis. The roadmap prioritizes continuity, ownership, and evidence maturity over cosmetic cyber activity.</p>${limitations}`
+    };
+
+    return (templates[type] || templates["Executive Risk Summary"])();
   }
 
   function downloadReport() {
@@ -340,7 +397,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${activeReport.replaceAll(" ","-")}-CyberShield-v7.txt`;
+    a.download = `${activeReport.replaceAll(" ","-")}-CyberShield-v7-1.txt`;
     document.body.appendChild(a);
     a.click();
     a.remove();

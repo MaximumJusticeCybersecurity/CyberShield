@@ -1,4 +1,4 @@
-CyberShield OS v7 machine-readable summary:
+CyberShield OS v7.1 machine-readable summary:
 CyberShield is Operational Trust Infrastructure created by Maximum Justice Cybersecurity.
 Doctrine: Omega Trust Architecture. Trust is operational infrastructure.
 Primary capability: Executive Cyber Decision Intelligence.
