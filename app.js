@@ -1,111 +1,416 @@
-(function(){
-  'use strict';
-  var VERSION='OS v6.4';
-  var KEY='cybershield_os_v6_4_state';
-  var state={step:0,data:null,activeReport:'Executive Risk Summary'};
-  var $=function(s,r){return (r||document).querySelector(s)};
-  var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-  function pct(n){return Math.max(0,Math.min(100,Math.round(n)))}
-  function money(n){return '$'+Math.round(n).toLocaleString()}
-  function band(n){return n>=82?'Resilient':n>=64?'Developing':'Elevated'}
-  function cls(n){return n>=82?'green':n>=64?'yellow':'red'}
-  function cap(s){return String(s||'').charAt(0).toUpperCase()+String(s||'').slice(1)}
-  function save(){localStorage.setItem(KEY,JSON.stringify({data:state.data,activeReport:state.activeReport}))}
-  function load(){try{var x=JSON.parse(localStorage.getItem(KEY)||'{}');state.data=x.data||null;state.activeReport=x.activeReport||'Executive Risk Summary'}catch(e){}}
-  function route(name){
-    if(!state.data && ['briefing','actions','scenario','trust','memory','reports'].indexOf(name)>-1){name='assessment'}
-    $$('.view').forEach(function(v){v.classList.toggle('active',v.id===name)});
-    $$('.nav a').forEach(function(a){a.classList.toggle('active',a.dataset.route===name)});
-    location.hash=name;
-    $('#app').focus({preventScroll:true}); window.scrollTo({top:0,behavior:'smooth'});
-    if($('#primaryNav')) $('#primaryNav').classList.remove('open');
+(() => {
+  const VERSION = "CyberShield OS v7";
+  const STORAGE_KEY = "cybershield_os_v7_state";
+  const MEMORY_KEY = "cybershield_os_v7_memory";
+
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+  const defaultProfile = {
+    firstName: "Executive",
+    orgName: "Demonstration Organization",
+    industry: "Manufacturing",
+    reviewGoal: "incident",
+    valueRange: "mid",
+    evidence: "medium",
+    owner: "COO",
+    coordination: "developing",
+    demo: true
+  };
+
+  const scenarios = {
+    phishing: {
+      title: "AI-enabled executive phishing against finance leadership",
+      rawSignal: "Suspicious inbox rule and credential challenge activity detected for finance leadership.",
+      narrative: "Potential AI-enabled executive impersonation campaign targeting finance approval workflows with elevated payment diversion risk.",
+      confidence: "Moderate",
+      escalation: "Elevated",
+      owner: "CFO",
+      timeline: [
+        ["9:02 AM", "Executive mailbox receives highly personalized vendor-payment request."],
+        ["9:41 AM", "Conditional access challenge triggered from unfamiliar region."],
+        ["10:18 AM", "Inbox forwarding rule created and deleted within eight minutes."],
+        ["11:06 AM", "Finance approval workflow flagged for executive validation."],
+        ["12:14 PM", "Escalation threshold reached: payment workflow integrity requires leadership review."]
+      ],
+      consequences: [
+        ["Payment Integrity", "Fraud exposure increases if approval workflow continues without verification."],
+        ["Executive Trust", "Leadership confidence degrades when impersonation cannot be quickly bounded."],
+        ["Vendor Coordination", "Vendor payment delays may occur during verification and containment."],
+        ["Legal / Compliance", "Evidence preservation may be needed if payment diversion is confirmed."]
+      ],
+      decisions: ["Pause high-risk payment approvals", "Validate executive identity controls", "Notify finance and legal owners", "Preserve mailbox and access evidence"]
+    },
+    vendor: {
+      title: "Vendor-origin ransomware staging",
+      rawSignal: "Unusual remote access behavior detected through a trusted vendor pathway.",
+      narrative: "Potential ransomware staging activity emerging from a vendor access path with finance-adjacent operational disruption potential.",
+      confidence: "High",
+      escalation: "Critical",
+      owner: "COO",
+      timeline: [
+        ["8:37 AM", "Vendor remote access pattern deviates from normal maintenance window."],
+        ["9:12 AM", "Privilege request observed against finance-adjacent system."],
+        ["10:03 AM", "Script execution pattern resembles staging behavior."],
+        ["10:48 AM", "Backup validation status appears stale for affected function."],
+        ["11:25 AM", "Executive escalation recommended before disruption exposure widens."]
+      ],
+      consequences: [
+        ["Recovery Readiness", "Backup validation gaps may extend recovery timelines."],
+        ["Vendor Governance", "Third-party access trust is degraded until reassessed."],
+        ["Operations", "Finance-adjacent workflows may require continuity planning."],
+        ["Board Visibility", "Material vendor exposure may need executive reporting."]
+      ],
+      decisions: ["Suspend vendor access pending validation", "Validate recoverability", "Assign vendor governance owner", "Prepare executive incident note"]
+    },
+    shadowai: {
+      title: "Shadow AI prompt leakage event",
+      rawSignal: "Sensitive client context detected in unsanctioned generative AI workflow.",
+      narrative: "Potential trust boundary failure caused by unsanctioned AI usage with sensitive client context exposure.",
+      confidence: "Moderate",
+      escalation: "Developing",
+      owner: "CIO / CTO",
+      timeline: [
+        ["1:15 PM", "User submits client-context prompt to unsanctioned AI tool."],
+        ["1:28 PM", "Policy exception not found for this workflow."],
+        ["2:04 PM", "Data sensitivity review indicates potential client confidentiality exposure."],
+        ["2:49 PM", "Leadership review recommended for AI governance boundary."],
+        ["3:30 PM", "Control update needed: approved tools, training, and escalation path."]
+      ],
+      consequences: [
+        ["Client Trust", "Sensitive context handling may require disclosure analysis."],
+        ["AI Governance", "Tool approval boundary is unclear or unenforced."],
+        ["Policy Drift", "Employee behavior has outpaced written AI guidance."],
+        ["Operational Control", "Leadership lacks real-time visibility into AI workflow risk."]
+      ],
+      decisions: ["Review data exposure scope", "Clarify sanctioned AI tools", "Assign AI governance owner", "Update executive AI-use policy"]
+    }
+  };
+
+  const baseIssues = [
+    { id:"backup", title:"Backup validation overdue", detail:"Recovery confidence is degraded until critical systems are validated against current operational tolerance.", severity:92, urgency:88, age:28, impact:91, compliance:78, confidence:84, owner:"COO", decision:"Validate recoverability across critical workflows", state:"Escalation pending", type:"critical" },
+    { id:"vendor", title:"Vendor governance review incomplete", detail:"Third-party access remains a material trust dependency without recent evidence of review.", severity:84, urgency:76, age:42, impact:82, compliance:86, confidence:78, owner:"CFO", decision:"Complete vendor reassessment cycle", state:"Owner assigned", type:"high" },
+    { id:"mfa", title:"MFA enforcement below baseline", detail:"Identity assurance remains below leadership tolerance for privileged and finance-adjacent users.", severity:79, urgency:72, age:17, impact:80, compliance:81, confidence:88, owner:"CIO / CTO", decision:"Close privileged-user MFA gap", state:"In progress", type:"high" },
+    { id:"policy", title:"Policy review approaching expiration", detail:"Governance language may no longer reflect current AI and operational risk conditions.", severity:64, urgency:60, age:9, impact:58, compliance:82, confidence:72, owner:"CISO / vCISO", decision:"Refresh policy and confirm ownership", state:"Review scheduled", type:"medium" },
+    { id:"ir", title:"IR escalation process untested", detail:"Coordination uncertainty remains elevated until leadership communication paths are exercised.", severity:82, urgency:77, age:63, impact:88, compliance:74, confidence:69, owner:"CEO / President", decision:"Run tabletop escalation test", state:"Unresolved", type:"critical" }
+  ];
+
+  const reportTypes = [
+    "Executive Risk Summary",
+    "Board Briefing",
+    "Operational Resilience Snapshot",
+    "Governance Drift Report",
+    "AI Governance Assessment",
+    "Incident Readiness Summary"
+  ];
+
+  let state = loadState();
+  let activeScenario = "phishing";
+  let activeReport = reportTypes[0];
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { profile: null }; }
+    catch { return { profile: null }; }
   }
-  function wireRoutes(){
-    document.addEventListener('click',function(e){
-      var b=e.target.closest('[data-route]'); if(!b)return; e.preventDefault(); route(b.dataset.route);
+
+  function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+  function getProfile() { return state.profile || defaultProfile; }
+
+  function scoreIssue(issue, profile) {
+    const evidencePenalty = profile.evidence === "low" ? 14 : profile.evidence === "medium" ? 7 : 0;
+    const coordinationPenalty = profile.coordination === "reactive" ? 10 : profile.coordination === "developing" ? 5 : profile.coordination === "managed" ? -4 : -8;
+    const goalBoost = profile.reviewGoal === "incident" && ["backup","ir"].includes(issue.id) ? 10 : profile.reviewGoal === "vendor" && issue.id === "vendor" ? 12 : profile.reviewGoal === "ai" && issue.id === "policy" ? 8 : 0;
+    return Math.round((issue.severity * .25) + (issue.urgency * .22) + (issue.impact * .24) + (issue.compliance * .11) + (issue.confidence * .1) + Math.min(issue.age, 60) * .28 + evidencePenalty + coordinationPenalty + goalBoost);
+  }
+
+  function rankedIssues() {
+    const profile = getProfile();
+    return baseIssues.map(issue => ({ ...issue, rankScore: scoreIssue(issue, profile) })).sort((a,b) => b.rankScore - a.rankScore);
+  }
+
+  function scoreModel() {
+    const profile = getProfile();
+    const hasAssessment = Boolean(state.profile);
+    if (!hasAssessment) return null;
+    const coordinationBase = { reactive: 48, developing: 64, managed: 78, resilient: 88 }[profile.coordination] || 62;
+    const evidenceDelta = { low: -11, medium: 0, high: 8 }[profile.evidence] || 0;
+    const trust = clamp(coordinationBase + evidenceDelta + (profile.reviewGoal === "resilience" ? 3 : 0), 35, 94);
+    const ai = clamp(58 + (profile.reviewGoal === "ai" ? 12 : 0) + (profile.evidence === "high" ? 8 : -4), 34, 92);
+    const confidence = clamp(54 + (profile.evidence === "high" ? 24 : profile.evidence === "medium" ? 12 : -6) + (profile.coordination === "resilient" ? 8 : 0), 25, 96);
+    const exposure = profile.valueRange === "low" ? "$95K–$410K" : profile.valueRange === "mid" ? "$420K–$1.9M" : profile.valueRange === "high" ? "$1.8M–$7.5M" : "$6.5M–$28M";
+    return { trust, ai, confidence, exposure };
+  }
+
+  function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+
+  function init() {
+    bindNavigation();
+    bindAssessment();
+    bindScenarioControls();
+    bindReports();
+    bindMemory();
+    renderAll();
+    showView("briefing");
+  }
+
+  function bindNavigation() {
+    $("#mobileNavToggle").addEventListener("click", () => {
+      const nav = $("#primaryNav");
+      const open = nav.classList.toggle("open");
+      $("#mobileNavToggle").setAttribute("aria-expanded", open ? "true" : "false");
     });
-    $('#menuBtn').addEventListener('click',function(){var n=$('#primaryNav'); n.classList.toggle('open'); this.setAttribute('aria-expanded',n.classList.contains('open'))});
-    $('#resetBtn').addEventListener('click',function(){ if(confirm('Reset the CyberShield assessment and generated briefing?')){localStorage.removeItem(KEY);state.data=null;state.step=0;updateGate();showStep(0);route('assessment')}});
-    window.addEventListener('hashchange',function(){route((location.hash||'#overview').replace('#',''))});
+    $$(".nav-item").forEach(btn => btn.addEventListener("click", () => showView(btn.dataset.view)));
+    $$('[data-view-jump]').forEach(btn => btn.addEventListener("click", () => showView(btn.dataset.viewJump)));
+    $("#drawerClose").addEventListener("click", () => $("#advisorDrawer").classList.remove("open"));
   }
-  function updateGate(){
-    $$('.requires-data').forEach(function(x){x.style.opacity=state.data?'1':'.45';x.setAttribute('aria-disabled',state.data?'false':'true')});
-    $('#assessmentNav').style.display=state.data?'none':'';
+
+  function showView(view) {
+    $$(".nav-item").forEach(btn => btn.classList.toggle("active", btn.dataset.view === view));
+    $$(".view-panel").forEach(panel => panel.classList.toggle("active", panel.dataset.viewPanel === view));
+    $("#primaryNav").classList.remove("open");
+    $("#mobileNavToggle").setAttribute("aria-expanded", "false");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  function showStep(n){
-    state.step=Math.max(0,Math.min(5,n));
-    $$('.step').forEach(function(s,i){s.classList.toggle('active',i===state.step)});
-    $('#progressBar').style.width=((state.step+1)/6*100)+'%';
-    $('#stepLabel').textContent='Step '+(state.step+1)+' of 6';
-    $('#prevBtn').disabled=state.step===0;
-    $('#nextBtn').classList.toggle('hidden',state.step===5);
-    $('#submitBtn').classList.toggle('hidden',state.step!==5);
+
+  function bindAssessment() {
+    $("#startAssessmentBtn").addEventListener("click", () => $("#assessmentPanel").classList.remove("hidden"));
+    $("#cancelAssessmentBtn").addEventListener("click", () => $("#assessmentPanel").classList.add("hidden"));
+    $("#assessmentForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      state.profile = Object.fromEntries(form.entries());
+      state.profile.demo = false;
+      saveState();
+      recordMemory(`Executive assessment generated for ${state.profile.orgName}`);
+      $("#assessmentPanel").classList.add("hidden");
+      renderAll();
+      showView("briefing");
+    });
   }
-  function wireForm(){
-    $('#prevBtn').addEventListener('click',function(){showStep(state.step-1)});
-    $('#nextBtn').addEventListener('click',function(){showStep(state.step+1)});
-    $('#assessmentForm').addEventListener('submit',function(e){e.preventDefault();state.data=generate(readInputs());save();updateGate();renderAll();route('briefing')});
+
+  function renderAll() {
+    renderBriefing();
+    renderActions();
+    renderScenario();
+    renderTrustMap();
+    renderReports();
+    renderMemory();
   }
-  function readInputs(){
-    var val=function(id){return $('#'+id).value};
-    var goalLabels={executive:'Executive CyberShield Review',trust:'Operational Trust Assessment',ai:'AI Governance Boundary Review',resilience:'Operational Resilience Briefing',vendor:'Vendor Governance Review'};
-    var i={personName:val('personName').trim()||'Executive',orgName:val('orgName').trim()||'Your Organization',industry:val('industry'),valueRange:val('valueRange'),reviewGoal:val('reviewGoal'),primaryConcern:val('primaryConcern'),controls:val('controls'),evidence:val('evidence'),aiUse:val('aiUse'),dataSensitivity:val('dataSensitivity'),incident:val('incident'),cadence:val('cadence'),owner:val('owner'),audience:val('audience'),date:new Date().toLocaleDateString()};
-    i.reviewGoalLabel=goalLabels[i.reviewGoal]; i.recommendedOwner=i.owner||recommendOwner(i); return i;
+
+  function renderBriefing() {
+    const profile = getProfile();
+    const scenario = scenarios[profile.reviewGoal === "ai" ? "shadowai" : profile.reviewGoal === "vendor" ? "vendor" : "phishing"];
+    const scores = scoreModel();
+    $("#briefingTitle").textContent = state.profile ? `${profile.orgName} Executive Operational Briefing` : "Executive Operational Briefing";
+    $("#briefingSubtitle").textContent = state.profile ? `${profile.firstName}, this briefing uses your submitted inputs to frame operational consequence, ownership, and next action.` : "Submit the assessment to generate a tailored executive briefing. Until then, this screen shows a demonstration environment.";
+    $("#whatChanged").textContent = scenario.narrative;
+    $("#whyMatter").textContent = `This matters because ${profile.industry.toLowerCase()} leadership needs consequence visibility before cyber uncertainty becomes operational disruption.`;
+    $("#escalationLevel").textContent = scenario.escalation;
+    $("#evidenceLevel").textContent = state.profile ? `${capitalize(profile.evidence)} evidence maturity` : "Demonstration";
+    $("#briefOwner").textContent = normalizeOwner(profile.owner || scenario.owner);
+    $("#decisionRequired").textContent = scenario.decisions[0];
+    $("#decisionWhy").textContent = `CyberShield compresses fragmented signals into leadership decisions for ${profile.orgName}.`;
+
+    const items = [
+      ["What matters now", rankedIssues()[0].title, rankedIssues()[0].detail, "critical"],
+      ["Operational consequence", scenario.consequences[0][0], scenario.consequences[0][1], "yellow"],
+      ["Decision compression", "From cyber noise to leadership action", "The briefing explains what changed, what it means operationally, and who owns the next decision.", "green"],
+      ["Confidence layer", state.profile ? `${scores.confidence}% confidence` : "No score until assessment", state.profile ? "Confidence reflects evidence maturity and coordination state." : "CyberShield suppresses scores during onboarding and demo start states.", "yellow"],
+      ["Governance continuity", "Unresolved issues remain visible", "Cyber decisions, accepted risks, and overdue actions remain in organizational memory.", "green"],
+      ["Board-ready output", "Leadership artifact available", "Reports convert cyber findings into operational language executives can forward and discuss.", "green"]
+    ];
+    $("#briefingStack").innerHTML = items.map(itemCard).join("");
+    bindDetailClicks();
   }
-  function recommendOwner(i){if(i.primaryConcern==='ai')return 'CIO / CTO'; if(i.primaryConcern==='vendor')return 'COO'; if(i.primaryConcern==='audit')return 'CISO / Security Lead'; if(i.primaryConcern==='ownership')return 'CEO / President'; if(i.primaryConcern==='incident')return 'COO'; return 'CEO / President'}
-  function baseScore(v,map,def){return map[v]||def}
-  function framework(i){if(i.industry.indexOf('Healthcare')>-1)return ['HIPAA Security Rule','NIST CSF']; if(i.industry.indexOf('Defense')>-1)return ['CMMC / NIST SP 800-171','NIST CSF']; if(i.industry.indexOf('Financial')>-1)return ['FFIEC / GLBA','NIST CSF']; if(i.industry.indexOf('Manufacturing')>-1)return ['NIST CSF','ISO 27001']; return ['NIST CSF','CIS Controls']}
-  function exposureBase(i){var b={'Under $10M':250000,'$10M - $50M':900000,'$50M - $250M':2900000,'$250M+':8800000}[i.valueRange]||900000; if(i.dataSensitivity==='high')b*=1.45; if(i.evidence==='weak')b*=1.25; if(i.incident==='low')b*=1.3; if(i.controls==='high')b*=.72; return b}
-  function generate(i){
-    var trust=58+baseScore(i.controls,{low:-13,moderate:3,high:17},3)+baseScore(i.evidence,{weak:-16,partial:3,strong:15},3)+baseScore(i.incident,{low:-10,moderate:4,high:14},4)+baseScore(i.cadence,{reactive:-10,monthly:4,quarterly:0,continuous:13},4);
-    var ai=66+baseScore(i.aiUse,{none:8,emerging:-2,shadow:-18,governed:17},-2)+baseScore(i.dataSensitivity,{low:8,moderate:0,high:-8},0);
-    var confidence=62+baseScore(i.evidence,{weak:-18,partial:2,strong:22},2)+baseScore(i.controls,{low:-7,moderate:3,high:10},3);
-    var exp=exposureBase(i); var range=[exp*.72,exp*1.85]; var sc={trust:pct(trust),ai:pct(ai),confidence:pct(confidence),exposurePressure:pct(100-(Math.min(95,trust*.55+confidence*.35+ai*.1)))};
-    var actions=actionsFor(i,sc,range); var risks=risksFor(i,sc,range); var scenario=scenarioFor(i,sc,actions); var bubbles=bubblesFor(i,sc,range,framework(i),actions); var memory=memoryFor(i,sc,range,actions,risks);
-    return {input:i,scores:sc,range:range,framework:framework(i),actions:actions,risks:risks,scenario:scenario,bubbles:bubbles,memory:memory,version:VERSION};
+
+  function itemCard([kicker, title, body, status]) {
+    return `<article class="stack-item detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="Use this item to guide leadership sequencing and governance accountability.">
+      <div class="item-head"><h3>${escapeHtml(title)}</h3><span class="pill ${status}">${escapeHtml(kicker)}</span></div>
+      <p class="item-body">${escapeHtml(body)}</p>
+    </article>`;
   }
-  function actionsFor(i,s,range){
-    var a=[]; function add(t,b,o,sev,age,score,conf){a.push({title:t,body:b,owner:o,severity:sev,age:age,score:score,confidence:conf,stage:stageFor(t)})}
-    if(s.confidence<78)add('Run a 30-day evidence validation sprint','Collect current proof for controls, policies, vendor reviews, incident readiness, recovery, and AI governance before executives accept the posture.',i.recommendedOwner,'High',31,96,'Moderate');
-    if(s.ai<76)add('Define the AI governance boundary','Identify approved AI tools, prohibited data, human approval points, prompt handling rules, and model use restrictions.','CIO / CTO','High',24,92,'Moderate');
-    if(i.incident!=='high')add('Test the executive incident escalation chain','Run a tabletop around who decides, who communicates, who contacts counsel, who approves downtime, and who owns recovery sequencing.','COO','High',42,90,'High');
-    if(!i.owner||i.owner==='Unassigned')add('Assign accountable risk treatment owners','Each top risk needs one accountable executive owner. Unowned risk becomes unresolved operational risk.','CEO / President','High',18,88,'High');
-    if(i.primaryConcern==='vendor'||i.industry.indexOf('Manufacturing')>-1)add('Complete vendor governance review','Identify critical vendors, evidence gaps, contract exposure, continuity dependencies, and annual review cadence.','COO','Moderate',63,83,'Moderate');
-    if(i.controls!=='high')add('Replace generic policies with owned controls','Map policies to owners, review dates, evidence requirements, and executive reporting cadence.','vCISO / Advisor','Moderate',57,78,'Moderate');
-    if(i.evidence==='weak')add('Create an audit-ready evidence index','Build a simple evidence register for controls, policies, risk decisions, response artifacts, vendor reviews, and AI governance evidence.','CISO / Security Lead','High',45,86,'Limited');
-    if(i.cadence==='reactive')add('Establish monthly operational trust review','Move cybersecurity governance from event-driven reaction to recurring executive operating rhythm.','CEO / President','Moderate',30,74,'High');
-    add('Generate executive briefing artifact','Produce a concise board-ready summary covering what changed, why it matters, business impact, confidence, and recommended decisions.',i.recommendedOwner,'Moderate',0,70,'High');
-    return a.sort(function(x,y){return y.score-x.score}).slice(0,8);
+
+  function renderActions() {
+    const issues = rankedIssues();
+    const top = issues.slice(0, 4);
+    $("#priorityStrip").innerHTML = `
+      <div class="priority-item"><strong>${issues[0].rankScore}</strong><span>Top action score</span></div>
+      <div class="priority-item"><strong>${issues.filter(i => i.rankScore > 90).length}</strong><span>Critical priorities</span></div>
+      <div class="priority-item"><strong>${Math.max(...issues.map(i=>i.age))}d</strong><span>Oldest unresolved item</span></div>
+      <div class="priority-item"><strong>${state.profile ? "Live" : "Demo"}</strong><span>Operating state</span></div>`;
+    $("#actionGrid").innerHTML = issues.map(issue => {
+      const cls = issue.rankScore > 95 ? "critical" : issue.rankScore < 78 ? "controlled" : "";
+      return `<article class="action-card ${cls} detail-trigger" data-title="${escapeHtml(issue.title)}" data-meaning="${escapeHtml(issue.detail)}" data-action="${escapeHtml(issue.decision)}">
+        <div class="item-head"><h3>${escapeHtml(issue.title)}</h3><span class="pill ${cls === "critical" ? "red" : cls === "controlled" ? "green" : "yellow"}">${issue.rankScore}</span></div>
+        <p>${escapeHtml(issue.detail)}</p>
+        <div class="action-footer">
+          <span><b>Decision needed</b><em>${escapeHtml(issue.decision)}</em></span>
+          <span><b>Owner</b><em class="owner-text">${escapeHtml(issue.owner)}</em></span>
+          <span><b>Governance state</b><em>${escapeHtml(issue.state)}</em></span>
+        </div>
+      </article>`;
+    }).join("");
+    bindDetailClicks();
   }
-  function stageFor(t){if(t.indexOf('evidence')>-1)return 'Evidence Maturity'; if(t.indexOf('AI')>-1)return 'AI Governance'; if(t.indexOf('incident')>-1)return 'Incident Readiness'; if(t.indexOf('owner')>-1)return 'Ownership'; if(t.indexOf('vendor')>-1)return 'Third-Party Governance'; if(t.indexOf('policies')>-1)return 'Control Ownership'; return 'Executive Reporting'}
-  function risksFor(i,s,range){var r=[];function add(t,b,o,c){r.push({title:t,body:b,owner:o,cls:c})} if(s.confidence<76)add('Evidence confidence below executive decision threshold','Leadership may be forced to make risk decisions without enough current and reviewable evidence.',i.recommendedOwner,'red'); if(s.ai<76||i.primaryConcern==='ai')add('AI use outside a mature governance boundary','Sensitive data, unclear approved-use rules, and incomplete oversight can create trust-state drift.','CIO / CTO','yellow'); if(i.incident!=='high')add('Incident escalation chain not sufficiently tested','A high-consequence event can suffer delays in authority, communication, legal coordination, or recovery sequencing.','COO','red'); if(i.primaryConcern==='vendor')add('Third-party exposure visibility incomplete','Vendor dependencies can create cascading operational risk when ownership and evidence are weak.','COO','yellow'); if(r.length<3)add('Operational exposure requires executive treatment','The directional exposure range is high enough to require explicit risk treatment and ownership.',i.recommendedOwner,'yellow'); return r.slice(0,3)}
-  function scenarioFor(i,s,actions){var type=i.primaryConcern==='ai'?'Shadow AI prompt leakage event':i.primaryConcern==='vendor'?'Vendor-origin ransomware staging':i.primaryConcern==='incident'?'Compromised executive identity escalation':'AI-enabled phishing against finance leadership';
-    var telemetry=[['T+00','Unusual identity behavior','Identity signal','Leadership-adjacent account activity deviated from normal approval behavior.'],['T+06','Targeted executive lure','Email security signal','Finance or executive users received a message designed to influence approval behavior.'],['T+12','Privilege pathway pressure','Access review context','Submitted owner and control maturity indicate incomplete decision accountability.'],['T+24','Evidence gap confirmed','Governance signal','Evidence state may not support rapid containment, recovery, or board communication.']];
-    var narrative={before:'Identity anomalies, targeted messages, and incomplete evidence exist across leadership-adjacent workflows.',after:'CyberShield interprets this as a potential adversarial coordination event that can degrade trust in identity, approval, recovery, and executive escalation decisions.',consequence:'The operational consequence is not only compromise risk. It is decision delay, payment disruption, vendor uncertainty, and reduced recovery confidence.',blast:['Finance approval workflow','Executive communications','Vendor payment confidence','Incident escalation timing','Recovery decision authority']};
-    var decisions=[['Escalate now?','Escalate for evidence validation and owner review before accepting risk.',i.recommendedOwner,'High'],['Constrain affected workflows?','Temporarily tighten approval, vendor payment, and privileged access paths.','CIO / CTO','High'],['Proof required before closure?','Validated account review, backup recoverability, communication chain, vendor review, and documented risk treatment.','vCISO / Advisor','High'],['If nothing happens?','Exposure shifts from technical uncertainty to operational disruption, fraud risk, reputational loss, and delayed recovery decisions.','CEO / President','High']];
-    return {type:type,telemetry:telemetry,narrative:narrative,decisions:decisions,primaryAction:actions[0]?actions[0].title:'Run executive evidence validation sprint'} }
-  function bubblesFor(i,s,range,fw,actions){var control=baseScore(i.controls,{low:42,moderate:68,high:86},68),incident=baseScore(i.incident,{low:44,moderate:66,high:88},66),evidence=baseScore(i.evidence,{weak:38,partial:67,strong:90},67),owner=(!i.owner||i.owner==='Unassigned')?45:82,compliance=baseScore(i.evidence,{weak:52,partial:72,strong:88},72),data=baseScore(i.dataSensitivity,{low:84,moderate:66,high:48},66),velocity=baseScore(i.cadence,{reactive:43,monthly:72,quarterly:62,continuous:88},72),load=pct(100-Math.min(90,actions.length*8));return [['Operational Trust',s.trust,'Leadership readiness to make defensible cyber decisions'],['AI Governance',s.ai,'AI use inside or outside defined control boundaries'],['Evidence Confidence',s.confidence,'How much depends on evidence versus assumptions'],['Exposure Control',100-s.exposurePressure,'Directional exposure pressure requiring treatment'],['Evidence Maturity',evidence,'Current, organized, and reviewable evidence'],['Incident Readiness',incident,'Executive escalation and recovery confidence'],['Ownership Clarity',owner,'Named decision owners for unresolved risk'],['Control Ownership',control,'Policies and controls that are real, current, and owned'],['Compliance Lens',compliance,'Framework alignment: '+fw[0]],['Data Sensitivity',data,'Operational consequence of sensitive data exposure'],['Decision Velocity',velocity,'Speed of leadership action without chaos'],['Orchestration Load',load,'Remaining governance work requiring sequencing']]}
-  function memoryFor(i,s,range,actions,risks){return [['Baseline briefing',i.date,i.orgName+' generated a '+i.reviewGoalLabel+' under '+i.industry+' context.'],['Accepted evidence state',cap(i.evidence),'Evidence maturity affects confidence and audit defensibility.'],['Unresolved risk count',risks.length+'', 'Top risks remain visible until treated, accepted, transferred, escalated, or investigated.'],['Open orchestration items',actions.length+'','Action queue persists locally to support governance continuity.'],['Exposure range',money(range[0])+' to '+money(range[1]),'Range is directional and based only on submitted inputs.'],['Recommended owner',i.recommendedOwner,'Owner selection should be validated during executive review.']]}
-  function renderAll(){if(!state.data)return; renderBriefing();renderActions();renderScenario();renderTrust();renderMemory();renderReports();}
-  function renderBriefing(){var d=state.data,i=d.input,s=d.scores,a=d.actions[0];$('#briefingTitle').textContent=i.orgName+' Executive Operational Briefing';$('#briefingMeta').textContent='Prepared for '+i.personName+' • '+i.date+' • '+i.reviewGoalLabel+' • '+d.framework[0];$('#briefingHeadline').textContent=a.title;$('#briefingSummary').textContent=a.body;$('#briefingStatus').innerHTML='<span class="'+cls(s.trust)+'">Trust '+s.trust+'%</span><span class="'+cls(s.ai)+'">AI '+s.ai+'%</span><span class="'+cls(s.confidence)+'">Confidence '+s.confidence+'%</span><span>Exposure '+money(d.range[0])+' - '+money(d.range[1])+'</span>';$('#executiveMetrics').innerHTML=[['Operational Trust',s.trust],['AI Governance',s.ai],['Confidence',s.confidence],['Exposure Control',100-s.exposurePressure]].map(metricCard).join('');$('#briefingChain').innerHTML=[['What changed',d.scenario.type],['Why it matters',d.scenario.narrative.after],['Operational consequence',d.scenario.narrative.consequence],['Leadership action',a.title],['Governance state','Unresolved for '+a.age+' days • Owner: '+a.owner]].map(function(x){return '<button class="chain-step" data-detail="'+esc(x[0])+'"><b>'+x[0]+'</b><span>'+x[1]+'</span></button>'}).join('');}
-  function metricCard(x){var c=cls(x[1]);return '<button class="metric-card" data-detail="'+esc(x[0])+'"><b>'+x[0]+'</b><div class="score">'+x[1]+'%</div><span class="state '+c+'">'+band(x[1])+'</span><div class="heat"><span class="dot" style="left:'+x[1]+'%"></span></div></button>'}
-  function renderActions(){var html=state.data.actions.map(function(a,idx){var p=a.severity==='High'?'high':'medium';return '<button class="action-card" data-action="'+idx+'"><span class="priority '+p+'">'+(idx+1)+'</span><span><b>'+a.title+'</b><p>'+a.body+'</p><span class="action-meta"><span>'+a.severity+' priority</span><span>Age: '+a.age+' days</span><span>Stage: '+a.stage+'</span><span class="owner">Owner: '+a.owner+'</span><span>Confidence: '+a.confidence+'</span></span></span></button>'}).join('');$('#actionQueue').innerHTML=html}
-  function renderScenario(){var sc=state.data.scenario;$('#scenarioTimeline').innerHTML=sc.telemetry.map(function(t){return '<button class="timeline-item" data-detail="'+esc(t[1])+'"><b>'+t[0]+' • '+t[1]+'</b><span>'+t[3]+'</span><small>'+t[2]+'</small></button>'}).join('');$('#scenarioNarrative').innerHTML='<div class="translation"><div class="translation-card"><b>Before CyberShield</b><p>'+sc.narrative.before+'</p></div><div class="translation-card"><b>After CyberShield</b><p>'+sc.narrative.after+'</p></div><div class="translation-card"><b>Operational consequence</b><p>'+sc.narrative.consequence+'</p></div><div class="translation-card"><b>Blast radius</b><p>'+sc.narrative.blast.join(' • ')+'</p></div></div>';$('#decisionTable').innerHTML='<table><thead><tr><th>Decision</th><th>Guidance</th><th>Owner</th><th>Urgency</th></tr></thead><tbody>'+sc.decisions.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td class="owner">'+r[2]+'</td><td>'+r[3]+'</td></tr>'}).join('')+'</tbody></table>'}
-  function renderTrust(){$('#trustBubbles').innerHTML=state.data.bubbles.map(function(b){return '<button class="metric-card" data-detail="'+esc(b[0])+'"><b>'+b[0]+'</b><div class="score">'+pct(b[1])+'%</div><p>'+b[2]+'</p><span class="state '+cls(b[1])+'">'+band(b[1])+'</span><div class="heat"><span class="dot" style="left:'+pct(b[1])+'%"></span></div></button>'}).join('')}
-  function renderMemory(){$('#memoryGrid').innerHTML=state.data.memory.map(function(m){return '<button class="memory-card" data-detail="'+esc(m[0])+'"><b>'+m[0]+'</b><div class="value">'+m[1]+'</div><p>'+m[2]+'</p></button>'}).join('')}
-  var reportNames=['Executive Risk Summary','Operational Resilience Snapshot','Governance Drift Report','AI Governance Assessment','Vendor Governance Review','Board Briefing','Incident Readiness Summary','Security Roadmap'];
-  function renderReports(){var pick=$('#reportPicker');pick.innerHTML=reportNames.map(function(n){return '<button class="'+(n===state.activeReport?'active':'')+'" data-report="'+n+'">'+n+'</button>'}).join('');renderReportPreview()}
-  function renderReportPreview(){var d=state.data,i=d.input,a=d.actions.slice(0,3),r=d.risks;$('#reportPreview').innerHTML='<span class="report-tag">'+state.activeReport+'</span><h2>'+i.orgName+' Executive Intelligence Output</h2><p><b>Prepared for:</b> '+i.personName+' • <b>Date:</b> '+i.date+' • <b>Framework lens:</b> '+d.framework[0]+'</p><h3>Current organizational risk</h3><p>'+band(d.scores.trust)+' operational trust posture with '+band(d.scores.confidence).toLowerCase()+' evidence confidence. Directional exposure range: <b>'+money(d.range[0])+' to '+money(d.range[1])+'</b>.</p><h3>Top operational risks</h3><ol>'+r.map(function(x){return '<li><b>'+x.title+'</b>: '+x.body+' <em>Owner: '+x.owner+'</em></li>'}).join('')+'</ol><h3>Recommended priorities</h3><ol>'+a.map(function(x){return '<li><b>'+x.title+'</b>: '+x.body+' <em>Owner: '+x.owner+'</em></li>'}).join('')+'</ol><h3>Executive briefing scenario</h3><p>'+d.scenario.narrative.after+'</p><h3>Confidence and limitations</h3><p>Generated from submitted inputs. Not a verified audit, penetration test, forensic investigation, or legal opinion. Recommendations should be validated by Maximum Justice Cybersecurity, a vCISO, Security SME, and Cybersecurity SME advisory team.</p>'}
-  function wireDynamic(){
-    document.addEventListener('click',function(e){var a=e.target.closest('[data-action]'); if(a){var item=state.data.actions[+a.dataset.action];showDetail(item.title,item.body,'Owner: '+item.owner+' • Priority: '+item.severity+' • Confidence: '+item.confidence); updateAdvisor(item.title,item.body,item.owner)} var d=e.target.closest('[data-detail]'); if(d&&!a){showDetail(d.dataset.detail,'CyberShield surfaces this item because it affects operational trust, decision confidence, ownership, or governance continuity.','Selected item updates the executive reasoning layer.')} var r=e.target.closest('[data-report]'); if(r){state.activeReport=r.dataset.report;save();renderReports();}});
-    $('#downloadReport').addEventListener('click',downloadReport);$('#emailReport').addEventListener('click',emailReport);$('#printReport').addEventListener('click',function(){window.print()});
+
+  function bindScenarioControls() {
+    $$("[data-scenario]").forEach(btn => btn.addEventListener("click", () => {
+      activeScenario = btn.dataset.scenario;
+      $$("[data-scenario]").forEach(b => b.classList.toggle("active", b === btn));
+      renderScenario();
+    }));
   }
-  function updateAdvisor(t,b,o){$('#advisorTitle').textContent=t;$('#advisorBody').innerHTML=b+'<br><br><span class="owner">Recommended owner: '+o+'</span>'}
-  function showDetail(t,b,m){$('#dialogTitle').textContent=t;$('#dialogBody').textContent=b;$('#dialogMeta').textContent=m||'';$('#detailDialog').showModal()}
-  function reportText(){var tmp=document.createElement('div'); tmp.innerHTML=$('#reportPreview').innerHTML; return tmp.innerText}
-  function downloadReport(){var blob=new Blob([reportText()],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='CyberShield_'+state.activeReport.replace(/\s+/g,'_')+'.txt';a.click();URL.revokeObjectURL(a.href)}
-  function emailReport(){location.href='mailto:?subject='+encodeURIComponent('CyberShield '+state.activeReport)+'&body='+encodeURIComponent(reportText())}
-  function esc(s){return String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;')}
-  function init(){load();wireRoutes();wireForm();wireDynamic();showStep(0);updateGate();if(state.data)renderAll();route((location.hash||'#overview').replace('#',''))}
-  document.addEventListener('DOMContentLoaded',init);
+
+  function renderScenario() {
+    const scenario = scenarios[activeScenario];
+    $("#scenarioTimeline").innerHTML = scenario.timeline.map(([time, event]) => `<div class="time-row"><b>${escapeHtml(time)}</b><span>${escapeHtml(event)}</span></div>`).join("");
+    $("#scenarioNarrative").innerHTML = `
+      <h3>${escapeHtml(scenario.title)}</h3>
+      <div class="translation-box">
+        <div class="before"><strong>Raw signal</strong><p>${escapeHtml(scenario.rawSignal)}</p></div>
+        <div class="after"><strong>CyberShield executive translation</strong><p>${escapeHtml(scenario.narrative)}</p></div>
+      </div>
+      <div class="brief-meta">
+        <span><strong>Confidence</strong><b>${escapeHtml(scenario.confidence)}</b></span>
+        <span><strong>Escalation</strong><b>${escapeHtml(scenario.escalation)}</b></span>
+        <span><strong>Owner</strong><b class="owner-text">${escapeHtml(scenario.owner)}</b></span>
+      </div>`;
+    $("#consequenceGrid").innerHTML = scenario.consequences.map(([title, body]) => `<article class="consequence-card detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="Use this consequence to guide executive sequencing and stakeholder coordination."><div class="card-kicker">Organizational consequence</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`).join("");
+    bindDetailClicks();
+  }
+
+  function renderTrustMap() {
+    const scores = scoreModel();
+    const cards = scores ? [
+      ["Operational Trust", scores.trust, "Evidence-aware trust state across ownership, continuity, and governance rhythm."],
+      ["AI Governance", scores.ai, "Boundary maturity for AI use, policy control, and sensitive data handling."],
+      ["Score Confidence", scores.confidence, "Confidence based on submitted evidence maturity and coordination state."],
+      ["Exposure Range", null, `Likely operational exposure range: ${scores.exposure}.`],
+      ["Ownership Clarity", Math.min(96, scores.trust + 4), "Executive owner assignment and accountability clarity."],
+      ["Continuity Intelligence", Math.min(94, scores.confidence + 2), "Ability to remember unresolved risks and governance progression."],
+    ] : [
+      ["Operational Trust", null, "No score appears until assessment submission."],
+      ["AI Governance", null, "No score appears until assessment submission."],
+      ["Score Confidence", null, "No score appears until assessment submission."],
+      ["Exposure Range", null, "No dollar exposure appears until assessment submission."]
+    ];
+    $("#trustGrid").innerHTML = cards.map(([title, score, body]) => `<article class="trust-card detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="Use this trust domain to focus governance review.">
+      <div class="card-kicker">Omega Trust Domain</div><h3>${escapeHtml(title)}</h3>
+      ${score === null ? `<p>${escapeHtml(body)}</p>` : `<div class="score-value">${score}%</div><div class="trust-meter"><span class="trust-dot" style="left:${score}%"></span></div><p>${escapeHtml(body)}</p>`}
+    </article>`).join("");
+    bindDetailClicks();
+  }
+
+  function bindReports() {
+    $("#downloadReportBtn").addEventListener("click", downloadReport);
+    $("#emailReportBtn").addEventListener("click", emailReport);
+    $("#printReportBtn").addEventListener("click", () => window.print());
+  }
+
+  function renderReports() {
+    $("#reportTabs").innerHTML = reportTypes.map(type => `<button class="report-tab ${type === activeReport ? "active" : ""}" data-report="${escapeHtml(type)}">${escapeHtml(type)}</button>`).join("");
+    $$(".report-tab").forEach(btn => btn.addEventListener("click", () => { activeReport = btn.dataset.report; renderReports(); }));
+    $("#reportPreview").innerHTML = buildReportHtml(activeReport);
+  }
+
+  function buildReportHtml(type) {
+    const profile = getProfile();
+    const scores = scoreModel();
+    const issues = rankedIssues().slice(0,3);
+    const risk = scores ? (scores.trust >= 80 ? "Managed" : scores.trust >= 65 ? "Moderate" : "Elevated") : "Demonstration";
+    return `<h2>${escapeHtml(profile.orgName)} — ${escapeHtml(type)}</h2>
+      <p><strong>Prepared by:</strong> Maximum Justice Cybersecurity | <strong>Platform:</strong> ${VERSION}</p>
+      <p><strong>Doctrine:</strong> Omega Trust Architecture. Trust is operational infrastructure.</p>
+      <h3>Current Organizational Risk</h3>
+      <p>${escapeHtml(risk)}${scores ? ` | Operational Trust ${scores.trust}% | Confidence ${scores.confidence}% | Exposure ${scores.exposure}` : " | Complete assessment for tailored scoring."}</p>
+      <h3>Highest Operational Risks</h3>
+      <ul>${issues.map(i => `<li><strong>${escapeHtml(i.title)}:</strong> ${escapeHtml(i.detail)}</li>`).join("")}</ul>
+      <h3>Recommended Priorities</h3>
+      <ol>${issues.map(i => `<li>${escapeHtml(i.decision)} — Owner: ${escapeHtml(i.owner)}</li>`).join("")}</ol>
+      <h3>Executive Incident Briefing</h3>
+      <p>${escapeHtml(scenarios[activeScenario].narrative)}</p>
+      <h3>Assumptions and Limitations</h3>
+      <p>This static demonstration uses submitted executive inputs and simulated scenario logic. It does not claim verified telemetry or autonomous decision-making.</p>`;
+  }
+
+  function downloadReport() {
+    const text = $("#reportPreview").innerText;
+    const blob = new Blob([text], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${activeReport.replaceAll(" ","-")}-CyberShield-v7.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function emailReport() {
+    const subject = encodeURIComponent(`CyberShield ${activeReport}`);
+    const body = encodeURIComponent($("#reportPreview").innerText);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  }
+
+  function bindMemory() {
+    $("#addMemoryBtn").addEventListener("click", () => {
+      const note = prompt("Record governance note:");
+      if (note) { recordMemory(note); renderMemory(); }
+    });
+    $("#resetAssessmentBtn").addEventListener("click", () => {
+      if (!confirm("Reset local CyberShield assessment and memory?")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(MEMORY_KEY);
+      state = { profile: null };
+      renderAll();
+      showView("briefing");
+    });
+  }
+
+  function getMemory() {
+    try { return JSON.parse(localStorage.getItem(MEMORY_KEY)) || []; }
+    catch { return []; }
+  }
+
+  function recordMemory(note) {
+    const memory = getMemory();
+    memory.unshift({ note, at: new Date().toLocaleString(), version: VERSION });
+    localStorage.setItem(MEMORY_KEY, JSON.stringify(memory.slice(0,20)));
+  }
+
+  function renderMemory() {
+    const memory = getMemory();
+    const defaults = [
+      ["Unresolved risks", `${rankedIssues().filter(i=>i.rankScore>85).length} active issues require review`],
+      ["Governance age", `${Math.max(...rankedIssues().map(i=>i.age))} days oldest unresolved item`],
+      ["Trend direction", state.profile ? "Operational resilience improving with assigned ownership" : "Submit assessment to establish trend"],
+      ["Executive decisions", memory.length ? `${memory.length} governance notes recorded` : "No decisions recorded yet"]
+    ];
+    $("#memoryGrid").innerHTML = [...defaults.map(([title, body]) => ({title, body})), ...memory.map(m => ({ title:m.at, body:m.note }))]
+      .map(item => `<article class="memory-card detail-trigger" data-title="${escapeHtml(item.title)}" data-meaning="${escapeHtml(item.body)}" data-action="Use this memory item to maintain governance continuity."><div class="card-kicker">Continuity</div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></article>`).join("");
+    bindDetailClicks();
+  }
+
+  function bindDetailClicks() {
+    $$(".detail-trigger").forEach(el => {
+      el.onclick = () => openAdvisor(el.dataset.title, el.dataset.meaning, el.dataset.action);
+      el.tabIndex = 0;
+      el.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") openAdvisor(el.dataset.title, el.dataset.meaning, el.dataset.action); };
+    });
+  }
+
+  function openAdvisor(title, meaning, action) {
+    $("#advisorTitle").textContent = title || "CyberShield Advisor";
+    $("#advisorMeaning").textContent = meaning || "This item supports executive operational decision-making.";
+    $("#advisorAction").textContent = action || "Assign ownership and review governance state.";
+    $("#advisorValue").textContent = "Maximum Justice Cybersecurity can translate this into a vCISO-led executive action plan, board-ready summary, or operational resilience pilot.";
+    $("#advisorDrawer").classList.add("open");
+  }
+
+  function normalizeOwner(owner) { return owner === "CEO / President" ? "CEO" : owner || "COO"; }
+  function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ""; }
+  function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c])); }
+
+  document.addEventListener("DOMContentLoaded", init);
 })();

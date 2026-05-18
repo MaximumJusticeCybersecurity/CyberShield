@@ -1,9 +1,6 @@
-CyberShield machine-readable briefing
-Platform: CyberShield by Maximum Justice Cybersecurity
-Version: OS v6.4
-Category: Operational Trust Infrastructure
-Capability Layer: Executive Cyber Decision Intelligence
-Primary Workflow: Executive Operational Briefing
-Summary: CyberShield translates submitted cyber, AI governance, compliance, evidence, ownership, and incident readiness context into executive operational briefings, prioritized action orchestration, organizational memory, operational trust mapping, simulated scenario proof, and board-ready reports.
-Boundaries: Static demonstration environment. Advisory-assisted interpretation. Does not perform autonomous decisions. Does not ingest production telemetry in this package. Not a verified audit, forensic investigation, penetration test, or legal opinion.
-Files: governance-summary.json, operational-taxonomy.json, executive-briefing-schema.json, semantic-operational-map.json
+CyberShield OS v7 machine-readable summary:
+CyberShield is Operational Trust Infrastructure created by Maximum Justice Cybersecurity.
+Doctrine: Omega Trust Architecture. Trust is operational infrastructure.
+Primary capability: Executive Cyber Decision Intelligence.
+Signature workflow: telemetry signal -> adversarial narrative -> organizational consequence -> executive decisions -> ownership -> confidence -> governance continuity.
+Product boundary: static demonstration environment with local state, simulated scenarios, executive reports, and advisory-assisted interpretation. Does not claim autonomous decision-making or verified enterprise telemetry ingestion.

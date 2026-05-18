@@ -1,10 +1,10 @@
 {
-  "brand":"Maximum Justice Cybersecurity",
-  "platform":"CyberShield",
-  "primary_category":"Operational Trust Infrastructure",
-  "secondary_category":"Executive Cyber Decision Intelligence",
-  "positioning":"Executive coordination under adversarial digital conditions",
-  "service_pathways":["vCISO advisory","cyber risk assessment","AI governance boundary review","incident readiness planning","vendor governance review","audit readiness support"],
-  "core_question":"What requires attention right now?",
-  "primary_outcome":"Reduced executive uncertainty and improved cyber governance continuity"
+  "concepts": {
+    "operational_trust": "The evidence-backed ability of leadership to rely on cyber, AI, vendor, and governance systems under pressure.",
+    "decision_compression": "The transformation of cyber complexity into executive action, ownership, and consequence visibility.",
+    "governance_continuity": "The persistent memory of unresolved cyber decisions, accepted risks, remediation progress, and evidence age.",
+    "adversarial_operational_risk": "Risk created when intelligent threat behavior intersects with organizational dependencies and leadership coordination limits."
+  },
+  "primary_offer": "Executive Cyber Briefing Pilot",
+  "advisory_model": "CyberShield plus Maximum Justice Cybersecurity vCISO strategic advisory"
 }
