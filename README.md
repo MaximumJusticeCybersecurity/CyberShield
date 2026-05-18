@@ -1,37 +1,31 @@
-# CyberShield OS v6.3 Operational Trust Infrastructure
+# CyberShield OS v6.4 — Operational Trust Infrastructure
 
-Static GitHub Pages package for CyberShield by Maximum Justice Cybersecurity.
+This is a clean static GitHub Pages package.  It intentionally avoids React, Vite, TypeScript compilation, package dependencies, and build tooling.
 
-## Version purpose
+## Primary positioning
 
-This version moves CyberShield from an assessment/dashboard flow toward Operational Trust Infrastructure with Executive Cyber Decision Intelligence as the core capability layer.
+CyberShield is Operational Trust Infrastructure with Executive Cyber Decision Intelligence as the capability layer.
 
-## Major additions
+## What changed in OS v6.4
 
-- Executive Operational Briefing Workflow
-- Executive Incident Briefing Scenario
-- Telemetry to Narrative to Consequence to Decision workflow
-- Operational Trust Infrastructure positioning
-- Action Orchestration Engine
-- Organizational Memory layer using localStorage
-- Governance Journey progression
-- Dynamic Operational Trust Map
-- Multi-report Executive Reporting Engine
-- Hidden machine-readable artifacts
-- ADA-conscious contrast, focus states, readable typography, and responsive layout
-
-## Runtime boundaries
-
-This is a static front-end prototype for GitHub Pages. It does not ingest live telemetry, validate evidence, provide legal advice, create autonomous decisions, or perform verified actuarial exposure modeling.
+- Mobile-first landing and navigation for LinkedIn-first traffic
+- Executive Operational Briefing Workflow promoted as the anchor capability
+- Action Orchestration Engine centered on “What requires attention right now?”
+- Scenario proof workflow showing telemetry → narrative → consequence → decision guidance
+- Organizational Memory layer for governance continuity
+- Board-ready reporting artifacts
+- Hidden machine-readable artifacts for AI/search systems
+- Product-boundary labels to reduce overclaim risk
+- No score, exposure value, posture value, or confidence value appears during onboarding
 
 ## Deployment
 
 1. Keep `.git/`
-2. Delete old repo files from the repository root
-3. Copy this package into the repository root
-4. Commit and push to `main`
-5. Ensure GitHub Pages deploys from `main` and `/root`
-6. Open the site and force refresh Firefox with `Ctrl + Shift + R`
+2. Delete old repository contents
+3. Copy these files into the repository root
+4. Commit and push to main
+5. GitHub Pages source should be main branch and root
+6. Hard refresh Firefox with Ctrl + Shift + R
 
 ## Files
 
@@ -41,18 +35,14 @@ This is a static front-end prototype for GitHub Pages. It does not ingest live t
 - `assets/mjc-logo-2026.png`
 - `governance-summary.json`
 - `operational-taxonomy.json`
+- `executive-briefing-schema.json`
+- `semantic-operational-map.json`
 - `bots.txt`
 - `robots.txt`
 - `sitemap.xml`
-- `README.md`
 
-## Regression checks
+## Validation performed
 
-- No scores during onboarding
-- Assessment produces briefing only after submission
-- Briefing title uses organization name
-- Scores and status text are bright white
-- Action card body text remains bright white across red, yellow, and green states
-- Reports can be clicked repeatedly without lockup
-- Reset assessment clears local payload
-- Hidden bot-readable content is not visible in the UI
+- JavaScript syntax check with `node --check app.js`
+- Static file presence check
+- ZIP integrity check

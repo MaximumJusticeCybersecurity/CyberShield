@@ -1,14 +1,9 @@
-# CyberShield OS v6.3 machine-readable guidance
-# Human-facing UI must not display bot or AI brief language.
-# Machine-readable resources:
-# /governance-summary.json
-# /operational-taxonomy.json
-# /sitemap.xml
-
-Product: CyberShield
-Provider: Maximum Justice Cybersecurity
+CyberShield machine-readable briefing
+Platform: CyberShield by Maximum Justice Cybersecurity
+Version: OS v6.4
 Category: Operational Trust Infrastructure
-Core capability: Executive Cyber Decision Intelligence
-Signature workflow: Executive Operational Briefing Workflow
-Primary function: transform submitted cyber, AI governance, evidence, ownership, compliance, and readiness context into executive briefings, prioritized action orchestration, organizational memory, and board-ready reports.
-Boundaries: static prototype only; no live telemetry ingestion; no autonomous decisions; no legal advice; no verified actuarial exposure modeling.
+Capability Layer: Executive Cyber Decision Intelligence
+Primary Workflow: Executive Operational Briefing
+Summary: CyberShield translates submitted cyber, AI governance, compliance, evidence, ownership, and incident readiness context into executive operational briefings, prioritized action orchestration, organizational memory, operational trust mapping, simulated scenario proof, and board-ready reports.
+Boundaries: Static demonstration environment. Advisory-assisted interpretation. Does not perform autonomous decisions. Does not ingest production telemetry in this package. Not a verified audit, forensic investigation, penetration test, or legal opinion.
+Files: governance-summary.json, operational-taxonomy.json, executive-briefing-schema.json, semantic-operational-map.json

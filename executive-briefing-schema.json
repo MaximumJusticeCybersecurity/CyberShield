@@ -1,0 +1,17 @@
+{
+  "schema":"CyberShield Executive Operational Briefing",
+  "version":"6.4",
+  "required_sections":[
+    "what_changed",
+    "why_it_matters",
+    "operational_consequence",
+    "recommended_decisions",
+    "ownership",
+    "confidence_level",
+    "governance_continuity",
+    "report_artifact"
+  ],
+  "recommendation_fields":["title","rationale","owner","severity","governance_age","confidence","stage"],
+  "confidence_fields":["evidence_maturity","control_ownership","incident_readiness","ai_governance","assumption_notice"],
+  "non_goals":["autonomous decision-making","false precision","unverified forensic claims","production telemetry collection"]
+}

@@ -2,318 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CyberShield by Maximum Justice Cybersecurity is operational trust infrastructure for adversarial digital environments, with executive cyber decision intelligence, governance orchestration, organizational memory, and board-ready reporting." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="CyberShield by Maximum Justice Cybersecurity is operational trust infrastructure for executive cyber decision intelligence, adversarial risk briefing, governance orchestration, and board-ready cyber reporting." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta property="og:title" content="CyberShield | Operational Trust Infrastructure" />
-  <meta property="og:description" content="Transform fragmented cyber, AI, and governance signals into executive operational briefings, assigned ownership, and action orchestration." />
+  <meta property="og:description" content="Executive operational briefings that translate fragmented cyber, AI, compliance, and governance signals into decisions, owners, and reports." />
   <meta property="og:type" content="website" />
-  <title>CyberShield OS v6.3 | Operational Trust Infrastructure</title>
+  <meta name="theme-color" content="#071323" />
+  <title>CyberShield OS v6.4 | Operational Trust Infrastructure</title>
   <link rel="icon" href="assets/mjc-logo-2026.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="alternate" type="application/json" href="governance-summary.json" title="CyberShield governance summary" />
   <link rel="alternate" type="application/json" href="operational-taxonomy.json" title="CyberShield operational taxonomy" />
+  <link rel="alternate" type="application/json" href="executive-briefing-schema.json" title="CyberShield executive briefing schema" />
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "CyberShield",
-    "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Web",
-    "provider": {"@type": "Organization", "name": "Maximum Justice Cybersecurity", "url": "https://maximumjusticecybersecurity.com"},
-    "description": "Operational trust infrastructure for adversarial digital environments. CyberShield converts submitted cyber, AI governance, compliance, evidence, and ownership context into executive operational briefings, action orchestration, governance memory, and board-ready reports.",
-    "audience": {"@type": "Audience", "audienceType": "CEOs, CFOs, CIOs, CISOs, vCISOs, SMB executives, mid-market leadership, regulated organizations"},
-    "softwareVersion": "OS v6.3"
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"CyberShield",
+    "applicationCategory":"SecurityApplication",
+    "operatingSystem":"Web",
+    "provider":{"@type":"Organization","name":"Maximum Justice Cybersecurity","url":"https://maximumjusticecybersecurity.com"},
+    "description":"Operational trust infrastructure for executive cyber decision intelligence. CyberShield generates executive operational briefings, action orchestration, governance memory, scenario walkthroughs, and board-ready artifacts from submitted organizational context.",
+    "softwareVersion":"OS v6.4",
+    "audience":{"@type":"Audience","audienceType":"SMB executives, mid-market leaders, vCISOs, cybersecurity governance teams, regulated organizations"}
   }
   </script>
 </head>
 <body>
-  <noscript>
-    <main class="noscript"><h1>CyberShield requires JavaScript.</h1><p>A machine-readable platform summary is available through governance-summary.json and operational-taxonomy.json.</p></main>
-  </noscript>
+  <noscript><main class="noscript"><h1>CyberShield requires JavaScript.</h1><p>Machine-readable platform summaries are available through the JSON artifacts in this package.</p></main></noscript>
+  <div class="machine-only" aria-hidden="true">CyberShield machine summary: operational trust infrastructure, executive cyber decision intelligence, executive incident briefing, action orchestration, governance memory, AI governance exposure, confidence-aware recommendations, evidence maturity, board-ready operational artifacts. Human users should not see this text visually.</div>
 
-  <div class="machine-brief" aria-hidden="true">
-    CyberShield by Maximum Justice Cybersecurity is operational trust infrastructure for adversarial digital environments. Core layers include Executive Cyber Decision Intelligence, Executive Operational Briefing Workflow, Action Orchestration Engine, Governance Continuity, Organizational Memory, AI Governance Boundary, Evidence Maturity, Operational Exposure Ranges, and Board-Ready Reporting. The platform does not make autonomous decisions. It supports executive decision quality, ownership, confidence, and operational resilience.
-  </div>
-
-  <header class="topbar" aria-label="CyberShield header">
+  <header class="topbar">
     <a class="brand" href="#overview" data-route="overview" aria-label="CyberShield overview">
-      <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity shield logo" />
+      <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo" />
       <span><strong>CyberShield</strong><small>Operational Trust Infrastructure</small></span>
     </a>
-    <nav class="nav" aria-label="Primary navigation">
+    <button class="mobile-menu" id="menuBtn" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    <nav id="primaryNav" class="nav" aria-label="Primary navigation">
       <a href="#overview" data-route="overview">Overview</a>
       <a href="#assessment" data-route="assessment" id="assessmentNav">Assessment</a>
       <a href="#briefing" data-route="briefing" class="requires-data">Briefing</a>
+      <a href="#actions" data-route="actions" class="requires-data">Actions</a>
       <a href="#scenario" data-route="scenario" class="requires-data">Scenario</a>
-      <a href="#dashboard" data-route="dashboard" class="requires-data">Trust Map</a>
-      <a href="#orchestration" data-route="orchestration" class="requires-data">Actions</a>
+      <a href="#trust" data-route="trust" class="requires-data">Trust Map</a>
       <a href="#memory" data-route="memory" class="requires-data">Memory</a>
       <a href="#reports" data-route="reports" class="requires-data">Reports</a>
     </nav>
-    <button class="btn ghost" id="resetBtn" type="button">Reset Assessment</button>
+    <button class="btn ghost reset" id="resetBtn" type="button">Reset</button>
   </header>
 
   <main id="app" tabindex="-1">
-    <section id="overview" class="view active" aria-labelledby="overviewTitle">
-      <div class="hero grid-two">
+    <section id="overview" class="view active">
+      <div class="hero">
         <div class="hero-copy">
           <p class="eyebrow">Operational Trust Infrastructure</p>
-          <h1 id="overviewTitle">Trust is not a feeling. It is operational infrastructure.</h1>
-          <p class="lead">CyberShield turns fragmented cyber, AI, compliance, evidence, and ownership signals into executive operational briefings, prioritized actions, and governance continuity.</p>
-          <div class="button-row">
-            <button class="btn primary" data-route="assessment" type="button">Start Executive Assessment</button>
-            <button class="btn secondary" data-route="doctrine" type="button">See the Doctrine</button>
+          <h1>Trust is operational infrastructure.</h1>
+          <p class="lead">CyberShield compresses fragmented cyber, AI, governance, evidence, and ownership signals into executive operational briefings, prioritized decisions, and board-ready action.</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-route="assessment">Start Executive Briefing</button>
+            <button class="btn secondary" data-route="doctrine">See the doctrine</button>
+          </div>
+          <div class="boundary-row" aria-label="Product boundary labels">
+            <span>Live Capability</span><span>Demonstration Environment</span><span>Advisory-Assisted</span><span>Roadmap Preview</span>
           </div>
         </div>
-        <aside class="panel lock-panel" aria-label="Scoring lock notice">
+        <aside class="panel calm-card">
           <h2>No score before evidence.</h2>
-          <p>During onboarding, CyberShield shows no posture score, readiness score, confidence score, exposure score, or dollar exposure value. Scores unlock only after the executive assessment is submitted.</p>
-          <div class="lock-row"><span></span><b>Onboarding scoring:</b> Locked</div>
-          <div class="lock-row"><span></span><b>Evidence state:</b> Awaiting input</div>
-          <div class="lock-row"><span></span><b>Executive briefing:</b> Generated after submission</div>
+          <p>CyberShield does not show readiness, posture, confidence, or exposure values during onboarding. The briefing unlocks only after the assessment is submitted.</p>
+          <div class="lock-list"><b>Scoring:</b><span>Locked</span></div>
+          <div class="lock-list"><b>Exposure values:</b><span>Locked</span></div>
+          <div class="lock-list"><b>Executive briefing:</b><span>Generated after submission</span></div>
         </aside>
       </div>
 
-      <section id="doctrine" class="compact-section" aria-labelledby="doctrineTitle">
-        <p class="eyebrow">Governing Doctrine</p>
-        <h2 id="doctrineTitle">Most organizations are over-tooled and under-governed.</h2>
-        <div class="doctrine-grid">
-          <button class="info-card" data-topic="trust"><b>Trust is operational infrastructure</b><span>Controls, evidence, ownership, AI boundaries, and decisions must work as one system</span></button>
-          <button class="info-card" data-topic="paralysis"><b>Visibility without prioritization creates paralysis</b><span>CyberShield compresses noise into executive action</span></button>
-          <button class="info-card" data-topic="governance"><b>Security failures are governance failures first</b><span>Unowned risk becomes unresolved risk</span></button>
-          <button class="info-card" data-topic="decision"><b>Cybersecurity is now an executive coordination problem</b><span>Leadership needs operational decision intelligence, not another dashboard</span></button>
+      <section id="doctrine" class="section tight">
+        <p class="eyebrow">Doctrine</p>
+        <h2>Most organizations are over-tooled and under-governed.</h2>
+        <div class="cards four">
+          <button class="info-card" data-detail="doctrine-trust"><b>Trust is operational infrastructure</b><span>Controls, evidence, owners, AI boundaries, and decisions must operate together</span></button>
+          <button class="info-card" data-detail="doctrine-visibility"><b>Visibility without prioritization creates paralysis</b><span>Executives need compressed decision guidance, not more noise</span></button>
+          <button class="info-card" data-detail="doctrine-ownership"><b>Security without ownership becomes theater</b><span>Unowned cyber risk becomes unresolved operational risk</span></button>
+          <button class="info-card" data-detail="doctrine-resilience"><b>Operational readiness beats reactive recovery</b><span>Resilience is built before crisis, not during crisis</span></button>
         </div>
       </section>
 
-      <section class="compact-section" aria-labelledby="workflowTitle">
+      <section class="section tight">
         <p class="eyebrow">Signature Workflow</p>
-        <h2 id="workflowTitle">Executive Operational Briefing Workflow</h2>
-        <div class="flow-row" aria-label="Workflow steps">
-          <button class="flow-step" data-route="assessment"><span>1</span><b>Profile</b><small>Submitted operating context</small></button>
-          <button class="flow-step requires-data" data-route="briefing"><span>2</span><b>Briefing</b><small>What changed and why it matters</small></button>
-          <button class="flow-step requires-data" data-route="scenario"><span>3</span><b>Scenario</b><small>Telemetry to decisions</small></button>
-          <button class="flow-step requires-data" data-route="orchestration"><span>4</span><b>Orchestrate</b><small>Ranked next actions</small></button>
-          <button class="flow-step requires-data" data-route="memory"><span>5</span><b>Remember</b><small>Governance continuity</small></button>
-          <button class="flow-step requires-data" data-route="reports"><span>6</span><b>Report</b><small>Board-ready artifact</small></button>
+        <h2>Telemetry → narrative → consequence → decision guidance.</h2>
+        <div class="workflow-strip">
+          <button data-route="assessment"><span>1</span><b>Profile</b><small>Submitted context</small></button>
+          <button class="requires-data" data-route="briefing"><span>2</span><b>Briefing</b><small>What changed</small></button>
+          <button class="requires-data" data-route="scenario"><span>3</span><b>Scenario</b><small>Operational realism</small></button>
+          <button class="requires-data" data-route="actions"><span>4</span><b>Actions</b><small>What now</small></button>
+          <button class="requires-data" data-route="memory"><span>5</span><b>Memory</b><small>What persists</small></button>
+          <button class="requires-data" data-route="reports"><span>6</span><b>Report</b><small>What to send</small></button>
         </div>
       </section>
     </section>
 
-    <section id="assessment" class="view" aria-labelledby="assessmentTitle">
-      <div class="page-head">
+    <section id="assessment" class="view">
+      <div class="page-head compact">
         <p class="eyebrow">Guided Intake</p>
-        <h1 id="assessmentTitle">Executive Assessment</h1>
-        <p>Six short steps. No scores appear here. No dollar values appear here. Submit first, then CyberShield generates the briefing workflow.</p>
+        <h1>Executive Assessment</h1>
+        <p>Six short steps.  Scores and exposure values remain hidden until submission.</p>
       </div>
-      <div class="wizard panel">
-        <div class="progress" aria-label="Assessment progress"><span id="progressBar"></span></div>
-        <div class="wizard-meta"><span id="stepLabel">Step 1 of 6</span><span class="score-locked">Scoring locked until submission</span></div>
-        <form id="assessmentForm" novalidate>
-          <fieldset class="step active" data-step="0">
-            <legend>Organization profile</legend>
-            <label>Your first name <input id="personName" name="personName" autocomplete="given-name" placeholder="Example: Sally" /></label>
-            <label>Organization name <input id="orgName" name="orgName" autocomplete="organization" placeholder="Example: Acme Health Group" /></label>
-            <label>Industry / operating environment
-              <select id="industry" name="industry">
-                <option>SMB / Mid-Market</option><option>Healthcare</option><option>Defense / Federal Contractor</option><option>Financial Services</option><option>Manufacturing</option><option>Technology / SaaS</option><option>Nonprofit / Association</option>
-              </select>
-            </label>
-            <label>Organization value range
-              <select id="valueRange" name="valueRange">
-                <option>Under $10M</option><option>$10M - $50M</option><option>$50M - $250M</option><option>$250M+</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="step" data-step="1">
-            <legend>Primary executive objective</legend>
-            <label>Review goal
-              <select id="reviewGoal" name="reviewGoal">
-                <option value="executive">Executive CyberShield Review</option>
-                <option value="trust">Operational Trust Assessment</option>
-                <option value="ai">AI Governance Boundary Review</option>
-                <option value="readiness">Cyber Readiness Diagnostic</option>
-                <option value="resilience">Operational Resilience Diagnostic</option>
-              </select>
-            </label>
-            <label>Primary leadership concern
-              <select id="concern" name="concern">
-                <option value="uncertainty">Cyber priorities are unclear</option><option value="ai">AI usage is moving faster than governance</option><option value="audit">Audit or customer security questions are increasing</option><option value="incident">Incident response ownership is unclear</option><option value="vendor">Vendor and third-party exposure is unclear</option><option value="continuity">Leadership needs continuity and survivability visibility</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="step" data-step="2">
-            <legend>Compliance and evidence maturity</legend>
-            <label>Compliance sensitivity
-              <select id="compliance" name="compliance">
-                <option value="baseline">Baseline business risk</option><option value="regulated">Regulated customer or contractual exposure</option><option value="highly-regulated">Highly regulated or audit-sensitive</option>
-              </select>
-            </label>
-            <label>Current cyber evidence state
-              <select id="evidence" name="evidence">
-                <option value="weak">Mostly informal, stale, or scattered</option><option value="partial" selected>Some current evidence, but incomplete</option><option value="strong">Current, organized, and reviewable</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="step" data-step="3">
-            <legend>AI governance boundary</legend>
-            <label>AI usage posture
-              <select id="aiUsage" name="aiUsage">
-                <option value="low">Limited or controlled AI usage</option><option value="moderate" selected>Approved AI usage exists, governance still forming</option><option value="high">Broad AI usage with unclear controls</option>
-              </select>
-            </label>
-            <label>Data sensitivity
-              <select id="dataSensitivity" name="dataSensitivity">
-                <option value="low">Mostly low sensitivity data</option><option value="moderate" selected>Customer, employee, or operational data</option><option value="high">Regulated, confidential, financial, health, or controlled data</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="step" data-step="4">
-            <legend>Operational readiness</legend>
-            <label>Incident response readiness
-              <select id="incident" name="incident">
-                <option value="low">Plan unclear or untested</option><option value="moderate" selected>Plan exists but needs executive testing</option><option value="high">Tested, current, and assigned</option>
-              </select>
-            </label>
-            <label>Control documentation
-              <select id="controls" name="controls">
-                <option value="low">Mostly missing or generic</option><option value="moderate" selected>Partially defined</option><option value="high">Defined, reviewed, and owned</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="step" data-step="5">
-            <legend>Ownership and decision authority</legend>
-            <label>Preferred executive owner
-              <select id="owner" name="owner">
-                <option value="">Select an owner</option><option>CEO / President</option><option>CFO</option><option>CIO / CTO</option><option>CISO / Security Lead</option><option>COO</option><option>General Counsel</option><option>vCISO / Advisor</option><option>Unassigned</option>
-              </select>
-            </label>
-            <label>Decision cadence
-              <select id="cadence" name="cadence">
-                <option value="reactive">Mostly reactive or event-driven</option><option value="monthly" selected>Monthly leadership review</option><option value="quarterly">Quarterly board / executive review</option><option value="continuous">Continuous governance cadence</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <div class="wizard-actions">
-            <button class="btn secondary" id="prevStep" type="button">Back</button>
-            <button class="btn secondary" id="nextStep" type="button">Next</button>
-            <button class="btn primary" id="submitAssessment" type="submit">Generate Executive Briefing</button>
-          </div>
-        </form>
-      </div>
+      <form id="assessmentForm" class="wizard panel">
+        <div class="progress"><span id="progressBar"></span></div>
+        <div class="wizard-meta"><span id="stepLabel">Step 1 of 6</span><span>Scoring locked</span></div>
+        <fieldset class="step active" data-step="0">
+          <legend>Identity</legend>
+          <label>Your first name <input id="personName" name="personName" placeholder="Sally" autocomplete="given-name" /></label>
+          <label>Organization name <input id="orgName" name="orgName" placeholder="Acme Health Group" autocomplete="organization" /></label>
+          <label>Industry
+            <select id="industry" name="industry"><option>SMB / Mid-Market</option><option>Healthcare</option><option>Defense / Federal Contractor</option><option>Financial Services</option><option>Manufacturing</option><option>Technology / SaaS</option><option>Nonprofit / Association</option></select>
+          </label>
+          <label>Organization value range
+            <select id="valueRange" name="valueRange"><option>Under $10M</option><option>$10M - $50M</option><option>$50M - $250M</option><option>$250M+</option></select>
+          </label>
+        </fieldset>
+        <fieldset class="step" data-step="1">
+          <legend>Executive objective</legend>
+          <label>Review goal
+            <select id="reviewGoal" name="reviewGoal"><option value="executive">Executive CyberShield Review</option><option value="trust">Operational Trust Assessment</option><option value="ai">AI Governance Boundary Review</option><option value="resilience">Operational Resilience Briefing</option><option value="vendor">Vendor Governance Review</option></select>
+          </label>
+          <label>Primary concern
+            <select id="primaryConcern" name="primaryConcern"><option value="continuity">Business continuity</option><option value="ai">AI governance</option><option value="vendor">Vendor exposure</option><option value="audit">Audit readiness</option><option value="incident">Incident readiness</option><option value="ownership">Ownership gaps</option></select>
+          </label>
+        </fieldset>
+        <fieldset class="step" data-step="2">
+          <legend>Controls and evidence</legend>
+          <label>Control ownership maturity
+            <select id="controls" name="controls"><option value="moderate">Some controls owned, some informal</option><option value="low">Policies exist but ownership is unclear</option><option value="high">Controls are owned, reviewed, and evidenced</option></select>
+          </label>
+          <label>Evidence maturity
+            <select id="evidence" name="evidence"><option value="partial">Partial evidence exists</option><option value="weak">Evidence is scattered or stale</option><option value="strong">Evidence is current and reviewable</option></select>
+          </label>
+        </fieldset>
+        <fieldset class="step" data-step="3">
+          <legend>AI and data exposure</legend>
+          <label>AI use posture
+            <select id="aiUse" name="aiUse"><option value="emerging">AI use is emerging but not fully governed</option><option value="none">Limited known AI use</option><option value="shadow">Shadow AI likely exists</option><option value="governed">Approved AI tools and rules exist</option></select>
+          </label>
+          <label>Data sensitivity
+            <select id="dataSensitivity" name="dataSensitivity"><option value="moderate">Moderate business data</option><option value="low">Low sensitivity</option><option value="high">Sensitive regulated or financial data</option></select>
+          </label>
+        </fieldset>
+        <fieldset class="step" data-step="4">
+          <legend>Operational readiness</legend>
+          <label>Incident readiness
+            <select id="incident" name="incident"><option value="moderate">Basic plan exists</option><option value="low">Plan untested or unclear</option><option value="high">Tested escalation and recovery process</option></select>
+          </label>
+          <label>Governance cadence
+            <select id="cadence" name="cadence"><option value="monthly">Monthly review</option><option value="reactive">Mostly reactive</option><option value="quarterly">Quarterly review</option><option value="continuous">Continuous operating rhythm</option></select>
+          </label>
+        </fieldset>
+        <fieldset class="step" data-step="5">
+          <legend>Ownership</legend>
+          <label>Preferred executive owner
+            <select id="owner" name="owner"><option value="">Select owner</option><option>CEO / President</option><option>CFO</option><option>COO</option><option>CIO / CTO</option><option>CISO / Security Lead</option><option>General Counsel</option><option>vCISO / Advisor</option><option>Unassigned</option></select>
+          </label>
+          <label>Report audience
+            <select id="audience" name="audience"><option>CEO / President</option><option>Board</option><option>CFO</option><option>CIO / CTO</option><option>CISO / Security Lead</option><option>Executive Team</option></select>
+          </label>
+        </fieldset>
+        <div class="wizard-actions"><button type="button" class="btn secondary" id="prevBtn">Back</button><button type="button" class="btn primary" id="nextBtn">Next</button><button type="submit" class="btn primary hidden" id="submitBtn">Generate Executive Briefing</button></div>
+      </form>
     </section>
 
-    <section id="briefing" class="view requires-data-view" aria-labelledby="briefingTitle">
-      <div class="briefing-shell" id="briefingShell"></div>
+    <section id="briefing" class="view needs-input">
+      <div class="page-head compact"><p class="eyebrow">Executive Operational Briefing</p><h1 id="briefingTitle">Executive Briefing</h1><p id="briefingMeta"></p></div>
+      <div class="briefing-grid">
+        <article class="panel focus-panel"><p class="eyebrow">What requires attention right now?</p><h2 id="briefingHeadline"></h2><p id="briefingSummary"></p><div class="status-line" id="briefingStatus"></div></article>
+        <aside class="panel advisor"><p class="eyebrow">Executive Advisor</p><h2 id="advisorTitle">Select a briefing item</h2><p id="advisorBody">The advisor pane updates when you select actions, risks, metrics, reports, or scenario items.</p><button class="btn secondary" data-route="actions">View action queue</button></aside>
+      </div>
+      <div class="cards four metric-row" id="executiveMetrics"></div>
+      <section class="section tight"><p class="eyebrow">Briefing Chain</p><div class="brief-chain" id="briefingChain"></div></section>
     </section>
 
-    <section id="scenario" class="view requires-data-view" aria-labelledby="scenarioTitle">
-      <div class="page-head compact-head">
-        <p class="eyebrow">Signature Workflow</p>
-        <h1 id="scenarioTitle">Executive Incident Briefing Scenario</h1>
-        <p>This is the anchor capability: CyberShield demonstrates how fragmented technical signals become executive operational intelligence, decision guidance, ownership, and governance continuity.</p>
-      </div>
-      <div id="scenarioShell" class="scenario-shell"></div>
+    <section id="actions" class="view needs-input">
+      <div class="page-head compact"><p class="eyebrow">Action Orchestration Engine</p><h1>What requires attention right now?</h1><p>The queue ranks work by severity, governance age, evidence confidence, operational impact, escalation likelihood, and executive visibility.</p></div>
+      <div id="actionQueue" class="action-list"></div>
     </section>
 
-    <section id="dashboard" class="view requires-data-view" aria-labelledby="dashboardTitle">
-      <div class="page-head compact-head">
-        <p class="eyebrow">Operational Trust Map</p>
-        <h1 id="dashboardTitle">Trust posture, evidence confidence, and governance drift</h1>
-        <p>Click any bubble to open the advisor pane. Every score is generated only from submitted inputs and local memory.</p>
+    <section id="scenario" class="view needs-input">
+      <div class="page-head compact"><p class="eyebrow">Operational Proof Workflow</p><h1>Executive Incident Briefing Scenario</h1><p>Simulated signal flow demonstrating how CyberShield translates fragmented evidence into executive decision guidance.</p></div>
+      <div class="scenario-layout">
+        <div class="panel"><p class="eyebrow">Simulated Timeline</p><div id="scenarioTimeline" class="timeline"></div></div>
+        <div class="panel"><p class="eyebrow">Narrative Translation</p><div id="scenarioNarrative"></div></div>
       </div>
-      <div class="dashboard-grid">
-        <section class="panel wide-panel">
-          <div class="section-title"><h2>Operational State Overview</h2><span id="dashboardMode">Generated from assessment</span></div>
-          <div class="bubble-grid" id="bubbleGrid"></div>
-        </section>
-        <aside class="panel advisor" aria-live="polite">
-          <div class="section-title"><h2 id="advisorTitle">Advisor Pane</h2><span>Dynamic</span></div>
-          <p id="advisorMeaning">Click a metric, risk, action, report, or memory item to update this pane.</p>
-          <h3>Why this matters</h3><p id="advisorWhy">CyberShield explains the operational consequence behind each signal.</p>
-          <h3>Next best action</h3><p id="advisorAction">Select an item to see recommended action.</p>
-          <h3>MJC value add</h3><p id="advisorMjc">Maximum Justice Cybersecurity can help validate evidence, assign ownership, and sequence remediation.</p>
-        </aside>
-      </div>
+      <div class="panel"><p class="eyebrow">Executive Decision Table</p><div id="decisionTable" class="table-wrap"></div></div>
     </section>
 
-    <section id="orchestration" class="view requires-data-view" aria-labelledby="actionsTitle">
-      <div class="page-head compact-head">
-        <p class="eyebrow">Action Orchestration Engine</p>
-        <h1 id="actionsTitle">What matters most right now?</h1>
-        <p>The queue ranks severity, urgency, governance age, evidence confidence, operational impact, compliance sensitivity, and leadership visibility.</p>
-      </div>
-      <div class="split-grid">
-        <section class="panel">
-          <div class="section-title"><h2>Executive Priority Queue</h2><span id="queueSummary">Top actions</span></div>
-          <div id="actionQueue" class="stack"></div>
-        </section>
-        <section class="panel">
-          <div class="section-title"><h2>Governance Journey</h2><span>Progression</span></div>
-          <div id="journeyList" class="journey-list"></div>
-        </section>
-      </div>
+    <section id="trust" class="view needs-input">
+      <div class="page-head compact"><p class="eyebrow">Dynamic Trust Map</p><h1>Operational Trust Map</h1><p>Directional scoring based only on submitted inputs.  This is not a verified audit.</p></div>
+      <div class="cards twelve" id="trustBubbles"></div>
     </section>
 
-    <section id="memory" class="view requires-data-view" aria-labelledby="memoryTitle">
-      <div class="page-head compact-head">
-        <p class="eyebrow">Organizational Memory</p>
-        <h1 id="memoryTitle">Cybersecurity institutional memory</h1>
-        <p>CyberShield stores the local assessment baseline, prior briefings, unresolved risks, evidence aging, and governance continuity in browser local storage for this static prototype.</p>
-      </div>
-      <div class="split-grid">
-        <section class="panel">
-          <div class="section-title"><h2>Memory Ledger</h2><span id="memoryCount">Current session</span></div>
-          <div id="memoryLedger" class="stack"></div>
-        </section>
-        <section class="panel">
-          <div class="section-title"><h2>Prior Briefing Snapshots</h2><span>Local only</span></div>
-          <div id="snapshotList" class="stack"></div>
-        </section>
-      </div>
+    <section id="memory" class="view needs-input">
+      <div class="page-head compact"><p class="eyebrow">Organizational Memory</p><h1>Cybersecurity institutional memory</h1><p>Local continuity objects help track what persists, what ages, and what needs executive treatment.</p></div>
+      <div class="memory-grid" id="memoryGrid"></div>
     </section>
 
-    <section id="reports" class="view requires-data-view" aria-labelledby="reportsTitle">
-      <div class="page-head compact-head">
-        <p class="eyebrow">Executive Reporting Engine</p>
-        <h1 id="reportsTitle">Board-ready operational artifacts</h1>
-        <p>Every report is printable, downloadable, emailable, and confidence-aware. Reports use submitted inputs and local organizational memory.</p>
-      </div>
+    <section id="reports" class="view needs-input">
+      <div class="page-head compact"><p class="eyebrow">Board-Ready Artifacts</p><h1>Executive Intelligence Outputs</h1><p>Reports are designed for executive forwarding, not technical overload.</p></div>
       <div class="report-layout">
-        <section class="panel report-list" id="reportList" aria-label="Report selector"></section>
-        <section class="panel report-preview">
-          <div class="report-toolbar"><h2 id="reportTitle">Executive Risk Summary</h2><div class="button-row"><button class="btn secondary" id="printReport" type="button">Print / Save PDF</button><button class="btn secondary" id="downloadReport" type="button">Download Text</button><a class="btn primary" id="emailReport" href="#">Email Report</a></div></div>
-          <pre id="reportText" class="report-text"></pre>
-        </section>
+        <div class="report-picker" id="reportPicker"></div>
+        <article class="panel report-preview" id="reportPreview"></article>
       </div>
-    </section>
-
-    <section id="locked" class="view" aria-labelledby="lockedTitle">
-      <div class="panel locked-panel">
-        <p class="eyebrow">Assessment Required</p>
-        <h1 id="lockedTitle">Executive briefing is locked until the assessment is submitted.</h1>
-        <p>No scores, dollar ranges, reports, or dashboards are shown before submitted inputs exist.</p>
-        <button class="btn primary" data-route="assessment" type="button">Start Assessment</button>
-      </div>
+      <div class="report-actions"><button class="btn secondary" id="downloadReport">Download Text</button><button class="btn secondary" id="emailReport">Email Report</button><button class="btn primary" id="printReport">Print / Save PDF</button></div>
     </section>
   </main>
 
-  <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle" hidden>
-    <div class="modal-card">
-      <button class="modal-close" id="closeDetail" type="button" aria-label="Close detail">×</button>
-      <p class="eyebrow" id="detailKicker">Operational Detail</p>
-      <h2 id="detailTitle">Detail</h2>
-      <div id="detailBody"></div>
-      <div class="button-row"><button class="btn primary" id="detailOk" type="button">Understood</button></div>
-    </div>
-  </div>
-
+  <dialog id="detailDialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><h2 id="dialogTitle"></h2><p id="dialogBody"></p><div id="dialogMeta"></div></form></dialog>
   <script src="app.js"></script>
 </body>
 </html>

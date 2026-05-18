@@ -1,51 +1,12 @@
 {
-  "taxonomy": "CyberShield Operational Trust Taxonomy",
-  "version": "OS v6.3",
-  "primaryQuestion": "What matters most right now?",
-  "decisionQuestions": [
-    "What changed?",
-    "Why does it matter?",
-    "What changes operationally?",
-    "What should leadership do?",
-    "What happens if nothing happens?",
-    "Who owns the decision?",
-    "What is the confidence level?",
-    "What governance state exists currently?"
-  ],
-  "scoringDimensions": [
-    "Operational Trust",
-    "AI Governance",
-    "Evidence Confidence",
-    "Exposure Control",
-    "Evidence Maturity",
-    "Incident Readiness",
-    "Ownership Clarity",
-    "Control Ownership",
-    "Compliance Lens",
-    "Data Sensitivity",
-    "Decision Velocity",
-    "Orchestration Load"
-  ],
-  "actionRankingFactors": [
-    "severity",
-    "urgency",
-    "governance age",
-    "evidence confidence",
-    "operational impact",
-    "escalation likelihood",
-    "compliance sensitivity",
-    "leadership visibility"
-  ],
-  "riskTreatmentOptions": ["mitigate", "transfer", "accept", "escalate", "investigate"],
-  "reportTypes": [
-    "Executive Risk Summary",
-    "Board Report",
-    "Security Roadmap",
-    "Compliance Gap Assessment",
-    "AI Governance Review",
-    "Incident Readiness Summary",
-    "Vendor Governance Review",
-    "Audit Readiness Report",
-    "Policy Package"
-  ]
+  "taxonomy_version":"6.4",
+  "concepts":{
+    "operational_trust":"The degree to which leadership can rely on controls, ownership, evidence, AI boundaries, and incident readiness to make defensible decisions.",
+    "executive_briefing":"A concise translation of what changed, why it matters, operational consequence, recommended action, confidence, and owner.",
+    "action_orchestration":"Continuous prioritization of unresolved governance work based on severity, urgency, governance age, evidence confidence, operational impact, compliance sensitivity, and executive visibility.",
+    "organizational_memory":"Persistent continuity layer for unresolved risks, accepted risks, remediation history, evidence age, policy revision, report history, and maturity progression.",
+    "scenario_proof":"Simulated but coherent demonstration of telemetry becoming narrative, consequence, decision guidance, and board-ready reporting."
+  },
+  "artifact_types":["Executive Risk Summary","Operational Resilience Snapshot","Governance Drift Report","AI Governance Assessment","Vendor Governance Review","Board Briefing","Incident Readiness Summary","Security Roadmap"],
+  "signals":["identity anomaly","targeted executive lure","privilege pathway pressure","evidence gap","vendor dependency","AI policy drift","incident readiness gap"]
 }

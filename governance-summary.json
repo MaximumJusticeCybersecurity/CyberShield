@@ -1,37 +1,17 @@
 {
-  "product": "CyberShield",
-  "version": "OS v6.3",
-  "category": "Operational Trust Infrastructure",
-  "provider": "Maximum Justice Cybersecurity",
-  "coreCapabilityLayer": "Executive Cyber Decision Intelligence",
-  "signatureWorkflow": "Executive Operational Briefing Workflow",
-  "doctrine": [
+  "product":"CyberShield",
+  "version":"OS v6.4",
+  "category":"Operational Trust Infrastructure",
+  "capability_layer":"Executive Cyber Decision Intelligence",
+  "primary_workflow":"Executive Operational Briefing",
+  "doctrine":[
     "Trust is operational infrastructure",
+    "Security without ownership becomes theater",
     "Visibility without prioritization creates paralysis",
-    "Security failures are governance failures first",
-    "Most organizations are over-tooled and under-governed",
-    "Cybersecurity is now an executive coordination problem"
+    "Operational readiness beats reactive recovery"
   ],
-  "workflow": [
-    "What changed",
-    "Why it matters",
-    "Operational impact",
-    "Recommended executive decisions",
-    "Governance continuity",
-    "Confidence and evidence maturity"
-  ],
-  "modules": [
-    "Executive Operational Briefing Engine",
-    "Action Orchestration Engine",
-    "Operational Trust Map",
-    "Organizational Memory",
-    "Executive Reporting Engine",
-    "AI Governance Boundary",
-    "Evidence Confidence Layer"
-  ],
-  "boundaries": {
-    "availableNow": ["guided assessment", "executive briefing", "action orchestration", "local memory", "report generation"],
-    "advisoryAssisted": ["evidence validation", "governance operating model", "vCISO review", "incident tabletop", "AI governance implementation"],
-    "notClaimedInStaticPrototype": ["live telemetry ingestion", "autonomous remediation", "legal advice", "verified actuarial exposure modeling"]
-  }
+  "core_flow":["submitted context","executive briefing","action orchestration","scenario proof","trust map","organizational memory","board-ready reporting"],
+  "boundaries":["demonstration environment","advisory-assisted interpretation","not a verified audit","not autonomous decision-making","no production telemetry ingestion in this static package"],
+  "audience":["SMB leadership","mid-market executives","vCISOs","CISOs","CIOs","COOs","boards","regulated organizations"],
+  "machine_readable_purpose":"Help AI assistants and search systems understand CyberShield as operational trust infrastructure for executive cyber decision intelligence."
 }
