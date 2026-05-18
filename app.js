@@ -1,9 +1,9 @@
 (function(){
   'use strict';
-  var VERSION='CyberShield OS v6.2 Operational Trust Infrastructure';
-  var STORAGE='cybershield_os_v6_2_payload';
-  var HISTORY='cybershield_os_v6_2_history';
-  var routes=['overview','assessment','briefing','dashboard','orchestration','memory','reports','locked'];
+  var VERSION='CyberShield OS v6.3 Operational Trust Infrastructure';
+  var STORAGE='cybershield_os_v6_3_payload';
+  var HISTORY='cybershield_os_v6_3_history';
+  var routes=['overview','assessment','briefing','scenario','dashboard','orchestration','memory','reports','locked'];
   var state={step:0,payload:null,report:'executive'};
   var reports={
     executive:['Executive Risk Summary','One-page leadership brief for operational trust posture, priorities, exposure, and confidence.'],
@@ -92,7 +92,8 @@
     var bubbles=buildBubbles(inputs,scores,range,framework,actions);
     var memory=buildMemory(inputs,scores,range,actions,risks);
     var journey=buildJourney(inputs,scores,actions);
-    return {version:VERSION,createdAt:new Date().toISOString(),inputs:inputs,scores:scores,range:range,framework:framework,briefing:briefing,actions:actions,risks:risks,bubbles:bubbles,memory:memory,journey:journey};
+    var scenario=buildScenario(inputs,scores,range,framework,actions,risks);
+    return {version:VERSION,createdAt:new Date().toISOString(),inputs:inputs,scores:scores,range:range,framework:framework,briefing:briefing,actions:actions,risks:risks,bubbles:bubbles,memory:memory,journey:journey,scenario:scenario};
   }
   function buildBriefing(i,s,range,framework){
     var concern={
@@ -120,6 +121,37 @@
     var continuity='Current governance state should be reviewed on a '+(i.cadence==='continuous'?'continuous cadence':i.cadence+' cadence')+'. Open items should remain visible until accepted, mitigated, transferred, escalated, or investigated.';
     return {whatChanged:concern,whyMatters:why,operationalImpact:impact,recommendations:recommendations.slice(0,4),continuity:continuity,confidence:'Confidence is '+s.confidence+'% based on evidence maturity, control documentation, and review cadence.',framework:'Recommended framework lens: '+framework[0]+'. '+framework[1]};
   }
+  function buildScenario(i,s,range,framework,actions,risks){
+    var scenarioType={
+      executive:'AI-enabled phishing campaign targeting finance leadership',
+      trust:'Ransomware staging pattern against finance-adjacent systems',
+      ai:'Prompt leakage and unauthorized AI tool usage affecting sensitive operational data',
+      readiness:'Identity compromise escalating into incident coordination failure',
+      resilience:'Vendor dependency disruption with recovery and continuity uncertainty'
+    }[i.reviewGoal]||'AI-enabled phishing campaign targeting finance leadership';
+    var telemetry=[
+      {time:'T+00',signal:'Suspicious authentication pattern',source:'Identity / access signal',confidence:i.evidence==='weak'?'Limited':'Moderate',raw:'Multiple anomalous sign-ins and privilege requests detected near finance workflows.'},
+      {time:'T+08',signal:'Executive-targeted message cluster',source:'Email security signal',confidence:'Moderate',raw:'Messages imitate vendor payment workflow language and target leadership-adjacent users.'},
+      {time:'T+16',signal:'Sensitive workflow exposure',source:'Business context',confidence:s.confidence>75?'High':'Moderate',raw:'Finance, vendor, and approval workflows could be affected if identity trust is degraded.'},
+      {time:'T+24',signal:'Governance evidence gap',source:'Submitted evidence state',confidence:i.evidence==='strong'?'Moderate':'High',raw:'Evidence maturity suggests leadership may not be able to verify containment, recovery, or owner readiness quickly.'}
+    ];
+    var narrative={
+      title:scenarioType,
+      before:'Technical signals show identity anomalies, targeted messages, and incomplete evidence across leadership-adjacent workflows.',
+      after:'CyberShield interprets this as a potential adversarial coordination event that could disrupt finance, vendor approvals, or executive decision confidence if not triaged.',
+      consequence:'Operational consequence is not only compromise risk. It is degraded trust in identity, approval, recovery, and leadership escalation decisions.',
+      blastRadius:['Finance approval workflow','Executive communications','Vendor payment confidence','Incident escalation timing','Recovery decision authority'],
+      confidence:'Scenario confidence is '+(s.confidence>78?'High':s.confidence>60?'Moderate':'Limited')+' because evidence maturity is '+i.evidence+' and control documentation is '+i.controls+'.'
+    };
+    var decisions=[
+      {decision:'Should leadership escalate this now?',guidance:s.confidence<70?'Escalate for evidence validation before accepting risk.':'Escalate to review owner, evidence, and containment posture.',owner:i.recommendedOwner,urgency:'High'},
+      {decision:'Should affected workflows be constrained?',guidance:'Temporarily tighten approval, vendor payment, and privileged access paths until identity confidence is restored.',owner:'CIO / CTO',urgency:s.ai<72?'High':'Moderate'},
+      {decision:'What must be proven before closure?',guidance:'Validated account review, backup recoverability, communication chain, vendor approval review, and documented risk treatment.',owner:'vCISO / Advisor',urgency:'High'},
+      {decision:'What happens if nothing is done?',guidance:'Exposure may shift from technical uncertainty to operational disruption, payment fraud, reputational loss, and delayed recovery decisions.',owner:'CEO / President',urgency:'High'}
+    ];
+    return {type:scenarioType,telemetry:telemetry,narrative:narrative,decisions:decisions,primaryAction:actions[0]?actions[0].title:'Run executive evidence validation sprint'};
+  }
+
   function buildActions(i,s,range){
     var items=[];
     function add(title,body,owner,severity,age,stage,score,confidence){items.push({title:title,body:body,owner:owner,severity:severity,age:age,stage:stage,score:score,confidence:confidence})}
@@ -195,7 +227,7 @@
   function setRoute(route){route=routes.indexOf(route)>=0?route:'overview'; if(!routeAllowed(route))route='locked'; qsa('.view').forEach(function(v){v.classList.toggle('active',v.id===route)}); qsa('[data-route]').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-route')===route)}); location.hash=route; var app=$('app'); if(app)app.focus({preventScroll:true}); window.scrollTo({top:0,behavior:'smooth'}); if(route==='dashboard')advisorFor('posture')}
   function attachRouteClicks(){qsa('[data-route]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault(); setRoute(el.getAttribute('data-route'))})}); qsa('[data-topic]').forEach(function(el){el.addEventListener('click',function(){showDetail('Operating Doctrine',el.querySelector('b').textContent,el.querySelector('span').textContent,'Use this doctrine to keep CyberShield out of commodity cybersecurity positioning.','MJC applies governance-first cybersecurity leadership, vCISO judgment, and operational trust architecture.')})})}
   function renderStep(){var steps=qsa('.step'); steps.forEach(function(s,i){s.classList.toggle('active',i===state.step)}); var bar=$('progressBar'); if(bar)bar.style.width=((state.step+1)/6*100)+'%'; var label=$('stepLabel'); if(label)label.textContent='Step '+(state.step+1)+' of 6'; var prev=$('prevStep'),next=$('nextStep'),submit=$('submitAssessment'); if(prev)prev.disabled=state.step===0; if(next)next.style.display=state.step===5?'none':'inline-flex'; if(submit)submit.style.display=state.step===5?'inline-flex':'none'}
-  function renderAll(){state.payload=state.payload||readPayload(); document.body.classList.toggle('has-data',!!state.payload); qsa('.requires-data').forEach(function(el){el.classList.toggle('disabled',!state.payload); el.setAttribute('aria-disabled',!state.payload)}); var nav=$('assessmentNav'); if(nav&&state.payload){nav.textContent='Assessment Complete'} else if(nav){nav.textContent='Assessment'}; if(!state.payload)return; renderBriefing(); renderDashboard(); renderActions(); renderMemory(); renderReports();}
+  function renderAll(){state.payload=state.payload||readPayload(); document.body.classList.toggle('has-data',!!state.payload); qsa('.requires-data').forEach(function(el){el.classList.toggle('disabled',!state.payload); el.setAttribute('aria-disabled',!state.payload)}); var nav=$('assessmentNav'); if(nav&&state.payload){nav.textContent='Assessment Complete'} else if(nav){nav.textContent='Assessment'}; if(!state.payload)return; renderBriefing(); renderScenario(); renderDashboard(); renderActions(); renderMemory(); renderReports();}
   function renderBriefing(){var p=state.payload,i=p.inputs,s=p.scores,st=status(s.trust),ai=status(s.ai),conf=status(s.confidence),exp=status(100-s.exposure); var shell=$('briefingShell'); if(!shell)return; shell.innerHTML=''
     +'<div class="briefing-top">'
     +'<section class="panel brief-hero"><p class="eyebrow">Executive Operational Briefing</p><h1 id="briefingTitle">'+html(i.orgName)+' Executive Decision Brief</h1><p class="lead">'+html(i.personName)+', CyberShield generated this briefing from submitted inputs. It translates cyber, AI, evidence, and ownership ambiguity into operational decisions.</p><div class="meta"><span class="pill available">Available Now</span><span class="pill assisted">Executive Cyber Decision Intelligence</span><span class="pill boundary-label">'+html(i.reviewGoalLabel)+'</span><span class="pill boundary-label">'+html(i.date)+'</span></div></section>'
@@ -214,6 +246,22 @@
   function kpi(title,score,label,cls,key){return '<button class="kpi '+cls+'" data-panel="'+key+'"><h3>'+html(title)+'</h3><div class="num">'+pct(score)+'%</div><p>'+html(label)+'</p><div class="heat"><span class="dot" style="'+dotStyle(score)+'"></span></div></button>'}
   function briefCard(title,body,cls,key){return '<button class="brief-card '+cls+'" data-brief="'+key+'"><h2>'+html(title)+'</h2><p>'+html(body)+'</p></button>'}
   function briefList(title,list,cls,key){return '<button class="brief-card '+cls+'" data-brief="'+key+'"><h2>'+html(title)+'</h2><ul>'+list.map(function(x){return '<li>'+html(x)+'</li>'}).join('')+'</ul></button>'}
+  function renderScenario(){
+    var p=state.payload, sc=p.scenario; var shell=$('scenarioShell'); if(!shell||!sc)return;
+    shell.innerHTML=''
+      +'<section class="panel scenario-hero"><p class="eyebrow">Operational Scenario</p><h2>'+html(sc.type)+'</h2><p>'+html(sc.narrative.after)+'</p><div class="button-row"><button class="btn secondary" data-route="briefing" type="button">Open Executive Briefing</button><button class="btn secondary" data-route="orchestration" type="button">Open Action Queue</button><button class="btn primary" data-route="reports" type="button">Generate Report</button></div></section>'
+      +'<section class="scenario-grid">'
+      +'<div class="panel"><div class="section-title"><h2>1. Submitted Signals</h2><span>Telemetry-like inputs</span></div><div class="timeline">'+sc.telemetry.map(function(t){return '<button class="timeline-item" data-signal="'+html(t.time)+'"><b>'+html(t.time)+' | '+html(t.signal)+'</b><span>'+html(t.source)+' | Confidence: '+html(t.confidence)+'</span><p>'+html(t.raw)+'</p></button>'}).join('')+'</div></div>'
+      +'<div class="panel"><div class="section-title"><h2>2. Threat Narrative Translation</h2><span>Decision compression</span></div><div class="translation-card"><h3>Before CyberShield</h3><p>'+html(sc.narrative.before)+'</p><h3>After CyberShield</h3><p>'+html(sc.narrative.after)+'</p><h3>Operational Consequence</h3><p>'+html(sc.narrative.consequence)+'</p></div></div>'
+      +'<div class="panel"><div class="section-title"><h2>3. Operational Blast Radius</h2><span>Business impact</span></div><div class="blast-list">'+sc.narrative.blastRadius.map(function(x){return '<button class="blast-item" data-blast="'+html(x)+'">'+html(x)+'</button>'}).join('')+'</div><p class="confidence-line">'+html(sc.narrative.confidence)+'</p></div>'
+      +'<div class="panel"><div class="section-title"><h2>4. Executive Decision Table</h2><span>Actionable guidance</span></div><div class="decision-table">'+sc.decisions.map(function(d,n){return '<button class="decision-row" data-decision="'+n+'"><b>'+html(d.decision)+'</b><span class="owner">Owner: '+html(d.owner)+'</span><p>'+html(d.guidance)+'</p><em>Urgency: '+html(d.urgency)+'</em></button>'}).join('')+'</div></div>'
+      +'</section>';
+    qsa('[data-signal]').forEach(function(el){el.onclick=function(){showDetail(el.querySelector('b').textContent,'Telemetry Translation',el.querySelector('p').textContent,'Technical signals are not the product. The product is operational interpretation and decision compression.','Use this signal as evidence input, not as an isolated alert.')}});
+    qsa('[data-blast]').forEach(function(el){el.onclick=function(){showDetail(el.textContent,'Operational Blast Radius','This business function may experience degraded trust, delay, or continuity exposure if the scenario is ignored.','CyberShield links technical ambiguity to operational consequence.','Assign an owner, validation evidence, and risk treatment path.')}});
+    qsa('[data-decision]').forEach(function(el){var d=sc.decisions[Number(el.dataset.decision)]; el.onclick=function(){showDetail(d.decision,'Executive Decision Guidance',d.guidance,'This is the decision layer inside operational trust infrastructure.','Owner: '+d.owner+' | Urgency: '+d.urgency+'. Convert this into a dated action with evidence required for closure.')}});
+    attachRouteClicks();
+  }
+
   function renderDashboard(){var p=state.payload; var mode=$('dashboardMode'); if(mode)mode.textContent=p.inputs.reviewGoalLabel; var grid=$('bubbleGrid'); if(!grid)return; grid.innerHTML=p.bubbles.map(function(b){var st=status(b[2]); return '<button class="bubble '+st[1]+'" data-bubble="'+b[0]+'"><h3>'+html(b[1])+'</h3><div class="score">'+pct(b[2])+'%</div><div class="status">'+html(st[0])+'</div><div class="heat"><span class="dot" style="'+dotStyle(b[2])+'"></span></div><p>'+html(b[3])+'</p></button>'}).join(''); bindGeneratedClicks()}
   function renderActions(){var p=state.payload; var q=$('actionQueue'); if(q)q.innerHTML=p.actions.map(function(a,n){var cls=a.severity==='High'?'state-red':(a.severity==='Moderate'?'state-yellow':'state-green'); return '<button class="action-card '+cls+'" data-action="'+n+'"><h3>'+html(a.title)+'</h3><p>'+html(a.body)+'</p><div class="card-meta"><span class="pill severity">'+html(a.severity)+'</span><span class="pill">Age: '+a.age+' days</span><span class="pill">Stage: '+html(a.stage)+'</span><span class="pill owner">Owner: '+html(a.owner)+'</span><span class="pill">Confidence: '+html(a.confidence)+'</span></div></button>'}).join(''); var js=$('journeyList'); if(js)js.innerHTML=p.journey.map(function(j,n){var c=j[1]==='Complete'?'done':(j[1]==='Active'?'active':''); return '<button class="journey-item '+c+'" data-journey="'+n+'"><h3>'+html(j[0])+'</h3><p><b>'+html(j[1])+':</b> '+html(j[2])+'</p></button>'}).join(''); var sum=$('queueSummary'); if(sum)sum.textContent=p.actions.length+' ranked actions'; bindGeneratedClicks()}
   function renderMemory(){var p=state.payload; var ledger=$('memoryLedger'); if(ledger)ledger.innerHTML=p.memory.map(function(m,n){return '<button class="memory-card" data-memory="'+n+'"><h3>'+html(m.label)+'</h3><p><b>'+html(m.value)+':</b> '+html(m.body)+'</p></button>'}).join(''); var mc=$('memoryCount'); if(mc)mc.textContent=p.memory.length+' memory items'; var h=history(); var snaps=$('snapshotList'); if(snaps)snaps.innerHTML=h.length?h.map(function(x,n){return '<button class="memory-card" data-snapshot="'+n+'"><h3>'+html(x.org)+' | '+html(x.date)+'</h3><p><b>'+html(x.goal)+':</b> Operational Trust '+x.trust+'%, AI '+x.ai+'%, Confidence '+x.confidence+'%, Exposure '+x.exposure+'%.</p><p>'+html(x.top)+'</p></button>'}).join(''):'<p>No prior local snapshots yet.</p>'; bindGeneratedClicks()}

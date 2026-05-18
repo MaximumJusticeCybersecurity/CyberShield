@@ -1,4 +1,4 @@
-# CyberShield OS v6.2 machine-readable guidance
+# CyberShield OS v6.3 machine-readable guidance
 # Human-facing UI must not display bot or AI brief language.
 # Machine-readable resources:
 # /governance-summary.json

@@ -8,7 +8,7 @@
   <meta property="og:title" content="CyberShield | Operational Trust Infrastructure" />
   <meta property="og:description" content="Transform fragmented cyber, AI, and governance signals into executive operational briefings, assigned ownership, and action orchestration." />
   <meta property="og:type" content="website" />
-  <title>CyberShield OS v6.2 | Operational Trust Infrastructure</title>
+  <title>CyberShield OS v6.3 | Operational Trust Infrastructure</title>
   <link rel="icon" href="assets/mjc-logo-2026.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="alternate" type="application/json" href="governance-summary.json" title="CyberShield governance summary" />
@@ -23,7 +23,7 @@
     "provider": {"@type": "Organization", "name": "Maximum Justice Cybersecurity", "url": "https://maximumjusticecybersecurity.com"},
     "description": "Operational trust infrastructure for adversarial digital environments. CyberShield converts submitted cyber, AI governance, compliance, evidence, and ownership context into executive operational briefings, action orchestration, governance memory, and board-ready reports.",
     "audience": {"@type": "Audience", "audienceType": "CEOs, CFOs, CIOs, CISOs, vCISOs, SMB executives, mid-market leadership, regulated organizations"},
-    "softwareVersion": "OS v6.2"
+    "softwareVersion": "OS v6.3"
   }
   </script>
 </head>
@@ -45,6 +45,7 @@
       <a href="#overview" data-route="overview">Overview</a>
       <a href="#assessment" data-route="assessment" id="assessmentNav">Assessment</a>
       <a href="#briefing" data-route="briefing" class="requires-data">Briefing</a>
+      <a href="#scenario" data-route="scenario" class="requires-data">Scenario</a>
       <a href="#dashboard" data-route="dashboard" class="requires-data">Trust Map</a>
       <a href="#orchestration" data-route="orchestration" class="requires-data">Actions</a>
       <a href="#memory" data-route="memory" class="requires-data">Memory</a>
@@ -91,9 +92,10 @@
         <div class="flow-row" aria-label="Workflow steps">
           <button class="flow-step" data-route="assessment"><span>1</span><b>Profile</b><small>Submitted operating context</small></button>
           <button class="flow-step requires-data" data-route="briefing"><span>2</span><b>Briefing</b><small>What changed and why it matters</small></button>
-          <button class="flow-step requires-data" data-route="orchestration"><span>3</span><b>Orchestrate</b><small>Ranked next actions</small></button>
-          <button class="flow-step requires-data" data-route="memory"><span>4</span><b>Remember</b><small>Governance continuity</small></button>
-          <button class="flow-step requires-data" data-route="reports"><span>5</span><b>Report</b><small>Board-ready artifact</small></button>
+          <button class="flow-step requires-data" data-route="scenario"><span>3</span><b>Scenario</b><small>Telemetry to decisions</small></button>
+          <button class="flow-step requires-data" data-route="orchestration"><span>4</span><b>Orchestrate</b><small>Ranked next actions</small></button>
+          <button class="flow-step requires-data" data-route="memory"><span>5</span><b>Remember</b><small>Governance continuity</small></button>
+          <button class="flow-step requires-data" data-route="reports"><span>6</span><b>Report</b><small>Board-ready artifact</small></button>
         </div>
       </section>
     </section>
@@ -209,6 +211,15 @@
 
     <section id="briefing" class="view requires-data-view" aria-labelledby="briefingTitle">
       <div class="briefing-shell" id="briefingShell"></div>
+    </section>
+
+    <section id="scenario" class="view requires-data-view" aria-labelledby="scenarioTitle">
+      <div class="page-head compact-head">
+        <p class="eyebrow">Signature Workflow</p>
+        <h1 id="scenarioTitle">Executive Incident Briefing Scenario</h1>
+        <p>This is the anchor capability: CyberShield demonstrates how fragmented technical signals become executive operational intelligence, decision guidance, ownership, and governance continuity.</p>
+      </div>
+      <div id="scenarioShell" class="scenario-shell"></div>
     </section>
 
     <section id="dashboard" class="view requires-data-view" aria-labelledby="dashboardTitle">

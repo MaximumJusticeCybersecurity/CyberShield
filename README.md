@@ -1,4 +1,4 @@
-# CyberShield OS v6.2 Operational Trust Infrastructure
+# CyberShield OS v6.3 Operational Trust Infrastructure
 
 Static GitHub Pages package for CyberShield by Maximum Justice Cybersecurity.
 
@@ -9,6 +9,8 @@ This version moves CyberShield from an assessment/dashboard flow toward Operatio
 ## Major additions
 
 - Executive Operational Briefing Workflow
+- Executive Incident Briefing Scenario
+- Telemetry to Narrative to Consequence to Decision workflow
 - Operational Trust Infrastructure positioning
 - Action Orchestration Engine
 - Organizational Memory layer using localStorage
