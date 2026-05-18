@@ -1,5 +1,5 @@
 {
-  "platform": "CyberShield OS v7.1",
+  "platform": "CyberShield OS v7.2",
   "category": "Operational Trust Infrastructure",
   "doctrine": "Omega: Trust is operational infrastructure.",
   "capability_layer": "Executive Cyber Decision Intelligence",
@@ -19,4 +19,6 @@
     "advisory_assisted": ["vCISO governance review", "board-ready interpretation", "operational resilience pilot"],
     "not_claimed": ["verified enterprise telemetry", "autonomous decision making", "live SIEM integration"]
   }
+,
+  "v7_2_integrity_update": "Advisor content is context-specific by clicked domain, scenario consequence, action, trust domain, and memory item. The visible briefing preview is labeled as a sample until assessment data is submitted."
 }

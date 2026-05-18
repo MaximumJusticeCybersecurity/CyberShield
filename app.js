@@ -1,7 +1,7 @@
 (() => {
-  const VERSION = "CyberShield OS v7.1";
-  const STORAGE_KEY = "cybershield_os_v7_1_state";
-  const MEMORY_KEY = "cybershield_os_v7_1_memory";
+  const VERSION = "CyberShield OS v7.2";
+  const STORAGE_KEY = "cybershield_os_v7_2_state";
+  const MEMORY_KEY = "cybershield_os_v7_2_memory";
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -232,7 +232,8 @@
   }
 
   function itemCard([kicker, title, body, status]) {
-    return `<article class="stack-item detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="Use this item to guide leadership sequencing and governance accountability.">
+    const advisor = briefingAdvisor(title, kicker);
+    return `<article class="stack-item detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="${escapeHtml(advisor.action)}" data-value="${escapeHtml(advisor.value)}">
       <div class="item-head"><h3>${escapeHtml(title)}</h3><span class="pill ${status}">${escapeHtml(kicker)}</span></div>
       <p class="item-body">${escapeHtml(body)}</p>
     </article>`;
@@ -248,7 +249,7 @@
       <div class="priority-item"><strong>${state.profile ? "Live" : "Demo"}</strong><span>Operating state</span></div>`;
     $("#actionGrid").innerHTML = issues.map(issue => {
       const cls = issue.rankScore > 95 ? "critical" : issue.rankScore < 78 ? "controlled" : "";
-      return `<article class="action-card ${cls} detail-trigger" data-title="${escapeHtml(issue.title)}" data-meaning="${escapeHtml(issue.detail)}" data-action="${escapeHtml(issue.decision)}">
+      return `<article class="action-card ${cls} detail-trigger" data-title="${escapeHtml(issue.title)}" data-meaning="${escapeHtml(issue.detail)}" data-action="${escapeHtml(issue.decision)}" data-value="${escapeHtml(issueAdvisorValue(issue))}">
         <div class="item-head"><h3>${escapeHtml(issue.title)}</h3><span class="pill ${cls === "critical" ? "red" : cls === "controlled" ? "green" : "yellow"}">${issue.rankScore}</span></div>
         <p>${escapeHtml(issue.detail)}</p>
         <div class="action-footer">
@@ -283,7 +284,10 @@
         <span><strong>Escalation</strong><b>${escapeHtml(scenario.escalation)}</b></span>
         <span><strong>Owner</strong><b class="owner-text">${escapeHtml(scenario.owner)}</b></span>
       </div>`;
-    $("#consequenceGrid").innerHTML = scenario.consequences.map(([title, body]) => `<article class="consequence-card detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="Use this consequence to guide executive sequencing and stakeholder coordination."><div class="card-kicker">Organizational consequence</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`).join("");
+    $("#consequenceGrid").innerHTML = scenario.consequences.map(([title, body]) => {
+      const advisor = consequenceAdvisor(activeScenario, title);
+      return `<article class="consequence-card detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="${escapeHtml(advisor.action)}" data-value="${escapeHtml(advisor.value)}"><div class="card-kicker">Organizational consequence</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`;
+    }).join("");
     bindDetailClicks();
   }
 
@@ -302,10 +306,13 @@
       ["Score Confidence", null, "No score appears until assessment submission."],
       ["Exposure Range", null, "No dollar exposure appears until assessment submission."]
     ];
-    $("#trustGrid").innerHTML = cards.map(([title, score, body]) => `<article class="trust-card detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="Use this trust domain to focus governance review.">
-      <div class="card-kicker">Omega Trust Domain</div><h3>${escapeHtml(title)}</h3>
-      ${score === null ? `<p>${escapeHtml(body)}</p>` : `<div class="score-value">${score}%</div><div class="trust-meter"><span class="trust-dot" style="left:${score}%"></span></div><p>${escapeHtml(body)}</p>`}
-    </article>`).join("");
+    $("#trustGrid").innerHTML = cards.map(([title, score, body]) => {
+      const advisor = trustAdvisor(title, score);
+      return `<article class="trust-card detail-trigger" data-title="${escapeHtml(title)}" data-meaning="${escapeHtml(body)}" data-action="${escapeHtml(advisor.action)}" data-value="${escapeHtml(advisor.value)}">
+        <div class="card-kicker">Omega Trust Domain</div><h3>${escapeHtml(title)}</h3>
+        ${score === null ? `<p>${escapeHtml(body)}</p>` : `<div class="score-value">${score}%</div><div class="trust-meter"><span class="trust-dot" style="left:${score}%"></span></div><p>${escapeHtml(body)}</p>`}
+      </article>`;
+    }).join("");
     bindDetailClicks();
   }
 
@@ -397,7 +404,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${activeReport.replaceAll(" ","-")}-CyberShield-v7-1.txt`;
+    a.download = `${activeReport.replaceAll(" ","-")}-CyberShield-v7-2.txt`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -445,23 +452,100 @@
       ["Executive decisions", memory.length ? `${memory.length} governance notes recorded` : "No decisions recorded yet"]
     ];
     $("#memoryGrid").innerHTML = [...defaults.map(([title, body]) => ({title, body})), ...memory.map(m => ({ title:m.at, body:m.note }))]
-      .map(item => `<article class="memory-card detail-trigger" data-title="${escapeHtml(item.title)}" data-meaning="${escapeHtml(item.body)}" data-action="Use this memory item to maintain governance continuity."><div class="card-kicker">Continuity</div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></article>`).join("");
+      .map(item => { const advisor = memoryAdvisor(item.title); return `<article class="memory-card detail-trigger" data-title="${escapeHtml(item.title)}" data-meaning="${escapeHtml(item.body)}" data-action="${escapeHtml(advisor.action)}" data-value="${escapeHtml(advisor.value)}"><div class="card-kicker">Continuity</div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></article>`; }).join("");
     bindDetailClicks();
   }
 
   function bindDetailClicks() {
     $$(".detail-trigger").forEach(el => {
-      el.onclick = () => openAdvisor(el.dataset.title, el.dataset.meaning, el.dataset.action);
+      el.onclick = () => openAdvisor(el.dataset.title, el.dataset.meaning, el.dataset.action, el.dataset.value);
       el.tabIndex = 0;
-      el.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") openAdvisor(el.dataset.title, el.dataset.meaning, el.dataset.action); };
+      el.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") openAdvisor(el.dataset.title, el.dataset.meaning, el.dataset.action, el.dataset.value); };
     });
   }
 
-  function openAdvisor(title, meaning, action) {
+
+  function issueAdvisorValue(issue) {
+    const values = {
+      backup: "MJC can lead a recoverability validation sprint and convert backup uncertainty into an executive-ready continuity finding.",
+      vendor: "MJC can structure a vendor governance review that clarifies third-party access, ownership, and board-level exposure.",
+      mfa: "MJC can prioritize privileged identity closure so leadership sees which accounts create the highest operational exposure.",
+      policy: "MJC can refresh governance language so AI, vendor, and incident responsibilities match current operating reality.",
+      ir: "MJC can facilitate an executive tabletop that tests escalation, communication, and decision authority under pressure."
+    };
+    return values[issue.id] || "MJC can convert this operational signal into a governance action with an assigned owner and executive artifact.";
+  }
+
+  function briefingAdvisor(title, kicker) {
+    const map = {
+      "What matters now": ["Open the Actions view and resolve the top-ranked item before reviewing lower-priority dashboard signals.", "MJC can use this priority to structure a short executive operating review focused on the highest consequence decision."],
+      "Recovery Readiness": ["Validate the recovery path connected to this consequence before leadership accepts operational exposure.", "MJC can turn this consequence into a recoverability test plan and board-ready resilience statement."],
+      "Payment Integrity": ["Pause or add verification to high-risk payment approvals until identity confidence is restored.", "MJC can help create a finance-focused executive fraud-control briefing with accountable owners."],
+      "Client Trust": ["Bound the exposure scope and determine whether client communication or disclosure analysis is needed.", "MJC can support a client-trust review that separates operational facts from speculation."],
+      "From cyber noise to leadership action": ["Use the briefing structure to convert technical uncertainty into one owner, one decision, and one deadline.", "MJC can operationalize this translation layer as a repeatable executive briefing cadence."],
+      "No score until assessment": ["Complete the assessment before interpreting posture, confidence, or exposure values.", "MJC can keep the assessment evidence-aware so scores do not create false precision."],
+      "Unresolved issues remain visible": ["Record the decision, owner, and next review date so the issue does not disappear after the meeting.", "MJC can maintain governance continuity across vCISO reviews, board summaries, and remediation tracking."],
+      "Leadership artifact available": ["Generate the report that matches the audience, then use it to drive the next governance conversation.", "MJC can tailor the artifact for board, executive, compliance, or operational stakeholders."]
+    };
+    const key = title in map ? title : kicker;
+    const result = map[key] || ["Use this briefing element to identify the next decision and responsible owner.", "MJC can translate this briefing signal into advisory support, ownership language, and a leadership-ready artifact."];
+    return { action: result[0], value: result[1] };
+  }
+
+  function consequenceAdvisor(scenarioKey, title) {
+    const map = {
+      phishing: {
+        "Payment Integrity": ["Freeze high-risk payment approvals and require secondary executive verification until mailbox integrity is confirmed.", "MJC can help finance leadership build an impersonation-resistant payment approval protocol and executive fraud briefing."],
+        "Executive Trust": ["Brief the CEO and finance owner on what is known, what is unknown, and which authority can approve payments.", "MJC can create a trust-restoration briefing that prevents rumor, confusion, and executive overreaction."],
+        "Vendor Coordination": ["Notify affected vendor contacts through a trusted channel before resuming payment workflows.", "MJC can map vendor communication dependencies and reduce operational delay during verification."],
+        "Legal / Compliance": ["Preserve mailbox, access, and approval evidence before remediation destroys context.", "MJC can coordinate evidence preservation language for legal, insurance, and incident response review."]
+      },
+      vendor: {
+        "Recovery Readiness": ["Validate restore points for vendor-dependent systems before deciding whether to contain, isolate, or continue operations.", "MJC can lead a recovery-confidence sprint that gives leadership a defensible continuity position."],
+        "Vendor Governance": ["Constrain vendor access and require a current access attestation before trust is restored.", "MJC can turn third-party uncertainty into a vendor governance review with executive-level accountability."],
+        "Operations": ["Identify which finance-adjacent workflows require manual continuity procedures if containment expands.", "MJC can map operational dependencies so containment decisions do not accidentally disrupt core business functions."],
+        "Board Visibility": ["Prepare a concise board note only if exposure remains material after access and recovery validation.", "MJC can convert vendor-origin risk into board-safe language that avoids both understatement and panic."]
+      },
+      shadowai: {
+        "Client Trust": ["Determine whether sensitive client context left approved boundaries and whether disclosure review is required.", "MJC can guide a client-trust assessment that distinguishes policy violation, exposure, and reportable incident."],
+        "AI Governance": ["Define sanctioned AI tools, prohibited data classes, and escalation ownership for future exceptions.", "MJC can build the AI governance boundary so leadership controls usage without killing productivity."],
+        "Policy Drift": ["Update AI-use policy and training language to match actual employee behavior, not last year’s assumptions.", "MJC can turn AI policy drift into an operational governance update with evidence and ownership."],
+        "Operational Control": ["Create visibility into where AI is being used before sensitive workflows become unmanaged risk.", "MJC can develop an AI visibility review that gives leadership a practical control baseline."]
+      }
+    };
+    const result = (map[scenarioKey] && map[scenarioKey][title]) || ["Assign a specific owner and decision deadline for this consequence.", "MJC can translate this consequence into an executive action path with evidence confidence and follow-up cadence."];
+    return { action: result[0], value: result[1] };
+  }
+
+  function trustAdvisor(title, score) {
+    const map = {
+      "Operational Trust": ["Review ownership, evidence maturity, and unresolved governance items before relying on the posture number.", "MJC can validate the trust score against actual operating evidence and executive accountability."],
+      "AI Governance": ["Check whether AI use has clear boundaries, owners, and escalation routes before expanding automation.", "MJC can establish a pragmatic AI governance operating model for leadership approval."],
+      "Score Confidence": ["Improve the confidence layer by attaching current evidence, validation dates, and responsible owners.", "MJC can strengthen evidence quality so CyberShield outputs become board-defensible."],
+      "Exposure Range": ["Use the exposure range to decide whether executive review, mitigation, transfer, or risk acceptance is appropriate.", "MJC can translate exposure into risk-treatment options that leadership can act on."],
+      "Ownership Clarity": ["Confirm that each material risk has a named owner with authority, not merely awareness.", "MJC can build a security ownership matrix that closes accountability gaps."],
+      "Continuity Intelligence": ["Track whether unresolved issues are improving, aging, or becoming normalized risk.", "MJC can maintain continuity intelligence across monthly executive reviews."]
+    };
+    const result = map[title] || ["Use this trust domain to focus the next governance review.", "MJC can convert this trust domain into an operational review artifact."];
+    return { action: result[0], value: result[1] };
+  }
+
+  function memoryAdvisor(title) {
+    const map = {
+      "Unresolved risks": ["Move the oldest unresolved issue into the next executive review agenda.", "MJC can prevent unresolved risks from disappearing between leadership meetings."],
+      "Governance age": ["Escalate any issue aging beyond leadership tolerance or formally record risk acceptance.", "MJC can establish governance aging thresholds and escalation rules."],
+      "Trend direction": ["Compare the current trend against the last briefing before declaring improvement.", "MJC can create a trend narrative that leadership can defend to the board."],
+      "Executive decisions": ["Review prior decisions before changing risk treatment or ownership.", "MJC can preserve decision history so leadership does not relitigate the same risks every month."]
+    };
+    const result = map[title] || ["Use this memory item to preserve continuity from one governance cycle to the next.", "MJC can convert this note into a durable governance record and follow-up action." ];
+    return { action: result[0], value: result[1] };
+  }
+
+  function openAdvisor(title, meaning, action, value) {
     $("#advisorTitle").textContent = title || "CyberShield Advisor";
     $("#advisorMeaning").textContent = meaning || "This item supports executive operational decision-making.";
     $("#advisorAction").textContent = action || "Assign ownership and review governance state.";
-    $("#advisorValue").textContent = "Maximum Justice Cybersecurity can translate this into a vCISO-led executive action plan, board-ready summary, or operational resilience pilot.";
+    $("#advisorValue").textContent = value || "Maximum Justice Cybersecurity can translate this signal into an executive operating decision with ownership, evidence, and governance cadence.";
     $("#advisorDrawer").classList.add("open");
   }
 

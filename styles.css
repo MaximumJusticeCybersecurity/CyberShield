@@ -126,7 +126,7 @@ select option{background:#07172a;color:#fff}
   body{background:#fff;color:#000}.site-header,.hero-panel,.assessment-panel,.primary-nav,.mobile-nav-toggle,.report-tabs,.report-actions,.advisor-drawer,.site-footer,.view-panel:not([data-view-panel="reports"]){display:none!important}.view-panel[data-view-panel="reports"]{display:block!important}.app-shell{max-width:100%;padding:0}.report-preview{box-shadow:none;border:none;color:#000}.report-preview *{color:#000!important}
 }
 
-/* v7.1 release-blocking fixes */
+/* v7.2 content-integrity fixes */
 .time-row{
   background:linear-gradient(135deg, rgba(5,18,36,.98), rgba(10,35,63,.94)) !important;
   border:1px solid rgba(32,199,255,.38) !important;

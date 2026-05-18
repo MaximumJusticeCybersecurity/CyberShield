@@ -1,6 +1,6 @@
 {
   "schema_name": "CyberShield Executive Operational Briefing",
-  "version": "7.0",
+  "version": "7.2",
   "required_sections": [
     "what_changed",
     "why_it_matters",

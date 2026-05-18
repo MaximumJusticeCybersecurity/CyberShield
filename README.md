@@ -1,4 +1,4 @@
-# CyberShield OS v7.1.1 — Omega Trust Architecture
+# CyberShield OS v7.2 — Omega Trust Architecture
 
 Static GitHub Pages package for Maximum Justice Cybersecurity.
 
@@ -37,3 +37,11 @@ Telemetry → Narrative → Consequence → Decision Guidance → Ownership → 
 Copy all files into the GitHub Pages repository root. Do not add React, Vite, node_modules, dist, src, or package files.
 
 Firefox hard refresh: Ctrl + Shift + R.
+
+## v7.2 Integrity Updates
+
+- Renamed visible briefing card to Sample Executive Briefing so users understand it is an example before assessment.
+- Replaced repeated advisor guidance with context-specific next-best-action and MJC advisory text.
+- Scenario consequence cards now generate unique recommendations by scenario and consequence.
+- Trust map, action cards, briefing stack, and memory cards now pass unique advisor context where applicable.
+- Maintains static GitHub Pages structure with no build tooling.
