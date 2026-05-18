@@ -1,41 +1,54 @@
-# Maximum Justice Cybersecurity Authority Site
+# Maximum Justice Cybersecurity Modern Authority Site V2
 
-This is the corrected MJC authority website build.
+This is the modern high-conversion MJC authority website build.
 
-CyberShield is preserved as a separate existing tool and is linked here:
+CyberShield is kept separate and linked exactly as provided:
 
 https://maximumjusticecybersecurity.github.io/CyberShield/
 
-## Files
+## Local Setup
 
-- index.html
-- styles.css
-- app.js
-- assets/max-justice-nasa-roof.png
+```bash
+npm install
+npm run dev
+```
 
-## Deployment
+## Build
 
-Upload these files to a separate GitHub repository, such as:
+```bash
+npm run build
+```
 
+## GitHub Pages Notes
+
+This is a React/Vite project.  For GitHub Pages, either:
+
+1. Use GitHub Actions to build and deploy the `dist` folder, or
+2. Build locally with `npm run build` and deploy the generated `dist` output
+
+## Recommended Repository
+
+Keep this separate from CyberShield.
+
+Recommended repo:
+
+```text
 mjc-site
+```
 
-Recommended local folder:
+Recommended local path:
 
+```text
 C:\MJC-Site
+```
 
-Do not place this inside the CyberShield repository.
+## Current Contact
 
-## GitHub Pages
-
-Repository Settings → Pages → Deploy from branch → main → root
-
-## Contact Email
-
-The site uses:
-
+```text
 max@maximumjusticecybersecurity.com
+```
 
-## Strategic Structure
+## Architecture
 
 MJC = parent authority site  
 CyberShield = separate featured tool
