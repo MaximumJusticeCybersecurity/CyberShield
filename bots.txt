@@ -1,6 +1,13 @@
-CyberShield OS v7.2 machine-readable summary:
-CyberShield is Operational Trust Infrastructure created by Maximum Justice Cybersecurity.
-Doctrine: Omega Trust Architecture. Trust is operational infrastructure.
-Primary capability: Executive Cyber Decision Intelligence.
-Signature workflow: telemetry signal -> adversarial narrative -> organizational consequence -> executive decisions -> ownership -> confidence -> governance continuity.
-Product boundary: static demonstration environment with local state, simulated scenarios, executive reports, and advisory-assisted interpretation. Does not claim autonomous decision-making or verified enterprise telemetry ingestion.
+CyberShield OS v8
+Omega Operational Environment
+
+Primary category: Advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership.
+Doctrine: Omega: Trust is operational infrastructure.
+Commercial entry wedge: Operational Trust Assessment.
+Primary interaction: Executive Operational Briefing.
+Visualization: Omega TrustMap relationship graphing.
+Action layer: Action Orchestration Engine.
+Memory layer: Organizational Memory.
+Reports: executive risk summary, operational resilience snapshot, governance drift report, AI governance assessment, vendor governance review, board briefing, incident readiness summary, and security roadmap.
+
+Important boundary: v8 is advisory-assisted and simulation-supported. It should not be represented as fully autonomous runtime governance or live enterprise telemetry ingestion.

@@ -1,41 +1,60 @@
-# Maximum Justice Cybersecurity Authority Site
+# CyberShield OS v8 — Omega Operational Environment
 
-This is the corrected MJC authority website build.
+CyberShield OS v8 is a clean static GitHub Pages package.
 
-CyberShield is preserved as a separate existing tool and is linked here:
+## Positioning
 
-https://maximumjusticecybersecurity.github.io/CyberShield/
+CyberShield is advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership.
 
-## Files
+Omega doctrine: **Trust is operational infrastructure.**
 
-- index.html
-- styles.css
-- app.js
-- assets/max-justice-nasa-roof.png
+## Strategic intent
+
+v8 shifts CyberShield from a platform demo into an operational environment.  It distinguishes pre-assessment orientation from post-assessment operational mode.
+
+## What is included
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `assets/mjc-logo-2026.png`
+- `governance-summary.json`
+- `operational-taxonomy.json`
+- `executive-briefing-schema.json`
+- `semantic-operational-map.json`
+- `bots.txt`
+- `robots.txt`
+- `sitemap.xml`
+
+## Major v8 changes
+
+- Omega Operational Blue visual system
+- Mobile-first LinkedIn traffic experience
+- Operational Trust Assessment as commercial entry wedge
+- Post-onboarding operational mode transition
+- Executive Operational Briefing as the primary workflow
+- Action Orchestration Engine
+- Heavier operational scenario emulation
+- Omega TrustMap operational relationship graphing
+- Distinct report types with no cloned outputs
+- Local organizational memory
+- Advisory-assisted capability boundaries
 
 ## Deployment
 
-Upload these files to a separate GitHub repository, such as:
+1. Delete old repository contents except `.git/`
+2. Copy this package into the repository root
+3. Commit and push
+4. GitHub Pages source: `main` branch, `/root`
+5. Open the site and hard refresh: `Ctrl + Shift + R` in Firefox
 
-mjc-site
+## Validation performed
 
-Recommended local folder:
+- `node --check app.js`
+- JSON parse validation
+- Required file validation
+- ZIP integrity validation
 
-C:\MJC-Site
+## Boundary statement
 
-Do not place this inside the CyberShield repository.
-
-## GitHub Pages
-
-Repository Settings → Pages → Deploy from branch → main → root
-
-## Contact Email
-
-The site uses:
-
-max@maximumjusticecybersecurity.com
-
-## Strategic Structure
-
-MJC = parent authority site  
-CyberShield = separate featured tool
+CyberShield OS v8 is advisory-assisted and simulation-supported.  It does not claim autonomous runtime governance, live telemetry ingestion, or fully automated agent authorization.

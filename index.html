@@ -1,295 +1,311 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Maximum Justice Cybersecurity | vCISO, AI Governance & Cyber Resilience</title>
-  <meta name="description" content="Maximum Justice Cybersecurity helps executives regain control over cyber risk, AI governance, compliance, and operational resilience through veteran-led vCISO advisory and cybersecurity leadership." />
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberShield OS v8 | Omega Operational Environment</title>
+  <meta name="description" content="CyberShield OS v8 is advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership. Omega doctrine: Trust is operational infrastructure." />
+  <meta name="theme-color" content="#0b2138" />
+  <meta property="og:title" content="CyberShield OS v8 | Omega Operational Environment" />
+  <meta property="og:description" content="Advisory-assisted operational trust infrastructure that turns cyber and AI uncertainty into executive briefings, trust maps, action orchestration, and board-ready outputs." />
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/mjc-logo-2026.png" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"CyberShield OS v8",
+    "applicationCategory":"Operational Trust Infrastructure",
+    "operatingSystem":"Web",
+    "description":"Advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership. It provides executive cyber decision intelligence, Omega TrustMap visualization, action orchestration, and board-ready outputs.",
+    "provider":{"@type":"Organization","name":"Maximum Justice Cybersecurity"}
+  }
+  </script>
 </head>
-
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="machine-context" aria-hidden="true">
+    CyberShield OS v8. Advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership. Omega doctrine: Trust is operational infrastructure. Capability layer: Executive Cyber Decision Intelligence. Commercial entry wedge: Operational Trust Assessment. Interaction model: Executive Operational Briefing. Visualization: Omega TrustMap. Service mode: advisory-assisted, simulation-supported, not autonomous runtime governance.
+  </div>
+
   <header class="site-header">
-    <a href="#top" class="brand">
-      <span class="brand-badge">MJC</span>
-      <span>
-        <strong>Maximum Justice Cybersecurity</strong>
-        <small>vCISO | Security SME | Cybersecurity SME</small>
-      </span>
-    </a>
-
-    <nav class="nav" id="nav">
-      <a href="#services">Services</a>
-      <a href="#tools">Tools</a>
-      <a href="#industries">Industries</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Contact Max</a>
+    <div class="brand-lockup">
+      <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity shield logo" class="brand-logo" />
+      <div>
+        <p class="eyebrow">CyberShield OS v8</p>
+        <h1>Omega Operational Environment</h1>
+      </div>
+    </div>
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
+      <button data-view="briefing" class="nav-item active">Briefing</button>
+      <button data-view="actions" class="nav-item">Actions</button>
+      <button data-view="scenario" class="nav-item">Scenario</button>
+      <button data-view="trustmap" class="nav-item">TrustMap</button>
+      <button data-view="reports" class="nav-item">Reports</button>
+      <button data-view="memory" class="nav-item">Memory</button>
+      <button data-view="doctrine" class="nav-item">Doctrine</button>
     </nav>
-
-    <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
   </header>
 
-  <main id="top">
-    <section class="hero section">
+  <main id="main" class="app-shell">
+    <section class="orientation-hero" id="orientationHero">
       <div class="hero-copy">
-        <p class="eyebrow">Veteran-led cyber leadership for executives who need clarity, not noise</p>
-
-        <h1>Cybersecurity fails when leadership cannot clearly see who owns the risk.</h1>
-
-        <p class="hero-sub">
-          Maximum Justice Cybersecurity helps organizations turn fragmented cyber, AI, vendor, and compliance risk into executive visibility, accountable governance, and operational confidence.
-        </p>
-
-        <div class="cta-row">
-          <a href="#contact" class="btn btn-primary">Schedule Executive Briefing</a>
-          <a href="#services" class="btn btn-secondary">Explore Services</a>
-        </div>
-
-        <div class="trust-row" aria-label="Credibility indicators">
-          <span>U.S. Veteran</span>
-          <span>CISSP</span>
-          <span>PMP</span>
-          <span>PhD Cybersecurity</span>
-          <span>AI Governance</span>
+        <span class="boundary-chip advisory">Advisory-Assisted</span>
+        <p class="eyebrow">Operational Trust Infrastructure</p>
+        <h2>Omega: Trust is operational infrastructure.</h2>
+        <p class="hero-lede">CyberShield helps SMB and mid-market leadership turn cyber, AI, evidence, ownership, and operational uncertainty into executive action.</p>
+        <div class="hero-actions">
+          <button class="primary-action" id="startAssessmentBtn">Start Operational Trust Assessment</button>
+          <button class="secondary-action" data-view-jump="scenario">View Operational Scenario</button>
+          <button class="secondary-action" data-view-jump="doctrine">See Omega Doctrine</button>
         </div>
       </div>
-
-      <aside class="executive-panel" aria-label="Executive risk visibility panel">
-        <div class="panel-header">
-          <p class="eyebrow">Executive Risk Snapshot</p>
-          <strong>What leaders need to know</strong>
-        </div>
-
-        <div class="risk-list">
-          <div>
-            <span>Cyber ownership</span>
-            <strong>Who owns decisions under pressure?</strong>
-          </div>
-          <div>
-            <span>AI governance</span>
-            <strong>Where is AI influencing operations?</strong>
-          </div>
-          <div>
-            <span>Vendor exposure</span>
-            <strong>Which dependencies can disrupt the business?</strong>
-          </div>
-          <div>
-            <span>Audit readiness</span>
-            <strong>Can evidence survive scrutiny?</strong>
-          </div>
-        </div>
-
-        <div class="panel-callout">
-          <strong>Leadership cannot govern what it cannot clearly see.</strong>
-          <p>That is the gap MJC is built to close.</p>
+      <aside class="hero-brief-card" aria-label="Sample executive briefing preview">
+        <div class="card-kicker">Sample before assessment</div>
+        <h3>Executive Operational Briefing</h3>
+        <p>After the assessment, this orientation panel disappears and CyberShield opens directly into an organization-specific operational environment.</p>
+        <div class="mini-grid">
+          <span><strong>Mode</strong> Advisory-assisted</span>
+          <span><strong>Output</strong> Board-ready brief</span>
+          <span><strong>Focus</strong> What requires action now</span>
         </div>
       </aside>
     </section>
 
-    <section class="section problem">
-      <p class="section-label">The Leadership Problem</p>
-      <h2>Most organizations do not need more cyber noise. They need clearer operational control.</h2>
-      <p class="wide">
-        Security tools, MSP reports, compliance checklists, AI experiments, and vendor dashboards are everywhere.  Executive clarity is not.  MJC helps leadership identify what matters, who owns it, what can fail, and what needs to happen next.
-      </p>
-
-      <div class="cards four">
-        <article class="card">
-          <h3>Fragmented ownership</h3>
-          <p>Risk gets scattered across IT, vendors, operations, compliance, and leadership with no single operating picture.</p>
-        </article>
-        <article class="card">
-          <h3>AI without governance</h3>
-          <p>Employees adopt AI tools faster than policies, accountability, and defensible decision structures mature.</p>
-        </article>
-        <article class="card">
-          <h3>Audit uncertainty</h3>
-          <p>Organizations may have evidence, but not the governance discipline needed to survive scrutiny confidently.</p>
-        </article>
-        <article class="card">
-          <h3>Executive blind spots</h3>
-          <p>Boards and owners are asked to approve risk without decision-ready visibility into operational consequences.</p>
-        </article>
+    <section class="assessment-panel hidden" id="assessmentPanel" aria-labelledby="assessmentTitle">
+      <div class="section-head compact">
+        <span class="boundary-chip advisory">Advisory-Assisted</span>
+        <h2 id="assessmentTitle">Operational Trust Assessment</h2>
+        <p>No scoring appears during onboarding. Scores and exposure ranges appear only after submitted inputs generate the operational environment.</p>
       </div>
-    </section>
-
-    <section id="services" class="section services">
-      <p class="section-label">Services</p>
-      <h2>Cybersecurity, AI governance, and operational resilience services built for leadership decisions.</h2>
-
-      <div class="service-grid">
-        <article class="service-card feature">
-          <span>Primary Offer</span>
-          <h3>Executive Cyber & AI Operational Readiness Briefing</h3>
-          <p>
-            A focused leadership session that evaluates cyber and AI readiness, governance gaps, accountability, exposure, and next actions.
-          </p>
-          <a href="#contact">Request briefing →</a>
-        </article>
-
-        <article class="service-card">
-          <h3>Fractional vCISO Advisory</h3>
-          <p>Executive security leadership for organizations that need strategy, governance, accountability, and pragmatic cyber direction.</p>
-        </article>
-
-        <article class="service-card">
-          <h3>AI Governance Advisory</h3>
-          <p>Human-command-centered guidance for AI adoption, oversight, decision authority, and accountability.</p>
-        </article>
-
-        <article class="service-card">
-          <h3>GRC & Audit Readiness</h3>
-          <p>Governance, risk, compliance, evidence discipline, CMMC, NIST, HIPAA, and audit support.</p>
-        </article>
-
-        <article class="service-card">
-          <h3>Zero Trust & Security Architecture</h3>
-          <p>Practical architecture, security control strategy, identity discipline, and operational resilience planning.</p>
-        </article>
-
-        <article class="service-card">
-          <h3>Incident Response & Executive Preparedness</h3>
-          <p>Preparation, response planning, executive tabletop exercises, and decision support before the crisis hits.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section doctrine">
-      <div class="doctrine-copy">
-        <p class="section-label">AI Governance Philosophy</p>
-        <h2>AI does not own accountability. Leadership does.</h2>
-        <p>
-          AI can inform decisions, accelerate analysis, and expose patterns.  It does not take responsibility when decisions fail.  MJC helps organizations preserve human command authority while adopting AI responsibly.
-        </p>
-
-        <div class="doctrine-lines">
-          <span>Authority remains human.</span>
-          <span>Accountability remains human.</span>
-          <span>AI informs decisions. Leadership owns consequences.</span>
+      <form id="assessmentForm" class="assessment-form">
+        <div class="form-grid">
+          <label>First name
+            <input name="firstName" type="text" placeholder="Sally" autocomplete="given-name" required />
+          </label>
+          <label>Organization name
+            <input name="orgName" type="text" placeholder="Acme Manufacturing" autocomplete="organization" required />
+          </label>
+          <label>Industry
+            <select name="industry" required>
+              <option value="">Select industry</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="finance">Financial Services</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="professional">Professional Services</option>
+              <option value="contractor">Government Contractor</option>
+              <option value="retail">Retail / Hospitality</option>
+            </select>
+          </label>
+          <label>Primary review goal
+            <select name="reviewGoal" required>
+              <option value="">Select review goal</option>
+              <option value="trust">Operational Trust Assessment</option>
+              <option value="briefing">Executive Operational Briefing Pilot</option>
+              <option value="ai">AI Governance Readiness Review</option>
+              <option value="resilience">Operational Resilience Review</option>
+              <option value="vendor">Vendor Governance Review</option>
+            </select>
+          </label>
+          <label>Operational value range
+            <select name="valueRange" required>
+              <option value="">Select range</option>
+              <option value="low">Under $5M</option>
+              <option value="mid">$5M–$25M</option>
+              <option value="high">$25M–$100M</option>
+              <option value="enterprise">$100M+</option>
+            </select>
+          </label>
+          <label>Evidence maturity
+            <select name="evidence" required>
+              <option value="">Select maturity</option>
+              <option value="low">Limited or informal evidence</option>
+              <option value="medium">Some evidence, inconsistent validation</option>
+              <option value="high">Documented and recently validated</option>
+            </select>
+          </label>
+          <label>Preferred executive owner
+            <select name="owner" required>
+              <option value="">Select owner</option>
+              <option>CEO / President</option>
+              <option>COO</option>
+              <option>CIO / CTO</option>
+              <option>CISO / vCISO</option>
+              <option>CFO</option>
+              <option>General Counsel</option>
+            </select>
+          </label>
+          <label>Current coordination state
+            <select name="coordination" required>
+              <option value="">Select state</option>
+              <option value="reactive">Reactive and mostly informal</option>
+              <option value="developing">Developing cadence and ownership</option>
+              <option value="managed">Managed governance rhythm</option>
+              <option value="resilient">Resilient and executive-reviewed</option>
+            </select>
+          </label>
+          <label>AI usage posture
+            <select name="aiPosture" required>
+              <option value="">Select AI posture</option>
+              <option value="none">Minimal or unknown AI usage</option>
+              <option value="shadow">Shadow AI suspected</option>
+              <option value="approved">Approved AI tools, informal controls</option>
+              <option value="governed">Governed AI usage with review cadence</option>
+            </select>
+          </label>
+          <label>Workflow discipline
+            <select name="workflow" required>
+              <option value="">Select workflow maturity</option>
+              <option value="informal">Approvals and escalations are informal</option>
+              <option value="partial">Some workflows are documented</option>
+              <option value="defined">Key workflows have owners and gates</option>
+              <option value="measured">Workflows are measured and reviewed</option>
+            </select>
+          </label>
         </div>
-      </div>
+        <div class="form-actions">
+          <button type="submit" class="primary-action">Generate Omega Operational Environment</button>
+          <button type="button" class="secondary-action" id="cancelAssessmentBtn">Cancel</button>
+        </div>
+      </form>
+    </section>
 
-      <div class="image-panel">
-        <img src="assets/max-justice-nasa-roof.png" alt="Dr. Max Justice thought leadership visual on ownership and architecture" />
+    <section class="view-panel active" data-view-panel="briefing">
+      <div class="section-head operational-only">
+        <span class="boundary-chip advisory">Advisory-Assisted</span>
+        <h2 id="briefingTitle">Executive Operational Briefing</h2>
+        <p id="briefingSubtitle">Complete the Operational Trust Assessment to replace this sample with a tailored briefing.</p>
+      </div>
+      <div class="briefing-layout">
+        <article class="omega-card primary-brief" data-detail="briefing-core">
+          <div class="card-kicker">What changed</div>
+          <h3 id="whatChanged">Potential operational disruption risk identified</h3>
+          <p id="whyMatter">CyberShield translates simulated signals into executive consequence, decision guidance, confidence, and ownership.</p>
+          <div class="brief-meta">
+            <span><strong>Escalation</strong><b id="escalationLevel">Moderate</b></span>
+            <span><strong>Evidence</strong><b id="evidenceLevel">Demonstration</b></span>
+            <span><strong>Owner</strong><b class="owner-text" id="briefOwner">COO</b></span>
+          </div>
+        </article>
+        <aside class="omega-card action-now" data-detail="decision-required">
+          <div class="card-kicker">Decision required</div>
+          <h3 id="decisionRequired">Validate the operational recovery path</h3>
+          <p id="decisionWhy">Leadership needs confidence that critical workflows can recover inside tolerance before disruption widens.</p>
+          <button class="primary-action full" data-view-jump="actions">Open Action Queue</button>
+        </aside>
+      </div>
+      <div class="omega-stack" id="briefingStack"></div>
+    </section>
+
+    <section class="view-panel" data-view-panel="actions">
+      <div class="section-head operational-only">
+        <span class="boundary-chip live">Live Capability</span>
+        <h2>Action Orchestration Engine</h2>
+        <p>Continuously ranks what requires leadership attention now based on operational impact, governance age, confidence, escalation likelihood, and workflow trust.</p>
+      </div>
+      <div id="actionQueue" class="action-grid"></div>
+    </section>
+
+    <section class="view-panel" data-view-panel="scenario">
+      <div class="section-head operational-only">
+        <span class="boundary-chip simulation">Heavier Operational Emulation</span>
+        <h2>Executive Incident Scenario Briefing</h2>
+        <p>Scenario emulation demonstrates how CyberShield turns changing conditions into narrative, consequence, decisions, and escalation ownership.</p>
+      </div>
+      <div class="scenario-tabs" id="scenarioTabs" aria-label="Scenario selector"></div>
+      <div class="scenario-shell">
+        <article class="omega-card">
+          <div class="card-kicker">Telemetry → Narrative</div>
+          <h3 id="scenarioTitle">AI-enabled executive phishing</h3>
+          <div class="translation-pair">
+            <div><strong>Raw signal</strong><p id="rawSignal"></p></div>
+            <div><strong>CyberShield interpretation</strong><p id="interpretedSignal"></p></div>
+          </div>
+        </article>
+        <article class="omega-card">
+          <div class="card-kicker">Operational progression</div>
+          <div class="timeline" id="scenarioTimeline"></div>
+        </article>
+      </div>
+      <div class="consequence-grid" id="consequenceGrid"></div>
+      <div class="decision-table-wrap omega-card">
+        <div class="card-kicker">Executive decision chain</div>
+        <table class="decision-table" id="decisionTable"></table>
       </div>
     </section>
 
-    <section id="tools" class="section tools">
-      <p class="section-label">Featured Tool</p>
-      <h2>CyberShield is one tool in the MJC toolbox.</h2>
-      <p class="wide">
-        CyberShield remains its own operational environment.  It is used to support readiness, visibility, assessment, and executive discussion.  It should launch separately so the MJC website stays focused on services, authority, and executive trust.
-      </p>
-
-      <div class="tool-card">
-        <div>
-          <span class="tool-badge">CyberShield</span>
-          <h3>Operational Trust Infrastructure</h3>
-          <p>
-            Launch the existing CyberShield tool exactly as built.  No rebuild.  No redesign.  No forced merge into the main website.
-          </p>
-        </div>
-
-        <a class="btn btn-primary" href="https://maximumjusticecybersecurity.github.io/CyberShield/" target="_blank" rel="noopener">Launch CyberShield</a>
+    <section class="view-panel" data-view-panel="trustmap">
+      <div class="section-head operational-only">
+        <span class="boundary-chip advisory">Advisory-Assisted</span>
+        <h2>Omega TrustMap</h2>
+        <p>Operational and relationship graphing for workflow dependencies, approval chains, AI involvement, escalation paths, and trust concentration zones.</p>
+      </div>
+      <div class="trustmap-layout">
+        <div class="trustmap-canvas omega-card" id="trustMapCanvas" aria-label="Omega TrustMap relationship graph"></div>
+        <aside class="omega-card trustmap-detail" id="trustMapDetail">
+          <div class="card-kicker">Relationship intelligence</div>
+          <h3>Select a node</h3>
+          <p>Click any relationship node to see its role in the operational trust chain.</p>
+        </aside>
       </div>
     </section>
 
-    <section id="industries" class="section industries">
-      <p class="section-label">Priority Markets</p>
-      <h2>Focused where leadership risk, compliance pressure, and operational disruption matter.</h2>
-
-      <div class="cards five">
-        <article class="card">
-          <h3>Federal Contractors</h3>
-          <p>CMMC, NIST 800-171, contract eligibility, supply-chain risk, and audit readiness.</p>
-        </article>
-        <article class="card">
-          <h3>Healthcare</h3>
-          <p>HIPAA, ransomware exposure, patient data, vendor dependency, and continuity.</p>
-        </article>
-        <article class="card">
-          <h3>Manufacturing</h3>
-          <p>Downtime, operational technology exposure, production disruption, and vendor risk.</p>
-        </article>
-        <article class="card">
-          <h3>Financial Services</h3>
-          <p>Trust, regulatory pressure, cyber maturity, fraud exposure, and third-party governance.</p>
-        </article>
-        <article class="card">
-          <h3>Legal & Professional Services</h3>
-          <p>Confidentiality, client trust, AI usage, document security, and operational accountability.</p>
-        </article>
+    <section class="view-panel" data-view-panel="reports">
+      <div class="section-head operational-only">
+        <span class="boundary-chip live">Live Capability</span>
+        <h2>Executive Reporting</h2>
+        <p>Every report has distinct structure, purpose, executive audience, and recommended next step. No cloned outputs.</p>
+      </div>
+      <div class="report-layout">
+        <div class="report-list" id="reportList"></div>
+        <article class="report-preview omega-card" id="reportPreview"></article>
+      </div>
+      <div class="report-actions">
+        <button class="primary-action" id="downloadReportBtn">Download Report Text</button>
+        <button class="secondary-action" id="emailReportBtn">Email Report</button>
+        <button class="secondary-action" onclick="window.print()">Print / Save PDF</button>
       </div>
     </section>
 
-    <section id="about" class="section about">
-      <div>
-        <p class="section-label">About Dr. Max Justice</p>
-        <h2>vCISO. Security SME. Cybersecurity SME. Veteran-led executive advisor.</h2>
-        <p>
-          Dr. Max Justice helps organizations transform cyber complexity, AI governance pressure, vendor risk, and compliance uncertainty into clearer executive decisions.
-        </p>
-        <p>
-          He is the CEO of Maximum Justice Cybersecurity, creator of The CHN vCISO GPT powered by Cyber Shield, a U.S. veteran, CISSP, PMP, and PhD in Technology & Innovation Management with a cybersecurity focus.
-        </p>
+    <section class="view-panel" data-view-panel="memory">
+      <div class="section-head operational-only">
+        <span class="boundary-chip live">Local Memory</span>
+        <h2>Organizational Memory</h2>
+        <p>CyberShield tracks unresolved issues, prior decisions, evidence age, governance drift, and operational trend direction in this browser session.</p>
       </div>
-
-      <div class="credential-wall">
-        <span>U.S. Veteran</span>
-        <span>CISSP</span>
-        <span>PMP</span>
-        <span>PhD Cybersecurity</span>
-        <span>MBA</span>
-        <span>Lean Six Sigma Black Belt</span>
-        <span>NASA CIO Award</span>
-        <span>NGA Leadership Award</span>
+      <div class="memory-grid" id="memoryGrid"></div>
+      <div class="form-actions">
+        <button class="secondary-action" id="resetAssessmentBtn">Reset Assessment</button>
+        <button class="secondary-action" id="clearMemoryBtn">Clear Local Memory</button>
       </div>
     </section>
 
-    <section class="section proof">
-      <p class="section-label">Why MJC</p>
-      <h2>Built for owners and executives who need cybersecurity translated into action.</h2>
-
-      <div class="proof-grid">
-        <div>
-          <strong>Executive clarity</strong>
-          <p>Translate technical activity into decision-ready operational visibility.</p>
-        </div>
-        <div>
-          <strong>Governance discipline</strong>
-          <p>Clarify ownership, accountability, authority, and evidence before pressure hits.</p>
-        </div>
-        <div>
-          <strong>Operational realism</strong>
-          <p>Prioritize what reduces exposure and improves resilience, not what adds noise.</p>
-        </div>
+    <section class="view-panel" data-view-panel="doctrine">
+      <div class="section-head operational-only">
+        <span class="boundary-chip doctrine">Doctrine</span>
+        <h2>Omega Trust Doctrine</h2>
+        <p>Trust is operational infrastructure. CyberShield exists to make that trust visible, explainable, actionable, and continuous.</p>
       </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="contact-card">
-        <p class="section-label">Start Here</p>
-        <h2>Schedule an Executive Cyber & AI Operational Readiness Briefing.</h2>
-        <p>
-          Use this if you want a practical conversation about cyber governance, AI oversight, audit readiness, vCISO advisory, or operational resilience.
-        </p>
-
-        <div class="cta-row centered">
-          <a class="btn btn-primary" href="mailto:max@maximumjusticecybersecurity.com?subject=Executive%20Cyber%20%26%20AI%20Operational%20Readiness%20Briefing">Email Max</a>
-          <a class="btn btn-secondary" href="https://maximumjusticecybersecurity.github.io/CyberShield/" target="_blank" rel="noopener">Launch CyberShield</a>
-        </div>
-
-        <p class="direct-email">max@maximumjusticecybersecurity.com</p>
+      <div class="doctrine-grid">
+        <article class="omega-card"><div class="card-kicker">Omega</div><h3>Trust is operational infrastructure.</h3><p>Trust cannot be assumed. It must be modeled, evidenced, assigned, governed, and reviewed.</p></article>
+        <article class="omega-card"><div class="card-kicker">Admissibility</div><h3>Is this operationally admissible right now?</h3><p>Future builds will extend advisory-assisted decisions toward runtime governance and agent authorization boundaries.</p></article>
+        <article class="omega-card"><div class="card-kicker">Ownership</div><h3>Security without ownership becomes theater.</h3><p>Every risk must connect to a decision owner, evidence maturity, next action, and review cadence.</p></article>
+        <article class="omega-card"><div class="card-kicker">Resilience</div><h3>Operational readiness beats reactive recovery.</h3><p>CyberShield prioritizes continuity, consequence visibility, and leadership coordination before crisis occurs.</p></article>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <strong>Maximum Justice Cybersecurity</strong>
-    <span>Executive cyber leadership, AI governance, and operational resilience.</span>
-  </footer>
+  <aside class="advisor-drawer" id="advisorDrawer" aria-live="polite">
+    <button id="drawerClose" class="drawer-close" aria-label="Close advisor panel">×</button>
+    <div class="card-kicker" id="drawerKicker">Operational detail</div>
+    <h3 id="drawerTitle">Select an item</h3>
+    <p id="drawerMeaning">Click an action, consequence, report, or trust node to view specific context.</p>
+    <div class="drawer-block"><strong>Why this matters</strong><p id="drawerWhy">The advisor panel provides unique, item-specific guidance.</p></div>
+    <div class="drawer-block"><strong>Next best action</strong><p id="drawerAction">Select a platform element.</p></div>
+    <div class="drawer-block"><strong>MJC advisory layer</strong><p id="drawerMjc">Maximum Justice Cybersecurity can validate the operating assumptions and convert the recommendation into a practical executive plan.</p></div>
+  </aside>
 
   <script src="app.js"></script>
 </body>

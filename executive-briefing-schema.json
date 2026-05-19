@@ -1,15 +1,23 @@
 {
-  "schema_name": "CyberShield Executive Operational Briefing",
-  "version": "7.2",
-  "required_sections": [
+  "schema_name": "Executive Operational Briefing Schema",
+  "version": "8.0",
+  "fields": [
     "what_changed",
     "why_it_matters",
-    "operational_consequence",
-    "decision_required",
-    "owner",
+    "operational_consequences",
+    "recommended_decisions",
+    "decision_owner",
     "confidence_level",
+    "evidence_maturity",
     "governance_state",
-    "continuity_memory"
+    "escalation_status",
+    "advisory_note"
   ],
-  "reporting_standard": "Board-readable, low jargon, consequence-aware, confidence-labeled"
+  "required_outputs": [
+    "executive_summary",
+    "action_queue",
+    "trustmap_relationships",
+    "board_ready_report",
+    "organizational_memory_entry"
+  ]
 }

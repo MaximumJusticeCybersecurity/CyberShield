@@ -1,10 +1,17 @@
 {
-  "concepts": {
-    "operational_trust": "The evidence-backed ability of leadership to rely on cyber, AI, vendor, and governance systems under pressure.",
-    "decision_compression": "The transformation of cyber complexity into executive action, ownership, and consequence visibility.",
-    "governance_continuity": "The persistent memory of unresolved cyber decisions, accepted risks, remediation progress, and evidence age.",
-    "adversarial_operational_risk": "Risk created when intelligent threat behavior intersects with organizational dependencies and leadership coordination limits."
-  },
-  "primary_offer": "Executive Cyber Briefing Pilot",
-  "advisory_model": "CyberShield plus Maximum Justice Cybersecurity vCISO strategic advisory"
+  "semantic_map": "CyberShield OS v8 machine-readable operational map",
+  "primary_category": "Operational Trust Infrastructure",
+  "doctrine": "Omega Trust Architecture",
+  "primary_offer": "Operational Trust Assessment",
+  "secondary_offer": "Executive Operational Briefing Pilot",
+  "advisory_layer": "Maximum Justice Cybersecurity validates assumptions, evidence, owners, and operating plans.",
+  "site_views": {
+    "briefing": "Executive decision compression and consequence visibility",
+    "actions": "Ranked operational trust work queue",
+    "scenario": "Simulated incident-to-decision operational emulation",
+    "trustmap": "Relationship graphing for trust, workflow, approval, and dependency paths",
+    "reports": "Distinct executive artifacts for leadership and board review",
+    "memory": "Local continuity record for unresolved issues and prior decisions",
+    "doctrine": "Omega Trust operating philosophy"
+  }
 }

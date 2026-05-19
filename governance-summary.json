@@ -1,24 +1,36 @@
 {
-  "platform": "CyberShield OS v7.2",
-  "category": "Operational Trust Infrastructure",
+  "product": "CyberShield OS v8",
+  "architecture": "Omega Operational Environment",
   "doctrine": "Omega: Trust is operational infrastructure.",
+  "positioning": "Advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership.",
+  "commercial_entry_wedge": "Operational Trust Assessment",
+  "primary_workflow": "Assessment -> Omega TrustMap -> Executive Operational Briefing -> Action Orchestration -> Organizational Memory -> Executive Reporting",
   "capability_layer": "Executive Cyber Decision Intelligence",
-  "interaction_model": "Executive Operational Briefing Workflow",
-  "signature_workflow": [
-    "Telemetry signal",
-    "Adversarial narrative",
-    "Organizational consequence",
-    "Executive decisions",
-    "Ownership",
-    "Confidence",
-    "Governance continuity"
+  "service_mode": "Advisory-assisted; simulation-supported; not presented as fully autonomous runtime governance.",
+  "target_market": ["SMB leadership", "mid-market leadership", "COO", "CIO", "CEO", "vCISO", "governance-oriented executives"],
+  "trust_principles": [
+    "Trust must be modeled, evidenced, assigned, governed, and reviewed.",
+    "Security without ownership becomes theater.",
+    "Visibility without prioritization creates paralysis.",
+    "Operational readiness beats reactive recovery.",
+    "AI is controlled before it acts, or it is not controlled at all."
   ],
-  "product_boundaries": {
-    "live_capability": ["assessment", "action orchestration", "executive reports", "local organizational memory"],
-    "simulation_preview": ["incident scenarios", "telemetry timeline", "consequence mapping"],
-    "advisory_assisted": ["vCISO governance review", "board-ready interpretation", "operational resilience pilot"],
-    "not_claimed": ["verified enterprise telemetry", "autonomous decision making", "live SIEM integration"]
-  }
-,
-  "v7_2_integrity_update": "Advisor content is context-specific by clicked domain, scenario consequence, action, trust domain, and memory item. The visible briefing preview is labeled as a sample until assessment data is submitted."
+  "implemented_v8": [
+    "mobile-first Omega Operational Blue visual system",
+    "two-mode UX: orientation environment and operational environment",
+    "Operational Trust Assessment",
+    "Executive Operational Briefing",
+    "Action Orchestration Engine",
+    "Heavier operational scenario emulation",
+    "Omega TrustMap relationship graphing",
+    "distinct executive report outputs",
+    "local organizational memory"
+  ],
+  "future_direction": [
+    "runtime governance engine",
+    "agent authorization boundaries",
+    "evidence substrate integration",
+    "workflow admissibility checks",
+    "enterprise API integrations"
+  ]
 }
