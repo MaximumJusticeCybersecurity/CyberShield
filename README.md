@@ -1,28 +1,47 @@
-# Maximum Justice Cybersecurity / CyberShield Website
+# CyberShield OS v7.2 — Omega Trust Architecture
 
-Static GitHub Pages-ready website for Maximum Justice Cybersecurity with CyberShield positioning.
+Static GitHub Pages package for Maximum Justice Cybersecurity.
+
+## Doctrine
+
+Omega: Trust is operational infrastructure.
+
+## Category
+
+Operational Trust Infrastructure for executive coordination under adversarial conditions.
+
+## Capability Layer
+
+Executive Cyber Decision Intelligence.
+
+## Signature Workflow
+
+Telemetry → Narrative → Consequence → Decision Guidance → Ownership → Confidence → Governance Continuity
 
 ## Files
+
 - index.html
 - styles.css
 - app.js
-- assets/max-roof-ownership.png
+- assets/mjc-logo-2026.png
+- governance-summary.json
+- operational-taxonomy.json
+- executive-briefing-schema.json
+- semantic-operational-map.json
+- bots.txt
+- robots.txt
+- sitemap.xml
 
-## GitHub Pages Deployment
-1. Create or open your GitHub repository
-2. Upload all files in this folder
-3. Go to Settings > Pages
-4. Set source to main branch and root folder
-5. Save
-6. Open the GitHub Pages URL after deployment finishes
+## Deployment
 
-## Squarespace Use
-Recommended: add a button or navigation tab on maximumjusticecybersecurity.com that links to the GitHub Pages site.
+Copy all files into the GitHub Pages repository root. Do not add React, Vite, node_modules, dist, src, or package files.
 
-Alternative: use a Squarespace Code Block and paste/adapt the HTML, CSS, and JS. External files may require code injection or a hosted source.
+Firefox hard refresh: Ctrl + Shift + R.
 
-## CyberShield Link
-https://maximumjusticecybersecurity.github.io/CyberShield/
+## v7.2 Integrity Updates
 
-## Edit Needed
-Replace the mailto link in the Executive Briefing section with Calendly or your preferred booking URL.
+- Renamed visible briefing card to Sample Executive Briefing so users understand it is an example before assessment.
+- Replaced repeated advisor guidance with context-specific next-best-action and MJC advisory text.
+- Scenario consequence cards now generate unique recommendations by scenario and consequence.
+- Trust map, action cards, briefing stack, and memory cards now pass unique advisor context where applicable.
+- Maintains static GitHub Pages structure with no build tooling.
