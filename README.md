@@ -1,41 +1,28 @@
-# Maximum Justice Cybersecurity Authority Site
+# Maximum Justice Cybersecurity / CyberShield Website
 
-This is the corrected MJC authority website build.
-
-CyberShield is preserved as a separate existing tool and is linked here:
-
-https://maximumjusticecybersecurity.github.io/CyberShield/
+Static GitHub Pages-ready website for Maximum Justice Cybersecurity with CyberShield positioning.
 
 ## Files
-
 - index.html
 - styles.css
 - app.js
-- assets/max-justice-nasa-roof.png
+- assets/max-roof-ownership.png
 
-## Deployment
+## GitHub Pages Deployment
+1. Create or open your GitHub repository
+2. Upload all files in this folder
+3. Go to Settings > Pages
+4. Set source to main branch and root folder
+5. Save
+6. Open the GitHub Pages URL after deployment finishes
 
-Upload these files to a separate GitHub repository, such as:
+## Squarespace Use
+Recommended: add a button or navigation tab on maximumjusticecybersecurity.com that links to the GitHub Pages site.
 
-mjc-site
+Alternative: use a Squarespace Code Block and paste/adapt the HTML, CSS, and JS. External files may require code injection or a hosted source.
 
-Recommended local folder:
+## CyberShield Link
+https://maximumjusticecybersecurity.github.io/CyberShield/
 
-C:\MJC-Site
-
-Do not place this inside the CyberShield repository.
-
-## GitHub Pages
-
-Repository Settings → Pages → Deploy from branch → main → root
-
-## Contact Email
-
-The site uses:
-
-max@maximumjusticecybersecurity.com
-
-## Strategic Structure
-
-MJC = parent authority site  
-CyberShield = separate featured tool
+## Edit Needed
+Replace the mailto link in the Executive Briefing section with Calendly or your preferred booking URL.
