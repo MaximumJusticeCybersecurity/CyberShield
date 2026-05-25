@@ -1,60 +1,78 @@
-# CyberShield OS v8 — Omega Operational Environment
+# CyberShield Executive OS
 
-CyberShield OS v8 is a clean static GitHub Pages package.
+CyberShield is an executive operational trust environment for cyber, AI governance, evidence, ownership, and consequence-aware leadership decisions.
 
-## Positioning
+## Current build
 
-CyberShield is advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership.
+Internal continuity label: CyberShield V9 Phase 1
 
-Omega doctrine: **Trust is operational infrastructure.**
+This internal build label is intentionally not exposed in the primary user experience. Normal users should see the product as CyberShield Executive OS, not as a numbered version.
 
-## Strategic intent
+## Product direction
 
-v8 shifts CyberShield from a platform demo into an operational environment.  It distinguishes pre-assessment orientation from post-assessment operational mode.
+CyberShield is not a chatbot, SIEM, compliance spreadsheet, MSP portal, or generic AI dashboard.
 
-## What is included
+CyberShield is Operational AI Governance and Admissibility Infrastructure.
 
-- `index.html`
-- `styles.css`
-- `app.js`
-- `assets/mjc-logo-2026.png`
-- `governance-summary.json`
-- `operational-taxonomy.json`
-- `executive-briefing-schema.json`
-- `semantic-operational-map.json`
-- `bots.txt`
-- `robots.txt`
-- `sitemap.xml`
+Core thesis:
 
-## Major v8 changes
+> Operational Governance Before Consequence
 
-- Omega Operational Blue visual system
-- Mobile-first LinkedIn traffic experience
-- Operational Trust Assessment as commercial entry wedge
-- Post-onboarding operational mode transition
-- Executive Operational Briefing as the primary workflow
-- Action Orchestration Engine
-- Heavier operational scenario emulation
-- Omega TrustMap operational relationship graphing
-- Distinct report types with no cloned outputs
-- Local organizational memory
-- Advisory-assisted capability boundaries
+CyberShield structures leadership judgment for the human in the loop. It does not replace leadership judgment.
 
-## Deployment
+## Phase 1 scope
 
-1. Delete old repository contents except `.git/`
-2. Copy this package into the repository root
-3. Commit and push
-4. GitHub Pages source: `main` branch, `/root`
-5. Open the site and hard refresh: `Ctrl + Shift + R` in Firefox
+Phase 1 establishes the foundation for the next CyberShield generation:
 
-## Validation performed
+1. Hide version language from normal user-facing surfaces
+2. Preserve versioning only for internal continuity and builder handoff
+3. Refactor the product-facing advisory concept to Executive Advisor Layer
+4. Preserve Decision Intelligence Layer as the architecture-facing name
+5. Extend onboarding into a personalization engine
+6. Capture primary role, additional roles, decision authority, reporting audience, artifact state, and evidence confidence
+7. Support multiple role-specific dashboards for one human in the loop
+8. Add role switching for personalized executive views
+9. Add Decision Rationale Trace language to advisor and report outputs
+10. Improve responsive behavior to prevent metric card overlap during resize
+11. Preserve the static HTML, CSS, and JavaScript deployment model
 
-- `node --check app.js`
-- JSON parse validation
-- Required file validation
-- ZIP integrity validation
+## Product-facing terminology
 
-## Boundary statement
+Use these terms in the user interface:
 
-CyberShield OS v8 is advisory-assisted and simulation-supported.  It does not claim autonomous runtime governance, live telemetry ingestion, or fully automated agent authorization.
+- CyberShield Executive OS
+- Executive Advisor Layer
+- Operational TrustMap
+- Executive Priorities Engine
+- Decision Rationale Trace
+- Operational Governance Before Consequence
+
+## Architecture terminology
+
+Use these terms in architecture notes and builder handoff documents:
+
+- Decision Intelligence Layer
+- Evidence Substrate
+- Runtime Governance Engine
+- Operational Admissibility
+- Governance Memory
+- Machine-readable evidence
+- Recommendation trace
+- Executive decision record
+
+## Technical structure
+
+This build remains intentionally simple:
+
+- index.html
+- styles.css
+- v9-phase1.css
+- app.js
+- assets/
+- google-apps-script/
+
+Do not introduce React, Vite, or a complex build pipeline unless a later phase explicitly requires it.
+
+## Handoff
+
+See `docs/cybershield-v9-phase1-handoff.md` for builder continuity notes.
