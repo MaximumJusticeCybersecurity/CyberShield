@@ -1,0 +1,283 @@
+:root{
+  --advisor-accent:#42d7ff;
+  --advisor-deep:#071b30;
+  --advisor-soft:rgba(66,215,255,.1);
+}
+
+/* CyberShield V9 Phase 1 overrides.
+   Purpose: keep versioning out of the primary user experience while adding individualized executive advisory behavior. */
+
+.nav-item.quiet{
+  opacity:.78;
+}
+
+.role-checkbox-panel{
+  border:1px solid var(--omega-line);
+  border-radius:var(--radius);
+  background:rgba(7,27,48,.36);
+  padding:18px;
+  margin:8px 0 20px;
+}
+
+.role-checkbox-panel legend{
+  color:#fff;
+  font-weight:900;
+  padding:0 8px;
+}
+
+.role-checkbox-panel p{
+  margin:6px 0 14px;
+  color:var(--omega-muted);
+}
+
+.checkbox-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
+}
+
+.checkbox-grid label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  border:1px solid var(--omega-line);
+  border-radius:14px;
+  background:rgba(7,27,48,.44);
+  padding:11px 12px;
+}
+
+.checkbox-grid input{
+  width:auto;
+  min-height:auto;
+  accent-color:var(--omega-cyan);
+}
+
+.role-switcher{
+  margin:0 0 18px;
+}
+
+.role-switcher h3{
+  margin-bottom:6px;
+}
+
+.role-view-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:10px;
+  margin-top:14px;
+}
+
+.role-view{
+  border:1px solid var(--omega-line);
+  border-radius:18px;
+  background:rgba(7,27,48,.48);
+  color:#fff;
+  padding:13px;
+  text-align:left;
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background .18s ease;
+}
+
+.role-view strong,
+.role-view span{
+  display:block;
+}
+
+.role-view span{
+  color:var(--omega-muted);
+  font-size:.83rem;
+  margin-top:4px;
+}
+
+.role-view:hover,
+.role-view.active{
+  border-color:var(--omega-cyan);
+  background:rgba(66,215,255,.13);
+  box-shadow:0 0 0 4px rgba(66,215,255,.1);
+  transform:translateY(-1px);
+}
+
+.omega-stack{
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  align-items:stretch;
+}
+
+.omega-stack .omega-card,
+.metric-card,
+.exposure-card{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.metric-value{
+  font-variant-numeric:tabular-nums;
+}
+
+.exposure-card h3{
+  font-size:clamp(1.35rem,2.6vw,2rem);
+  line-height:1.12;
+}
+
+.brief-meta,
+.action-meta{
+  min-width:0;
+}
+
+.brief-meta span,
+.action-meta span,
+.mini-grid span{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.settings-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+}
+
+.advisor-drawer{
+  border-color:rgba(66,215,255,.42);
+}
+
+.advisor-drawer #drawerTitle{
+  padding-right:28px;
+}
+
+.drawer-block p{
+  overflow-wrap:anywhere;
+}
+
+.trust-node.active{
+  border-color:var(--omega-green);
+  box-shadow:0 0 0 5px rgba(126,230,162,.14), var(--omega-shadow);
+}
+
+.trust-node.active::after{
+  content:"";
+  position:absolute;
+  inset:-9px;
+  border:1px solid rgba(126,230,162,.35);
+  border-radius:24px;
+  animation:trustPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes trustPulse{
+  0%,100%{opacity:.25;transform:scale(.98)}
+  50%{opacity:.9;transform:scale(1.02)}
+}
+
+.report-preview{
+  overflow-wrap:anywhere;
+}
+
+@media (max-width:1180px){
+  .brief-meta{
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  }
+  .omega-stack{
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  }
+}
+
+@media (max-width:980px){
+  .site-header{
+    flex-wrap:wrap;
+  }
+  .brand-lockup{
+    min-width:0;
+    flex:1 1 auto;
+  }
+  .primary-nav{
+    top:76px;
+  }
+  .omega-stack,
+  .consequence-grid,
+  .action-grid,
+  .memory-grid,
+  .doctrine-grid,
+  .settings-grid{
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  }
+}
+
+@media (max-width:720px){
+  .app-shell{
+    padding-inline:14px;
+  }
+  .omega-card,
+  .assessment-panel,
+  .hero-copy,
+  .hero-brief-card{
+    border-radius:20px;
+  }
+  .briefing-layout,
+  .scenario-shell,
+  .trustmap-layout,
+  .report-layout{
+    gap:14px;
+  }
+  .omega-stack,
+  .consequence-grid,
+  .action-grid,
+  .memory-grid,
+  .doctrine-grid,
+  .settings-grid,
+  .role-view-grid,
+  .checkbox-grid{
+    grid-template-columns:1fr;
+  }
+  .brief-meta,
+  .action-meta,
+  .translation-pair{
+    grid-template-columns:1fr;
+  }
+  .exposure-card{
+    width:100%;
+  }
+  .metric-value{
+    font-size:2.3rem;
+  }
+}
+
+@media (max-width:520px){
+  .site-header{
+    gap:10px;
+  }
+  .brand-lockup{
+    gap:10px;
+  }
+  .brand-logo{
+    width:42px;
+    height:42px;
+  }
+  .hero-copy h2{
+    font-size:2rem;
+    letter-spacing:-.04em;
+  }
+  .section-head h2{
+    font-size:1.8rem;
+  }
+  .nav-item,
+  .secondary-action,
+  .primary-action,
+  .report-item,
+  .scenario-tab{
+    min-height:46px;
+  }
+  .trustmap-canvas{
+    min-height:620px;
+    padding:12px;
+  }
+  .trust-node{
+    min-width:112px;
+    max-width:130px;
+    font-size:.82rem;
+    padding:10px;
+  }
+  .advisor-drawer{
+    right:10px;
+    bottom:10px;
+    width:calc(100vw - 20px);
+  }
+}
