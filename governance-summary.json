@@ -1,13 +1,18 @@
 {
   "product": "CyberShield Executive OS",
-  "current_build": "Integrated V21-V28 Release Train v28",
+  "current_build": "V29 Integration Readiness and Performance Stabilization",
   "build_date": "2026-05-26",
-  "architecture": "Runtime Governance, Operational Admissibility, TrustMap, Adoption Strategy, Pilot Packaging, and Website Integration Prototype",
+  "architecture": "Runtime Governance, Operational Admissibility, TrustMap Operating Model, Integration Readiness, Pilot Packaging, and Website-Aligned Executive Prototype",
   "product_facing_layer": "Executive Advisor Layer",
   "architecture_facing_layer": "Decision Intelligence Layer",
   "doctrine": "Operational Governance Before Consequence",
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
+  "website_aligned_trustmap_model": [
+    "Assess operational trust exposure",
+    "Analyze governance and runtime risk",
+    "Deliver executive visibility and control"
+  ],
   "release_train": {
     "v21": "Executive Demo QA and Navigation Compression",
     "v22": "TrustMap 2.0 and Runtime Relationship Logic",
@@ -16,7 +21,8 @@
     "v25": "Framework Evidence Library",
     "v26": "Persistence, Intake, and CRM Payload Hardening",
     "v27": "Pilot Package and Sales Enablement",
-    "v28": "Website Integration Layer"
+    "v28": "Website Integration Layer",
+    "v29": "Integration Readiness and Performance Stabilization"
   },
   "primary_navigation": [
     "Briefing",
@@ -36,44 +42,42 @@
     "Evidence",
     "Guidance",
     "Persistence",
+    "Integration",
     "Website"
   ],
-  "v28_capabilities": [
-    "compressed executive navigation",
-    "guided demo mode with Runtime, TrustMap, Reports, Adoption, Pilot sequence",
-    "TrustMap relationship confidence",
-    "weak-link indicators",
-    "runtime color propagation",
-    "cross-agent preview",
-    "audience-specific reports",
-    "markdown, text, and JSON report export",
-    "Governance Memory categories",
-    "framework evidence library",
-    "local/export-only buyer payload",
-    "local/export-only technical evidence payload",
-    "local/export-only advisory summary payload",
-    "local/export-only pilot scope payload",
-    "local/export-only report bundle payload",
-    "pilot package and one-pager",
-    "website integration modes and MJC copy blocks"
+  "v29_capabilities": [
+    "website-aligned TrustMap operating model",
+    "runtime operational admissibility scenarios",
+    "MJC sales agent prospect qualification scenario",
+    "audience-specific reports and proof exports",
+    "Governance Memory decision record view",
+    "Evidence Substrate decision packet",
+    "Google Sheets CRM row payload schema",
+    "GitHub demo/admin persistence model",
+    "Microsoft 365 mock evidence source model for SharePoint, OneDrive, and Outlook",
+    "local/export-only payloads",
+    "V29 integration readiness layer",
+    "clear prototype boundary",
+    "performance-oriented static consolidation"
   ],
   "runtime_scenarios": [
     "AI vendor payment authorization",
     "AI-generated client communication",
     "Privileged access reset request",
     "Recovery validation automation",
-    "Shadow AI sensitive data upload"
+    "Shadow AI sensitive data upload",
+    "MJC sales agent prospect qualification"
   ],
   "trustmap_nodes": [
-    "Executive Authority",
+    "Assess Exposure",
     "AI Systems",
-    "Runtime Rules",
-    "Identity Boundary",
-    "Vendor Access",
     "Critical Workflows",
+    "Identity Boundary",
     "Policy Boundary",
     "Evidence Substrate",
-    "Executive Outputs"
+    "Analyze Runtime Risk",
+    "CRM / Pilot Record",
+    "Deliver Control"
   ],
   "frameworks": [
     "CMMC / NIST SP 800-171",
@@ -81,8 +85,7 @@
     "HIPAA",
     "SOC 2",
     "AI Governance",
-    "Vendor Risk",
-    "Recovery Validation"
+    "Vendor Risk"
   ],
   "best_fit_buyers": [
     "Federal Contractors",
@@ -106,14 +109,62 @@
     "Embed Mode",
     "Demo Mode"
   ],
-  "v29_pause_required": true,
-  "v29_input_needed": [
-    "Google Sheets structure and Apps Script decision",
-    "Microsoft 365 systems to include or exclude",
-    "CRM direction",
-    "security boundary",
-    "identity and telemetry assumptions",
-    "AI tools to govern"
+  "v29_decisions_locked": true,
+  "v29_decision_record": "docs/v29-decision-record.md",
+  "approved_persistence_route": "GitHub file-based persistence for demo/admin only",
+  "crm_direction": {
+    "type": "Google Sheets CRM-lite",
+    "spreadsheet_title": "CyberShield Google Sheets CRM",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw/edit?usp=sharing",
+    "sync_status": "schema and export payload only; no live browser sync"
+  },
+  "crm_schema": [
+    "Created Date",
+    "Lead Name",
+    "Company",
+    "Role",
+    "Email",
+    "Phone",
+    "Source",
+    "Buyer Type",
+    "Pain Point",
+    "Compliance Driver",
+    "AI Governance Interest",
+    "Readiness Score",
+    "Recommended Offer",
+    "Next Action",
+    "Owner",
+    "Status",
+    "Notes",
+    "Last Updated",
+    "Data Boundary",
+    "Source Tool",
+    "Evidence Link"
+  ],
+  "microsoft_365_scope": {
+    "status": "mockable future evidence sources only",
+    "included_future_sources": [
+      "SharePoint policy artifacts",
+      "OneDrive evidence artifacts",
+      "Outlook meeting evidence",
+      "Outlook decision or approval emails"
+    ],
+    "excluded_in_v29": [
+      "live Microsoft Graph integration",
+      "Teams",
+      "Entra ID",
+      "Purview",
+      "email scraping",
+      "background sync"
+    ]
+  },
+  "data_handling_boundary": "Company self-assessment data plus non-sensitive policy/control artifacts only.",
+  "identity_assumptions": "No authentication. Demo-only executive role model for CEO, CFO, CIO/CTO, and CISO/vCISO.",
+  "telemetry_assumptions": "Manual answers, uploaded or linked evidence placeholders, and simulated telemetry clearly labeled as simulated.",
+  "first_ai_tools_to_govern": [
+    "ChatGPT / custom GPTs",
+    "Microsoft Copilot",
+    "MJC sales agent"
   ],
   "critical_ux_rule": "Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.",
   "critical_architecture_rule": "CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.",
@@ -123,7 +174,8 @@
     "The current public build is not connected to Google Sheets, Microsoft 365, or a real CRM.",
     "The current public build is not a production SIEM, EDR, GRC, identity, cloud control, CRM, or agent enforcement platform.",
     "CyberShield should not be represented as fully deployed live runtime enforcement until integrations exist.",
-    "CyberShield shows decision rationale traces, not private hidden chain-of-thought."
+    "CyberShield shows decision rationale traces, not private hidden chain-of-thought.",
+    "No sensitive data, regulated data, secrets, credentials, or raw client telemetry should be entered into the prototype."
   ],
   "commercial_entry_wedge": "CyberShield Readiness Review or Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield."
 }
