@@ -1,199 +1,126 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CyberShield Executive OS | Operational Trust Environment</title>
-  <meta name="description" content="CyberShield is an executive operational trust environment for cyber, AI governance, evidence, ownership, and consequence-aware leadership decisions." />
-  <meta name="theme-color" content="#0b2138" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/mjc-logo-2026.png" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberShield Executive OS</title>
+  <meta name="description" content="CyberShield is a runtime governance and operational admissibility platform for AI and cyber decisions before consequence.">
+  <meta name="theme-color" content="#071827">
+  <link rel="icon" href="assets/mjc-logo-2026.png">
+  <style>
+    :root{
+      --bg:#071827;--panel:#0d2338;--panel2:#102b45;--line:#214967;--text:#eef8ff;--muted:#aac0d3;--blue:#42d7ff;--green:#76e4a1;--amber:#ffd166;--red:#ff6b6b;--shadow:0 18px 40px rgba(0,0,0,.25);--radius:18px
+    }
+    *{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.45}button,input,select{font:inherit}button{cursor:pointer}.skip-link{position:absolute;left:-999px}.skip-link:focus{left:12px;top:12px;background:#fff;color:#000;padding:8px;z-index:9}
+    header{position:sticky;top:0;z-index:4;background:rgba(7,24,39,.97);border-bottom:1px solid var(--line);padding:14px 20px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}.brand{display:flex;align-items:center;gap:12px}.brand img{width:48px;height:48px;object-fit:contain}.eyebrow{margin:0;color:var(--blue);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800}.brand h1{font-size:1.25rem;margin:2px 0 0}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav button,.btn{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);padding:9px 12px;border-radius:999px}.nav button.active,.btn.primary{border-color:var(--blue);background:rgba(66,215,255,.16)}.btn.primary{font-weight:800}.mobile{display:none}
+    main{max-width:1180px;margin:0 auto;padding:22px}.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:16px;margin-bottom:18px}.card{background:linear-gradient(180deg,rgba(16,43,69,.96),rgba(13,35,56,.96));border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}.hero h2{font-size:2.35rem;line-height:1.05;margin:10px 0}.hero p{color:var(--muted);font-size:1.04rem}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(66,215,255,.35);background:rgba(66,215,255,.1);color:var(--text);border-radius:999px;padding:6px 10px;font-size:.8rem;font-weight:800}.chip.green{border-color:rgba(118,228,161,.35);background:rgba(118,228,161,.1)}.chip.amber{border-color:rgba(255,209,102,.35);background:rgba(255,209,102,.1)}.chip.red{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.1)}
+    .view{display:none}.view.active{display:block}.section-head{margin:18px 0}.section-head h2{margin:6px 0;font-size:1.9rem}.section-head p{margin:0;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.kicker{color:var(--blue);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}.card h3{margin:6px 0 8px}.card p{color:var(--muted);margin:0}.metric{font-size:2.2rem;font-weight:900;margin:8px 0}.bar{height:9px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:99px}.list{display:grid;gap:12px}.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:13px;background:rgba(255,255,255,.035)}.row strong{display:block}.row span{color:var(--muted);font-size:.9rem}.layout3{display:grid;grid-template-columns:.85fr 1.3fr .85fr;gap:14px;align-items:start}.nodebox{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.node{border:1px solid var(--line);background:rgba(66,215,255,.06);border-radius:14px;padding:12px;text-align:left;color:var(--text)}.node.active{border-color:var(--blue);background:rgba(66,215,255,.18)}.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px}.table th,.table td{border-bottom:1px solid var(--line);padding:10px;text-align:left}.table th{color:var(--blue);font-size:.85rem}.panel-note{border-left:4px solid var(--blue);padding:10px 12px;background:rgba(66,215,255,.07);border-radius:12px;color:var(--muted)}pre{white-space:pre-wrap;word-break:break-word;background:#06111d;border:1px solid var(--line);border-radius:14px;padding:14px;color:#dff6ff;max-height:360px;overflow:auto}.hidden{display:none!important}
+    @media(max-width:900px){header{grid-template-columns:1fr}.nav{justify-content:flex-start}.hero,.layout3,.grid,.grid.two,.grid.four{grid-template-columns:1fr}.hero h2{font-size:1.9rem}}@media(max-width:620px){main{padding:14px}.nav{display:none}.nav.open{display:flex}.mobile{display:inline-flex;justify-self:start}.brand h1{font-size:1.05rem}.actions{display:grid}.actions button{width:100%}}
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="brand-lockup">
-      <img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity shield logo" class="brand-logo" />
-      <div>
-        <p class="eyebrow">CyberShield Executive OS</p>
-        <h1>Operational Trust Environment</h1>
-      </div>
-    </div>
-    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
-    <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
-      <button data-view="briefing" class="nav-item active">Briefing</button>
-      <button data-view="actions" class="nav-item">Priorities</button>
-      <button data-view="scenario" class="nav-item">Scenario</button>
-      <button data-view="trustmap" class="nav-item">TrustMap</button>
-      <button data-view="reports" class="nav-item">Reports</button>
-      <button data-view="memory" class="nav-item">Memory</button>
-      <button data-view="doctrine" class="nav-item">Doctrine</button>
-      <button data-view="settings" class="nav-item quiet">Settings</button>
+  <header>
+    <div class="brand"><img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo"><div><p class="eyebrow">CyberShield Executive OS</p><h1>Operational Trust Environment</h1></div></div>
+    <button class="mobile btn" id="menuBtn" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="CyberShield sections">
+      <button class="active" data-view="briefing">Briefing</button>
+      <button data-view="runtime">Runtime</button>
+      <button data-view="escalation">Escalation</button>
+      <button data-view="trustmap">TrustMap</button>
+      <button data-view="evidence">Evidence</button>
+      <button data-view="reports">Reports</button>
+      <button data-view="handoff">Handoff</button>
+      <button data-view="settings">Settings</button>
     </nav>
   </header>
 
-  <main id="main" class="app-shell">
-    <section class="orientation-hero" id="orientationHero">
-      <div class="hero-copy">
-        <span class="boundary-chip advisory">Executive Advisor Layer</span>
-        <p class="eyebrow">Operational Governance Before Consequence</p>
-        <h2>AI adoption is already happening. Control is not.</h2>
-        <p class="hero-lede">CyberShield governs whether AI-assisted and automated actions should execute before consequence.  This emergency build prioritizes runtime stability while the legacy module stack is consolidated.</p>
-        <div class="hero-actions">
-          <button class="primary-action" data-view-jump="actions">Open Executive Priorities</button>
-          <button class="secondary-action" data-view-jump="scenario">View Operational Scenario</button>
-          <button class="secondary-action" data-view-jump="trustmap">View TrustMap</button>
-        </div>
-      </div>
-      <aside class="hero-brief-card" aria-label="Runtime stability notice">
-        <div class="card-kicker">Emergency stable runtime</div>
-        <h3>Legacy module execution is isolated</h3>
-        <p>This page now loads one runtime script only.  V9-V22 experimental modules are not loaded by index.html.</p>
-        <div class="mini-grid">
-          <span><strong>Mode</strong> Stable</span>
-          <span><strong>Runtime</strong> Single entrypoint</span>
-          <span><strong>Focus</strong> Responsiveness</span>
-        </div>
-      </aside>
+  <main id="main">
+    <section class="hero">
+      <div class="card"><span class="chip">Executive Advisor Layer</span><p class="eyebrow">Operational Governance Before Consequence</p><h2>AI is controlled before it acts, or it is not controlled at all.</h2><p>CyberShield evaluates whether an AI-assisted or automated action should execute before consequence.  This rebuild is clean, fast, and intentionally free of legacy modules.</p><div class="actions"><button class="btn primary" data-view-jump="runtime">Run Runtime Decision</button><button class="btn" data-view-jump="trustmap">View TrustMap</button><button class="btn" data-view-jump="reports">Open Reports</button></div></div>
+      <aside class="card"><div class="kicker">Build status</div><h3>Clean runtime rebuild</h3><p>No external CSS.  No external JavaScript.  No MutationObservers.  No dynamic script loading.  No legacy V9-V22 modules on page load.</p><div class="actions"><span class="chip green">Single file</span><span class="chip green">Fast path</span></div></aside>
     </section>
 
-    <section class="view-panel active" data-view-panel="briefing">
-      <div class="section-head operational-only">
-        <span class="boundary-chip advisory">Executive Advisor Layer</span>
-        <h2 id="briefingTitle">CyberShield Executive Operational Briefing</h2>
-        <p id="briefingSubtitle">Loading stable runtime.</p>
+    <section class="view active" id="briefing">
+      <div class="section-head"><span class="chip">Briefing</span><h2>Executive Operational Briefing</h2><p>CyberShield now loads as a lightweight control-plane prototype.  The old module stack is gone from the live page.</p></div>
+      <div class="grid four">
+        <article class="card"><div class="kicker">Runtime health</div><div class="metric">Fast</div><p>Tabs switch by toggling visible sections only.</p></article>
+        <article class="card"><div class="kicker">Control thesis</div><div class="metric">Before</div><p>Govern actions before execution, not after audit review.</p></article>
+        <article class="card"><div class="kicker">Human owner</div><div class="metric">Named</div><p>AI recommends.  A human remains accountable.</p></article>
+        <article class="card"><div class="kicker">Evidence</div><div class="metric">Trace</div><p>Every decision needs evidence, policy, owner, and consequence.</p></article>
       </div>
-      <div class="briefing-layout">
-        <article class="omega-card primary-brief">
-          <div class="card-kicker">What changed</div>
-          <h3 id="whatChanged">Runtime stabilization</h3>
-          <p id="whyMatter">CyberShield is moving from stacked prototype modules to one controlled runtime lifecycle.</p>
-          <div class="brief-meta">
-            <span><strong>Escalation</strong><b id="escalationLevel">High</b></span>
-            <span><strong>Evidence</strong><b id="evidenceLevel">Browser behavior</b></span>
-            <span><strong>Owner</strong><b class="owner-text" id="briefOwner">Builder</b></span>
-          </div>
-        </article>
-        <aside class="omega-card action-now">
-          <div class="card-kicker">Decision required</div>
-          <h3 id="decisionRequired">Consolidate runtime before adding features</h3>
-          <p id="decisionWhy">Responsiveness is a product trust requirement.</p>
-          <button class="primary-action full" data-view-jump="actions">Open Executive Priorities</button>
-        </aside>
-      </div>
-      <div class="omega-stack" id="briefingStack"></div>
+      <div class="grid two" style="margin-top:14px"><article class="card"><div class="kicker">Decision required</div><h3>Rebuild depth only after speed is stable</h3><p>The platform should add sophistication one controlled component at a time: Runtime, Escalation, TrustMap, Evidence, Reports, and Handoff.</p></article><article class="card"><div class="kicker">Architecture rule</div><h3>One runtime owner</h3><p>No broad observers.  No stacked scripts.  No hidden module injections.  No floating panels as the primary UI.</p></article></div>
     </section>
 
-    <section class="view-panel" data-view-panel="actions">
-      <div class="section-head operational-only">
-        <span class="boundary-chip live">Decision Intelligence Layer</span>
-        <h2>Executive Priorities Engine</h2>
-        <p>Immediate priorities after stabilizing the CyberShield runtime.</p>
+    <section class="view" id="runtime">
+      <div class="section-head"><span class="chip">Runtime Governance</span><h2>Operational Admissibility Decision</h2><p>Should this action be operationally admissible right now?</p></div>
+      <div class="grid two">
+        <article class="card"><div class="kicker">Action request</div><h3 id="runtimeTitle">AI assistant requests sensitive data export</h3><p id="runtimeSummary">An approved AI assistant attempts to export regulated client data outside the documented workflow.</p><div class="actions"><button class="btn primary" data-action="data">Data Export</button><button class="btn" data-action="payment">Vendor Payment</button><button class="btn" data-action="access">Privileged Access</button></div></article>
+        <article class="card"><div class="kicker">Decision outcome</div><h3 id="decisionOutcome">Require More Evidence</h3><p id="decisionRationale">Evidence and policy lineage are not strong enough to allow execution.</p><div class="actions"><span id="outcomeChip" class="chip amber">Hold</span><span class="chip">Human Owner: General Counsel</span></div></article>
       </div>
-      <div id="actionQueue" class="action-grid"></div>
+      <div class="grid four" style="margin-top:14px" id="runtimeMetrics"></div>
     </section>
 
-    <section class="view-panel" data-view-panel="scenario">
-      <div class="section-head operational-only">
-        <span class="boundary-chip simulation">Operational Emulation</span>
-        <h2>Executive Incident Scenario Briefing</h2>
-        <p>Lightweight scenario model for runtime stabilization and operational admissibility.</p>
-      </div>
-      <div class="scenario-tabs" id="scenarioTabs" aria-label="Scenario selector"></div>
-      <div class="scenario-shell">
-        <article class="omega-card">
-          <div class="card-kicker">Telemetry to Narrative</div>
-          <h3 id="scenarioTitle">Loading scenario</h3>
-          <div class="translation-pair">
-            <div><strong>Raw signal</strong><p id="rawSignal"></p></div>
-            <div><strong>CyberShield interpretation</strong><p id="interpretedSignal"></p></div>
-          </div>
-        </article>
-        <article class="omega-card">
-          <div class="card-kicker">Operational progression</div>
-          <div class="timeline" id="scenarioTimeline"></div>
-        </article>
-      </div>
-      <div class="consequence-grid" id="consequenceGrid"></div>
-      <div class="decision-table-wrap omega-card">
-        <div class="card-kicker">Executive decision chain</div>
-        <table class="decision-table" id="decisionTable"></table>
+    <section class="view" id="escalation">
+      <div class="section-head"><span class="chip amber">Authority Escalation</span><h2>AI Decision Authority Flow</h2><p>AI does not own the decision.  CyberShield routes risk to the right human authority.</p></div>
+      <div class="list" id="escalationList"></div>
+    </section>
+
+    <section class="view" id="trustmap">
+      <div class="section-head"><span class="chip">TrustMap</span><h2>Operational Relationship Intelligence</h2><p>Identities, AI systems, vendors, evidence, workflows, and reporting paths in one stable view.</p></div>
+      <div class="layout3">
+        <aside class="card"><div class="kicker">Relationship intelligence</div><h3>Concentration points</h3><p>Identity, vendor access, and evidence quality determine whether runtime trust holds.</p></aside>
+        <section class="card"><div class="nodebox" id="trustNodes"></div></section>
+        <aside class="card" id="trustDetail"><div class="kicker">Selected node</div><h3>Executive Authority</h3><p>The named human accountable for the decision, escalation, or risk acceptance.</p></aside>
       </div>
     </section>
 
-    <section class="view-panel" data-view-panel="trustmap">
-      <div class="section-head operational-only">
-        <span class="boundary-chip advisory">Operational TrustMap</span>
-        <h2>CyberShield Operational TrustMap</h2>
-        <p>Simplified relationship intelligence without overlay drawers or heavy redraw behavior.</p>
-      </div>
-      <div class="trustmap-layout">
-        <div class="trustmap-canvas omega-card" id="trustMapCanvas" aria-label="CyberShield Operational TrustMap relationship graph"></div>
-        <aside class="omega-card trustmap-detail" id="trustMapDetail"></aside>
-      </div>
+    <section class="view" id="evidence">
+      <div class="section-head"><span class="chip green">Evidence Substrate</span><h2>Replayable Decision Record</h2><p>CyberShield shows a decision rationale trace, not private hidden reasoning.</p></div>
+      <div class="grid two"><article class="card"><div class="kicker">Evidence packet</div><pre id="evidencePacket"></pre></article><article class="card"><div class="kicker">Why this matters</div><h3>Audit defensibility requires more than a score</h3><p>A useful governance system must preserve the action attempted, policy boundary, confidence, authority path, human owner, consequence, decision, and next action.</p></article></div>
     </section>
 
-    <section class="view-panel" data-view-panel="reports">
-      <div class="section-head operational-only">
-        <span class="boundary-chip live">Executive Outputs</span>
-        <h2>Executive Reporting</h2>
-        <p>Lightweight reporting preview for the emergency stable runtime.</p>
-      </div>
-      <div class="report-layout">
-        <div class="report-list" id="reportList"></div>
-        <article class="report-preview omega-card" id="reportPreview"></article>
-      </div>
-      <div class="report-actions">
-        <button class="secondary-action" onclick="window.print()">Print / Save PDF</button>
-      </div>
+    <section class="view" id="reports">
+      <div class="section-head"><span class="chip">Executive Outputs</span><h2>Board-Ready Reports</h2><p>Lightweight report previews.  No cloned pop-ups.  No overlay drawers.</p></div>
+      <div class="grid two"><div class="card"><div class="kicker">Report list</div><div class="list" id="reportList"></div></div><article class="card" id="reportPreview"></article></div>
     </section>
 
-    <section class="view-panel" data-view-panel="memory">
-      <div class="section-head operational-only">
-        <span class="boundary-chip live">Governance Memory</span>
-        <h2>Organizational Memory</h2>
-        <p>Runtime status, build doctrine, and next stabilization steps.</p>
-      </div>
-      <div class="memory-grid" id="memoryGrid"></div>
+    <section class="view" id="handoff">
+      <div class="section-head"><span class="chip">MJC Handoff</span><h2>Advisory Conversion Path</h2><p>CyberShield should support Maximum Justice Cybersecurity as a product, platform, and proof engine.</p></div>
+      <div class="grid three"><article class="card"><div class="kicker">Lead signal</div><h3>Executive pain detected</h3><p>The prospect has AI governance, evidence, vendor, or runtime control gaps.</p></article><article class="card"><div class="kicker">Offer path</div><h3>CyberShield Readiness Review</h3><p>A vCISO-led review validates assumptions, risk exposure, owners, and evidence quality.</p></article><article class="card"><div class="kicker">Next action</div><h3>Schedule advisory session</h3><p>Turn CyberShield output into a practical governance sprint for the client.</p></article></div>
     </section>
 
-    <section class="view-panel" data-view-panel="doctrine">
-      <div class="section-head operational-only">
-        <span class="boundary-chip doctrine">Doctrine</span>
-        <h2>Operational Governance Before Consequence</h2>
-        <p>CyberShield exists to make leadership judgment structured, evidence-backed, role-specific, and accountable before operational consequence lands.</p>
-      </div>
-      <div class="doctrine-grid">
-        <article class="omega-card"><div class="card-kicker">Individualization</div><h3>The human in the loop is the design center.</h3><p>Every dashboard, priority, recommendation, and decision record must be tailored to the named person and the role they perform.</p></article>
-        <article class="omega-card"><div class="card-kicker">Admissibility</div><h3>Should this action be allowed right now?</h3><p>CyberShield governs whether an action should execute before execution binds.</p></article>
-        <article class="omega-card"><div class="card-kicker">Ownership</div><h3>AI does not own the decision.</h3><p>Every risk must connect to a named human owner, evidence maturity, next action, and review cadence.</p></article>
-        <article class="omega-card"><div class="card-kicker">Judgment</div><h3>CyberShield structures leadership judgment.</h3><p>It gives leaders evidence, consequence, options, and accountability paths.</p></article>
-      </div>
-    </section>
-
-    <section class="view-panel" data-view-panel="settings">
-      <div class="section-head operational-only">
-        <span class="boundary-chip doctrine">Settings</span>
-        <h2>System Settings</h2>
-        <p>Operational settings and internal build continuity details.</p>
-      </div>
-      <div class="settings-grid">
-        <article class="omega-card">
-          <div class="card-kicker">Internal continuity</div>
-          <h3>Build Details</h3>
-          <p id="buildDetails">Stable runtime details load here.</p>
-        </article>
-        <article class="omega-card">
-          <div class="card-kicker">Product language</div>
-          <h3>Layer Naming</h3>
-          <p><strong>Product-facing:</strong> Executive Advisor Layer</p>
-          <p><strong>Architecture-facing:</strong> Decision Intelligence Layer</p>
-        </article>
-      </div>
+    <section class="view" id="settings">
+      <div class="section-head"><span class="chip">Settings</span><h2>Build Settings</h2><p>Current build state and architecture guardrails.</p></div>
+      <div class="grid two"><article class="card"><div class="kicker">Runtime</div><h3>CyberShield Clean Rebuild 2026-05-26</h3><p>Single HTML file.  Inline CSS.  Inline JavaScript.  Logo image only.  Legacy scripts are not loaded.</p></article><article class="card"><div class="kicker">Next build rule</div><h3>Do not reintroduce module landfill</h3><p>Every restored feature must be added under one explicit render lifecycle and tested for tab-switch speed.</p></article></div>
     </section>
   </main>
 
-  <script src="app.js?v=stable-20260526-2"></script>
+  <script>
+    (()=>{
+      'use strict';
+      const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+      const actions={
+        data:{title:'AI assistant requests sensitive data export',summary:'An approved AI assistant attempts to export regulated client data outside the documented workflow.',outcome:'Require More Evidence',rationale:'Evidence and policy lineage are not strong enough to allow execution.',chip:'Hold',tone:'amber',owner:'General Counsel',scores:[62,58,44,82]},
+        payment:{title:'AI-assisted workflow attempts vendor payment approval',summary:'A finance workflow uses AI-generated invoice matching to approve a non-routine vendor payment above threshold.',outcome:'Escalate',rationale:'Vendor trust and approval-chain confidence require CFO review before execution.',chip:'Escalate',tone:'amber',owner:'CFO',scores:[68,64,61,86]},
+        access:{title:'Automation attempts privileged access change',summary:'An automation requests temporary administrative access after anomalous executive identity behavior.',outcome:'Block',rationale:'High-consequence privileged access is not admissible inside a degraded identity context.',chip:'Block',tone:'red',owner:'CIO / CTO',scores:[48,66,52,94]}
+      };
+      const escalation=['AI Decision Output','Confidence Level Assessment','Risk Classification','Human Review Trigger','Authority Escalation','Final Accountability Owner','Audit Evidence Layer'];
+      const nodes={exec:['Executive Authority','Named human accountable for decision, escalation, or risk acceptance.'],runtime:['Runtime Governance','Pre-execution decision gate before consequence.'],ai:['AI System','The assistant, workflow, or agent requesting action.'],vendor:['Vendor Access','Third-party trust path and operational dependency.'],workflow:['Critical Workflows','Business processes affected by cyber or AI decisions.'],evidence:['Evidence Substrate','Replayable proof of policy, confidence, owner, and rationale.']};
+      const reports=['Executive Risk Summary','Operational Resilience Snapshot','Governance Drift Report','AI Governance Assessment','Vendor Governance Review','Board Briefing','Incident Readiness Summary','Security Roadmap'];
+      let current='data';
+      function show(view){$$('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));$$('.view').forEach(v=>v.classList.toggle('active',v.id===view));$('#nav')?.classList.remove('open');$('#menuBtn')?.setAttribute('aria-expanded','false');window.scrollTo(0,0)}
+      function renderRuntime(){const a=actions[current];$('#runtimeTitle').textContent=a.title;$('#runtimeSummary').textContent=a.summary;$('#decisionOutcome').textContent=a.outcome;$('#decisionRationale').textContent=a.rationale;$('#outcomeChip').className='chip '+a.tone;$('#outcomeChip').textContent=a.chip;$('#runtimeMetrics').innerHTML=['Authority','Policy','Evidence','Consequence'].map((m,i)=>`<article class="card"><div class="kicker">${m}</div><div class="metric">${a.scores[i]}%</div><div class="bar"><span style="width:${a.scores[i]}%"></span></div></article>`).join('');renderEvidence()}
+      function renderEscalation(){$('#escalationList').innerHTML=escalation.map((x,i)=>`<div class="row"><div><strong>${i+1}. ${x}</strong><span>${flowText(i)}</span></div><span class="chip">Gate ${i+1}</span></div>`).join('')}
+      function flowText(i){return ['System generates a recommendation or action request.','Confidence is evaluated against tolerance.','Exposure, regulation, policy, and consequence are classified.','Review activates when thresholds are breached.','Decision routes to the correct authority with rationale.','A named human makes the final decision.','The record is preserved for audit and governance review.'][i]}
+      function renderTrust(){const root=$('#trustNodes');root.innerHTML=Object.entries(nodes).map(([id,n],i)=>`<button class="node ${i===0?'active':''}" data-node="${id}"><strong>${n[0]}</strong><br><span>${n[1]}</span></button>`).join('')}
+      function renderEvidence(){const a=actions[current];$('#evidencePacket').textContent=JSON.stringify({evidence_id:'CS-EVID-20260526-'+current.toUpperCase(),decision:a.outcome,action_attempted:a.title,human_owner:a.owner,policy_boundary:'Operational admissibility before execution',authority_score:a.scores[0],policy_score:a.scores[1],evidence_score:a.scores[2],consequence_score:a.scores[3],rationale:a.rationale,next_action:a.outcome==='Block'?'Stop execution and route to owner':'Escalate or constrain execution until evidence is sufficient'},null,2)}
+      function renderReports(){const list=$('#reportList');list.innerHTML=reports.map((r,i)=>`<button class="btn ${i===0?'primary':''}" data-report="${r}">${r}</button>`).join('');setReport(reports[0])}
+      function setReport(r){$('#reportPreview').innerHTML=`<div class="kicker">Executive output</div><h3>${r}</h3><p><strong>Purpose:</strong> Translate CyberShield runtime findings into an executive-readable artifact.</p><div class="panel-note" style="margin-top:12px">Current recommendation: keep the clean runtime, then restore deeper features one at a time under explicit rendering.</div><table class="table" style="margin-top:12px"><tr><th>Decision</th><td>Control AI before execution</td></tr><tr><th>Owner</th><td>Named human authority</td></tr><tr><th>Evidence</th><td>Replayable decision packet</td></tr></table>`}
+      document.addEventListener('click',e=>{const nav=e.target.closest('[data-view]');if(nav){show(nav.dataset.view);return}const jump=e.target.closest('[data-view-jump]');if(jump){show(jump.dataset.viewJump);return}const act=e.target.closest('[data-action]');if(act){current=act.dataset.action;renderRuntime();return}const node=e.target.closest('[data-node]');if(node){$$('.node').forEach(n=>n.classList.toggle('active',n===node));const d=nodes[node.dataset.node];$('#trustDetail').innerHTML=`<div class="kicker">Selected node</div><h3>${d[0]}</h3><p>${d[1]}</p>`;return}const rep=e.target.closest('[data-report]');if(rep){$$('[data-report]').forEach(b=>b.classList.remove('primary'));rep.classList.add('primary');setReport(rep.dataset.report)}});
+      $('#menuBtn')?.addEventListener('click',()=>{const nav=$('#nav');const open=nav.classList.toggle('open');$('#menuBtn').setAttribute('aria-expanded',open?'true':'false')});
+      renderRuntime();renderEscalation();renderTrust();renderReports();
+    })();
+  </script>
 </body>
 </html>
