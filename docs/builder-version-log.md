@@ -32,6 +32,64 @@ Example:
 
 ## Current builder log
 
+### Builder-20260526-003
+
+Date: 2026-05-26
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield successor builder session
+
+CyberShield versions affected:
+
+- V30 TrustMap Usability and Executive De-Branding Cleanup
+- V31 Decision Engine Depth and Rationale Trace
+- V32 Executive Proof Pack and Board Output Upgrade
+- V33 CRM-Lite Workflow and Lead/Pilot Payloads
+- V34 Mock Evidence Source Layer
+- V35 Controlled Backend Decision Build
+
+Files materially changed or created:
+
+- `index.html`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/v30-v35-build-record.md`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Consolidated the V30 through V35 roadmap into a single V35 static prototype build focused on executive usability, TrustMap edge explanations, explicit decision thresholds, role-specific reporting, proof pack output, CRM-lite payload generation, mock evidence handling, and backend decision planning.
+
+What got better:
+
+- removed build/version noise from the executive dashboard
+- kept build metadata in Settings/Admin only
+- added hoverable TrustMap edge explanations for green, yellow, and red lines
+- added TrustMap legend
+- added runtime threshold logic for Allow, Allow with Constraints, Escalate, and Block
+- added role-specific reports for CEO/President, CFO, CIO/CTO, and CISO/vCISO
+- added Executive Proof Pack output
+- added CRM-lite row generator and CSV output
+- added mock evidence source layer with local confidence impact
+- added backend decision matrix
+- preserved static prototype boundaries and no-live-sync behavior
+
+Remaining risks or limitations:
+
+- public build remains a static GitHub Pages prototype
+- no real integrations yet
+- no authentication yet
+- no persistent backend yet
+- no production enforcement engine yet
+- browser QA still needs real manual validation, especially Firefox desktop
+- the connector blocked two larger HTML update attempts, so the live V35 build is a compact implementation and some governance detail remains in documentation rather than UI
+- no live Microsoft Graph, CRM, SIEM, EDR, identity, GRC, or cloud integration exists
+- raw dissertation PDF/DOCX and raw oral defense PPTX/PDF are still not committed
+
+Next recommended build action:
+
+Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v35-qa&reset=onboarding`, validate Firefox performance, test TrustMap edge hovers, test report/proof/CRM/evidence exports, then decide whether V36 should implement an append-only Google Apps Script CRM flow, GitHub admin archive, or a lightweight backend.
+
 ### Builder-20260526-002
 
 Date: 2026-05-26
