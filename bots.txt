@@ -1,12 +1,12 @@
 CyberShield Executive OS
-Integrated V21-V28 Release Train v28
+V29 Integration Readiness and Performance Stabilization
 Build date: 2026-05-26
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield Integrated V21-V28 Release Train v28.
+CyberShield V29 Integration Readiness and Performance Stabilization.
 
 Release train included:
 - V21: Executive Demo QA and Navigation Compression
@@ -17,30 +17,35 @@ Release train included:
 - V26: Persistence, Intake, and CRM Payload Hardening
 - V27: Pilot Package and Sales Enablement
 - V28: Website Integration Layer
+- V29: Integration Readiness and Performance Stabilization
 
 Current section set:
 Primary navigation: Briefing, Runtime, TrustMap, Reports, Adoption, Pilot, Settings.
-Advanced navigation: Priorities, Escalation, Frameworks, Roadmap, Memory, Evidence, Guidance, Persistence, Website.
+Advanced navigation: Priorities, Escalation, Frameworks, Roadmap, Memory, Evidence, Guidance, Persistence, Integration, Website.
 
-V28 capabilities:
-- compressed executive navigation
-- guided demo mode
-- TrustMap relationship confidence
-- weak-link indicators
-- cross-agent preview
-- audience-specific reports
-- markdown, text, and JSON report export
-- Governance Memory categories
-- framework evidence library
-- local/export-only buyer and technical payloads
-- pilot package and one-pager
-- website integration modes and MJC copy blocks
+V29 capabilities:
+- website-aligned TrustMap operating model: Assess Exposure, Analyze Runtime Risk, Deliver Control
+- runtime operational admissibility scenarios
+- MJC sales agent prospect qualification scenario
+- executive reports and proof exports
+- Governance Memory decision record view
+- Evidence Substrate decision packet
+- Google Sheets CRM row payload schema
+- GitHub demo/admin persistence model
+- Microsoft 365 mock evidence source model for SharePoint, OneDrive, and Outlook
+- local/export-only payloads
+- V29 integration readiness layer
+- clearer prototype boundary
+- performance-oriented static consolidation
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
 
 Core question:
 Should this action be operationally admissible right now?
+
+Website-aligned TrustMap model:
+Assess operational trust exposure, analyze governance and runtime risk, then deliver executive visibility and control.
 
 Critical UX rule:
 Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
@@ -51,8 +56,13 @@ CyberShield must remain consolidated and performant. Do not reintroduce old phas
 Prototype boundary:
 The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, Microsoft 365, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
 
-Pause point:
-Stop before V29. Real data and integration readiness require environment decisions for Google Sheets, Microsoft 365, CRM direction, security boundaries, identity, telemetry, and AI tools.
+Approved V29 integration posture:
+- GitHub file-based persistence for demo/admin only
+- Google Sheets CRM-lite row payload schema only
+- SharePoint/OneDrive artifacts and Outlook meeting evidence as future mockable evidence sources only
+- no hidden network calls
+- no direct browser write to Google Sheets, GitHub, Microsoft 365, or CRM
+- no sensitive data or regulated data in demo mode
 
 Commercial path:
 CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
