@@ -13,35 +13,115 @@ Purpose: This file lists the required source documents and knowledge assets that
 7. `docs/qa-checklist.md`
 8. `docs/v21-v28-release-train.md`
 9. `docs/v29-decision-record-template.md`
-10. Dr. Max Justice's PhD dissertation, once added to this repository
+10. `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
+11. `foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
 
-## Dr. Max Justice PhD dissertation
+## Dr. Max Justice PhD dissertation source
 
-Status: Required foundational document, not yet added
+Status: Foundational source record added from Google Doc text extraction
 
-Reason it matters:
+Source record:
 
-Dr. Max Justice's PhD dissertation should be treated as a foundational intellectual source for CyberShield.  It is expected to inform the platform's approach to technology and innovation management, cybersecurity governance, operating model thinking, executive decision structure, and the relationship between strategy, controls, and enterprise transformation.
+`foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
 
-Repository target location once available:
+Source title from connector:
+
+`MJustice - DIS-99904A_Week5 - 20230827_Dr_S_Comments.docx`
+
+Document title from content:
+
+`A Cybersecurity Trust Model`
+
+Document descriptor from content:
+
+`Dissertation Proposal: Chapters 1, 2 & 3`
+
+Submitted to:
+
+`National University, School of Technology`
+
+Degree program from content:
+
+`Doctor of Technology and Innovation Management`
+
+Author from content:
+
+`MAX E. JUSTICE`
+
+Date appearing in document:
+
+`July 23, 2023`
+
+Google Drive source:
+
+`https://docs.google.com/document/d/1tWcyIHy_QKJ2TQVIzNacntjlKW5KhLqS/edit`
+
+Repository target when raw file is available:
 
 `foundational-docs/dr-max-justice-phd-dissertation.pdf`
 
-Optional companion summary target:
+or
 
-`foundational-docs/dr-max-justice-phd-dissertation-summary.md`
+`foundational-docs/dr-max-justice-phd-dissertation.docx`
 
-Builder rule:
+## Dr. Max Justice oral defense deck source
 
-Do not invent the dissertation title, contents, institution, copyright status, or public-domain status.  Add the dissertation only after the owner provides the file or a verified public source.  If the dissertation is added, update this file, README, `bots.txt`, `governance-summary.json`, and `docs/builder-version-log.md`.
+Status: Supporting foundational source record added from Google Slides text extraction
 
-Recommended use once added:
+Source record:
 
-- extract concepts that support CyberShield's governance model
-- identify language that strengthens the Executive Advisor Layer
-- identify technology and innovation management principles relevant to adoption
-- map dissertation concepts to Runtime, TrustMap, Governance Memory, Framework Evidence Library, and Pilot Package
-- preserve citations or page references in a companion summary
+`foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
+
+Source title from connector:
+
+`MJustice 20231126.pptx`
+
+Deck title from content:
+
+`A Cybersecurity Trust Model`
+
+Presenter from content:
+
+`Max Justice`
+
+Institution from content:
+
+`National University`
+
+Google Drive source:
+
+`https://docs.google.com/presentation/d/1z_wd_ITVl4iQbaYHcGYOs8OBhSGfwQW0/edit`
+
+Repository target when raw file is available:
+
+`foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck.pptx`
+
+or
+
+`foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck.pdf`
+
+## Why these sources matter
+
+Dr. Max Justice's Cybersecurity Trust Model should be treated as a foundational intellectual source for CyberShield.  It informs the platform's approach to trust, technology and innovation management, cybersecurity governance, operating model thinking, executive decision structure, and the relationship between strategy, controls, evidence, and enterprise transformation.
+
+Key concepts to preserve:
+
+- trust should be modeled with levels, layers, and scoring
+- people, process, and technology all participate in trust creation
+- trustworthiness connects to credibility, applicability, consistency, and authenticity
+- bounded rationality supports executive decision structure
+- trust should support secure interoperability, collaboration, and governance
+- CyberShield should structure leadership judgment rather than replace it
+
+## Recommended CyberShield mappings
+
+- Runtime Governance: use the trust model to strengthen action admissibility logic
+- TrustMap: map relationships across people, process, technology, policy, evidence, and workflows
+- Evidence Substrate: use credibility, applicability, consistency, and authenticity as evidence-quality dimensions
+- Governance Memory: preserve unresolved risks, accepted risks, evidence gaps, and decision rationale
+- Executive Advisor Layer: structure decision context for leaders without replacing human authority
+- Reports: use the trust model to make reports more defensible and less generic
+- Pilot Package: connect the trust model to a practical advisory wedge
 
 ## Current foundational docs already in repo
 
@@ -68,6 +148,11 @@ Recommended use once added:
 
 - `docs/v29-decision-record-template.md`
 
+### Foundational trust model records
+
+- `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
+- `foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
+
 ## Foundational document update rule
 
 When a new foundational source is added, the builder must record:
@@ -83,7 +168,8 @@ When a new foundational source is added, the builder must record:
 
 ## Current missing foundational sources
 
-- Dr. Max Justice's PhD dissertation
+- raw dissertation PDF or DOCX file
+- raw defense deck PPTX or PDF file
 - formal CyberShield architecture whitepaper
 - CyberShield data dictionary
 - CyberShield glossary
