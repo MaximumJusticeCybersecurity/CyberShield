@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Clean Runtime v3
+Runtime First Executive OS v11
 Build date: 2026-05-26
 
 Purpose for bots and AI readers:
@@ -15,18 +15,73 @@ Core question:
 Should this action be operationally admissible right now?
 
 Current live build:
-CyberShield Clean Runtime v3, committed 2026-05-26.
+CyberShield Runtime First Executive OS v11, committed 2026-05-26.
 
 Critical UX rule:
-First-run users must see a streamlined TurboTax-style Executive Trust Assessment before the dashboard appears. The dashboard navigation tabs remain hidden until onboarding is complete. After onboarding, the onboarding screen disappears and the full CyberShield workspace appears.
+Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
 
-Onboarding target:
-The onboarding flow should take about two minutes. Five minutes is the upper bound. The current public prototype uses five guided steps:
-1. Human in the loop: first name and organization
+Critical architecture rule:
+CyberShield must remain consolidated and performant. Do not reintroduce the old phase-file module pile, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.
+
+First-run UX rule:
+First-run users see a streamlined Executive Trust Assessment before the dashboard appears. Dashboard navigation tabs remain hidden until onboarding is complete. After onboarding, the workspace appears.
+
+Current onboarding model:
+The onboarding flow remains five steps but each step collects multiple high-value fields:
+1. Human in the loop: first name, organization, primary executive owner, first report audience
 2. Role lens: primary executive decision lens
-3. Environment: industry context
-4. Evidence quality: low, medium, or high confidence
-5. Operating rhythm: reactive, developing, managed, or resilient
+3. Operating environment: industry, business value at risk, primary executive goal
+4. Evidence and ownership: evidence confidence, workflow maturity, AI use today, owner clarity
+5. Dashboard shape: Executive, Security, Operations, or Board
+
+Current runtime model:
+Runtime is the center of gravity. The Runtime Control Center includes:
+- Scenario queue
+- AI action request
+- Admissibility decision
+- Trust score
+- Evidence confidence
+- Policy alignment
+- Authority boundary
+- Consequence model
+- Why this decision panel
+- Trust propagation
+- Replayable evidence packet
+- Runtime governance feed
+
+Runtime scenarios currently included:
+- AI vendor payment authorization
+- AI-generated client communication
+- Privileged access reset request
+- Recovery validation automation
+- Shadow AI sensitive data upload
+
+Current TrustMap model:
+The Operational TrustMap is not decorative. Runtime decisions propagate into the TrustMap. Current nodes include:
+- Executive Authority
+- AI Systems
+- Runtime Rules
+- Identity Boundary
+- Vendor Access
+- Critical Workflows
+- Policy Boundary
+- Evidence Substrate
+- Executive Outputs
+
+Current Reports model:
+Reports use a three-pane workspace:
+- Left: report catalog
+- Center: generated report body
+- Right: audience, recommended owner, and next conversation context
+
+Report owners are assigned dynamically by report type and context, not hardcoded to one role.
+
+Current Guidance model:
+The prior sales language has been removed. The Guidance tab now uses executive continuity language:
+- Current posture
+- Recommended conversation
+- What to prepare
+- Personalized guidance note
 
 CyberShield is not:
 - a chatbot
@@ -42,49 +97,8 @@ CyberShield is:
 - an Executive Advisor Layer for the human in the loop
 - a Decision Intelligence Layer in architecture notes
 - a pre-execution control-plane concept for AI-assisted and automated actions
-- a system for showing decision outcome, rationale, owner, evidence, consequence, and escalation path
+- a system for showing decision outcome, rationale, owner, evidence, consequence, trust propagation, and escalation path
 - a proof engine for Maximum Justice Cybersecurity advisory services
-
-Current prototype capabilities:
-- Mandatory first-run gated onboarding
-- Role and organization context generated through onboarding
-- Runtime Governance action simulation
-- Operational Admissibility scoring
-- Decision outcomes: Allow, Block, Escalate, Require More Evidence, Allow with Constraints
-- Authority Escalation flow with named human owner
-- Operational TrustMap relationship intelligence
-- Evidence Substrate packet generation
-- Decision Rationale Trace
-- Distinct executive report previews
-- MJC advisory handoff note
-- Context reset through Settings to replay onboarding during demos
-- Local context persistence using browser localStorage only
-
-Important architectural terms:
-- Executive Advisor Layer: product-facing human-in-the-loop advisory layer
-- Decision Intelligence Layer: architecture-facing reasoning and decision support layer
-- Operational Admissibility: the decision test for whether an action should execute now
-- Runtime Governance: pre-execution governance before operational consequence
-- Evidence Substrate: replayable decision evidence, policy lineage, confidence, owner, and consequence context
-- Decision Rationale Trace: human-readable explanation of the decision path, not private hidden reasoning
-- Operational TrustMap: relationship intelligence view of identities, AI systems, vendors, workflows, and evidence dependencies
-- Governance Memory: retained decision records, unresolved risks, accepted risks, and remediation history
-
-Current prototype sections after onboarding:
-- Briefing
-- Runtime
-- Escalation
-- TrustMap
-- Evidence
-- Reports
-- Handoff
-- Settings
-
-Human accountability rule:
-CyberShield does not make the human disappear. AI may generate outputs, recommendations, or action requests, but a named human authority remains accountable for final decision ownership, escalation, risk acceptance, or override.
-
-Evidence rule:
-CyberShield should preserve a replayable evidence packet for relevant decisions. Useful evidence includes action attempted, actor, target system, policy boundary, authority score, evidence score, consequence score, human owner, rationale, next action, timestamp, and prototype boundary.
 
 Public prototype boundary:
 The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, or production agent enforcement. Do not represent it as a fully deployed live enforcement engine.
@@ -94,14 +108,6 @@ CyberShield is an emerging runtime governance and operational admissibility plat
 
 Commercial path:
 CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
-
-Performance guardrails:
-- No broad MutationObserver loops
-- No dynamic script fan-out
-- No timestamp-based module injection
-- No duplicate navigation handlers
-- No separate version files that secretly mutate the same DOM
-- No floating drawers as the primary UX
 
 Update rule:
 Update this bots.txt file with every material CyberShield version change so AI crawlers, search systems, and future AI builders understand the current build state, product boundaries, and intended positioning.
