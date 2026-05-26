@@ -43,6 +43,7 @@ CyberShield versions affected:
 - V18 through V28 build stabilization and release train
 - successor handoff and builder-success documentation
 - foundational document structure
+- Cybersecurity Trust Model dissertation source integration
 
 Files materially changed or created:
 
@@ -60,10 +61,12 @@ Files materially changed or created:
 - `docs/v29-decision-record-template.md`
 - `docs/builder-version-log.md`
 - `docs/foundational-documents.md`
+- `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
+- `foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
 
 Primary value add:
 
-Converted CyberShield from a slow, overloaded prototype into a cleaner integrated executive demo and release train with runtime governance, TrustMap, adoption, pilot packaging, local exports, website integration support, and builder-success documentation.
+Converted CyberShield from a slow, overloaded prototype into a cleaner integrated executive demo and release train with runtime governance, TrustMap, adoption, pilot packaging, local exports, website integration support, builder-success documentation, and foundational trust-model source records.
 
 What got better:
 
@@ -79,6 +82,9 @@ What got better:
 - release, QA, and V29 decision checklists added
 - successor handoff and job docket added
 - foundational document structure added
+- dissertation source record added from Google Doc text extraction
+- dissertation oral defense deck source record added from Google Slides text extraction
+- trust model concepts mapped to Runtime, TrustMap, Evidence Substrate, Governance Memory, Reports, Pilot Package, and Executive Advisor Layer
 
 Remaining risks or limitations:
 
@@ -88,12 +94,13 @@ Remaining risks or limitations:
 - no persistent backend yet
 - no production enforcement engine yet
 - browser QA still needs real manual validation
-- dissertation file has not yet been added because no verified PDF or public source was provided in this session
+- raw dissertation PDF/DOCX has not yet been committed because the connector exposed text extraction, not a raw binary suitable for direct commit
+- raw oral defense PPTX/PDF has not yet been committed because the connector exposed text extraction, not a raw binary suitable for direct commit
 - V29 must not proceed without owner decisions on persistence, Microsoft 365, CRM, data handling, identity, telemetry, and AI tools
 
 Next recommended build action:
 
-Run V28 QA using `docs/qa-checklist.md`, add Dr. Max Justice's dissertation once the PDF or verified public source is available, remove redundant UI or copy found during testing, then complete the V29 decision record before building integration readiness.
+Run V28 QA using `docs/qa-checklist.md`, obtain raw PDF/DOCX/PPTX exports for the dissertation and defense deck if the owner wants the original files stored in repo, remove redundant UI or copy found during testing, then complete the V29 decision record before building integration readiness.
 
 ## Template for next builder
 
