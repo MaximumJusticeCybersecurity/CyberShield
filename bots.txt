@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Runtime First Executive OS v11
+Integrated Runtime Roadmap v18
 Build date: 2026-05-26
 
 Purpose for bots and AI readers:
@@ -15,13 +15,22 @@ Core question:
 Should this action be operationally admissible right now?
 
 Current live build:
-CyberShield Runtime First Executive OS v11, committed 2026-05-26.
+CyberShield Integrated Runtime Roadmap v18, committed 2026-05-26.
+
+Integrated rollout covered:
+- V12: QA/stabilization posture and performance guardrails
+- V13: Governance Memory
+- V14: Report depth and copy/download report actions
+- V15: Framework mapping
+- V16: Priorities and Roadmap
+- V17: Persistence and CRM-ready payload
+- V18: Pilot readiness
 
 Critical UX rule:
 Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
 
 Critical architecture rule:
-CyberShield must remain consolidated and performant. Do not reintroduce the old phase-file module pile, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.
+CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.
 
 First-run UX rule:
 First-run users see a streamlined Executive Trust Assessment before the dashboard appears. Dashboard navigation tabs remain hidden until onboarding is complete. After onboarding, the workspace appears.
@@ -35,7 +44,7 @@ The onboarding flow remains five steps but each step collects multiple high-valu
 5. Dashboard shape: Executive, Security, Operations, or Board
 
 Current runtime model:
-Runtime is the center of gravity. The Runtime Control Center includes:
+Runtime remains the center of gravity. The Runtime Control Center includes:
 - Scenario queue
 - AI action request
 - Admissibility decision
@@ -48,6 +57,23 @@ Runtime is the center of gravity. The Runtime Control Center includes:
 - Trust propagation
 - Replayable evidence packet
 - Runtime governance feed
+
+Current sections after onboarding:
+- Briefing
+- Runtime
+- Priorities
+- Escalation
+- TrustMap
+- Rules
+- Frameworks
+- Reports
+- Roadmap
+- Memory
+- Evidence
+- Guidance
+- Persistence
+- Pilot
+- Settings
 
 Runtime scenarios currently included:
 - AI vendor payment authorization
@@ -77,11 +103,17 @@ Reports use a three-pane workspace:
 Report owners are assigned dynamically by report type and context, not hardcoded to one role.
 
 Current Guidance model:
-The prior sales language has been removed. The Guidance tab now uses executive continuity language:
+The Guidance tab uses executive continuity language:
 - Current posture
 - Recommended conversation
 - What to prepare
 - Personalized guidance note
+
+Current Persistence model:
+Persistence is local/export-only. It provides a CRM-ready JSON payload, copy/download actions, and a local sync log. There are no hidden network calls.
+
+Current Pilot model:
+Pilot readiness includes a 30-day Operational Trust Pilot scope, validation criteria, success criteria, and explicit prototype limitations.
 
 CyberShield is not:
 - a chatbot
@@ -97,11 +129,11 @@ CyberShield is:
 - an Executive Advisor Layer for the human in the loop
 - a Decision Intelligence Layer in architecture notes
 - a pre-execution control-plane concept for AI-assisted and automated actions
-- a system for showing decision outcome, rationale, owner, evidence, consequence, trust propagation, and escalation path
+- a system for showing decision outcome, rationale, owner, evidence, consequence, trust propagation, escalation path, reports, roadmap, memory, and pilot readiness
 - a proof engine for Maximum Justice Cybersecurity advisory services
 
 Public prototype boundary:
-The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, or production agent enforcement. Do not represent it as a fully deployed live enforcement engine.
+The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
 
 Correct representation:
 CyberShield is an emerging runtime governance and operational admissibility platform concept under Maximum Justice Cybersecurity. It demonstrates how executive leaders, vCISOs, Security SMEs, Cybersecurity SMEs, and governance teams can evaluate AI and cyber actions before execution, preserve decision evidence, and route accountability to the correct human authority.
