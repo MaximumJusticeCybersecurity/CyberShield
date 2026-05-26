@@ -1,49 +1,68 @@
 {
   "product": "CyberShield Executive OS",
-  "current_build": "Executive Demo Hardening and TrustMap Restoration v20",
+  "current_build": "Integrated V21-V28 Release Train v28",
   "build_date": "2026-05-26",
-  "architecture": "Runtime Governance, Operational Admissibility, TrustMap, and Adoption Strategy Platform",
+  "architecture": "Runtime Governance, Operational Admissibility, TrustMap, Adoption Strategy, Pilot Packaging, and Website Integration Prototype",
   "product_facing_layer": "Executive Advisor Layer",
   "architecture_facing_layer": "Decision Intelligence Layer",
   "doctrine": "Operational Governance Before Consequence",
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
-  "positioning": "CyberShield sits between enterprises and rapidly scaling autonomous systems as a runtime governance and operational trust layer. It evaluates whether AI-assisted and automated actions should execute, who owns them, what evidence supports them, which policy boundary applies, what consequence is created, and which TrustMap relationships are affected.",
-  "v20_additions": [
-    "Operational TrustMap restored as first-class tab",
-    "Runtime trust propagation relationship graph",
-    "Selected-node relationship intelligence",
-    "Selected-node insight rail",
-    "TrustMap impact added to evidence packet",
-    "TrustMap impact added to reports",
-    "TrustMap impact added to pilot brief",
-    "Executive 90-second demo path: Runtime, TrustMap, Adoption, Pilot"
-  ],
-  "retained_from_v19": [
-    "Adoption tab",
-    "Commercial opportunity summary",
-    "Best-fit buyer segments",
-    "First paid wedge: CyberShield Readiness Review",
-    "Pilot-to-platform path",
-    "AI assurance overlay positioning",
-    "Partner alignment model"
-  ],
-  "prototype_sections_after_onboarding": [
+  "release_train": {
+    "v21": "Executive Demo QA and Navigation Compression",
+    "v22": "TrustMap 2.0 and Runtime Relationship Logic",
+    "v23": "Report Engine Upgrade",
+    "v24": "Governance Memory 2.0",
+    "v25": "Framework Evidence Library",
+    "v26": "Persistence, Intake, and CRM Payload Hardening",
+    "v27": "Pilot Package and Sales Enablement",
+    "v28": "Website Integration Layer"
+  },
+  "primary_navigation": [
     "Briefing",
     "Runtime",
+    "TrustMap",
+    "Reports",
+    "Adoption",
+    "Pilot",
+    "Settings"
+  ],
+  "advanced_navigation": [
     "Priorities",
     "Escalation",
-    "TrustMap",
     "Frameworks",
-    "Reports",
     "Roadmap",
     "Memory",
     "Evidence",
     "Guidance",
-    "Adoption",
     "Persistence",
-    "Pilot",
-    "Settings"
+    "Website"
+  ],
+  "v28_capabilities": [
+    "compressed executive navigation",
+    "guided demo mode with Runtime, TrustMap, Reports, Adoption, Pilot sequence",
+    "TrustMap relationship confidence",
+    "weak-link indicators",
+    "runtime color propagation",
+    "cross-agent preview",
+    "audience-specific reports",
+    "markdown, text, and JSON report export",
+    "Governance Memory categories",
+    "framework evidence library",
+    "local/export-only buyer payload",
+    "local/export-only technical evidence payload",
+    "local/export-only advisory summary payload",
+    "local/export-only pilot scope payload",
+    "local/export-only report bundle payload",
+    "pilot package and one-pager",
+    "website integration modes and MJC copy blocks"
+  ],
+  "runtime_scenarios": [
+    "AI vendor payment authorization",
+    "AI-generated client communication",
+    "Privileged access reset request",
+    "Recovery validation automation",
+    "Shadow AI sensitive data upload"
   ],
   "trustmap_nodes": [
     "Executive Authority",
@@ -56,12 +75,14 @@
     "Evidence Substrate",
     "Executive Outputs"
   ],
-  "runtime_scenarios": [
-    "AI vendor payment authorization",
-    "AI-generated client communication",
-    "Privileged access reset request",
-    "Recovery validation automation",
-    "Shadow AI sensitive data upload"
+  "frameworks": [
+    "CMMC / NIST SP 800-171",
+    "NIST CSF",
+    "HIPAA",
+    "SOC 2",
+    "AI Governance",
+    "Vendor Risk",
+    "Recovery Validation"
   ],
   "best_fit_buyers": [
     "Federal Contractors",
@@ -79,33 +100,30 @@
     "Integration Roadmap",
     "Runtime Governance Operating Model"
   ],
+  "website_modes": [
+    "Full App Mode",
+    "Landing Page Mode",
+    "Embed Mode",
+    "Demo Mode"
+  ],
+  "v29_pause_required": true,
+  "v29_input_needed": [
+    "Google Sheets structure and Apps Script decision",
+    "Microsoft 365 systems to include or exclude",
+    "CRM direction",
+    "security boundary",
+    "identity and telemetry assumptions",
+    "AI tools to govern"
+  ],
   "critical_ux_rule": "Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.",
   "critical_architecture_rule": "CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.",
   "important_boundaries": [
     "The current public build is a lightweight static prototype.",
     "The current public build is not connected to live enterprise telemetry.",
+    "The current public build is not connected to Google Sheets, Microsoft 365, or a real CRM.",
     "The current public build is not a production SIEM, EDR, GRC, identity, cloud control, CRM, or agent enforcement platform.",
     "CyberShield should not be represented as fully deployed live runtime enforcement until integrations exist.",
     "CyberShield shows decision rationale traces, not private hidden chain-of-thought."
-  ],
-  "cybershield_is_not": [
-    "chatbot",
-    "LLM wrapper",
-    "generic AI dashboard",
-    "compliance spreadsheet",
-    "MSP portal",
-    "SIEM replacement"
-  ],
-  "cybershield_is": [
-    "AI execution control platform",
-    "runtime governance layer",
-    "operational admissibility engine",
-    "Operational TrustMap demonstrator",
-    "Executive Advisor Layer",
-    "adoption strategy layer",
-    "decision evidence and accountability system",
-    "runtime trust propagation demonstrator",
-    "proof engine for Maximum Justice Cybersecurity advisory services"
   ],
   "commercial_entry_wedge": "CyberShield Readiness Review or Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield."
 }
