@@ -6,30 +6,11 @@
   <title>CyberShield Executive OS | Operational Trust Environment</title>
   <meta name="description" content="CyberShield is an executive operational trust environment for cyber, AI governance, evidence, ownership, and consequence-aware leadership decisions." />
   <meta name="theme-color" content="#0b2138" />
-  <meta property="og:title" content="CyberShield Executive OS | Operational Trust Environment" />
-  <meta property="og:description" content="Role-personalized executive operational visibility that turns cyber and AI uncertainty into evidence-backed decisions, action priorities, and board-ready outputs." />
-  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="v9-phase1.css" />
-  <link rel="stylesheet" href="v9-phase2.css" />
   <link rel="icon" href="assets/mjc-logo-2026.png" />
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"CyberShield Executive OS",
-    "applicationCategory":"Operational AI Governance and Admissibility Infrastructure",
-    "operatingSystem":"Web",
-    "description":"Role-personalized executive operational trust environment for cyber, AI governance, evidence, ownership, and consequence-aware leadership decisions.",
-    "provider":{"@type":"Organization","name":"Maximum Justice Cybersecurity"}
-  }
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="machine-context" aria-hidden="true">
-    Internal build note: CyberShield V10 Persistence Bridge. Product-facing name: CyberShield Executive OS. Product layer: Executive Advisor Layer. Architecture note: Decision Intelligence Layer. Build details are intentionally kept out of the primary user experience.
-  </div>
 
   <header class="site-header">
     <div class="brand-lockup">
@@ -58,201 +39,46 @@
         <span class="boundary-chip advisory">Executive Advisor Layer</span>
         <p class="eyebrow">Operational Governance Before Consequence</p>
         <h2>AI adoption is already happening. Control is not.</h2>
-        <p class="hero-lede">CyberShield builds a role-personalized operating view for the human in the loop, then structures leadership judgment with evidence, ownership, consequence, and next decisions.</p>
+        <p class="hero-lede">CyberShield governs whether AI-assisted and automated actions should execute before consequence.  This emergency build prioritizes runtime stability while the legacy module stack is consolidated.</p>
         <div class="hero-actions">
-          <button class="primary-action" id="startAssessmentBtn">Start Executive Trust Assessment</button>
+          <button class="primary-action" data-view-jump="actions">Open Executive Priorities</button>
           <button class="secondary-action" data-view-jump="scenario">View Operational Scenario</button>
-          <button class="secondary-action" data-view-jump="admissibility">Test Admissibility</button>
-          <button class="secondary-action" data-view-jump="doctrine">See Governance Doctrine</button>
+          <button class="secondary-action" data-view-jump="trustmap">View TrustMap</button>
         </div>
       </div>
-      <aside class="hero-brief-card" aria-label="Sample executive briefing preview">
-        <div class="card-kicker">Sample before assessment</div>
-        <h3>Role-Personalized Executive Briefing</h3>
-        <p>After onboarding, this orientation panel disappears and CyberShield opens into a dashboard tailored to the named leader, their role, and their decision authority.</p>
+      <aside class="hero-brief-card" aria-label="Runtime stability notice">
+        <div class="card-kicker">Emergency stable runtime</div>
+        <h3>Legacy module execution is isolated</h3>
+        <p>This page now loads one runtime script only.  V9-V22 experimental modules are not loaded by index.html.</p>
         <div class="mini-grid">
-          <span><strong>Mode</strong> Human-in-the-loop</span>
-          <span><strong>Layer</strong> Executive Advisor</span>
-          <span><strong>Focus</strong> What matters now</span>
+          <span><strong>Mode</strong> Stable</span>
+          <span><strong>Runtime</strong> Single entrypoint</span>
+          <span><strong>Focus</strong> Responsiveness</span>
         </div>
       </aside>
-    </section>
-
-    <section class="assessment-panel hidden" id="assessmentPanel" aria-labelledby="assessmentTitle">
-      <div class="section-head compact">
-        <span class="boundary-chip advisory">Personalization Engine</span>
-        <h2 id="assessmentTitle">Executive Trust Assessment</h2>
-        <p>No scores appear during onboarding. CyberShield uses these inputs to generate role-specific dashboards, priorities, and advisory guidance after submission.</p>
-      </div>
-      <form id="assessmentForm" class="assessment-form">
-        <div class="form-grid">
-          <label>First name
-            <input name="firstName" type="text" placeholder="Sally" autocomplete="given-name" required />
-          </label>
-          <label>Organization name
-            <input name="orgName" type="text" placeholder="Acme Manufacturing" autocomplete="organization" required />
-          </label>
-          <label>Primary role
-            <select name="primaryRole" required>
-              <option value="">Select role</option>
-              <option>CEO / President</option>
-              <option>CFO</option>
-              <option>COO</option>
-              <option>CIO / CTO</option>
-              <option>CISO / vCISO</option>
-              <option>General Counsel</option>
-              <option>Board / Advisor</option>
-            </select>
-          </label>
-          <label>Decision authority
-            <select name="decisionAuthority" required>
-              <option value="">Select authority</option>
-              <option value="executive">Can approve executive risk decisions</option>
-              <option value="shared">Shared approval with another leader</option>
-              <option value="recommend">Recommends, but does not approve</option>
-              <option value="oversight">Oversight and reporting only</option>
-            </select>
-          </label>
-          <label>Reporting audience
-            <select name="reportingAudience" required>
-              <option value="">Select audience</option>
-              <option value="board">Board / ownership group</option>
-              <option value="executive">Executive team</option>
-              <option value="technical">IT / security leadership</option>
-              <option value="compliance">Compliance / audit stakeholders</option>
-              <option value="mixed">Mixed leadership audience</option>
-            </select>
-          </label>
-          <label>Industry
-            <select name="industry" required>
-              <option value="">Select industry</option>
-              <option value="healthcare">Healthcare</option>
-              <option value="finance">Financial Services</option>
-              <option value="manufacturing">Manufacturing</option>
-              <option value="professional">Professional Services</option>
-              <option value="contractor">Government Contractor</option>
-              <option value="retail">Retail / Hospitality</option>
-            </select>
-          </label>
-          <label>Primary review goal
-            <select name="reviewGoal" required>
-              <option value="">Select review goal</option>
-              <option value="trust">Operational Trust Assessment</option>
-              <option value="briefing">Executive Operational Briefing Pilot</option>
-              <option value="ai">AI Governance Readiness Review</option>
-              <option value="resilience">Operational Resilience Review</option>
-              <option value="vendor">Vendor Governance Review</option>
-            </select>
-          </label>
-          <label>Operational value range
-            <select name="valueRange" required>
-              <option value="">Select range</option>
-              <option value="low">Under $5M</option>
-              <option value="mid">$5M to $25M</option>
-              <option value="high">$25M to $100M</option>
-              <option value="enterprise">$100M+</option>
-            </select>
-          </label>
-          <label>Artifact existence state
-            <select name="artifactState" required>
-              <option value="">Select state</option>
-              <option value="unknown">Unknown</option>
-              <option value="missing">Missing</option>
-              <option value="partial">Partial</option>
-              <option value="exists">Exists</option>
-            </select>
-          </label>
-          <label>Evidence confidence
-            <select name="evidence" required>
-              <option value="">Select confidence</option>
-              <option value="low">Low confidence</option>
-              <option value="medium">Medium confidence</option>
-              <option value="high">High confidence</option>
-            </select>
-          </label>
-          <label>Preferred executive owner
-            <select name="owner" required>
-              <option value="">Select owner</option>
-              <option>CEO / President</option>
-              <option>COO</option>
-              <option>CIO / CTO</option>
-              <option>CISO / vCISO</option>
-              <option>CFO</option>
-              <option>General Counsel</option>
-            </select>
-          </label>
-          <label>Current coordination state
-            <select name="coordination" required>
-              <option value="">Select state</option>
-              <option value="reactive">Reactive and mostly informal</option>
-              <option value="developing">Developing cadence and ownership</option>
-              <option value="managed">Managed governance rhythm</option>
-              <option value="resilient">Resilient and executive-reviewed</option>
-            </select>
-          </label>
-          <label>AI usage posture
-            <select name="aiPosture" required>
-              <option value="">Select AI posture</option>
-              <option value="none">Minimal or unknown AI usage</option>
-              <option value="shadow">Shadow AI suspected</option>
-              <option value="approved">Approved AI tools, informal controls</option>
-              <option value="governed">Governed AI usage with review cadence</option>
-            </select>
-          </label>
-          <label>Workflow discipline
-            <select name="workflow" required>
-              <option value="">Select workflow maturity</option>
-              <option value="informal">Approvals and escalations are informal</option>
-              <option value="partial">Some workflows are documented</option>
-              <option value="defined">Key workflows have owners and gates</option>
-              <option value="measured">Workflows are measured and reviewed</option>
-            </select>
-          </label>
-        </div>
-
-        <fieldset class="role-checkbox-panel">
-          <legend>Additional dashboards this person may need</legend>
-          <p>Select every role this human in the loop oversees or performs. CyberShield will use this to create role-specific advisory views.</p>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" name="additionalRoles" value="CEO / President" /> CEO / President</label>
-            <label><input type="checkbox" name="additionalRoles" value="CFO" /> CFO</label>
-            <label><input type="checkbox" name="additionalRoles" value="COO" /> COO</label>
-            <label><input type="checkbox" name="additionalRoles" value="CIO / CTO" /> CIO / CTO</label>
-            <label><input type="checkbox" name="additionalRoles" value="CISO / vCISO" /> CISO / vCISO</label>
-            <label><input type="checkbox" name="additionalRoles" value="General Counsel" /> General Counsel</label>
-            <label><input type="checkbox" name="additionalRoles" value="Board / Advisor" /> Board / Advisor</label>
-          </div>
-        </fieldset>
-
-        <div class="form-actions">
-          <button type="submit" class="primary-action">Generate Executive Operating View</button>
-          <button type="button" class="secondary-action" id="cancelAssessmentBtn">Cancel</button>
-        </div>
-      </form>
     </section>
 
     <section class="view-panel active" data-view-panel="briefing">
       <div class="section-head operational-only">
         <span class="boundary-chip advisory">Executive Advisor Layer</span>
-        <h2 id="briefingTitle">Executive Operational Briefing</h2>
-        <p id="briefingSubtitle">Complete the Executive Trust Assessment to replace this sample with a tailored briefing.</p>
+        <h2 id="briefingTitle">CyberShield Executive Operational Briefing</h2>
+        <p id="briefingSubtitle">Loading stable runtime.</p>
       </div>
-      <div class="role-switcher omega-card operational-only" id="roleSwitcher" hidden></div>
       <div class="briefing-layout">
-        <article class="omega-card primary-brief" data-detail="briefing-core">
+        <article class="omega-card primary-brief">
           <div class="card-kicker">What changed</div>
-          <h3 id="whatChanged">Potential operational disruption risk identified</h3>
-          <p id="whyMatter">CyberShield translates simulated signals into executive consequence, decision guidance, confidence, and ownership.</p>
+          <h3 id="whatChanged">Runtime stabilization</h3>
+          <p id="whyMatter">CyberShield is moving from stacked prototype modules to one controlled runtime lifecycle.</p>
           <div class="brief-meta">
-            <span><strong>Escalation</strong><b id="escalationLevel">Moderate</b></span>
-            <span><strong>Evidence</strong><b id="evidenceLevel">Demonstration</b></span>
-            <span><strong>Owner</strong><b class="owner-text" id="briefOwner">COO</b></span>
+            <span><strong>Escalation</strong><b id="escalationLevel">High</b></span>
+            <span><strong>Evidence</strong><b id="evidenceLevel">Browser behavior</b></span>
+            <span><strong>Owner</strong><b class="owner-text" id="briefOwner">Builder</b></span>
           </div>
         </article>
-        <aside class="omega-card action-now" data-detail="decision-required">
+        <aside class="omega-card action-now">
           <div class="card-kicker">Decision required</div>
-          <h3 id="decisionRequired">Validate the operational recovery path</h3>
-          <p id="decisionWhy">Leadership needs confidence that critical workflows can recover inside tolerance before disruption widens.</p>
+          <h3 id="decisionRequired">Consolidate runtime before adding features</h3>
+          <p id="decisionWhy">Responsiveness is a product trust requirement.</p>
           <button class="primary-action full" data-view-jump="actions">Open Executive Priorities</button>
         </aside>
       </div>
@@ -263,7 +89,7 @@
       <div class="section-head operational-only">
         <span class="boundary-chip live">Decision Intelligence Layer</span>
         <h2>Executive Priorities Engine</h2>
-        <p>Continuously ranks what requires leadership attention now based on operational impact, governance age, confidence, escalation likelihood, and workflow trust.</p>
+        <p>Immediate priorities after stabilizing the CyberShield runtime.</p>
       </div>
       <div id="actionQueue" class="action-grid"></div>
     </section>
@@ -272,13 +98,13 @@
       <div class="section-head operational-only">
         <span class="boundary-chip simulation">Operational Emulation</span>
         <h2>Executive Incident Scenario Briefing</h2>
-        <p>Scenario emulation demonstrates how CyberShield turns changing conditions into narrative, consequence, decisions, and escalation ownership.</p>
+        <p>Lightweight scenario model for runtime stabilization and operational admissibility.</p>
       </div>
       <div class="scenario-tabs" id="scenarioTabs" aria-label="Scenario selector"></div>
       <div class="scenario-shell">
         <article class="omega-card">
           <div class="card-kicker">Telemetry to Narrative</div>
-          <h3 id="scenarioTitle">AI-enabled executive phishing</h3>
+          <h3 id="scenarioTitle">Loading scenario</h3>
           <div class="translation-pair">
             <div><strong>Raw signal</strong><p id="rawSignal"></p></div>
             <div><strong>CyberShield interpretation</strong><p id="interpretedSignal"></p></div>
@@ -300,15 +126,11 @@
       <div class="section-head operational-only">
         <span class="boundary-chip advisory">Operational TrustMap</span>
         <h2>CyberShield Operational TrustMap</h2>
-        <p>Operational relationship intelligence for workflow dependencies, approval chains, AI involvement, escalation paths, and trust concentration zones.</p>
+        <p>Simplified relationship intelligence without overlay drawers or heavy redraw behavior.</p>
       </div>
       <div class="trustmap-layout">
         <div class="trustmap-canvas omega-card" id="trustMapCanvas" aria-label="CyberShield Operational TrustMap relationship graph"></div>
-        <aside class="omega-card trustmap-detail" id="trustMapDetail">
-          <div class="card-kicker">Relationship intelligence</div>
-          <h3>Select a node</h3>
-          <p>Click any relationship node to see its role in the operational trust chain.</p>
-        </aside>
+        <aside class="omega-card trustmap-detail" id="trustMapDetail"></aside>
       </div>
     </section>
 
@@ -316,15 +138,13 @@
       <div class="section-head operational-only">
         <span class="boundary-chip live">Executive Outputs</span>
         <h2>Executive Reporting</h2>
-        <p>Every report has distinct structure, purpose, executive audience, recommendation trace, and recommended next step. No cloned outputs.</p>
+        <p>Lightweight reporting preview for the emergency stable runtime.</p>
       </div>
       <div class="report-layout">
         <div class="report-list" id="reportList"></div>
         <article class="report-preview omega-card" id="reportPreview"></article>
       </div>
       <div class="report-actions">
-        <button class="primary-action" id="downloadReportBtn">Download Report Text</button>
-        <button class="secondary-action" id="emailReportBtn">Email Report</button>
         <button class="secondary-action" onclick="window.print()">Print / Save PDF</button>
       </div>
     </section>
@@ -333,13 +153,9 @@
       <div class="section-head operational-only">
         <span class="boundary-chip live">Governance Memory</span>
         <h2>Organizational Memory</h2>
-        <p>CyberShield tracks unresolved issues, prior decisions, evidence age, governance drift, and operational trend direction in this browser session.</p>
+        <p>Runtime status, build doctrine, and next stabilization steps.</p>
       </div>
       <div class="memory-grid" id="memoryGrid"></div>
-      <div class="form-actions">
-        <button class="secondary-action" id="resetAssessmentBtn">Reset Assessment</button>
-        <button class="secondary-action" id="clearMemoryBtn">Clear Local Memory</button>
-      </div>
     </section>
 
     <section class="view-panel" data-view-panel="doctrine">
@@ -350,9 +166,9 @@
       </div>
       <div class="doctrine-grid">
         <article class="omega-card"><div class="card-kicker">Individualization</div><h3>The human in the loop is the design center.</h3><p>Every dashboard, priority, recommendation, and decision record must be tailored to the named person and the role they perform.</p></article>
-        <article class="omega-card"><div class="card-kicker">Admissibility</div><h3>Should this action be allowed right now?</h3><p>Future builds extend advisory-assisted decisions toward runtime governance and agent authorization boundaries.</p></article>
-        <article class="omega-card"><div class="card-kicker">Ownership</div><h3>Security fails when no one owns it.</h3><p>Every risk must connect to a decision owner, evidence maturity, next action, and review cadence.</p></article>
-        <article class="omega-card"><div class="card-kicker">Judgment</div><h3>CyberShield structures leadership judgment.</h3><p>It does not replace leaders. It gives them evidence, consequence, options, and accountability paths.</p></article>
+        <article class="omega-card"><div class="card-kicker">Admissibility</div><h3>Should this action be allowed right now?</h3><p>CyberShield governs whether an action should execute before execution binds.</p></article>
+        <article class="omega-card"><div class="card-kicker">Ownership</div><h3>AI does not own the decision.</h3><p>Every risk must connect to a named human owner, evidence maturity, next action, and review cadence.</p></article>
+        <article class="omega-card"><div class="card-kicker">Judgment</div><h3>CyberShield structures leadership judgment.</h3><p>It gives leaders evidence, consequence, options, and accountability paths.</p></article>
       </div>
     </section>
 
@@ -360,13 +176,13 @@
       <div class="section-head operational-only">
         <span class="boundary-chip doctrine">Settings</span>
         <h2>System Settings</h2>
-        <p>Operational settings, local state controls, and internal build continuity details.</p>
+        <p>Operational settings and internal build continuity details.</p>
       </div>
       <div class="settings-grid">
         <article class="omega-card">
           <div class="card-kicker">Internal continuity</div>
           <h3>Build Details</h3>
-          <p id="buildDetails">Internal build metadata loads here.</p>
+          <p id="buildDetails">Stable runtime details load here.</p>
         </article>
         <article class="omega-card">
           <div class="card-kicker">Product language</div>
@@ -374,30 +190,10 @@
           <p><strong>Product-facing:</strong> Executive Advisor Layer</p>
           <p><strong>Architecture-facing:</strong> Decision Intelligence Layer</p>
         </article>
-        <article class="omega-card">
-          <div class="card-kicker">Local state</div>
-          <h3>Assessment Controls</h3>
-          <p>Resetting clears the personalized operating view from this browser session.</p>
-          <button class="secondary-action" data-view-jump="memory">Open Memory Controls</button>
-        </article>
       </div>
     </section>
   </main>
 
-  <aside class="advisor-drawer" id="advisorDrawer" aria-live="polite">
-    <button id="drawerClose" class="drawer-close" aria-label="Close Executive Advisor Layer panel">×</button>
-    <div class="card-kicker" id="drawerKicker">Executive Advisor Layer</div>
-    <h3 id="drawerTitle">Select an item</h3>
-    <p id="drawerMeaning">Click an action, consequence, report, or trust node to view specific context.</p>
-    <div class="drawer-block"><strong>Why this matters</strong><p id="drawerWhy">The advisor panel provides unique, item-specific guidance.</p></div>
-    <div class="drawer-block"><strong>Next best action</strong><p id="drawerAction">Select a platform element.</p></div>
-    <div class="drawer-block"><strong>Decision rationale trace</strong><p id="drawerTrace">CyberShield will show the recommendation, evidence path, owner, consequence, and decision options.</p></div>
-    <div class="drawer-block"><strong>MJC acceleration path</strong><p id="drawerMjc">Maximum Justice Cybersecurity can validate the operating assumptions and convert the recommendation into a practical executive plan.</p></div>
-  </aside>
-
-  <script src="app.js"></script>
-  <script src="v9-phase2-admissibility.js"></script>
-  <script src="v9-phase5-forward.js"></script>
-  <script src="v10-persistence.js"></script>
+  <script src="app.js?v=stable-20260526-2"></script>
 </body>
 </html>
