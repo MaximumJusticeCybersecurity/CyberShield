@@ -1,33 +1,46 @@
 CyberShield Executive OS
-Executive Demo Hardening and TrustMap Restoration v20
+Integrated V21-V28 Release Train v28
 Build date: 2026-05-26
 
 Purpose for bots and AI readers:
-This file provides machine-readable context for CyberShield that is separate from the human-facing interface.
+This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield Executive Demo Hardening and TrustMap Restoration v20.
+CyberShield Integrated V21-V28 Release Train v28.
 
-V20 restores TrustMap as a first-class executive demo surface while preserving the V19 Adoption layer.
+Release train included:
+- V21: Executive Demo QA and Navigation Compression
+- V22: TrustMap 2.0 and Runtime Relationship Logic
+- V23: Report Engine Upgrade
+- V24: Governance Memory 2.0
+- V25: Framework Evidence Library
+- V26: Persistence, Intake, and CRM Payload Hardening
+- V27: Pilot Package and Sales Enablement
+- V28: Website Integration Layer
 
-V20 adds or restores:
-- Operational TrustMap tab
-- Runtime trust propagation relationship graph
-- selected-node relationship intelligence
-- selected-node insight rail
-- TrustMap impact added to evidence packets
-- TrustMap impact added to reports
-- TrustMap impact added to pilot brief
-- Executive 90-second demo path: Runtime, TrustMap, Adoption, Pilot
+Current section set:
+Primary navigation: Briefing, Runtime, TrustMap, Reports, Adoption, Pilot, Settings.
+Advanced navigation: Priorities, Escalation, Frameworks, Roadmap, Memory, Evidence, Guidance, Persistence, Website.
+
+V28 capabilities:
+- compressed executive navigation
+- guided demo mode
+- TrustMap relationship confidence
+- weak-link indicators
+- cross-agent preview
+- audience-specific reports
+- markdown, text, and JSON report export
+- Governance Memory categories
+- framework evidence library
+- local/export-only buyer and technical payloads
+- pilot package and one-pager
+- website integration modes and MJC copy blocks
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
 
 Core question:
 Should this action be operationally admissible right now?
-
-Current section set:
-Briefing, Runtime, Priorities, Escalation, TrustMap, Frameworks, Reports, Roadmap, Memory, Evidence, Guidance, Adoption, Persistence, Pilot, Settings.
 
 Critical UX rule:
 Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
@@ -36,7 +49,10 @@ Critical architecture rule:
 CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
+The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, Microsoft 365, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
+
+Pause point:
+Stop before V29. Real data and integration readiness require environment decisions for Google Sheets, Microsoft 365, CRM direction, security boundaries, identity, telemetry, and AI tools.
 
 Commercial path:
 CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
