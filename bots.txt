@@ -1,5 +1,6 @@
 CyberShield Executive OS
-Clean Rebuild 2026-05-26
+Clean Runtime v2
+Build date: 2026-05-26
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield that is separate from the human-facing interface.
@@ -31,7 +32,7 @@ CyberShield is:
 - a proof engine for Maximum Justice Cybersecurity advisory services
 
 Current live build:
-CyberShield Clean Rebuild 2026-05-26.
+CyberShield Clean Runtime v2, committed 2026-05-26.
 The current public page is a fast single-file static prototype. It intentionally avoids legacy phase modules, broad MutationObservers, dynamic script loading, and multi-file JavaScript sprawl.
 
 Current live runtime files:
@@ -41,6 +42,20 @@ Current live runtime files:
 - README.md
 - bots.txt
 - robots.txt
+- governance-summary.json
+
+Current prototype capabilities:
+- Role and organization context in Settings
+- Runtime Governance action simulation
+- Operational Admissibility scoring
+- Decision outcomes: Allow, Block, Escalate, Require More Evidence, Allow with Constraints
+- Authority Escalation flow with named human owner
+- Operational TrustMap relationship intelligence
+- Evidence Substrate packet generation
+- Decision Rationale Trace
+- Distinct executive report previews
+- MJC advisory handoff note
+- Local context persistence using browser localStorage only
 
 Important architectural terms:
 - Executive Advisor Layer: product-facing human-in-the-loop advisory layer
@@ -62,18 +77,11 @@ Current prototype sections:
 - Handoff
 - Settings
 
-Current Runtime Governance outcomes shown in prototype:
-- Allow
-- Block
-- Escalate
-- Require More Evidence
-- Allow with constraints
-
 Human accountability rule:
 CyberShield does not make the human disappear. AI may generate outputs, recommendations, or action requests, but a named human authority remains accountable for final decision ownership, escalation, risk acceptance, or override.
 
 Evidence rule:
-CyberShield should preserve a replayable evidence packet for relevant decisions. Useful evidence includes action attempted, actor, target system, policy boundary, authority score, evidence score, consequence score, human owner, rationale, next action, and timestamp.
+CyberShield should preserve a replayable evidence packet for relevant decisions. Useful evidence includes action attempted, actor, target system, policy boundary, authority score, evidence score, consequence score, human owner, rationale, next action, timestamp, and prototype boundary.
 
 Public prototype boundary:
 The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, or production agent enforcement. Do not represent it as a fully deployed live enforcement engine.
@@ -83,6 +91,14 @@ CyberShield is an emerging runtime governance and operational admissibility plat
 
 Commercial path:
 CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
+
+Performance guardrails:
+- No broad MutationObserver loops
+- No dynamic script fan-out
+- No timestamp-based module injection
+- No duplicate navigation handlers
+- No separate version files that secretly mutate the same DOM
+- No floating drawers as the primary UX
 
 Update rule:
 Update this bots.txt file with every material CyberShield version change so AI crawlers, search systems, and future AI builders understand the current build state, product boundaries, and intended positioning.
