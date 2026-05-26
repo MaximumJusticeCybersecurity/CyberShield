@@ -1,7 +1,7 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-26
-Current live build: V29 Integration Readiness and Performance Stabilization
+Current live build: V35 Controlled Backend Decision Build
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
@@ -10,7 +10,7 @@ Primary live file: `index.html`
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but usable story: onboarding, runtime decisioning, TrustMap, reports, adoption, pilot packaging, local exports, integration readiness, and website alignment.
+CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but usable story: onboarding, runtime decisioning, TrustMap, role-specific reports, proof pack, CRM-lite payloads, mock evidence, and controlled backend decision planning.
 
 ## Required builder reading order
 
@@ -21,65 +21,33 @@ CyberShield is still early.  The current prototype is not the finished product. 
 5. `docs/builder-version-log.md`
 6. `docs/release-checklist.md`
 7. `docs/qa-checklist.md`
-8. `docs/v21-v28-release-train.md`
+8. `docs/v30-v35-build-record.md`
 9. `docs/v29-decision-record.md`
-10. `docs/v29-decision-record-template.md`
-11. this handoff and job docket
+10. this handoff and job docket
 
 ## Mandatory builder-version rule
 
 Every material builder must update `docs/builder-version-log.md`.
 
-The builder-version entry must include:
-
-- builder version ID
-- builder or agent identifier
-- date
-- CyberShield version affected
-- files changed
-- primary value add
-- what got better
-- remaining risks or limitations
-- next recommended build action
-
 If the live app changes but the builder-version log does not, the build is incomplete.
-
-## Foundational document rule
-
-Every future builder must check `docs/foundational-documents.md` before making strategic or architectural changes.
-
-Dr. Max Justice's PhD dissertation is listed as a required foundational document.  Source records are present, but raw PDF/DOCX/PPTX files have not yet been committed.
-
-Do not invent dissertation title, contents, institution, copyright status, or public-domain status.
 
 ## Current live build
 
 Current build label:
 
-> V29 Integration Readiness and Performance Stabilization
+> V35 Controlled Backend Decision Build
 
-Primary navigation:
+User-facing navigation:
 
 - Briefing
 - Runtime
 - TrustMap
 - Reports
-- Adoption
-- Pilot
-- Settings
-
-Advanced navigation:
-
-- Priorities
-- Escalation
-- Frameworks
-- Roadmap
-- Memory
+- Proof Pack
+- CRM
 - Evidence
-- Guidance
-- Persistence
-- Integration
-- Website
+- Backend
+- Settings
 
 ## Product identity
 
@@ -91,13 +59,24 @@ The current public build is a static GitHub Pages prototype.  Do not describe it
 
 ## Website-aligned TrustMap model
 
-V29 aligns the in-app TrustMap to the public Maximum Justice Cybersecurity website model:
+The in-app TrustMap follows the public Maximum Justice Cybersecurity website model:
 
 1. Assess operational trust exposure
 2. Analyze governance and runtime risk
 3. Deliver executive visibility and control
 
-The TrustMap should not be treated as decoration.  It is the visible operating model for how CyberShield moves from AI activity and organizational exposure to runtime admissibility decisions, owner accountability, evidence, and executive outputs.
+TrustMap lines are now interactive. Green, yellow, and red edges include hover explanations. Future builders must preserve this behavior.
+
+## V30 through V35 implementation summary
+
+- V30: removed version noise from executive surfaces and added TrustMap line explanations
+- V31: added decision thresholds and rationale trace
+- V32: added role-specific reports and Executive Proof Pack
+- V33: added CRM-lite row generator and CSV output
+- V34: added mock evidence source layer
+- V35: added backend decision matrix and kept build metadata in Settings/Admin only
+
+See `docs/v30-v35-build-record.md` for details.
 
 ## Dr. Max Justice positioning
 
@@ -120,42 +99,29 @@ Current commercial wedge:
 - Vendor Governance Review
 - Executive Proof Pack
 
-## V29 decisions now locked
-
-The owner approved these V29 directions:
-
-- GitHub file-based persistence for demo/admin only
-- Google Sheets CRM-lite direction using the CyberShield Google Sheets CRM
-- SharePoint/OneDrive artifacts and Outlook meeting evidence as future mockable Microsoft 365 sources only
-- company self-assessment data plus non-sensitive policy/control artifacts only
-- executive role model centered on CEO, CFO, CIO/CTO, and CISO/vCISO
-- manual answers, uploaded/linked evidence placeholders, and clearly labeled simulated telemetry
-- first AI systems to govern: ChatGPT/custom GPTs, Microsoft Copilot, and MJC sales agent
-
-See `docs/v29-decision-record.md` for the full decision record.
-
 ## What the successor should do first
 
 1. Read the required builder reading list above
-2. Open the live prototype with `?v=v29-qa&reset=onboarding`
+2. Open the live prototype with `?v=v35-qa&reset=onboarding`
 3. Run through onboarding
-4. Test the 6-step demo path
-5. Test Runtime, TrustMap, Reports, Adoption, Pilot, and Integration
-6. Run the QA checklist
-7. Validate Firefox performance
-8. Confirm no placeholder file content remains
-9. Only then plan V30
+4. Test user-facing navigation
+5. Test Runtime, TrustMap, Reports, Proof Pack, CRM, Evidence, Backend, and Settings
+6. Test TrustMap line hovers for green, yellow, and red explanations
+7. Run the QA checklist
+8. Validate Firefox performance
+9. Confirm no placeholder file content remains
+10. Only then plan V36
 
-## V30 decision point
+## V36 decision point
 
 Do not start live integrations until the owner explicitly approves one of these paths:
 
-- controlled backend for records and authentication
-- Apps Script append-only Google Sheets CRM flow
-- Microsoft Graph evidence-source prototype
+- Google Apps Script append-only CRM flow
 - GitHub admin-only record archive flow
+- lightweight backend
+- Microsoft-native evidence prototype
 
-Before any of those, document:
+Before any live integration, document:
 
 - data classification
 - consent model
@@ -166,7 +132,7 @@ Before any of those, document:
 - audit log expectations
 - what data must never be transmitted
 
-## Known V29 limitations
+## Known V35 limitations
 
 - public build remains static GitHub Pages prototype
 - no real integrations yet
@@ -176,33 +142,19 @@ Before any of those, document:
 - no live Google Sheets write from browser
 - no live Microsoft 365 connection
 - no SIEM, EDR, identity, GRC, cloud, or CRM sync
-- Google Sheets CRM header update was not confirmed during build because Sheets API hit a rate limit
 - browser QA still needs manual validation
-
-## Movie analysis
-
-CyberShield is in early Act II.
-
-Act I introduced the problem: AI-assisted work is moving faster than traditional governance can control.
-
-Act II is where CyberShield becomes a working operating model: decisions, evidence, owners, TrustMap relationships, reports, memory, pilot packaging, and adoption path.
-
-V29 strengthens Act II by aligning the TrustMap to the public website model and converting integration decisions into an actionable readiness layer.
-
-Act III is the future platform state: real evidence sources, persistent governance memory, stronger role-specific dashboards, cross-agent trust coordination, and repeatable pilot-to-platform adoption.
-
-We are not at the ending.  The market has only seen the trailer.
+- connector blocked larger all-in-one HTML replacements, so V35 is a compact implementation and deeper governance text remains in docs
 
 ## Current commit anchor
 
-Current V29 commits from this builder:
+Current V30-V35 commits from this builder:
 
-- `c2f883a1a865b2b54f74d2f0f7f18b26ef30876c` - V29 decision record
-- `c7c337c40cade6eb0c814611123e51448c2df8fa` - V29 live app replacement and placeholder repair
-- `8b7826d4d67595ca4b3329b0f021b8f9779b60fe` - README for V29
-- `8961f8eef651ecc4e5a73750e9af1e7ad33327bd` - bots context for V29
-- `20a1951de3d94297235d6c49494e926e454875ce` - governance summary for V29
-- `667bde5e1d6b9676a07c91be1b5363a165bddea7` - builder version log for V29
+- `96fcda52ea8605e666475ab239d1c63bd1d10d24` - compact V35 live app
+- `dedfbe129eccb2f4fdbdffdd56bdacf4d1a3ad1f` - V30-V35 build record
+- `3f81aeef186b27ebb00b1246383aca95a11a3390` - README for V35
+- `eb9f9c8494e0cc6025a4659b1dd2dcd28b31af01` - bots context for V35
+- `80f276b7daf266eac82a0a47992198af68184dc9` - governance summary for V35
+- `e2cebddae11168d1e2d892025277a21590488d04` - builder version log for V30-V35
 
 Important correction note:
 
