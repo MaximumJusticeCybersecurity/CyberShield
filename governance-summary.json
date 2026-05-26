@@ -1,6 +1,6 @@
 {
   "product": "CyberShield Executive OS",
-  "current_build": "Clean Runtime v2",
+  "current_build": "Clean Runtime v3",
   "build_date": "2026-05-26",
   "architecture": "Runtime Governance and Operational Admissibility Platform",
   "product_facing_layer": "Executive Advisor Layer",
@@ -9,6 +9,15 @@
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
   "positioning": "AI execution control platform, runtime governance layer, operational admissibility engine, and executive advisory environment for cyber and AI governance decisions before consequence.",
+  "critical_ux_rule": "First-run users must complete a streamlined TurboTax-style Executive Trust Assessment before dashboard tabs appear. After completion, onboarding disappears and the full CyberShield workspace appears.",
+  "onboarding_target": "About two minutes. Five minutes is the upper bound.",
+  "onboarding_steps": [
+    "Human in the loop: first name and organization",
+    "Role lens: primary executive decision lens",
+    "Environment: industry context",
+    "Evidence quality: low, medium, or high confidence",
+    "Operating rhythm: reactive, developing, managed, or resilient"
+  ],
   "commercial_entry_wedge": "CyberShield Readiness Review or Operational Trust Assessment led by Maximum Justice Cybersecurity.",
   "current_runtime_model": "Single-file static GitHub Pages prototype with inline HTML, CSS, and JavaScript. Legacy phase modules are not loaded by the live page.",
   "live_runtime_files": [
@@ -20,7 +29,7 @@
     "robots.txt",
     "governance-summary.json"
   ],
-  "prototype_sections": [
+  "prototype_sections_after_onboarding": [
     "Briefing",
     "Runtime",
     "Escalation",
@@ -31,7 +40,8 @@
     "Settings"
   ],
   "runtime_capabilities": [
-    "Role and organization context",
+    "Mandatory first-run gated onboarding",
+    "Role and organization context generated through onboarding",
     "Runtime Governance action simulation",
     "Operational Admissibility scoring",
     "Authority Escalation routing",
@@ -40,6 +50,7 @@
     "Decision Rationale Trace",
     "Distinct executive report previews",
     "MJC advisory handoff note",
+    "Context reset through Settings to replay onboarding during demos",
     "Local context persistence through browser localStorage"
   ],
   "runtime_outcomes": [
@@ -81,11 +92,11 @@
     "AI does not own the decision; a named human authority remains accountable."
   ],
   "next_development_sequence": [
-    "Confirm Clean Runtime v2 loads fast in Firefox, Chrome, Brave, and mobile browsers.",
-    "Improve visual polish without adding external dependencies.",
-    "Expand Runtime Governance scenarios.",
-    "Add stronger Executive Advisor Layer personalization.",
-    "Add downloadable executive reports.",
+    "Confirm Clean Runtime v3 loads first-run onboarding immediately.",
+    "Confirm dashboard tabs are hidden until onboarding completion.",
+    "Confirm Settings can reset onboarding for demos.",
+    "Improve onboarding copy and reduce friction toward a two-minute completion target.",
+    "Add downloadable executive reports after onboarding stability is confirmed.",
     "Add CRM or Google Apps Script persistence only after UI performance remains stable."
   ],
   "performance_guardrails": [
