@@ -1,36 +1,88 @@
 {
-  "product": "CyberShield OS v8",
-  "architecture": "Omega Operational Environment",
-  "doctrine": "Omega: Trust is operational infrastructure.",
-  "positioning": "Advisory-assisted Operational Trust Infrastructure for SMB and mid-market leadership.",
-  "commercial_entry_wedge": "Operational Trust Assessment",
-  "primary_workflow": "Assessment -> Omega TrustMap -> Executive Operational Briefing -> Action Orchestration -> Organizational Memory -> Executive Reporting",
-  "capability_layer": "Executive Cyber Decision Intelligence",
-  "service_mode": "Advisory-assisted; simulation-supported; not presented as fully autonomous runtime governance.",
-  "target_market": ["SMB leadership", "mid-market leadership", "COO", "CIO", "CEO", "vCISO", "governance-oriented executives"],
+  "product": "CyberShield Executive OS",
+  "current_build": "Clean Rebuild 2026-05-26",
+  "architecture": "Runtime Governance and Operational Admissibility Platform",
+  "product_facing_layer": "Executive Advisor Layer",
+  "architecture_facing_layer": "Decision Intelligence Layer",
+  "doctrine": "Operational Governance Before Consequence",
+  "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
+  "core_question": "Should this action be operationally admissible right now?",
+  "positioning": "AI execution control platform, runtime governance layer, operational admissibility engine, and executive advisory environment for cyber and AI governance decisions before consequence.",
+  "commercial_entry_wedge": "CyberShield Readiness Review or Operational Trust Assessment led by Maximum Justice Cybersecurity.",
+  "current_runtime_model": "Single-file static GitHub Pages prototype with inline HTML, CSS, and JavaScript. Legacy phase modules are not loaded by the live page.",
+  "live_runtime_files": [
+    "index.html",
+    ".nojekyll",
+    "assets/mjc-logo-2026.png",
+    "README.md",
+    "bots.txt",
+    "robots.txt",
+    "governance-summary.json"
+  ],
+  "prototype_sections": [
+    "Briefing",
+    "Runtime",
+    "Escalation",
+    "TrustMap",
+    "Evidence",
+    "Reports",
+    "Handoff",
+    "Settings"
+  ],
+  "runtime_outcomes": [
+    "Allow",
+    "Block",
+    "Escalate",
+    "Require More Evidence",
+    "Allow with constraints"
+  ],
+  "important_boundaries": [
+    "The current public build is a lightweight static prototype.",
+    "The current public build is not connected to live enterprise telemetry.",
+    "The current public build is not a production SIEM, EDR, GRC, identity, cloud control, or agent enforcement platform.",
+    "CyberShield should not be represented as fully deployed live runtime enforcement until integrations exist.",
+    "CyberShield shows decision rationale traces, not private hidden chain-of-thought."
+  ],
+  "cybershield_is_not": [
+    "chatbot",
+    "LLM wrapper",
+    "generic AI dashboard",
+    "compliance spreadsheet",
+    "MSP portal",
+    "SIEM replacement"
+  ],
+  "cybershield_is": [
+    "AI execution control platform",
+    "runtime governance layer",
+    "operational admissibility engine",
+    "Executive Advisor Layer",
+    "decision evidence and accountability system",
+    "proof engine for Maximum Justice Cybersecurity advisory services"
+  ],
   "trust_principles": [
     "Trust must be modeled, evidenced, assigned, governed, and reviewed.",
     "Security without ownership becomes theater.",
     "Visibility without prioritization creates paralysis.",
     "Operational readiness beats reactive recovery.",
-    "AI is controlled before it acts, or it is not controlled at all."
+    "AI is controlled before it acts, or it is not controlled at all.",
+    "AI does not own the decision; a named human authority remains accountable."
   ],
-  "implemented_v8": [
-    "mobile-first Omega Operational Blue visual system",
-    "two-mode UX: orientation environment and operational environment",
-    "Operational Trust Assessment",
-    "Executive Operational Briefing",
-    "Action Orchestration Engine",
-    "Heavier operational scenario emulation",
-    "Omega TrustMap relationship graphing",
-    "distinct executive report outputs",
-    "local organizational memory"
+  "next_development_sequence": [
+    "Confirm clean runtime loads fast in Firefox, Chrome, Brave, and mobile browsers.",
+    "Restore deeper Runtime Governance features under one explicit render lifecycle.",
+    "Restore Authority Escalation with named human owners.",
+    "Restore TrustMap relationship intelligence without overlay drawers or heavy redraw behavior.",
+    "Restore Evidence Substrate and replayable decision packets.",
+    "Restore Reports with distinct executive outputs.",
+    "Restore MJC Handoff and persistence last."
   ],
-  "future_direction": [
-    "runtime governance engine",
-    "agent authorization boundaries",
-    "evidence substrate integration",
-    "workflow admissibility checks",
-    "enterprise API integrations"
+  "performance_guardrails": [
+    "No broad MutationObserver loops.",
+    "No dynamic script fan-out.",
+    "No timestamp-based module injection.",
+    "No duplicate navigation handlers.",
+    "No separate version files that mutate the same DOM.",
+    "No floating drawers as primary UX.",
+    "Every feature must pass tab-switch responsiveness testing before adding the next feature."
   ]
 }
