@@ -2,45 +2,42 @@
 
 ## Current live build
 
-Current build label: **V29 Integration Readiness and Performance Stabilization**
+Current build label: **V35 Controlled Backend Decision Build**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-See `bots.txt`, `governance-summary.json`, `docs/foundational-documents.md`, `docs/v29-decision-record.md`, and `docs/successor-builder-handoff-and-job-docket.md` for the current machine-readable and builder-facing build description.
+See `bots.txt`, `governance-summary.json`, `docs/foundational-documents.md`, `docs/v30-v35-build-record.md`, and `docs/successor-builder-handoff-and-job-docket.md` for the current machine-readable and builder-facing build description.
 
-## Primary workspace
-
-```text
-Briefing | Runtime | TrustMap | Reports | Adoption | Pilot | Settings
-```
-
-## Advanced workspace
+## User-facing workspace
 
 ```text
-Priorities | Escalation | Frameworks | Roadmap | Memory | Evidence | Guidance | Persistence | Integration | Website
+Briefing | Runtime | TrustMap | Reports | Proof Pack | CRM | Evidence | Backend | Settings
 ```
 
-## V29 purpose
+## V30 through V35 purpose
 
-V29 stabilizes the static prototype and aligns the in-app TrustMap with the public Maximum Justice Cybersecurity website model:
+CyberShield now consolidates the V30 through V35 roadmap into the current static prototype:
 
 ```text
 Assess operational trust exposure → Analyze governance and runtime risk → Deliver executive visibility and control
 ```
 
-V29 also converts the owner-approved integration decisions into an Integration Readiness layer without adding live sync, hidden network calls, authentication, or production enforcement claims.
+The executive dashboard no longer exposes version labels. Build/version details are intentionally kept in Settings and repository documentation.
 
-## Approved V29 directions
+## Current product capabilities
 
-- GitHub file-based persistence for demo/admin only
-- Google Sheets CRM-lite direction using an exportable CRM row payload
-- Microsoft 365 evidence modeled as future mockable SharePoint, OneDrive, and Outlook artifacts only
-- Data boundary limited to company self-assessment and non-sensitive policy/control artifacts
-- Identity model limited to executive role modeling, not authentication
-- Telemetry remains manual, placeholder, or clearly simulated
-- First AI systems governed: ChatGPT/custom GPTs, Microsoft Copilot, and the MJC sales agent scenario
+- Executive dashboard with operational trust, decision gate, business exposure, and evidence confidence
+- Runtime decision thresholds for Allow, Allow with Constraints, Escalate, and Block
+- TrustMap with hoverable color-coded edge explanations
+- TrustMap legend for green, yellow, and red relationship lines
+- Role-specific reports for CEO/President, CFO, CIO/CTO, and CISO/vCISO
+- Executive Proof Pack output
+- CRM-lite row generator for Google Sheets-compatible lead and pilot tracking
+- Mock evidence source layer for SharePoint, OneDrive, and Outlook-style artifacts
+- Controlled backend decision screen
+- Settings/Admin area for build metadata
 
 ## Foundational trust model sources
 
@@ -66,6 +63,12 @@ Future builders should read these source records before changing Runtime Governa
 - V27: Pilot Package and Sales Enablement
 - V28: Website Integration Layer
 - V29: Integration Readiness and Performance Stabilization
+- V30: TrustMap Usability and Executive De-Branding Cleanup
+- V31: Decision Engine Depth and Rationale Trace
+- V32: Executive Proof Pack and Board Output Upgrade
+- V33: CRM-Lite Workflow and Lead/Pilot Payloads
+- V34: Mock Evidence Source Layer
+- V35: Controlled Backend Decision Build
 
 ## Core rule
 
@@ -75,8 +78,8 @@ No dead bubbles.  Important objects should explain themselves or navigate somewh
 
 The current public build is a static prototype.  It is not connected to live SIEM, EDR, identity, GRC, cloud, Google Sheets, Microsoft 365, CRM, or production agent enforcement systems.
 
-V29 produces local/exportable records and models GitHub demo/admin persistence, Google Sheets CRM row payloads, and Microsoft 365 evidence placeholders.  It does not perform live external sync.
+The current build produces local/exportable records and models CRM row payloads, mock evidence sources, and backend decision paths.  It does not perform live external sync.
 
 ## Next likely decision point
 
-Before V30, decide whether to add a controlled backend, Apps Script append flow for Google Sheets, or a Microsoft Graph prototype.  Do not introduce live integrations without explicit owner approval and security boundary documentation.
+Before V36, decide whether to implement an append-only Google Apps Script CRM flow, a GitHub admin archive, or a lightweight backend. Do not introduce live integrations without explicit owner approval and security boundary documentation.
