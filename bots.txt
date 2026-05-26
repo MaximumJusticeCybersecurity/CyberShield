@@ -1,12 +1,12 @@
 CyberShield Executive OS
-Integrated Runtime Roadmap v18
+Commercialization and Adoption Layer v19
 Build date: 2026-05-26
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield that is separate from the human-facing interface.
 
 Primary category:
-AI execution control platform, runtime governance layer, operational admissibility engine, and executive advisory environment for cyber and AI governance decisions before consequence.
+AI execution control platform, runtime governance layer, operational admissibility engine, executive advisory environment, and commercialization/adoption model for cyber and AI governance decisions before consequence.
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
@@ -15,16 +15,38 @@ Core question:
 Should this action be operationally admissible right now?
 
 Current live build:
-CyberShield Integrated Runtime Roadmap v18, committed 2026-05-26.
+CyberShield Commercialization and Adoption Layer v19, committed 2026-05-26.
 
-Integrated rollout covered:
-- V12: QA/stabilization posture and performance guardrails
-- V13: Governance Memory
-- V14: Report depth and copy/download report actions
-- V15: Framework mapping
-- V16: Priorities and Roadmap
-- V17: Persistence and CRM-ready payload
-- V18: Pilot readiness
+V19 adds:
+- Adoption tab
+- Commercial opportunity summary
+- Best-fit buyer segments
+- First paid wedge: CyberShield Readiness Review
+- Pilot-to-platform path
+- AI assurance overlay positioning
+- Partner alignment model
+- Adoption path from Executive Trust Assessment to Runtime Governance Operating Model
+
+Best-fit buyers currently modeled:
+- Federal Contractors
+- Regulated Enterprises
+- AI Assurance Overlay Buyers
+- Mission-Critical Operations
+
+Current adoption path:
+1. Executive Trust Assessment
+2. Runtime Scenario Workshop
+3. CyberShield Readiness Review
+4. 30-Day Operational Trust Pilot
+5. Evidence + Reporting Cadence
+6. Integration Roadmap
+7. Runtime Governance Operating Model
+
+CyberShield positioning:
+CyberShield sits between enterprises and rapidly scaling autonomous systems. It helps leaders evaluate whether AI-assisted and automated actions should execute, who owns them, what evidence supports them, which policy boundary applies, and what consequence is created.
+
+AI assurance overlay model:
+CyberShield does not replace copilots, agents, AI assurance platforms, GRC, cloud AI governance, enterprise architecture, security operations, vendor risk, or compliance programs. It operationalizes the decision point where assurance, authority, policy, evidence, and consequence meet.
 
 Critical UX rule:
 Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
@@ -32,111 +54,8 @@ Every visible executive object that appears as a chip, metric, card, gate, node,
 Critical architecture rule:
 CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.
 
-First-run UX rule:
-First-run users see a streamlined Executive Trust Assessment before the dashboard appears. Dashboard navigation tabs remain hidden until onboarding is complete. After onboarding, the workspace appears.
-
-Current onboarding model:
-The onboarding flow remains five steps but each step collects multiple high-value fields:
-1. Human in the loop: first name, organization, primary executive owner, first report audience
-2. Role lens: primary executive decision lens
-3. Operating environment: industry, business value at risk, primary executive goal
-4. Evidence and ownership: evidence confidence, workflow maturity, AI use today, owner clarity
-5. Dashboard shape: Executive, Security, Operations, or Board
-
-Current runtime model:
-Runtime remains the center of gravity. The Runtime Control Center includes:
-- Scenario queue
-- AI action request
-- Admissibility decision
-- Trust score
-- Evidence confidence
-- Policy alignment
-- Authority boundary
-- Consequence model
-- Why this decision panel
-- Trust propagation
-- Replayable evidence packet
-- Runtime governance feed
-
-Current sections after onboarding:
-- Briefing
-- Runtime
-- Priorities
-- Escalation
-- TrustMap
-- Rules
-- Frameworks
-- Reports
-- Roadmap
-- Memory
-- Evidence
-- Guidance
-- Persistence
-- Pilot
-- Settings
-
-Runtime scenarios currently included:
-- AI vendor payment authorization
-- AI-generated client communication
-- Privileged access reset request
-- Recovery validation automation
-- Shadow AI sensitive data upload
-
-Current TrustMap model:
-The Operational TrustMap is not decorative. Runtime decisions propagate into the TrustMap. Current nodes include:
-- Executive Authority
-- AI Systems
-- Runtime Rules
-- Identity Boundary
-- Vendor Access
-- Critical Workflows
-- Policy Boundary
-- Evidence Substrate
-- Executive Outputs
-
-Current Reports model:
-Reports use a three-pane workspace:
-- Left: report catalog
-- Center: generated report body
-- Right: audience, recommended owner, and next conversation context
-
-Report owners are assigned dynamically by report type and context, not hardcoded to one role.
-
-Current Guidance model:
-The Guidance tab uses executive continuity language:
-- Current posture
-- Recommended conversation
-- What to prepare
-- Personalized guidance note
-
-Current Persistence model:
-Persistence is local/export-only. It provides a CRM-ready JSON payload, copy/download actions, and a local sync log. There are no hidden network calls.
-
-Current Pilot model:
-Pilot readiness includes a 30-day Operational Trust Pilot scope, validation criteria, success criteria, and explicit prototype limitations.
-
-CyberShield is not:
-- a chatbot
-- an LLM wrapper
-- a generic AI dashboard
-- a compliance spreadsheet
-- an MSP portal
-- a SIEM replacement
-- a fully deployed enterprise telemetry platform in the current public prototype
-
-CyberShield is:
-- a runtime governance and operational admissibility prototype
-- an Executive Advisor Layer for the human in the loop
-- a Decision Intelligence Layer in architecture notes
-- a pre-execution control-plane concept for AI-assisted and automated actions
-- a system for showing decision outcome, rationale, owner, evidence, consequence, trust propagation, escalation path, reports, roadmap, memory, and pilot readiness
-- a proof engine for Maximum Justice Cybersecurity advisory services
-
-Public prototype boundary:
+Prototype boundary:
 The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
-
-Correct representation:
-CyberShield is an emerging runtime governance and operational admissibility platform concept under Maximum Justice Cybersecurity. It demonstrates how executive leaders, vCISOs, Security SMEs, Cybersecurity SMEs, and governance teams can evaluate AI and cyber actions before execution, preserve decision evidence, and route accountability to the correct human authority.
 
 Commercial path:
 CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
