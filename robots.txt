@@ -6,5 +6,6 @@ Allow: /
 
 # Machine-readable context for AI crawlers and future AI builders
 # https://maximumjusticecybersecurity.github.io/CyberShield/bots.txt
+# https://maximumjusticecybersecurity.github.io/CyberShield/governance-summary.json
 
 Sitemap: https://maximumjusticecybersecurity.github.io/CyberShield/sitemap.xml
