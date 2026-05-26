@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+
+# Human-facing prototype
+# https://maximumjusticecybersecurity.github.io/CyberShield/
+
+# Machine-readable context for AI crawlers and future AI builders
+# https://maximumjusticecybersecurity.github.io/CyberShield/bots.txt
+
 Sitemap: https://maximumjusticecybersecurity.github.io/CyberShield/sitemap.xml
