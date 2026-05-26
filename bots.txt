@@ -1,12 +1,12 @@
 CyberShield Executive OS
-V29 Integration Readiness and Performance Stabilization
+V35 Controlled Backend Decision Build
 Build date: 2026-05-26
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V29 Integration Readiness and Performance Stabilization.
+CyberShield V35 Controlled Backend Decision Build.
 
 Release train included:
 - V21: Executive Demo QA and Navigation Compression
@@ -18,25 +18,28 @@ Release train included:
 - V27: Pilot Package and Sales Enablement
 - V28: Website Integration Layer
 - V29: Integration Readiness and Performance Stabilization
+- V30: TrustMap Usability and Executive De-Branding Cleanup
+- V31: Decision Engine Depth and Rationale Trace
+- V32: Executive Proof Pack and Board Output Upgrade
+- V33: CRM-Lite Workflow and Lead/Pilot Payloads
+- V34: Mock Evidence Source Layer
+- V35: Controlled Backend Decision Build
 
 Current section set:
-Primary navigation: Briefing, Runtime, TrustMap, Reports, Adoption, Pilot, Settings.
-Advanced navigation: Priorities, Escalation, Frameworks, Roadmap, Memory, Evidence, Guidance, Persistence, Integration, Website.
+User-facing navigation: Briefing, Runtime, TrustMap, Reports, Proof Pack, CRM, Evidence, Backend, Settings.
 
-V29 capabilities:
-- website-aligned TrustMap operating model: Assess Exposure, Analyze Runtime Risk, Deliver Control
-- runtime operational admissibility scenarios
-- MJC sales agent prospect qualification scenario
-- executive reports and proof exports
-- Governance Memory decision record view
-- Evidence Substrate decision packet
-- Google Sheets CRM row payload schema
-- GitHub demo/admin persistence model
-- Microsoft 365 mock evidence source model for SharePoint, OneDrive, and Outlook
-- local/export-only payloads
-- V29 integration readiness layer
-- clearer prototype boundary
-- performance-oriented static consolidation
+Current capabilities:
+- user-facing executive dashboard without visible version labels
+- build metadata moved to Settings/Admin
+- TrustMap edge hover explanations for green, yellow, and red relationship lines
+- TrustMap legend
+- runtime decision thresholds for Allow, Allow with Constraints, Escalate, and Block
+- role-specific reports
+- Executive Proof Pack
+- CRM-lite row generator and CSV output
+- mock evidence source layer
+- controlled backend decision matrix
+- local/export-only behavior
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
@@ -55,14 +58,6 @@ CyberShield must remain consolidated and performant. Do not reintroduce old phas
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, Microsoft 365, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
-
-Approved V29 integration posture:
-- GitHub file-based persistence for demo/admin only
-- Google Sheets CRM-lite row payload schema only
-- SharePoint/OneDrive artifacts and Outlook meeting evidence as future mockable evidence sources only
-- no hidden network calls
-- no direct browser write to Google Sheets, GitHub, Microsoft 365, or CRM
-- no sensitive data or regulated data in demo mode
 
 Commercial path:
 CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
