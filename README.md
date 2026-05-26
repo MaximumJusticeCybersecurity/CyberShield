@@ -6,7 +6,7 @@ Current build label: **Integrated V21-V28 Release Train v28**
 
 Live app file: `index.html`
 
-See `bots.txt`, `governance-summary.json`, and `docs/v21-v28-release-train.md` for the current machine-readable and builder-facing build description.
+See `bots.txt`, `governance-summary.json`, `docs/foundational-documents.md`, and `docs/v21-v28-release-train.md` for the current machine-readable and builder-facing build description.
 
 ## Primary workspace
 
@@ -19,6 +19,19 @@ Briefing | Runtime | TrustMap | Reports | Adoption | Pilot | Settings
 ```text
 Priorities | Escalation | Frameworks | Roadmap | Memory | Evidence | Guidance | Persistence | Website
 ```
+
+## Foundational trust model sources
+
+CyberShield now includes foundational source records for Dr. Max Justice's Cybersecurity Trust Model materials:
+
+```text
+foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md
+foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md
+```
+
+These records are based on verified Google Doc and Google Slides text extraction.  The raw PDF/DOCX/PPTX files have not yet been committed.
+
+Future builders should read these source records before changing Runtime Governance, TrustMap, Evidence Substrate, Governance Memory, Reports, Pilot Package, or the Executive Advisor Layer.
 
 ## Release train included
 
