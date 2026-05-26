@@ -32,6 +32,61 @@ Example:
 
 ## Current builder log
 
+### Builder-20260526-002
+
+Date: 2026-05-26
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield successor builder session
+
+CyberShield versions affected:
+
+- V29 Integration Readiness and Performance Stabilization
+- website-aligned TrustMap operating model
+- V29 decision record and integration-readiness documentation
+
+Files materially changed or created:
+
+- `index.html`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/v29-decision-record.md`
+- `docs/builder-version-log.md`
+- `docs/successor-builder-handoff-and-job-docket.md`
+
+Primary value add:
+
+Converted the V29 owner decisions into a bounded static prototype release focused on integration readiness, performance stabilization, and tighter alignment with the public Maximum Justice Cybersecurity Trust Map model.
+
+What got better:
+
+- repaired `index.html` after an accidental placeholder write during the build process
+- advanced the live app from V28 to V29
+- aligned in-app TrustMap to the public website model: assess operational trust exposure, analyze governance and runtime risk, deliver executive visibility and control
+- added the MJC sales agent prospect qualification scenario
+- added a V29 Integration Readiness section
+- added Google Sheets CRM row payload schema
+- documented GitHub demo/admin persistence as the approved first persistence route
+- modeled SharePoint, OneDrive, and Outlook as future mockable Microsoft 365 evidence sources only
+- preserved explicit no-live-sync and no-production-enforcement boundaries
+- updated README, bots context, and governance summary to stop future builders from inheriting stale V28 instructions
+
+Remaining risks or limitations:
+
+- public build remains a static GitHub Pages prototype
+- no real integrations yet
+- no authentication yet
+- no persistent backend yet
+- no production enforcement engine yet
+- Google Sheets CRM header update could not be confirmed during the build because the Sheets API hit a project-level rate limit
+- browser QA still needs real manual validation, especially Firefox desktop
+- no live Microsoft Graph, CRM, SIEM, EDR, identity, GRC, or cloud integration exists
+- raw dissertation PDF/DOCX and raw oral defense PPTX/PDF are still not committed
+
+Next recommended build action:
+
+Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v29-qa&reset=onboarding`, validate Firefox performance, confirm GitHub Pages deployment, manually verify that the TrustMap reflects the public website model, then decide whether V30 should implement a controlled backend, an Apps Script append-only Google Sheets CRM flow, or a Microsoft Graph evidence-source prototype.
+
 ### Builder-20260526-001
 
 Date: 2026-05-26
@@ -96,7 +151,6 @@ Remaining risks or limitations:
 - browser QA still needs real manual validation
 - raw dissertation PDF/DOCX has not yet been committed because the connector exposed text extraction, not a raw binary suitable for direct commit
 - raw oral defense PPTX/PDF has not yet been committed because the connector exposed text extraction, not a raw binary suitable for direct commit
-- V29 must not proceed without owner decisions on persistence, Microsoft 365, CRM, data handling, identity, telemetry, and AI tools
 
 Next recommended build action:
 
