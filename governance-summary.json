@@ -1,91 +1,39 @@
 {
   "product": "CyberShield Executive OS",
-  "current_build": "Commercialization and Adoption Layer v19",
+  "current_build": "Executive Demo Hardening and TrustMap Restoration v20",
   "build_date": "2026-05-26",
-  "architecture": "Runtime Governance, Operational Admissibility, and Adoption Strategy Platform",
+  "architecture": "Runtime Governance, Operational Admissibility, TrustMap, and Adoption Strategy Platform",
   "product_facing_layer": "Executive Advisor Layer",
   "architecture_facing_layer": "Decision Intelligence Layer",
   "doctrine": "Operational Governance Before Consequence",
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
-  "commercial_question_answered": "Where is the biggest commercial opportunity, and how does CyberShield move beyond architecture into adoption?",
-  "positioning": "CyberShield sits between enterprises and rapidly scaling autonomous systems as a runtime governance and operational trust layer. It evaluates whether AI-assisted and automated actions should execute, who owns them, what evidence supports them, which policy boundary applies, and what consequence is created.",
-  "v19_additions": [
+  "positioning": "CyberShield sits between enterprises and rapidly scaling autonomous systems as a runtime governance and operational trust layer. It evaluates whether AI-assisted and automated actions should execute, who owns them, what evidence supports them, which policy boundary applies, what consequence is created, and which TrustMap relationships are affected.",
+  "v20_additions": [
+    "Operational TrustMap restored as first-class tab",
+    "Runtime trust propagation relationship graph",
+    "Selected-node relationship intelligence",
+    "Selected-node insight rail",
+    "TrustMap impact added to evidence packet",
+    "TrustMap impact added to reports",
+    "TrustMap impact added to pilot brief",
+    "Executive 90-second demo path: Runtime, TrustMap, Adoption, Pilot"
+  ],
+  "retained_from_v19": [
     "Adoption tab",
     "Commercial opportunity summary",
     "Best-fit buyer segments",
     "First paid wedge: CyberShield Readiness Review",
     "Pilot-to-platform path",
     "AI assurance overlay positioning",
-    "Partner alignment model",
-    "Adoption path from Executive Trust Assessment to Runtime Governance Operating Model"
-  ],
-  "best_fit_buyers": [
-    {
-      "segment": "Federal Contractors",
-      "pain": "AI governance, CMMC/NIST evidence, contract accountability, audit defensibility",
-      "buyers": "CEO / President, CISO / vCISO, CIO / CTO, compliance lead",
-      "wedge": "CyberShield Readiness Review focused on AI governance and evidence readiness"
-    },
-    {
-      "segment": "Regulated Enterprises",
-      "pain": "Agentic AI adoption, unclear ownership, policy drift, evidence gaps",
-      "buyers": "CISO / vCISO, CIO / CTO, General Counsel, COO",
-      "wedge": "Runtime governance pilot for one high-consequence workflow"
-    },
-    {
-      "segment": "AI Assurance Overlay Buyers",
-      "pain": "Existing copilots and AI tools lack runtime action gating and accountability trace",
-      "buyers": "AI governance lead, enterprise architect, CISO / vCISO",
-      "wedge": "AI assurance overlay assessment"
-    },
-    {
-      "segment": "Mission-Critical Operations",
-      "pain": "Operational resilience, recovery confidence, workflow dependency, consequence management",
-      "buyers": "COO, CIO / CTO, CISO / vCISO",
-      "wedge": "Operational Trust Assessment"
-    }
-  ],
-  "adoption_path": [
-    "Executive Trust Assessment",
-    "Runtime Scenario Workshop",
-    "CyberShield Readiness Review",
-    "30-Day Operational Trust Pilot",
-    "Evidence + Reporting Cadence",
-    "Integration Roadmap",
-    "Runtime Governance Operating Model"
-  ],
-  "first_paid_wedge": {
-    "name": "CyberShield Readiness Review",
-    "includes": [
-      "5 executive runtime scenarios",
-      "onboarding and role-mapping session",
-      "evidence gap review",
-      "owner accountability mapping",
-      "pilot recommendation",
-      "operational trust snapshot"
-    ],
-    "outputs": [
-      "CyberShield Readiness Memo",
-      "Operational Trust Snapshot",
-      "Pilot Recommendation"
-    ]
-  },
-  "ai_assurance_overlay_model": "Copilots and agents create outputs. CyberShield evaluates whether resulting actions should execute, who owns them, what evidence supports them, and what policy boundary applies.",
-  "partner_alignment": [
-    "AI assurance platforms",
-    "GRC systems",
-    "cloud AI governance",
-    "enterprise architecture",
-    "security operations",
-    "vendor risk management",
-    "compliance programs"
+    "Partner alignment model"
   ],
   "prototype_sections_after_onboarding": [
     "Briefing",
     "Runtime",
     "Priorities",
     "Escalation",
+    "TrustMap",
     "Frameworks",
     "Reports",
     "Roadmap",
@@ -97,12 +45,39 @@
     "Pilot",
     "Settings"
   ],
+  "trustmap_nodes": [
+    "Executive Authority",
+    "AI Systems",
+    "Runtime Rules",
+    "Identity Boundary",
+    "Vendor Access",
+    "Critical Workflows",
+    "Policy Boundary",
+    "Evidence Substrate",
+    "Executive Outputs"
+  ],
   "runtime_scenarios": [
     "AI vendor payment authorization",
     "AI-generated client communication",
     "Privileged access reset request",
     "Recovery validation automation",
     "Shadow AI sensitive data upload"
+  ],
+  "best_fit_buyers": [
+    "Federal Contractors",
+    "Regulated Enterprises",
+    "AI Assurance Overlay Buyers",
+    "Mission-Critical Operations"
+  ],
+  "first_paid_wedge": "CyberShield Readiness Review",
+  "adoption_path": [
+    "Executive Trust Assessment",
+    "Runtime Scenario Workshop",
+    "CyberShield Readiness Review",
+    "30-Day Operational Trust Pilot",
+    "Evidence + Reporting Cadence",
+    "Integration Roadmap",
+    "Runtime Governance Operating Model"
   ],
   "critical_ux_rule": "Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.",
   "critical_architecture_rule": "CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.",
@@ -125,6 +100,7 @@
     "AI execution control platform",
     "runtime governance layer",
     "operational admissibility engine",
+    "Operational TrustMap demonstrator",
     "Executive Advisor Layer",
     "adoption strategy layer",
     "decision evidence and accountability system",
