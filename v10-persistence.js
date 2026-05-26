@@ -7,7 +7,7 @@
   const SYNC_LOG_KEY = "cybershield_sync_log";
   const SESSION_KEY = "cybershield_session_id";
   const LAST_SYNC_KEY = "cybershield_last_sync";
-  const MODULES = ["v12-mjc-lead-handoff.js", "v14-trustmap-2.js", "v15-runtime-rules.js", "v16-framework-mapping.js", "v20-productization.js"];
+  const MODULES = ["v12-mjc-lead-handoff.js", "v14-trustmap-2.js", "v15-runtime-rules.js", "v16-framework-mapping.js", "v20-productization.js", "v21-ui-cleanup.js"];
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
