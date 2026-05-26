@@ -1,6 +1,7 @@
 {
   "product": "CyberShield Executive OS",
-  "current_build": "Clean Rebuild 2026-05-26",
+  "current_build": "Clean Runtime v2",
+  "build_date": "2026-05-26",
   "architecture": "Runtime Governance and Operational Admissibility Platform",
   "product_facing_layer": "Executive Advisor Layer",
   "architecture_facing_layer": "Decision Intelligence Layer",
@@ -29,12 +30,24 @@
     "Handoff",
     "Settings"
   ],
+  "runtime_capabilities": [
+    "Role and organization context",
+    "Runtime Governance action simulation",
+    "Operational Admissibility scoring",
+    "Authority Escalation routing",
+    "Operational TrustMap relationship intelligence",
+    "Evidence Substrate packet generation",
+    "Decision Rationale Trace",
+    "Distinct executive report previews",
+    "MJC advisory handoff note",
+    "Local context persistence through browser localStorage"
+  ],
   "runtime_outcomes": [
     "Allow",
     "Block",
     "Escalate",
     "Require More Evidence",
-    "Allow with constraints"
+    "Allow with Constraints"
   ],
   "important_boundaries": [
     "The current public build is a lightweight static prototype.",
@@ -68,13 +81,12 @@
     "AI does not own the decision; a named human authority remains accountable."
   ],
   "next_development_sequence": [
-    "Confirm clean runtime loads fast in Firefox, Chrome, Brave, and mobile browsers.",
-    "Restore deeper Runtime Governance features under one explicit render lifecycle.",
-    "Restore Authority Escalation with named human owners.",
-    "Restore TrustMap relationship intelligence without overlay drawers or heavy redraw behavior.",
-    "Restore Evidence Substrate and replayable decision packets.",
-    "Restore Reports with distinct executive outputs.",
-    "Restore MJC Handoff and persistence last."
+    "Confirm Clean Runtime v2 loads fast in Firefox, Chrome, Brave, and mobile browsers.",
+    "Improve visual polish without adding external dependencies.",
+    "Expand Runtime Governance scenarios.",
+    "Add stronger Executive Advisor Layer personalization.",
+    "Add downloadable executive reports.",
+    "Add CRM or Google Apps Script persistence only after UI performance remains stable."
   ],
   "performance_guardrails": [
     "No broad MutationObserver loops.",
