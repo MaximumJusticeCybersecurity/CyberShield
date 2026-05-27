@@ -10,7 +10,7 @@ Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
 Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v44-qa&reset=onboarding
 
-See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/v44-dangerous-action-simulation-build-record.md`, `docs/foundational-documents.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
+See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/v44-dangerous-action-simulation-build-record.md`, `docs/v45-psychology-driven-improvement-requirements.md`, `docs/v45-v50-executive-authority-build-plan.md`, `docs/foundational-documents.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
 
 ## User-facing workspace
 
@@ -18,13 +18,35 @@ See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, 
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-## V44 purpose
+## Current implemented build: V44
 
 V44 makes CyberShield instantly understandable as an operational trust control plane by centering the product around a dangerous action moving through trust measurement, decisioning, evidence, business exposure, proof, and next executive action.
 
 Core product sentence:
 
 CyberShield helps executives decide whether AI actions, vendor workflows, access requests, and evidence-dependent operations should be allowed, constrained, escalated, blocked, or documented before they create business, regulatory, security, or operational damage.
+
+## Next planned build sequence: V45-V50
+
+The next builder should use:
+
+```text
+docs/v45-psychology-driven-improvement-requirements.md
+docs/v45-v50-executive-authority-build-plan.md
+```
+
+The V45-V50 sequence should move CyberShield from a smart governance prototype to a calm executive control environment.
+
+Planned sequence:
+
+- V45: Executive Authority and First-9-Seconds Build
+- V46: Evidence-Backed Confidence and Result Authority Build
+- V47: Executive Commitment Record and Deadline Pressure Build
+- V48: TrustMap Power Network Build
+- V49: Before Consequence and Power of Proof Build
+- V50: Executive Authority QA and External Demo Readiness Build
+
+Critical rule: do not add more top-level tabs for this work.  Upgrade Briefing, Runtime, TrustMap, Reports / Proof Pack, Memory / Commitments, Pilot / Adoption, and Settings/Admin where needed.
 
 ## Default simulation
 
@@ -102,4 +124,4 @@ Turn this simulation into a real Operational Trust Assessment.
 
 ## Next likely decision point
 
-Run QA on the V44 Dangerous Action Simulation build.  Priority checks: first-screen comprehension, scenario switching, trust factor scoring, decision ladder behavior, evidence artifact accumulation, replayable decision record generation, business exposure behavior, TrustMap no-overlap validation, Proof Pack copy/download behavior, and mobile/Firefox performance.
+Run QA on the V44 Dangerous Action Simulation build, then use the V45-V50 plan to implement the Executive Authority Layer one version at a time.  Priority checks: first-screen comprehension, scenario switching, trust factor scoring, decision ladder behavior, evidence artifact accumulation, replayable decision record generation, business exposure behavior, TrustMap no-overlap validation, Proof Pack copy/download behavior, and mobile/Firefox performance.
