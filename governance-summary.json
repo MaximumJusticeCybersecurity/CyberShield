@@ -1,69 +1,127 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V47.1 TrustMap Restoration and Readability Patch",
-  "next_planned_build_sequence": "V48-V51 Executive Authority and Authenticity Trust Layer",
+  "current_implemented_build": "V51 Authenticity Trust and Brand Impersonation Build",
   "build_date": "2026-05-27",
-  "architecture": "Runtime Governance, Operational Admissibility, Interactive Enterprise TrustMap, Manual Evidence Intake, Business Exposure Modeling, Role-Tailored Proof Pack, Dangerous Action Simulation, Executive Authority Layer, Executive Commitment Record, and planned Authenticity Trust Layer",
+  "release_chain_status": "Deconflicted after Nate review feedback. README, bots.txt, governance-summary.json, index.html Settings/admin metadata, and builder-version-log should all identify V51 as the current implemented build.",
+  "live_app_file": "index.html",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-qa&reset=onboarding",
+  "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
+  "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
+  "version_label_rule": "Build and version labels belong in Settings/admin metadata and repo documentation only. They must not appear as executive-facing dashboard content.",
   "product_facing_layer": "Executive Advisor Layer",
   "architecture_facing_layer": "Decision Intelligence Layer",
   "doctrine": "Operational Governance Before Consequence",
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
-  "v47_1_patch_type": "Corrective regression patch, not forward feature scope",
-  "v47_1_reason": "The TrustMap was over-simplified during V45-V47, losing meaningful visual objects, relationship lines, clickable link explanations, and readability. V47.1 restores those qualities before V48.",
-  "v47_1_quality_rule": "The TrustMap must not degrade into unreadable bubbles or initials. It must show meaningful business/security objects, visible relationships, clickable connection explanations, readable labels, and accessible text contrast.",
+  "v51_positioning_line": "When everything can be faked, CyberShield helps prove what can be trusted.",
+  "v51_extension_question": "Can this person, product, vendor, website, ad, source, brand claim, payment request, or AI-generated artifact be trusted before someone acts on it?",
+  "first_9_seconds_standard": [
+    "what risky action is happening",
+    "what CyberShield decided",
+    "why it matters",
+    "what happens next"
+  ],
   "implemented_release_train": {
     "v45": "Executive Authority and First-9-Seconds Build",
     "v46": "Evidence-Backed Confidence and Result Authority Build",
     "v47": "Executive Commitment Record and Deadline Pressure Build",
-    "v47.1": "TrustMap Restoration and Readability Patch"
-  },
-  "planned_authority_layer_sequence": {
+    "v47.1": "TrustMap Restoration and Readability Patch",
+    "v47.4": "Workspace Isolation and Score Improvement Baseline",
     "v48": "TrustMap Power Network Build",
     "v49": "Before Consequence and Power of Proof Build",
     "v50": "Executive Authority QA and External Demo Readiness Build",
-    "v51": "Authenticity Trust and Brand Impersonation Build after V50 stabilization"
+    "v51": "Authenticity Trust and Brand Impersonation Build"
   },
-  "v47_1_restored_modules": [
-    "readable CyberShield center object",
-    "meaningful TrustMap object tiles instead of initials",
-    "visual icons for identity, cloud, vendors, AI agents, data, endpoints, policy, evidence, and decision records",
-    "visible relationship lines",
-    "clickable relationship explanations",
-    "selected-node highlighting",
-    "TrustMap relationship records in Proof Pack",
-    "larger base font size",
-    "improved muted-text contrast",
-    "better mobile readability",
-    "horizontal scrolling for the map on narrow screens instead of crushing the map"
+  "current_capabilities": [
+    "true workspace/tab isolation",
+    "executive scoring loop",
+    "score-lift actions with owner accountability",
+    "TrustMap Power Owners",
+    "Before/After consequence comparison",
+    "Proof Strength scoring",
+    "Demo Readiness scoring",
+    "Authenticity Trust scoring",
+    "Trust Under Attack panel",
+    "Official Source Verification Gate",
+    "Brand and Identity Impersonation TrustMap domain",
+    "AI-Generated Brand Impersonation Campaign scenario",
+    "Counterfeit Product Verification Failure scenario",
+    "counterfeit consequence severity",
+    "authenticity evidence types",
+    "Authenticity and Impersonation Risk Proof Pack section",
+    "Brand Impersonation and Authenticity Risk Assessment advisory wedge"
   ],
-  "preserved_capabilities": [
-    "V45 first-9-seconds executive authority strip",
-    "V46 evidence-backed confidence and score authority",
-    "V47 Executive Commitment Record and deadline pressure",
-    "Dangerous Action Simulation",
-    "manual evidence library",
-    "role-tailored Proof Pack",
-    "local/export-only prototype boundary"
+  "current_scenarios": [
+    "AI-Generated Brand Impersonation Campaign",
+    "Counterfeit Product Verification Failure",
+    "Shadow AI Vendor Data Upload",
+    "AI Vendor Payment Authorization"
   ],
-  "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
-  "runtime_scenarios": ["Shadow AI Vendor Data Upload", "AI Vendor Payment Authorization", "Privileged Access Reset Request", "AI-Generated Board Report"],
-  "trustmap_domains": ["Identities & Access", "Cloud & Infrastructure", "Third Parties & Vendors", "AI Systems & Agents", "Applications & Data", "Devices & Endpoints", "Policy & Compliance", "Evidence Substrate", "Decision Record"],
-  "trustmap_relationships": [
-    "identity authorizes agent",
-    "agent touches data",
-    "data exits to vendor",
-    "vendor governed by policy",
-    "policy requires proof",
-    "proof supports decision",
-    "owner accountable",
-    "infrastructure hosts data",
-    "endpoint carries identity",
-    "agent constrained by policy"
+  "trustmap_domains": [
+    "Digital Identity",
+    "Brand and Identity Impersonation",
+    "Third Parties and Vendors",
+    "AI Systems and Agents",
+    "Modern Data Stack",
+    "Policy and Compliance Manual",
+    "Evidence Substrate",
+    "Decision Record"
   ],
-  "v51_core_principle": "In the AI era, trust is not assumed. Trust is verified.",
-  "v51_positioning_line": "When everything can be faked, CyberShield helps prove what can be trusted.",
-  "ethical_boundary": "Use psychology, accountability pressure, and trust design to improve clarity, trust perception, executive decision quality, customer protection, and evidence-backed action. Do not manipulate users, hide uncertainty, exaggerate capability, imply live enforcement where none exists, imply live notification or ticketing where none exists, imply live takedown automation where none exists, obscure the prototype boundary, create artificial fear, or pressure users without evidence.",
-  "prototype_boundary": "The current public build is a lightweight static prototype with local/export-oriented behavior only. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, ticketing, notification systems, marketplace systems, ad platforms, takedown systems, or production agent enforcement systems.",
-  "commercial_entry_wedge": "CyberShield Readiness Review or Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield."
+  "official_source_verification_gate": [
+    "Is this official?",
+    "Is the vendor approved?",
+    "Is the payment destination verified?",
+    "Is brand/person/likeness use authorized?",
+    "Is it safe to rely on before action?"
+  ],
+  "authenticity_evidence_types": [
+    "official website verification",
+    "authorized reseller list",
+    "valid product ID/SKU",
+    "certificate of authenticity",
+    "warranty validation",
+    "domain registration data",
+    "takedown request record",
+    "marketplace abuse report",
+    "platform ad record",
+    "executive likeness authorization",
+    "legal/IP letter",
+    "customer complaint record",
+    "known counterfeit sample",
+    "payment destination verification"
+  ],
+  "commercial_path": {
+    "primary_cta": [
+      "CyberShield Authenticity Trust Assessment",
+      "CyberShield Operational Trust Assessment"
+    ],
+    "secondary_paths": [
+      "30-Day CyberShield Pilot",
+      "Evidence Register and Proof Pack Buildout",
+      "Runtime Governance Readiness Review",
+      "Score Improvement Roadmap"
+    ],
+    "advisor_positioning": "Led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield."
+  },
+  "prototype_boundary": "The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, or production agent enforcement systems.",
+  "overclaim_prohibitions": [
+    "no live enforcement claims",
+    "no live takedown automation claims",
+    "no live marketplace scanning claims",
+    "no live ad-platform enforcement claims",
+    "no live identity verification claims",
+    "no live CRM sync claims",
+    "no live enterprise integration claims",
+    "no live notification or ticketing claims"
+  ],
+  "qa_priority": [
+    "README, bots.txt, governance-summary.json, builder-version-log, and index.html Settings/admin metadata agree on V51",
+    "executive-facing UI does not show build/version labels",
+    "Trust Under Attack is visible early in Briefing",
+    "Official Source Verification Gate is simple and action-oriented",
+    "Brand and Identity Impersonation is treated as cross-domain TrustMap risk",
+    "primary CTA is not cluttered",
+    "first-9-seconds standard is preserved",
+    "no live enforcement or integration overclaims appear in executive-facing UI"
+  ]
 }
