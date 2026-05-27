@@ -1,51 +1,49 @@
 CyberShield Executive OS
-V41 Enterprise Trust Platform Prototype
+Current implemented build: V44 Dangerous Action Simulation Build
+Next planned requirements: V45-V50 Executive Authority Layer
 Build date: 2026-05-27
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V41 Enterprise Trust Platform Prototype.
+CyberShield V44 Dangerous Action Simulation Build.
 
-Release train included:
-- V21: Executive Demo QA and Navigation Compression
-- V22: TrustMap 2.0 and Runtime Relationship Logic
-- V23: Report Engine Upgrade
-- V24: Governance Memory 2.0
-- V25: Framework Evidence Library
-- V26: Persistence, Intake, and CRM Payload Hardening
-- V27: Pilot Package and Sales Enablement
-- V28: Website Integration Layer
-- V29: Integration Readiness and Performance Stabilization
-- V30: TrustMap Usability and Executive De-Branding Cleanup
-- V31: Decision Engine Depth and Rationale Trace
-- V32: Executive Proof Pack and Board Output Upgrade
-- V33: CRM-Lite Workflow and Lead/Pilot Payloads
-- V34: Mock Evidence Source Layer
-- V35: Controlled Backend Decision Build
-- V36: Enterprise TrustMap Alignment Build
-- V37: Sandeep Demo and Sales Conversion Build
-- V38: Manual Evidence Intake Build
-- V39: CRM and Pilot Payload Build
-- V40: Executive Proof Pack Commercial Build
-- V41: Enterprise Architecture Transition Plan
+Current user-facing navigation:
+Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-Current section set:
-User-facing navigation: Briefing, TrustMap, Runtime, Sandeep Mode, Evidence, CRM, Proof Pack, Architecture, Settings.
+Current V44 purpose:
+V44 makes CyberShield instantly understandable as an operational trust control plane by centering the product around a dangerous action moving through trust measurement, decisioning, evidence, business exposure, proof, and next executive action.
+
+Current default simulation:
+Shadow AI Vendor Data Upload: an employee or AI-enabled workflow attempts to upload customer, contract, or regulated business data into an unapproved AI vendor tool.
 
 Current capabilities:
-- clean CyberShield blue enterprise SaaS interface, not full dark command-center styling
-- Enterprise TrustMap with center organization node and domain clusters
-- operational trust score rail and active risk rails
+- CyberShield True Blue trust palette
+- Dangerous Action Simulation as the central executive story
+- Without CyberShield / With CyberShield comparison
+- transparent weighted trust model across ten operational trust factors
+- Overall Operational Trust Score
+- Score Confidence
+- Decision Confidence
+- Evidence Completeness
+- Evidence Freshness
+- Authority Clarity
+- Consequence Severity
+- Trust Delta
+- Decision ladder: Allow, Constrain, Escalate, Block
+- Trust Drift indicator
+- Commitment Boundary concept
+- Override and exception tracking fields
+- Replayable Decision Record generation
+- Organization shield as the TrustMap center object
+- icon-first first-layer TrustMap domains with score-dot indicators
+- selected-domain drill-down into second-layer TrustMap objects
 - TrustMap edge hover glow, endpoint connector dots, and click-to-pin relationship detail
-- runtime decision thresholds for Allow, Allow with Constraints, Escalate, and Block
-- Sandeep / IBM practice-builder mode
-- manual evidence intake with local confidence impact
-- CRM-lite row generator and CSV output
-- commercial Executive Proof Pack
-- zero-cost prototype to low-cost pilot to enterprise-grade architecture path
-- local/export-only behavior
+- manual evidence library with accumulating artifacts
+- role-tailored Proof Pack with report recipient personalization
+- Architecture path: Advisory Prototype, Guided Pilot, Enterprise Trust Platform
+- admin CRM payload hidden in Settings
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
@@ -53,11 +51,45 @@ AI is controlled before it acts, or it is not controlled at all.
 Core question:
 Should this action be operationally admissible right now?
 
-Website-aligned TrustMap model:
-Assess operational trust exposure, analyze governance and runtime risk, then deliver executive visibility and control.
+V45 source requirement:
+Read `docs/v45-psychology-driven-improvement-requirements.md`.
+
+V45-V50 build plan:
+Read `docs/v45-v50-executive-authority-build-plan.md`.
+
+V45-V50 planned sequence:
+- V45: Executive Authority and First-9-Seconds Build
+- V46: Evidence-Backed Confidence and Result Authority Build
+- V47: Executive Commitment Record and Deadline Pressure Build
+- V48: TrustMap Power Network Build
+- V49: Before Consequence and Power of Proof Build
+- V50: Executive Authority QA and External Demo Readiness Build
+
+V45-V50 strategic instruction:
+Move CyberShield from a smart governance prototype to a calm executive control environment. Do not add more top-level tabs for this work. Upgrade Briefing, Runtime, TrustMap, Reports / Proof Pack, Memory / Commitments, Pilot / Adoption, and Settings/Admin where needed.
+
+V45 product psychology principle:
+CyberShield must not only measure trust. It must project trust.
+
+V45 ethical boundary:
+Use psychology to improve clarity, trust perception, and executive decision quality. Do not manipulate users, hide uncertainty, exaggerate product capability, imply live enforcement where none exists, obscure the prototype boundary, create artificial fear, or pressure users without evidence.
+
+V45 authority modules to implement:
+- Pressure Points
+- Executive Commitment Record
+- TrustMap power network
+- evidence-backed confidence
+- Before Consequence moment
+- result-backed authority
+- deadline pressure
+- Power of Proof design
+
+Foundational trust model sources:
+- `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
+- `foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
 
 Strategic direction:
-CyberShield remains MJC-owned advisory software, not standalone SaaS yet. Sandeep path is advisor / IBM practice-builder / potential internal champion. Regulated SMBs and federal-adjacent SMBs remain the commercial fallback market.
+CyberShield remains MJC-owned advisory software, not standalone SaaS yet. Enterprise practice-builder path remains strategic. Regulated SMBs and federal-adjacent SMBs remain the commercial fallback market. Current budget assumption remains zero or near-zero hosting/backend spend.
 
 Critical UX rule:
 Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
@@ -66,7 +98,7 @@ Critical architecture rule:
 CyberShield must remain consolidated and performant. Do not reintroduce old phase-file module sprawl, broad MutationObserver loops, dynamic script injection, or timestamp-based runtime loading.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, Microsoft 365, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not yet connected to live enterprise telemetry, real identity systems, SIEM data, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, or real CRM sync. Do not represent it as a fully deployed live enforcement engine.
 
 Commercial path:
-CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Readiness Review or Operational Trust Assessment led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
+CyberShield supports Maximum Justice Cybersecurity as a product, platform, and proof engine. The current advisory wedge is a CyberShield Operational Trust Assessment or CyberShield Readiness Review led by Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.
