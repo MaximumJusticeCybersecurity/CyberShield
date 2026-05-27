@@ -1,18 +1,29 @@
-# CyberShield V45-V50 Executive Authority Build Plan
+# CyberShield V45-V51 Executive Authority and Authenticity Trust Build Plan
 
 Date: 2026-05-27
-Primary source: `docs/v45-psychology-driven-improvement-requirements.md`
-Supporting source: colleague feedback influenced by Robert Greene transcript review
+
+Primary sources:
+
+- `docs/v45-psychology-driven-improvement-requirements.md`
+- Mike Rowe / Josh Smith transcript requirements supplied by Dr. Max Justice
 
 ## Purpose
 
-This build plan converts the V45 psychology-driven feedback into a practical, ethical, implementation-ready product roadmap.
+This build plan converts the executive authority work into a sequenced product roadmap and parks the new authenticity requirements as **V51**, after V50 stabilizes the authority layer.
 
-The goal is not manipulation.  The goal is executive clarity, calm authority, visible consequence, accountable commitments, and proof-backed urgency.
+The goal is not manipulation.  The goal is executive clarity, calm authority, visible consequence, accountable commitments, proof-backed urgency, and eventually authenticity verification before people act on digital claims.
 
 Core principle:
 
 > CyberShield must not only measure trust.  It must project trust.
+
+V51 extension principle:
+
+> In the AI era, trust is not assumed.  Trust is verified.
+
+V51 positioning line:
+
+> When everything can be faked, CyberShield helps prove what can be trusted.
 
 ## Current strategic read
 
@@ -27,27 +38,27 @@ CyberShield already has the required product building blocks:
 - Pilot Package
 - Executive Advisor Layer
 
-The next major product gap is not more tabs.  The gap is authority, compression, consequence-first framing, and accountable action.
+The V45-V50 gap is authority, compression, consequence-first framing, evidence-backed confidence, and accountable action.
 
-Future builders should upgrade existing screens rather than adding new top-level navigation.
+The V51 gap is authenticity: whether a person, product, vendor, website, ad, source, brand claim, payment request, or AI-generated artifact can be trusted before someone acts on it.
 
 ## Critical implementation rule
 
-Do not add more top-level tabs for this work.
+Do not add more top-level tabs for V45-V51 unless explicitly approved.
 
-V45-V50 should improve the existing user journey:
+Upgrade the existing user journey:
 
 1. Briefing
 2. Runtime
 3. TrustMap
-4. Reports / Proof Pack
-5. Memory / Commitments
-6. Pilot / Adoption
-7. Settings / Admin only where necessary
+4. Evidence
+5. Proof Pack
+6. Architecture
+7. Settings
 
 ## Ethical boundary
 
-Use psychology to improve clarity, trust perception, and executive decision quality.
+Use psychology and trust design to improve clarity, trust perception, executive decision quality, customer protection, and evidence-backed action.
 
 Do not use psychology to:
 
@@ -55,6 +66,7 @@ Do not use psychology to:
 - hide uncertainty
 - exaggerate product capability
 - imply live enforcement where none exists
+- imply live takedown automation where none exists
 - obscure the prototype boundary
 - create artificial fear
 - pressure users into a sale without evidence
@@ -91,110 +103,35 @@ Within nine seconds, the user should understand:
 
 ### Required changes
 
-#### Briefing upgrade
-
-Replace architecture-first copy with consequence-first decision framing.
-
-Example:
-
-```text
-AI workflow attempting customer data movement
-
-Decision: BLOCK
-
-Why:
-- Vendor approval missing
-- Data classification unclear
-- Owner not documented
-
-Next:
-Assign CISO approval before execution
-```
-
-#### Language compression
-
-Use short executive phrases:
-
-- Allow
-- Constrain
-- Escalate
-- Block
-- Evidence missing
-- Owner required
-- Decision recorded
-- Proof Pack generated
-- Not ready to execute
-- Ready with constraints
-
-Remove weak phrases:
-
-- may possibly
-- could maybe
-- might help
-- intended to support
-- potentially useful
-
-#### Pressure Points module
-
-Add a Pressure Points module to the Briefing page.
-
-Pressure Points should show:
-
-- expired evidence
-- missing owner
-- unapproved vendor
-- unresolved override
-- missing proof pack
-- policy conflict
-- escalation overdue
-- AI usage expanding faster than controls
+- Replace architecture-first copy with consequence-first decision framing
+- Use short executive phrases: Allow, Constrain, Escalate, Block, Evidence missing, Owner required, Decision recorded, Proof Pack generated
+- Add Pressure Points to the Briefing page
+- Preserve prototype boundary language
 
 ### Acceptance criteria
 
-- first screen leads with action, decision, rationale, and next step
-- no product-architecture explanation appears before consequence
+- First screen leads with action, decision, rationale, and next step
+- No product-architecture explanation appears before consequence
 - Pressure Points module exists
-- language is shorter and more decisive
-- no production enforcement claims are added
-- prototype boundary remains accurate
+- Language is shorter and more decisive
+- No production enforcement claims are added
 
 ## V46: Evidence-Backed Confidence and Result Authority Build
 
 ### Objective
 
-Make every trust score explain why it exists and how to improve it.
+Make every major trust score explain why it exists and how to improve it.
 
 ### Required changes
 
-#### Score explanation model
-
-For every trust score, show:
+For every major score, show:
 
 - score
 - confidence level
-- top 3 score reducers
-- top 3 score improvers
+- top score reducers
+- top score improvers
 - evidence supporting current score
 - evidence missing that prevents higher confidence
-
-Example:
-
-```text
-Trust Score: 61
-Score Confidence: Medium
-
-Score reducers:
-- Vendor approval missing
-- Data classification unclear
-- Owner approval undocumented
-
-Score improvers:
-- Attach vendor review: +9
-- Confirm data classification: +7
-- Assign CISO approval: +6
-```
-
-#### Runtime upgrade
 
 Runtime decision cards must show:
 
@@ -208,11 +145,11 @@ Runtime decision cards must show:
 
 ### Acceptance criteria
 
-- every major score has reducers and improvers
-- evidence used and missing evidence are visible
+- Every major score has reducers and improvers
+- Evidence used and missing evidence are visible
 - Runtime shows consequence avoided
 - Proof generated appears in Runtime
-- score confidence is not decorative
+- Score confidence is explained, not decorative
 
 ## V47: Executive Commitment Record and Deadline Pressure Build
 
@@ -233,34 +170,15 @@ Required fields:
 - Proof Pack impact
 - escalation path
 
-Example:
-
-```text
-Decision owner: CISO
-Commitment: Refresh vendor AI review and assign data owner before allowing customer data upload
-Due date: June 7, 2026
-Status: Open
-Proof Pack impact: Board-ready only after commitment is closed
-```
-
 Add deadline pressure for unresolved trust gaps.
-
-Example:
-
-```text
-Evidence gap: Vendor AI review missing
-Owner: CISO
-Deadline: 7 days
-If unresolved: Escalate to CEO / Board-ready risk item
-```
 
 ### Acceptance criteria
 
 - Governance Memory includes commitments
-- commitments have due dates
-- open commitments affect Proof Pack readiness
-- unresolved gaps show escalation path
-- deadline pressure is ethical and evidence-based
+- Commitments have due dates
+- Open commitments affect Proof Pack readiness
+- Unresolved gaps show escalation path
+- Deadline pressure is ethical and evidence-based
 
 ## V48: TrustMap Power Network Build
 
@@ -287,8 +205,8 @@ TrustMap should show CyberShield coordinating trust across:
 Required visual behavior:
 
 - CyberShield appears as the trust coordination layer
-- affected roles highlight by runtime decision
-- missing owner or missing evidence weakens the corresponding link
+- Affected roles highlight by runtime decision
+- Missing owner or missing evidence weakens the corresponding link
 - Proof Pack impact is visible from the network
 - TrustMap avoids clutter and preserves readability
 
@@ -296,9 +214,9 @@ Required visual behavior:
 
 - TrustMap includes executive and operational role nodes
 - CyberShield is visually positioned as coordination layer
-- runtime decision highlights affected roles
-- weak links are visible and explainable
-- map remains readable on common desktop and tablet widths
+- Runtime decision highlights affected roles
+- Weak links are visible and explainable
+- Map remains readable on common desktop and tablet widths
 
 ## V49: Before Consequence and Power of Proof Build
 
@@ -307,8 +225,6 @@ Required visual behavior:
 Create the product moment where CyberShield catches a risky action before damage occurs.
 
 ### Required changes
-
-#### Before Consequence moment
 
 Add a visual comparison:
 
@@ -325,8 +241,6 @@ Decision recorded
 Owner assigned
 Proof generated
 ```
-
-#### Proof Pack authority artifact
 
 Reframe Proof Pack as:
 
@@ -350,7 +264,7 @@ Proof Pack should include:
 - Proof Pack feels like the authority artifact
 - Proof Pack includes commitment and deadline state
 - Proof Pack shows consequence avoided
-- no unsupported live enforcement claims are made
+- No unsupported live enforcement claims are made
 
 ## V50: Executive Authority QA and External Demo Readiness Build
 
@@ -387,12 +301,369 @@ A first-time executive should feel within 60 seconds:
 ### Acceptance criteria
 
 - V45-V49 modules pass QA
-- no dead bubbles or dead buttons
-- no new top-level navigation sprawl
-- no performance regression in Firefox
-- authority language is consistent
-- claim boundaries are preserved
-- next external demo script can be written from the UI
+- No dead bubbles or dead buttons
+- No new top-level navigation sprawl
+- No performance regression in Firefox
+- Authority language is consistent
+- Claim boundaries are preserved
+- Next external demo script can be written from the UI
+
+## V51: Authenticity Trust and Brand Impersonation Build
+
+### Purpose
+
+Use the Mike Rowe and Josh Smith discussion to strengthen CyberShield’s product model around authenticity, brand impersonation, counterfeit risk, platform trust, and consumer/business verification before consequence.
+
+V51 should not replace the Truth Layer work.  It should extend it.
+
+Recommended hierarchy:
+
+```text
+CyberShield Executive OS
+  - Runtime Governance
+  - TrustMap
+  - Evidence Substrate
+  - Truth Layer
+  - Authenticity Trust Layer
+  - Proof Pack
+```
+
+### Primary insight
+
+CyberShield should not only ask:
+
+```text
+Should this AI action execute?
+```
+
+CyberShield should also ask:
+
+```text
+Can this person, product, vendor, website, ad, source, brand claim, payment request, or AI-generated artifact be trusted before someone acts on it?
+```
+
+### New product layer
+
+Add: **Authenticity Trust Layer**
+
+Definition:
+
+The CyberShield capability that evaluates whether a digital object, vendor, source, brand, person, product, website, communication, or AI-generated media item is authentic enough to trust before a user, executive, customer, or business process acts on it.
+
+### New trust category
+
+Add: **Authenticity Trust**
+
+Core question:
+
+```text
+Is this really who or what it claims to be?
+```
+
+Signals:
+
+- verified domain
+- approved vendor
+- known payment destination
+- authorized brand use
+- authorized executive likeness
+- official marketplace listing
+- official social channel
+- validated source material
+- known product ID or SKU
+- valid warranty path
+- customer complaint signal
+- takedown history
+- suspicious marketplace activity
+- cloned site indicators
+- AI-generated media indicators
+- domain age / typo-squat similarity
+- logo/brand misuse
+- platform ad authorization status
+
+### New TrustMap object
+
+Add TrustMap domain: **Brand & Identity Impersonation**
+
+Connect this domain to:
+
+- Domains
+- Social media accounts
+- Ad platforms
+- Marketplace listings
+- Product images
+- Executive likeness
+- Customer complaint channels
+- Legal/IP response
+- Vendor verification
+- Consumer trust impact
+- Payment destinations
+
+### New scenario: AI-Generated Brand Impersonation Campaign
+
+Scenario:
+
+A fraudulent campaign uses a real executive’s likeness, company branding, fake product images, and a cloned website to collect customer information, redirect payment, or sell counterfeit products.
+
+Without CyberShield:
+
+- Customer believes the ad is real
+- Fake site captures information or payment
+- Counterfeit product is delivered
+- Customer blames the real company
+- Brand trust is damaged
+- Legal/IP response starts after harm occurs
+
+With CyberShield:
+
+- Domain authenticity is checked
+- Ad authorization is checked
+- Brand and likeness use is verified
+- Marketplace listing is validated
+- Payment destination is inspected
+- Customer exposure is estimated
+- Takedown workflow is triggered as a recommended workflow, not automated unless implemented
+- Decision record and Proof Pack are generated
+
+Likely decision:
+
+```text
+Escalate or Block
+```
+
+### New scenario: Counterfeit Product Verification Failure
+
+Scenario:
+
+A customer, procurement team, or business buyer is about to purchase or rely on a product that appears to come from a trusted brand but may be counterfeit.
+
+Trust checks:
+
+- official source verification
+- domain legitimacy
+- seller authorization
+- product ID/SKU match
+- warranty path
+- marketplace reputation
+- brand asset authenticity
+- safety-critical consequence
+- customer exposure
+- counterfeit history
+
+Decision ladder:
+
+- Allow: seller and product are verified
+- Constrain: purchase only through official channel
+- Escalate: authenticity uncertain and consequence is moderate/high
+- Block: counterfeit indicators present or seller is unverified for safety-critical product
+
+### New consequence model
+
+Add: **Counterfeit Consequence Severity**
+
+Levels:
+
+- Low: fake branded product with limited harm
+- Moderate: counterfeit product creates customer loss or warranty confusion
+- High: fake business service, fake cybersecurity tool, fake vendor portal, or fraudulent payment destination
+- Critical: counterfeit medical, emergency, infrastructure, identity, payment, or safety-critical product
+
+CyberShield should raise review burden as consequence severity increases.
+
+### New evidence type
+
+Add: **Authenticity Evidence**
+
+Examples:
+
+- official website verification
+- authorized reseller list
+- valid product ID/SKU
+- certificate of authenticity
+- warranty validation
+- domain registration data
+- takedown request
+- marketplace abuse report
+- platform ad record
+- executive likeness authorization
+- legal/IP letter
+- customer complaint record
+- known counterfeit sample
+- payment destination verification
+
+### New Proof Pack section
+
+Add: **Authenticity and Impersonation Risk**
+
+Fields:
+
+- suspected impersonation type
+- affected brand/person/product
+- source of discovery
+- fake domain or listing
+- platform involved
+- customer exposure
+- business exposure
+- evidence collected
+- action taken
+- takedown status
+- owner
+- next action
+- decision record ID
+
+### New dashboard module
+
+Add: **Trust Under Attack**
+
+Purpose:
+
+Show whether the organization’s trust surface is being actively exploited.
+
+Signals:
+
+- fake domains detected
+- suspicious marketplace listings
+- unauthorized ads
+- executive likeness misuse
+- customer complaints about fake products
+- phishing reports
+- payment redirection attempts
+- vendor impersonation attempts
+- unresolved takedowns
+- brand abuse trend
+
+Example display:
+
+```text
+Trust Under Attack: High
+
+Why:
+Fake vendor domain detected
+Unauthorized social ad active
+Payment destination unverified
+Customer complaint received
+
+Recommended action:
+Escalate to legal/IP owner and block customer routing until official source is confirmed
+```
+
+### New control
+
+Add: **Official Source Verification Gate**
+
+Before a high-risk action proceeds, CyberShield should ask:
+
+- Is this the official website?
+- Is this seller authorized?
+- Is this vendor approved?
+- Is this payment destination validated?
+- Is this communication from an official channel?
+- Is this brand/person/image/voice use authorized?
+- Is this product safe to rely on?
+
+### New build principle
+
+CyberShield should treat trust failures as business and public-safety failures, not only cybersecurity failures.
+
+Examples:
+
+- fake knife: consumer loss, brand damage
+- fake medical device: possible death
+- fake tourniquet: life-safety failure
+- fake ad using public figure: fraud and reputational harm
+- fake cybersecurity vendor portal: breach risk
+- fake payment link: financial loss
+- fake executive voice: authorization fraud
+
+### New positioning language
+
+Primary headline:
+
+```text
+When everything can be faked, CyberShield helps prove what can be trusted.
+```
+
+Alternatives:
+
+```text
+CyberShield verifies digital trust before people act on what they see.
+```
+
+```text
+CyberShield protects the trust layer between AI, brands, vendors, customers, and executive decisions.
+```
+
+### New commercial use case
+
+Add: **Brand Impersonation and Authenticity Risk Assessment**
+
+Sellable advisory wedge:
+
+Maximum Justice Cybersecurity can help organizations assess how exposed they are to AI-enabled impersonation, counterfeit digital assets, fake vendor workflows, brand misuse, and trust-surface compromise.
+
+Assessment outputs:
+
+- fake-domain exposure
+- brand impersonation map
+- vendor verification gaps
+- marketplace/listing risk
+- executive likeness risk
+- customer trust risk
+- recommended controls
+- Proof Pack
+- takedown workflow plan
+
+### New strategic requirement
+
+CyberShield should support small and mid-sized businesses that cannot outspend platform abuse, counterfeiters, or AI-enabled fraud.
+
+This matters because small manufacturers, rural businesses, cybersecurity advisors, funeral-tech startups, and specialty brands are vulnerable to:
+
+- cloned websites
+- fake ads
+- fake products
+- marketplace abuse
+- fake customer support
+- vendor impersonation
+- AI-generated scams
+- IP theft
+- consumer confusion
+
+CyberShield should be positioned as an accessible trust control layer for those companies.
+
+### V51 implementation priority
+
+1. Add Authenticity Trust as a trust factor
+2. Add Brand & Identity Impersonation to TrustMap
+3. Add AI-Generated Brand Impersonation Campaign scenario
+4. Add Counterfeit Product Verification Failure scenario
+5. Add Official Source Verification Gate
+6. Add Counterfeit Consequence Severity
+7. Add Authenticity Evidence type
+8. Add Trust Under Attack dashboard panel
+9. Add Authenticity and Impersonation Risk section to Proof Pack
+10. Add Brand Impersonation and Authenticity Risk Assessment as commercial wedge
+11. Add boundary language so CyberShield does not claim live takedown automation unless implemented
+
+### V51 success test
+
+A first-time executive should be able to see:
+
+- what might be fake
+- who or what is being impersonated
+- what consequence could occur
+- what evidence supports authenticity
+- what evidence is missing
+- whether the action should be allowed, constrained, escalated, or blocked
+- who owns the response
+- what proof was generated
+- what customer/business trust risk remains
+
+### V51 boundary
+
+Do not claim live takedown automation, platform enforcement, marketplace integration, ad-platform integration, identity verification integration, or automated brand enforcement unless those integrations exist.
+
+V51 may model takedown workflow, owner assignment, evidence capture, and Proof Pack generation as advisory/prototype behavior.
 
 ## Cross-version requirements
 
@@ -404,39 +675,35 @@ Every version must update:
 - `governance-summary.json`
 - `docs/builder-version-log.md`
 - `docs/successor-builder-handoff-and-job-docket.md` if strategy or builder instructions changed
-- version-specific doc or this build-plan doc
+- version-specific docs or this build-plan doc where relevant
 
 Every version must preserve:
 
 - onboarding
 - Runtime
 - TrustMap
-- Reports / Proof Pack
-- Adoption
-- Pilot
+- Evidence
+- Proof Pack
+- Architecture
 - Settings / Admin metadata boundary
 - prototype boundary
 - local/export-only posture unless approved otherwise
 
 ## Recommended builder sequence
 
-1. Read `docs/v45-psychology-driven-improvement-requirements.md`
-2. Read this build plan
-3. Review current live app and determine current actual version lineage
-4. Run `docs/qa-checklist.md`
-5. Implement V45 only
-6. Verify and update metadata
-7. Implement V46 only
-8. Continue one version at a time through V50
-
-## Version deconfliction note
-
-The repo history now includes references to V28, V35, V42, and V43 lineage.  Before coding V45, the next builder must verify the current live `index.html` state and metadata labels.  Do not assume the chat label is the same as the deployed app label.  Use GitHub file contents as source of truth.
+1. Finish V46 and QA it
+2. Implement V47 only after V46 passes
+3. Implement V48 only after V47 passes
+4. Implement V49 only after V48 passes
+5. Implement V50 QA/demo readiness only after V49 passes
+6. Implement V51 Authenticity Trust only after V50 stabilizes the executive authority layer
 
 ## Bottom line
 
-The V45-V50 sequence should move CyberShield from a smart governance prototype to a calm executive control environment.
+The V45-V50 sequence moves CyberShield from a smart governance prototype to a calm executive control environment.
 
-The product should not merely describe power.
+V51 then extends CyberShield into authenticity verification:
 
-It should occupy the position of authority through evidence, decision clarity, accountable owners, and proof before consequence.
+```text
+When everything can be faked, CyberShield helps prove what can be trusted.
+```
