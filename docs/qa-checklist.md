@@ -46,44 +46,15 @@ Test:
 - [ ] Skip for Demo opens workspace
 - [ ] Restart Assessment works from Settings
 
-## Demo Mode tests
-
-- [ ] Start Demo routes to Runtime
-- [ ] Next routes in sequence
-- [ ] Previous routes backward
-- [ ] Reset Demo returns to Briefing
-- [ ] Demo side panel step text updates
-
-Expected sequence:
-
-1. Runtime
-2. TrustMap
-3. Reports
-4. Adoption
-5. Pilot
-
 ## Primary navigation tests
 
 - [ ] Briefing opens
-- [ ] Runtime opens
 - [ ] TrustMap opens
-- [ ] Reports opens
-- [ ] Adoption opens
-- [ ] Pilot opens
-- [ ] Settings opens
-
-## Advanced navigation tests
-
-- [ ] Advanced menu opens
-- [ ] Priorities opens
-- [ ] Escalation opens
-- [ ] Frameworks opens
-- [ ] Roadmap opens
-- [ ] Memory opens
+- [ ] Runtime opens
 - [ ] Evidence opens
-- [ ] Guidance opens
-- [ ] Persistence opens
-- [ ] Website opens
+- [ ] Proof Pack opens
+- [ ] Architecture opens
+- [ ] Settings opens
 
 ## Runtime tests
 
@@ -93,81 +64,124 @@ Expected sequence:
 - [ ] selected scenario updates outcome
 - [ ] selected scenario updates owner
 - [ ] selected scenario updates scores
-- [ ] Run Decision Simulation adds event to feed
-- [ ] feed remains readable
+- [ ] replayable decision record updates
+- [ ] feed or decision record remains readable
 
 ## TrustMap tests
 
-- [ ] TrustMap renders nodes
-- [ ] TrustMap renders lines
+- [ ] TrustMap renders center object
+- [ ] TrustMap renders first-layer objects
+- [ ] TrustMap renders second-layer details where implemented
 - [ ] node click updates relationship intelligence
-- [ ] node click updates selected relationship panel
-- [ ] weak-link styling is visible
-- [ ] relationship confidence is visible
+- [ ] relationship hover glow works where implemented
+- [ ] endpoint connector dots appear where implemented
+- [ ] pinned relationship detail works where implemented
+- [ ] weak-link styling is visible where implemented
+- [ ] relationship confidence is visible where implemented
 - [ ] TrustMap remains readable on smaller screens
 - [ ] lines do not make the map unreadable
 
-## Reports tests
-
-- [ ] report list renders
-- [ ] selecting each report updates center pane
-- [ ] owner/audience panel updates
-- [ ] copy report works
-- [ ] download text works
-- [ ] download markdown works
-- [ ] download JSON works
-
-## Frameworks tests
-
-- [ ] framework cards render
-- [ ] each framework shows evidence needed
-- [ ] each framework shows owner
-- [ ] each framework shows gap
-- [ ] each framework shows affected report
-
-## Memory tests
-
-- [ ] before simulation, empty state is clear
-- [ ] after simulation, decision appears in memory
-- [ ] owner queue appears
-- [ ] evidence gap appears
-- [ ] closed-since-last-review placeholder appears
-
 ## Evidence tests
 
-- [ ] evidence JSON renders
-- [ ] evidence JSON reflects selected scenario
-- [ ] TrustMap impact appears in evidence
-- [ ] framework gaps appear in evidence
-- [ ] copy evidence works
-- [ ] download evidence works
+- [ ] evidence section renders
+- [ ] evidence JSON or decision record reflects selected scenario
+- [ ] manual evidence artifacts accumulate where implemented
+- [ ] TrustMap impact appears in evidence where implemented
+- [ ] copy evidence works where implemented
+- [ ] download evidence works where implemented
 
-## Persistence tests
+## Proof Pack tests
 
-- [ ] Buyer Payload renders
-- [ ] Technical Evidence Payload renders
-- [ ] Advisory Summary Payload renders
-- [ ] Pilot Scope Payload renders
-- [ ] Report Bundle Payload renders
-- [ ] copy payload works
-- [ ] download payload works
-- [ ] local sync log updates
-- [ ] no external sync claim appears
+- [ ] Proof Pack renders
+- [ ] Proof Pack reflects selected scenario
+- [ ] Proof Pack reflects report recipient or role where applicable
+- [ ] Proof Pack includes decision outcome, rationale, evidence, owner, consequence, and next action
+- [ ] copy/download works where implemented
+- [ ] no unsupported audit-ready or enforcement claims appear
 
-## Pilot tests
+## Architecture tests
 
-- [ ] pilot cards render
-- [ ] pilot one-pager renders
-- [ ] copy one-pager works
-- [ ] download one-pager works
-- [ ] prototype boundary is visible
+- [ ] Advisory Prototype path renders
+- [ ] Guided Pilot path renders
+- [ ] Enterprise Trust Platform path renders
+- [ ] prototype boundary remains visible
+- [ ] no production enforcement claims are added
 
-## Website tests
+## Settings / Admin tests
 
-- [ ] website modes render
-- [ ] website copy renders
-- [ ] copy website copy works
-- [ ] CTA language remains executive-grade
+- [ ] build metadata is visible only in Settings/Admin where intended
+- [ ] admin payload remains hidden from main user-facing experience
+- [ ] local/export-only posture remains clear
+- [ ] no external sync claim appears unless actually implemented and approved
+
+## V45 Executive Authority tests
+
+For V45 or later:
+
+- [ ] first screen answers risky action, decision, consequence, and next action within 9 seconds
+- [ ] Briefing leads with consequence before product architecture
+- [ ] decision language uses Allow, Constrain, Escalate, Block, Evidence missing, Owner required, Decision recorded, or equivalent decisive phrasing
+- [ ] weak language such as may possibly, could maybe, might help, intended to support, or potentially useful is removed from primary decision surfaces
+- [ ] Pressure Points module appears
+- [ ] Pressure Points are specific, evidence-linked, and not hype-driven
+
+## V46 Evidence-Backed Confidence tests
+
+For V46 or later:
+
+- [ ] each major score shows top score reducers
+- [ ] each major score shows top score improvers
+- [ ] evidence used is visible
+- [ ] evidence missing is visible
+- [ ] score confidence is explained, not decorative
+- [ ] Runtime shows consequence avoided and proof generated
+
+## V47 Commitment Record tests
+
+For V47 or later:
+
+- [ ] Executive Commitment Record appears
+- [ ] commitment includes decision owner
+- [ ] commitment includes commitment statement
+- [ ] commitment includes due date
+- [ ] commitment includes status
+- [ ] commitment includes Proof Pack impact
+- [ ] commitment includes escalation path
+- [ ] unresolved gaps can carry deadline pressure without artificial urgency
+
+## V48 TrustMap Power Network tests
+
+For V48 or later:
+
+- [ ] TrustMap shows CyberShield as coordination layer
+- [ ] TrustMap includes executive and operational role nodes where implemented
+- [ ] affected roles highlight based on runtime decision
+- [ ] missing owner weakens the corresponding relationship
+- [ ] missing evidence weakens the corresponding relationship
+- [ ] Proof Pack impact is visible from the network
+- [ ] map remains readable on desktop and tablet widths
+
+## V49 Before Consequence and Proof tests
+
+For V49 or later:
+
+- [ ] Before Consequence module appears
+- [ ] Without CyberShield path shows action proceeding before review
+- [ ] With CyberShield path shows action checked, blocked, constrained, or escalated before negative consequence
+- [ ] outcome shows exposure avoided, decision recorded, owner assigned, and proof generated
+- [ ] Proof Pack is framed as the authority artifact
+- [ ] Proof Pack includes commitments and deadline state
+
+## V50 External Demo Readiness tests
+
+For V50 or later:
+
+- [ ] first-time executive can understand the risky action within 60 seconds
+- [ ] first-time executive can identify what evidence matters within 60 seconds
+- [ ] first-time executive can identify who owns the decision within 60 seconds
+- [ ] first-time executive can identify why the action was allowed, constrained, escalated, or blocked
+- [ ] first-time executive can identify what proof leadership can use
+- [ ] urgency is present without hype or manipulation
 
 ## Performance checks
 
@@ -175,8 +189,8 @@ Expected sequence:
 - [ ] Firefox does not warn that the page is slowing the browser
 - [ ] TrustMap does not freeze the page
 - [ ] repeated scenario switching does not degrade performance
-- [ ] repeated report switching does not degrade performance
+- [ ] repeated Proof Pack or report switching does not degrade performance
 
 ## Failure rule
 
-If a build fails onboarding, Runtime, TrustMap, Reports, Adoption, or Pilot, do not ship the next version until the failure is fixed.
+If a build fails onboarding, Runtime, TrustMap, Evidence, Proof Pack, Architecture, or the applicable V45-V50 authority-layer gates, do not ship the next version until the failure is fixed.
