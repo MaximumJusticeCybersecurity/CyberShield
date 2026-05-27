@@ -2,15 +2,15 @@
 
 ## Current live build
 
-Current build label: **V43 Executive TrustMap Interaction and Depth Build**
+Current build label: **V44 Dangerous Action Simulation Build**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v43-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v44-qa&reset=onboarding
 
-See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/v43-executive-interaction-depth-build-record.md`, `docs/foundational-documents.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
+See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/v44-dangerous-action-simulation-build-record.md`, `docs/foundational-documents.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
 
 ## User-facing workspace
 
@@ -18,49 +18,79 @@ See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, 
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-## V43 purpose
+## V44 purpose
 
-V43 corrects the static-dashboard problem.  A first-time executive should be able to click around CyberShield and understand the trust score, why it scored that way, what is weak, who owns it, what evidence supports it, what action is allowed/constrained/escalated/blocked, what happens next, and what should be bought or piloted.
+V44 makes CyberShield instantly understandable as an operational trust control plane by centering the product around a dangerous action moving through trust measurement, decisioning, evidence, business exposure, proof, and next executive action.
+
+Core product sentence:
+
+CyberShield helps executives decide whether AI actions, vendor workflows, access requests, and evidence-dependent operations should be allowed, constrained, escalated, blocked, or documented before they create business, regulatory, security, or operational damage.
+
+## Default simulation
+
+V44 defaults to **Shadow AI Vendor Data Upload**:
+
+An employee or AI-enabled workflow attempts to upload customer, contract, or regulated business data into an unapproved AI vendor tool.
+
+The first-screen story compares:
+
+- Without CyberShield: action executes first, evidence comes later, ownership is unclear, and business exposure appears after damage
+- With CyberShield: action is checked before execution, trust is measured, evidence gaps are surfaced, owner is assigned or escalated, and proof is generated
 
 ## Current product capabilities
 
 - CyberShield True Blue trust palette
+- Dangerous Action Simulation as the central executive story
+- Without CyberShield / With CyberShield comparison
+- Transparent weighted trust model across ten operational trust factors
+- Overall Operational Trust Score
+- Score Confidence
+- Decision Confidence
+- Evidence Completeness
+- Evidence Freshness
+- Authority Clarity
+- Consequence Severity
+- Trust Delta
+- Decision ladder: Allow, Constrain, Escalate, Block
+- Trust Drift indicator
+- Commitment Boundary concept
+- Override and exception tracking fields
+- Replayable Decision Record generation
 - Organization shield as the TrustMap center object
 - Icon-first first-layer TrustMap domains with score-dot indicators
-- Drill-down into second-layer TrustMap objects through selected detail panels
-- Connector lines that highlight on hover and show endpoint dots
-- Clickable executive briefing metrics
-- Estimated business exposure range tied to scenario consequence and trust score
-- Clickable runtime score cards for Trust, Evidence, Policy, and Authority
-- Decision ladder: Allow, Constrain, Escalate, Block
-- Evidence library with multiple artifacts
-- Role-tailored Proof Pack with audience and recipient personalization
+- Selected-domain drill-down into second-layer TrustMap objects
+- TrustMap edge hover glow, endpoint connector dots, and click-to-pin relationship detail
+- Manual evidence library with accumulating artifacts
+- Role-tailored Proof Pack with report recipient personalization
 - Architecture path: Advisory Prototype, Guided Pilot, Enterprise Trust Platform
-- Admin CRM payload hidden in Settings, not shown as a user-facing top-level feature
+- Admin CRM payload hidden in Settings
 
-## Current TrustMap object model
+## Current scenario selector
 
-First-layer trust objects:
+- Shadow AI Vendor Data Upload
+- AI Vendor Payment Authorization
+- Privileged Access Reset Request
+- AI-Generated Board Report
+- Customer Data Summarization Request
+- Vendor Contract Review by Agent
 
-- Identities & Access
-- Devices & Endpoints
-- Cloud & Infrastructure
-- Applications & Data
-- AI Systems & Agents
-- Third Parties & Vendors
-- Policy & Compliance
-- Evidence Substrate
-- Decision Record
+## Boundary
 
-Second-layer objects appear only after drill-down, not on the default map.
+The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, or production agent enforcement systems.
 
-## Visual doctrine
+It models executive trust decisions, manual evidence intake, directional exposure, role-tailored proof packs, replayable decision records, and future runtime governance architecture.
 
-The center object is the customer's organization shield.  It protects the organization and should remain visually on top.
+Do not overclaim autonomous enforcement until backend integrations exist.
 
-The product should feel trustworthy first and cyber-capable second.  It should not look like pale generic SaaS or a black military command center.
+## Commercial path
 
-See `docs/cybershield-brand-palette.md` for the authoritative color and visual rules.
+V44 positions the commercial entry wedge as:
+
+**CyberShield Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.**
+
+Suggested CTA:
+
+Turn this simulation into a real Operational Trust Assessment.
 
 ## Strategic direction
 
@@ -70,12 +100,6 @@ See `docs/cybershield-brand-palette.md` for the authoritative color and visual r
 - Current budget assumption remains zero or near-zero hosting/backend spend
 - Low-cost and inspectable third-party tools are acceptable when useful
 
-## Boundary
-
-The current public build is a static prototype.  It is not connected to live SIEM, EDR, identity, GRC, cloud, Google Sheets, Microsoft 365, CRM, or production agent enforcement systems.
-
-The current build produces local/exportable records and models CRM row payloads, manual/mock evidence, proof packs, and architecture decision paths.  It does not perform live external sync.
-
 ## Next likely decision point
 
-Run QA on the V43 executive interaction depth build.  Priority checks: role-tailored proof output, estimated exposure behavior, runtime score drill-downs, first-layer object overlap, shield prominence, clickable briefing cards, evidence artifacts, and proof/architecture detail flows.
+Run QA on the V44 Dangerous Action Simulation build.  Priority checks: first-screen comprehension, scenario switching, trust factor scoring, decision ladder behavior, evidence artifact accumulation, replayable decision record generation, business exposure behavior, TrustMap no-overlap validation, Proof Pack copy/download behavior, and mobile/Firefox performance.
