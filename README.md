@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V47 Executive Commitment Record and Deadline Pressure Build**
+Current build label: **V47.1 TrustMap Restoration and Readability Patch**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v47-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v47-1-qa&reset=onboarding
 
 See `bots.txt`, `governance-summary.json`, `docs/v45-psychology-driven-improvement-requirements.md`, `docs/v45-v50-executive-authority-build-plan.md`, `docs/release-checklist.md`, `docs/qa-checklist.md`, `docs/builder-version-log.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
 
@@ -18,30 +18,31 @@ See `bots.txt`, `governance-summary.json`, `docs/v45-psychology-driven-improveme
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V47.
+No new top-level tabs were added for V47.1.
 
-## Current implemented build: V47
+## Current implemented build: V47.1
 
-V47 implements the Executive Commitment Record and Deadline Pressure layer.  CyberShield now turns unresolved trust gaps into local owner, due date, status, escalation, proof-readiness, and commitment-pressure records.
+V47.1 is a corrective patch, not a forward feature build.  It restores the TrustMap experience that was degraded during the V45-V47 simplification cycle.
 
-V47 adds visible support for:
+V47.1 restores or improves:
 
-- Executive Commitment Record
-- recommended commitment creation
-- owner assignment
-- due date tracking
-- commitment status
-- escalation path
-- proof-readiness impact
-- deadline pressure
-- commitment-aware Trust Drift
-- commitment fields in Proof Pack
-- commitment fields in Settings/admin payload
+- readable CyberShield center object
+- meaningful TrustMap object tiles instead of initials
+- visual icons for identity, cloud, vendors, AI agents, data, endpoints, policy, evidence, and decision records
+- visible relationship lines
+- clickable relationship explanations
+- selected-node highlighting
+- TrustMap relationship records in the Proof Pack
+- larger base font size
+- improved muted-text contrast
+- better mobile readability
+- horizontal scrolling for the map on narrow screens instead of crushing the layout
 
-V47 preserves:
+V47.1 preserves:
 
 - V45 first-9-seconds executive authority surface
 - V46 evidence-backed confidence and score authority behavior
+- V47 Executive Commitment Record and deadline pressure
 - existing seven-tab structure
 - local/export-only prototype boundary
 
@@ -68,7 +69,7 @@ Critical rule: do not add more top-level tabs for this work.  Upgrade Briefing, 
 
 ## Default simulation
 
-V47 defaults to **Shadow AI Vendor Data Upload**:
+V47.1 defaults to **Shadow AI Vendor Data Upload**:
 
 An employee or AI-enabled workflow attempts to upload customer, contract, or regulated business data into an unapproved AI vendor tool.
 
@@ -76,39 +77,6 @@ The first-screen story compares:
 
 - Without CyberShield: action executes first, evidence comes later, ownership is unclear, and business exposure appears after damage
 - With CyberShield: action is checked before execution, trust is measured, evidence gaps are surfaced, owner is assigned or escalated, commitment is created, and proof is generated
-
-## Current product capabilities
-
-- CyberShield True Blue trust palette
-- Dangerous Action Simulation as the central executive story
-- First-9-seconds executive authority strip
-- Consequence-first decision framing
-- Pressure Points module in Briefing
-- Evidence-backed confidence panel
-- Score authority cards with reducers and improvers
-- Executive Commitment Record
-- Deadline pressure
-- Proof readiness state
-- Runtime decision evidence: outcome, rationale, evidence used, evidence missing, owner required, commitment state, consequence avoided, proof generated
-- Proof Pack includes score reducers, score improvers, evidence used, evidence missing, confidence limits, commitment owner, due date, status, escalation, and proof-readiness impact
-- Without CyberShield / With CyberShield comparison
-- Transparent weighted trust model across ten operational trust factors
-- Overall Operational Trust Score
-- Score Confidence
-- Decision ladder: Allow, Constrain, Escalate, Block
-- Trust Drift indicator
-- Manual evidence library with accumulating artifacts
-- Role-tailored Proof Pack with report recipient personalization
-- Architecture path: Advisory Prototype, Guided Pilot, Enterprise Trust Platform
-- Admin CRM payload hidden in Settings
-- Local/export-only behavior
-
-## Current scenario selector
-
-- Shadow AI Vendor Data Upload
-- AI Vendor Payment Authorization
-- Privileged Access Reset Request
-- AI-Generated Board Report
 
 ## Boundary
 
@@ -120,7 +88,7 @@ Do not overclaim autonomous enforcement, live notifications, live task assignmen
 
 ## Commercial path
 
-V47 positions the commercial entry wedge as:
+V47.1 positions the commercial entry wedge as:
 
 **CyberShield Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.**
 
@@ -142,4 +110,4 @@ Turn this simulation into a real Operational Trust Assessment.
 
 ## Next likely decision point
 
-Run QA on the V47 Executive Commitment Record build, then implement V48 only.  Priority checks: onboarding, first-screen comprehension, scenario switching, commitment creation, due-date pressure, close-all-commitments behavior, proof readiness, Runtime commitment state, Proof Pack copy/download, TrustMap owner commitment counts, Settings reset, mobile layout, and Firefox performance.
+Run QA on the V47.1 TrustMap restoration patch before V48.  Priority checks: TrustMap center readability, meaningful object labels, visible relationship lines, clickable relationship explanations, selected-node highlighting, proof pack relationship records, commitment creation, due-date pressure, mobile readability, and Firefox performance.
