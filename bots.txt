@@ -1,12 +1,12 @@
 CyberShield Executive OS
-V35 Controlled Backend Decision Build
-Build date: 2026-05-26
+V41 Enterprise Trust Platform Prototype
+Build date: 2026-05-27
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V35 Controlled Backend Decision Build.
+CyberShield V41 Enterprise Trust Platform Prototype.
 
 Release train included:
 - V21: Executive Demo QA and Navigation Compression
@@ -24,21 +24,27 @@ Release train included:
 - V33: CRM-Lite Workflow and Lead/Pilot Payloads
 - V34: Mock Evidence Source Layer
 - V35: Controlled Backend Decision Build
+- V36: Enterprise TrustMap Alignment Build
+- V37: Sandeep Demo and Sales Conversion Build
+- V38: Manual Evidence Intake Build
+- V39: CRM and Pilot Payload Build
+- V40: Executive Proof Pack Commercial Build
+- V41: Enterprise Architecture Transition Plan
 
 Current section set:
-User-facing navigation: Briefing, Runtime, TrustMap, Reports, Proof Pack, CRM, Evidence, Backend, Settings.
+User-facing navigation: Briefing, TrustMap, Runtime, Sandeep Mode, Evidence, CRM, Proof Pack, Architecture, Settings.
 
 Current capabilities:
-- user-facing executive dashboard without visible version labels
-- build metadata moved to Settings/Admin
-- TrustMap edge hover explanations for green, yellow, and red relationship lines
-- TrustMap legend
+- clean CyberShield blue enterprise SaaS interface, not full dark command-center styling
+- Enterprise TrustMap with center organization node and domain clusters
+- operational trust score rail and active risk rails
+- TrustMap edge hover glow, endpoint connector dots, and click-to-pin relationship detail
 - runtime decision thresholds for Allow, Allow with Constraints, Escalate, and Block
-- role-specific reports
-- Executive Proof Pack
+- Sandeep / IBM practice-builder mode
+- manual evidence intake with local confidence impact
 - CRM-lite row generator and CSV output
-- mock evidence source layer
-- controlled backend decision matrix
+- commercial Executive Proof Pack
+- zero-cost prototype to low-cost pilot to enterprise-grade architecture path
 - local/export-only behavior
 
 Core thesis:
@@ -49,6 +55,9 @@ Should this action be operationally admissible right now?
 
 Website-aligned TrustMap model:
 Assess operational trust exposure, analyze governance and runtime risk, then deliver executive visibility and control.
+
+Strategic direction:
+CyberShield remains MJC-owned advisory software, not standalone SaaS yet. Sandeep path is advisor / IBM practice-builder / potential internal champion. Regulated SMBs and federal-adjacent SMBs remain the commercial fallback market.
 
 Critical UX rule:
 Every visible executive object that appears as a chip, metric, card, gate, node, report, status, or control must either explain itself on hover/focus or navigate somewhere useful. No dead bubbles.
