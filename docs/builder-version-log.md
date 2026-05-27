@@ -32,6 +32,62 @@ Example:
 
 ## Current builder log
 
+### Builder-20260527-002
+
+Date: 2026-05-27
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield successor builder session
+
+CyberShield versions affected:
+
+- V43 Executive TrustMap Interaction and Depth Build
+- V43 Business Exposure and Role-Tailored Reports
+
+Files materially changed or created:
+
+- `index.html`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/v43-executive-interaction-depth-build-record.md`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Converted the V42 trust shield package into a deeper executive interaction build.  V43 adds business exposure modeling, clickable briefing and runtime score explanations, role-tailored proof output, recipient personalization, stronger report handoff logic, and better cross-tab drill-through.
+
+What got better:
+
+- added estimated business exposure range to the executive dashboard, proof pack, runtime explanations, and CRM admin payload
+- made executive briefing cards traceable and clickable
+- replaced the static Enterprise Mode card with a clickable flow through TrustMap, Runtime, Evidence, Proof Pack, and Architecture
+- removed CRM from user-facing maturity cards while preserving admin-only payload in Settings
+- made capability maturity cards explanatory and clickable
+- made Runtime Trust, Evidence, Policy, and Authority score cards clickable
+- replaced shallow threshold copy with a decision ladder: Allow, Constrain, Escalate, Block
+- added report recipient first-name support and audience-specific report focus
+- added role-tailored Proof Pack language for CEO, CFO, CIO/CTO, CISO/vCISO, and Board/Advisor readers
+- preserved CyberShield True Blue trust palette and organization shield-centered TrustMap
+- preserved first-layer TrustMap icon objects, relationship hover glow, endpoint dots, and click-to-pin relationship detail
+
+Remaining risks or limitations:
+
+- public build remains a static GitHub Pages prototype
+- no live integrations yet
+- no authentication yet
+- no persistent backend yet
+- no production enforcement engine yet
+- no live Google Sheets append yet
+- browser QA still needs real manual validation, especially Firefox desktop and mobile
+- business exposure model is directional and must not be represented as a guaranteed financial calculation
+- first-layer TrustMap icon objects use emoji/symbols and should eventually be replaced with consistent SVG icons
+- role-tailored proof output is functional but still needs polished downloadable report templates
+- owner drill-down is still shallow and should be expanded in a later build
+
+Next recommended build action:
+
+Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v43-qa&reset=onboarding`, validate Firefox performance, test business exposure ranges, test all click-through paths, verify role-tailored Proof Pack output for each audience, test first-layer TrustMap object overlap at common breakpoints, and prepare V44 for visual polish, report templates, owner drill-down depth, and more transparent exposure assumptions.
+
 ### Builder-20260527-001
 
 Date: 2026-05-27
@@ -46,6 +102,7 @@ CyberShield versions affected:
 - V39 CRM and Pilot Payload Build
 - V40 Executive Proof Pack Commercial Build
 - V41 Enterprise Architecture Transition Plan
+- V42 Trust Shield Experience Package
 
 Files materially changed or created:
 
@@ -54,23 +111,24 @@ Files materially changed or created:
 - `bots.txt`
 - `governance-summary.json`
 - `docs/v36-v41-build-record.md`
+- `docs/cybershield-brand-palette.md`
 - `docs/builder-version-log.md`
 
 Primary value add:
 
-Consolidated the V36 through V41 roadmap into a single V41 static prototype focused on clean enterprise TrustMap alignment, Sandeep / IBM practice-builder positioning, manual evidence intake, CRM/pilot payloads, commercial proof pack output, and the transition path from zero-cost prototype to long-term enterprise-grade architecture.
+Consolidated the V36 through V42 roadmap into static prototype improvements focused on enterprise TrustMap alignment, clean trust-centered palette, enterprise practice-builder positioning, manual evidence intake, CRM/pilot payloads, commercial proof pack output, and the transition path from prototype to enterprise-grade architecture.
 
 What got better:
 
-- replaced dark command-center direction with clean CyberShield blue enterprise SaaS styling
-- added Enterprise TrustMap with center organization node and domain clusters
+- replaced dark command-center direction with CyberShield True Blue trust styling
+- added Enterprise TrustMap with organization shield and domain objects
 - added left operational trust score rail and right risk/detail rail
 - added TrustMap edge hover glow, endpoint connector dots, and click-to-pin relationship detail
-- added Sandeep Mode for advisor / IBM practice-builder narrative
+- removed user-facing named-individual mode language
 - expanded manual evidence intake and connected evidence confidence to local scoring
-- preserved CRM-lite local payload and CSV output with Sandeep referral path
+- preserved CRM-lite local payload inside admin/settings instead of top-level user navigation
 - reframed Proof Pack as commercial executive output
-- added Architecture view showing zero-cost prototype, low-cost pilot, and enterprise-grade path
+- added Architecture view showing Advisory Prototype, Guided Pilot, and Enterprise Trust Platform
 - kept build metadata in Settings/Admin only
 
 Remaining risks or limitations:
@@ -88,7 +146,7 @@ Remaining risks or limitations:
 
 Next recommended build action:
 
-Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v41-qa&reset=onboarding`, validate Firefox performance, test TrustMap edge hover/click/dot behavior, test Sandeep Mode, test Evidence/CRM/Proof Pack exports, then decide whether V42 should focus on TrustMap QA hardening or whether V43 should implement the optional Google Apps Script CRM append flow.
+Run the QA checklist against the current V43 test URL, validate Firefox performance, and prioritize V44 polish around TrustMap visuals, report templates, owner accountability depth, and exposure-model transparency.
 
 ### Builder-20260526-003
 
