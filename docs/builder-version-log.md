@@ -32,6 +32,64 @@ Example:
 
 ## Current builder log
 
+### Builder-20260527-001
+
+Date: 2026-05-27
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield successor builder session
+
+CyberShield versions affected:
+
+- V36 Enterprise TrustMap Alignment Build
+- V37 Sandeep Demo and Sales Conversion Build
+- V38 Manual Evidence Intake Build
+- V39 CRM and Pilot Payload Build
+- V40 Executive Proof Pack Commercial Build
+- V41 Enterprise Architecture Transition Plan
+
+Files materially changed or created:
+
+- `index.html`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/v36-v41-build-record.md`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Consolidated the V36 through V41 roadmap into a single V41 static prototype focused on clean enterprise TrustMap alignment, Sandeep / IBM practice-builder positioning, manual evidence intake, CRM/pilot payloads, commercial proof pack output, and the transition path from zero-cost prototype to long-term enterprise-grade architecture.
+
+What got better:
+
+- replaced dark command-center direction with clean CyberShield blue enterprise SaaS styling
+- added Enterprise TrustMap with center organization node and domain clusters
+- added left operational trust score rail and right risk/detail rail
+- added TrustMap edge hover glow, endpoint connector dots, and click-to-pin relationship detail
+- added Sandeep Mode for advisor / IBM practice-builder narrative
+- expanded manual evidence intake and connected evidence confidence to local scoring
+- preserved CRM-lite local payload and CSV output with Sandeep referral path
+- reframed Proof Pack as commercial executive output
+- added Architecture view showing zero-cost prototype, low-cost pilot, and enterprise-grade path
+- kept build metadata in Settings/Admin only
+
+Remaining risks or limitations:
+
+- public build remains a static GitHub Pages prototype
+- no real integrations yet
+- no authentication yet
+- no persistent backend yet
+- no production enforcement engine yet
+- no live Google Sheets append yet
+- browser QA still needs real manual validation, especially Firefox desktop
+- edge hover and connector-dot interactions need browser QA
+- role-specific TrustMap weighting is still lightweight and should be improved after UX validation
+- no live Microsoft Graph, CRM, SIEM, EDR, identity, GRC, or cloud integration exists
+
+Next recommended build action:
+
+Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v41-qa&reset=onboarding`, validate Firefox performance, test TrustMap edge hover/click/dot behavior, test Sandeep Mode, test Evidence/CRM/Proof Pack exports, then decide whether V42 should focus on TrustMap QA hardening or whether V43 should implement the optional Google Apps Script CRM append flow.
+
 ### Builder-20260526-003
 
 Date: 2026-05-26
@@ -60,35 +118,13 @@ Primary value add:
 
 Consolidated the V30 through V35 roadmap into a single V35 static prototype build focused on executive usability, TrustMap edge explanations, explicit decision thresholds, role-specific reporting, proof pack output, CRM-lite payload generation, mock evidence handling, and backend decision planning.
 
-What got better:
-
-- removed build/version noise from the executive dashboard
-- kept build metadata in Settings/Admin only
-- added hoverable TrustMap edge explanations for green, yellow, and red lines
-- added TrustMap legend
-- added runtime threshold logic for Allow, Allow with Constraints, Escalate, and Block
-- added role-specific reports for CEO/President, CFO, CIO/CTO, and CISO/vCISO
-- added Executive Proof Pack output
-- added CRM-lite row generator and CSV output
-- added mock evidence source layer with local confidence impact
-- added backend decision matrix
-- preserved static prototype boundaries and no-live-sync behavior
-
 Remaining risks or limitations:
 
 - public build remains a static GitHub Pages prototype
 - no real integrations yet
 - no authentication yet
 - no persistent backend yet
-- no production enforcement engine yet
-- browser QA still needs real manual validation, especially Firefox desktop
-- the connector blocked two larger HTML update attempts, so the live V35 build is a compact implementation and some governance detail remains in documentation rather than UI
-- no live Microsoft Graph, CRM, SIEM, EDR, identity, GRC, or cloud integration exists
-- raw dissertation PDF/DOCX and raw oral defense PPTX/PDF are still not committed
-
-Next recommended build action:
-
-Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v35-qa&reset=onboarding`, validate Firefox performance, test TrustMap edge hovers, test report/proof/CRM/evidence exports, then decide whether V36 should implement an append-only Google Apps Script CRM flow, GitHub admin archive, or a lightweight backend.
+- browser QA still needs real manual validation
 
 ### Builder-20260526-002
 
@@ -102,48 +138,9 @@ CyberShield versions affected:
 - website-aligned TrustMap operating model
 - V29 decision record and integration-readiness documentation
 
-Files materially changed or created:
-
-- `index.html`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/v29-decision-record.md`
-- `docs/builder-version-log.md`
-- `docs/successor-builder-handoff-and-job-docket.md`
-
 Primary value add:
 
 Converted the V29 owner decisions into a bounded static prototype release focused on integration readiness, performance stabilization, and tighter alignment with the public Maximum Justice Cybersecurity Trust Map model.
-
-What got better:
-
-- repaired `index.html` after an accidental placeholder write during the build process
-- advanced the live app from V28 to V29
-- aligned in-app TrustMap to the public website model: assess operational trust exposure, analyze governance and runtime risk, deliver executive visibility and control
-- added the MJC sales agent prospect qualification scenario
-- added a V29 Integration Readiness section
-- added Google Sheets CRM row payload schema
-- documented GitHub demo/admin persistence as the approved first persistence route
-- modeled SharePoint, OneDrive, and Outlook as future mockable Microsoft 365 evidence sources only
-- preserved explicit no-live-sync and no-production-enforcement boundaries
-- updated README, bots context, and governance summary to stop future builders from inheriting stale V28 instructions
-
-Remaining risks or limitations:
-
-- public build remains a static GitHub Pages prototype
-- no real integrations yet
-- no authentication yet
-- no persistent backend yet
-- no production enforcement engine yet
-- Google Sheets CRM header update could not be confirmed during the build because the Sheets API hit a project-level rate limit
-- browser QA still needs real manual validation, especially Firefox desktop
-- no live Microsoft Graph, CRM, SIEM, EDR, identity, GRC, or cloud integration exists
-- raw dissertation PDF/DOCX and raw oral defense PPTX/PDF are still not committed
-
-Next recommended build action:
-
-Run the QA checklist against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v29-qa&reset=onboarding`, validate Firefox performance, confirm GitHub Pages deployment, manually verify that the TrustMap reflects the public website model, then decide whether V30 should implement a controlled backend, an Apps Script append-only Google Sheets CRM flow, or a Microsoft Graph evidence-source prototype.
 
 ### Builder-20260526-001
 
@@ -158,61 +155,9 @@ CyberShield versions affected:
 - foundational document structure
 - Cybersecurity Trust Model dissertation source integration
 
-Files materially changed or created:
-
-- `index.html`
-- `bots.txt`
-- `governance-summary.json`
-- `README.md`
-- `docs/v18-qa-notes.md`
-- `docs/v19-adoption-layer.md`
-- `docs/v20-trustmap-restoration.md`
-- `docs/v21-v28-release-train.md`
-- `docs/successor-builder-handoff-and-job-docket.md`
-- `docs/release-checklist.md`
-- `docs/qa-checklist.md`
-- `docs/v29-decision-record-template.md`
-- `docs/builder-version-log.md`
-- `docs/foundational-documents.md`
-- `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
-- `foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
-
 Primary value add:
 
 Converted CyberShield from a slow, overloaded prototype into a cleaner integrated executive demo and release train with runtime governance, TrustMap, adoption, pilot packaging, local exports, website integration support, builder-success documentation, and foundational trust-model source records.
-
-What got better:
-
-- compressed executive navigation
-- guided demo mode
-- TrustMap restored and improved
-- Adoption layer added
-- reports improved with audience and export logic
-- Governance Memory improved
-- framework evidence library added
-- persistence remained local/export-only
-- pilot package and website copy added
-- release, QA, and V29 decision checklists added
-- successor handoff and job docket added
-- foundational document structure added
-- dissertation source record added from Google Doc text extraction
-- dissertation oral defense deck source record added from Google Slides text extraction
-- trust model concepts mapped to Runtime, TrustMap, Evidence Substrate, Governance Memory, Reports, Pilot Package, and Executive Advisor Layer
-
-Remaining risks or limitations:
-
-- public build remains a static GitHub Pages prototype
-- no real integrations yet
-- no authentication yet
-- no persistent backend yet
-- no production enforcement engine yet
-- browser QA still needs real manual validation
-- raw dissertation PDF/DOCX has not yet been committed because the connector exposed text extraction, not a raw binary suitable for direct commit
-- raw oral defense PPTX/PDF has not yet been committed because the connector exposed text extraction, not a raw binary suitable for direct commit
-
-Next recommended build action:
-
-Run V28 QA using `docs/qa-checklist.md`, obtain raw PDF/DOCX/PPTX exports for the dissertation and defense deck if the owner wants the original files stored in repo, remove redundant UI or copy found during testing, then complete the V29 decision record before building integration readiness.
 
 ## Template for next builder
 
