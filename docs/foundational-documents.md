@@ -15,6 +15,7 @@ Purpose: This file lists the required source documents and knowledge assets that
 9. `docs/v29-decision-record-template.md`
 10. `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
 11. `foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck-source.md`
+12. `docs/v45-psychology-driven-improvement-requirements.md`
 
 ## Dr. Max Justice PhD dissertation source
 
@@ -92,17 +93,38 @@ Google Drive source:
 
 `https://docs.google.com/presentation/d/1z_wd_ITVl4iQbaYHcGYOs8OBhSGfwQW0/edit`
 
-Repository target when raw file is available:
+## V45 psychology-driven improvement requirements
 
-`foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck.pptx`
+Status: Future-build product psychology and executive authority requirement
 
-or
+Source record:
 
-`foundational-docs/dr-max-justice-cybersecurity-trust-model-defense-deck.pdf`
+`docs/v45-psychology-driven-improvement-requirements.md`
+
+Purpose:
+
+This document captures colleague feedback influenced by a Robert Greene transcript review.  It is intended to improve CyberShield's executive persuasion, trust perception, urgency, and authority without manipulation or overclaiming.
+
+Core principle:
+
+CyberShield must not only measure trust.  It must project trust.
+
+Required future modules include:
+
+- Pressure Points
+- Executive Commitment Record
+- TrustMap power network
+- evidence-backed confidence
+- Before Consequence moment
+- result-backed authority
+- deadline pressure
+- Power of Proof design
 
 ## Why these sources matter
 
 Dr. Max Justice's Cybersecurity Trust Model should be treated as a foundational intellectual source for CyberShield.  It informs the platform's approach to trust, technology and innovation management, cybersecurity governance, operating model thinking, executive decision structure, and the relationship between strategy, controls, evidence, and enterprise transformation.
+
+The V45 psychology-driven requirements should be treated as a product authority and executive persuasion layer.  It should improve first impression, clarity, urgency, and proof-backed executive control without exaggerating capability.
 
 Key concepts to preserve:
 
@@ -112,16 +134,20 @@ Key concepts to preserve:
 - bounded rationality supports executive decision structure
 - trust should support secure interoperability, collaboration, and governance
 - CyberShield should structure leadership judgment rather than replace it
+- CyberShield should use calm, decisive executive language
+- CyberShield should lead with consequence before architecture
+- CyberShield should create proof-backed urgency without hype
 
 ## Recommended CyberShield mappings
 
-- Runtime Governance: use the trust model to strengthen action admissibility logic
-- TrustMap: map relationships across people, process, technology, policy, evidence, and workflows
+- Runtime Governance: use the trust model and V45 requirements to strengthen action admissibility logic
+- TrustMap: map relationships across people, process, technology, policy, evidence, workflows, and executive power network roles
 - Evidence Substrate: use credibility, applicability, consistency, and authenticity as evidence-quality dimensions
-- Governance Memory: preserve unresolved risks, accepted risks, evidence gaps, and decision rationale
+- Governance Memory: preserve unresolved risks, commitments, deadlines, evidence gaps, and decision rationale
 - Executive Advisor Layer: structure decision context for leaders without replacing human authority
-- Reports: use the trust model to make reports more defensible and less generic
-- Pilot Package: connect the trust model to a practical advisory wedge
+- Reports: use the trust model and Proof Pack framing to make reports more defensible and less generic
+- Pilot Package: connect the trust model and V45 success test to a practical advisory wedge
+- Briefing: lead with risky action, CyberShield decision, consequence, and next action in the first 9 seconds
 
 ## Current foundational docs already in repo
 
@@ -143,6 +169,7 @@ Key concepts to preserve:
 - `docs/v19-adoption-layer.md`
 - `docs/v20-trustmap-restoration.md`
 - `docs/v21-v28-release-train.md`
+- `docs/v45-psychology-driven-improvement-requirements.md`
 
 ### Future build control
 
