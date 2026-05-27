@@ -32,15 +32,15 @@ Example:
 
 ## Current builder log
 
-### Builder-20260527-006
+### Builder-20260527-007
 
 Date: 2026-05-27
 
-Builder / agent identifier: GPT-5.5 Thinking, CyberShield V47 implementation session
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield V47.1 regression-fix session
 
 CyberShield versions affected:
 
-- V47 Executive Commitment Record and Deadline Pressure Build
+- V47.1 TrustMap Restoration and Readability Patch
 
 Files materially changed or created:
 
@@ -53,38 +53,46 @@ Files materially changed or created:
 
 Primary value add:
 
-Implemented V47 only.  CyberShield now turns unresolved trust gaps into local accountability records with owner, commitment, due date, status, escalation path, proof-readiness impact, and deadline pressure.  V47 preserves the V45 first-9-seconds authority surface, the V46 evidence-backed confidence layer, the seven-tab structure, and the V51-after-V50 guardrail.
+Corrected the TrustMap regression that occurred during the V45-V47 simplification cycle.  The map had become too abstract, too bubble-heavy, too low-meaning, and visually hard to read.  V47.1 restores it as an interactive relationship map with meaningful visual objects, full labels, visible lines, clickable relationship explanations, selected-object detail, and better readability.
 
 What got better:
 
-- App version label now aligns to V47 in `index.html`
-- Briefing includes an Executive Commitment Record module
-- Users can create a recommended local commitment tied to the active runtime scenario
-- Commitments capture owner, due date, status, escalation path, and proof-readiness impact
-- Deadline pressure now reflects open, due-soon, and overdue commitments
-- Proof readiness is limited by open commitments
-- Runtime shows commitment state and proof-readiness impact
-- Trust Drift now accounts for unresolved commitments
-- TrustMap owner detail shows open commitment counts
-- Proof Pack includes commitment owner, due date, status, escalation, commitment pressure, and proof readiness
-- Settings/admin payload now reflects V47 commitment metadata
-- README, bots context, governance summary, and handoff now align V47 as current
-- V51 remains explicitly parked after V50 stabilization
+- Restored a readable CyberShield center object
+- Replaced initials with meaningful TrustMap object tiles
+- Added visual object representations for identity, cloud, vendors, AI agents, data, endpoints, policy, evidence, and decision records
+- Restored visible relationship lines
+- Added clickable relationship explanations
+- Added selected-node highlighting
+- Added TrustMap relationship records to Proof Pack and admin payload
+- Increased base font size and improved muted-text contrast
+- Improved mobile/narrow-layout readability using horizontal map scrolling instead of crushing the TrustMap
+- Documented a TrustMap quality rule so future builders do not regress back to unreadable bubbles or initials
 
 Remaining risks or limitations:
 
 - Public build remains a static GitHub Pages advisory prototype
-- Commitments are local browser records only and do not create tickets, notifications, calendar reminders, emails, or workflow tasks
-- No live integrations, authentication, persistent backend, SIEM, EDR, IAM, Microsoft 365, GRC, CRM, marketplace, ad platform, takedown, ticketing, notification, or production enforcement engine exists
 - Browser QA still needs hands-on validation in Firefox, Chrome, Brave, Android, and iOS Safari
-- The TrustMap remains simplified for performance and readability; deeper power-network behavior is deferred to V48
-- Before Consequence expansion and full Power of Proof design are deferred to V49
-- External demo readiness is deferred to V50
-- Authenticity Trust Layer is deferred to V51 after V50 stabilization
+- TrustMap is visually restored, but V48 still needs the deeper Power Network Build
+- No live integrations, authentication, persistent backend, SIEM, EDR, IAM, Microsoft 365, GRC, CRM, ticketing, notification, marketplace, ad platform, takedown, or production enforcement engine exists
+- V51 Authenticity Trust Layer remains deferred until after V50 stabilization
 
 Next recommended build action:
 
-Run live browser QA against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v47-qa&reset=onboarding`.  Verify onboarding, first-screen comprehension, scenario switching, commitment creation, due date handling, close-all-commitments behavior, proof readiness, Runtime commitment state, Proof Pack copy/download, TrustMap owner commitment counts, Settings reset, mobile layout, and Firefox performance.  If V47 passes, implement V48 only: TrustMap Power Network Build.  Do not implement V51 until V50 is stabilized.
+Run live browser QA against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v47-1-qa&reset=onboarding`.  Verify TrustMap center readability, object labels, visible relationship lines, clickable relationship explanations, selected-node highlighting, Proof Pack relationship records, commitment creation, due-date pressure, mobile/narrow layout readability, and Firefox performance.  If V47.1 passes, implement V48 only: TrustMap Power Network Build.  Do not implement V51 until V50 is stabilized.
+
+### Builder-20260527-006
+
+Date: 2026-05-27
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield V47 implementation session
+
+CyberShield versions affected:
+
+- V47 Executive Commitment Record and Deadline Pressure Build
+
+Primary value add:
+
+Implemented V47 only.  CyberShield now turns unresolved trust gaps into local accountability records with owner, commitment, due date, status, escalation path, proof-readiness impact, and deadline pressure.  V47 preserves the V45 first-9-seconds authority surface, the V46 evidence-backed confidence layer, the seven-tab structure, and the V51-after-V50 guardrail.
 
 ### Builder-20260527-005
 
@@ -97,48 +105,9 @@ CyberShield versions affected:
 - V46 Evidence-Backed Confidence and Result Authority Build
 - V51 Authenticity Trust and Brand Impersonation Build, roadmap only
 
-Files materially changed or created:
-
-- `index.html`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/v45-v50-executive-authority-build-plan.md`
-- `docs/successor-builder-handoff-and-job-docket.md`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
-Implemented V46 only and parked the Mike Rowe / Josh Smith authenticity requirements as V51 after V50 stabilization.  V46 makes score confidence explain itself by surfacing evidence used, evidence missing, top score reducers, top score improvers, owner required, consequence avoided, and proof generated.  The build plan now extends to V51: Authenticity Trust and Brand Impersonation Build, but explicitly prevents pulling V51 scope into V47-V50.
-
-What got better:
-
-- App version label now aligns to V46 in `index.html`
-- First-9-seconds V45 authority strip is preserved
-- Briefing now includes an Evidence-Backed Confidence panel
-- Briefing now includes Score Authority cards for major scores
-- Runtime now shows evidence used, evidence missing, owner required, consequence avoided, and proof generated
-- Runtime score details now show reducers, improvers, supporting evidence, and missing evidence preventing higher confidence
-- Proof Pack now includes score reducers, score improvers, evidence used, evidence missing, and confidence limits
-- Settings/admin payload now reflects V46 metadata and score authority fields
-- README, bots context, governance summary, build plan, and handoff now align V46 as current
-- V51 is added after V50 as Authenticity Trust and Brand Impersonation Build
-- The V51 guardrail is explicit: do not claim live takedown automation, platform enforcement, marketplace integration, ad-platform integration, identity verification integration, or automated brand enforcement unless those integrations exist
-
-Remaining risks or limitations:
-
-- Public build remains a static GitHub Pages advisory prototype
-- No live integrations, authentication, persistent backend, SIEM, EDR, IAM, Microsoft 365, GRC, CRM, marketplace, ad platform, takedown, or production enforcement engine exists
-- Browser QA still needs hands-on validation in Firefox, Chrome, Brave, Android, and iOS Safari
-- The TrustMap remains simplified for performance and readability; deeper power-network behavior is deferred to V48
-- Executive Commitment Record and deadline pressure are deferred to V47
-- Before Consequence expansion and full Power of Proof design are deferred to V49
-- External demo readiness is deferred to V50
-- Authenticity Trust Layer is deferred to V51 after V50 stabilization
-
-Next recommended build action:
-
-Run live browser QA against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v46-qa&reset=onboarding`.  Verify onboarding, first-screen comprehension, scenario switching, Pressure Points, score reducers/improvers, evidence used, evidence missing, Runtime consequence avoided, Proof Pack copy/download, TrustMap readability, Settings reset, mobile layout, and Firefox performance.  If V46 passes, implement V47 only: Executive Commitment Record and Deadline Pressure Build.  Do not implement V51 until V50 is stabilized.
+Implemented V46 only and parked the Mike Rowe / Josh Smith authenticity requirements as V51 after V50 stabilization.  V46 makes score confidence explain itself by surfacing evidence used, evidence missing, top score reducers, top score improvers, owner required, consequence avoided, and proof generated.
 
 ### Builder-20260527-004
 
@@ -152,7 +121,7 @@ CyberShield versions affected:
 
 Primary value add:
 
-Implemented V45 only.  The live app opens with a first-9-seconds executive authority strip that answers what risky action is happening, what CyberShield decided, why it matters, and what happens next.  V45 added consequence-first decision framing, Pressure Points, clearer owner-required language, stronger Proof Pack authority framing, and explicit prototype-boundary language without adding top-level tabs.
+Implemented V45 only.  The live app opens with a first-9-seconds executive authority strip that answers what risky action is happening, what CyberShield decided, why it matters, and what happens next.
 
 ### Builder-20260527-003
 
@@ -164,11 +133,10 @@ CyberShield versions affected:
 
 - V45 Psychology-Driven Improvement Requirements
 - V45-V50 Executive Authority Build Plan
-- future executive authority, trust perception, and proof-backed urgency layer
 
 Primary value add:
 
-Converted colleague feedback into a repo-backed V45-V50 executive authority roadmap.  The next builder received formal requirements for first-9-seconds comprehension, Pressure Points, Executive Commitment Records, evidence-backed confidence, TrustMap power-network design, Before Consequence moments, deadline pressure, and Proof Pack authority.
+Converted colleague feedback into a repo-backed V45-V50 executive authority roadmap.
 
 ### Builder-20260527-002
 
@@ -183,7 +151,7 @@ CyberShield versions affected:
 
 Primary value add:
 
-Converted the V42 trust shield package into a deeper executive interaction build.  V43 added business exposure modeling, clickable briefing and runtime score explanations, role-tailored proof output, recipient personalization, stronger report handoff logic, and better cross-tab drill-through.
+Converted the V42 trust shield package into a deeper executive interaction build.
 
 ### Builder-20260527-001
 
