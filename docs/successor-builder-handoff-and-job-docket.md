@@ -1,18 +1,18 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-27
-Current implemented build: V46 Evidence-Backed Confidence and Result Authority Build
-Next planned sequence: V47-V51 Executive Authority and Authenticity Trust Layer
+Current implemented build: V47 Executive Commitment Record and Deadline Pressure Build
+Next planned sequence: V48-V51 Executive Authority and Authenticity Trust Layer
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v46-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v47-qa&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but increasingly interactive story: onboarding, executive briefing, organization-shield-centered TrustMap, runtime admissibility, manual evidence intake, role-tailored Proof Pack, business exposure modeling, architecture transition, admin settings, V45 executive authority, and now V46 evidence-backed confidence.
+CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but increasingly interactive story: onboarding, executive briefing, organization-shield-centered TrustMap, runtime admissibility, manual evidence intake, role-tailored Proof Pack, business exposure modeling, architecture transition, admin settings, V45 executive authority, V46 evidence-backed confidence, and now V47 executive commitment records.
 
 ## Required builder reading order
 
@@ -38,7 +38,7 @@ If the live app changes but the builder-version log does not, the build is incom
 
 Current implemented build label:
 
-> V46 Evidence-Backed Confidence and Result Authority Build
+> V47 Executive Commitment Record and Deadline Pressure Build
 
 User-facing navigation:
 
@@ -50,33 +50,38 @@ User-facing navigation:
 - Architecture
 - Settings
 
-No new top-level tabs were added for V46.
+No new top-level tabs were added for V47.
 
-## What V46 changed
+## What V47 changed
 
-V46 implemented Evidence-Backed Confidence and Result Authority only.  It did not attempt to implement V47, V48, V49, V50, or V51.
+V47 implemented the Executive Commitment Record and Deadline Pressure layer only.  It did not attempt to implement V48, V49, V50, or V51.
 
-V46 added:
+V47 added:
 
-- evidence-backed confidence panel
-- score authority cards with reducers and improvers
-- Runtime evidence used and evidence missing
-- Runtime consequence avoided and proof generated
-- Proof Pack confidence limits and score authority fields
-- V46 metadata alignment across `index.html`, README, `bots.txt`, `governance-summary.json`, and builder log
+- Executive Commitment Record
+- recommended commitment creation
+- close-all-commitments local prototype behavior
+- owner assignment
+- due date tracking
+- commitment status tracking
+- escalation path
+- proof-readiness impact
+- deadline pressure
+- commitment-aware Trust Drift
+- commitment fields in Proof Pack and admin payload
 
-V46 preserved the V45 first-9-seconds executive authority surface:
+V47 preserved:
 
-- what risky action is happening
-- what CyberShield decided
-- why it matters
-- what happens next
+- V45 first-9-seconds executive authority surface
+- V46 evidence-backed confidence and score authority behavior
+- existing seven-tab structure
+- local/export-only prototype boundary
 
-## Roadmap correction: V51 added after V50
+## Roadmap guardrail: V51 remains parked after V50
 
 Dr. Justice supplied Mike Rowe / Josh Smith transcript-derived requirements around authenticity, brand impersonation, counterfeit risk, platform trust, and verification before consequence.
 
-These requirements are **not** part of V46 and should not be pulled into V47-V50.
+These requirements are **not** part of V47 and should not be pulled into V48-V50.
 
 They are parked as:
 
@@ -96,7 +101,6 @@ V51 extension question:
 
 The next builder should implement the remaining authority-layer builds one version at a time:
 
-- V47: Executive Commitment Record and Deadline Pressure Build
 - V48: TrustMap Power Network Build
 - V49: Before Consequence and Power of Proof Build
 - V50: Executive Authority QA and External Demo Readiness Build
@@ -108,32 +112,24 @@ Do not add more top-level tabs for this work.  Upgrade existing screens: Briefin
 
 CyberShield must not only measure trust.  It must project trust.
 
-V51 extends that principle:
+V47 adds:
+
+A governance finding is not controlled until someone owns it, a date exists, the escalation path is known, and the Proof Pack shows the remaining obligation.
+
+V51 extends the product later:
 
 In the AI era, trust is not assumed.  Trust is verified.
 
-The product should feel like a calm executive control environment:
-
-- short language
-- clear decision
-- visible consequence
-- accountable owner
-- evidence-backed confidence
-- proof before consequence
-- urgency without hype
-- authenticity verification before action, starting in V51
-
 ## Ethical boundary
 
-Use psychology and trust design to improve clarity, trust perception, executive decision quality, customer protection, and evidence-backed action.
+Use psychology, accountability pressure, and trust design to improve clarity, trust perception, executive decision quality, customer protection, and evidence-backed action.
 
-Do not use psychology or authenticity framing to manipulate users, hide uncertainty, exaggerate product capability, imply live enforcement where none exists, imply live takedown automation where none exists, obscure the prototype boundary, create artificial fear, or pressure users without evidence.
+Do not use psychology, commitment pressure, or authenticity framing to manipulate users, hide uncertainty, exaggerate product capability, imply live enforcement where none exists, imply live notification/tasking where none exists, imply live takedown automation where none exists, obscure the prototype boundary, create artificial fear, or pressure users without evidence.
 
 ## Remaining modules
 
 Future builds should implement or deepen:
 
-- V47: Executive Commitment Record and deadline pressure
 - V48: deeper TrustMap power network behavior
 - V49: expanded Before Consequence moment and Power of Proof design
 - V50: external demo readiness QA
@@ -158,14 +154,6 @@ The current public build is a static GitHub Pages prototype.  Do not describe it
 
 No named individual should appear in user-facing UI modes.
 
-## Website-aligned TrustMap model
-
-The in-app Enterprise TrustMap follows the public Maximum Justice Cybersecurity website model:
-
-1. Assess operational trust exposure
-2. Analyze governance and runtime risk
-3. Deliver executive visibility and control
-
 ## Business exposure model
 
 Exposure is calculated directionally from:
@@ -178,16 +166,15 @@ Exposure is calculated directionally from:
 - regulatory sensitivity
 - customer impact
 - reversibility
+- open commitments
 
 This is a planning estimate only.  It must not be represented as a guaranteed financial calculation.
-
-Future builders should make the assumptions more transparent and eventually make the exposure parameters adjustable.
 
 ## Role-tailored Proof Pack
 
 The Proof Pack should feel handoff-ready for the selected reader: CEO, CFO, CIO/CTO, CISO/vCISO, or Board/Advisor.
 
-V46 strengthened Proof Pack with evidence-backed confidence, reducers, improvers, evidence used, evidence missing, and confidence limits.  V49 should deepen the artifact into a more polished executive record: what was reviewed, what was decided, why, what evidence existed, what evidence was missing, who owned the action, and what consequence was avoided.
+V47 strengthened Proof Pack with commitment owner, due date, status, escalation, proof-readiness impact, and deadline pressure.  V49 should deepen the artifact into a more polished executive record: what was reviewed, what was decided, why, what evidence existed, what evidence was missing, who owned the action, what obligation remained, and what consequence was avoided.
 
 ## Dr. Max Justice positioning
 
@@ -217,17 +204,18 @@ Future V51 commercial wedge:
 ## What the successor should do first
 
 1. Read the required builder reading list above
-2. Open the live prototype with `?v=v46-qa&reset=onboarding`
+2. Open the live prototype with `?v=v47-qa&reset=onboarding`
 3. Run through onboarding with multiple role/audience combinations
 4. Test user-facing navigation
-5. Test Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
-6. Run `docs/qa-checklist.md`
-7. Confirm current `index.html` is not stale or placeholder content
-8. Deconflict current live version naming against README, bots, and governance summary
-9. Implement V47 only if V46 passes QA
-10. Do not implement V51 until V50 is stabilized
-11. Update `index.html`, README, bots, governance summary, builder-version log, release checklist if needed, QA checklist if needed, and this docket if strategy changes
-12. Only then proceed to the next version
+5. Test commitment creation, due dates, close-all-commitments, proof-readiness, and deadline pressure
+6. Test Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
+7. Run `docs/qa-checklist.md`
+8. Confirm current `index.html` is not stale or placeholder content
+9. Deconflict current live version naming against README, bots, and governance summary
+10. Implement V48 only if V47 passes QA
+11. Do not implement V51 until V50 is stabilized
+12. Update `index.html`, README, bots, governance summary, builder-version log, release checklist if needed, QA checklist if needed, and this docket if strategy changes
+13. Only then proceed to the next version
 
 ## Known limitations
 
@@ -238,25 +226,24 @@ Future V51 commercial wedge:
 - no production enforcement engine yet
 - no live Google Sheets write from browser
 - no live Microsoft 365 connection
-- no SIEM, EDR, identity, GRC, cloud, or CRM sync
+- no SIEM, EDR, identity, GRC, cloud, CRM, ticketing, or notification sync
 - no marketplace system connection
 - no ad platform connection
 - no live takedown automation
 - browser QA still needs manual validation
 - business exposure model is directional and needs validation
-- TrustMap was simplified for V45/V46 performance and clarity; V48 should deepen power-network behavior
+- TrustMap was simplified for V45-V47 performance and clarity; V48 should deepen power-network behavior
 - proof pack content is functional but not yet a polished report template
-- V47 through V51 remain planned but not yet implemented
+- V48 through V51 remain planned but not yet implemented
 
 ## Current commit anchor
 
 Recent implementation commits:
 
-- `657a17ade692e810c45167afda283e2cb41498cc` - V46 app implementation in `index.html`
-- `af8abadea161b37cb84de2ced3e0de20d84ee2cd` - V51 added to build plan after V50 stabilization
-- `6505db09a16f9f7be52a82d53354eb8451a26c9a` - README V46 metadata alignment
-- `663c6c4600d4f26d708e00096c1a7875aa66590f` - bots context V46 and V51 roadmap alignment
-- `66d122cec3853728023ebf4ea7acdb0ef3cca3ec` - governance summary V46 and V51 roadmap alignment
+- `bbf0ab52fae45bf083f4564d307388e2b4af104b` - V47 app implementation in `index.html`
+- `0c4fd570e20c14c41b0f965f931ca365a45e2e06` - README V47 metadata alignment
+- `260c04309b69af4ada6320f910ca29e855a97244` - bots context V47 alignment
+- `01d722b0493a4321c954c71f1ef0f0bf2b3ef495` - governance summary V47 alignment
 
 Important correction note:
 
