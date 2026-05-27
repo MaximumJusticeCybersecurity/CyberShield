@@ -1,19 +1,21 @@
 CyberShield Executive OS
-Current implemented build: V44 Dangerous Action Simulation Build
-Next planned requirements: V45-V50 Executive Authority Layer
+Current implemented build: V45 Executive Authority and First-9-Seconds Build
+Next planned requirements: V46-V50 Executive Authority Layer
 Build date: 2026-05-27
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V44 Dangerous Action Simulation Build.
+CyberShield V45 Executive Authority and First-9-Seconds Build.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-Current V44 purpose:
-V44 makes CyberShield instantly understandable as an operational trust control plane by centering the product around a dangerous action moving through trust measurement, decisioning, evidence, business exposure, proof, and next executive action.
+No new top-level tabs were added for V45.
+
+Current V45 purpose:
+V45 makes CyberShield feel like a calm executive control layer by leading with the risky action, CyberShield decision, business consequence, and next step within the first visible workspace.
 
 Current default simulation:
 Shadow AI Vendor Data Upload: an employee or AI-enabled workflow attempts to upload customer, contract, or regulated business data into an unapproved AI vendor tool.
@@ -21,6 +23,9 @@ Shadow AI Vendor Data Upload: an employee or AI-enabled workflow attempts to upl
 Current capabilities:
 - CyberShield True Blue trust palette
 - Dangerous Action Simulation as the central executive story
+- first-9-seconds executive authority strip
+- consequence-first decision framing
+- Pressure Points module in Briefing
 - Without CyberShield / With CyberShield comparison
 - transparent weighted trust model across ten operational trust factors
 - Overall Operational Trust Score
@@ -33,17 +38,11 @@ Current capabilities:
 - Trust Delta
 - Decision ladder: Allow, Constrain, Escalate, Block
 - Trust Drift indicator
-- Commitment Boundary concept
-- Override and exception tracking fields
-- Replayable Decision Record generation
-- Organization shield as the TrustMap center object
-- icon-first first-layer TrustMap domains with score-dot indicators
-- selected-domain drill-down into second-layer TrustMap objects
-- TrustMap edge hover glow, endpoint connector dots, and click-to-pin relationship detail
 - manual evidence library with accumulating artifacts
 - role-tailored Proof Pack with report recipient personalization
 - Architecture path: Advisory Prototype, Guided Pilot, Enterprise Trust Platform
 - admin CRM payload hidden in Settings
+- local/export-only behavior
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
@@ -57,16 +56,15 @@ Read `docs/v45-psychology-driven-improvement-requirements.md`.
 V45-V50 build plan:
 Read `docs/v45-v50-executive-authority-build-plan.md`.
 
-V45-V50 planned sequence:
-- V45: Executive Authority and First-9-Seconds Build
+Next planned sequence:
 - V46: Evidence-Backed Confidence and Result Authority Build
 - V47: Executive Commitment Record and Deadline Pressure Build
 - V48: TrustMap Power Network Build
 - V49: Before Consequence and Power of Proof Build
 - V50: Executive Authority QA and External Demo Readiness Build
 
-V45-V50 strategic instruction:
-Move CyberShield from a smart governance prototype to a calm executive control environment. Do not add more top-level tabs for this work. Upgrade Briefing, Runtime, TrustMap, Reports / Proof Pack, Memory / Commitments, Pilot / Adoption, and Settings/Admin where needed.
+Strategic instruction:
+Move CyberShield from a smart governance prototype to a calm executive control environment. Do not add more top-level tabs for this work. Upgrade Briefing, Runtime, TrustMap, Evidence, Proof Pack, Architecture, and Settings where needed.
 
 V45 product psychology principle:
 CyberShield must not only measure trust. It must project trust.
@@ -74,15 +72,21 @@ CyberShield must not only measure trust. It must project trust.
 V45 ethical boundary:
 Use psychology to improve clarity, trust perception, and executive decision quality. Do not manipulate users, hide uncertainty, exaggerate product capability, imply live enforcement where none exists, obscure the prototype boundary, create artificial fear, or pressure users without evidence.
 
-V45 authority modules to implement:
-- Pressure Points
+V45 implemented modules:
+- first-9-seconds executive authority strip
+- Pressure Points in Briefing
+- consequence-first decision language
+- clearer owner-required framing
+- Proof Pack authority framing
+- explicit static prototype boundary language
+
+V46+ modules still planned, not completed:
+- full evidence-backed confidence across every score
 - Executive Commitment Record
-- TrustMap power network
-- evidence-backed confidence
-- Before Consequence moment
-- result-backed authority
+- TrustMap power network depth
+- Before Consequence moment expansion
 - deadline pressure
-- Power of Proof design
+- Power of Proof design expansion
 
 Foundational trust model sources:
 - `foundational-docs/dr-max-justice-cybersecurity-trust-model-dissertation-source.md`
