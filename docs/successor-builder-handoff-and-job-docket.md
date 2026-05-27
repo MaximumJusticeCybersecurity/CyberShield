@@ -1,7 +1,8 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-27
-Current live build: V43 Executive TrustMap Interaction and Depth Build
+Current implemented build: V44 Dangerous Action Simulation Build
+Next planned sequence: V45-V50 Executive Authority Layer
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
@@ -10,7 +11,7 @@ Primary live file: `index.html`
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but increasingly interactive story: onboarding, executive briefing, organization-shield-centered TrustMap, runtime admissibility, manual evidence intake, role-tailored Proof Pack, business exposure modeling, architecture transition, and admin settings.
+CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but increasingly interactive story: onboarding, executive briefing, organization-shield-centered TrustMap, runtime admissibility, manual evidence intake, role-tailored Proof Pack, business exposure modeling, architecture transition, admin settings, and now the V45-V50 authority-layer requirements.
 
 ## Required builder reading order
 
@@ -18,12 +19,14 @@ CyberShield is still early.  The current prototype is not the finished product. 
 2. `bots.txt`
 3. `governance-summary.json`
 4. `docs/cybershield-brand-palette.md`
-5. `docs/v43-executive-interaction-depth-build-record.md`
-6. `docs/foundational-documents.md`
-7. `docs/builder-version-log.md`
-8. `docs/release-checklist.md`
-9. `docs/qa-checklist.md`
-10. this handoff and job docket
+5. `docs/v44-dangerous-action-simulation-build-record.md`
+6. `docs/v45-psychology-driven-improvement-requirements.md`
+7. `docs/v45-v50-executive-authority-build-plan.md`
+8. `docs/foundational-documents.md`
+9. `docs/builder-version-log.md`
+10. `docs/release-checklist.md`
+11. `docs/qa-checklist.md`
+12. this handoff and job docket
 
 ## Mandatory builder-version rule
 
@@ -31,11 +34,11 @@ Every material builder must update `docs/builder-version-log.md`.
 
 If the live app changes but the builder-version log does not, the build is incomplete.
 
-## Current live build
+## Current implemented build
 
-Current build label:
+Current implemented build label:
 
-> V43 Executive TrustMap Interaction and Depth Build
+> V44 Dangerous Action Simulation Build
 
 User-facing navigation:
 
@@ -46,6 +49,54 @@ User-facing navigation:
 - Proof Pack
 - Architecture
 - Settings
+
+## Next planned build sequence
+
+The next builder should implement the V45-V50 Executive Authority Layer one version at a time.
+
+Planned sequence:
+
+- V45: Executive Authority and First-9-Seconds Build
+- V46: Evidence-Backed Confidence and Result Authority Build
+- V47: Executive Commitment Record and Deadline Pressure Build
+- V48: TrustMap Power Network Build
+- V49: Before Consequence and Power of Proof Build
+- V50: Executive Authority QA and External Demo Readiness Build
+
+Do not add more top-level tabs for this work.  Upgrade existing screens: Briefing, Runtime, TrustMap, Evidence, Proof Pack, Architecture, Settings, and any existing memory/commitment area.
+
+## V45-V50 strategic instruction
+
+CyberShield must not only measure trust.  It must project trust.
+
+The product should feel like a calm executive control environment:
+
+- short language
+- clear decision
+- visible consequence
+- accountable owner
+- evidence-backed confidence
+- proof before consequence
+- urgency without hype
+
+## V45-V50 ethical boundary
+
+Use psychology to improve clarity, trust perception, and executive decision quality.
+
+Do not use psychology to manipulate users, hide uncertainty, exaggerate product capability, imply live enforcement where none exists, obscure the prototype boundary, create artificial fear, or pressure users without evidence.
+
+## V45-V50 required modules
+
+Future builds should implement:
+
+- Pressure Points
+- Executive Commitment Record
+- TrustMap power network
+- evidence-backed confidence
+- Before Consequence moment
+- result-backed authority
+- deadline pressure
+- Power of Proof design
 
 ## Product identity
 
@@ -74,21 +125,7 @@ The in-app Enterprise TrustMap follows the public Maximum Justice Cybersecurity 
 2. Analyze governance and runtime risk
 3. Deliver executive visibility and control
 
-The V43 TrustMap includes:
-
-- center organization shield
-- first-layer icon objects
-- score-dot indicators
-- selected-domain drill-down into second-layer objects
-- operational trust score rail
-- TrustMap edge hover glow
-- endpoint connector dots
-- click-to-pin relationship detail
-- owner view from selected domain detail
-
 ## Business exposure model
-
-V43 restored the executive business exposure moment.
 
 Exposure is calculated directionally from:
 
@@ -98,30 +135,13 @@ Exposure is calculated directionally from:
 
 This is a planning estimate only.  It must not be represented as a guaranteed financial calculation.
 
-The exposure value appears in:
-
-- dashboard hero panel
-- executive briefing cards
-- runtime score explanations
-- proof pack
-- admin CRM payload
-
 Future builders should make the assumptions more transparent and eventually make the exposure parameters adjustable.
 
 ## Role-tailored Proof Pack
 
-V43 added Proof Pack personalization based on:
-
-- user's first name
-- organization name
-- user's role
-- report recipient role
-- optional recipient first name
-- active scenario
-- estimated business exposure
-- decision gate result
-
 The Proof Pack should feel handoff-ready for the selected reader: CEO, CFO, CIO/CTO, CISO/vCISO, or Board/Advisor.
+
+V49 should strengthen Proof Pack as the authority artifact: what was reviewed, what was decided, why, what evidence existed, what evidence was missing, who owned the action, and what consequence was avoided.
 
 ## Dr. Max Justice positioning
 
@@ -147,37 +167,18 @@ Current commercial wedge:
 ## What the successor should do first
 
 1. Read the required builder reading list above
-2. Open the live prototype with `?v=v43-qa&reset=onboarding`
+2. Open the live prototype with `?v=v44-qa&reset=onboarding`
 3. Run through onboarding with multiple role/audience combinations
 4. Test user-facing navigation
-5. Test Briefing metric click-throughs
-6. Test capability maturity click-throughs
-7. Test TrustMap edge hover, endpoint dots, and click-to-pin detail
-8. Test first-layer domain drill-down and owner view
-9. Test Runtime Trust/Evidence/Policy/Authority score explanations
-10. Test estimated business exposure behavior
-11. Test Evidence, Proof Pack, Architecture, and Settings
-12. Verify role-tailored Proof Pack for CISO, CIO, CFO, CEO, and Board/Advisor readers
-13. Run the QA checklist
-14. Validate Firefox performance
-15. Confirm no placeholder file content remains
-16. Only then plan V44
+5. Test Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
+6. Run `docs/qa-checklist.md`
+7. Confirm current `index.html` is not stale or placeholder content
+8. Deconflict current live version naming against README, bots, and governance summary
+9. Implement V45 only
+10. Update `index.html`, README, bots, governance summary, builder-version log, release checklist if needed, QA checklist if needed, and this docket if strategy changes
+11. Only then proceed to V46
 
-## Recommended V44 focus
-
-Recommended V44 focus:
-
-- QA hardening
-- visual polish
-- replace emoji/symbol TrustMap objects with consistent SVG icon set
-- improve the organization shield using MJC-style shield outline
-- strengthen owner drill-down depth
-- add actual downloadable report templates by audience role
-- improve cost/risk math with clearer assumptions and adjustable parameters
-- validate first-layer TrustMap object spacing across breakpoints
-- prepare optional Google Apps Script CRM append only after UX stabilizes
-
-## Known V43 limitations
+## Known limitations
 
 - public build remains static GitHub Pages prototype
 - no real integrations yet
@@ -193,17 +194,19 @@ Recommended V44 focus:
 - TrustMap icons are emoji/symbol based and need production-grade SVG replacement
 - owner drill-down is functional but shallow
 - proof pack content is functional but not yet a polished report template
+- V45-V50 requirements are documented but not yet implemented in `index.html`
 
 ## Current commit anchor
 
-Current V43 commits from this builder:
+Recent requirement-planning commits:
 
-- `98d9934851ed8ba8cf08ef22d53e45f58933336e` - V43 live app
-- `0ea6fbfa82b9134f5a2ef2f0ac34e2fd66b5e026` - V43 build record
-- `b937d9c8d237907c9a0ffc227b5e8c2714f438b1` - README for V43
-- `4716a7b604f59ad9697d6a9c4ff29f88211d0c6f` - bots context for V43
-- `833c720a4eac870f3ea8f2370c51aad32504cb18` - governance summary for V43
-- `2bf5a74dc8bb0bf1ca9d52bdcf53b0673287800c` - builder version log for V43
+- `e3cabde7d6d4b6803172e156dcb67f36bcb9b5de` - V45 psychology-driven requirements
+- `c853ce2d08fe5469230e87bcbb5f72f38a166c99` - V45-V50 executive authority build plan
+- `5ee3cc97030f4f4ede053bb1d43f064cef3ad5b3` - README with V45-V50 plan
+- `636a8dd9d256d22c9aab93b812ab8f806ffa9bb7` - bots context with V45-V50 plan
+- `2ae969fb611e19ab49b0e558ff48e246ad2db901` - governance summary with V45-V50 plan
+- `7a45b2d14584839b84f09befb68240f225ea8c17` - release checklist with V45-V50 gates
+- `d39dc2968ebafdd3d88237b404590a62ff054ff1` - QA checklist with V45-V50 gates
 
 Important correction note:
 
