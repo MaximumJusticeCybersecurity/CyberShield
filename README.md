@@ -2,15 +2,15 @@
 
 ## Current live build
 
-Current build label: **V42 Trust Shield Experience Package**
+Current build label: **V43 Executive TrustMap Interaction and Depth Build**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v42-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v43-qa&reset=onboarding
 
-See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/foundational-documents.md`, `docs/v36-v41-build-record.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
+See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/v43-executive-interaction-depth-build-record.md`, `docs/foundational-documents.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
 
 ## User-facing workspace
 
@@ -18,21 +18,23 @@ See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, 
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-## V42 purpose
+## V43 purpose
 
-V42 corrects the trust experience after V41.  It restores the CyberShield True Blue palette, removes user-facing Sandeep/CRM navigation, makes the organization the center shield of the TrustMap, and shifts the TrustMap from crowded labeled bubbles toward icon-based digital trust objects.
+V43 corrects the static-dashboard problem.  A first-time executive should be able to click around CyberShield and understand the trust score, why it scored that way, what is weak, who owns it, what evidence supports it, what action is allowed/constrained/escalated/blocked, what happens next, and what should be bought or piloted.
 
 ## Current product capabilities
 
 - CyberShield True Blue trust palette
 - Organization shield as the TrustMap center object
-- Icon-based first-layer TrustMap domains
+- Icon-first first-layer TrustMap domains with score-dot indicators
 - Drill-down into second-layer TrustMap objects through selected detail panels
 - Connector lines that highlight on hover and show endpoint dots
 - Clickable executive briefing metrics
-- Runtime decision scenarios and score cards
+- Estimated business exposure range tied to scenario consequence and trust score
+- Clickable runtime score cards for Trust, Evidence, Policy, and Authority
+- Decision ladder: Allow, Constrain, Escalate, Block
 - Evidence library with multiple artifacts
-- Commercial Proof Pack with offer recommendation cards
+- Role-tailored Proof Pack with audience and recipient personalization
 - Architecture path: Advisory Prototype, Guided Pilot, Enterprise Trust Platform
 - Admin CRM payload hidden in Settings, not shown as a user-facing top-level feature
 
@@ -76,4 +78,4 @@ The current build produces local/exportable records and models CRM row payloads,
 
 ## Next likely decision point
 
-Before adding live integrations, run QA on the V42 Trust Shield package.  Priority checks: spacing, first-layer object overlap, shield prominence, clickable briefing cards, runtime score depth, evidence artifacts, and proof/architecture detail flows.
+Run QA on the V43 executive interaction depth build.  Priority checks: role-tailored proof output, estimated exposure behavior, runtime score drill-downs, first-layer object overlap, shield prominence, clickable briefing cards, evidence artifacts, and proof/architecture detail flows.
