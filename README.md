@@ -2,15 +2,15 @@
 
 ## Current live build
 
-Current build label: **V45 Executive Authority and First-9-Seconds Build**
+Current build label: **V46 Evidence-Backed Confidence and Result Authority Build**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v45-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v46-qa&reset=onboarding
 
-See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, `docs/v44-dangerous-action-simulation-build-record.md`, `docs/v45-psychology-driven-improvement-requirements.md`, `docs/v45-v50-executive-authority-build-plan.md`, `docs/foundational-documents.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
+See `bots.txt`, `governance-summary.json`, `docs/v45-psychology-driven-improvement-requirements.md`, `docs/v45-v50-executive-authority-build-plan.md`, `docs/release-checklist.md`, `docs/qa-checklist.md`, `docs/builder-version-log.md`, and `docs/successor-builder-handoff-and-job-docket.md` for machine-readable and builder-facing context.
 
 ## User-facing workspace
 
@@ -18,45 +18,57 @@ See `bots.txt`, `governance-summary.json`, `docs/cybershield-brand-palette.md`, 
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V45.
+No new top-level tabs were added for V46.
 
-## Current implemented build: V45
+## Current implemented build: V46
 
-V45 implements the Executive Authority and First-9-Seconds Build.  The first visible workspace now answers four executive questions immediately:
+V46 implements Evidence-Backed Confidence and Result Authority.  The product now explains major trust scores instead of displaying scores as decorative metrics.
+
+V46 adds visible support for:
+
+- decision outcome
+- decision rationale
+- evidence used
+- evidence missing
+- owner required
+- consequence avoided
+- proof generated
+- top score reducers
+- top score improvers
+- confidence limits
+
+V46 preserves the V45 first-9-seconds executive authority surface:
 
 - what risky action is happening
 - what CyberShield decided
 - why it matters
 - what happens next
 
-V45 upgrades the existing Briefing, Runtime, TrustMap, Evidence, Proof Pack, Architecture, and Settings screens with consequence-first language, Pressure Points, clearer owner accountability, stronger proof framing, and explicit prototype boundary language.
-
 Core product sentence:
 
 CyberShield helps executives decide whether AI actions, vendor workflows, access requests, and evidence-dependent operations should be allowed, constrained, escalated, blocked, or documented before they create business, regulatory, security, or operational damage.
 
-## Next planned build sequence: V46-V50
+## Next planned build sequence: V47-V51
 
 The next builder should use:
 
 ```text
-docs/v45-psychology-driven-improvement-requirements.md
 docs/v45-v50-executive-authority-build-plan.md
 ```
 
 Planned sequence:
 
-- V46: Evidence-Backed Confidence and Result Authority Build
 - V47: Executive Commitment Record and Deadline Pressure Build
 - V48: TrustMap Power Network Build
 - V49: Before Consequence and Power of Proof Build
 - V50: Executive Authority QA and External Demo Readiness Build
+- V51: Authenticity Trust and Brand Impersonation Build, after V50 is stabilized
 
 Critical rule: do not add more top-level tabs for this work.  Upgrade Briefing, Runtime, TrustMap, Evidence, Proof Pack, Architecture, and Settings where needed.
 
 ## Default simulation
 
-V45 defaults to **Shadow AI Vendor Data Upload**:
+V46 defaults to **Shadow AI Vendor Data Upload**:
 
 An employee or AI-enabled workflow attempts to upload customer, contract, or regulated business data into an unapproved AI vendor tool.
 
@@ -72,16 +84,14 @@ The first-screen story compares:
 - First-9-seconds executive authority strip
 - Consequence-first decision framing
 - Pressure Points module in Briefing
+- Evidence-backed confidence panel
+- Score authority cards with reducers and improvers
+- Runtime decision evidence: outcome, rationale, evidence used, evidence missing, owner required, consequence avoided, proof generated
+- Proof Pack includes score reducers, score improvers, evidence used, evidence missing, and confidence limits
 - Without CyberShield / With CyberShield comparison
 - Transparent weighted trust model across ten operational trust factors
 - Overall Operational Trust Score
 - Score Confidence
-- Decision Confidence
-- Evidence Completeness
-- Evidence Freshness
-- Authority Clarity
-- Consequence Severity
-- Trust Delta
 - Decision ladder: Allow, Constrain, Escalate, Block
 - Trust Drift indicator
 - Manual evidence library with accumulating artifacts
@@ -99,17 +109,21 @@ The first-screen story compares:
 
 ## Boundary
 
-The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, or production agent enforcement systems.
+The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, or production agent enforcement systems.
 
 It models executive trust decisions, manual evidence intake, directional exposure, role-tailored proof packs, replayable decision records, and future runtime governance architecture.
 
-Do not overclaim autonomous enforcement until backend integrations exist.
+Do not overclaim autonomous enforcement, live takedown automation, or live integrations until backend integrations exist.
 
 ## Commercial path
 
-V45 positions the commercial entry wedge as:
+V46 positions the commercial entry wedge as:
 
 **CyberShield Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.**
+
+V51 adds the future commercial wedge:
+
+**Brand Impersonation and Authenticity Risk Assessment**
 
 Suggested CTA:
 
@@ -125,4 +139,4 @@ Turn this simulation into a real Operational Trust Assessment.
 
 ## Next likely decision point
 
-Run QA on the V45 Executive Authority build, then implement V46 only.  Priority checks: first-screen comprehension, scenario switching, Pressure Points, decision ladder behavior, evidence artifact accumulation, Proof Pack copy/download behavior, TrustMap readability, Settings reset, mobile layout, and Firefox performance.
+Run QA on the V46 Evidence-Backed Confidence build, then implement V47 only.  Priority checks: first-screen comprehension, scenario switching, Pressure Points, score reducers/improvers, evidence used, evidence missing, Runtime consequence avoided, Proof Pack copy/download, TrustMap readability, Settings reset, mobile layout, and Firefox performance.
