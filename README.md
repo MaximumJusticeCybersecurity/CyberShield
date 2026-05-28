@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V51 Authenticity Trust and Brand Impersonation Build**
+Current build label: **V51.1 Executive Story and CTA Cleanup**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-1-qa&reset=onboarding
 
 ## User-facing rule
 
@@ -20,28 +20,42 @@ Build and version labels belong in Settings/admin metadata and repo documentatio
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V51.
+No new top-level tabs were added for V51.1.
 
-## Current implemented build: V51
+## Current implemented build: V51.1
 
-V51 implements the Authenticity Trust and Brand Impersonation layer on top of the V50 external-demo-readiness build.
+V51.1 is a cleanup patch, not a new strategic product layer.  It sharpens the first-screen executive story, makes Trust Under Attack visible early, simplifies the Official Source Verification Gate, reduces CTA clutter, and preserves the V51 Authenticity Trust direction.
 
-V51 changes:
+V51.1 changes:
 
-- adds Authenticity Trust scoring
-- adds Trust Under Attack panel
-- adds Official Source Verification Gate
-- adds Brand and Identity Impersonation domain to TrustMap
-- adds authenticity-aware TrustMap relationships
-- adds AI-Generated Brand Impersonation Campaign scenario
-- adds Counterfeit Product Verification Failure scenario
-- adds counterfeit consequence severity
-- adds authenticity evidence types to Evidence
-- adds Authenticity and Impersonation Risk content to Proof Pack
-- adds Brand Impersonation and Authenticity Risk Assessment as an advisory offer
-- keeps true workspace/tab isolation
+- puts the V51 positioning line directly into the Briefing: “When everything can be faked, CyberShield helps prove what can be trusted.”
+- restores the first-9-seconds standard in visible scorecards
+- makes Trust Under Attack prominent in Briefing
+- simplifies the Official Source Verification Gate into five plain questions
+- treats Brand and Identity Impersonation as a cross-domain TrustMap risk
+- reduces CTA clutter to two primary advisory paths
+- keeps secondary advisory paths in Proof Pack only
 - keeps build/version metadata in Settings/admin payload only
-- keeps MJC advisory work attached to score improvement and proof readiness
+- keeps no-live-capability boundary language intact
+
+## First-9-seconds standard
+
+A first-time executive must quickly know:
+
+- what risky action is happening
+- what CyberShield decided
+- why it matters
+- what happens next
+
+## Official Source Verification Gate
+
+CyberShield asks:
+
+- Is this official?
+- Is the vendor approved?
+- Is the payment destination verified?
+- Is brand/person/likeness use authorized?
+- Is it safe to rely on before action?
 
 ## Current product principle
 
@@ -73,28 +87,22 @@ The current public build is a static advisory prototype.  It is not connected to
 
 It models executive trust decisions, manual evidence intake, local score-improvement actions, owner power mapping, directional exposure, avoided-exposure estimates, proof strength, demo readiness, authenticity trust, impersonation-risk scenarios, counterfeit consequence severity, role-tailored proof packs, replayable decision records, and future runtime governance architecture.
 
-Do not overclaim autonomous enforcement, live notifications, live task assignment, live takedown automation, live marketplace scans, live domain validation, live ad-platform enforcement, live identity verification, or live integrations until backend integrations exist.
+Do not overclaim autonomous enforcement, live notifications, live task assignment, live takedown automation, live marketplace scans, live domain validation, live ad-platform enforcement, live identity verification, live CRM sync, or live integrations until backend integrations exist.
 
 ## Commercial path
 
-Current wedge:
+Primary advisory paths:
 
-**CyberShield Operational Trust Assessment led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield.**
+- CyberShield Authenticity Trust Assessment
+- CyberShield Operational Trust Assessment
 
-V51 advisory wedge:
+Secondary advisory paths:
 
-**Brand Impersonation and Authenticity Risk Assessment**
-
-Score-improvement, authenticity, and proof-readiness advisory path:
-
-- Brand Impersonation and Authenticity Risk Assessment
-- Operational Trust Assessment
 - 30-Day CyberShield Pilot
+- Evidence Register and Proof Pack Buildout
+- Runtime Governance Readiness Review
 - Score Improvement Roadmap
-- Evidence Register and Proof Pack buildout
-- Runtime governance readiness review
-- Proof Pack Buildout
 
 ## Next likely decision point
 
-Run QA on V51 before future feature expansion.  Priority checks: tabs isolate content, no executive-facing version labels, Briefing shows Authenticity Trust and Trust Under Attack, Official Source Verification Gate works as a score-improvement loop, Runtime shows brand impersonation and counterfeit scenarios, TrustMap includes Brand and Identity Impersonation, Proof Pack includes Authenticity and Impersonation Risk content, Evidence includes authenticity evidence types, mobile readability, Firefox performance, and no live takedown, marketplace, ad-platform, identity-verification, or production-enforcement overclaims.
+Run QA on V51.1.  Priority checks: tabs isolate content, no executive-facing version labels, the Briefing starts with the V51 positioning line, first-9-seconds cards are clear, Trust Under Attack is prominent, Official Source Verification Gate is understandable, CTAs are not cluttered, Proof Pack preserves secondary advisory paths, and no live enforcement/integration overclaims appear.
