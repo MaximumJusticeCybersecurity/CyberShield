@@ -1,32 +1,41 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-27
-Current implemented build: V47.1 TrustMap Restoration and Readability Patch
-Next planned sequence: V48-V51 Executive Authority and Authenticity Trust Layer
+Current implemented build: V51 Authenticity Trust and Brand Impersonation Build
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v47-1-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-qa&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but increasingly interactive story: onboarding, executive briefing, restored interactive TrustMap, runtime admissibility, manual evidence intake, role-tailored Proof Pack, business exposure modeling, architecture transition, admin settings, V45 executive authority, V46 evidence-backed confidence, and V47 executive commitment records.
+CyberShield is still early.  The current prototype is not the finished product.  The live app shows a static but increasingly interactive story: onboarding, executive briefing, score-improvement loop, TrustMap Power Owners, runtime admissibility, manual evidence intake, role-tailored Proof Pack, business exposure modeling, avoided-exposure modeling, architecture transition, admin settings, Demo Readiness, Proof Strength, Authenticity Trust, Trust Under Attack, Official Source Verification Gate, and Brand/Identity Impersonation risk.
+
+## Release chain status
+
+V51 is now the current implemented build.
+
+The release chain was deconflicted after review feedback identified stale metadata:
+
+- README identified V51 as current
+- `index.html` Settings/admin metadata identified V51 as current
+- `governance-summary.json` still identified V47.1 as current
+- `bots.txt` still identified V47.1 as current
+- `docs/builder-version-log.md` stopped at V47.1
+
+That has been corrected.  README, bots.txt, governance-summary.json, builder-version-log, this handoff, and index.html Settings/admin metadata should all agree that V51 is current.
 
 ## Required builder reading order
 
 1. `README.md`
 2. `bots.txt`
 3. `governance-summary.json`
-4. `docs/cybershield-brand-palette.md`
-5. `docs/v45-psychology-driven-improvement-requirements.md`
-6. `docs/v45-v50-executive-authority-build-plan.md`
-7. `docs/foundational-documents.md`
-8. `docs/builder-version-log.md`
-9. `docs/release-checklist.md`
-10. `docs/qa-checklist.md`
-11. this handoff and job docket
+4. `docs/builder-version-log.md`
+5. `docs/release-checklist.md`
+6. `docs/qa-checklist.md`
+7. this handoff and job docket
 
 ## Mandatory builder-version rule
 
@@ -34,13 +43,7 @@ Every material builder must update `docs/builder-version-log.md`.
 
 If the live app changes but the builder-version log does not, the build is incomplete.
 
-## Current implemented build
-
-Current implemented build label:
-
-> V47.1 TrustMap Restoration and Readability Patch
-
-User-facing navigation:
+## User-facing navigation
 
 - Briefing
 - TrustMap
@@ -50,95 +53,134 @@ User-facing navigation:
 - Architecture
 - Settings
 
-No new top-level tabs were added for V47.1.
+No new top-level tabs were added for V51.
 
-## What V47.1 changed
+## User-facing version rule
 
-V47.1 is a corrective regression patch, not a forward feature build.  It was created because the TrustMap degraded during V45-V47.  The simplified initials, unreadable center object, missing relationship links, and low-contrast text weakened the strongest part of the demo.
+Build and version labels belong in Settings/admin metadata and repo documentation only.  They must not appear as executive-facing dashboard content.
 
-V47.1 restored or improved:
+## Current product principle
 
-- readable CyberShield center object
-- meaningful TrustMap object tiles instead of initials
-- visual icons for identity, cloud, vendors, AI agents, data, endpoints, policy, evidence, and decision records
-- visible relationship lines
-- clickable relationship explanations
-- selected-node highlighting
-- TrustMap relationship records in the Proof Pack
-- larger base font size
-- improved muted-text contrast
-- better mobile readability
-- horizontal scrolling for the map on narrow screens instead of crushing the layout
+CyberShield should behave like a score-improvement engine, power network, proof generator, external-demo surface, and authenticity trust layer.
 
-V47.1 preserved:
+The executive should see within the first 9 seconds:
 
-- V45 first-9-seconds executive authority surface
-- V46 evidence-backed confidence and score authority behavior
-- V47 Executive Commitment Record and deadline pressure
-- existing seven-tab structure
-- local/export-only prototype boundary
+- what risky action is happening
+- what CyberShield decided
+- why it matters
+- what happens next
 
-## TrustMap quality rule
+The broader first 60 seconds should also show:
 
-Do not let the TrustMap regress again.
+- current operational trust score
+- current authenticity trust score
+- what might be fake
+- who or what is being impersonated
+- who owns the response
+- what score actions improve the situation
+- what proof was generated
+- what evidence remains missing
 
-The TrustMap must not degrade into unreadable bubbles or initials.  It must show:
+## V51 positioning
 
-- meaningful business/security objects
-- readable labels
-- visual object representations
-- visible relationships
-- clickable connection explanations
-- selected-node state
-- owner and accountability context
-- accessible text contrast
-- mobile readability without crushing the map
+When everything can be faked, CyberShield helps prove what can be trusted.
 
-## Roadmap guardrail: V51 remains parked after V50
+V51 extension question:
 
-Dr. Justice supplied Mike Rowe / Josh Smith transcript-derived requirements around authenticity, brand impersonation, counterfeit risk, platform trust, and verification before consequence.
+Can this person, product, vendor, website, ad, source, brand claim, payment request, or AI-generated artifact be trusted before someone acts on it?
 
-These requirements are **not** part of V47.1 and should not be pulled into V48-V50.
+## Official Source Verification Gate
 
-They are parked as:
+Keep this simple and visible:
 
-> V51: Authenticity Trust and Brand Impersonation Build
+1. Is this official?
+2. Is the vendor approved?
+3. Is the payment destination verified?
+4. Is brand/person/likeness use authorized?
+5. Is it safe to rely on before action?
 
-V51 should be built only after V50 stabilizes the executive authority layer.
+## TrustMap instruction
 
-Primary V51 line:
+Brand and Identity Impersonation must be treated as a cross-domain TrustMap risk, not an isolated decorative node.
 
-> When everything can be faked, CyberShield helps prove what can be trusted.
+It connects to:
 
-## Next planned build sequence
+- domains
+- vendors
+- sellers
+- payment destinations
+- product claims
+- marketplace listings
+- social/ad platforms
+- customer trust
+- legal/IP response
+- evidence
+- decision records
+- executive authority
 
-The next builder should implement the remaining authority-layer builds one version at a time:
+## Commercial CTA instruction
 
+Reduce CTA clutter.
+
+Primary CTAs:
+
+- CyberShield Authenticity Trust Assessment
+- CyberShield Operational Trust Assessment
+
+Secondary paths:
+
+- 30-Day CyberShield Pilot
+- Evidence Register and Proof Pack Buildout
+- Runtime Governance Readiness Review
+- Score Improvement Roadmap
+
+## Current implemented release train
+
+- V45: Executive Authority and First-9-Seconds Build
+- V46: Evidence-Backed Confidence and Result Authority Build
+- V47: Executive Commitment Record and Deadline Pressure Build
+- V47.1: TrustMap Restoration and Readability Patch
+- V47.4: Workspace Isolation and Score Improvement Baseline
 - V48: TrustMap Power Network Build
 - V49: Before Consequence and Power of Proof Build
 - V50: Executive Authority QA and External Demo Readiness Build
-- V51: Authenticity Trust and Brand Impersonation Build, only after V50 stabilization
+- V51: Authenticity Trust and Brand Impersonation Build
 
-Do not add more top-level tabs for this work.  Upgrade existing screens: Briefing, Runtime, TrustMap, Evidence, Proof Pack, Architecture, Settings, and any existing memory/commitment area.
+## V51 capabilities
 
-## What the successor should do first
+- Authenticity Trust scoring
+- Trust Under Attack panel
+- Official Source Verification Gate
+- Brand and Identity Impersonation TrustMap domain
+- authenticity-aware TrustMap relationships
+- AI-Generated Brand Impersonation Campaign scenario
+- Counterfeit Product Verification Failure scenario
+- counterfeit consequence severity
+- authenticity evidence types in Evidence
+- Authenticity and Impersonation Risk content in Proof Pack
+- Brand Impersonation and Authenticity Risk Assessment advisory wedge
+- score-improvement actions
+- Power Owners
+- Before/After consequence comparison
+- Proof Strength
+- Demo Readiness
 
-1. Read the required builder reading list above
-2. Open the live prototype with `?v=v47-1-qa&reset=onboarding`
-3. Test the TrustMap center object for readability
-4. Test all TrustMap object tiles for readable labels and meaningful icons
-5. Test visible relationship lines
-6. Click every relationship line and confirm the explanation appears
-7. Click every object and confirm the detail panel updates
-8. Test mobile or narrow layout to confirm the map scrolls rather than crushing labels
-9. Test commitment creation and close-all behavior
-10. Test Proof Pack for relationship records
-11. Run `docs/qa-checklist.md`
-12. Deconflict current live version naming against README, bots, and governance summary
-13. Implement V48 only if V47.1 passes QA
-14. Do not implement V51 until V50 is stabilized
+## Prototype boundary
 
-## Known limitations
+The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, or production agent enforcement systems.
+
+Do not represent the current build as performing:
+
+- live enforcement
+- live takedown automation
+- live marketplace scanning
+- live ad-platform enforcement
+- live identity verification
+- live CRM sync
+- live notification/ticketing
+- live enterprise integrations
+
+## Current known limitations
 
 - public build remains static GitHub Pages prototype
 - no real integrations yet
@@ -152,20 +194,30 @@ Do not add more top-level tabs for this work.  Upgrade existing screens: Briefin
 - no ad platform connection
 - no live takedown automation
 - browser QA still needs manual validation
-- business exposure model is directional and needs validation
-- V48 through V51 remain planned but not yet implemented
+- business exposure, avoided exposure, proof strength, demo readiness, and authenticity trust are directional advisory scores, not certified calculations
+- TrustMap visual design still needs later refinement
 
-## Current commit anchor
+## What the successor should do first
 
-Recent implementation commits:
+1. Open the V51 test URL
+2. Confirm Briefing shows Authenticity Trust and Trust Under Attack early
+3. Confirm the first-9-seconds standard is preserved
+4. Confirm Official Source Verification Gate is understandable
+5. Confirm Brand and Identity Impersonation appears as a cross-domain TrustMap risk
+6. Confirm Proof Pack includes Authenticity and Impersonation Risk content
+7. Confirm Evidence includes authenticity evidence types
+8. Confirm version/build labels are only in Settings/admin metadata
+9. Confirm no live enforcement or integration overclaims appear
+10. Confirm README, bots.txt, governance-summary.json, builder-version-log, this handoff, and index.html Settings/admin metadata agree on V51
 
-- `ddf0f34c0bca28d67ddc2c4a0ad60105b5ac0a56` - V47.1 TrustMap restoration patch in `index.html`
-- `51b369b609319cbb1ff8f200fcc920543ba26d67` - README V47.1 metadata alignment
-- `588eee48f09fa745ad450d6f7575642bdaec749e` - bots V47.1 alignment
-- `a2f543af4e9f0fd037ace5cbb696adfa9b160bfa` - governance summary V47.1 alignment
+## Current commit anchors
 
-Important correction note:
+Recent implementation and cleanup commits:
 
-During the V29 build, `index.html` was accidentally replaced with the literal text `PLACEHOLDER` in commit `8ca2020fb74e50ecaeaa564a143dd7e70ca5961c`.  That was corrected in commit `c7c337c40cade6eb0c814611123e51448c2df8fa`.  Future builders should verify the live file before starting additional edits.
+- `78642739a675240a8d71a76c5f8c5b40cda873e5` - V51 code
+- `2b2cc3787786ebedef9fcafe80c7e3cc1939224b` - README V51 update
+- `c2fde0f5ac1e6b1bdd89036280ac7c223cea8096` - governance summary V51 deconfliction
+- `093f096c956e7b05dd0b5311a8fe77136dea60d9` - bots V51 deconfliction
+- `caf36c4e73df3762eed32feaadf64665087d124a` - builder log V48 through V51 backfill and V51 chain-of-custody cleanup
 
 This file must be updated after every future material build.
