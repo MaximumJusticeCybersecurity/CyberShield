@@ -9,24 +9,22 @@ export async function loadJson(path) {
 }
 
 export async function loadRegistryBundle() {
-  installTrustMapCoreLogoPatch();
+  installInteractionAndCorePatch();
   const models = await loadJson("./data/models/model-registry.json");
   const roles = await loadJson("./data/profiles/role-profiles.json");
   return { models, roles };
 }
 
-function installTrustMapCoreLogoPatch() {
-  if (window.__cyberShieldCoreLogoPatchInstalled) return;
-  window.__cyberShieldCoreLogoPatchInstalled = true;
+function installInteractionAndCorePatch() {
+  if (window.__cyberShieldInteractionPatchInstalled) return;
+  window.__cyberShieldInteractionPatchInstalled = true;
 
   const style = document.createElement("style");
   style.textContent = `
-    .node[data-node="core"]{
-      width:230px!important;
-      min-height:205px!important;
-      background:radial-gradient(circle at 50% 18%,rgba(66,215,255,.28),rgba(7,28,49,.98) 58%);
-      border-color:rgba(66,215,255,.85)!important;
-    }
+    .summary-card,.row{cursor:pointer;transition:border-color .16s,box-shadow .16s,transform .16s}
+    .summary-card:hover,.row:hover{border-color:rgba(66,215,255,.95);box-shadow:0 0 0 3px rgba(66,215,255,.12),0 0 24px rgba(66,215,255,.22);transform:translateY(-1px)}
+    .summary-card:focus-visible,.row:focus-visible{outline:3px solid rgba(66,215,255,.5);outline-offset:3px}
+    .node[data-node="core"]{width:230px!important;min-height:205px!important;background:radial-gradient(circle at 50% 18%,rgba(66,215,255,.28),rgba(7,28,49,.98) 58%);border-color:rgba(66,215,255,.85)!important}
     .cs-core-anchor{display:grid;place-items:center;gap:7px;width:100%}
     .cs-core-logo{width:94px;height:94px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(66,215,255,.85));z-index:2}
     .cs-core-portal{position:relative;width:150px;height:44px;border:1px solid rgba(66,215,255,.58);border-radius:50%;background:radial-gradient(ellipse at center,rgba(66,215,255,.30),rgba(6,23,38,.08) 62%,transparent 70%);box-shadow:0 0 24px rgba(66,215,255,.35);margin-top:-12px;overflow:hidden}
@@ -37,6 +35,15 @@ function installTrustMapCoreLogoPatch() {
     .node[data-node="core"] .node-art{display:none}
   `;
   document.head.appendChild(style);
+
+  const navTo = view => {
+    const button = document.querySelector(`#mainNav button[data-view="${view}"]`);
+    if (button) button.click();
+    requestAnimationFrame(() => {
+      if (view === "trustmap") patchTrustCore();
+      document.querySelector(`#${view}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
 
   const currentOrg = () => {
     const settingsOrg = document.querySelector('#setOrg')?.value?.trim();
@@ -49,7 +56,7 @@ function installTrustMapCoreLogoPatch() {
     return 'Selected Company';
   };
 
-  const patchCore = () => {
+  const patchTrustCore = () => {
     const core = document.querySelector('.node[data-node="core"]');
     if (!core) return;
     const label = `${currentOrg()} Control Plane`;
@@ -65,14 +72,40 @@ function installTrustMapCoreLogoPatch() {
         </span>`;
     }
     const company = core.querySelector('.cs-core-company');
-    if (company) company.textContent = label;
+    if (company && company.textContent !== label) company.textContent = label;
   };
 
-  const observer = new MutationObserver(patchCore);
-  const start = () => {
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-    patchCore();
+  const routeFromText = text => {
+    const lower = text.toLowerCase();
+    if (lower.includes('runtime control') || lower.includes('primary next action') || lower.includes('operational consequence') || lower.includes('risky action')) return 'runtime';
+    if (lower.includes('trust posture') || lower.includes('dashboard routing') || lower.includes('human accountability')) return 'trustmap';
+    if (lower.includes('proof status') || lower.includes('proof pack')) return 'proof';
+    if (lower.includes('evidence posture') || lower.includes('evidence') || lower.includes('artifact')) return 'evidence';
+    if (lower.includes('exposure')) return 'runtime';
+    return null;
   };
-  if (document.body) start();
-  else document.addEventListener('DOMContentLoaded', start, { once: true });
+
+  document.addEventListener('click', event => {
+    const target = event.target.closest('.summary-card,.row');
+    if (!target) return;
+    const route = routeFromText(target.textContent || '');
+    if (route) navTo(route);
+  }, true);
+
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const target = event.target.closest?.('.summary-card,.row');
+    if (!target) return;
+    event.preventDefault();
+    const route = routeFromText(target.textContent || '');
+    if (route) navTo(route);
+  });
+
+  document.addEventListener('click', event => {
+    if (event.target.closest('#mainNav button[data-view="trustmap"]')) {
+      setTimeout(patchTrustCore, 0);
+    }
+  }, true);
+
+  window.addEventListener('load', () => setTimeout(patchTrustCore, 0), { once: true });
 }
