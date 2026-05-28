@@ -1,0 +1,40 @@
+CyberShield Dashboard Registry Source
+Version: 0.1
+Status: planning scaffold
+Baseline: V51.1 Executive Story and CTA Cleanup
+
+Purpose:
+Define dashboard lenses and reusable modules. Use one dashboard engine with tailored lenses, not separate hardcoded products.
+
+Dashboard Lenses:
+1. CEO / President
+2. CISO / vCISO
+3. CIO / CTO
+4. CFO
+5. Board / Advisor
+
+Reusable Dashboard Modules:
+- first-9-seconds briefing cards
+- Trust Under Attack
+- Official Source Verification Gate
+- Operational Trust score
+- Authenticity Trust score
+- Proof Strength score
+- Avoided Exposure
+- Power Owners
+- Priority Queue
+- Evidence Gaps
+- Report Downloads
+- TrustMap Summary
+- Runtime Decision Path
+
+Selection Inputs:
+- role lens
+- industry profile
+- scenario pack
+- model emphasis
+- evidence maturity
+- report target
+
+Builder Rule:
+Do not create a separate hardcoded dashboard for every role-industry-scenario combination. Use reusable modules selected through registry logic.
