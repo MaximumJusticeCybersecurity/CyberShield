@@ -1,23 +1,23 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-28
-Current implemented build: V52 Model Registry Foundation and Human-First Executive Control View
+Current implemented build: V52.2 Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-human-first&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-2-routed-layers&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-V52 implemented the first control-plane foundation pass and human-first executive control view.  It keeps the existing seven workspaces, adds no new top-level tabs, introduces registry-aware advisory scoring, moves orchestration into `src/app.js`, and makes the first Briefing pane easier for a human executive to read before drilling into model trace.
+V52.2 combines the TrustMap visual restoration patch with guided onboarding and routed dashboard behavior.  It keeps the existing seven workspaces, adds no new top-level tabs, restores TrustMap layers and relationship lines, and begins routing executive dashboard emphasis based on onboarding selections.
 
 ## Release chain status
 
-V52 is now the current implemented build.
+V52.2 is now the current implemented build.
 
-README, bots.txt, governance-summary.json, builder-version-log, this handoff, and Settings/admin metadata should identify V52 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
+README, bots.txt, governance-summary.json, builder-version-log, this handoff, and Settings/admin metadata should identify V52.2 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
 
 ## Required builder reading order
 
@@ -36,27 +36,25 @@ README, bots.txt, governance-summary.json, builder-version-log, this handoff, an
 13. `docs/qa-checklist.md`
 14. this handoff and job docket
 
-## What changed in V52
+## What changed in V52.2
 
-- Added Executive First View inside existing Briefing workspace
-- Preserved existing navigation: Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings
-- Added no new top-level tabs
-- Moved app orchestration into `src/app.js`
-- Added registry bundle loading through `src/core/registryLoader.js`
-- Routed advisory decision output through `src/core/scoringEngine.js`
-- Hardened `src/utils/dom.js` with HTML escaping and non-clickable informational feed rows
-- Added progressive disclosure for model trace
-- Preserved Proof Pack boundary language
-- Kept TrustMap readable and node-selectable
-- Improved desktop and Android-oriented responsive hierarchy
+- Added six-step guided onboarding
+- Routed dashboard emphasis by role, industry, scenario, evidence posture, business priority, and output audience
+- Restored TrustMap layers: Executive Core, Operational Systems, Evidence and Governance, Consequence and Exposure
+- Added relationship lines and connected-edge highlighting
+- Added CSS-rendered graphical node treatments
+- Added layer filters inside TrustMap
+- Added richer selected-node detail with what it is, why it matters, evidence needed, connected nodes, and next action
+- Kept Proof Pack output tied to onboarding selections
+- Preserved the static advisory prototype boundary
 
-## Known limitations from V52
+## Known limitations from V52.2
 
-- CSS remains inline in `index.html` because connector writes for new CSS files were intermittently blocked
-- The registry foundation currently relies on existing scaffold files, especially `data/models/model-registry.json` and `data/profiles/role-profiles.json`
-- V52 scoring remains demo-directional and not statistically validated
+- CSS remains inline in `index.html`
+- TrustMap graphics are CSS-rendered approximations, not final brand-grade assets
+- Model registry remains scaffold-level and demo-directional
+- Scoring is not statistically validated
 - Hands-on QA in Firefox, Brave, and Android should still be performed after GitHub Pages deploys
-- Full extraction of CSS and deeper model files should continue in a later local or connector-friendly build
 
 ## User-facing navigation
 
@@ -68,15 +66,16 @@ README, bots.txt, governance-summary.json, builder-version-log, this handoff, an
 - Architecture
 - Settings
 
-No new top-level tabs were added for V52.
+No new top-level tabs were added for V52.2.
 
 ## Current next-build doctrine
 
-V53 should not undo the V52 slab.  The next logical build is no-dead-click interaction depth and route-to-model/evidence/report behavior.
+V53 should build no-dead-click interaction depth on top of the routed and layered foundation.
 
 Priority V53 work:
 
-- make every visible card, metric, node, and output route to explanation, evidence, model, action, or report
+- route every visible card, metric, node, layer, and output to explanation, evidence, model, action, or report
+- make layer filters more obviously clickable without creating dead UI
 - extract inline CSS to `assets/css/styles.css` if connector or local tooling allows
 - continue migrating scoring and model metadata into concrete `/data/models/*.json` files
 - add model viewer details without crowding the Executive First View
@@ -92,10 +91,11 @@ Do not represent the current build as performing live enforcement, live takedown
 
 1. Read the required builder files above
 2. Run or manually perform release-chain check
-3. Open V52 on GitHub Pages after deployment
-4. Test Android, Firefox, and Brave readability
-5. Verify no executive-facing build labels appear outside Settings/admin context
-6. Verify model trace, Evidence, TrustMap node selection, Proof Pack copy, and Proof Pack download
-7. Continue V53 no-dead-click and interaction-depth build
+3. Open V52.2 on GitHub Pages after deployment
+4. Test guided onboarding from reset URL
+5. Test Android, Firefox, and Brave readability
+6. Verify no executive-facing build labels appear outside Settings/admin context
+7. Verify TrustMap layers, node selection, edge highlighting, Evidence, Proof Pack copy, and Proof Pack download
+8. Continue V53 no-dead-click and interaction-depth build
 
 This file must be updated after every future material build.
