@@ -1,5 +1,5 @@
 export function calculateDecision(state, registry) {
-  const model = registry.models.models.find(item => item.model_id === "operational_trust_decision_model");
+  const model = registry.models.models.find(item => item.model_id === "operational-trust") || registry.models.models[0];
   const evidenceScore = state.evidence === "high" ? 86 : state.evidence === "low" ? 42 : 68;
   const vendorScore = state.vendor === "Yes" ? 90 : state.vendor === "Unknown" ? 58 : 40;
   const roleWeight = state.role.includes("CFO") ? 4 : state.role.includes("CISO") ? 5 : 3;
@@ -46,8 +46,8 @@ export function calculateDecision(state, registry) {
       organization: state.org,
       role: state.role,
       model_id: model.model_id,
-      model_version: model.version,
-      cybershield_release: model.cybershield_release,
+      model_version: model.model_version || model.version || registry.models.registry_version,
+      cybershield_release: "V52",
       score,
       decision_state: stateBand,
       evidence_gaps: [...new Set(gaps)],
