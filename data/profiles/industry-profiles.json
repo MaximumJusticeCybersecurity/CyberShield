@@ -1,0 +1,10 @@
+{
+  "registry_id": "industry-profiles",
+  "registry_version": "0.1",
+  "industries": [
+    {"industry_id": "dib-federal-contractor-smb", "label": "DIB / Federal Contractor SMB", "frameworks": ["nist-csf-2.0", "nist-ai-rmf", "cmmc-nist-800-171"]},
+    {"industry_id": "financial-services-community-banking", "label": "Financial Services / Community Banking", "frameworks": ["nist-csf-2.0", "nist-ai-rmf", "fair-style-exposure"]},
+    {"industry_id": "ai-enabled-smb-saas-professional-services", "label": "AI-Enabled SMB / SaaS / Professional Services", "frameworks": ["nist-csf-2.0", "nist-ai-rmf"]},
+    {"industry_id": "healthcare-federal-health-security", "label": "Healthcare / Federal Health Security", "frameworks": ["nist-csf-2.0", "nist-ai-rmf"]}
+  ]
+}
