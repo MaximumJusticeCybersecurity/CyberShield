@@ -1,0 +1,11 @@
+{
+  "registry_id": "role-profiles",
+  "registry_version": "0.1",
+  "roles": [
+    {"role_id": "ceo-president", "label": "CEO / President", "dashboard_lens": "executive"},
+    {"role_id": "ciso-vciso", "label": "CISO / vCISO", "dashboard_lens": "security-governance"},
+    {"role_id": "cio-cto", "label": "CIO / CTO", "dashboard_lens": "technology-operations"},
+    {"role_id": "cfo", "label": "CFO", "dashboard_lens": "financial-operations"},
+    {"role_id": "board-advisor", "label": "Board / Advisor", "dashboard_lens": "board-oversight"}
+  ]
+}
