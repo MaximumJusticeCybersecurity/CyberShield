@@ -38,27 +38,39 @@ function installTrustMapCoreLogoPatch() {
   `;
   document.head.appendChild(style);
 
+  const currentOrg = () => {
+    const settingsOrg = document.querySelector('#setOrg')?.value?.trim();
+    if (settingsOrg) return settingsOrg;
+    const lensText = document.querySelector('#roleLens')?.textContent || '';
+    const match = lensText.match(/routed\s+(.+?)\s+to\s+the/i);
+    if (match && match[1]) return match[1].trim();
+    const onboardingOrg = document.querySelector('#obOrg')?.value?.trim();
+    if (onboardingOrg) return onboardingOrg;
+    return 'Selected Company';
+  };
+
   const patchCore = () => {
     const core = document.querySelector('.node[data-node="core"]');
-    if (!core || core.dataset.logoPatched === "true") return;
-    const org = document.querySelector('#setOrg')?.value || window.__cyberShieldOrg || 'Selected Company';
-    const label = `${org} Control Plane`;
-    core.dataset.logoPatched = "true";
-    core.innerHTML = `
-      <span class="cs-core-anchor">
-        <img class="cs-core-logo" src="assets/mjc-logo-2026.png" alt="MJC CyberShield logo" onerror="this.style.display='none'">
-        <span class="cs-core-portal" aria-hidden="true"></span>
-        <strong>CyberShield Core</strong>
-        <small class="cs-core-company"></small>
-        <small class="cs-core-sub">Trusted digital portal and governance control plane</small>
-      </span>`;
+    if (!core) return;
+    const label = `${currentOrg()} Control Plane`;
+    if (core.dataset.logoPatched !== "true") {
+      core.dataset.logoPatched = "true";
+      core.innerHTML = `
+        <span class="cs-core-anchor">
+          <img class="cs-core-logo" src="assets/mjc-logo-2026.png" alt="MJC CyberShield logo" onerror="this.style.display='none'">
+          <span class="cs-core-portal" aria-hidden="true"></span>
+          <strong>CyberShield Core</strong>
+          <small class="cs-core-company"></small>
+          <small class="cs-core-sub">Trusted digital portal and governance control plane</small>
+        </span>`;
+    }
     const company = core.querySelector('.cs-core-company');
     if (company) company.textContent = label;
   };
 
   const observer = new MutationObserver(patchCore);
   const start = () => {
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
     patchCore();
   };
   if (document.body) start();
