@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CyberShield Report Registry",
+  "type": "object",
+  "required": ["registry_id", "registry_version", "reports"],
+  "properties": {
+    "registry_id": {"type": "string"},
+    "registry_version": {"type": "string"},
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["report_id", "report_name", "audience"],
+        "properties": {
+          "report_id": {"type": "string"},
+          "report_name": {"type": "string"},
+          "audience": {"type": "string"},
+          "required_inputs": {"type": "array", "items": {"type": "string"}},
+          "model_dependencies": {"type": "array", "items": {"type": "string"}},
+          "sections": {"type": "array", "items": {"type": "string"}},
+          "boundary_statement_required": {"type": "boolean"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
