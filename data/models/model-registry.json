@@ -1,8 +1,8 @@
 {
   "registry_id": "cybershield-model-registry",
-  "registry_version": "0.1",
-  "status": "planning_scaffold",
-  "baseline_build": "V51.1 Executive Story and CTA Cleanup",
+  "registry_version": "1.0.0",
+  "status": "demo_directional_not_certified",
+  "cybershield_release": "V52 Model Registry Foundation and Human-First Executive Control View",
   "purpose": "Defines the scoring models CyberShield should load and expose instead of hardcoding scoring logic inside index.html.",
   "model_status_labels": [
     "demo_directional_not_certified",
@@ -15,6 +15,7 @@
     {
       "model_id": "operational-trust",
       "model_name": "Operational Trust Model",
+      "model_version": "1.0.0",
       "planned_file": "/data/models/operational-trust.v1.json",
       "model_status": "demo_directional_not_certified",
       "primary_frameworks": ["nist-csf-2.0", "nist-ai-rmf"],
@@ -24,6 +25,7 @@
     {
       "model_id": "authenticity-trust",
       "model_name": "Authenticity Trust Model",
+      "model_version": "1.0.0",
       "planned_file": "/data/models/authenticity-trust.v1.json",
       "model_status": "demo_directional_not_certified",
       "primary_frameworks": ["nist-csf-2.0", "nist-ai-rmf"],
@@ -32,6 +34,7 @@
     {
       "model_id": "proof-strength",
       "model_name": "Proof Strength Model",
+      "model_version": "1.0.0",
       "planned_file": "/data/models/proof-strength.v1.json",
       "model_status": "demo_directional_not_certified",
       "primary_frameworks": ["nist-csf-2.0"],
@@ -40,34 +43,20 @@
     {
       "model_id": "evidence-confidence",
       "model_name": "Evidence Confidence Model",
+      "model_version": "1.0.0",
       "planned_file": "/data/models/evidence-confidence.v1.json",
       "model_status": "demo_directional_not_certified",
       "primary_frameworks": ["nist-csf-2.0"],
       "purpose": "Evaluates reliability, freshness, completeness, source quality, and conflict status of evidence."
     },
     {
-      "model_id": "trust-under-attack",
-      "model_name": "Trust Under Attack Model",
-      "planned_file": "/data/models/trust-under-attack.v1.json",
-      "model_status": "demo_directional_not_certified",
-      "primary_frameworks": ["nist-csf-2.0", "nist-ai-rmf"],
-      "purpose": "Evaluates whether the organization’s trust surface is being actively exploited through impersonation, fake domains, unauthorized ads, marketplace abuse, phishing, payment redirection, or vendor impersonation."
-    },
-    {
       "model_id": "avoided-exposure",
       "model_name": "Avoided Exposure Model",
+      "model_version": "1.0.0",
       "planned_file": "/data/models/avoided-exposure.v1.json",
       "model_status": "demo_directional_not_certified",
       "primary_frameworks": ["fair-style-exposure"],
       "purpose": "Estimates directional exposure reduction when CyberShield identifies, constrains, escalates, or blocks a risky action before consequence."
-    },
-    {
-      "model_id": "demo-readiness",
-      "model_name": "Demo Readiness Model",
-      "planned_file": "/data/models/demo-readiness.v1.json",
-      "model_status": "demo_directional_not_certified",
-      "primary_frameworks": [],
-      "purpose": "Evaluates whether the demo is clear, credible, safe to show externally, and aligned to no-dead-click and no-overclaim standards."
     }
   ],
   "required_model_fields": [
@@ -88,5 +77,9 @@
     "limitations",
     "change_log"
   ],
-  "builder_rule": "Scores visible in the UI must route to model explanations. Do not create scores that cannot be explained."
+  "builder_rule": "Scores visible in the UI must route to model explanations. Do not create scores that cannot be explained.",
+  "limitations": [
+    "V52 registry remains scaffold-level and demo-directional.",
+    "Complete model files should be created in a later local or connector-friendly build."
+  ]
 }
