@@ -6,6 +6,16 @@ export function activateView(viewId) {
   $$("#mainNav button").forEach(button => button.classList.toggle("active", button.dataset.view === viewId));
 }
 
-export function renderFeedItem([title, body]) {
-  return `<div class="feed-item"><strong>${title}</strong><span>${body}</span></div>`;
+export function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+export function renderFeedItem([title, body, status = ""]) {
+  const statusText = status ? `<span class="status">${escapeHtml(status)}</span>` : "";
+  return `<button class="row" type="button"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(body)}</span>${statusText}</button>`;
 }
