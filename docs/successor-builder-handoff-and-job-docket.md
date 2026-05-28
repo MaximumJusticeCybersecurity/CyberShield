@@ -1,23 +1,23 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-28
-Current implemented build: V52.2 Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch
+Current implemented build: V52.7 TrustMap Navigation and Report Output System
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-2-routed-layers&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-7-trustmap-reports&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-V52.2 combines the TrustMap visual restoration patch with guided onboarding and routed dashboard behavior.  It keeps the existing seven workspaces, adds no new top-level tabs, restores TrustMap layers and relationship lines, and begins routing executive dashboard emphasis based on onboarding selections.
+V52.7 implements the approved TrustMap Navigation and Report Output System.  It moves V52.7 behavior into `src/ui/v52-7-operational-layer.js`, returns `src/core/registryLoader.js` to registry loading only, improves TrustMap scroll and interaction behavior, and adds scenario-driven Proof Pack report previews with sender/recipient contact gating before download or print.
 
 ## Release chain status
 
-V52.2 is now the current implemented build.
+V52.7 is now the current implemented build.
 
-README, bots.txt, governance-summary.json, builder-version-log, this handoff, and Settings/admin metadata should identify V52.2 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
+README, bots.txt, governance-summary.json, builder-version-log, this handoff, and Settings/admin metadata should identify V52.7 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
 
 ## Required builder reading order
 
@@ -36,22 +36,26 @@ README, bots.txt, governance-summary.json, builder-version-log, this handoff, an
 13. `docs/qa-checklist.md`
 14. this handoff and job docket
 
-## What changed in V52.2
+## What changed in V52.7
 
-- Added six-step guided onboarding
-- Routed dashboard emphasis by role, industry, scenario, evidence posture, business priority, and output audience
-- Restored TrustMap layers: Executive Core, Operational Systems, Evidence and Governance, Consequence and Exposure
-- Added relationship lines and connected-edge highlighting
-- Added CSS-rendered graphical node treatments
-- Added layer filters inside TrustMap
-- Added richer selected-node detail with what it is, why it matters, evidence needed, connected nodes, and next action
-- Kept Proof Pack output tied to onboarding selections
-- Preserved the static advisory prototype boundary
+- Added `src/ui/v52-7-operational-layer.js`
+- Returned `src/core/registryLoader.js` to registry loading only
+- Wired V52.7 UI controller from `src/app.js`
+- Added TrustMap internal scroll behavior for the larger canvas
+- Preserved MJC-logo CyberShield Core control-plane anchor
+- Added scenario-driven report previews under Proof Pack
+- Added sender and recipient contact capture before download or print
+- Kept email delivery disabled because no backend integration exists
+- Strengthened Architecture and Evidence explanation routes
+- Updated generated Proof Pack metadata to V52.7
+- Added no new top-level tabs
 
-## Known limitations from V52.2
+## Known limitations from V52.7
 
-- CSS remains inline in `index.html`
-- TrustMap graphics are CSS-rendered approximations, not final brand-grade assets
+- TrustMap visual objects remain prototype-grade
+- CSS remains inline or injected instead of extracted to `assets/css/styles.css`
+- Reports download as text files, not branded PDFs
+- Contact capture is client-side only and is not yet stored or emailed
 - Model registry remains scaffold-level and demo-directional
 - Scoring is not statistically validated
 - Hands-on QA in Firefox, Brave, and Android should still be performed after GitHub Pages deploys
@@ -66,19 +70,20 @@ README, bots.txt, governance-summary.json, builder-version-log, this handoff, an
 - Architecture
 - Settings
 
-No new top-level tabs were added for V52.2.
+No new top-level tabs were added for V52.7.
 
 ## Current next-build doctrine
 
-V53 should build no-dead-click interaction depth on top of the routed and layered foundation.
+V53 should cleanly internalize V52.7 behavior as proper components and begin replacing prototype report output with branded report templates.
 
 Priority V53 work:
 
-- route every visible card, metric, node, layer, and output to explanation, evidence, model, action, or report
-- make layer filters more obviously clickable without creating dead UI
-- extract inline CSS to `assets/css/styles.css` if connector or local tooling allows
-- continue migrating scoring and model metadata into concrete `/data/models/*.json` files
-- add model viewer details without crowding the Executive First View
+- migrate remaining injected CSS into a stylesheet
+- turn report templates into JSON or dedicated template modules
+- make TrustMap edge routing cleaner and curved where needed
+- improve TrustMap visual-object style guide and implementation
+- replace text report downloads with branded report files
+- prepare contact capture for future CRM or form backend without claiming live sync
 - run hands-on Firefox, Brave, Android, and desktop QA
 
 ## Prototype boundary
@@ -91,11 +96,11 @@ Do not represent the current build as performing live enforcement, live takedown
 
 1. Read the required builder files above
 2. Run or manually perform release-chain check
-3. Open V52.2 on GitHub Pages after deployment
+3. Open V52.7 on GitHub Pages after deployment
 4. Test guided onboarding from reset URL
 5. Test Android, Firefox, and Brave readability
 6. Verify no executive-facing build labels appear outside Settings/admin context
-7. Verify TrustMap layers, node selection, edge highlighting, Evidence, Proof Pack copy, and Proof Pack download
-8. Continue V53 no-dead-click and interaction-depth build
+7. Verify TrustMap scroll, MJC core logo, Evidence explanations, Architecture explanations, report previews, contact gate, download, and print
+8. Continue V53 component cleanup and branded report-output build
 
 This file must be updated after every future material build.
