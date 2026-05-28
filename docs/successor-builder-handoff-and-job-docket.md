@@ -1,6 +1,6 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
-Date: 2026-05-27
+Date: 2026-05-28
 Current implemented build: V51.1 Executive Story and CTA Cleanup
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
@@ -19,15 +19,32 @@ V51.1 is now the current implemented cleanup patch.
 
 README, bots.txt, governance-summary.json, builder-version-log, this handoff, and index.html Settings/admin metadata should all agree that V51.1 is current.
 
+## Critical new handoff note from 2026-05-28
+
+A dedicated lessons-learned file now exists at:
+
+`docs/builder-lessons-learned.md`
+
+Future builders must read it before coding.  The key lesson is that CyberShield must design for AI-builder failure modes, not only product requirements.  Recurring risks include single-file bloat, hidden scoring logic, metadata drift, generic demos, dead-click regression, TrustMap regression, overclaim language, and connector friction when creating structured registry files.
+
+The repo must babysit the builder.  Do not rely on chat memory.
+
 ## Required builder reading order
 
 1. `README.md`
 2. `bots.txt`
 3. `governance-summary.json`
-4. `docs/builder-version-log.md`
-5. `docs/release-checklist.md`
-6. `docs/qa-checklist.md`
-7. this handoff and job docket
+4. `docs/source-of-truth-hierarchy.md`
+5. `docs/product-invariants.md`
+6. `docs/definition-of-done.md`
+7. `docs/builder-requirements-acceptance-checklist.md`
+8. `docs/recurring-build-issues-and-regression-watchlist.md`
+9. `docs/builder-lessons-learned.md`
+10. `docs/v52-v59-control-plane-build-plan.md`
+11. `docs/builder-version-log.md`
+12. `docs/release-checklist.md`
+13. `docs/qa-checklist.md`
+14. this handoff and job docket
 
 ## Mandatory builder-version rule
 
@@ -47,154 +64,50 @@ If the live app changes but the builder-version log does not, the build is incom
 
 No new top-level tabs were added for V51.1.
 
-## User-facing version rule
+## Current next-build doctrine
 
-Build and version labels belong in Settings/admin metadata and repo documentation only.  They must not appear as executive-facing dashboard content.
+V52 should be architecture first, not UI first.
 
-## Current product principle
+Do not start V52 by redesigning TrustMap or adding more visible features.  Start by creating the modular control-plane foundation:
 
-CyberShield should behave like a score-improvement engine, power network, proof generator, external-demo surface, and authenticity trust layer.
+- model registry
+- onboarding map
+- role profiles
+- industry profiles
+- scenario registry
+- dashboard registry
+- report registry
+- evidence registry
+- framework registry
+- validation scripts
+- model explanation routing
 
-The executive should see within the first 9 seconds:
+## Current planned build sequence
 
-- what risky action is happening
-- what CyberShield decided
-- why it matters
-- what happens next
-
-## V51 positioning
-
-When everything can be faked, CyberShield helps prove what can be trusted.
-
-V51.1 puts this line directly into the Briefing screen.
-
-## Official Source Verification Gate
-
-Keep this simple and visible:
-
-1. Is this official?
-2. Is the vendor approved?
-3. Is the payment destination verified?
-4. Is brand/person/likeness use authorized?
-5. Is it safe to rely on before action?
-
-## TrustMap instruction
-
-Brand and Identity Impersonation must be treated as a cross-domain TrustMap risk, not an isolated decorative node.
-
-It connects to:
-
-- domains
-- vendors
-- sellers
-- payment destinations
-- product claims
-- marketplace listings
-- social/ad platforms
-- customer trust
-- legal/IP response
-- evidence
-- decision records
-- executive authority
-
-## Commercial CTA instruction
-
-Reduce CTA clutter.
-
-Primary CTAs:
-
-- CyberShield Authenticity Trust Assessment
-- CyberShield Operational Trust Assessment
-
-Secondary paths:
-
-- 30-Day CyberShield Pilot
-- Evidence Register and Proof Pack Buildout
-- Runtime Governance Readiness Review
-- Score Improvement Roadmap
-
-## Current implemented release train
-
-- V45: Executive Authority and First-9-Seconds Build
-- V46: Evidence-Backed Confidence and Result Authority Build
-- V47: Executive Commitment Record and Deadline Pressure Build
-- V47.1: TrustMap Restoration and Readability Patch
-- V47.4: Workspace Isolation and Score Improvement Baseline
-- V48: TrustMap Power Network Build
-- V49: Before Consequence and Power of Proof Build
-- V50: Executive Authority QA and External Demo Readiness Build
-- V51: Authenticity Trust and Brand Impersonation Build
-- V51.1: Executive Story and CTA Cleanup
-
-## V51.1 capabilities
-
-- V51 positioning line visible in Briefing
-- first-9-seconds cards visible in Briefing
-- Trust Under Attack prominent early in Briefing
-- simplified Official Source Verification Gate
-- reduced primary CTA clutter
-- secondary advisory paths moved to Proof Pack
-- Authenticity Trust scoring preserved
-- Brand and Identity Impersonation TrustMap domain preserved
-- AI-Generated Brand Impersonation Campaign scenario preserved
-- Counterfeit Product Verification Failure scenario preserved
-- counterfeit consequence severity preserved
-- authenticity evidence types preserved
-- no-live-capability boundary preserved
+- V52: Model Registry, Onboarding Map, and Layered Control Plane Foundation
+- V53: No-Dead-Clicks and Interaction Depth Build
+- V54: Scoring Model Transparency and Framework Mapping Build
+- V55: Adaptive Onboarding, Role-Based Dashboards, and Industry Profiles
+- V56: TrustMap Memory Anchor and Executive Operational Map Rebuild
+- V57: Report and Export Layer Build
+- V58: Action Engine and Priority Queue Build
+- V59: Organizational Memory and Continuity Intelligence Build
 
 ## Prototype boundary
 
 The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, or production agent enforcement systems.
 
-Do not represent the current build as performing:
-
-- live enforcement
-- live takedown automation
-- live marketplace scanning
-- live ad-platform enforcement
-- live identity verification
-- live CRM sync
-- live notification/ticketing
-- live enterprise integrations
-
-## Current known limitations
-
-- public build remains static GitHub Pages prototype
-- no real integrations yet
-- no authentication yet
-- no persistent backend yet
-- no production enforcement engine yet
-- no live Google Sheets write from browser
-- no live Microsoft 365 connection
-- no SIEM, EDR, identity, GRC, cloud, CRM, ticketing, or notification sync
-- no marketplace system connection
-- no ad platform connection
-- no live takedown automation
-- browser QA still needs manual validation
-- business exposure, avoided exposure, proof strength, demo readiness, and authenticity trust are directional advisory scores, not certified calculations
-- TrustMap visual design still needs later refinement
+Do not represent the current build as performing live enforcement, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, or live enterprise integrations.
 
 ## What the successor should do first
 
-1. Open the V51.1 test URL
-2. Confirm Briefing starts with the V51 positioning line
-3. Confirm first-9-seconds cards answer risky action, CyberShield decision, why it matters, and what happens next
-4. Confirm Trust Under Attack is visible early in Briefing
-5. Confirm Official Source Verification Gate is understandable
-6. Confirm Brand and Identity Impersonation appears as a cross-domain TrustMap risk
-7. Confirm Proof Pack includes Authenticity and Impersonation Risk content
-8. Confirm Evidence includes authenticity evidence types
-9. Confirm version/build labels are only in Settings/admin metadata
-10. Confirm no live enforcement or integration overclaims appear
-11. Confirm README, bots.txt, governance-summary.json, builder-version-log, this handoff, and index.html Settings/admin metadata agree on V51.1
-
-## Current commit anchors
-
-Recent implementation and cleanup commits:
-
-- `f527961c87f17753b50fab4c3c57539eea7916d0` - V51.1 app cleanup
-- `bab42d3baad0726a8d26db131dd48de886ee2466` - README V51.1 update
-- `7307e80fb620eed38b16bb8a3ec6ed4c452a731a` - governance summary V51.1 update
-- `5e21235389ccb4317c74d14c744a4f50610abf83` - bots V51.1 update
+1. Read the required builder files above
+2. Run or manually perform release-chain check
+3. Review `docs/builder-lessons-learned.md`
+4. Review `docs/recurring-build-issues-and-regression-watchlist.md`
+5. Complete `docs/build-intake-template.md` mentally or in writing
+6. Confirm registry files and registry source files exist
+7. Convert `.txt` registry scaffolds into JSON where connector limitations previously blocked JSON creation
+8. Begin V52 only after registry/source-of-truth alignment is clear
 
 This file must be updated after every future material build.
