@@ -32,6 +32,54 @@ Example:
 
 ## Current builder log
 
+### Builder-20260528-002
+
+Date: 2026-05-28
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield V52 model registry and human-first build session
+
+CyberShield versions affected:
+
+- V52 Model Registry Foundation and Human-First Executive Control View
+
+Files materially changed or created:
+
+- `index.html`
+- `src/app.js`
+- `src/core/registryLoader.js`
+- `src/core/scoringEngine.js`
+- `src/utils/dom.js`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/successor-builder-handoff-and-job-docket.md`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Implemented V52 as a human-first control-plane foundation.  The build keeps navigation stable, adds Executive First View inside Briefing, moves orchestration into a module, routes scores through registry-aware decision logic, exposes model trace through progressive disclosure, and preserves proof and boundary language.
+
+What got better:
+
+- Executive view is easier to scan and less spreadsheet-like
+- model trace no longer clutters the first view
+- score output has model context and decision state
+- TrustMap remains readable and node-selectable
+- feed rows no longer pretend to be clickable
+- Proof Pack can be copied or downloaded
+- Settings/admin metadata remains available without putting build labels in the executive surface
+
+Remaining risks or limitations:
+
+- CSS remains inline because connector blocked new CSS file writes during this session
+- model registry is still scaffold-level, not a complete control mapping library
+- scoring remains demo-directional, not statistically validated
+- hands-on Firefox, Brave, and Android QA still needs to be run after GitHub Pages deployment
+
+Next recommended build action:
+
+Run V52 QA on desktop, Firefox, Brave, and Android.  Then start V53 no-dead-click interaction depth and route-to-model/evidence/report behavior.  If local tooling is available, extract inline CSS to `assets/css/styles.css` and continue splitting registries into concrete JSON model files.
+
 ### Builder-20260528-001
 
 Date: 2026-05-28
