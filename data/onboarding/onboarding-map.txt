@@ -1,0 +1,57 @@
+CyberShield Onboarding Map Registry Source
+Version: 0.1
+Status: planning scaffold
+Baseline: V51.1 Executive Story and CTA Cleanup
+
+Purpose:
+Map onboarding inputs to role lens, industry profile, scenario pack, model registry, dashboard modules, evidence requirements, report templates, and advisory paths.
+
+Public Demo Fast Path:
+1. Industry
+   Routes to: industry profile, framework overlay, scenario pack, evidence requirements
+
+2. Role Lens
+   Routes to: role profile, dashboard lens, primary scores, report emphasis
+
+3. Scenario
+   Routes to: runtime scenario, decision path, proof pack section
+
+4. Business Value Range
+   Routes to: exposure model and Executive Briefing Summary
+
+5. Evidence Maturity
+   Routes to: Proof Strength Model, Evidence Confidence Model, roadmap priorities
+
+Advanced / Pilot Path Additional Inputs:
+- organization name
+- owner roles
+- framework priority
+- AI usage maturity
+- vendor exposure
+- authenticity exposure
+- current evidence state
+- report recipient
+- external sharing needs
+- known open items
+
+Dashboard Lenses:
+- CEO / President
+- CISO / vCISO
+- CIO / CTO
+- CFO
+- Board / Advisor
+
+Industry Profiles:
+- dib-federal-contractor-smb
+- financial-services-community-banking
+- ai-enabled-smb-saas-professional-services
+- healthcare-federal-health-security
+
+Output Flow:
+onboarding answer -> role profile -> industry profile -> scenario pack -> model registry -> dashboard module registry -> evidence requirements -> report template registry -> advisory path
+
+Builder Rule:
+Onboarding input should route through registries rather than being hardcoded directly into index.html.
+
+Note:
+The JSON version of this file was blocked twice by the connector during the 2026-05-28 documentation hardening pass. This text file is the source scaffold until the next builder creates /data/onboarding/onboarding-map.json locally or through a later connector session.
