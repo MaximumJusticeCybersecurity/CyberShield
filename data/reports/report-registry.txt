@@ -1,0 +1,37 @@
+CyberShield Report Registry Source
+Version: 0.1
+Status: planning scaffold
+Baseline: V51.1 Executive Story and CTA Cleanup
+
+Purpose:
+Define exportable reports and proof artifacts.
+
+Initial Reports:
+
+1. Executive Briefing Summary
+Audience: executives, board, advisors
+Purpose: concise trust-transfer artifact
+Required content: risky action, CyberShield decision, why it matters, owner, next action, primary scores, limitations
+
+2. TrustMap / Authenticity Trust Summary
+Audience: executives, operations, legal/IP, advisors
+Purpose: show trust surface, impersonation risk, authenticity gaps, owner paths
+Required content: TrustMap state, authenticity score, Trust Under Attack, Official Source Verification Gate, evidence gaps
+
+3. Operational Trust Roadmap
+Audience: executive owner, CISO/vCISO, CIO/CTO, CFO
+Purpose: show score-improvement roadmap and owner accountability
+Required content: priority actions, owners, score lift, evidence needs, timeline, advisory path
+
+4. Proof Pack
+Audience: governance, audit, board, advisor, pilot team
+Purpose: defensible decision record and evidence summary
+Required content: decision, model versions, evidence assumptions, missing evidence, limitations, boundary language
+
+5. Evidence Register
+Audience: CISO/vCISO, CIO/CTO, governance owner
+Purpose: show evidence state, owners, gaps, freshness, confidence
+Required content: evidence types, confidence, freshness, owner, model dependency
+
+Required Boundary:
+All shareable reports must include capability boundary and model status labels.
