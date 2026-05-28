@@ -6,6 +6,47 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260528-005
+
+Date: 2026-05-28
+
+Builder / agent identifier: GPT-5.5 Thinking, TrustMap core logo and control plane anchor session
+
+CyberShield versions affected:
+
+- V52.4 TrustMap Core Logo and Control Plane Anchor Patch
+
+Files materially changed or created:
+
+- `src/core/registryLoader.js`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Corrected the TrustMap core anchor so it uses the actual MJC logo asset instead of a generic shield SVG.  The CyberShield Core node now visually sits over a digital portal/data-plane treatment and labels the selected organization as its control plane.
+
+What got better:
+
+- TrustMap core now uses `assets/mjc-logo-2026.png`
+- core visually reads as CyberShield opening a trusted digital portal
+- company control-plane label updates from the selected organization when available
+- TrustMap overview, domain layer, and detail/action layer behavior remain intact
+- no new top-level tabs were added
+
+Remaining risks or limitations:
+
+- patch is injected through `src/core/registryLoader.js` as a GitHub connector workaround rather than being cleanly integrated into `src/app.js`
+- surrounding TrustMap visual objects remain prototype-grade
+- CSS remains inline or injected
+- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
+
+Next recommended build action:
+
+Run V52.4 QA using the reset URL.  Verify the MJC logo appears in the TrustMap core, the portal/data-plane base is visible, the selected company control-plane label appears correctly, and clicking the core still opens its domain layer.
+
 ### Builder-20260528-004
 
 Date: 2026-05-28
@@ -16,41 +57,9 @@ CyberShield versions affected:
 
 - V52.3 TrustMap Humanistic Visual Object Recovery
 
-Files materially changed or created:
-
-- `src/app.js`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
 Corrected the TrustMap visual language after user feedback that the V52.2 map still felt robotic and visually weak.  V52.3 replaces crude CSS geometry with inline SVG symbolic objects and adds internal TrustMap drilldown states: overview, domain layer, and detail/action layer.
-
-What got better:
-
-- TrustMap now uses humanistic visual objects instead of robotic CSS geometry
-- Data appears as a stacked data repository object
-- Policy appears as a book/manual object
-- AI appears as a brain/neural object
-- Vendors appear as a building/object network symbol
-- Identity, Evidence, Decision Record, Proof Pack, Exposure, and Core have smoother SVG symbols
-- clicking a visual object opens a domain layer
-- the detail/action layer routes to evidence and Proof Pack context
-- breadcrumbs and Back to TrustMap controls exist inside selected detail
-- six-step onboarding and routed dashboard behavior remain intact
-
-Remaining risks or limitations:
-
-- SVG objects are still prototype-grade, not final premium brand illustrations
-- CSS remains inline in `index.html`
-- final TrustMap art direction still needs user review against the older preferred visual style
-- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
-
-Next recommended build action:
-
-Run V52.3 QA using the reset URL.  If the humanistic visual object direction is accepted, V53 should improve no-dead-click routing so every card, layer, node, edge, score, and Proof Pack element routes to model, evidence, explanation, action, or report.
 
 ### Builder-20260528-003
 
@@ -95,18 +104,3 @@ CyberShield versions affected:
 Primary value add:
 
 Hardened the repo as CyberShield's external memory system and documented recurring AI-builder failure modes.
-
-## Prior release train summary
-
-Earlier entries recorded these material builds:
-
-- Builder-20260527-013: V51.1 Executive Story and CTA Cleanup
-- Builder-20260527-012: V51 release-chain deconfliction
-- Builder-20260527-011: V51 Authenticity Trust and Brand Impersonation Build
-- Builder-20260527-010: V50 Executive Authority QA and External Demo Readiness Build
-- Builder-20260527-009: V49 Before Consequence and Power of Proof Build
-- Builder-20260527-008: V48 TrustMap Power Network Build
-- Builder-20260527-007: V47.1 TrustMap Restoration and Readability Patch
-- Builder-20260527-006: V47 Executive Commitment Record and Deadline Pressure Build
-- Builder-20260527-005: V46 Evidence-Backed Confidence and Result Authority Build
-- Builder-20260527-004: V45 Executive Authority and First-9-Seconds Build
