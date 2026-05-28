@@ -1,18 +1,18 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V52.2 Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch",
+  "current_implemented_build": "V52.3 TrustMap Humanistic Visual Object Recovery",
   "build_date": "2026-05-28",
-  "patch_type": "TrustMap visual restoration plus guided onboarding and routed dashboard patch",
-  "release_chain_status": "V52.2 adds six-step onboarding, routed dashboard emphasis, layered TrustMap rings, relationship lines, neon highlighting, graphical node treatments, and richer selected-node details. No new top-level tabs were added.",
+  "patch_type": "TrustMap visual language recovery patch",
+  "release_chain_status": "V52.3 replaces crude CSS geometry with humanistic inline SVG symbolic objects and adds overview, domain layer, and detail/action layer states inside TrustMap. No new top-level tabs were added.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-2-routed-layers&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-3-visual-objects&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
   "version_label_rule": "Build and version labels belong in Settings/admin metadata and repo documentation only. They must not appear as executive-facing dashboard content.",
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
-  "v52_2_changes": ["six-step guided onboarding", "role and industry routed dashboard emphasis", "scenario and priority routing", "TrustMap visual layers", "relationship lines", "neon selected-node and connected-edge highlighting", "CSS-rendered graphical node treatments", "richer selected-node detail", "Proof Pack reflects onboarding selections"],
-  "implemented_release_train": {"v51.1": "Executive Story and CTA Cleanup", "v52": "Model Registry Foundation and Human-First Executive Control View", "v52.1": "TrustMap Visual Restoration and Layer Patch", "v52.2": "Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch"},
+  "v52_3_changes": ["humanistic visual objects", "inline SVG symbolic objects", "overview to domain layer to detail/action layer navigation", "data stack icon", "policy book icon", "AI brain icon", "vendor building icon", "identity icon", "evidence document icon", "decision ledger icon", "Proof Pack packet icon", "exposure warning icon", "MJC-style shield core icon"],
+  "implemented_release_train": {"v51.1": "Executive Story and CTA Cleanup", "v52": "Model Registry Foundation and Human-First Executive Control View", "v52.1": "TrustMap Visual Restoration and Layer Patch", "v52.2": "Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch", "v52.3": "TrustMap Humanistic Visual Object Recovery"},
   "prototype_boundary": "The current public build is a static advisory prototype. It models decisions and proof records but does not perform production enforcement or live enterprise integrations.",
-  "known_limitations": ["CSS remains inline in index.html", "TrustMap graphics are CSS-rendered approximations", "model registry remains scaffold-level and demo-directional", "scoring is not statistically validated", "hands-on Firefox, Brave, Android, and desktop QA still needs to be performed after GitHub Pages deploys"]
+  "known_limitations": ["SVG symbols are prototype-grade visual objects, not final brand-grade illustrations", "CSS remains inline in index.html", "model registry remains scaffold-level and demo-directional", "scoring is not statistically validated", "hands-on Firefox, Brave, Android, and desktop QA still needs to be performed after GitHub Pages deploys"]
 }
