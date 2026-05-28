@@ -1,23 +1,17 @@
 CyberShield Executive OS
-Current implemented build: V52.2 Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch
+Current implemented build: V52.3 TrustMap Humanistic Visual Object Recovery
 Build date: 2026-05-28
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V52.2 Guided Onboarding, Routed Dashboard, and Layered TrustMap Patch.
-
-Build type:
-V52.2 combines the V52.1 TrustMap visual restoration patch with six-step onboarding and routed dashboard behavior.
+CyberShield V52.3 TrustMap Humanistic Visual Object Recovery.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V52.2.
-
-User-facing version rule:
-Build and version labels belong in Settings/admin metadata and repo documentation only. They must not appear as executive-facing dashboard content.
+No new top-level tabs were added for V52.3.
 
 Core thesis:
 AI is controlled before it acts, or it is not controlled at all.
@@ -25,14 +19,14 @@ AI is controlled before it acts, or it is not controlled at all.
 Core question:
 Should this action be operationally admissible right now?
 
-V52.2 changes:
-- six-step guided onboarding
-- dashboard routing by role, industry, scenario, evidence, priority, and output audience
-- layered TrustMap rings for Executive Core, Operational Systems, Evidence and Governance, and Consequence and Exposure
-- relationship lines and neon highlighting restored
-- graphical node treatments added through CSS
-- selected-node detail now shows what it is, why it matters, evidence needed, connected nodes, and next action
-- Proof Pack output reflects onboarding selections
+V52.3 changes:
+- TrustMap visual language corrected toward humanistic visual objects
+- crude CSS geometry replaced with inline SVG symbolic objects
+- data stack, policy book, AI brain, vendor building, identity, evidence document, decision ledger, Proof Pack, exposure, and core shield objects added
+- TrustMap now supports overview, domain layer, and detail/action layer states
+- clicking a visual object opens its domain layer
+- detail/action layer routes to evidence and Proof Pack context
+- six-step onboarding and routed dashboard behavior from V52.2 remain intact
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, or takedown automation.
