@@ -1,0 +1,44 @@
+CyberShield Scenario Registry Source
+Version: 0.1
+Status: planning scaffold
+Baseline: V51.1 Executive Story and CTA Cleanup
+
+Purpose:
+Define reusable scenario packs that can be selected by onboarding, role lens, industry profile, and model registry.
+
+Initial Scenario Set:
+
+1. AI-Generated Brand Impersonation Campaign
+Primary model: Authenticity Trust
+Primary paths: Trust Under Attack, Official Source Verification Gate, Proof Pack
+
+2. Counterfeit Product Verification Failure
+Primary model: Authenticity Trust
+Primary paths: Official Source Verification Gate, Evidence, Proof Pack
+
+3. Shadow AI Vendor Data Upload
+Primary model: Operational Trust
+Primary paths: Runtime, Evidence, Operational Trust Roadmap
+
+4. AI Vendor Payment Authorization
+Primary model: Operational Trust / Avoided Exposure
+Primary paths: Runtime, CFO lens, payment/vendor trust report
+
+5. Privileged Access Reset Request
+Primary model: Operational Trust
+Primary paths: Runtime, CIO/CISO lens, Evidence
+
+6. AI-Generated Board Report
+Primary model: Proof Strength
+Primary paths: Executive Briefing, Proof Pack, Board / Advisor lens
+
+7. Vendor or Subcontractor Evidence Gap
+Primary model: Evidence Confidence
+Primary paths: Evidence, DIB/federal contractor SMB lens, Operational Trust Roadmap
+
+8. Sensitive Health Data AI Upload
+Primary model: Operational Trust / Evidence Confidence
+Primary paths: Healthcare/federal health lens, Evidence, Proof Pack
+
+Builder Rule:
+Each scenario must answer what risky action is happening, what CyberShield decided, why it matters, what evidence is missing, who owns the response, what model is used, and what report/export follows.
