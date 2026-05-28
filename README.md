@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V52.5 Interaction Recovery Patch**
+Current build label: **V52.6 Operational Interaction and Readability Recovery**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-5-interaction-recovery&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-6-operational-interaction&reset=onboarding
 
 ## User-facing rule
 
@@ -20,36 +20,38 @@ Build and version labels belong in Settings/admin metadata and repo documentatio
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V52.5.
+No new top-level tabs were added for V52.6.
 
-## Current implemented build: V52.5
+## Current implemented build: V52.6
 
-V52.5 is an interaction and performance recovery patch.  It removes the runaway full-body MutationObserver introduced during the V52.4 core-logo workaround and adds lightweight click routing from Briefing cards and rows into Runtime, TrustMap, Evidence, and Proof Pack.
+V52.6 is an operational interaction and readability recovery patch.  It keeps the V52.5 performance recovery, improves onboarding card readability, adds dashboard meters and drilldown hints, reduces TrustMap visual crowding, adds explanation panels for Architecture and Evidence interactions, and restores a report-library concept under Proof Pack.
 
-V52.5 changes:
+V52.6 changes:
 
-- removes full-body mutation watching that likely caused slow rendering and tab lock
-- preserves the MJC-logo TrustMap core as an event-triggered patch
-- makes Briefing summary cards and rows visibly clickable
-- routes Risky Action and Runtime Control to Runtime
-- routes Trust Posture and Dashboard Routing to TrustMap
-- routes Proof Status and Proof Pack to Proof Pack
-- routes Evidence language to Evidence
-- preserves six-step onboarding and routed dashboard behavior
-- adds no new top-level tabs
+- onboarding option cards now separate bold title and explanatory text onto distinct lines
+- dashboard cards now get visual meter bars and tap-to-drill-down hints
+- briefing cards and rows route to deeper workspaces and explanation panels
+- TrustMap connector lines are thinner
+- TrustMap node cards are smaller and spread out to reduce overlap
+- MJC logo core remains event-triggered without a full-page MutationObserver
+- Architecture cards open differentiated explanations instead of acting like dead cards
+- Evidence Required/Gap rows explain why the item matters
+- Proof Pack includes prototype report-library cards
+- no new top-level tabs were added
 
 ## Boundary
 
 The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, or production agent enforcement systems.
 
-## Known V52.5 limitations
+## Known V52.6 limitations
 
-- briefing click routing is rule-based text routing, not yet clean component-level routing
-- core logo patch remains injected through `src/core/registryLoader.js` as a connector workaround
-- surrounding TrustMap visual objects remain prototype-grade
+- interaction routing is still partly rule-based text routing rather than clean component-level routing
+- the core logo and interaction patch still live in `src/core/registryLoader.js` as a connector workaround
+- TrustMap visual objects remain prototype-grade
 - CSS remains inline or injected rather than fully extracted to a stylesheet
+- Proof Pack report cards are prototypes and do not yet generate separate full reports
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
 
 ## Next likely decision point
 
-Run QA on V52.5.  Priority checks: app no longer locks on TrustMap, navigation remains usable after clicking TrustMap, Briefing cards route to the expected workspaces, TrustMap core logo still appears, Android performance is acceptable, and no live enforcement/integration overclaims appear.
+Run QA on V52.6.  Priority checks: onboarding card spacing, dashboard meters, briefing drilldown routing, TrustMap overlap reduction, core logo persistence after Back to TrustMap, Architecture explanations, Evidence explanations, Proof Pack report-library cards, Android performance, and absence of live enforcement/integration overclaims.
