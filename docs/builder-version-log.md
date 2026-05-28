@@ -6,15 +6,15 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
-### Builder-20260528-005
+### Builder-20260528-006
 
 Date: 2026-05-28
 
-Builder / agent identifier: GPT-5.5 Thinking, TrustMap core logo and control plane anchor session
+Builder / agent identifier: GPT-5.5 Thinking, operational interaction and readability recovery session
 
 CyberShield versions affected:
 
-- V52.4 TrustMap Core Logo and Control Plane Anchor Patch
+- V52.6 Operational Interaction and Readability Recovery
 
 Files materially changed or created:
 
@@ -26,26 +26,46 @@ Files materially changed or created:
 
 Primary value add:
 
-Corrected the TrustMap core anchor so it uses the actual MJC logo asset instead of a generic shield SVG.  The CyberShield Core node now visually sits over a digital portal/data-plane treatment and labels the selected organization as its control plane.
+Implemented the V52.6 recovery plan after user feedback that V52.5 improved performance but still lacked enough operational depth, dashboard interpretation, Evidence explanations, Architecture explanations, Proof Pack report options, and TrustMap readability.  V52.6 adds onboarding card spacing, dashboard meter bars, drilldown hints, differentiated explanations, report-library cards, thinner TrustMap lines, smaller nodes, and core-logo persistence without reintroducing a full-page MutationObserver.
 
 What got better:
 
-- TrustMap core now uses `assets/mjc-logo-2026.png`
-- core visually reads as CyberShield opening a trusted digital portal
-- company control-plane label updates from the selected organization when available
-- TrustMap overview, domain layer, and detail/action layer behavior remain intact
+- onboarding option cards now separate title and explanation
+- dashboard cards now have meter bars and tap-to-drill-down hints
+- Briefing cards and rows route to workspaces and explanation panels
+- TrustMap lines are thinner and node sizing is reduced
+- MJC core logo behavior remains event-triggered, not observer-driven
+- Architecture cards open differentiated explanations
+- Evidence Required/Gap rows explain why the item matters
+- Proof Pack includes prototype report-library cards
 - no new top-level tabs were added
 
 Remaining risks or limitations:
 
-- patch is injected through `src/core/registryLoader.js` as a GitHub connector workaround rather than being cleanly integrated into `src/app.js`
-- surrounding TrustMap visual objects remain prototype-grade
+- routing is still partly text-based and should be migrated into explicit app components
+- core logo and interaction patch remain in `src/core/registryLoader.js` as a connector workaround
 - CSS remains inline or injected
+- Proof Pack report cards are prototypes and do not yet generate full tailored reports
+- TrustMap visual objects are still prototype-grade
 - hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
 
 Next recommended build action:
 
-Run V52.4 QA using the reset URL.  Verify the MJC logo appears in the TrustMap core, the portal/data-plane base is visible, the selected company control-plane label appears correctly, and clicking the core still opens its domain layer.
+Run V52.6 QA.  Then migrate interaction routing and core-logo behavior out of `registryLoader.js` into `src/app.js` or dedicated UI modules.  V53 should implement clean component-level routing and no-dead-click behavior across all dashboard, TrustMap, Evidence, Architecture, and Proof Pack elements.
+
+### Builder-20260528-005
+
+Date: 2026-05-28
+
+Builder / agent identifier: GPT-5.5 Thinking, TrustMap core logo and control plane anchor session
+
+CyberShield versions affected:
+
+- V52.4 TrustMap Core Logo and Control Plane Anchor Patch
+
+Primary value add:
+
+Corrected the TrustMap core anchor so it uses the actual MJC logo asset instead of a generic shield SVG.  The CyberShield Core node now visually sits over a digital portal/data-plane treatment and labels the selected organization as its control plane.
 
 ### Builder-20260528-004
 
@@ -89,18 +109,3 @@ CyberShield versions affected:
 Primary value add:
 
 Implemented V52 as a human-first control-plane foundation.  The build keeps navigation stable, adds Executive First View inside Briefing, moves orchestration into a module, routes scores through registry-aware decision logic, exposes model trace through progressive disclosure, and preserves proof and boundary language.
-
-### Builder-20260528-001
-
-Date: 2026-05-28
-
-Builder / agent identifier: GPT-5.5 Thinking, CyberShield documentation hardening and institutional memory session
-
-CyberShield versions affected:
-
-- V51.1 baseline
-- V52-V59 planning and builder-readiness layer
-
-Primary value add:
-
-Hardened the repo as CyberShield's external memory system and documented recurring AI-builder failure modes.
