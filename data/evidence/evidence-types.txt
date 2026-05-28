@@ -1,0 +1,46 @@
+CyberShield Evidence Type Registry Source
+Version: 0.1
+Status: planning scaffold
+Baseline: V51.1 Executive Story and CTA Cleanup
+
+Purpose:
+Define reusable evidence types used by scoring models, scenarios, reports, and onboarding.
+
+Core Evidence Types:
+- AI Use Policy
+- Vendor Security Review
+- Data Classification Policy
+- Access Control Policy
+- Owner Approval Record
+- Decision Record
+- Proof Pack Export
+- Incident Response Plan
+- Backup Validation Record
+- Policy Review Record
+
+Authenticity Evidence Types:
+- official website verification
+- authorized reseller list
+- product ID or SKU validation
+- warranty validation
+- platform ad record
+- marketplace abuse report
+- executive likeness authorization
+- payment destination verification
+- customer complaint record
+- legal/IP response record
+
+Evidence Metadata:
+- evidence_id
+- evidence_type
+- owner
+- confidence
+- freshness
+- source
+- related_model
+- related_scenario
+- status
+- limitations
+
+Builder Rule:
+Every score and decision should identify supporting evidence and missing evidence.
