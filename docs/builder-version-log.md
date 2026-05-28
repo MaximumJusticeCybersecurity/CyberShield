@@ -32,6 +32,74 @@ Example:
 
 ## Current builder log
 
+### Builder-20260528-001
+
+Date: 2026-05-28
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield documentation hardening and institutional memory session
+
+CyberShield versions affected:
+
+- V51.1 baseline
+- V52-V59 planning and builder-readiness layer
+
+Files materially changed or created:
+
+- `docs/builder-lessons-learned.md`
+- `docs/source-of-truth-hierarchy.md`
+- `docs/definition-of-done.md`
+- `docs/product-invariants.md`
+- `docs/requirements-traceability-matrix.md`
+- `docs/build-intake-template.md`
+- `docs/security-build-hygiene.md`
+- `docs/threat-model.md`
+- `docs/advisor-feedback-decision-log.md`
+- `docs/successor-builder-handoff-and-job-docket.md`
+- `.github/pull_request_template.md`
+- `schemas/model.schema.json`
+- `schemas/role-profile.schema.json`
+- `schemas/industry-profile.schema.json`
+- `schemas/report.schema.json`
+- `tools/check-release-chain.js`
+- `tools/check-forbidden-claims.js`
+- registry scaffolds under `/data` where connector permitted creation
+
+Primary value add:
+
+Hardened the repo as CyberShield's external memory system.  The key lesson from this session is that CyberShield must design for AI-builder failure modes, not only product requirements.  Recurring issues include single-file bloat, connector friction, stale metadata, shallow rebuilds, dead-click regression, TrustMap regression, hidden scoring logic, generic demo behavior, and overclaim language.
+
+What got better:
+
+- created a source-of-truth hierarchy so builders know which files win when documents conflict
+- created a formal Definition of Done
+- created product invariants that future builders must not break
+- created a requirements traceability matrix
+- created a build intake template
+- created security build hygiene guidance and initial threat model
+- created advisor feedback decision log
+- created PR/build review checklist
+- created JSON schemas for model, role, industry, and report registries
+- created lightweight scripts for release-chain alignment and forbidden-claim checks
+- created builder lessons learned and cross-linked it in the successor handoff
+- documented connector friction around JSON registry creation and provided source scaffold fallbacks
+
+What surprised the builder:
+
+The GitHub connector was inconsistent with structured registry writes.  Some JSON files created successfully after simplification, while other similar JSON scaffolds were blocked.  The lesson is to use small JSON payloads, keep detailed logic in markdown, and fall back to `.txt` registry source files when connector writes fail.  Future builders should not interpret missing JSON as abandoned intent.
+
+Remaining risks or limitations:
+
+- not all desired registry JSON files exist yet
+- some registry scaffolds are currently `.txt` source files and should be converted to JSON locally in V52
+- the live app still remains a single-file prototype and must be modularized
+- validation scripts exist but have not yet been wired into CI
+- V52 has not yet implemented model-loading behavior
+- Firefox/mobile QA still needs manual validation
+
+Next recommended build action:
+
+Before coding V52, read `docs/builder-lessons-learned.md`, `docs/source-of-truth-hierarchy.md`, `docs/product-invariants.md`, `docs/definition-of-done.md`, `docs/builder-requirements-acceptance-checklist.md`, and `docs/recurring-build-issues-and-regression-watchlist.md`.  Then convert registry source files into JSON, modularize the app, and build the model registry foundation before adding UI features.
+
 ### Builder-20260527-013
 
 Date: 2026-05-27
@@ -80,54 +148,11 @@ Next recommended build action:
 
 Run V51.1 QA against `https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-1-qa&reset=onboarding`.  Confirm first-screen clarity, tab isolation, Trust Under Attack prominence, Official Source Verification Gate simplicity, CTA discipline, Settings-only version metadata, Proof Pack boundary language, and absence of live-capability overclaims.
 
-### Builder-20260527-012
-
-Date: 2026-05-27
-
-Builder / agent identifier: GPT-5.5 Thinking, CyberShield release-chain deconfliction session
-
-CyberShield versions affected:
-
-- V51 Authenticity Trust and Brand Impersonation Build
-- release metadata chain for V48 through V51
-
-Files materially changed or created:
-
-- `governance-summary.json`
-- `bots.txt`
-- `docs/builder-version-log.md`
-
-Primary value add:
-
-Deconflicted stale release metadata after Nate review feedback.  The repo previously had README and live app metadata moving ahead while governance-summary and bots still identified V47.1 as current, and the builder log did not include V48 through V51.  This entry corrects the chain of custody and makes V51 the current implemented build across machine-readable and builder-facing sources.
-
-What got better:
-
-- `governance-summary.json` now identifies V51 as the current implemented build
-- `bots.txt` now identifies V51 as current
-- V48, V49, V50, and V51 are explicitly recorded
-- First-9-seconds standard is preserved as a documented QA rule
-- Official Source Verification Gate is documented as a simple decision loop
-- V51 positioning line is preserved: “When everything can be faked, CyberShield helps prove what can be trusted.”
-- Brand and Identity Impersonation is documented as a cross-domain TrustMap risk
-- Primary CTAs are reduced to CyberShield Authenticity Trust Assessment and CyberShield Operational Trust Assessment
-- Overclaim prohibitions are documented for live enforcement, takedown, marketplace scanning, ad-platform enforcement, identity verification, CRM sync, and integrations
-
-Remaining risks or limitations:
-
-- Browser QA still needs hands-on validation
-- Current public build remains a static advisory prototype
-- No live enforcement, takedown, marketplace scanning, ad-platform enforcement, identity verification, CRM sync, ticketing, notification, or enterprise integration exists
-- TrustMap visual design still needs later refinement
-
-Next recommended build action:
-
-Run V51 QA and then V51.1 cleanup if needed.
-
 ## Prior release train summary
 
 Earlier entries recorded these material builds:
 
+- Builder-20260527-012: V51 release-chain deconfliction
 - Builder-20260527-011: V51 Authenticity Trust and Brand Impersonation Build
 - Builder-20260527-010: V50 Executive Authority QA and External Demo Readiness Build
 - Builder-20260527-009: V49 Before Consequence and Power of Proof Build
