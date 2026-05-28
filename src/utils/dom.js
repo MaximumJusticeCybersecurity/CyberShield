@@ -17,5 +17,5 @@ export function escapeHtml(value) {
 
 export function renderFeedItem([title, body, status = ""]) {
   const statusText = status ? `<span class="status">${escapeHtml(status)}</span>` : "";
-  return `<button class="row" type="button"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(body)}</span>${statusText}</button>`;
+  return `<div class="row" role="group"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(body)}</span>${statusText}</div>`;
 }
