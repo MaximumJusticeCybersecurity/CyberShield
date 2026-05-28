@@ -1,33 +1,23 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-05-28
-Current implemented build: V51.1 Executive Story and CTA Cleanup
+Current implemented build: V52 Model Registry Foundation and Human-First Executive Control View
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-1-qa&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-human-first&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-V51.1 is a cleanup patch on top of V51.  It does not add a new strategic layer.  It sharpens the first-screen executive story, makes Trust Under Attack visible early, simplifies the Official Source Verification Gate, reduces CTA clutter, and preserves the no-live-overclaim boundary.
+V52 implemented the first control-plane foundation pass and human-first executive control view.  It keeps the existing seven workspaces, adds no new top-level tabs, introduces registry-aware advisory scoring, moves orchestration into `src/app.js`, and makes the first Briefing pane easier for a human executive to read before drilling into model trace.
 
 ## Release chain status
 
-V51.1 is now the current implemented cleanup patch.
+V52 is now the current implemented build.
 
-README, bots.txt, governance-summary.json, builder-version-log, this handoff, and index.html Settings/admin metadata should all agree that V51.1 is current.
-
-## Critical new handoff note from 2026-05-28
-
-A dedicated lessons-learned file now exists at:
-
-`docs/builder-lessons-learned.md`
-
-Future builders must read it before coding.  The key lesson is that CyberShield must design for AI-builder failure modes, not only product requirements.  Recurring risks include single-file bloat, hidden scoring logic, metadata drift, generic demos, dead-click regression, TrustMap regression, overclaim language, and connector friction when creating structured registry files.
-
-The repo must babysit the builder.  Do not rely on chat memory.
+README, bots.txt, governance-summary.json, builder-version-log, this handoff, and Settings/admin metadata should identify V52 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
 
 ## Required builder reading order
 
@@ -46,11 +36,27 @@ The repo must babysit the builder.  Do not rely on chat memory.
 13. `docs/qa-checklist.md`
 14. this handoff and job docket
 
-## Mandatory builder-version rule
+## What changed in V52
 
-Every material builder must update `docs/builder-version-log.md`.
+- Added Executive First View inside existing Briefing workspace
+- Preserved existing navigation: Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings
+- Added no new top-level tabs
+- Moved app orchestration into `src/app.js`
+- Added registry bundle loading through `src/core/registryLoader.js`
+- Routed advisory decision output through `src/core/scoringEngine.js`
+- Hardened `src/utils/dom.js` with HTML escaping and non-clickable informational feed rows
+- Added progressive disclosure for model trace
+- Preserved Proof Pack boundary language
+- Kept TrustMap readable and node-selectable
+- Improved desktop and Android-oriented responsive hierarchy
 
-If the live app changes but the builder-version log does not, the build is incomplete.
+## Known limitations from V52
+
+- CSS remains inline in `index.html` because connector writes for new CSS files were intermittently blocked
+- The registry foundation currently relies on existing scaffold files, especially `data/models/model-registry.json` and `data/profiles/role-profiles.json`
+- V52 scoring remains demo-directional and not statistically validated
+- Hands-on QA in Firefox, Brave, and Android should still be performed after GitHub Pages deploys
+- Full extraction of CSS and deeper model files should continue in a later local or connector-friendly build
 
 ## User-facing navigation
 
@@ -62,36 +68,19 @@ If the live app changes but the builder-version log does not, the build is incom
 - Architecture
 - Settings
 
-No new top-level tabs were added for V51.1.
+No new top-level tabs were added for V52.
 
 ## Current next-build doctrine
 
-V52 should be architecture first, not UI first.
+V53 should not undo the V52 slab.  The next logical build is no-dead-click interaction depth and route-to-model/evidence/report behavior.
 
-Do not start V52 by redesigning TrustMap or adding more visible features.  Start by creating the modular control-plane foundation:
+Priority V53 work:
 
-- model registry
-- onboarding map
-- role profiles
-- industry profiles
-- scenario registry
-- dashboard registry
-- report registry
-- evidence registry
-- framework registry
-- validation scripts
-- model explanation routing
-
-## Current planned build sequence
-
-- V52: Model Registry, Onboarding Map, and Layered Control Plane Foundation
-- V53: No-Dead-Clicks and Interaction Depth Build
-- V54: Scoring Model Transparency and Framework Mapping Build
-- V55: Adaptive Onboarding, Role-Based Dashboards, and Industry Profiles
-- V56: TrustMap Memory Anchor and Executive Operational Map Rebuild
-- V57: Report and Export Layer Build
-- V58: Action Engine and Priority Queue Build
-- V59: Organizational Memory and Continuity Intelligence Build
+- make every visible card, metric, node, and output route to explanation, evidence, model, action, or report
+- extract inline CSS to `assets/css/styles.css` if connector or local tooling allows
+- continue migrating scoring and model metadata into concrete `/data/models/*.json` files
+- add model viewer details without crowding the Executive First View
+- run hands-on Firefox, Brave, Android, and desktop QA
 
 ## Prototype boundary
 
@@ -103,11 +92,10 @@ Do not represent the current build as performing live enforcement, live takedown
 
 1. Read the required builder files above
 2. Run or manually perform release-chain check
-3. Review `docs/builder-lessons-learned.md`
-4. Review `docs/recurring-build-issues-and-regression-watchlist.md`
-5. Complete `docs/build-intake-template.md` mentally or in writing
-6. Confirm registry files and registry source files exist
-7. Convert `.txt` registry scaffolds into JSON where connector limitations previously blocked JSON creation
-8. Begin V52 only after registry/source-of-truth alignment is clear
+3. Open V52 on GitHub Pages after deployment
+4. Test Android, Firefox, and Brave readability
+5. Verify no executive-facing build labels appear outside Settings/admin context
+6. Verify model trace, Evidence, TrustMap node selection, Proof Pack copy, and Proof Pack download
+7. Continue V53 no-dead-click and interaction-depth build
 
 This file must be updated after every future material build.
