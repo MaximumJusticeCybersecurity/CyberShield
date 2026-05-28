@@ -1,11 +1,11 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V51.1 Executive Story and CTA Cleanup",
-  "build_date": "2026-05-27",
-  "patch_type": "UI cleanup and release-chain alignment patch, not a new strategic product layer",
-  "release_chain_status": "Deconflicted after Nate review feedback. README, bots.txt, governance-summary.json, index.html Settings/admin metadata, successor handoff, and builder-version-log should all identify V51.1 as the current cleanup patch on top of V51.",
+  "current_implemented_build": "V52 Model Registry Foundation and Human-First Executive Control View",
+  "build_date": "2026-05-28",
+  "patch_type": "foundation and readability build",
+  "release_chain_status": "V52 implemented the human-first executive control view, modular app orchestration, registry bundle loading, model-aware advisory scoring, and updated README and bots metadata. No new top-level tabs were added.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v51-1-qa&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v52-human-first&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
   "version_label_rule": "Build and version labels belong in Settings/admin metadata and repo documentation only. They must not appear as executive-facing dashboard content.",
@@ -15,64 +15,10 @@
   "core_thesis": "AI is controlled before it acts, or it is not controlled at all.",
   "core_question": "Should this action be operationally admissible right now?",
   "v51_positioning_line": "When everything can be faked, CyberShield helps prove what can be trusted.",
-  "first_9_seconds_standard": [
-    "what risky action is happening",
-    "what CyberShield decided",
-    "why it matters",
-    "what happens next"
-  ],
-  "v51_1_cleanup_changes": [
-    "V51 positioning line is visible in Briefing",
-    "first-9-seconds standard restored as visible executive cards",
-    "Trust Under Attack is prominent early in Briefing",
-    "Official Source Verification Gate is simplified into five plain questions",
-    "Brand and Identity Impersonation is framed as cross-domain TrustMap risk",
-    "primary CTAs are reduced to two assessment offers",
-    "secondary advisory paths stay in Proof Pack",
-    "build/version metadata remains in Settings/admin payload only",
-    "no-live-capability boundary language remains intact"
-  ],
-  "implemented_release_train": {
-    "v45": "Executive Authority and First-9-Seconds Build",
-    "v46": "Evidence-Backed Confidence and Result Authority Build",
-    "v47": "Executive Commitment Record and Deadline Pressure Build",
-    "v47.1": "TrustMap Restoration and Readability Patch",
-    "v47.4": "Workspace Isolation and Score Improvement Baseline",
-    "v48": "TrustMap Power Network Build",
-    "v49": "Before Consequence and Power of Proof Build",
-    "v50": "Executive Authority QA and External Demo Readiness Build",
-    "v51": "Authenticity Trust and Brand Impersonation Build",
-    "v51.1": "Executive Story and CTA Cleanup"
-  },
-  "official_source_verification_gate": [
-    "Is this official?",
-    "Is the vendor approved?",
-    "Is the payment destination verified?",
-    "Is brand/person/likeness use authorized?",
-    "Is it safe to rely on before action?"
-  ],
-  "commercial_path": {
-    "primary_cta": [
-      "CyberShield Authenticity Trust Assessment",
-      "CyberShield Operational Trust Assessment"
-    ],
-    "secondary_paths": [
-      "30-Day CyberShield Pilot",
-      "Evidence Register and Proof Pack Buildout",
-      "Runtime Governance Readiness Review",
-      "Score Improvement Roadmap"
-    ],
-    "advisor_positioning": "Led by Maximum Justice Cybersecurity and Dr. Max Justice, vCISO, Security SME, Cybersecurity SME, U.S. veteran, and creator of The CHN vCISO GPT powered by Cyber Shield."
-  },
-  "prototype_boundary": "The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, or production agent enforcement systems.",
-  "overclaim_prohibitions": [
-    "no live enforcement claims",
-    "no live takedown automation claims",
-    "no live marketplace scanning claims",
-    "no live ad-platform enforcement claims",
-    "no live identity verification claims",
-    "no live CRM sync claims",
-    "no live enterprise integration claims",
-    "no live notification or ticketing claims"
-  ]
+  "v52_human_eye_standard": ["what risky action is happening", "what CyberShield decided", "why it matters", "what happens next", "whether the record is defensible"],
+  "v52_changes": ["Executive First View added inside Briefing", "core orchestration moved into src/app.js", "registry loading added through src/core/registryLoader.js", "advisory scoring routed through src/core/scoringEngine.js", "DOM helper hardened in src/utils/dom.js", "model trace exposed through progressive disclosure", "Proof Pack includes model context and prototype boundary", "role-aware executive language added", "desktop and Android-oriented readability improved"],
+  "implemented_release_train": {"v45": "Executive Authority and First-9-Seconds Build", "v46": "Evidence-Backed Confidence and Result Authority Build", "v47": "Executive Commitment Record and Deadline Pressure Build", "v47.1": "TrustMap Restoration and Readability Patch", "v47.4": "Workspace Isolation and Score Improvement Baseline", "v48": "TrustMap Power Network Build", "v49": "Before Consequence and Power of Proof Build", "v50": "Executive Authority QA and External Demo Readiness Build", "v51": "Authenticity Trust and Brand Impersonation Build", "v51.1": "Executive Story and CTA Cleanup", "v52": "Model Registry Foundation and Human-First Executive Control View"},
+  "model_registry_files_used": ["data/models/model-registry.json", "data/profiles/role-profiles.json"],
+  "prototype_boundary": "The current public build is a static advisory prototype. It models decisions and proof records but does not perform production enforcement or live enterprise integrations.",
+  "known_limitations": ["CSS remains inline in index.html because connector writes for new CSS files were intermittently blocked during V52.", "The V52 scoring model is demo-directional and not statistically validated.", "The current registry foundation uses scaffold files and is not a complete framework control mapping library.", "Hands-on Firefox, Brave, and Android QA still needs to be performed after GitHub Pages deploys."]
 }
