@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V51 Authenticity Trust and Brand Impersonation Build
+Current implemented build: V51.1 Executive Story and CTA Cleanup
 Build date: 2026-05-27
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V51 Authenticity Trust and Brand Impersonation Build.
+CyberShield V51.1 Executive Story and CTA Cleanup.
 
-Release chain status:
-V51 is the current implemented build. Earlier metadata that identified V47.1 as current was stale and has been deconflicted. README.md, bots.txt, governance-summary.json, index.html Settings/admin metadata, and docs/builder-version-log.md should all agree that V51 is current.
+Patch type:
+V51.1 is a UI cleanup and release-chain alignment patch on top of V51. It is not a new strategic product layer.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V51.
+No new top-level tabs were added for V51.1.
 
 User-facing version rule:
 Build and version labels belong in Settings/admin metadata and repo documentation only. They must not appear as executive-facing dashboard content.
@@ -28,44 +28,22 @@ Should this action be operationally admissible right now?
 V51 positioning line:
 When everything can be faked, CyberShield helps prove what can be trusted.
 
-V51 extension question:
-Can this person, product, vendor, website, ad, source, brand claim, payment request, or AI-generated artifact be trusted before someone acts on it?
-
 First-9-seconds executive standard:
 - what risky action is happening
 - what CyberShield decided
 - why it matters
 - what happens next
 
-Current implemented release train:
-- V45: Executive Authority and First-9-Seconds Build
-- V46: Evidence-Backed Confidence and Result Authority Build
-- V47: Executive Commitment Record and Deadline Pressure Build
-- V47.1: TrustMap Restoration and Readability Patch
-- V47.4: Workspace Isolation and Score Improvement Baseline
-- V48: TrustMap Power Network Build
-- V49: Before Consequence and Power of Proof Build
-- V50: Executive Authority QA and External Demo Readiness Build
-- V51: Authenticity Trust and Brand Impersonation Build
-
-Current V51 capabilities:
-- true workspace/tab isolation
-- executive score-improvement loop
-- Power Owners and owner-controlled score lift
-- Before/After consequence comparison
-- Proof Strength scoring
-- Demo Readiness scoring
-- Authenticity Trust scoring
-- Trust Under Attack panel
-- Official Source Verification Gate
-- Brand and Identity Impersonation TrustMap domain
-- authenticity-aware TrustMap relationships
-- AI-Generated Brand Impersonation Campaign scenario
-- Counterfeit Product Verification Failure scenario
-- counterfeit consequence severity
-- authenticity evidence types in Evidence
-- Authenticity and Impersonation Risk content in Proof Pack
-- Brand Impersonation and Authenticity Risk Assessment advisory wedge
+V51.1 cleanup changes:
+- V51 positioning line is visible in Briefing
+- first-9-seconds standard is restored as visible executive cards
+- Trust Under Attack is prominent early in Briefing
+- Official Source Verification Gate is simplified into five plain questions
+- Brand and Identity Impersonation is framed as a cross-domain TrustMap risk
+- primary CTAs are reduced to two assessment offers
+- secondary advisory paths stay in Proof Pack
+- build/version metadata remains in Settings/admin payload only
+- no-live-capability boundary language remains intact
 
 Official Source Verification Gate:
 - Is this official?
@@ -78,7 +56,7 @@ TrustMap instruction:
 Brand and Identity Impersonation should be treated as a cross-domain TrustMap risk, not an isolated decorative node. It connects to vendors, sellers, payment destinations, evidence, decision records, customer trust, legal/IP response, and executive authority.
 
 Commercial CTA instruction:
-Reduce CTA clutter. Primary CTAs should be CyberShield Authenticity Trust Assessment and CyberShield Operational Trust Assessment. Secondary paths may include 30-Day CyberShield Pilot, Evidence Register and Proof Pack Buildout, Runtime Governance Readiness Review, and Score Improvement Roadmap.
+Primary CTAs should be CyberShield Authenticity Trust Assessment and CyberShield Operational Trust Assessment. Secondary paths may include 30-Day CyberShield Pilot, Evidence Register and Proof Pack Buildout, Runtime Governance Readiness Review, and Score Improvement Roadmap.
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, real identity systems, SIEM data, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, real CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, or takedown automation.
