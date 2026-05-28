@@ -6,6 +6,60 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260528-007
+
+Date: 2026-05-28
+
+Builder / agent identifier: GPT-5.5 Thinking, TrustMap navigation and report output system session
+
+CyberShield versions affected:
+
+- V52.7 TrustMap Navigation and Report Output System
+
+Files materially changed or created:
+
+- `src/ui/v52-7-operational-layer.js`
+- `src/app.js`
+- `src/core/registryLoader.js`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/successor-builder-handoff-and-job-docket.md`
+- `docs/builder-version-log.md`
+- `docs/builder-lessons-learned.md`
+
+Primary value add:
+
+Implemented the approved V52.7 plan.  V52.7 moves operational interaction behavior into a dedicated UI controller, returns `registryLoader.js` to registry loading only, improves TrustMap scroll behavior and core-logo persistence, adds Evidence and Architecture explanation routing, adds scenario-driven Proof Pack report previews, and gates report download/print behind sender and recipient information.
+
+What got better:
+
+- UI behavior no longer lives in `registryLoader.js`
+- V52.7 has a dedicated side-effect UI controller
+- TrustMap has internal scroll behavior for large canvases
+- MJC logo remains the CyberShield Core control-plane anchor
+- Evidence Required/Gap items open explanations
+- Architecture cards route to differentiated explanations
+- Proof Pack report cards open report previews
+- report download and print require sender and recipient information
+- email delivery remains disabled and does not claim backend capability
+- generated Proof Pack metadata now identifies V52.7
+- no new top-level tabs were added
+
+Remaining risks or limitations:
+
+- TrustMap visual objects remain prototype-grade
+- CSS is still partly inline or injected instead of extracted to a stylesheet
+- reports download as plain text rather than branded PDFs
+- contact capture is client-side only and is not stored, emailed, or synced
+- model registry remains scaffold-level and demo-directional
+- scoring remains advisory and not statistically validated
+- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
+
+Next recommended build action:
+
+Run V52.7 QA using the reset URL.  Then begin V53 component cleanup: move injected CSS to `assets/css/styles.css`, move report templates to data or a dedicated module, improve TrustMap connector geometry, and prepare branded report output without claiming live backend integrations.
+
 ### Builder-20260528-006
 
 Date: 2026-05-28
@@ -16,42 +70,9 @@ CyberShield versions affected:
 
 - V52.6 Operational Interaction and Readability Recovery
 
-Files materially changed or created:
-
-- `src/core/registryLoader.js`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
-Implemented the V52.6 recovery plan after user feedback that V52.5 improved performance but still lacked enough operational depth, dashboard interpretation, Evidence explanations, Architecture explanations, Proof Pack report options, and TrustMap readability.  V52.6 adds onboarding card spacing, dashboard meter bars, drilldown hints, differentiated explanations, report-library cards, thinner TrustMap lines, smaller nodes, and core-logo persistence without reintroducing a full-page MutationObserver.
-
-What got better:
-
-- onboarding option cards now separate title and explanation
-- dashboard cards now have meter bars and tap-to-drill-down hints
-- Briefing cards and rows route to workspaces and explanation panels
-- TrustMap lines are thinner and node sizing is reduced
-- MJC core logo behavior remains event-triggered, not observer-driven
-- Architecture cards open differentiated explanations
-- Evidence Required/Gap rows explain why the item matters
-- Proof Pack includes prototype report-library cards
-- no new top-level tabs were added
-
-Remaining risks or limitations:
-
-- routing is still partly text-based and should be migrated into explicit app components
-- core logo and interaction patch remain in `src/core/registryLoader.js` as a connector workaround
-- CSS remains inline or injected
-- Proof Pack report cards are prototypes and do not yet generate full tailored reports
-- TrustMap visual objects are still prototype-grade
-- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
-
-Next recommended build action:
-
-Run V52.6 QA.  Then migrate interaction routing and core-logo behavior out of `registryLoader.js` into `src/app.js` or dedicated UI modules.  V53 should implement clean component-level routing and no-dead-click behavior across all dashboard, TrustMap, Evidence, Architecture, and Proof Pack elements.
+Implemented the V52.6 recovery plan after user feedback that V52.5 improved performance but still lacked enough operational depth, dashboard interpretation, Evidence explanations, Architecture explanations, Proof Pack report options, and TrustMap readability.
 
 ### Builder-20260528-005
 
@@ -65,7 +86,7 @@ CyberShield versions affected:
 
 Primary value add:
 
-Corrected the TrustMap core anchor so it uses the actual MJC logo asset instead of a generic shield SVG.  The CyberShield Core node now visually sits over a digital portal/data-plane treatment and labels the selected organization as its control plane.
+Corrected the TrustMap core anchor so it uses the actual MJC logo asset instead of a generic shield SVG.
 
 ### Builder-20260528-004
 
@@ -79,7 +100,7 @@ CyberShield versions affected:
 
 Primary value add:
 
-Corrected the TrustMap visual language after user feedback that the V52.2 map still felt robotic and visually weak.  V52.3 replaces crude CSS geometry with inline SVG symbolic objects and adds internal TrustMap drilldown states: overview, domain layer, and detail/action layer.
+Corrected the TrustMap visual language after user feedback that the V52.2 map still felt robotic and visually weak.
 
 ### Builder-20260528-003
 
@@ -94,7 +115,7 @@ CyberShield versions affected:
 
 Primary value add:
 
-Implemented the requested review gate at V52.2 by combining the TrustMap visual restoration with guided onboarding and dashboard routing.  TrustMap received visible layers, relationship lines, neon highlighting, CSS-rendered graphical nodes, layer filters, and richer selected-node detail.  Onboarding uses a six-step flow and routes the dashboard emphasis by role, industry, scenario, evidence posture, business priority, and output audience.
+Implemented the requested review gate at V52.2 by combining the TrustMap visual restoration with guided onboarding and dashboard routing.
 
 ### Builder-20260528-002
 
@@ -108,4 +129,19 @@ CyberShield versions affected:
 
 Primary value add:
 
-Implemented V52 as a human-first control-plane foundation.  The build keeps navigation stable, adds Executive First View inside Briefing, moves orchestration into a module, routes scores through registry-aware decision logic, exposes model trace through progressive disclosure, and preserves proof and boundary language.
+Implemented V52 as a human-first control-plane foundation.
+
+### Builder-20260528-001
+
+Date: 2026-05-28
+
+Builder / agent identifier: GPT-5.5 Thinking, CyberShield documentation hardening and institutional memory session
+
+CyberShield versions affected:
+
+- V51.1 baseline
+- V52-V59 planning and builder-readiness layer
+
+Primary value add:
+
+Hardened the repo as CyberShield's external memory system and documented recurring AI-builder failure modes.
