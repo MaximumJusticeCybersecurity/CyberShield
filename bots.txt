@@ -1,17 +1,17 @@
 CyberShield Executive OS
-Current implemented build: V54 Enterprise TrustMap Kernel Rebuild
+Current implemented build: V54.2 Enterprise Trust Universe
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V54 Enterprise TrustMap Kernel Rebuild.
+CyberShield V54.2 Enterprise Trust Universe.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V54.
+No new top-level tabs were added for V54.2.
 
 Core thesis:
 CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
@@ -23,22 +23,27 @@ Trust Model doctrine:
 Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
 
 TrustMap doctrine:
-The CyberShield Core is the TrustMap kernel, not a normal node. TrustMap must behave like a kernel-centered enterprise map with ring-layer depth, zoom, pan, clickable domains, clickable assets, object detail, and trust-weighted connections. It must not regress into a left-to-right process flow or confusing layer filters.
+The CyberShield Core is the TrustMap kernel, not a normal node. TrustMap must show one enterprise trust universe: Kernel is CyberShield Core; Layer 1 is major trust domains; Layer 2 is domain assets, systems, vendors, data classes, controls, workflows, and entities; Layer 3 is small tagged risk/evidence/action/owner/consequence dots. Scenario views must highlight paths without replacing the universe.
 
-V54 changes:
-- adds `src/ui/v54-enterprise-trustmap-kernel.js`
-- makes V54 the active TrustMap authority through the compatibility loader
-- removes V53.1 recovery map from the active loader chain
-- replaces layer filters with TrustMap view controls
-- adds Fit Map, Kernel View, Domain View, Object View, Zoom In, Zoom Out, and Reset
-- adds drag-to-pan and wheel zoom
-- adds kernel-centered CyberShield Core
-- adds Layer 1 trust domains, Layer 2 assets, and Layer 3 object detail
-- adds left metric panel and right trust distribution/trend panel
-- adds Hourly / Daily / Weekly / Monthly synthetic trend controls
-- adds scenario-specific trust distributions and active risks
-- lets onboarding confidence and CMMC “I don’t know” answers influence score directionally
+V54.2 changes:
+- adds `src/ui/v54-2-enterprise-trust-universe.js`
+- makes V54.2 the active TrustMap authority through the compatibility loader
+- removes V54 and V54.1 collision-control modules from the active loader chain
+- models one full enterprise trust universe across all six demo scenarios
+- keeps CyberShield Core alone in the kernel
+- places Layer 1 domains on Layer 1 ring
+- places Layer 2 assets/entities on Layer 2 ring
+- places Layer 3 tagged dots on the outer ring
+- keeps left and right panels outside the map canvas
+- keeps Trust Level Distribution, Active Risks, and Trend Line in the right panel
+- supports Fit Map, Kernel View, Domain View, Object View, Zoom In, Zoom Out, Reset, drag-to-pan, and wheel zoom
+- uses scenario lenses to highlight CMMC, payment, healthcare, manufacturing/vendor access, and AI-output paths without replacing the whole universe
 - keeps no-new-top-level-tabs rule intact
+
+Purpose Protocol future track:
+CyberShield turns purpose into protocol.
+Purpose is not governance until it can cause a refusal.
+The next capability track should add Purpose Protocol, Constraint Layer, Decision Layer, Identity Layer, and Refusal Test without adding a new top-level tab. It should start with the community bank/vendor payment destination change scenario.
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, or takedown automation.
