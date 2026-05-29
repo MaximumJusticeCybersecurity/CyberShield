@@ -1,17 +1,17 @@
 CyberShield Executive OS
-Current implemented build: V53 Trust Model and Deep Scenario Spine Build
+Current implemented build: V53.1 UX and TrustMap Recovery Patch
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V53 Trust Model and Deep Scenario Spine Build.
+CyberShield V53.1 UX and TrustMap Recovery Patch.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V53.
+No new top-level tabs were added for V53.1.
 
 Core thesis:
 CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
@@ -22,22 +22,20 @@ Can we trust the information behind this action before the business acts?
 Trust Model doctrine:
 Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
 
-V53 changes:
-- adds six deep scenario spines
-- prioritizes CMMC first in the scenario selector
-- adds CMMC Applicability Trust Check
-- adds CMMC Readiness Trust Check
-- adds Community Bank Payment Trust Verification
-- adds Manufacturing Vendor AI Access Trust
-- adds Healthcare Data / Vendor / AI Trust
-- adds AI Output Trust
-- adds CMMC Yes / No / I don’t know questions
-- adds Trust Model Dashboard concepts: Action, Information, Trust Status, Decision, Owner, Consequence
-- uses decision states: Approved, Approved With Conditions, Needs Verification, Escalate, Blocked
-- shows how to improve the trust score
-- shows how CyberShield determines trust
-- keeps reports scenario-driven and contact-gated
-- keeps email delivery disabled because no backend integration exists
+TrustMap doctrine:
+TrustMap must not regress into a left-to-right process flow. It must behave like a map centered on CyberShield, show where trust breaks or may break, support clickable trust objects, and provide at least a second-click detail or report route.
+
+V53.1 changes:
+- fixes onboarding option card hierarchy so titles and descriptions are on separate lines
+- reorders evidence confidence to Low / Medium / High
+- rebalances briefing card status so the first cards are not all caution states
+- replaces gray-filled meter bars with red/yellow/green score scales and position dots
+- restores TrustMap to a radial map centered on CyberShield core
+- makes TrustMap objects clickable
+- adds second-click detail/report behavior from TrustMap objects
+- makes Architecture Boundary clickable and opens prototype boundary detail
+- keeps CMMC first in the scenario selector
+- keeps no-new-top-level-tabs rule intact
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, or takedown automation.
