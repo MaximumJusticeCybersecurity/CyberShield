@@ -1,0 +1,25 @@
+{
+  "protocol_id": "escalation-rules.v1",
+  "protocol_name": "CyberShield Escalation Rules",
+  "version": "1.0.0",
+  "escalation_rules": [
+    {
+      "escalation_rule_id": "escalation.vendor_payment_change_30d",
+      "triggered_constraint": "constraint.vendor_payment_change_30d",
+      "escalation_owner": "Controller",
+      "secondary_owner": "CFO",
+      "required_action": "Obtain current banking verification and controller approval before payment proceeds.",
+      "required_evidence": ["current_banking_verification", "controller_approval", "vendor_record_match"],
+      "decision_state": "Escalate",
+      "proof_pack_mapping": "protocol_basis.vendor_payment_change_30d",
+      "logging_requirement": "Log escalation owner, missing evidence, timestamp, decision state, and protocol version."
+    }
+  ],
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-05-29",
+      "change": "Initial V55 escalation-rule scaffold."
+    }
+  ]
+}
