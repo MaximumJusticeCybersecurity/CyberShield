@@ -37,7 +37,7 @@ Observed recurring AI-builder risks:
 - letting metadata drift
 - producing generic industry demos
 - making objects look clickable but not meaningful
-- weakening TrustMap into decorative bubbles
+- weakening TrustMap into decorative bubbles or process flows
 - overstating current capability
 - forgetting constraints from prior versions
 - failing to update docs after code changes
@@ -107,7 +107,7 @@ Acceptable alternatives:
 - component-level state updates
 - narrow observer only when no other option exists
 
-## Major lesson 8: TrustMap is a navigable product surface, not a decorative map
+## Major lesson 8: TrustMap is a navigable product surface, not a decorative map or process flow
 
 TrustMap must support:
 
@@ -124,6 +124,8 @@ TrustMap must support:
 - what improves the trust score
 
 If a TrustMap node, edge, layer filter, or visual object is clickable, it must explain, route, or trigger a meaningful next step.
+
+V53.1 lesson: do not turn TrustMap into a left-to-right process flow.  The user expects a map-like surface centered around CyberShield, with objects orbiting or relating to the core.  A process flow may explain sequence, but it is not a TrustMap.
 
 ## Major lesson 9: Proof Pack report cards must create real report previews
 
@@ -215,7 +217,28 @@ Future board-ready reports should include:
 
 Signature boundary: a Dr. Max Justice signature should only appear after human review.
 
-## Major lesson 16: The product category has clarified
+## Major lesson 16: Briefing cannot visually scream caution everywhere
+
+V53 user QA showed that a dashboard full of yellow and red creates fatigue and makes the demo feel like a wall of headaches.  CyberShield must distinguish what is already trusted from what needs attention.
+
+Use green/yellow/red deliberately:
+
+- green: information trusted enough for the current purpose
+- yellow: needs verification or conditional trust
+- red: consequence, break, escalation, or block
+
+The first-screen should show status balance, not constant caution.
+
+## Major lesson 17: Onboarding cards need human-readable hierarchy
+
+Every onboarding option card should separate:
+
+- bold title on line one
+- explanatory description on line two
+
+Do not concatenate title and explanation on the same visual line.  That makes the onboarding feel cluttered and harder to scan.
+
+## Major lesson 18: The product category has clarified
 
 CyberShield should be understood as:
 
