@@ -1,0 +1,139 @@
+{
+  "version": "V55.3",
+  "name": "TrustMap Registry and Visual Object Stabilization",
+  "status": "registry_source_of_truth",
+  "do_not_add_top_level_tabs": true,
+  "visual_doctrine": {
+    "interface": "radar-constellation",
+    "not": "process-flow",
+    "core_rule": "CyberShield Core is a clean neon shield boundary and trust kernel, not a normal node.",
+    "complexity_rule": "Complexity lives at the edge. Trust is established at the center.",
+    "layer_1_rule": "Layer 1 domains are neon-blue graphical trust objects, not cards.",
+    "fit_map_rule": "Fit Map is for orientation, not reading. Domain View is for interpretation. Object View is for detail. Proof Pack is for documentation."
+  },
+  "center": {
+    "id": "cybershield-core",
+    "label": "CyberShield Core",
+    "object_type": "trust_kernel",
+    "visual_type": "clean_neon_shield_boundary",
+    "allowed_interior_content": ["MJC logo", "CyberShield Core", "organization name", "Trust Kernel"],
+    "route": "Runtime/Core"
+  },
+  "domains": [
+    {
+      "id": "cloud",
+      "label": "Cloud & Infrastructure",
+      "baseline_required": true,
+      "icon": "cloud",
+      "angle": -96,
+      "status": "strong",
+      "visual_metaphor": "cloud boundary and infrastructure trust object",
+      "assets": [
+        {"id": "cloudApps", "label": "Cloud Apps", "status": "strong", "tags": ["evidence", "owner"]},
+        {"id": "network", "label": "Network Boundary", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "backup", "label": "Backup Systems", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "logging", "label": "Logging", "status": "moderate", "tags": ["evidence", "owner"]}
+      ]
+    },
+    {
+      "id": "identity",
+      "label": "Identities & Access",
+      "baseline_required": true,
+      "icon": "identity",
+      "angle": -42,
+      "status": "moderate",
+      "visual_metaphor": "people, roles, and privilege trust object",
+      "assets": [
+        {"id": "mfa", "label": "MFA", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "priv", "label": "Privileged Accounts", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "approver", "label": "Approver Authority", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "entra", "label": "Directory / Entra ID", "status": "strong", "tags": ["evidence", "owner"]}
+      ]
+    },
+    {
+      "id": "appsData",
+      "label": "Applications & Data",
+      "baseline_required": true,
+      "icon": "data",
+      "angle": 14,
+      "status": "weak",
+      "visual_metaphor": "data store, application, and classification trust object",
+      "assets": [
+        {"id": "cui", "label": "CUI / FCI", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "patient", "label": "Patient Data", "status": "critical", "tags": ["evidence", "owner"]},
+        {"id": "financial", "label": "Financial Data", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "proprietary", "label": "Proprietary Data", "status": "moderate", "tags": ["evidence", "owner"]}
+      ]
+    },
+    {
+      "id": "ai",
+      "label": "AI Systems & Agents",
+      "baseline_required": true,
+      "icon": "brain",
+      "angle": 70,
+      "status": "moderate",
+      "visual_metaphor": "neon-blue graphical brain / agent governance trust object",
+      "assets": [
+        {"id": "aiTools", "label": "AI Tools", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "llm", "label": "LLM Access", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "agents", "label": "AI Agents", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "aiOutput", "label": "AI Output", "status": "moderate", "tags": ["evidence", "owner"]}
+      ]
+    },
+    {
+      "id": "third",
+      "label": "Third Parties & Vendors",
+      "baseline_required": true,
+      "icon": "handshake",
+      "angle": 128,
+      "status": "weak",
+      "visual_metaphor": "partner, vendor, and supplier trust object",
+      "assets": [
+        {"id": "vendors", "label": "Vendors", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "msp", "label": "MSP / IT Provider", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "prime", "label": "Prime Contractor", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "partners", "label": "Partners", "status": "moderate", "tags": ["evidence", "owner"]}
+      ]
+    },
+    {
+      "id": "endpoints",
+      "label": "Devices & Endpoints",
+      "baseline_required": true,
+      "icon": "endpoint",
+      "angle": 188,
+      "status": "moderate",
+      "visual_metaphor": "workstation, server, mobile, and IoT trust object",
+      "assets": [
+        {"id": "workstations", "label": "Workstations", "status": "strong", "tags": ["evidence", "owner"]},
+        {"id": "servers", "label": "Servers", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "mobile", "label": "Mobile", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "iot", "label": "IoT", "status": "weak", "tags": ["evidence", "owner"]}
+      ]
+    },
+    {
+      "id": "cmmc",
+      "label": "CMMC & Compliance",
+      "baseline_required": false,
+      "scenario_domain": true,
+      "icon": "pentagon",
+      "angle": 246,
+      "status": "weak",
+      "visual_metaphor": "Pentagon-inspired compliance and evidence trust object",
+      "assets": [
+        {"id": "ssp", "label": "SSP", "status": "weak", "tags": ["evidence", "owner"]},
+        {"id": "poam", "label": "POA&M", "status": "moderate", "tags": ["evidence", "owner"]},
+        {"id": "cuiBoundary", "label": "CUI Boundary", "status": "critical", "tags": ["evidence", "owner"]},
+        {"id": "controlEvidence", "label": "Evidence", "status": "weak", "tags": ["evidence", "owner"]}
+      ]
+    }
+  ],
+  "lenses": {
+    "cmmc_applicability": {"label": "CMMC Applicability Trust Check", "score": 72, "movement": "+8%", "active": ["cmmc", "appsData", "third", "identity"], "risks": ["CUI/FCI unknown", "contract flow-down unclear", "system scope uncertain", "MSP claim dependency"]},
+    "cmmc_readiness": {"label": "CMMC Readiness Trust Check", "score": 54, "movement": "-6%", "active": ["cmmc", "appsData", "identity", "cloud", "third"], "risks": ["CUI boundary critical", "SSP stale", "control evidence weak", "owner gap"]},
+    "payment_trust": {"label": "Payment Trust Verification", "score": 49, "movement": "-11%", "active": ["third", "identity", "appsData"], "risks": ["payment destination critical", "vendor identity weak", "approver authority unclear", "audit trail incomplete"]},
+    "vendor_ai_access": {"label": "Manufacturing Vendor AI Access Trust", "score": 76, "movement": "+14%", "active": ["endpoints", "ai", "third", "cloud", "appsData"], "risks": ["access scope conditional", "AI boundary unclear", "operational data weak", "maintenance window dependency"]},
+    "healthcare_data": {"label": "Healthcare Data / Vendor / AI Trust", "score": 52, "movement": "-4%", "active": ["appsData", "third", "identity", "ai"], "risks": ["permitted use critical", "vendor authorization weak", "patient data exposure", "audit trail weak"]},
+    "ai_output": {"label": "AI Output Trust", "score": 63, "movement": "+5%", "active": ["ai", "appsData", "identity", "third"], "risks": ["source data weak", "human review conditional", "policy boundary unclear", "client-facing consequence"]}
+  },
+  "boundary": "Registry data is used by the static prototype for model transparency and future rendering stabilization. It does not indicate live integrations, live enforcement, live evidence retrieval, CMMC certification, healthcare compliance validation, or live internet claim verification."
+}
