@@ -6,6 +6,59 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260529-003
+
+Date: 2026-05-29
+
+Builder / agent identifier: GPT-5.5 Thinking, Aegis, V54 Enterprise TrustMap kernel rebuild session
+
+CyberShield versions affected:
+
+- V54 Enterprise TrustMap Kernel Rebuild
+
+Files materially changed or created:
+
+- `src/ui/v54-enterprise-trustmap-kernel.js`
+- `src/ui/v52-7-operational-layer.js`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Implemented a clean TrustMap rebuild rather than another patch.  V54 makes TrustMap the wow-factor center of CyberShield by creating a kernel-centered enterprise map with ring-layer depth, zoom/pan controls, scenario-aware trust score distributions, side metric panels, active risks, synthetic trend views, and clickable Layer 1 domains / Layer 2 assets / Layer 3 object details.
+
+What got better:
+
+- V54 is the active TrustMap authority
+- V53.1 recovery map is removed from the active loader chain
+- layer filters are replaced with TrustMap view controls
+- CyberShield Core is represented as the organization trust kernel
+- TrustMap now has Fit Map, Kernel View, Domain View, Object View, Zoom In, Zoom Out, and Reset controls
+- users can drag/pan and wheel/button zoom the map
+- left panel shows Organizational Trust Score, Current Trust Movement, and Top Trust Break Drivers
+- right panel shows Trust Level Distribution, Active Risks, and Trend Line controls
+- trend controls support Hourly, Daily, Weekly, and Monthly synthetic views
+- scenario selection changes map emphasis, score distribution, and active risks
+- onboarding confidence and CMMC “I don’t know” answers influence scores directionally
+- approved demo scenarios support three-layer depth through domain, asset, and object detail
+- no new top-level tabs were added
+
+Remaining risks or limitations:
+
+- V54 is a clean TrustMap rebuild inside the existing V52/V53 app shell, not a full app rewrite
+- TrustMap visual object art is still prototype-grade compared with the uploaded target reference
+- CSS remains injected and should be extracted into a stylesheet in a future version
+- scenario data should move into JSON or a dedicated data registry
+- reports are not yet branded MJC letterhead/PDF outputs
+- scoring and trend lines are demo-directional and not statistically validated
+- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
+
+Next recommended build action:
+
+Run V54 QA using the reset URL.  Confirm no legacy process-flow TrustMap flashes, layer filters are gone, zoom/pan works, Fit Map / Kernel View / Domain View / Object View work, scenario changes alter map and scores, and no unsupported CMMC/healthcare/live-integration claims appear.  The next version should refine visual fidelity toward the uploaded enterprise TrustMap reference and extract TrustMap data/styles into proper modules.
+
 ### Builder-20260529-002
 
 Date: 2026-05-29
@@ -16,46 +69,9 @@ CyberShield versions affected:
 
 - V53.1 UX and TrustMap Recovery Patch
 
-Files materially changed or created:
-
-- `src/ui/v53-1-ux-trustmap-recovery.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
 Implemented a recovery patch after user QA showed V53 got the strategy right but regressed the user experience.  V53.1 fixes onboarding line hierarchy, evidence confidence order, briefing status balance, score scale visuals, Architecture Boundary click behavior, and restores TrustMap from a flat process flow back toward a map-like radial trust surface centered on the CyberShield core.
-
-What got better:
-
-- onboarding option cards now display bold title on line one and description on line two
-- evidence confidence order is corrected toward Low / Medium / High
-- briefing no longer shows all caution/red status cards by default
-- first briefing cards can present as trusted/green where appropriate
-- score visuals use red/yellow/green scales with a position dot instead of gray-filled bars
-- TrustMap no longer presents as only a left-to-right process flow
-- TrustMap has a radial CyberShield-core-centered layout
-- TrustMap nodes are clickable
-- TrustMap selected details provide a second-click detail/report route
-- Architecture Boundary card now opens an explanatory prototype-boundary panel
-- no new top-level tabs were added
-
-Remaining risks or limitations:
-
-- V53.1 remains a layered recovery patch over the current V52/V53 shell
-- TrustMap is better than V53 process flow but still not final or fully humanistic
-- TrustMap second layer is still prototype-grade and must be deepened in V54
-- injected CSS should be extracted into a stylesheet in V54
-- scenario data should be moved into JSON or a dedicated data registry in V54
-- reports still download as text files rather than branded MJC letterhead/PDF-ready outputs
-- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
-
-Next recommended build action:
-
-Run V53.1 QA using the reset URL.  Focus on onboarding layout, evidence confidence order, briefing color balance, radial TrustMap behavior, node click behavior, second-click detail/report behavior, Architecture Boundary click behavior, and scenario switching.  V54 should stabilize this instead of adding major new concepts.
 
 ### Builder-20260529-001
 
