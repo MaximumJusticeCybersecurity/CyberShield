@@ -1,0 +1,27 @@
+{
+  "protocol_id": "constraint-layer.v1",
+  "protocol_name": "CyberShield Constraint Layer",
+  "version": "1.0.0",
+  "constraints": [
+    {
+      "constraint_id": "constraint.vendor_payment_change_30d",
+      "forbidden_action": "approve_vendor_payment_without_current_banking_verification_and_controller_approval",
+      "trigger_condition": "vendor_banking_details_changed_within_30_days",
+      "required_evidence": ["current_banking_verification", "controller_approval"],
+      "refusal_response": "This action is refused by constraint. Vendor banking details changed within 30 days, and required verification or authority is missing.",
+      "escalation_owner": "Controller",
+      "log_requirement": "Log requested action, triggered constraint, evidence present, evidence missing, owner, timestamp, and protocol version.",
+      "proof_pack_output": "Protocol Basis: Vendor Payment Destination Change",
+      "exception_allowed": false,
+      "exception_approval_role": "Controller and CFO"
+    }
+  ],
+  "human_fireable_offense_rule": "If a human would be disciplined or fired for doing it, an AI agent or automated workflow must be technically constrained from doing it without evidence, authority, logging, and escalation.",
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-05-29",
+      "change": "Initial V55 hard-constraint scaffold."
+    }
+  ]
+}
