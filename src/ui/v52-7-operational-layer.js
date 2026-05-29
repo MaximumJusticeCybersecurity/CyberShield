@@ -12,6 +12,9 @@ window.setInterval = (handler, timeout, ...args) => {
   return nativeSetInterval(handler, timeout, ...args);
 };
 
-import('./v53-trust-model-spines.js').finally(() => {
+Promise.all([
+  import('./v53-trust-model-spines.js'),
+  import('./v53-metadata-patch.js')
+]).finally(() => {
   window.setInterval = nativeSetInterval;
 });
