@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V55.2 TrustMap Core Boundary and Constellation Polish
+Current implemented build: V55.3 TrustMap Registry and Visual Object Stabilization
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V55.2 TrustMap Core Boundary and Constellation Polish.
+CyberShield V55.3 TrustMap Registry and Visual Object Stabilization.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V55.2.
+No new top-level tabs were added for V55.3.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V55.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V55.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Core thesis:
 CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
@@ -31,11 +31,22 @@ The CyberShield TrustMap is a radar-constellation interface. Radar means orienta
 Visual complexity rule:
 Complexity lives at the edge. Trust is established at the center.
 
-V55.2 TrustMap rules:
+V55.3 TrustMap registry stabilization:
+- adds `data/trustmap/v55-3-trustmap-registry.json`
+- adds `src/ui/v55-3-trustmap-registry-stabilization.js`
+- loads V55.3 after V55.2 in `src/ui/v52-7-operational-layer.js`
+- adds `docs/trustmap-visual-object-style-guide.md`
+- stores visual references under `assets/reference/`
+- preserves V55.2 visual behavior
+- keeps V55 Purpose Protocol active
+- keeps no-new-top-level-tabs rule intact
+- validates that the TrustMap registry contains CyberShield Core, baseline Layer 1 domains, and scenario lenses
+- documents GitHub Pages browser QA required after deploy
+
+V55.3 TrustMap rules:
 - CyberShield Core is a clean neon shield boundary and trust kernel, not a normal node
 - shield interior must stay clean: MJC logo, CyberShield Core, organization name, Trust Kernel
 - connector lines must not visibly pass through or clutter the shield interior
-- the funny V55.1 bevel is removed
 - Layer 1 domains are neon-blue graphical trust objects, not cards
 - baseline Layer 1 domains stay visually alive even when they are not scenario-highlighted
 - Fit Map is for orientation, not reading
@@ -58,15 +69,10 @@ Minimum Layer 1 operating environment inputs:
 - Third Parties & Vendors
 - Devices & Endpoints
 
-V55.2 changes:
-- adds `src/ui/v55-2-trustmap-constellation-polish.js`
-- loads V55.2 after V55.1
-- preserves V55 Purpose Protocol
-- preserves V54.2 Trust Universe scenario state
-- aligns Layer 1 baseline to the operating-environment inputs
-- includes CMMC & Compliance as a Pentagon-inspired scenario domain
-- reduces Fit Map text density while keeping Layer 3 stars visible
-- keeps no-new-top-level-tabs rule intact
+Visual references stored in repo:
+- `assets/reference/trustmap-radar-constellation-reference.svg`
+- `assets/reference/operational-trust-workflow-reference.svg`
+- `assets/reference/dr-max-justice-leadership-reference.svg`
 
 Purpose Protocol doctrine:
 CyberShield turns purpose into protocol. Purpose is not governance until it can cause a refusal. Purpose Protocol converts executive intent, mission, risk appetite, and operating principles into machine-readable constraints, trade-off rules, refusal conditions, evidence requirements, escalation paths, and visible human ownership before action.
@@ -74,20 +80,24 @@ CyberShield turns purpose into protocol. Purpose is not governance until it can 
 Priority Purpose Protocol scenario:
 Vendor payment destination change. If banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
 
-Artifact Trust future track:
-Artifact Trust should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet.
+Internet Trust Engine future track:
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V55.3 live feature and not a standalone product pillar.
+
+Requirements doc:
+`docs/internet-trust-engine-requirements.md`
 
 Preferred framing:
+- CyberShield Internet Trust Engine
 - CyberShield Artifact Trust Engine
 - Claim Trust Intelligence
 - Evidence-Based Decision Trust
 - Reliance checking
 
 Core future question:
-Do we have sufficient evidence to act on this information, and what is the risk if we are wrong?
+Do we have sufficient trust in this information for the decision, action, briefing, citation, or reliance purpose in front of us, and what is the risk if we are wrong?
 
 Decision chain:
-Claim -> Evidence -> Confidence -> Decision Impact -> Action Guidance
+Artifact -> Wrapper -> Transcript -> Sentence -> Claim -> Evidence -> Confidence -> Decision Impact -> Reliance Guidance -> Action
 
 Avoid:
 - fact-checker branding
@@ -102,3 +112,6 @@ The current GitHub Pages build is a lightweight static advisory prototype. It is
 
 Overclaim prohibitions:
 Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
+
+GitHub Pages browser QA required:
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V55.2 behavior remains intact, confirm V55.3 metadata appears in Settings/admin context, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
