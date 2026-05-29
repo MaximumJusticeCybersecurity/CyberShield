@@ -15,6 +15,6 @@ window.setInterval = (handler, timeout, ...args) => {
 Promise.all([
   import('./v53-trust-model-spines.js'),
   import('./v53-metadata-patch.js')
-]).finally(() => {
+]).then(() => import('./v53-1-ux-trustmap-recovery.js')).finally(() => {
   window.setInterval = nativeSetInterval;
 });
