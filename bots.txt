@@ -1,17 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V55.1 TrustMap Radar-Constellation Visual Grammar
+Current implemented build: V55.2 TrustMap Core Boundary and Constellation Polish
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V55.1 TrustMap Radar-Constellation Visual Grammar.
+CyberShield V55.2 TrustMap Core Boundary and Constellation Polish.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V55.1.
+No new top-level tabs were added for V55.2.
+
+Public naming rule:
+Public product name is CyberShield Executive OS. Current prototype build is V55.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Core thesis:
 CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
@@ -25,11 +28,16 @@ Executives rarely have perfect information. CyberShield is not about perfect evi
 TrustMap visual doctrine:
 The CyberShield TrustMap is a radar-constellation interface. Radar means orientation, active scanning, and situational awareness. Constellation means connected assets, dependencies, and trust relationships. It must not look like a process-flow diagram.
 
-V55.1 TrustMap rules:
-- CyberShield Core is a beveled shield boundary and trust kernel, not a normal node
+Visual complexity rule:
+Complexity lives at the edge. Trust is established at the center.
+
+V55.2 TrustMap rules:
+- CyberShield Core is a clean neon shield boundary and trust kernel, not a normal node
 - shield interior must stay clean: MJC logo, CyberShield Core, organization name, Trust Kernel
 - connector lines must not visibly pass through or clutter the shield interior
+- the funny V55.1 bevel is removed
 - Layer 1 domains are neon-blue graphical trust objects, not cards
+- baseline Layer 1 domains stay visually alive even when they are not scenario-highlighted
 - Fit Map is for orientation, not reading
 - Domain View is for interpretation
 - Object View is for detail
@@ -39,16 +47,25 @@ V55.1 TrustMap rules:
 - core-to-domain connectors are thickest and neon blue
 - domain-to-asset connectors are medium
 - asset-to-tag connectors are thin and subtle
+- Layer 3 stars are present in Fit Map but labels stay hidden until hover/focus/Object View
 - cross-domain links stay faint until selected or scenario-highlighted
 
-V55.1 changes:
-- adds `src/ui/v55-1-trustmap-radar-constellation.js`
-- loads V55.1 after V55
+Minimum Layer 1 operating environment inputs:
+- Cloud & Infrastructure
+- Identities & Access
+- Applications & Data
+- AI Systems & Agents
+- Third Parties & Vendors
+- Devices & Endpoints
+
+V55.2 changes:
+- adds `src/ui/v55-2-trustmap-constellation-polish.js`
+- loads V55.2 after V55.1
 - preserves V55 Purpose Protocol
 - preserves V54.2 Trust Universe scenario state
-- aligns Layer 1 baseline to operating-environment inputs: Cloud & Infrastructure, Identities & Access, Applications & Data, AI Systems & Agents, Third Parties & Vendors, Devices & Endpoints
-- adds CMMC & Compliance as a Pentagon-inspired scenario domain
-- reduces Fit Map text density
+- aligns Layer 1 baseline to the operating-environment inputs
+- includes CMMC & Compliance as a Pentagon-inspired scenario domain
+- reduces Fit Map text density while keeping Layer 3 stars visible
 - keeps no-new-top-level-tabs rule intact
 
 Purpose Protocol doctrine:
