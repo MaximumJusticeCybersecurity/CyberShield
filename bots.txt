@@ -1,52 +1,80 @@
 CyberShield Executive OS
-Current implemented build: V54.2 Enterprise Trust Universe
+Current implemented build: V55 Purpose Protocol and Constraint Layer
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V54.2 Enterprise Trust Universe.
+CyberShield V55 Purpose Protocol and Constraint Layer.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V54.2.
+No new top-level tabs were added for V55.
 
 Core thesis:
-CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
+CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
 
 Core question:
-Can we trust the information behind this action before the business acts?
+Can we trust the information behind this action or claim before the business acts, cites, shares, briefs, teaches, or relies on it?
 
 Trust Model doctrine:
-Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
+Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, consequence if wrong, and decision reliance are the point.
 
 TrustMap doctrine:
 The CyberShield Core is the TrustMap kernel, not a normal node. TrustMap must show one enterprise trust universe: Kernel is CyberShield Core; Layer 1 is major trust domains; Layer 2 is domain assets, systems, vendors, data classes, controls, workflows, and entities; Layer 3 is small tagged risk/evidence/action/owner/consequence dots. Scenario views must highlight paths without replacing the universe.
 
-V54.2 changes:
-- adds `src/ui/v54-2-enterprise-trust-universe.js`
-- makes V54.2 the active TrustMap authority through the compatibility loader
-- removes V54 and V54.1 collision-control modules from the active loader chain
-- models one full enterprise trust universe across all six demo scenarios
-- keeps CyberShield Core alone in the kernel
-- places Layer 1 domains on Layer 1 ring
-- places Layer 2 assets/entities on Layer 2 ring
-- places Layer 3 tagged dots on the outer ring
-- keeps left and right panels outside the map canvas
-- keeps Trust Level Distribution, Active Risks, and Trend Line in the right panel
-- supports Fit Map, Kernel View, Domain View, Object View, Zoom In, Zoom Out, Reset, drag-to-pan, and wheel zoom
-- uses scenario lenses to highlight CMMC, payment, healthcare, manufacturing/vendor access, and AI-output paths without replacing the whole universe
+V55 changes:
+- adds `/data/protocols/purpose-protocol.v1.json`
+- adds `/data/protocols/constraint-layer.v1.json`
+- adds `/data/protocols/decision-layer.v1.json`
+- adds `/data/protocols/identity-layer.v1.json`
+- adds `/data/protocols/refusal-rules.v1.json`
+- adds `/data/protocols/escalation-rules.v1.json`
+- adds `src/ui/v55-purpose-protocol-constraint-layer.js`
+- loads V55 after the V54.2 TrustMap controller
+- adds Protocol Readiness to the existing experience
+- adds hard-constraint demonstration for vendor payment destination change
+- adds Refused by Constraint / Escalate decision language
+- adds Protocol Basis to Proof Pack
+- adds Purpose Protocol architecture language to Architecture
+- adds Decision Record fields for constrained/refused/escalated actions
 - keeps no-new-top-level-tabs rule intact
 
-Purpose Protocol future track:
+Purpose Protocol doctrine:
 CyberShield turns purpose into protocol.
 Purpose is not governance until it can cause a refusal.
-The next capability track should add Purpose Protocol, Constraint Layer, Decision Layer, Identity Layer, and Refusal Test without adding a new top-level tab. It should start with the community bank/vendor payment destination change scenario.
+Purpose Protocol converts executive intent, mission, risk appetite, and operating principles into machine-readable constraints, trade-off rules, refusal conditions, evidence requirements, escalation paths, and visible human ownership before action.
+
+Priority Purpose Protocol scenario:
+Vendor payment destination change. If banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
+
+Artifact Trust future track:
+Artifact Trust should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet.
+
+Preferred framing:
+- CyberShield Artifact Trust Engine
+- Claim Trust Intelligence
+- Evidence-Based Decision Trust
+- Reliance checking
+
+Core future question:
+Do we have sufficient evidence to act on this information, and what is the risk if we are wrong?
+
+Decision chain:
+Claim -> Evidence -> Confidence -> Decision Impact -> Action Guidance
+
+Avoid:
+- fact-checker branding
+- truth engine branding
+- misinformation branding
+- political validation
+- trusted/untrusted person labels
+- artifact-level trust score as the MVP anchor
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, internet claim verification, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live enforcement, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
+Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
