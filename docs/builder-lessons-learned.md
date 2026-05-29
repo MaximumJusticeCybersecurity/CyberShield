@@ -5,7 +5,7 @@ Baseline: V51.1 Executive Story and CTA Cleanup
 
 ## Purpose
 
-This document captures lessons learned during the documentation hardening and repo-institutional-memory pass.  It exists because future builders, including future AI builders, will not reliably inherit chat memory.
+This document captures lessons learned during CyberShield build and recovery passes.  It exists because future builders, including future AI builders, will not reliably inherit chat memory.
 
 ## Major lesson 1: The repo must babysit the builder
 
@@ -48,14 +48,6 @@ The repo now contains guardrail files to reduce these risks.
 
 During the 2026-05-28 documentation hardening pass, the GitHub connector successfully created some JSON files but blocked others, especially certain registry scaffolds under `/data`.
 
-Examples:
-
-- `data/models/model-registry.json` succeeded
-- `data/profiles/role-profiles.json` succeeded after simplification
-- `data/profiles/industry-profiles.json` succeeded after simplification
-- `data/onboarding/onboarding-map.json` was blocked multiple times
-- `data/scenarios/scenario-registry.json` was blocked, but `data/scenarios/scenario-registry.txt` succeeded
-
 Builder instruction:
 
 If JSON file creation is blocked by the connector, create a `.txt` or `.md` source scaffold and leave a clear note.  Then the next local builder should convert it to JSON through GitHub Desktop, CLI, or local file editing.
@@ -67,8 +59,6 @@ Do not assume a missing JSON registry means the requirement was abandoned.
 The connector was more likely to block larger structured payloads with scenario/risk language.  Smaller, simpler files succeeded more often.
 
 Builder instruction:
-
-For future connector-based registry creation:
 
 - keep each JSON file short
 - avoid overstuffing scaffolds
@@ -91,9 +81,70 @@ Correct pattern:
 
 The app should not be the only place where logic exists.
 
-## Major lesson 6: V52 should be architecture first, not UI first
+## Major lesson 6: Do not put UI behavior in registry loaders
 
-The temptation is to continue adding visible improvements.  That would repeat the bloat cycle.
+V52.4 through V52.6 temporarily placed UI behavior, event routing, TrustMap patching, and styling inside `src/core/registryLoader.js`.  That created architectural confusion and made the app harder to reason about.
+
+Correct rule:
+
+- `registryLoader.js` loads registries only
+- UI behavior belongs in `src/app.js` or `src/ui/*`
+- report behavior belongs in a report module or template registry
+- TrustMap behavior belongs in a TrustMap controller
+- CSS belongs in a stylesheet when possible
+
+V52.7 corrected this by adding `src/ui/v52-7-operational-layer.js` and returning `registryLoader.js` to data loading only.
+
+## Major lesson 7: Do not use full-body observers for UI correction
+
+A full-body `MutationObserver` used during a prior core-logo workaround likely caused slowdown and tab-lock behavior.  Future builders should not use whole-page observers for routine UI updates.
+
+Acceptable alternatives:
+
+- explicit render calls
+- event delegation
+- targeted post-render enhancement
+- component-level state updates
+- narrow observer only when no other option exists
+
+## Major lesson 8: TrustMap is a navigable product surface, not a decorative map
+
+TrustMap must support:
+
+- overview layer
+- domain layer
+- detail/action layer
+- selected state
+- connected state
+- back behavior
+- scroll/pan behavior
+- evidence/report routes
+
+If a TrustMap node, edge, layer filter, or visual object is clickable, it must explain, route, or trigger a meaningful next step.
+
+## Major lesson 9: Proof Pack report cards must create real report previews
+
+A report card is not complete if it only routes to a generic Proof Pack section.  Each report card must create a distinct report preview based on scenario, role, audience, decision, evidence gaps, and next action.
+
+Download/print should require sender and recipient information.  Email delivery must not be claimed without backend integration.
+
+## Major lesson 10: Humanistic visual objects require a style guide
+
+The TrustMap visual language has drifted multiple times.  The desired direction is humanistic visual objects, not robot-like CSS geometry, not facial emojis, and not sci-fi cyber theater.
+
+A future builder should create a TrustMap Visual Object Style Guide covering:
+
+- acceptable object style
+- MJC logo usage
+- core object rules
+- line weight rules
+- neon rules
+- layer rules
+- what not to do
+
+## Major lesson 11: V52 should be architecture first, not UI first
+
+The temptation is to continue adding visible improvements.  That can repeat the bloat cycle.
 
 V52 should focus on:
 
@@ -105,21 +156,7 @@ V52 should focus on:
 - validation scripts
 - model explanation routes
 
-Do not start with TrustMap visuals until the registry and interaction layers exist.
-
-## Major lesson 7: TrustMap is the memory anchor, but not yet the next build
-
-TrustMap remains strategically critical, but rebuilding it before model/interaction infrastructure would likely create another beautiful but shallow surface.
-
-Correct sequence:
-
-1. V52 registry and architecture foundation
-2. V53 no-dead-click interaction depth
-3. V54 model transparency
-4. V55 adaptive onboarding and industry profiles
-5. V56 TrustMap memory anchor rebuild
-
-## Major lesson 8: The system must support founder-led GTM breadth
+## Major lesson 12: The system must support founder-led GTM breadth
 
 CyberShield needs multiple credible demo paths because MJC's founder-led network spans:
 
@@ -130,7 +167,7 @@ CyberShield needs multiple credible demo paths because MJC's founder-led network
 
 This is not optional product sprawl.  It is a GTM requirement.
 
-## Major lesson 9: The product category has clarified
+## Major lesson 13: The product category has clarified
 
 CyberShield should be understood as:
 
@@ -138,7 +175,7 @@ CyberShield should be understood as:
 
 It is not merely a cybersecurity dashboard or AI governance tool.
 
-## Major lesson 10: The rent-free memory requirement matters
+## Major lesson 14: The rent-free memory requirement matters
 
 The demo should create this executive realization:
 
@@ -157,5 +194,3 @@ Before building, read:
 5. `docs/recurring-build-issues-and-regression-watchlist.md`
 6. `docs/builder-lessons-learned.md`
 7. `docs/v52-v59-control-plane-build-plan.md`
-
-Then complete `docs/build-intake-template.md` mentally or in writing before coding.
