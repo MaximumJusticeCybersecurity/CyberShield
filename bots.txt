@@ -1,17 +1,17 @@
 CyberShield Executive OS
-Current implemented build: V55 Purpose Protocol and Constraint Layer
+Current implemented build: V55.1 TrustMap Radar-Constellation Visual Grammar
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V55 Purpose Protocol and Constraint Layer.
+CyberShield V55.1 TrustMap Radar-Constellation Visual Grammar.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V55.
+No new top-level tabs were added for V55.1.
 
 Core thesis:
 CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
@@ -22,30 +22,37 @@ Can we trust the information behind this action or claim before the business act
 Trust Model doctrine:
 Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, consequence if wrong, and decision reliance are the point.
 
-TrustMap doctrine:
-The CyberShield Core is the TrustMap kernel, not a normal node. TrustMap must show one enterprise trust universe: Kernel is CyberShield Core; Layer 1 is major trust domains; Layer 2 is domain assets, systems, vendors, data classes, controls, workflows, and entities; Layer 3 is small tagged risk/evidence/action/owner/consequence dots. Scenario views must highlight paths without replacing the universe.
+TrustMap visual doctrine:
+The CyberShield TrustMap is a radar-constellation interface. Radar means orientation, active scanning, and situational awareness. Constellation means connected assets, dependencies, and trust relationships. It must not look like a process-flow diagram.
 
-V55 changes:
-- adds `/data/protocols/purpose-protocol.v1.json`
-- adds `/data/protocols/constraint-layer.v1.json`
-- adds `/data/protocols/decision-layer.v1.json`
-- adds `/data/protocols/identity-layer.v1.json`
-- adds `/data/protocols/refusal-rules.v1.json`
-- adds `/data/protocols/escalation-rules.v1.json`
-- adds `src/ui/v55-purpose-protocol-constraint-layer.js`
-- loads V55 after the V54.2 TrustMap controller
-- adds Protocol Readiness to the existing experience
-- adds hard-constraint demonstration for vendor payment destination change
-- adds Refused by Constraint / Escalate decision language
-- adds Protocol Basis to Proof Pack
-- adds Purpose Protocol architecture language to Architecture
-- adds Decision Record fields for constrained/refused/escalated actions
+V55.1 TrustMap rules:
+- CyberShield Core is a beveled shield boundary and trust kernel, not a normal node
+- shield interior must stay clean: MJC logo, CyberShield Core, organization name, Trust Kernel
+- connector lines must not visibly pass through or clutter the shield interior
+- Layer 1 domains are neon-blue graphical trust objects, not cards
+- Fit Map is for orientation, not reading
+- Domain View is for interpretation
+- Object View is for detail
+- Proof Pack is for documentation
+- connectors are straight point-to-point lines
+- connector thickness decreases by depth
+- core-to-domain connectors are thickest and neon blue
+- domain-to-asset connectors are medium
+- asset-to-tag connectors are thin and subtle
+- cross-domain links stay faint until selected or scenario-highlighted
+
+V55.1 changes:
+- adds `src/ui/v55-1-trustmap-radar-constellation.js`
+- loads V55.1 after V55
+- preserves V55 Purpose Protocol
+- preserves V54.2 Trust Universe scenario state
+- aligns Layer 1 baseline to operating-environment inputs: Cloud & Infrastructure, Identities & Access, Applications & Data, AI Systems & Agents, Third Parties & Vendors, Devices & Endpoints
+- adds CMMC & Compliance as a Pentagon-inspired scenario domain
+- reduces Fit Map text density
 - keeps no-new-top-level-tabs rule intact
 
 Purpose Protocol doctrine:
-CyberShield turns purpose into protocol.
-Purpose is not governance until it can cause a refusal.
-Purpose Protocol converts executive intent, mission, risk appetite, and operating principles into machine-readable constraints, trade-off rules, refusal conditions, evidence requirements, escalation paths, and visible human ownership before action.
+CyberShield turns purpose into protocol. Purpose is not governance until it can cause a refusal. Purpose Protocol converts executive intent, mission, risk appetite, and operating principles into machine-readable constraints, trade-off rules, refusal conditions, evidence requirements, escalation paths, and visible human ownership before action.
 
 Priority Purpose Protocol scenario:
 Vendor payment destination change. If banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
