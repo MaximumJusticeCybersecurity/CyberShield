@@ -1,36 +1,46 @@
 CyberShield Executive OS
-Current implemented build: V52.7 TrustMap Navigation and Report Output System
-Build date: 2026-05-28
+Current implemented build: V53 Trust Model and Deep Scenario Spine Build
+Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V52.7 TrustMap Navigation and Report Output System.
+CyberShield V53 Trust Model and Deep Scenario Spine Build.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V52.7.
+No new top-level tabs were added for V53.
 
 Core thesis:
-AI is controlled before it acts, or it is not controlled at all.
+CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
 
 Core question:
-Should this action be operationally admissible right now?
+Can we trust the information behind this action before the business acts?
 
-V52.7 changes:
-- operational interaction moved into `src/ui/v52-7-operational-layer.js`
-- `src/core/registryLoader.js` returned to registry loading only
-- TrustMap has internal scroll behavior for larger map canvases
-- MJC logo core remains the control-plane anchor
-- Architecture and Evidence interactions produce explanations
-- Proof Pack report cards open scenario-driven report previews
-- download and print require sender and recipient information
-- email delivery is explicitly not active without backend integration
+Trust Model doctrine:
+Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
+
+V53 changes:
+- adds six deep scenario spines
+- prioritizes CMMC first in the scenario selector
+- adds CMMC Applicability Trust Check
+- adds CMMC Readiness Trust Check
+- adds Community Bank Payment Trust Verification
+- adds Manufacturing Vendor AI Access Trust
+- adds Healthcare Data / Vendor / AI Trust
+- adds AI Output Trust
+- adds CMMC Yes / No / I don’t know questions
+- adds Trust Model Dashboard concepts: Action, Information, Trust Status, Decision, Owner, Consequence
+- uses decision states: Approved, Approved With Conditions, Needs Verification, Escalate, Blocked
+- shows how to improve the trust score
+- shows how CyberShield determines trust
+- keeps reports scenario-driven and contact-gated
+- keeps email delivery disabled because no backend integration exists
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live enforcement, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, or live enterprise integrations.
+Do not represent the current build as performing live enforcement, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
