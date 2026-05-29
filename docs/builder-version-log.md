@@ -6,6 +6,70 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260529-007
+
+Date: 2026-05-29
+
+Builder / agent identifier: GPT-5.5 Thinking, Aegis, V55.2 TrustMap Core Boundary and Constellation Polish session
+
+CyberShield versions affected:
+
+- V55.2 TrustMap Core Boundary and Constellation Polish
+
+Files materially changed or created:
+
+- `src/ui/v55-2-trustmap-constellation-polish.js`
+- `src/ui/v52-7-operational-layer.js`
+- `README.md`
+- `bots.txt`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Implemented V55.2 as an operational polish pass over the V55.1 TrustMap.  V55.2 preserves V55 Purpose Protocol and V54.2/V55.1 rollback chain while fixing the remaining visual issues identified by user QA: remove the awkward shield bevel, preserve the neon shield perimeter, keep all baseline Layer 1 domains visually alive, reduce Layer 1 overlap, make Layer 3 stars visible in Fit Map, and reinforce the radar-constellation visual grammar.
+
+What got better:
+
+- V55.2 is now wired into the active loader after V55.1
+- shield bevel from V55.1 was removed
+- shield remains a clean neon boundary / trust kernel
+- shield interior remains limited to MJC logo, CyberShield Core, organization name, and Trust Kernel
+- clicking the shield routes to Runtime/Core
+- baseline Layer 1 domains remain visible even when not scenario-highlighted
+- Layer 1 spacing was expanded to reduce overlap, especially CMMC & Compliance against Cloud & Infrastructure
+- Layer 3 stars are present in Fit Map as faint constellation points
+- Layer 3 labels remain hidden until hover/focus/Object View
+- connector logic reinforces straight, weighted, depth-based constellation lines
+- no new top-level tabs were added
+
+Remaining risks or limitations:
+
+- V55.2 is still a visual overlay controller, not a full app rewrite
+- TrustMap data still lives in UI code rather than a formal registry
+- Layer 1 SVG/CSS icons are prototype approximations
+- CMMC Pentagon icon is stylized and not final artwork
+- GitHub Pages deployment and browser QA still need to be verified hands-on
+- governance-summary.json may still be stale due to previous connector update failures
+
+Lessons from this chat:
+
+- TrustMap is the emotional center of CyberShield
+- Fit Map is for orientation, not reading
+- complexity should live at the edge and trust should be established at the center
+- CyberShield Core is a shield boundary, not a normal node
+- Layer 1 domains are neon graphical trust objects, not cards
+- straight point-to-point connectors teach the model better than curved routing lines
+- all layers can exist at once if visual emphasis is controlled
+- the original operating environment architecture is the TrustMap source of truth
+- Purpose Protocol is a separate capability layer, not visual clutter
+- Artifact Trust is a future scenario family, not fact-checker branding
+- public naming must distinguish CyberShield Executive OS from internal build labels
+- built means created, wired, documented, and verified in the loader path
+
+Next recommended build action:
+
+Run V55.2 QA using the reset URL.  Confirm the live build loads V55.2, TrustMap Fit Map feels radar + constellation, shield bevel is gone, neon perimeter remains, baseline Layer 1 domains stay visible, Layer 1 overlap is reduced, Layer 3 stars are visible but labels remain hidden, shield click routes to Runtime/Core, V55 Purpose Protocol still works, and no unsupported live-enforcement claims appear.
+
 ### Builder-20260529-006
 
 Date: 2026-05-29
@@ -16,43 +80,9 @@ CyberShield versions affected:
 
 - V55.1 TrustMap Radar-Constellation Visual Grammar
 
-Files materially changed or created:
-
-- `src/ui/v55-1-trustmap-radar-constellation.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `bots.txt`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
 Implemented a TrustMap visual grammar correction.  V55.1 preserves V55 Purpose Protocol and V54.2 Trust Universe while replacing the active TrustMap surface with a radar-constellation interface.  The intent is to make Fit Map useful for orientation instead of reading, reduce text density, make Layer 1 objects look like neon-blue graphical trust objects, use straight weighted connectors, and keep the CyberShield Core shield visually clean.
-
-What got better:
-
-- V55.1 loads after V55 as the active TrustMap visual overlay
-- CyberShield Core is rendered as a beveled shield/trust kernel
-- shield click routes to Runtime/Core
-- shield interior is limited to MJC logo, CyberShield Core, organization name, and Trust Kernel
-- Layer 1 baseline aligns to the operating-environment inputs
-- Layer 1 objects are neon-blue graphical trust objects rather than cards
-- CMMC & Compliance has a Pentagon-inspired visual treatment
-- connectors are straight point-to-point lines rather than default curved paths
-- connector thickness decreases by layer depth
-- Fit Map hides most Layer 2 and Layer 3 text until focus or hover
-- no new top-level tabs were added
-
-Remaining risks or limitations:
-
-- V55.1 is a visual controller overlay, not a full TrustMap rewrite
-- visual object art is still CSS/SVG approximation and should be refined through a formal style guide
-- the CMMC Pentagon icon is stylized, not final artwork
-- TrustMap data is still in UI code rather than a formal registry
-- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
-
-Next recommended build action:
-
-Run V55.1 QA using the reset URL.  Confirm TrustMap is less busy than the page 2 PDF capture, Fit Map feels like radar + constellation, the shield interior stays clean, Layer 1 objects look like neon-blue visual domains, connectors are straight and weighted by depth, clicking the shield routes to Runtime/Core, V55 Purpose Protocol still works, and no unsupported live-enforcement claims appear.
 
 ### Builder-20260529-005
 
