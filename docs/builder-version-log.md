@@ -6,6 +6,54 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260529-006
+
+Date: 2026-05-29
+
+Builder / agent identifier: GPT-5.5 Thinking, Aegis, V55.1 TrustMap Radar-Constellation Visual Grammar session
+
+CyberShield versions affected:
+
+- V55.1 TrustMap Radar-Constellation Visual Grammar
+
+Files materially changed or created:
+
+- `src/ui/v55-1-trustmap-radar-constellation.js`
+- `src/ui/v52-7-operational-layer.js`
+- `README.md`
+- `bots.txt`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Implemented a TrustMap visual grammar correction.  V55.1 preserves V55 Purpose Protocol and V54.2 Trust Universe while replacing the active TrustMap surface with a radar-constellation interface.  The intent is to make Fit Map useful for orientation instead of reading, reduce text density, make Layer 1 objects look like neon-blue graphical trust objects, use straight weighted connectors, and keep the CyberShield Core shield visually clean.
+
+What got better:
+
+- V55.1 loads after V55 as the active TrustMap visual overlay
+- CyberShield Core is rendered as a beveled shield/trust kernel
+- shield click routes to Runtime/Core
+- shield interior is limited to MJC logo, CyberShield Core, organization name, and Trust Kernel
+- Layer 1 baseline aligns to the operating-environment inputs
+- Layer 1 objects are neon-blue graphical trust objects rather than cards
+- CMMC & Compliance has a Pentagon-inspired visual treatment
+- connectors are straight point-to-point lines rather than default curved paths
+- connector thickness decreases by layer depth
+- Fit Map hides most Layer 2 and Layer 3 text until focus or hover
+- no new top-level tabs were added
+
+Remaining risks or limitations:
+
+- V55.1 is a visual controller overlay, not a full TrustMap rewrite
+- visual object art is still CSS/SVG approximation and should be refined through a formal style guide
+- the CMMC Pentagon icon is stylized, not final artwork
+- TrustMap data is still in UI code rather than a formal registry
+- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
+
+Next recommended build action:
+
+Run V55.1 QA using the reset URL.  Confirm TrustMap is less busy than the page 2 PDF capture, Fit Map feels like radar + constellation, the shield interior stays clean, Layer 1 objects look like neon-blue visual domains, connectors are straight and weighted by depth, clicking the shield routes to Runtime/Core, V55 Purpose Protocol still works, and no unsupported live-enforcement claims appear.
+
 ### Builder-20260529-005
 
 Date: 2026-05-29
@@ -16,52 +64,9 @@ CyberShield versions affected:
 
 - V55 Purpose Protocol and Constraint Layer
 
-Files materially changed or created:
-
-- `data/protocols/purpose-protocol.v1.json`
-- `data/protocols/constraint-layer.v1.json`
-- `data/protocols/decision-layer.v1.json`
-- `data/protocols/identity-layer.v1.json`
-- `data/protocols/refusal-rules.v1.json`
-- `data/protocols/escalation-rules.v1.json`
-- `src/ui/v55-purpose-protocol-constraint-layer.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `bots.txt`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
 Implemented V55 Purpose Protocol and Constraint Layer.  V55 keeps V54.2 Enterprise Trust Universe active and adds protocol discipline into the existing user experience without adding a new top-level tab.  It demonstrates that CyberShield can refuse a payment action by constraint when vendor banking details changed within 30 days and required verification or controller approval is missing.
-
-What got better:
-
-- protocol scaffolds were added under `data/protocols/`
-- V55 UI controller was added and loaded after V54.2
-- Protocol Readiness appears in the existing experience
-- Runtime can show Refused by Constraint / Escalate language
-- Proof Pack can include Protocol Basis
-- Architecture can explain Purpose Protocol, Constraint Layer, Decision Layer, and Identity Layer
-- Decision Record fields were added for constrained, refused, escalated, or conditionally approved actions
-- the priority scenario is community bank / vendor payment destination change
-- no new top-level tabs were added
-
-Remaining risks or limitations:
-
-- V55 is still a static advisory prototype
-- protocol registries are scaffolds and are not yet loaded by a formal registry engine
-- no live payment blocking, banking verification, CRM sync, ticketing, email delivery, or enforcement exists
-- Purpose Protocol is only implemented for the payment destination change scenario
-- `governance-summary.json` did not update because the GitHub connector blocked repeated replacement attempts
-- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
-
-Artifact Trust future-track note:
-
-Artifact Trust should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet.  The preferred framing is CyberShield Artifact Trust Engine / Claim Trust Intelligence / Evidence-Based Decision Trust / reliance checking.  Avoid fact-checker, truth engine, misinformation, political validation, person-level trust labels, and artifact-level trust score as the MVP anchor.  The decision chain should be Claim -> Evidence -> Confidence -> Decision Impact -> Action Guidance.
-
-Next recommended build action:
-
-Run V55 QA.  Confirm V54.2 TrustMap still works, Protocol Readiness appears, Runtime shows the Refused by Constraint pathway, Proof Pack includes Protocol Basis, Architecture includes Purpose Protocol architecture, no new top-level tab appears, and no live-enforcement or compliance overclaims appear.  After V55 stabilizes, consider a V56 Artifact Trust / Information Trust Review MVP with claim extraction, confidence bands, missing evidence, and decision-risk summary.
 
 ### Builder-20260529-004
 
@@ -73,48 +78,9 @@ CyberShield versions affected:
 
 - V54.2 Enterprise Trust Universe
 
-Files materially changed or created:
-
-- `src/ui/v54-2-enterprise-trust-universe.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-
 Primary value add:
 
 Implemented the Enterprise Trust Universe model.  V54.2 replaces the prior one-scenario or isolated-map behavior with one modeled trust ecosystem.  Fit Map is intended to show the whole modeled universe: CyberShield Core as kernel, Layer 1 major trust domains, Layer 2 assets/entities, and Layer 3 tagged risk/evidence/action dots.  Scenario selection applies a lens over that same universe instead of replacing the map.
-
-What got better:
-
-- V54.2 is the active TrustMap authority
-- V54 and V54.1 collision-control modules are removed from the active loader chain
-- CyberShield Core is alone in the kernel
-- Layer 1 domains are placed on the Layer 1 ring
-- Layer 2 assets/entities are placed on the Layer 2 ring
-- Layer 3 tagged dots are placed on the outer ring
-- left and right panels are outside the map canvas
-- Trust Level Distribution, Active Risks, and Trend Line stay in the right panel
-- Fit Map, Kernel View, Domain View, Object View, Zoom In, Zoom Out, Reset, drag-to-pan, and wheel zoom remain available
-- scenario lenses highlight CMMC, payment, healthcare, manufacturing/vendor access, and AI-output paths without replacing the universe
-- Salim Ismail transcript feedback is captured as the next Purpose Protocol / Constraint Layer capability track, not inserted midstream into the TrustMap build
-- no new top-level tabs were added
-
-Remaining risks or limitations:
-
-- V54.2 remains a controller replacement inside the existing V52/V53 app shell, not a full app rewrite
-- visual object art remains prototype-grade compared with the uploaded target reference
-- CSS remains injected and should be extracted into a stylesheet later
-- scenario and TrustMap universe data should move into JSON or a dedicated data registry
-- Purpose Protocol, Constraint Layer, Decision Layer, Identity Layer, and Refusal Test are documented but not yet implemented
-- reports are not yet branded MJC letterhead/PDF outputs
-- scoring and trend lines are demo-directional and not statistically validated
-- hands-on Firefox, Brave, Android, and desktop QA still needs to be run after GitHub Pages deployment
-
-Next recommended build action:
-
-Run V54.2 QA using the reset URL.  Confirm Fit Map shows the full modeled trust universe, CyberShield Core is alone in the kernel, Layer 1/2/3 objects stay on the correct rings, side panels do not sit behind the map, scenario switching highlights paths without replacing the universe, and no unsupported CMMC/healthcare/live-integration claims appear.  After V54.2 stabilizes, the next meaningful capability should be Purpose Protocol + Constraint Layer + Refusal Test, starting with the community bank/vendor payment destination change scenario.
 
 ### Builder-20260529-003
 
