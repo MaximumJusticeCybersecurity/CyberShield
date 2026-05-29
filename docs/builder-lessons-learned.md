@@ -183,11 +183,77 @@ V54 pattern:
 
 Do not reintroduce layer filters that route away from TrustMap.  View controls are acceptable.  Legacy process-flow flashes are unacceptable.
 
-## Major lesson 19: The product category has clarified
+## Major lesson 19: V54.2 clarified the Enterprise Trust Universe model
+
+Fit Map should show one modeled enterprise trust universe, not one isolated scenario map.  Scenario selection applies a lens over the universe and highlights the relevant path.
+
+V54.2 model:
+
+- Kernel: CyberShield Core / organization trust kernel
+- Layer 1: major trust domains
+- Layer 2: domain assets, systems, vendors, data classes, controls, workflows, and entities
+- Layer 3: small tagged risk, evidence, action, owner, or consequence dots
+
+The whole universe should remain visible when zoomed out.  The active scenario should brighten relevant domains, assets, dots, and connectors while non-relevant items remain visible but dimmed.
+
+Side panels must be outside the map canvas.  Trust Level Distribution, Active Risks, and Trend Line must never appear behind the map.
+
+## Major lesson 20: Purpose must become protocol
+
+Salim Ismail transcript feedback clarified a major next capability track:
+
+> CyberShield turns purpose into protocol.
+
+CyberShield should help organizations convert executive intent, mission, risk appetite, and operating principles into machine-readable governance protocols that AI agents and human decision workflows can use before action.
+
+Protocol architecture should include:
+
+1. Constraint Layer: what agents or workflows must never do
+2. Decision Layer: how trade-offs are resolved when no human is present
+3. Identity Layer: what human judgment, ownership, and mission boundaries must remain visible
+
+Future files should live under `/data/protocols/` and include:
+
+- `purpose-protocol.v1.json`
+- `constraint-layer.v1.json`
+- `decision-layer.v1.json`
+- `identity-layer.v1.json`
+- `refusal-rules.v1.json`
+- `escalation-rules.v1.json`
+
+Do not add this as a new top-level tab.  Integrate it into Doctrine, Scenario, Actions, Decision Record, Proof Pack, and Memory.
+
+## Major lesson 21: Refusal is a governance feature
+
+Purpose is not governance until it can cause a refusal.
+
+CyberShield must eventually answer:
+
+- Can the system determine what not to do?
+- Can an AI agent or workflow using this protocol make a decision human leadership would endorse?
+- Can an AI agent or workflow using this protocol determine what it must not do?
+
+A strong starting scenario is vendor payment destination change:
+
+- Action requested: approve vendor payment
+- Trigger: vendor banking details changed within 30 days
+- Constraint: payment forbidden without current banking verification and controller approval
+- Decision: Refused by Constraint / Escalate to Controller
+- Proof: Decision Record and Protocol Basis generated
+
+Human-fireable-offense rule:
+
+If a human would be disciplined or fired for doing it, an AI agent or automated workflow must be technically constrained from doing it without evidence, authority, logging, and escalation.
+
+## Major lesson 22: The product category has clarified
 
 CyberShield should be understood as:
 
 > Trust Before Action infrastructure for determining whether the information behind a critical action can be trusted before consequence occurs.
+
+The next category extension is:
+
+> CyberShield makes executive intent machine-readable before AI acts.
 
 It is not merely a cybersecurity dashboard, AI governance platform, GRC tool, or chatbot.
 
