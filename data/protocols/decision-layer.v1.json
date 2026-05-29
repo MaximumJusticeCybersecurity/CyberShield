@@ -1,0 +1,34 @@
+{
+  "protocol_id": "decision-layer.v1",
+  "protocol_name": "CyberShield Decision Layer",
+  "version": "1.0.0",
+  "tradeoff_rules": [
+    {
+      "tradeoff_id": "tradeoff.speed_vs_evidence.payment",
+      "default_priority": "evidence_over_speed",
+      "override_condition": "none_for_vendor_banking_change_within_30_days",
+      "required_action": "refuse_or_escalate_until_required_evidence_and_authority_are_present",
+      "required_evidence": ["current_banking_verification", "controller_approval"],
+      "escalation_owner": "Controller",
+      "decision_state": "Refused by Constraint / Escalate",
+      "proof_pack_mapping": "protocol_basis.vendor_payment_change_30d"
+    }
+  ],
+  "endorsement_test": {
+    "test_id": "endorsement_test.payment_change_30d",
+    "question": "Could an AI agent or workflow using this protocol make a decision human leadership would endorse?",
+    "expected_result": "Pass"
+  },
+  "refusal_test": {
+    "test_id": "refusal_test.payment_change_30d",
+    "question": "Could an AI agent or workflow using this protocol determine what it must not do?",
+    "expected_result": "Pass"
+  },
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-05-29",
+      "change": "Initial V55 trade-off and protocol test scaffold."
+    }
+  ]
+}
