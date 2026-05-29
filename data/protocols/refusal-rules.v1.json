@@ -1,0 +1,29 @@
+{
+  "protocol_id": "refusal-rules.v1",
+  "protocol_name": "CyberShield Refusal Rules",
+  "version": "1.0.0",
+  "refusal_rules": [
+    {
+      "refusal_rule_id": "refusal.vendor_payment_change_30d",
+      "action_requested": "approve_vendor_payment",
+      "triggered_constraint": "constraint.vendor_payment_change_30d",
+      "decision_state": "Refused by Constraint",
+      "refusal_reason": "Vendor banking details changed within 30 days and current banking verification or controller approval is missing.",
+      "refusal_response": "This action is refused by constraint. This action cannot proceed until required evidence and authority are present.",
+      "required_evidence": ["current_banking_verification", "controller_approval"],
+      "proof_pack_mapping": "protocol_basis.vendor_payment_change_30d"
+    }
+  ],
+  "refusal_test": {
+    "test_id": "refusal_test.v1",
+    "question": "Can CyberShield determine what not to do?",
+    "pass_condition": "The system can refuse, block, escalate, or hold an action for evidence based on protocol constraints."
+  },
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-05-29",
+      "change": "Initial V55 refusal-rule scaffold."
+    }
+  ]
+}
