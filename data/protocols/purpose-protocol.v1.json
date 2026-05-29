@@ -1,0 +1,24 @@
+{
+  "protocol_id": "purpose-protocol.v1",
+  "protocol_name": "CyberShield Purpose Protocol",
+  "version": "1.0.0",
+  "purpose_statement": "Turn executive intent into machine-readable governance before action.",
+  "constraint_rules": ["constraint.vendor_payment_change_30d"],
+  "decision_rules": ["tradeoff.speed_vs_evidence.payment"],
+  "identity_rules": ["identity.human_owner_visible", "identity.controller_approval_required"],
+  "trigger_conditions": ["vendor_banking_details_changed_within_30_days"],
+  "forbidden_actions": ["approve_vendor_payment_without_current_banking_verification_and_controller_approval"],
+  "required_evidence": ["current_banking_verification", "controller_approval", "vendor_record_match", "decision_log"],
+  "refusal_response": "This action is refused by constraint until current banking verification and controller approval are present.",
+  "logging_requirement": "Create decision record and protocol basis proof entry.",
+  "escalation_owner": "Controller",
+  "decision_state": "Refused by Constraint / Escalate",
+  "proof_pack_mapping": "protocol_basis.vendor_payment_change_30d",
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-05-29",
+      "change": "Initial V55 payment-destination-change protocol scaffold."
+    }
+  ]
+}
