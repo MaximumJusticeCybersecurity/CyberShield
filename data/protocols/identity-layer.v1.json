@@ -1,0 +1,23 @@
+{
+  "protocol_id": "identity-layer.v1",
+  "protocol_name": "CyberShield Identity Layer",
+  "version": "1.0.0",
+  "identity_rules": [
+    {
+      "identity_rule_id": "identity.human_owner_visible",
+      "rule": "Every constrained, refused, escalated, blocked, or conditionally approved action must show the accountable human owner."
+    },
+    {
+      "identity_rule_id": "identity.controller_approval_required",
+      "rule": "Vendor payment destination changes require visible controller approval before payment can proceed."
+    }
+  ],
+  "mission_boundary": "Human judgment, ownership, and authority must remain visible when AI or automated workflows coordinate critical action.",
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-05-29",
+      "change": "Initial V55 identity layer scaffold."
+    }
+  ]
+}
