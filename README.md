@@ -89,6 +89,63 @@ V55 priority scenario:
 Vendor payment destination change: if banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
 ```
 
+## Artifact Trust future track
+
+Artifact Trust should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet.
+
+Preferred framing:
+
+```text
+CyberShield Artifact Trust Engine
+Claim Trust Intelligence
+Evidence-Based Decision Trust
+Reliance checking
+```
+
+Avoid:
+
+```text
+fact-checker
+truth engine
+misinformation detector
+political validation
+trusted or untrusted person labels
+artifact-level trust score as the MVP anchor
+```
+
+Core future question:
+
+```text
+Do we have sufficient evidence to act on this information, and what is the risk if we are wrong?
+```
+
+Decision chain:
+
+```text
+Claim → Evidence → Confidence → Decision Impact → Action Guidance
+```
+
+Recommended MVP scope:
+
+- ingest artifact text or transcript
+- extract claims
+- categorize claims
+- assign confidence bands
+- identify missing evidence
+- generate a claim table
+- generate an executive summary
+- generate a decision-risk summary
+
+Stronger commercial lead examples:
+
+- vendor says it is SOC 2 compliant
+- AI vendor says it does not train on customer data
+- acquisition target says its security program meets NIST
+- supplier says it maintains cyber insurance
+- wire request says it was approved by the CFO
+
+The USAFacts / Steve Ballmer case remains useful as a pilot, but it should not be the lead commercial wedge because it can be mistaken for civic/media analysis.
+
 ## Boundary
 
 The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, or production agent enforcement systems.
@@ -98,6 +155,7 @@ The current public build is a static advisory prototype.  It is not connected to
 - V55 is a static advisory prototype and does not perform live payment blocking
 - protocol registries are scaffolds and are not yet loaded through a formal registry engine
 - Purpose Protocol is implemented for the payment destination change scenario only
+- Artifact Trust is captured as a future scenario track but not yet implemented
 - no banking integration, payment integration, CRM sync, ticketing, email delivery, or live enforcement exists
 - V54.2 TrustMap visual object art remains prototype-grade compared with the uploaded target reference
 - CSS remains injected rather than fully extracted to a stylesheet
@@ -110,4 +168,4 @@ The current public build is a static advisory prototype.  It is not connected to
 
 ## Next likely decision point
 
-Run QA on V55.  Priority checks: V54.2 TrustMap still works; Protocol Readiness appears; Runtime shows Refused by Constraint for the payment-destination-change protocol; Proof Pack includes Protocol Basis; Architecture includes Purpose Protocol architecture; no new top-level tab exists; and no live enforcement, banking, payment, CMMC, or healthcare overclaims appear.
+Run QA on V55.  Priority checks: V54.2 TrustMap still works; Protocol Readiness appears; Runtime shows Refused by Constraint for the payment-destination-change protocol; Proof Pack includes Protocol Basis; Architecture includes Purpose Protocol architecture; no new top-level tab exists; and no live enforcement, banking, payment, CMMC, healthcare, or Artifact Trust overclaims appear.
