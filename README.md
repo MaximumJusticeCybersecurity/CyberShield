@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V55 Purpose Protocol and Constraint Layer**
+Current build label: **V55.1 TrustMap Radar-Constellation Visual Grammar**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v55-purpose-protocol&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v55-1-radar-constellation&reset=onboarding
 
 ## User-facing rule
 
@@ -20,29 +20,28 @@ Build and version labels belong in Settings/admin metadata and repo documentatio
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V55.
+No new top-level tabs were added for V55.1.
 
-## Current implemented build: V55
+## Current implemented build: V55.1
 
-V55 adds the Purpose Protocol and Constraint Layer capability track without adding a new tab.  It keeps the V54.2 Enterprise Trust Universe active and adds protocol discipline to the existing Briefing, Runtime, Proof Pack, Architecture, and Settings/admin metadata.
+V55.1 is a TrustMap visual grammar correction.  It preserves V55 Purpose Protocol and V54.2 Enterprise Trust Universe while replacing the active TrustMap surface with a radar-constellation interface.
 
-V55 changes:
+V55.1 changes:
 
-- adds `/data/protocols/purpose-protocol.v1.json`
-- adds `/data/protocols/constraint-layer.v1.json`
-- adds `/data/protocols/decision-layer.v1.json`
-- adds `/data/protocols/identity-layer.v1.json`
-- adds `/data/protocols/refusal-rules.v1.json`
-- adds `/data/protocols/escalation-rules.v1.json`
-- adds `src/ui/v55-purpose-protocol-constraint-layer.js`
-- loads V55 after the V54.2 TrustMap controller
-- adds Protocol Readiness to the existing user experience
-- adds a hard-constraint demonstration for vendor payment destination change
-- adds Refused by Constraint / Escalate decision language
-- adds Protocol Basis to Proof Pack
-- adds Purpose Protocol architecture language to Architecture
-- adds Decision Record fields for constrained/refused/escalated actions
+- adds `src/ui/v55-1-trustmap-radar-constellation.js`
+- loads V55.1 after V55
+- keeps V55 Purpose Protocol active
 - keeps no-new-top-level-tabs constraint intact
+- makes the TrustMap read as radar + constellation rather than process flow
+- creates a cleaner beveled CyberShield Core shield treatment
+- routes shield click into Runtime/Core
+- keeps the shield interior clean with MJC logo, CyberShield Core, organization name, and Trust Kernel text
+- uses neon-blue Layer 1 graphical domain objects
+- aligns Layer 1 baseline to the operating environment inputs: Cloud & Infrastructure, Identities & Access, Applications & Data, AI Systems & Agents, Third Parties & Vendors, Devices & Endpoints
+- adds CMMC & Compliance as a Pentagon-inspired scenario domain
+- replaces default curved connector paths with straight point-to-point constellation connectors
+- makes connector thickness decrease by depth: core-to-domain thickest, domain-to-asset medium, asset-to-tag thin
+- reduces Fit Map text density by hiding most Layer 2 and Layer 3 labels until domain/object focus
 
 ## CyberShield Trust Model Doctrine
 
@@ -52,20 +51,30 @@ Evidence supports the Trust Model, but evidence volume is not the point.  Inform
 
 CyberShield is intentionally cross-industry.  The constraint is coherence under Trust Before Action, not narrowness.
 
-## TrustMap doctrine
+## TrustMap visual doctrine
 
-The CyberShield Core is the TrustMap kernel.  It is not merely another node.  TrustMap should visually show how trust flows, breaks, improves, and propagates around the organization.
-
-V54.2 TrustMap model:
+The CyberShield TrustMap is a radar-constellation interface.
 
 ```text
-Kernel: CyberShield Core / organization trust kernel
-Layer 1: major trust domains
-Layer 2: domain assets, systems, vendors, data classes, controls, workflows, and entities
-Layer 3: small tagged risk, evidence, action, owner, or consequence dots
+Radar = orientation, active scanning, situational awareness
+Constellation = connected assets, dependencies, trust relationships
+Not process flow = no left-to-right workflow pretending to be a map
 ```
 
-Fit Map should show the entire modeled trust universe.  Scenario views should emphasize the relevant trust path while leaving the broader universe visible.
+Fit Map is for orientation, not reading.  Domain View is for interpretation.  Object View is for detail.  Proof Pack is for documentation.
+
+The CyberShield Core is a beveled shield boundary and trust kernel, not a normal node.  No connector should visually pass through or clutter the shield interior.
+
+Layer 1 domains are neon-blue graphical trust objects, not cards.
+
+Connector rules:
+
+```text
+Core -> Layer 1: thickest, neon blue, straight point-to-point
+Layer 1 -> Layer 2: medium, straight point-to-point
+Layer 2 -> Layer 3: thin, subtle, straight point-to-point
+Cross-domain links: faint until selected or scenario-highlighted
+```
 
 ## Purpose Protocol doctrine
 
@@ -150,14 +159,15 @@ The USAFacts / Steve Ballmer case remains useful as a pilot, but it should not b
 
 The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, or production agent enforcement systems.
 
-## Known V55 limitations
+## Known V55.1 limitations
 
-- V55 is a static advisory prototype and does not perform live payment blocking
+- V55.1 is a static visual controller overlay, not a full app rewrite
+- V55.1 does not perform live payment blocking
 - protocol registries are scaffolds and are not yet loaded through a formal registry engine
 - Purpose Protocol is implemented for the payment destination change scenario only
 - Artifact Trust is captured as a future scenario track but not yet implemented
 - no banking integration, payment integration, CRM sync, ticketing, email delivery, or live enforcement exists
-- V54.2 TrustMap visual object art remains prototype-grade compared with the uploaded target reference
+- Layer 1 icons are SVG/CSS approximations and should be refined into an official TrustMap visual object style guide
 - CSS remains injected rather than fully extracted to a stylesheet
 - scenario, TrustMap universe, and protocol data should be moved into formal JSON registry loading
 - reports download as text files, not branded PDF reports yet
@@ -168,4 +178,4 @@ The current public build is a static advisory prototype.  It is not connected to
 
 ## Next likely decision point
 
-Run QA on V55.  Priority checks: V54.2 TrustMap still works; Protocol Readiness appears; Runtime shows Refused by Constraint for the payment-destination-change protocol; Proof Pack includes Protocol Basis; Architecture includes Purpose Protocol architecture; no new top-level tab exists; and no live enforcement, banking, payment, CMMC, healthcare, or Artifact Trust overclaims appear.
+Run QA on V55.1.  Priority checks: V55 Purpose Protocol still works; TrustMap shows radar-constellation visual grammar; shield core is clean; Layer 1 objects are neon-blue visual domains; connectors are straight and weighted by depth; Fit Map is less text-heavy; shield click routes to Runtime/Core; no new top-level tab exists; and no live enforcement, banking, payment, CMMC, healthcare, or Artifact Trust overclaims appear.
