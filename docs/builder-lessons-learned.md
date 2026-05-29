@@ -1,6 +1,6 @@
 # CyberShield Builder Lessons Learned
 
-Date: 2026-05-28
+Date: 2026-05-29
 Baseline: V51.1 Executive Story and CTA Cleanup
 
 ## Purpose
@@ -119,6 +119,9 @@ TrustMap must support:
 - back behavior
 - scroll/pan behavior
 - evidence/report routes
+- trust propagation paths
+- where trust breaks or may break
+- what improves the trust score
 
 If a TrustMap node, edge, layer filter, or visual object is clickable, it must explain, route, or trigger a meaningful next step.
 
@@ -142,46 +145,83 @@ A future builder should create a TrustMap Visual Object Style Guide covering:
 - layer rules
 - what not to do
 
-## Major lesson 11: V52 should be architecture first, not UI first
+## Major lesson 11: CyberShield is a Trust Model, not an evidence-volume model
 
-The temptation is to continue adding visible improvements.  That can repeat the bloat cycle.
+V53 clarified the product spine:
 
-V52 should focus on:
+> CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
 
-- modular structure
-- model registry
-- onboarding map
-- role/industry/scenario/report registries
-- source-of-truth alignment
-- validation scripts
-- model explanation routes
+Executives rarely have perfect information.  CyberShield is not about having enough evidence.  The differentiator is whether the organization can trust what it currently has, sees, and thinks it knows.
 
-## Major lesson 12: The system must support founder-led GTM breadth
+Evidence supports the Trust Model, but evidence volume is not the point.  Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
 
-CyberShield needs multiple credible demo paths because MJC's founder-led network spans:
+## Major lesson 12: Consequence must come before governance mechanics
 
-- Defense Industrial Base / Federal Contractor SMB
-- Financial Services / Community Banking
-- AI-Enabled SMB / SaaS / Professional Services
-- Healthcare / Federal Health Security
+User-facing screens must show what happens if information is wrong before presenting policy, control, governance, or architecture mechanics.
 
-This is not optional product sprawl.  It is a GTM requirement.
+Correct order:
 
-## Major lesson 13: The product category has clarified
+1. action under review
+2. information relied on
+3. consequence if wrong
+4. trust status
+5. decision recommendation
+6. owner
+7. governance/proof/report mechanics
+
+Do not lead with runtime governance.  Runtime governance is architecture language, not buyer language.
+
+## Major lesson 13: CyberShield is intentionally cross-industry
+
+Do not ask whether CyberShield is too broad.  The breadth is intentional.
+
+The constraint is coherence under Trust Before Action, not narrowness.  Every industry path must map back to:
+
+- critical action
+- information relied on
+- trust status
+- decision
+- owner
+- consequence if wrong
+- verification path
+- report
+
+## Major lesson 14: CMMC is a flagship GTM scenario for MJC
+
+V53 adds two CMMC paths:
+
+- CMMC Applicability Trust Check
+- CMMC Readiness Trust Check
+
+This is a strong entry point for DoD suppliers and manufacturers doing business with the DoD.  It should help them understand whether they likely need CMMC Level 1 or Level 2 and whether they can trust current readiness information.
+
+Boundary: CyberShield must not claim legal determination, certification, assessment outcome, or guaranteed compliance.
+
+## Major lesson 15: Board reports are secondary but strategically important
+
+Board-ready reports should not lead V53, but they must be on the roadmap.
+
+Future board-ready reports should include:
+
+- MJC letterhead
+- MJC shield logo
+- formal title block
+- prepared by / prepared for
+- Aegis-generated signature placeholder
+- optional Dr. Max Justice human-reviewed signature block
+- print-ready formatting
+- PDF-ready layout
+- professional page breaks
+
+Signature boundary: a Dr. Max Justice signature should only appear after human review.
+
+## Major lesson 16: The product category has clarified
 
 CyberShield should be understood as:
 
-> Executive operational visibility and governance infrastructure for AI-era uncertainty.
+> Trust Before Action infrastructure for determining whether the information behind a critical action can be trusted before consequence occurs.
 
-It is not merely a cybersecurity dashboard or AI governance tool.
-
-## Major lesson 14: The rent-free memory requirement matters
-
-The demo should create this executive realization:
-
-> We probably do not currently have enough operational visibility into cyber and AI decision-making.
-
-This is the psychological anchor future builders must preserve.
+It is not merely a cybersecurity dashboard, AI governance platform, GRC tool, or chatbot.
 
 ## Final instruction to future builders
 
