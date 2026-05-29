@@ -245,17 +245,90 @@ Human-fireable-offense rule:
 
 If a human would be disciplined or fired for doing it, an AI agent or automated workflow must be technically constrained from doing it without evidence, authority, logging, and escalation.
 
-## Major lesson 22: The product category has clarified
+## Major lesson 22: V55 implemented Purpose Protocol as a first scaffold, not a full engine
+
+V55 adds protocol scaffolds and a payment-destination-change hard-constraint demonstration.  It does not implement live enforcement.
+
+V55 boundaries:
+
+- static advisory prototype only
+- no live banking verification
+- no live payment blocking
+- no live controller workflow
+- no backend email, CRM, ticketing, or enforcement
+- protocol registries are scaffolds and are not yet loaded by a formal registry engine
+
+Future builders must not overclaim V55 as production runtime enforcement.
+
+## Major lesson 23: Artifact Trust is the right future framing, not Internet Trust or fact-checking
+
+The user feedback converged on this point: do not build or position this as a fact-checker, misinformation detector, media validator, political truth engine, or person/brand trust labeler.
+
+Correct future framing:
+
+> CyberShield Artifact Trust Engine
+
+Supporting capability language:
+
+- Claim Trust Intelligence
+- Evidence-Based Decision Trust
+- Reliance checking
+- Information Trust Review
+- Claim Verification Scenario
+
+Core question:
+
+> Do we have sufficient evidence to act on this information, and what is the risk if we are wrong?
+
+Decision chain:
+
+> Claim -> Evidence -> Confidence -> Decision Impact -> Action Guidance
+
+What to avoid:
+
+- fact-checker branding
+- truth engine branding
+- misinformation branding
+- political validation branding
+- trusted/untrusted person labels
+- artifact-level trust score as the MVP anchor
+
+What to build first when this track begins:
+
+- ingest artifact text or transcript
+- extract claims
+- categorize claims
+- assign confidence bands
+- identify missing evidence
+- generate a claim table
+- generate an executive summary
+- generate a decision-risk summary
+
+Strong commercial examples:
+
+- vendor says it is SOC 2 compliant
+- AI vendor says it does not train on customer data
+- acquisition target says its security program meets NIST
+- supplier says it maintains cyber insurance
+- wire request says it was approved by the CFO
+
+The USAFacts / Steve Ballmer video is useful as a pilot but should not be the lead commercial wedge because it can be mistaken for civic/media analysis.
+
+## Major lesson 24: The product category has clarified
 
 CyberShield should be understood as:
 
 > Trust Before Action infrastructure for determining whether the information behind a critical action can be trusted before consequence occurs.
 
-The next category extension is:
+The next category extensions are:
 
 > CyberShield makes executive intent machine-readable before AI acts.
 
-It is not merely a cybersecurity dashboard, AI governance platform, GRC tool, or chatbot.
+and:
+
+> CyberShield evaluates whether evidence is sufficient to support action.
+
+It is not merely a cybersecurity dashboard, AI governance platform, GRC tool, fact-checker, or chatbot.
 
 ## Final instruction to future builders
 
