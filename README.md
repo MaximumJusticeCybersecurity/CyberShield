@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V55.2 TrustMap Core Boundary and Constellation Polish**
+Current build label: **V55.3 TrustMap Registry and Visual Object Stabilization**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v55-2-constellation-polish&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v55-3-trustmap-registry-stabilization&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V55.2
+V55.3
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -36,34 +36,33 @@ Build and version labels belong in Settings/admin metadata and repo documentatio
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V55.2.
+No new top-level tabs were added for V55.3.
 
-## Current implemented build: V55.2
+## Current implemented build: V55.3
 
-V55.2 is a TrustMap polish pass over V55.1. It preserves V55 Purpose Protocol and V54.2 Enterprise Trust Universe while making the TrustMap fit view cleaner, more constellation-like, and closer to the uploaded architect reference.
+V55.3 is a TrustMap registry and visual object stabilization pass over V55.2. It preserves V55.2 visual behavior while moving the TrustMap source-of-truth direction into a formal registry, adding a TrustMap Visual Object Style Guide, storing visual references in the repo, and wiring a lightweight registry validation layer.
 
-V55.2 changes:
+V55.3 changes:
 
-- adds `src/ui/v55-2-trustmap-constellation-polish.js`
-- loads V55.2 after V55.1
+- adds `data/trustmap/v55-3-trustmap-registry.json`
+- adds `src/ui/v55-3-trustmap-registry-stabilization.js`
+- loads V55.3 after V55.2 in `src/ui/v52-7-operational-layer.js`
+- adds `docs/trustmap-visual-object-style-guide.md`
+- stores visual reference assets under `assets/reference/`
+- preserves V55.2 TrustMap visual behavior
 - keeps V55 Purpose Protocol active
 - keeps no-new-top-level-tabs constraint intact
-- removes the funny shield bevel from V55.1
-- preserves a clean translucent shield fill and neon-blue shield perimeter
-- keeps the shield interior limited to MJC logo, CyberShield Core, organization name, and Trust Kernel
-- routes shield click into Runtime/Core
-- keeps baseline Layer 1 domains visually alive even when they are not scenario-highlighted
-- increases Layer 1 spacing and repositions CMMC & Compliance to reduce overlap with Cloud & Infrastructure
+- keeps CyberShield Core as a clean neon shield boundary and trust kernel
+- keeps baseline Layer 1 domains visually alive
 - keeps Layer 3 points present in Fit Map as faint constellation stars
 - keeps Layer 3 labels hidden until hover/focus/Object View
-- uses straight weighted connectors with depth-based thickness
-- moves the map further toward radar + constellation, not process flow
+- keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
 ## CyberShield Trust Model Doctrine
 
-CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
+CyberShield evaluates whether the information behind a critical action or claim can be trusted before the business acts, cites, shares, briefs, teaches, or relies on it.
 
-Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
+Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, consequence if wrong, and decision reliance are the point.
 
 CyberShield is intentionally cross-industry. The constraint is coherence under Trust Before Action, not narrowness.
 
@@ -113,6 +112,43 @@ Devices & Endpoints
 
 Scenario domains such as CMMC & Compliance may be added, but the six baseline domains should not disappear.
 
+## V55.3 registry and visual references
+
+The TrustMap registry now lives at:
+
+```text
+data/trustmap/v55-3-trustmap-registry.json
+```
+
+The registry captures:
+
+```text
+TrustMap doctrine
+CyberShield Core object metadata
+Layer 1 domains
+Layer 2 assets
+Layer 3 tags
+scenario lenses
+visual metadata
+prototype boundary language
+```
+
+The official V55.3 visual style guide lives at:
+
+```text
+docs/trustmap-visual-object-style-guide.md
+```
+
+Visual references are stored at:
+
+```text
+assets/reference/trustmap-radar-constellation-reference.svg
+assets/reference/operational-trust-workflow-reference.svg
+assets/reference/dr-max-justice-leadership-reference.svg
+```
+
+These are builder references. They are not intended to be rendered directly into the product UI unless explicitly approved.
+
 ## Purpose Protocol doctrine
 
 CyberShield turns purpose into protocol.
@@ -135,13 +171,20 @@ V55 priority scenario:
 Vendor payment destination change: if banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
 ```
 
-## Artifact Trust future track
+## Internet Trust Engine future track
 
-Artifact Trust should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet and not a V55.3 implementation.
+
+Requirements live at:
+
+```text
+docs/internet-trust-engine-requirements.md
+```
 
 Preferred framing:
 
 ```text
+CyberShield Internet Trust Engine
 CyberShield Artifact Trust Engine
 Claim Trust Intelligence
 Evidence-Based Decision Trust
@@ -162,58 +205,60 @@ artifact-level trust score as the MVP anchor
 Core future question:
 
 ```text
-Do we have sufficient evidence to act on this information, and what is the risk if we are wrong?
+Do we have sufficient trust in this information for the decision, action, briefing, citation, or reliance purpose in front of us, and what is the risk if we are wrong?
 ```
 
 Decision chain:
 
 ```text
-Claim → Evidence → Confidence → Decision Impact → Action Guidance
+Artifact -> Wrapper -> Transcript -> Sentence -> Claim -> Evidence -> Confidence -> Decision Impact -> Reliance Guidance -> Action
 ```
 
-Recommended MVP scope:
-
-- ingest artifact text or transcript
-- extract claims
-- categorize claims
-- assign confidence bands
-- identify missing evidence
-- generate a claim table
-- generate an executive summary
-- generate a decision-risk summary
-
-Stronger commercial lead examples:
-
-- vendor says it is SOC 2 compliant
-- AI vendor says it does not train on customer data
-- acquisition target says its security program meets NIST
-- supplier says it maintains cyber insurance
-- wire request says it was approved by the CFO
-
-The USAFacts / Steve Ballmer case remains useful as a pilot, but it should not be the lead commercial wedge because it can be mistaken for civic/media analysis.
+V55.3 does not implement the Internet Trust Engine. It only preserves the requirement track and keeps the platform ready for future claim-reliance scenarios.
 
 ## Boundary
 
-The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, or production agent enforcement systems.
+The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, or production agent enforcement systems.
 
-## Known V55.2 limitations
+## Known V55.3 limitations
 
-- V55.2 is a static visual controller overlay, not a full app rewrite
-- V55.2 does not perform live payment blocking
-- protocol registries are scaffolds and are not yet loaded through a formal registry engine
-- Purpose Protocol is implemented for the payment destination change scenario only
-- Artifact Trust is captured as a future scenario track but not yet implemented
-- no banking integration, payment integration, CRM sync, ticketing, email delivery, or live enforcement exists
-- Layer 1 icons are SVG/CSS approximations and should be refined into an official TrustMap visual object style guide
+- V55.3 validates the TrustMap registry but does not yet fully render the TrustMap from the registry
+- V55.2 remains the active visual behavior layer
+- TrustMap registry consumption should be completed in a later stabilization build
+- Layer 1 icons are still SVG/CSS approximations and should be refined from the visual object style guide
 - CMMC Pentagon icon is stylized and not final artwork
 - CSS remains injected rather than fully extracted to a stylesheet
-- scenario, TrustMap universe, and protocol data should be moved into formal JSON registry loading
 - reports download as text files, not branded PDF reports yet
 - CMMC guidance is advisory and does not represent legal advice, certification, or assessment outcome
 - healthcare scenario guidance is advisory and does not represent compliance validation
 - scoring and trend lines are demo-directional and not statistically validated
+- Internet Trust Engine is captured as a future scenario track but not yet implemented
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
+
+## GitHub Pages browser QA required
+
+After deployment, run browser QA unless the live page has already been directly verified.
+
+Priority checks:
+
+```text
+hard refresh live prototype
+complete/reset onboarding
+open TrustMap
+confirm V55.3 metadata is present in Settings/admin context
+confirm V55.2 TrustMap behavior remains intact
+confirm Fit Map feels radar + constellation
+confirm shield bevel is gone
+confirm neon shield perimeter remains
+confirm baseline Layer 1 domains stay visible
+confirm Layer 3 stars are visible in Fit Map
+confirm Layer 3 labels stay hidden until hover/focus/Object View
+confirm shield click routes to Runtime/Core
+confirm V55 Purpose Protocol still works
+confirm no new top-level tab exists
+confirm no live enforcement, banking, payment, CMMC, healthcare, Internet Trust, or Artifact Trust overclaims appear
+```
 
 ## Next likely decision point
 
-Run QA on V55.2. Priority checks: V55 Purpose Protocol still works; TrustMap Fit Map feels radar + constellation; shield bevel is gone; neon shield perimeter remains; baseline Layer 1 domains stay visible; Layer 1 overlap is reduced; Layer 3 stars are visible in Fit Map; Layer 3 labels stay hidden until hover/focus; shield click routes to Runtime/Core; no new top-level tab exists; and no live enforcement, banking, payment, CMMC, healthcare, or Artifact Trust overclaims appear.
+After V55.3 browser QA passes, the next builder should complete TrustMap registry consumption or move carefully into a scoped Internet Trust Engine MVP only if the TrustMap remains stable. The safer next step is still registry consumption and CSS reduction before new feature expansion.
