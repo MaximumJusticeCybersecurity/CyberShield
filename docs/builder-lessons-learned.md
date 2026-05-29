@@ -11,19 +11,7 @@ This document captures lessons learned during CyberShield build and recovery pas
 
 CyberShield cannot rely on one chat thread, one model instance, or one builder remembering everything.
 
-The repo must serve as the institutional memory through:
-
-- source-of-truth hierarchy
-- product invariants
-- definition of done
-- acceptance checklist
-- requirements traceability matrix
-- builder-version log
-- successor handoff
-- recurring regression watchlist
-- schemas
-- validation scripts
-- data registries
+The repo must serve as the institutional memory through source-of-truth hierarchy, product invariants, definition of done, acceptance checklist, requirements traceability matrix, builder-version log, successor handoff, recurring regression watchlist, schemas, validation scripts, and data registries.
 
 If the repo does not enforce memory, future builders will repeat old mistakes.
 
@@ -46,19 +34,11 @@ The repo now contains guardrail files to reduce these risks.
 
 ## Major lesson 3: JSON registry creation may be inconsistent through the connector
 
-During the 2026-05-28 documentation hardening pass, the GitHub connector successfully created some JSON files but blocked others, especially certain registry scaffolds under `/data`.
-
-Builder instruction:
-
 If JSON file creation is blocked by the connector, create a `.txt` or `.md` source scaffold and leave a clear note.  Then the next local builder should convert it to JSON through GitHub Desktop, CLI, or local file editing.
 
 Do not assume a missing JSON registry means the requirement was abandoned.
 
 ## Major lesson 4: Registry scaffolds should be small and boring
-
-The connector was more likely to block larger structured payloads with scenario/risk language.  Smaller, simpler files succeeded more often.
-
-Builder instruction:
 
 - keep each JSON file short
 - avoid overstuffing scaffolds
@@ -68,8 +48,6 @@ Builder instruction:
 - keep JSON focused on IDs, labels, and simple mappings
 
 ## Major lesson 5: Requirements must be separated from implementation
-
-The fastest way to create regressions is to let the live app become the requirement source.
 
 Correct pattern:
 
@@ -83,8 +61,6 @@ The app should not be the only place where logic exists.
 
 ## Major lesson 6: Do not put UI behavior in registry loaders
 
-V52.4 through V52.6 temporarily placed UI behavior, event routing, TrustMap patching, and styling inside `src/core/registryLoader.js`.  That created architectural confusion and made the app harder to reason about.
-
 Correct rule:
 
 - `registryLoader.js` loads registries only
@@ -93,11 +69,7 @@ Correct rule:
 - TrustMap behavior belongs in a TrustMap controller
 - CSS belongs in a stylesheet when possible
 
-V52.7 corrected this by adding `src/ui/v52-7-operational-layer.js` and returning `registryLoader.js` to data loading only.
-
 ## Major lesson 7: Do not use full-body observers for UI correction
-
-A full-body `MutationObserver` used during a prior core-logo workaround likely caused slowdown and tab-lock behavior.  Future builders should not use whole-page observers for routine UI updates.
 
 Acceptable alternatives:
 
@@ -109,19 +81,7 @@ Acceptable alternatives:
 
 ## Major lesson 8: TrustMap is a navigable product surface, not a decorative map or process flow
 
-TrustMap must support:
-
-- overview layer
-- domain layer
-- detail/action layer
-- selected state
-- connected state
-- back behavior
-- scroll/pan behavior
-- evidence/report routes
-- trust propagation paths
-- where trust breaks or may break
-- what improves the trust score
+TrustMap must support overview, domain, detail/action, selected state, connected state, back behavior, scroll/pan behavior, evidence/report routes, trust propagation paths, where trust breaks or may break, and what improves the trust score.
 
 If a TrustMap node, edge, layer filter, or visual object is clickable, it must explain, route, or trigger a meaningful next step.
 
@@ -137,21 +97,11 @@ Download/print should require sender and recipient information.  Email delivery 
 
 The TrustMap visual language has drifted multiple times.  The desired direction is humanistic visual objects, not robot-like CSS geometry, not facial emojis, and not sci-fi cyber theater.
 
-A future builder should create a TrustMap Visual Object Style Guide covering:
-
-- acceptable object style
-- MJC logo usage
-- core object rules
-- line weight rules
-- neon rules
-- layer rules
-- what not to do
+A future builder should create a TrustMap Visual Object Style Guide covering acceptable object style, MJC logo usage, core object rules, line weight rules, neon rules, layer rules, and what not to do.
 
 ## Major lesson 11: CyberShield is a Trust Model, not an evidence-volume model
 
-V53 clarified the product spine:
-
-> CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
+CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
 
 Executives rarely have perfect information.  CyberShield is not about having enough evidence.  The differentiator is whether the organization can trust what it currently has, sees, and thinks it knows.
 
@@ -177,16 +127,7 @@ Do not lead with runtime governance.  Runtime governance is architecture languag
 
 Do not ask whether CyberShield is too broad.  The breadth is intentional.
 
-The constraint is coherence under Trust Before Action, not narrowness.  Every industry path must map back to:
-
-- critical action
-- information relied on
-- trust status
-- decision
-- owner
-- consequence if wrong
-- verification path
-- report
+The constraint is coherence under Trust Before Action, not narrowness.  Every industry path must map back to critical action, information relied on, trust status, decision, owner, consequence if wrong, verification path, and report.
 
 ## Major lesson 14: CMMC is a flagship GTM scenario for MJC
 
@@ -201,19 +142,7 @@ Boundary: CyberShield must not claim legal determination, certification, assessm
 
 ## Major lesson 15: Board reports are secondary but strategically important
 
-Board-ready reports should not lead V53, but they must be on the roadmap.
-
-Future board-ready reports should include:
-
-- MJC letterhead
-- MJC shield logo
-- formal title block
-- prepared by / prepared for
-- Aegis-generated signature placeholder
-- optional Dr. Max Justice human-reviewed signature block
-- print-ready formatting
-- PDF-ready layout
-- professional page breaks
+Future board-ready reports should include MJC letterhead, MJC shield logo, formal title block, prepared by / prepared for, Aegis-generated signature placeholder, optional Dr. Max Justice human-reviewed signature block, print-ready formatting, PDF-ready layout, and professional page breaks.
 
 Signature boundary: a Dr. Max Justice signature should only appear after human review.
 
@@ -231,14 +160,30 @@ The first-screen should show status balance, not constant caution.
 
 ## Major lesson 17: Onboarding cards need human-readable hierarchy
 
-Every onboarding option card should separate:
-
-- bold title on line one
-- explanatory description on line two
+Every onboarding option card should separate bold title on line one from explanatory description on line two.
 
 Do not concatenate title and explanation on the same visual line.  That makes the onboarding feel cluttered and harder to scan.
 
-## Major lesson 18: The product category has clarified
+## Major lesson 18: V54 established the Enterprise TrustMap target pattern
+
+The TrustMap is the wow-factor surface.  It should be treated as the center of the CyberShield product experience.
+
+V54 pattern:
+
+- CyberShield Core is the trust kernel, not a normal node
+- TrustMap must be kernel-centered, not process-flow-centered
+- Layer 1 is trust domains
+- Layer 2 is domain assets / operational dependencies
+- Layer 3 is object detail, owner, consequence, improvement path, decision/report route
+- users must be able to zoom in, zoom out, fit map, reset, pan left/right/up/down, focus domain, and focus object
+- left panel should show trust score, movement, and top trust break drivers
+- right panel should show trust distribution, active risks, and selectable trend lines
+- scenario selection should change domain emphasis, active risks, score distribution, and trend story
+- onboarding answers should influence score directionally
+
+Do not reintroduce layer filters that route away from TrustMap.  View controls are acceptable.  Legacy process-flow flashes are unacceptable.
+
+## Major lesson 19: The product category has clarified
 
 CyberShield should be understood as:
 
