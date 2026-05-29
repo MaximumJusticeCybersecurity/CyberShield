@@ -1,17 +1,17 @@
 CyberShield Executive OS
-Current implemented build: V53.1 UX and TrustMap Recovery Patch
+Current implemented build: V54 Enterprise TrustMap Kernel Rebuild
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V53.1 UX and TrustMap Recovery Patch.
+CyberShield V54 Enterprise TrustMap Kernel Rebuild.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V53.1.
+No new top-level tabs were added for V54.
 
 Core thesis:
 CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
@@ -23,18 +23,21 @@ Trust Model doctrine:
 Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
 
 TrustMap doctrine:
-TrustMap must not regress into a left-to-right process flow. It must behave like a map centered on CyberShield, show where trust breaks or may break, support clickable trust objects, and provide at least a second-click detail or report route.
+The CyberShield Core is the TrustMap kernel, not a normal node. TrustMap must behave like a kernel-centered enterprise map with ring-layer depth, zoom, pan, clickable domains, clickable assets, object detail, and trust-weighted connections. It must not regress into a left-to-right process flow or confusing layer filters.
 
-V53.1 changes:
-- fixes onboarding option card hierarchy so titles and descriptions are on separate lines
-- reorders evidence confidence to Low / Medium / High
-- rebalances briefing card status so the first cards are not all caution states
-- replaces gray-filled meter bars with red/yellow/green score scales and position dots
-- restores TrustMap to a radial map centered on CyberShield core
-- makes TrustMap objects clickable
-- adds second-click detail/report behavior from TrustMap objects
-- makes Architecture Boundary clickable and opens prototype boundary detail
-- keeps CMMC first in the scenario selector
+V54 changes:
+- adds `src/ui/v54-enterprise-trustmap-kernel.js`
+- makes V54 the active TrustMap authority through the compatibility loader
+- removes V53.1 recovery map from the active loader chain
+- replaces layer filters with TrustMap view controls
+- adds Fit Map, Kernel View, Domain View, Object View, Zoom In, Zoom Out, and Reset
+- adds drag-to-pan and wheel zoom
+- adds kernel-centered CyberShield Core
+- adds Layer 1 trust domains, Layer 2 assets, and Layer 3 object detail
+- adds left metric panel and right trust distribution/trend panel
+- adds Hourly / Daily / Weekly / Monthly synthetic trend controls
+- adds scenario-specific trust distributions and active risks
+- lets onboarding confidence and CMMC “I don’t know” answers influence score directionally
 - keeps no-new-top-level-tabs rule intact
 
 Prototype boundary:
