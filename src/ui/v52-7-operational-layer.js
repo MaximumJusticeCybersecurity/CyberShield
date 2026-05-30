@@ -29,3 +29,4 @@ import './v60-trust-evidence-workbench.js';
 import './v60-1-evidence-state-transition-prototype.js';
 import './v60-2-evidence-to-score-impact-preview.js';
 import './v60-3-universal-model-trace-inspector.js';
+import './v60-3-2-show-readiness-cleanup.js';
