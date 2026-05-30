@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V57.1 Board and Executive Narrative Layer
+Current implemented build: V58 Operational Trust Control Pane
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V57.1 Board and Executive Narrative Layer.
+CyberShield V58 Operational Trust Control Pane.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V57.1.
+No new top-level tabs were added for V58.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V57.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V58. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -25,14 +25,17 @@ No score without a model. No model without evidence. No evidence without traceab
 Preferred product term: Trust Scoring Models.
 Preferred architectural term: Trust Model Registry.
 
-V57.1 Board and Executive Narrative Layer:
-- adds `data/proof/v57-1-board-executive-narrative-schema.json`
-- adds `src/ui/v57-1-board-executive-narrative.js`
-- loads V57.1 after V57 in `src/ui/v52-7-operational-layer.js`
-- adds board-ready narrative surface into Proof Pack
-- adds board-ready narrative surface into Runtime
-- adds board packet modal
-- adds board narrative text download
+V58 Operational Trust Control Pane:
+- adds `data/control/v58-operational-trust-control-pane.json`
+- adds `src/ui/v58-operational-trust-control-pane.js`
+- loads V58 after V57.1 in `src/ui/v52-7-operational-layer.js`
+- adds Operational Trust Control Pane into Briefing
+- adds Operational Trust Control Pane into Runtime
+- adds control cards for Decision Required, Evidence Gaps, Model Trace, and Proof Ready
+- adds route buttons to Runtime, Evidence, Architecture, and Proof Pack
+- adds control pane trace modal
+- adds control summary text download
+- preserves V57.1 Board and Executive Narrative Layer
 - preserves V57 Model-Driven Proof Pack
 - preserves V56.4 Core Trust Scoring Models
 - preserves V56.3 Universal Score Object and Score Band Contract
@@ -42,40 +45,27 @@ V57.1 Board and Executive Narrative Layer:
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-Board narrative required sections:
-- Executive Summary
-- Decision Required
-- Why It Matters
-- What CyberShield Relied On
-- What Is Missing or Assumed
-- Risk If Wrong
-- Recommended Next Move
-- Explicit Limitations
-
-Proof Pack required sections:
-- Executive Summary
-- Action or Reliance Purpose
-- Score and Model Trace
-- Evidence State
-- Missing Evidence
-- Assumptions and Caveats
-- Risk if Wrong
-- Runtime Action
-- Owner and Escalation Path
-- Recommended Next Step
-- Prototype Boundary
+Operational Trust Control Pane executive questions:
+- What decision is required?
+- What information are we relying on?
+- What evidence is missing or assumed?
+- What model explains the score?
+- What happens if the information is wrong?
+- Who owns the next move?
+- What proof can we show later?
+- What are the prototype limitations?
 
 TrustMap doctrine:
 The CyberShield TrustMap is a radar-constellation interface. CyberShield Core is a thick neon-blue shield-boundary trust kernel, not a normal node. Complexity lives at the edge. Trust is established at the center.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V57.1 live feature and not a standalone product pillar. V57.1 makes Proof Pack outputs board-readable, but does not implement live Internet Trust Engine behavior.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V58 live feature and not a standalone product pillar.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, or live enterprise integrations.
+Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Proof Pack and Runtime, confirm Executive Proof Narrative appears, confirm board packet modal opens and closes, confirm board narrative text download works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Briefing and Runtime, confirm Operational Trust Control Pane appears, confirm route buttons work, confirm control pane trace modal opens and closes, confirm control summary text download works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
