@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V56.3 Universal Score Object and Score Band Contract**
+Current build label: **V56.4 Core Trust Scoring Models MVP**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-3-universal-score-contract&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-4-core-trust-scoring-models&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V56.3
+V56.4
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,22 +32,21 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V56.3.
+No new top-level tabs were added for V56.4.
 
-## Current implemented build: V56.3
+## Current implemented build: V56.4
 
-V56.3 adds the Universal Score Object and Score Band Contract. This turns the scoring doctrine into a reusable product contract for all future Trust Scoring Models, including Artifact Trust, Claim Trust, Sentence-Level Trust, Evidence Trust, Confidence, Reliance Risk, and Runtime Admissibility.
+V56.4 adds the first Core Trust Scoring Models MVP. It creates seven inspectable, versioned Trust Scoring Models and exposes them through existing workspaces without creating a new tab.
 
-V56.3 changes:
+V56.4 changes:
 
-- adds `data/models/v56-3-universal-score-contract.json`
-- adds `src/ui/v56-3-universal-score-contract.js`
-- loads V56.3 after V56.2 in `src/ui/v52-7-operational-layer.js`
-- formalizes universal score bands
-- formalizes required score object fields
-- formalizes runtime action ladder
-- formalizes model trace fields
-- exposes the contract in Architecture, Evidence, and Proof Pack
+- adds `data/models/v56-4-core-trust-scoring-models.json`
+- adds `src/ui/v56-4-core-trust-scoring-models.js`
+- loads V56.4 after V56.3 in `src/ui/v52-7-operational-layer.js`
+- adds the first seven Core Trust Scoring Models
+- exposes model cards in Architecture, Evidence, and Proof Pack
+- adds model inspection modal with factors, weights, evidence standards, failure conditions, and runtime mapping
+- preserves V56.3 Universal Score Object and Score Band Contract
 - preserves V56.2 Decision Record Hardening
 - preserves V56.1 Evidence and Assumption Register
 - preserves V56 Trust Model Registry and Score Explanation Layer
@@ -76,6 +75,18 @@ Trust Model Registry
 ```
 
 CyberShield must not show decorative scores. Every score must come from a named, versioned model with defined factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and runtime consequence.
+
+## Core Trust Scoring Models in V56.4
+
+```text
+Artifact Trust Model
+Claim Trust Model
+Sentence-Level Trust Model
+Evidence Trust Model
+Confidence Model
+Reliance Risk Model
+Runtime Admissibility Model
+```
 
 ## Universal score bands
 
@@ -107,24 +118,6 @@ recommended_next_step
 owner
 escalation_path
 prototype_boundary
-```
-
-## Required model trace fields
-
-```text
-Model
-Version
-Score
-Confidence
-Object or Claim Type
-Evidence Standard
-Strongest Evidence
-Missing Evidence
-Assumptions
-Risk if Wrong
-Runtime Action
-Owner
-Next Step
 ```
 
 ## CyberShield Trust Model Doctrine
@@ -189,10 +182,16 @@ Universal score contract:
 data/models/v56-3-universal-score-contract.json
 ```
 
-Universal score contract UI:
+Core Trust Scoring Models:
 
 ```text
-src/ui/v56-3-universal-score-contract.js
+data/models/v56-4-core-trust-scoring-models.json
+```
+
+Core Trust Scoring Models UI:
+
+```text
+src/ui/v56-4-core-trust-scoring-models.js
 ```
 
 ## Purpose Protocol doctrine
@@ -203,7 +202,7 @@ Purpose is not governance until it can cause a refusal.
 
 ## Internet Trust Engine future track
 
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.3 implementation.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.4 live feature.
 
 Requirements live at:
 
@@ -234,13 +233,15 @@ artifact-level trust score as the MVP anchor
 
 ## Boundary
 
-The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, or production agent enforcement systems.
+The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, or production agent enforcement systems.
 
-## Known V56.3 limitations
+## Known V56.4 limitations
 
-- Universal score contract is a prototype contract, not production-calibrated scoring
-- Score bands are advisory defaults and may require stricter thresholds for some models
-- Score contract does not perform live calculations
+- Core Trust Scoring Models are prototype model definitions, not production-calibrated scoring engines
+- Model factors and weights are advisory defaults and require pilot calibration
+- V56.4 does not perform live scoring
+- V56.4 does not perform live claim extraction
+- V56.4 does not retrieve or validate live evidence
 - Decision records use static prototype data
 - Evidence states do not retrieve or validate live evidence
 - Model explanations are demo-directional and not statistically validated
@@ -259,23 +260,25 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open Architecture
-confirm Universal Score Contract appears
-confirm full score contract modal opens and closes
+confirm Core Trust Scoring Models appear
+confirm model inspection modal opens and closes
+confirm seven core models are listed
 open Evidence
-confirm Universal Score Contract appears
+confirm Core Trust Scoring Models appear
 open Proof Pack
-confirm Universal Score Contract appears
-confirm V56.3 metadata is present in Settings/admin context
-confirm score model buttons still work
+confirm Core Trust Scoring Models appear
+confirm V56.4 metadata is present in Settings/admin context
+confirm Universal Score Contract still appears
 confirm decision records still work
 confirm evidence register still works
+confirm score model buttons still work
 confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
 confirm V55 Purpose Protocol still works
 confirm no new top-level tab exists
-confirm no live enforcement, banking, payment, CMMC, healthcare, Internet Trust, or Artifact Trust overclaims appear
+confirm no live enforcement, banking, payment, CMMC, healthcare, live scoring, live claim extraction, Internet Trust, or Artifact Trust overclaims appear
 ```
 
 ## Next build
 
-The next build should be **V56.4 Core Trust Scoring Models MVP**. It should implement the first seven Trust Scoring Models as versioned model JSON files: Artifact Trust, Claim Trust, Sentence-Level Trust, Evidence Trust, Confidence, Reliance Risk, and Runtime Admissibility.
+The next build should be **V57 Model-Driven Proof Pack**. It should make Proof Pack pull from the score contract, core Trust Scoring Models, decision records, evidence register, assumptions, caveats, owner, risk if wrong, and prototype boundary.
