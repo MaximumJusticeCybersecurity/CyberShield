@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V59 Internet Trust Engine MVP Scaffold**
+Current build label: **V59.1 Artifact Intake and Claim Table Prototype**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-internet-trust-engine-mvp-scaffold&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-1-artifact-intake-claim-table&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V59
+V59.1
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,27 +32,25 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V59.
+No new top-level tabs were added for V59.1.
 
-## Current implemented build: V59
+## Current implemented build: V59.1
 
-V59 adds the Internet Trust Engine MVP Scaffold as a bounded CyberShield scenario family. It introduces artifact intake placeholders, wrapper and metadata review, claim decomposition placeholders, evidence state mapping, reliance checking, model trace mapping, and Proof Pack output structure without claiming live internet verification or live evidence retrieval.
+V59.1 adds the Artifact Intake and Claim Table Prototype. It adds a static, editable-looking artifact intake panel and a claim table prototype so users can understand the future Internet Trust workflow without live ingestion, live extraction, live verification, or new top-level tabs.
 
-V59 changes:
+V59.1 changes:
 
-- adds `data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json`
-- adds `src/ui/v59-internet-trust-engine-mvp-scaffold.js`
-- loads V59 after V58.2 in `src/ui/v52-7-operational-layer.js`
-- adds Internet Trust Engine scaffold surface into Evidence
-- adds Internet Trust Engine scaffold surface into Proof Pack
-- adds Internet Trust Engine scaffold surface into Architecture
-- adds USAFacts-style pilot artifact structure
-- adds sample claim rows and claim type taxonomy
-- adds artifact field requirements
-- adds evidence state mapping
-- adds model trace mapping to existing Core Trust Scoring Models
-- adds scaffold trace modal
-- adds scaffold summary text download
+- adds `data/internet-trust/v59-1-artifact-intake-claim-table.json`
+- adds `src/ui/v59-1-artifact-intake-claim-table.js`
+- loads V59.1 after V59 in `src/ui/v52-7-operational-layer.js`
+- adds artifact intake panel into Evidence
+- adds artifact intake panel into Proof Pack
+- adds editable-looking artifact metadata fields
+- adds static claim table rows
+- maps claims to evidence states, confidence labels, model traces, reliance risk, missing evidence, next step, and proof-pack readiness
+- adds artifact intake trace modal
+- adds claim table text download
+- preserves V59 Internet Trust Engine MVP Scaffold
 - preserves V58.2 Runtime Action Queue to Proof Pack Trace Linkage
 - preserves V58.1 Runtime Action Queue
 - preserves V58 Operational Trust Control Pane
@@ -93,40 +91,34 @@ artifact-level trust score as the MVP anchor
 CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 ```
 
-## MVP flow
+## V59.1 artifact intake fields
 
 ```text
-Artifact intake placeholder
-Wrapper and metadata review
-Sentence and claim decomposition placeholder
-Claim type classification placeholder
-Evidence state mapping
-Reliance purpose and risk mapping
-Model trace to Core Trust Scoring Models
-Decision record and Proof Pack output
+Artifact Title
+Source or URL Note
+Artifact Type
+Publisher or Source
+Author or Presenter
+Publication Date
+Retrieval Date
+Reliance Purpose
+Audience
+Risk If Wrong
 ```
 
-## V59 pilot artifact
+## V59.1 claim table columns
 
 ```text
-USAFacts / Steve Ballmer government responsibilities video
-```
-
-The pilot is useful because it appears factual and data-driven but still requires validation of fiscal numbers, government entity definitions, Medicaid funding rules, education funding splits, time periods, and future legal-policy shifts.
-
-## V59 proof output sections
-
-```text
-Artifact summary
-Reliance purpose
-Claim table
-Sentence-level trust map
-Evidence state map
-Missing verification list
-Reliance risk statement
-Model trace
-Decision record
-Explicit limitations
+claim_id
+sentence
+claim_type
+evidence_state
+model_trace
+reliance_risk
+confidence_label
+missing_evidence
+next_step
+proof_pack_ready
 ```
 
 ## Current architecture files
@@ -141,6 +133,18 @@ Internet Trust Engine scaffold UI:
 
 ```text
 src/ui/v59-internet-trust-engine-mvp-scaffold.js
+```
+
+Artifact Intake and Claim Table registry:
+
+```text
+data/internet-trust/v59-1-artifact-intake-claim-table.json
+```
+
+Artifact Intake and Claim Table UI:
+
+```text
+src/ui/v59-1-artifact-intake-claim-table.js
 ```
 
 Queue to Proof Trace Linkage registry:
@@ -181,19 +185,21 @@ Purpose is not governance until it can cause a refusal.
 
 ## Boundary
 
-The current public build is a static advisory prototype scaffold. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live monitoring, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, workflow automation, notifications, or production agent enforcement systems.
+The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, workflow automation, notifications, or production agent enforcement systems.
 
-## Known V59 limitations
+## Known V59.1 limitations
 
-- Internet Trust Engine is a scaffold, not a live artifact-analysis engine
-- V59 does not retrieve internet content
-- V59 does not retrieve live evidence
-- V59 does not perform live claim extraction
-- V59 does not perform live scoring
-- V59 does not perform political validation
-- V59 does not label people or sources as trusted/untrusted
-- V59 does not make legal or compliance determinations
-- V59 download is a text file, not a branded PDF or board deck
+- Artifact intake is static and does not ingest live URLs
+- Artifact fields appear editable but are local UI only and are not persisted to a backend
+- Claim table rows are static prototype rows and are not produced by live extraction
+- V59.1 does not retrieve internet content
+- V59.1 does not retrieve live evidence
+- V59.1 does not perform live claim extraction
+- V59.1 does not perform live scoring
+- V59.1 does not perform political validation
+- V59.1 does not label people or sources as trusted/untrusted
+- V59.1 does not make legal or compliance determinations
+- V59.1 download is a text file, not a branded PDF or board deck
 - Core Trust Scoring Models remain prototype model definitions, not production-calibrated scoring engines
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
 
@@ -207,14 +213,15 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open Evidence
-confirm Internet Trust Engine scaffold appears
-confirm scaffold trace modal opens and closes
-confirm scaffold summary text download works
+confirm Artifact Intake and Claim Table appears
+confirm intake fields appear editable-looking
+confirm claim table appears
+confirm intake trace modal opens and closes
+confirm claim table text download works
 open Proof Pack
-confirm Internet Trust Engine scaffold appears
-open Architecture
-confirm Internet Trust Engine scaffold appears
-confirm V59 metadata is present in Settings/admin context
+confirm Artifact Intake and Claim Table appears
+confirm V59.1 metadata is present in Settings/admin context
+confirm Internet Trust Engine scaffold still appears
 confirm Queue to Proof Trace Linkage still appears
 confirm Runtime Action Queue still appears
 confirm Operational Trust Control Pane still appears
@@ -228,9 +235,9 @@ confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
 confirm V55 Purpose Protocol still works
 confirm no new top-level tab exists
-confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, live scoring, live claim extraction, live internet retrieval, live evidence retrieval, political validation, fact-checker branding, truth-engine branding, Internet Trust overclaim, Artifact Trust overclaim, report delivery, ticketing, notification, or workflow overclaims appear
+confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, live scoring, live claim extraction, live internet retrieval, live URL ingestion, live evidence retrieval, political validation, fact-checker branding, truth-engine branding, Internet Trust overclaim, Artifact Trust overclaim, report delivery, ticketing, notification, or workflow overclaims appear
 ```
 
 ## Next build
 
-The next build should be **V59.1 Artifact Intake and Claim Table Prototype**. It should add a static artifact intake panel and editable-looking claim table prototype, still without live ingestion, live extraction, live verification, or new top-level tabs.
+The next build should be **V59.2 Claim Row to Model Trace and Proof Pack Output**. It should connect static claim rows to the existing Core Trust Scoring Models, Evidence Register states, Decision Records, and Proof Pack output sections without adding live scoring, live extraction, live verification, or new top-level tabs.
