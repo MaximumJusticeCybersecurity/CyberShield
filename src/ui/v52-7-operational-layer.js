@@ -11,3 +11,4 @@ import './v55-5-trustmap-css-visual-cleanup.js';
 import './v55-6-trustmap-interaction-reliability.js';
 import './v56-trust-model-score-explanations.js';
 import './v56-1-evidence-assumption-register.js';
+import './v56-2-decision-record-hardening.js';
