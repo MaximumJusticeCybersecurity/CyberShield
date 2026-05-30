@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V57 Model-Driven Proof Pack**
+Current build label: **V57.1 Board and Executive Narrative Layer**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v57-model-driven-proof-pack&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v57-1-board-executive-narrative&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V57
+V57.1
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,22 +32,22 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V57.
+No new top-level tabs were added for V57.1.
 
-## Current implemented build: V57
+## Current implemented build: V57.1
 
-V57 adds the Model-Driven Proof Pack. It turns the scoring architecture into an executive-facing proof artifact by tying together the Universal Score Contract, Core Trust Scoring Models, Decision Records, Evidence and Assumption Register, assumptions, caveats, owner, risk if wrong, recommended next step, and prototype boundary.
+V57.1 adds the Board and Executive Narrative Layer. It converts the Model-Driven Proof Pack into board-ready language with executive summary, decision required, why it matters, what CyberShield relied on, what is missing or assumed, risk if wrong, recommended next move, and explicit limitations.
 
-V57 changes:
+V57.1 changes:
 
-- adds `data/proof/v57-model-driven-proof-pack-schema.json`
-- adds `src/ui/v57-model-driven-proof-pack.js`
-- loads V57 after V56.4 in `src/ui/v52-7-operational-layer.js`
-- adds a model-driven Proof Pack surface into Proof Pack
-- adds a proof artifact surface into Runtime
-- adds proof trace modal
-- adds text download for the Proof Pack
-- pulls from loaded decision records, evidence register, score contract, and Core Trust Scoring Models where available
+- adds `data/proof/v57-1-board-executive-narrative-schema.json`
+- adds `src/ui/v57-1-board-executive-narrative.js`
+- loads V57.1 after V57 in `src/ui/v52-7-operational-layer.js`
+- adds board-ready narrative surface into Proof Pack
+- adds board-ready narrative surface into Runtime
+- adds board packet modal
+- adds board narrative text download
+- preserves V57 Model-Driven Proof Pack
 - preserves V56.4 Core Trust Scoring Models
 - preserves V56.3 Universal Score Object and Score Band Contract
 - preserves V56.2 Decision Record Hardening
@@ -78,6 +78,19 @@ Trust Model Registry
 
 CyberShield must not show decorative scores. Every score must come from a named, versioned model with defined factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and runtime consequence.
 
+## Board narrative required sections
+
+```text
+Executive Summary
+Decision Required
+Why It Matters
+What CyberShield Relied On
+What Is Missing or Assumed
+Risk If Wrong
+Recommended Next Move
+Explicit Limitations
+```
+
 ## Proof Pack required sections
 
 ```text
@@ -94,7 +107,7 @@ Recommended Next Step
 Prototype Boundary
 ```
 
-## Core Trust Scoring Models in V56.4/V57
+## Core Trust Scoring Models
 
 ```text
 Artifact Trust Model
@@ -104,17 +117,6 @@ Evidence Trust Model
 Confidence Model
 Reliance Risk Model
 Runtime Admissibility Model
-```
-
-## Universal score bands
-
-```text
-90-100: High trust -> Allow
-75-89: Trustworthy with caveats -> Allow with caveat
-60-74: Moderate trust -> Constrain or verify
-40-59: Low trust -> Escalate
-20-39: Very low trust -> Block
-0-19: Untrusted -> Refuse or quarantine
 ```
 
 ## Current architecture files
@@ -191,6 +193,18 @@ Model-Driven Proof Pack UI:
 src/ui/v57-model-driven-proof-pack.js
 ```
 
+Board and Executive Narrative schema:
+
+```text
+data/proof/v57-1-board-executive-narrative-schema.json
+```
+
+Board and Executive Narrative UI:
+
+```text
+src/ui/v57-1-board-executive-narrative.js
+```
+
 ## Purpose Protocol doctrine
 
 CyberShield turns purpose into protocol.
@@ -199,7 +213,7 @@ Purpose is not governance until it can cause a refusal.
 
 ## Internet Trust Engine future track
 
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V57 live feature.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V57.1 live feature.
 
 Requirements live at:
 
@@ -232,17 +246,17 @@ artifact-level trust score as the MVP anchor
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, or production agent enforcement systems.
 
-## Known V57 limitations
+## Known V57.1 limitations
 
+- Board narrative uses static prototype and loaded in-browser registry data
+- Board narrative download is a text file, not a branded PDF or board deck
+- Board narrative does not retrieve live evidence
+- Board narrative does not certify compliance or validate legal conclusions
+- Board narrative does not send reports, create tickets, or trigger workflows
 - Proof Pack uses static prototype and loaded in-browser registry data
-- Proof Pack download is a text file, not a branded PDF
-- Proof Pack does not retrieve live evidence
-- Proof Pack does not certify compliance or validate legal conclusions
-- Proof Pack does not send reports, create tickets, or trigger workflows
 - Core Trust Scoring Models are prototype model definitions, not production-calibrated scoring engines
-- Model factors and weights are advisory defaults and require pilot calibration
-- V57 does not perform live scoring
-- V57 does not perform live claim extraction
+- V57.1 does not perform live scoring
+- V57.1 does not perform live claim extraction
 - Internet Trust Engine is captured as a future scenario track but not yet implemented
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
 
@@ -256,18 +270,18 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open Proof Pack
-confirm Model-Driven Proof Pack appears
-confirm proof trace modal opens and closes
-confirm proof pack text download works
+confirm Executive Proof Narrative appears
+confirm board packet modal opens and closes
+confirm board narrative text download works
+confirm Model-Driven Proof Pack still appears
 open Runtime
-confirm proof artifact surface appears
-open Architecture
+confirm board-ready narrative surface appears
+confirm proof artifact surface still appears
+confirm V57.1 metadata is present in Settings/admin context
 confirm Core Trust Scoring Models still appear
-confirm V57 metadata is present in Settings/admin context
 confirm Universal Score Contract still appears
 confirm decision records still work
 confirm evidence register still works
-confirm score model buttons still work
 confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
 confirm V55 Purpose Protocol still works
@@ -277,4 +291,4 @@ confirm no live enforcement, banking, payment, CMMC, healthcare, live scoring, l
 
 ## Next build
 
-The next build should be **V57.1 Board and Executive Narrative Layer**. It should convert Proof Pack outputs into board-ready language with a short executive summary, decision required, why it matters, risk if wrong, recommended next move, and explicit limitations.
+The next build should be **V58 Operational Trust Control Pane**. It should consolidate the executive inspection surface across TrustMap, Runtime, Evidence, Proof Pack, score contract, Trust Scoring Models, evidence gaps, decision records, narrative outputs, and next actions without adding a new top-level tab.
