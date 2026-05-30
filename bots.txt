@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V58.1 Runtime Action Queue
+Current implemented build: V58.2 Runtime Action Queue to Proof Pack Trace Linkage
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V58.1 Runtime Action Queue.
+CyberShield V58.2 Runtime Action Queue to Proof Pack Trace Linkage.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V58.1.
+No new top-level tabs were added for V58.2.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V58.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V58.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -25,16 +25,15 @@ No score without a model. No model without evidence. No evidence without traceab
 Preferred product term: Trust Scoring Models.
 Preferred architectural term: Trust Model Registry.
 
-V58.1 Runtime Action Queue:
-- adds `data/runtime/v58-1-runtime-action-queue.json`
-- adds `src/ui/v58-1-runtime-action-queue.js`
-- loads V58.1 after V58 in `src/ui/v52-7-operational-layer.js`
-- adds Runtime Action Queue into Runtime
-- adds Runtime Action Queue into Briefing
-- adds prioritized queue items with owner, evidence gap, risk if wrong, next move, route, and proof-ready status
-- adds route buttons to existing workspaces
-- adds queue trace modal
-- adds action queue text download
+V58.2 Runtime Action Queue to Proof Pack Trace Linkage:
+- adds `data/runtime/v58-2-queue-proof-trace-linkage.json`
+- adds `src/ui/v58-2-queue-proof-trace-linkage.js`
+- loads V58.2 after V58.1 in `src/ui/v52-7-operational-layer.js`
+- adds queue-to-proof trace linkage surface into Proof Pack
+- adds queue-to-proof trace linkage surface into Runtime
+- adds trace-link modal showing linked decision records, evidence items, Proof Pack sections, and board narrative sections
+- enhances Runtime Action Queue cards with proof-trace access when matching links are available
+- preserves V58.1 Runtime Action Queue
 - preserves V58 Operational Trust Control Pane
 - preserves V57.1 Board and Executive Narrative Layer
 - preserves V57 Model-Driven Proof Pack
@@ -46,16 +45,15 @@ V58.1 Runtime Action Queue:
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-Runtime Action Queue fields:
-- priority
-- action_title
-- runtime_action
-- owner
-- evidence_gap
-- risk_if_wrong
-- recommended_next_move
-- proof_ready_status
-- route
+Queue-to-proof trace fields:
+- queue_item_id
+- decision_record_ids
+- evidence_item_ids
+- proof_pack_sections
+- board_narrative_sections
+- trace_summary
+- proof_gap
+- next_trace_action
 - prototype_boundary
 
 Prototype boundary:
@@ -65,4 +63,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Runtime and Briefing, confirm Runtime Action Queue appears, confirm queue route buttons work, confirm queue trace modal opens and closes, confirm action queue text download works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Runtime and Proof Pack, confirm queue-to-proof trace linkage appears, confirm proof trace buttons/modal work, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
