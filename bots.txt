@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V56.4 Core Trust Scoring Models MVP
+Current implemented build: V57 Model-Driven Proof Pack
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V56.4 Core Trust Scoring Models MVP.
+CyberShield V57 Model-Driven Proof Pack.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V56.4.
+No new top-level tabs were added for V57.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V56.4. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V57. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -24,24 +24,38 @@ No score without a model. No model without evidence. No evidence without traceab
 
 Preferred product term: Trust Scoring Models.
 Preferred architectural term: Trust Model Registry.
-Do not call these risk scores only. CyberShield evaluates trust, confidence, evidence, reliance, purpose, runtime admissibility, and defensibility.
 
-V56.4 Core Trust Scoring Models MVP:
-- adds `data/models/v56-4-core-trust-scoring-models.json`
-- adds `src/ui/v56-4-core-trust-scoring-models.js`
-- loads V56.4 after V56.3 in `src/ui/v52-7-operational-layer.js`
-- adds the first seven Core Trust Scoring Models
-- exposes model cards in Architecture, Evidence, and Proof Pack
-- adds model inspection modal with factors, weights, evidence standards, failure conditions, and runtime mapping
+V57 Model-Driven Proof Pack:
+- adds `data/proof/v57-model-driven-proof-pack-schema.json`
+- adds `src/ui/v57-model-driven-proof-pack.js`
+- loads V57 after V56.4 in `src/ui/v52-7-operational-layer.js`
+- adds a model-driven Proof Pack surface into Proof Pack
+- adds a proof artifact surface into Runtime
+- adds proof trace modal
+- adds text download for the Proof Pack
+- pulls from loaded decision records, evidence register, score contract, and Core Trust Scoring Models where available
+- preserves V56.4 Core Trust Scoring Models
 - preserves V56.3 Universal Score Object and Score Band Contract
 - preserves V56.2 Decision Record Hardening
 - preserves V56.1 Evidence and Assumption Register
-- preserves V56 Trust Model Registry and Score Explanation Layer
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-Core Trust Scoring Models in V56.4:
+Proof Pack required sections:
+- Executive Summary
+- Action or Reliance Purpose
+- Score and Model Trace
+- Evidence State
+- Missing Evidence
+- Assumptions and Caveats
+- Risk if Wrong
+- Runtime Action
+- Owner and Escalation Path
+- Recommended Next Step
+- Prototype Boundary
+
+Core Trust Scoring Models:
 - Artifact Trust Model
 - Claim Trust Model
 - Sentence-Level Trust Model
@@ -50,28 +64,17 @@ Core Trust Scoring Models in V56.4:
 - Reliance Risk Model
 - Runtime Admissibility Model
 
-Universal score bands:
-- 90-100: High trust -> Allow
-- 75-89: Trustworthy with caveats -> Allow with caveat
-- 60-74: Moderate trust -> Constrain or verify
-- 40-59: Low trust -> Escalate
-- 20-39: Very low trust -> Block
-- 0-19: Untrusted -> Refuse or quarantine
-
-Required score object fields:
-score_name, model_id, model_version, score, confidence, decision_band, runtime_action, top_score_drivers, missing_evidence, assumptions, caveats, risk_if_wrong, recommended_next_step, owner, escalation_path, prototype_boundary.
-
 TrustMap doctrine:
 The CyberShield TrustMap is a radar-constellation interface. CyberShield Core is a thick neon-blue shield-boundary trust kernel, not a normal node. Complexity lives at the edge. Trust is established at the center.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V56.4 live feature and not a standalone product pillar. V56.4 defines models needed later, but does not implement live Internet Trust Engine behavior.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V57 live feature and not a standalone product pillar. V57 makes the Proof Pack ready for future artifact and claim-reliance work, but does not implement live Internet Trust Engine behavior.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, live scoring, live claim extraction, internet claim verification, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
+Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Architecture, Evidence, and Proof Pack, confirm Core Trust Scoring Models appear, confirm model inspection modal opens and closes, confirm seven models are listed, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Proof Pack and Runtime, confirm Model-Driven Proof Pack appears, confirm proof trace modal opens and closes, confirm proof pack text download works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
