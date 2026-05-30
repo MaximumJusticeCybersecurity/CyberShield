@@ -27,3 +27,4 @@ import './v59-4-internet-trust-board-narrative.js';
 import './v59-5-internet-trust-qa-copy-guardrails.js';
 import './v60-trust-evidence-workbench.js';
 import './v60-1-evidence-state-transition-prototype.js';
+import './v60-2-evidence-to-score-impact-preview.js';
