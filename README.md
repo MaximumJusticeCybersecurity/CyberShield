@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V56.1 Evidence and Assumption Register**
+Current build label: **V56.2 Decision Record Hardening**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-1-evidence-assumption-register&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-2-decision-record-hardening&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V56.1
+V56.2
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,27 +32,48 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V56.1.
+No new top-level tabs were added for V56.2.
 
-## Current implemented build: V56.1
+## Current implemented build: V56.2
 
-V56.1 adds the Evidence and Assumption Register. It separates provided, missing, stale, assumed, conflicting, and needs-verification evidence states so CyberShield can show what a recommendation relies on and what must be verified before decision reliance.
+V56.2 hardens CyberShield decision records so each consequential recommendation can show the action under review, model used, model version, score, confidence, evidence state, missing evidence, assumptions, caveats, risk if wrong, runtime action, owner, escalation path, next step, and prototype boundary.
 
-V56.1 changes:
+V56.2 changes:
 
-- adds `data/evidence/v56-1-evidence-assumption-register.json`
-- adds `src/ui/v56-1-evidence-assumption-register.js`
-- loads V56.1 after V56 in `src/ui/v52-7-operational-layer.js`
-- adds evidence state taxonomy
-- adds static evidence and assumption register items
-- injects the register into the Evidence workspace
-- adds related evidence state context inside TrustMap object detail
-- adds full register modal
+- adds `data/decisions/v56-2-decision-record-schema.json`
+- adds `src/ui/v56-2-decision-record-hardening.js`
+- loads V56.2 after V56.1 in `src/ui/v52-7-operational-layer.js`
+- adds decision records into Runtime, Evidence, and Proof Pack workspaces
+- adds a decision record modal
+- adds text download for demo decision records
 - preserves V56 model explanations
+- preserves V56.1 Evidence and Assumption Register
 - preserves V55.6 TrustMap interaction reliability
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
+
+## Controlling scoring doctrine
+
+The controlling doctrine for CyberShield scoring is:
+
+```text
+No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
+```
+
+Preferred product term:
+
+```text
+Trust Scoring Models
+```
+
+Preferred architectural term:
+
+```text
+Trust Model Registry
+```
+
+CyberShield must not show decorative scores. Every score must come from a named, versioned model with defined factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and runtime consequence.
 
 ## CyberShield Trust Model Doctrine
 
@@ -110,6 +131,55 @@ Evidence register UI:
 src/ui/v56-1-evidence-assumption-register.js
 ```
 
+Decision record schema:
+
+```text
+data/decisions/v56-2-decision-record-schema.json
+```
+
+Decision record UI:
+
+```text
+src/ui/v56-2-decision-record-hardening.js
+```
+
+## Decision record required fields
+
+```text
+record_id
+created_at
+action_under_review
+object_under_review
+model_used
+model_version
+score
+confidence
+decision_band
+runtime_action
+evidence_state
+evidence_inputs
+missing_evidence
+assumptions
+caveats
+risk_if_wrong
+owner
+escalation_path
+recommended_next_step
+prototype_boundary
+```
+
+## Runtime action ladder
+
+```text
+Allow
+Allow with caveat
+Constrain
+Escalate
+Block
+Refuse
+Quarantine
+```
+
 ## Evidence state taxonomy
 
 ```text
@@ -120,8 +190,6 @@ Assumed
 Conflicting
 Needs Verification
 ```
-
-These states are used to show whether CyberShield can rely on a claim, control, asset, action, or scenario.
 
 ## Purpose Protocol doctrine
 
@@ -137,7 +205,7 @@ Vendor payment destination change: if banking details changed within 30 days, pa
 
 ## Internet Trust Engine future track
 
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.1 implementation.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.2 implementation.
 
 Requirements live at:
 
@@ -170,14 +238,14 @@ artifact-level trust score as the MVP anchor
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, or production agent enforcement systems.
 
-## Known V56.1 limitations
+## Known V56.2 limitations
 
-- Evidence register uses static prototype data
+- Decision records use static prototype data
+- Decision record downloads are text files, not branded PDFs
+- Decision records do not create tickets, send approvals, retrieve evidence, or trigger live workflow
 - Evidence states do not retrieve or validate live evidence
-- Missing evidence flags are advisory and not automated findings
 - Model explanations are demo-directional and not statistically validated
 - TrustMap object routes are static advisory routes, not backend workflow actions
-- Runtime, Evidence, and Proof Pack routing does not create tickets, send notifications, or retrieve live evidence
 - CMMC guidance is advisory and does not represent legal advice, certification, or assessment outcome
 - healthcare scenario guidance is advisory and does not represent compliance validation
 - Internet Trust Engine is captured as a future scenario track but not yet implemented
@@ -192,14 +260,17 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
-open TrustMap
-confirm V56.1 metadata is present in Settings/admin context
-confirm TrustMap renders from registry data
+open Runtime
+confirm Decision Records appear
+open Evidence
+confirm Decision Records and Evidence Register appear
+open Proof Pack
+confirm Decision Records appear
+confirm decision record modal opens and closes
+confirm decision record text download works
+confirm V56.2 metadata is present in Settings/admin context
 confirm score model buttons still work
-confirm Evidence workspace shows Evidence and Assumption Register
-confirm full evidence register modal opens and closes
-confirm TrustMap object detail shows related evidence state when available
-confirm V55.6 TrustMap interaction routes still work
+confirm TrustMap object detail still shows related evidence state when available
 confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
 confirm V55 Purpose Protocol still works
@@ -207,6 +278,6 @@ confirm no new top-level tab exists
 confirm no live enforcement, banking, payment, CMMC, healthcare, Internet Trust, or Artifact Trust overclaims appear
 ```
 
-## Next likely decision point
+## Next build
 
-After V56.1 browser QA passes, the next build should move into **V56.2 Decision Record Hardening** so CyberShield can preserve the action under review, information relied on, consequence if wrong, trust status, recommendation, owner, evidence state, and boundary language in one defensible record.
+The next build should be **V56.3 Universal Score Object and Score Band Contract**. It should formalize the required score object, universal score bands, runtime action ladder, and trace requirements from the scoring doctrine so every future Trust Scoring Model follows the same contract.
