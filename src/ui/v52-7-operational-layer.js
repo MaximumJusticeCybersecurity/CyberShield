@@ -13,3 +13,4 @@ import './v56-trust-model-score-explanations.js';
 import './v56-1-evidence-assumption-register.js';
 import './v56-2-decision-record-hardening.js';
 import './v56-3-universal-score-contract.js';
+import './v56-4-core-trust-scoring-models.js';
