@@ -26,3 +26,4 @@ import './v59-3-internet-trust-proof-pack-export-contract.js';
 import './v59-4-internet-trust-board-narrative.js';
 import './v59-5-internet-trust-qa-copy-guardrails.js';
 import './v60-trust-evidence-workbench.js';
+import './v60-1-evidence-state-transition-prototype.js';
