@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V59.2 Claim Row to Model Trace and Proof Pack Output**
+Current build label: **V59.3 Internet Trust Proof Pack Export Contract**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-2-claim-model-proof-trace&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-3-internet-trust-proof-pack-export&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V59.2
+V59.3
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,28 +32,24 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V59.2.
+No new top-level tabs were added for V59.3.
 
-## Current implemented build: V59.2
+## Current implemented build: V59.3
 
-V59.2 adds Claim Row to Model Trace and Proof Pack Output. It connects static claim rows to Core Trust Scoring Models, Evidence Register states, Decision Records, runtime reliance actions, human review requirements, and Proof Pack output sections without adding live scoring, live extraction, live verification, or a new top-level tab.
+V59.3 adds the Internet Trust Proof Pack Export Contract. It consolidates artifact intake, claim table, claim-to-model trace, evidence state, runtime reliance action, human review requirement, Proof Pack output sections, and explicit limitations into one static prototype export contract.
 
-V59.2 changes:
+V59.3 changes:
 
-- adds `data/internet-trust/v59-2-claim-model-proof-trace.json`
-- adds `src/ui/v59-2-claim-model-proof-trace.js`
-- loads V59.2 after V59.1 in `src/ui/v52-7-operational-layer.js`
-- adds claim model proof trace into Evidence
-- adds claim model proof trace into Proof Pack
-- connects static claim rows to model IDs
-- connects static claim rows to evidence state and evidence refs
-- connects static claim rows to decision record refs
-- connects static claim rows to Proof Pack sections
-- adds runtime reliance action per claim
-- adds human review requirement per claim
-- adds claim trace modal
-- adds claim proof trace text download
-- enhances claim table rows with Trace buttons when claim IDs match
+- adds `data/internet-trust/v59-3-internet-trust-proof-pack-export-contract.json`
+- adds `src/ui/v59-3-internet-trust-proof-pack-export-contract.js`
+- loads V59.3 after V59.2 in `src/ui/v52-7-operational-layer.js`
+- adds Internet Trust Proof Pack Export Contract into Proof Pack
+- adds Internet Trust Proof Pack Export Contract into Evidence
+- consolidates artifact intake and claim trace data into one export object
+- adds export contract modal
+- adds bounded prototype export text download
+- includes explicit limitations in the export
+- preserves V59.2 Claim Row to Model Trace and Proof Pack Output
 - preserves V59.1 Artifact Intake and Claim Table Prototype
 - preserves V59 Internet Trust Engine MVP Scaffold
 - preserves V58.2 Runtime Action Queue to Proof Pack Trace Linkage
@@ -96,33 +92,56 @@ artifact-level trust score as the MVP anchor
 CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 ```
 
-## V59.2 claim trace fields
+## V59.3 export sections
 
 ```text
-claim_id
-model_ids
-evidence_state
-evidence_register_refs
-decision_record_refs
+Executive artifact summary
+Reliance purpose
+Artifact intake metadata
+Claim table
+Claim-to-model trace
+Evidence state map
+Runtime reliance actions
+Human review requirements
+Proof Pack output sentences
+Missing evidence and verification needs
+Explicit limitations
+Prototype boundary
+```
+
+## V59.3 required export fields
+
+```text
+export_id
+export_version
+artifact_title
+artifact_type
+source_note
+reliance_purpose
+audience
+risk_if_wrong
+claim_count
+claims_requiring_human_review
+runtime_action_summary
+claim_rows
+model_trace_summary
 proof_pack_sections
-proof_output_sentence
-runtime_reliance_action
-human_review_required
+limitations
 prototype_boundary
 ```
 
 ## Current architecture files
 
-Artifact Intake and Claim Table registry:
+Internet Trust Proof Pack Export Contract registry:
 
 ```text
-data/internet-trust/v59-1-artifact-intake-claim-table.json
+data/internet-trust/v59-3-internet-trust-proof-pack-export-contract.json
 ```
 
-Artifact Intake and Claim Table UI:
+Internet Trust Proof Pack Export Contract UI:
 
 ```text
-src/ui/v59-1-artifact-intake-claim-table.js
+src/ui/v59-3-internet-trust-proof-pack-export-contract.js
 ```
 
 Claim Row to Model Trace registry:
@@ -131,22 +150,16 @@ Claim Row to Model Trace registry:
 data/internet-trust/v59-2-claim-model-proof-trace.json
 ```
 
-Claim Row to Model Trace UI:
+Artifact Intake and Claim Table registry:
 
 ```text
-src/ui/v59-2-claim-model-proof-trace.js
+data/internet-trust/v59-1-artifact-intake-claim-table.json
 ```
 
 Internet Trust Engine scaffold registry:
 
 ```text
 data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json
-```
-
-Internet Trust Engine scaffold UI:
-
-```text
-src/ui/v59-internet-trust-engine-mvp-scaffold.js
 ```
 
 Core Trust Scoring Models:
@@ -183,19 +196,19 @@ Purpose is not governance until it can cause a refusal.
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, workflow automation, notifications, or production agent enforcement systems.
 
-## Known V59.2 limitations
+## Known V59.3 limitations
 
-- Claim-to-model traces are static prototype mappings
-- Claim rows are not generated by live claim extraction
-- V59.2 does not retrieve internet content
-- V59.2 does not retrieve live evidence
-- V59.2 does not perform live claim extraction
-- V59.2 does not perform live scoring
-- V59.2 does not perform live verification
-- V59.2 does not perform political validation
-- V59.2 does not label people or sources as trusted/untrusted
-- V59.2 does not make legal or compliance determinations
-- V59.2 download is a text file, not a branded PDF or board deck
+- Export contract is a static prototype contract
+- Export download is a text file, not a branded PDF or board deck
+- V59.3 does not perform live URL ingestion
+- V59.3 does not retrieve internet content
+- V59.3 does not retrieve live evidence
+- V59.3 does not perform live claim extraction
+- V59.3 does not perform live scoring
+- V59.3 does not perform live verification
+- V59.3 does not perform political validation
+- V59.3 does not label people or sources as trusted/untrusted
+- V59.3 does not make legal or compliance determinations
 - Core Trust Scoring Models remain prototype model definitions, not production-calibrated scoring engines
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
 
@@ -208,15 +221,15 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
-open Evidence
-confirm Artifact Intake and Claim Table appears
-confirm Claim Row to Model Trace appears
-confirm Trace buttons appear in claim table rows
-confirm claim trace modal opens and closes
-confirm claim proof trace text download works
 open Proof Pack
-confirm Claim Row to Model Trace appears
-confirm V59.2 metadata is present in Settings/admin context
+confirm Internet Trust Proof Pack Export Contract appears
+confirm export contract modal opens and closes
+confirm prototype export text download works
+open Evidence
+confirm Internet Trust Proof Pack Export Contract appears
+confirm V59.3 metadata is present in Settings/admin context
+confirm Claim Row to Model Trace still appears
+confirm Artifact Intake and Claim Table still appears
 confirm Internet Trust Engine scaffold still appears
 confirm Queue to Proof Trace Linkage still appears
 confirm Runtime Action Queue still appears
@@ -236,4 +249,4 @@ confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, liv
 
 ## Next build
 
-The next build should be **V59.3 Internet Trust Proof Pack Export Contract**. It should consolidate artifact intake, claim table, claim-to-model trace, evidence state, runtime reliance action, human review, and explicit limitations into a single prototype export contract without live extraction, live verification, live scoring, or new top-level tabs.
+The next build should be **V59.4 Internet Trust Board Narrative Add-On**. It should convert the V59.3 export contract into a concise board/executive narrative for artifact reliance decisions without live extraction, live verification, live scoring, or new top-level tabs.
