@@ -32,6 +32,7 @@ function v60InstallStyles(){
 
 function v60Items(){ return V60_STATE.registry?.sample_evidence_items || []; }
 function v60States(){ return V60_STATE.registry?.evidence_states || []; }
+function v60RiskItems(){ return v60Items().filter(i => ['missing','needs_verification','assumed','stale','conflicting'].includes(i.current_state)); }
 function v60Object(){
   const r = V60_STATE.registry || {};
   return { version:'V60', product:'CyberShield Executive OS', generated_at:new Date().toISOString(), purpose:r.purpose, evidence_states:r.evidence_states, sample_evidence_items:r.sample_evidence_items, state_transition_rules:r.state_transition_rules, proof_pack_traceability:r.proof_pack_traceability, boundary:r.boundary };
@@ -46,11 +47,25 @@ function v60ItemCard(item){
   return `<article class="v60-card"><strong>${v60Esc(item.evidence_title)}</strong><p class="v60-small"><span class="v60-pill">${v60Esc(item.current_state)}</span> <span class="v60-pill">${v60Esc(item.evidence_type)}</span></p><p class="v60-small"><b>Owner:</b> ${v60Esc(item.owner)}<br><b>Reviewer:</b> ${v60Esc(item.reviewer)}</p><p class="v60-small"><b>Risk if wrong:</b> ${v60Esc(item.risk_if_wrong)}</p><p class="v60-small"><b>Next action:</b> ${v60Esc(item.next_action)}</p><p class="v60-small"><b>Claims:</b> ${(item.linked_claims || []).map(x => `<span class="v60-pill">${v60Esc(x)}</span>`).join('')}<br><b>Decisions:</b> ${(item.linked_decisions || []).map(x => `<span class="v60-pill">${v60Esc(x)}</span>`).join('')}</p></article>`;
 }
 
-function v60Html(){
+function v60FullEvidenceWorkbenchHtml(){
   const r = V60_STATE.registry;
   if(!r) return '';
-  const needs = v60Items().filter(i => ['missing','needs_verification','assumed','stale','conflicting'].includes(i.current_state)).length;
+  const needs = v60RiskItems().length;
   return `<section class="v60-workbench"><span class="v60-kicker">Trust Evidence Workbench</span><h2>Manual Evidence Workbench</h2><p>${v60Esc(r.purpose)}</p><div class="v60-grid"><article class="v60-card"><strong>Evidence items</strong><p class="v60-small">${v60Esc(v60Items().length)} sample evidence objects</p></article><article class="v60-card"><strong>Needs review</strong><p class="v60-small">${v60Esc(needs)} items need verification, completion, or caveat handling</p></article><article class="v60-card"><strong>States</strong><p>${v60States().map(s => `<span class="v60-pill">${v60Esc(s.label)}</span>`).join('')}</p></article></div><h3>Manual Entry Prototype</h3><p class="v60-small">Editable-looking fields are local UI only. Nothing is saved to a backend.</p>${v60EntryFieldsHtml()}<h3>Evidence Objects</h3><div class="v60-grid">${v60Items().map(v60ItemCard).join('')}</div><h3>State Transition Rules</h3><ul class="v60-list">${(r.state_transition_rules || []).map(rule => `<li>${v60Esc(rule)}</li>`).join('')}</ul><div class="v60-actions"><button type="button" class="v60-btn" data-v60-open>Open workbench trace</button><button type="button" class="v60-btn" data-v60-download>Download evidence workbench</button></div><div class="v60-boundary"><strong>Boundary:</strong> ${v60Esc(r.boundary)}</div></section>`;
+}
+
+function v60RuntimeEvidencePanelHtml(){
+  const r = V60_STATE.registry;
+  if(!r) return '';
+  const blockers = v60RiskItems().slice(0, 4);
+  return `<section class="v60-workbench" data-v6031-runtime-panel="true"><span class="v60-kicker">Runtime Evidence Requirements</span><h2>Evidence blocking or constraining action</h2><p>Runtime shows only the evidence required before action. The full Manual Evidence Workbench belongs in Evidence.</p><div class="v60-grid"><article class="v60-card"><strong>Runtime posture</strong><p class="v60-small">${blockers.length ? 'Escalate or constrain until evidence gaps are resolved.' : 'No prototype blockers represented.'}</p></article><article class="v60-card"><strong>Evidence gaps</strong><p class="v60-small">${v60Esc(blockers.length)} blocking or constraining evidence items</p></article><article class="v60-card"><strong>Next human action</strong><p class="v60-small">Assign owner, verify evidence, document limitations, then return to Runtime decisioning.</p></article></div><h3>Blocking / constraining evidence</h3><div class="v60-grid">${blockers.map(v60ItemCard).join('') || '<article class="v60-card"><strong>No blocking prototype evidence</strong><p class="v60-small">Evidence state still requires browser QA.</p></article>'}</div><div class="v60-actions"><button type="button" class="v60-btn" data-v60-open>Open evidence trace</button><button type="button" class="v60-btn" data-v60-download>Download evidence workbench</button></div><div class="v60-boundary"><strong>Boundary:</strong> Runtime evidence panel is static advisory context only. No live evidence retrieval, workflow automation, ticketing, notification, or enforcement.</div></section>`;
+}
+
+function v60ProofTraceHtml(){
+  const r = V60_STATE.registry;
+  if(!r) return '';
+  const proofItems = v60RiskItems().slice(0, 5);
+  return `<section class="v60-workbench" data-v6031-proof-trace="true"><span class="v60-kicker">Proof Pack Evidence Trace</span><h2>Evidence defensibility trace</h2><p>Proof Pack shows what evidence, assumptions, caveats, and missing verification must be disclosed. The full Manual Evidence Workbench belongs in Evidence.</p><div class="v60-grid">${proofItems.map(v60ItemCard).join('') || '<article class="v60-card"><strong>No proof trace items represented</strong><p class="v60-small">Evidence state still requires browser QA.</p></article>'}</div><h3>Proof Pack traceability rules</h3><ul class="v60-list">${(r.proof_pack_traceability || []).map(rule => `<li>${v60Esc(rule)}</li>`).join('')}</ul><div class="v60-actions"><button type="button" class="v60-btn" data-v60-open>Open workbench trace</button><button type="button" class="v60-btn" data-v60-download>Download evidence workbench</button></div><div class="v60-boundary"><strong>Boundary:</strong> Proof trace is static advisory context only. It is not legal, audit, CMMC, healthcare, or compliance validation.</div></section>`;
 }
 
 function v60OpenTrace(){
@@ -78,15 +93,29 @@ function v60Download(){
 }
 
 function v60Inject(){
-  ['evidence','runtime','proof'].forEach(view => {
-    const root = v60$(`#${view}.active`);
-    if(root && !v60$(`#v60-${view}-workbench`, root)){
-      const wrapper = document.createElement('div');
-      wrapper.id = `v60-${view}-workbench`;
-      wrapper.innerHTML = v60Html();
-      root.insertAdjacentElement(view === 'runtime' ? 'afterbegin' : 'beforeend', wrapper);
-    }
-  });
+  const evidence = v60$('#evidence.active');
+  if(evidence && !v60$('#v60-evidence-workbench', evidence)){
+    const wrapper = document.createElement('div');
+    wrapper.id = 'v60-evidence-workbench';
+    wrapper.innerHTML = v60FullEvidenceWorkbenchHtml();
+    evidence.insertAdjacentElement('beforeend', wrapper);
+  }
+
+  const runtime = v60$('#runtime.active');
+  if(runtime && !v60$('#v60-runtime-workbench', runtime)){
+    const wrapper = document.createElement('div');
+    wrapper.id = 'v60-runtime-workbench';
+    wrapper.innerHTML = v60RuntimeEvidencePanelHtml();
+    runtime.insertAdjacentElement('afterbegin', wrapper);
+  }
+
+  const proof = v60$('#proof.active');
+  if(proof && !v60$('#v60-proof-workbench', proof)){
+    const wrapper = document.createElement('div');
+    wrapper.id = 'v60-proof-workbench';
+    wrapper.innerHTML = v60ProofTraceHtml();
+    proof.insertAdjacentElement('beforeend', wrapper);
+  }
 }
 
 function v60MarkMeta(){
@@ -94,10 +123,10 @@ function v60MarkMeta(){
   if(!payload) return;
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
-    parsed.build = 'V60 Trust Evidence Workbench Scaffold';
-    parsed.version = 'V60';
-    parsed.previous_operational_build = 'V59.5 Internet Trust QA and Copy Guardrail Pass';
-    parsed.trust_evidence_workbench = { status:'active_static_scaffold', path: V60_WORKBENCH_PATH, evidence_item_count: v60Items().length, boundary: V60_STATE.registry?.boundary, github_pages_browser_qa_required:true };
+    parsed.build = 'V60.3.1 Runtime Evidence Panel Correction';
+    parsed.version = 'V60.3.1';
+    parsed.previous_operational_build = 'V60.3 Universal Model Trace Inspector';
+    parsed.trust_evidence_workbench = { status:'corrected_by_workspace', path: V60_WORKBENCH_PATH, evidence_item_count: v60Items().length, placement: { evidence: 'full Manual Evidence Workbench', runtime: 'compact Runtime Evidence Requirements panel', proof: 'Proof Pack evidence trace' }, boundary: V60_STATE.registry?.boundary, github_pages_browser_qa_required:true };
     parsed.prototype_boundary = 'Static advisory prototype only. No live evidence retrieval, backend persistence, ticketing, notifications, workflow automation, enforcement, or external integrations.';
     payload.textContent = JSON.stringify(parsed, null, 2);
   } catch {}
