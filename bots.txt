@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V58 Operational Trust Control Pane
+Current implemented build: V58.1 Runtime Action Queue
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V58 Operational Trust Control Pane.
+CyberShield V58.1 Runtime Action Queue.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V58.
+No new top-level tabs were added for V58.1.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V58. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V58.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -25,16 +25,17 @@ No score without a model. No model without evidence. No evidence without traceab
 Preferred product term: Trust Scoring Models.
 Preferred architectural term: Trust Model Registry.
 
-V58 Operational Trust Control Pane:
-- adds `data/control/v58-operational-trust-control-pane.json`
-- adds `src/ui/v58-operational-trust-control-pane.js`
-- loads V58 after V57.1 in `src/ui/v52-7-operational-layer.js`
-- adds Operational Trust Control Pane into Briefing
-- adds Operational Trust Control Pane into Runtime
-- adds control cards for Decision Required, Evidence Gaps, Model Trace, and Proof Ready
-- adds route buttons to Runtime, Evidence, Architecture, and Proof Pack
-- adds control pane trace modal
-- adds control summary text download
+V58.1 Runtime Action Queue:
+- adds `data/runtime/v58-1-runtime-action-queue.json`
+- adds `src/ui/v58-1-runtime-action-queue.js`
+- loads V58.1 after V58 in `src/ui/v52-7-operational-layer.js`
+- adds Runtime Action Queue into Runtime
+- adds Runtime Action Queue into Briefing
+- adds prioritized queue items with owner, evidence gap, risk if wrong, next move, route, and proof-ready status
+- adds route buttons to existing workspaces
+- adds queue trace modal
+- adds action queue text download
+- preserves V58 Operational Trust Control Pane
 - preserves V57.1 Board and Executive Narrative Layer
 - preserves V57 Model-Driven Proof Pack
 - preserves V56.4 Core Trust Scoring Models
@@ -45,27 +46,23 @@ V58 Operational Trust Control Pane:
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-Operational Trust Control Pane executive questions:
-- What decision is required?
-- What information are we relying on?
-- What evidence is missing or assumed?
-- What model explains the score?
-- What happens if the information is wrong?
-- Who owns the next move?
-- What proof can we show later?
-- What are the prototype limitations?
-
-TrustMap doctrine:
-The CyberShield TrustMap is a radar-constellation interface. CyberShield Core is a thick neon-blue shield-boundary trust kernel, not a normal node. Complexity lives at the edge. Trust is established at the center.
-
-Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V58 live feature and not a standalone product pillar.
+Runtime Action Queue fields:
+- priority
+- action_title
+- runtime_action
+- owner
+- evidence_gap
+- risk_if_wrong
+- recommended_next_move
+- proof_ready_status
+- route
+- prototype_boundary
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
+Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Briefing and Runtime, confirm Operational Trust Control Pane appears, confirm route buttons work, confirm control pane trace modal opens and closes, confirm control summary text download works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Runtime and Briefing, confirm Runtime Action Queue appears, confirm queue route buttons work, confirm queue trace modal opens and closes, confirm action queue text download works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
