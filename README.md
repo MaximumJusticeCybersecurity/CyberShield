@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V56 Trust Model Registry and Score Explanation Layer**
+Current build label: **V56.1 Evidence and Assumption Register**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-trust-model-score-explanations&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-1-evidence-assumption-register&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V56
+V56.1
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,21 +32,24 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V56.
+No new top-level tabs were added for V56.1.
 
-## Current implemented build: V56
+## Current implemented build: V56.1
 
-V56 adds the Trust Model Registry and Score Explanation Layer. It creates a model registry and adds visible score explanation routes so scores are no longer unsupported numbers. V56 preserves the V55.6 TrustMap interaction layer, V55.5 stylesheet cleanup, V55.4 registry-rendered TrustMap, V55 Purpose Protocol, and the thick neon-blue CyberShield Core shield perimeter.
+V56.1 adds the Evidence and Assumption Register. It separates provided, missing, stale, assumed, conflicting, and needs-verification evidence states so CyberShield can show what a recommendation relies on and what must be verified before decision reliance.
 
-V56 changes:
+V56.1 changes:
 
-- adds `data/models/v56-trust-score-models.json`
-- adds `src/ui/v56-trust-model-score-explanations.js`
-- loads V56 after V55.6 in `src/ui/v52-7-operational-layer.js`
-- adds model explanations for Operational Trust Score, Scenario Trust Score, and Purpose Protocol Readiness
-- shows model inputs, weights, thresholds, evidence requirements, and limitations
-- labels models as demo-directional
-- keeps all scores advisory unless validated otherwise
+- adds `data/evidence/v56-1-evidence-assumption-register.json`
+- adds `src/ui/v56-1-evidence-assumption-register.js`
+- loads V56.1 after V56 in `src/ui/v52-7-operational-layer.js`
+- adds evidence state taxonomy
+- adds static evidence and assumption register items
+- injects the register into the Evidence workspace
+- adds related evidence state context inside TrustMap object detail
+- adds full register modal
+- preserves V56 model explanations
+- preserves V55.6 TrustMap interaction reliability
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
@@ -56,26 +59,6 @@ V56 changes:
 CyberShield evaluates whether the information behind a critical action or claim can be trusted before the business acts, cites, shares, briefs, teaches, or relies on it.
 
 Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, consequence if wrong, and decision reliance are the point.
-
-## TrustMap visual doctrine
-
-The CyberShield TrustMap is a radar-constellation interface.
-
-```text
-Radar = orientation, active scanning, situational awareness
-Constellation = connected assets, dependencies, trust relationships
-Not process flow = no left-to-right workflow pretending to be a map
-```
-
-The CyberShield Core is a clean neon-blue shield boundary and trust kernel, not a normal node. No connector should visually pass through or clutter the shield interior.
-
-Layer 1 domains are neon-blue graphical trust objects, not cards.
-
-Visual complexity rule:
-
-```text
-Complexity lives at the edge. Trust is established at the center.
-```
 
 ## Current architecture files
 
@@ -115,6 +98,31 @@ Score explanation layer:
 src/ui/v56-trust-model-score-explanations.js
 ```
 
+Evidence and assumption register:
+
+```text
+data/evidence/v56-1-evidence-assumption-register.json
+```
+
+Evidence register UI:
+
+```text
+src/ui/v56-1-evidence-assumption-register.js
+```
+
+## Evidence state taxonomy
+
+```text
+Provided
+Missing
+Stale
+Assumed
+Conflicting
+Needs Verification
+```
+
+These states are used to show whether CyberShield can rely on a claim, control, asset, action, or scenario.
+
 ## Purpose Protocol doctrine
 
 CyberShield turns purpose into protocol.
@@ -129,7 +137,7 @@ Vendor payment destination change: if banking details changed within 30 days, pa
 
 ## Internet Trust Engine future track
 
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56 implementation.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.1 implementation.
 
 Requirements live at:
 
@@ -162,11 +170,12 @@ artifact-level trust score as the MVP anchor
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, or production agent enforcement systems.
 
-## Known V56 limitations
+## Known V56.1 limitations
 
+- Evidence register uses static prototype data
+- Evidence states do not retrieve or validate live evidence
+- Missing evidence flags are advisory and not automated findings
 - Model explanations are demo-directional and not statistically validated
-- Score models are not production-calibrated
-- Model buttons are static explanatory UI, not live calculations
 - TrustMap object routes are static advisory routes, not backend workflow actions
 - Runtime, Evidence, and Proof Pack routing does not create tickets, send notifications, or retrieve live evidence
 - CMMC guidance is advisory and does not represent legal advice, certification, or assessment outcome
@@ -184,12 +193,12 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm V56 metadata is present in Settings/admin context
+confirm V56.1 metadata is present in Settings/admin context
 confirm TrustMap renders from registry data
-confirm score model buttons appear
-confirm model explanation modal opens and closes
-confirm model inputs, weights, thresholds, limitations, and evidence requirements display
-confirm Runtime Purpose Protocol readiness model button appears
+confirm score model buttons still work
+confirm Evidence workspace shows Evidence and Assumption Register
+confirm full evidence register modal opens and closes
+confirm TrustMap object detail shows related evidence state when available
 confirm V55.6 TrustMap interaction routes still work
 confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
@@ -200,4 +209,4 @@ confirm no live enforcement, banking, payment, CMMC, healthcare, Internet Trust,
 
 ## Next likely decision point
 
-After V56 browser QA passes, the next build should move into **V56.1 Evidence and Assumption Register** so the system separates known evidence, missing evidence, stale evidence, assumptions, and verification needs.
+After V56.1 browser QA passes, the next build should move into **V56.2 Decision Record Hardening** so CyberShield can preserve the action under review, information relied on, consequence if wrong, trust status, recommendation, owner, evidence state, and boundary language in one defensible record.
