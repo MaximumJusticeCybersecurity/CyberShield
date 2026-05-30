@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V59.3 Internet Trust Proof Pack Export Contract
+Current implemented build: V59.4 Internet Trust Board Narrative Add-On
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V59.3 Internet Trust Proof Pack Export Contract.
+CyberShield V59.4 Internet Trust Board Narrative Add-On.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V59.3.
+No new top-level tabs were added for V59.4.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V59.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V59.4. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -22,16 +22,17 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Internet Trust Engine principle:
 CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 
-V59.3 Internet Trust Proof Pack Export Contract:
-- adds `data/internet-trust/v59-3-internet-trust-proof-pack-export-contract.json`
-- adds `src/ui/v59-3-internet-trust-proof-pack-export-contract.js`
-- loads V59.3 after V59.2 in `src/ui/v52-7-operational-layer.js`
-- adds Internet Trust Proof Pack Export Contract into Proof Pack
-- adds Internet Trust Proof Pack Export Contract into Evidence
-- consolidates artifact intake and claim trace data into one export object
-- adds export contract modal
-- adds bounded prototype export text download
-- includes explicit limitations in the export
+V59.4 Internet Trust Board Narrative Add-On:
+- adds `data/internet-trust/v59-4-internet-trust-board-narrative.json`
+- adds `src/ui/v59-4-internet-trust-board-narrative.js`
+- loads V59.4 after V59.3 in `src/ui/v52-7-operational-layer.js`
+- adds Internet Trust Board Narrative into Proof Pack
+- adds Internet Trust Board Narrative into Evidence
+- adds board decision options
+- adds board narrative modal
+- adds bounded board narrative text download
+- includes explicit limitations in narrative and download
+- preserves V59.3 Internet Trust Proof Pack Export Contract
 - preserves V59.2 Claim Row to Model Trace and Proof Pack Output
 - preserves V59.1 Artifact Intake and Claim Table Prototype
 - preserves V59 Internet Trust Engine MVP Scaffold
@@ -56,4 +57,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Proof Pack and Evidence, confirm Internet Trust Proof Pack Export Contract appears, confirm export modal/download work, confirm no new top-level tab exists, and confirm no live-capability overclaims or prohibited branding appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Proof Pack and Evidence, confirm Internet Trust Board Narrative appears, confirm board narrative modal/download work, confirm no new top-level tab exists, and confirm no live-capability overclaims or prohibited branding appear.
