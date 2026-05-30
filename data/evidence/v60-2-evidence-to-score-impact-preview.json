@@ -1,0 +1,93 @@
+{
+  "version": "V60.2",
+  "name": "Evidence-to-Score Impact Preview",
+  "status": "static_impact_preview",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "Static advisory prototype only. Score impact previews are illustrative and not live calculations. No backend persistence, live scoring, live evidence retrieval, automated verification, workflow automation, ticketing, notifications, or enforcement is performed.",
+  "purpose": "Show how evidence state transitions would affect trust, confidence, reliance risk, runtime admissibility, and Proof Pack defensibility before and after human review.",
+  "source_layers": {
+    "trust_model_registry": "data/models/v56-trust-score-models.json",
+    "core_trust_models": "data/models/v56-4-core-trust-scoring-models.json",
+    "evidence_workbench": "data/evidence/v60-trust-evidence-workbench.json",
+    "evidence_transitions": "data/evidence/v60-1-evidence-state-transition-prototype.json",
+    "proof_pack": "data/proof/v57-model-driven-proof-pack-schema.json"
+  },
+  "impact_dimensions": [
+    "trust_score_delta",
+    "confidence_delta",
+    "reliance_risk_delta",
+    "runtime_action_change",
+    "proof_pack_defensibility_change",
+    "required_human_action",
+    "risk_if_wrong"
+  ],
+  "impact_previews": [
+    {
+      "id": "missing-bank-verification-impact",
+      "evidence_item": "Vendor banking change verification",
+      "from_state": "missing",
+      "to_state": "provided",
+      "model_impacted": "Purpose Protocol Readiness",
+      "trust_score_delta": "+12 potential points",
+      "confidence_delta": "+8 potential points",
+      "reliance_risk_delta": "High to Medium, if verified by controller",
+      "runtime_action_change": "Escalate may move to Constrain or Allow with caveat after verification",
+      "proof_pack_defensibility_change": "Moves from Missing Evidence to Evidence Present with caveat",
+      "required_human_action": "Add out-of-band verification note, source, owner, date, and controller approval path",
+      "risk_if_wrong": "Payment may be sent to a fraudulent or unauthorized destination",
+      "prototype_boundary": "Illustrative preview only. CyberShield does not verify banking or block payments."
+    },
+    {
+      "id": "cui-boundary-evidence-impact",
+      "evidence_item": "CUI boundary definition",
+      "from_state": "missing",
+      "to_state": "needs_verification",
+      "model_impacted": "Scenario Trust Score",
+      "trust_score_delta": "+10 potential points",
+      "confidence_delta": "+6 potential points",
+      "reliance_risk_delta": "High remains High until boundary is verified",
+      "runtime_action_change": "Escalate remains likely until CUI boundary is verified by qualified owner",
+      "proof_pack_defensibility_change": "Improves from absent scope to scope under review",
+      "required_human_action": "Map systems, users, vendors, data flows, and owner authority for CUI/FCI",
+      "risk_if_wrong": "CMMC scope and remediation path may be materially wrong",
+      "prototype_boundary": "Illustrative preview only. CyberShield does not certify CMMC readiness or applicability."
+    },
+    {
+      "id": "ai-tool-inventory-impact",
+      "evidence_item": "Approved AI tool inventory and access list",
+      "from_state": "assumed",
+      "to_state": "provided",
+      "model_impacted": "Operational Trust Score",
+      "trust_score_delta": "+7 potential points",
+      "confidence_delta": "+10 potential points",
+      "reliance_risk_delta": "Medium to Low/Medium if data-use restrictions are clear",
+      "runtime_action_change": "Constrain or verify may move toward Allow with caveat",
+      "proof_pack_defensibility_change": "Moves AI governance from assumption to evidence-present with caveat",
+      "required_human_action": "Confirm approved tools, access list, data classes, and vendor data-use terms",
+      "risk_if_wrong": "Unapproved AI tools may expose proprietary, regulated, or customer data",
+      "prototype_boundary": "Illustrative preview only. CyberShield does not detect live AI usage or enforce AI access."
+    },
+    {
+      "id": "conflicting-evidence-impact",
+      "evidence_item": "Conflicting artifact or claim evidence",
+      "from_state": "conflicting",
+      "to_state": "needs_verification",
+      "model_impacted": "Evidence Trust Score",
+      "trust_score_delta": "+4 potential points only after conflict is acknowledged",
+      "confidence_delta": "+5 potential points if controlling source is identified",
+      "reliance_risk_delta": "High remains High until conflict resolution is documented",
+      "runtime_action_change": "Block or Escalate remains appropriate until conflict is resolved",
+      "proof_pack_defensibility_change": "Improves only if dissenting evidence is preserved and controlling rationale is documented",
+      "required_human_action": "Document conflict summary, controlling source rationale, and reviewer limitation note",
+      "risk_if_wrong": "Conflict may be buried and later undermine executive, auditor, legal, or public trust",
+      "prototype_boundary": "Illustrative preview only. CyberShield does not resolve evidence conflicts automatically."
+    }
+  ],
+  "non_negotiables": [
+    "Impact preview must not be called live scoring",
+    "Trust and confidence remain separate",
+    "Reliance risk may stay high even if trust improves",
+    "Verified_by_human requires a named human review path",
+    "Proof Pack defensibility depends on disclosed evidence, missing evidence, assumptions, caveats, and risk if wrong"
+  ]
+}
