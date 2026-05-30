@@ -1,0 +1,99 @@
+{
+  "version": "V60.1",
+  "name": "Evidence State Transition Prototype",
+  "status": "static_state_transition_prototype",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "Static advisory prototype only. Evidence state transitions are illustrative and local-only. No backend persistence, live evidence retrieval, automated verification, workflow automation, ticketing, notifications, or enforcement is performed.",
+  "purpose": "Show how evidence moves from weak states to verified_by_human while making the required human action, risk, and proof-pack consequence visible.",
+  "source_layers": {
+    "trust_evidence_workbench": "data/evidence/v60-trust-evidence-workbench.json",
+    "proof_pack": "data/proof/v57-model-driven-proof-pack-schema.json",
+    "decision_records": "data/decisions/v56-2-decision-record-schema.json"
+  },
+  "transition_fields": [
+    "from_state",
+    "to_state",
+    "allowed",
+    "required_human_action",
+    "required_documentation",
+    "risk_if_skipped",
+    "proof_pack_consequence",
+    "prototype_boundary"
+  ],
+  "transitions": [
+    {
+      "id": "missing-to-provided",
+      "from_state": "missing",
+      "to_state": "provided",
+      "allowed": true,
+      "required_human_action": "Add a source note, artifact reference, or uploaded evidence description.",
+      "required_documentation": "Evidence title, source note, owner, and linked claim or decision.",
+      "risk_if_skipped": "The Proof Pack may imply evidence exists when it does not.",
+      "proof_pack_consequence": "Moves from Missing Evidence to Evidence State Map with caveat.",
+      "prototype_boundary": "Local prototype transition only. No backend save or source retrieval."
+    },
+    {
+      "id": "provided-to-needs-verification",
+      "from_state": "provided",
+      "to_state": "needs_verification",
+      "allowed": true,
+      "required_human_action": "Flag evidence for qualified review when reliance is high-stakes or external-facing.",
+      "required_documentation": "Reliance purpose, reviewer role, risk if wrong, and review due date.",
+      "risk_if_skipped": "Leadership may rely on provided but unreviewed evidence.",
+      "proof_pack_consequence": "Evidence remains usable only with explicit caveat and human-review requirement.",
+      "prototype_boundary": "Local prototype transition only. No automated verification."
+    },
+    {
+      "id": "needs-verification-to-verified-by-human",
+      "from_state": "needs_verification",
+      "to_state": "verified_by_human",
+      "allowed": true,
+      "required_human_action": "Qualified reviewer confirms scope, source, currency, and relevance for the stated reliance purpose.",
+      "required_documentation": "Reviewer name/role, review note, date, scope, and limitation statement.",
+      "risk_if_skipped": "Evidence may be treated as verified without accountability.",
+      "proof_pack_consequence": "May support proof-ready with caveats if all linked claims and decisions meet the same standard.",
+      "prototype_boundary": "Static prototype only. Verification is not actually performed by CyberShield."
+    },
+    {
+      "id": "assumed-to-verified-blocked",
+      "from_state": "assumed",
+      "to_state": "verified_by_human",
+      "allowed": false,
+      "required_human_action": "Provide evidence first, then route through needs_verification.",
+      "required_documentation": "Evidence object, source note, owner, reviewer, and review rationale.",
+      "risk_if_skipped": "An assumption may be mislabeled as verified evidence.",
+      "proof_pack_consequence": "Must remain in Assumptions and Caveats until evidence is provided and reviewed.",
+      "prototype_boundary": "Blocked transition in prototype and production design intent."
+    },
+    {
+      "id": "conflicting-to-verified-blocked",
+      "from_state": "conflicting",
+      "to_state": "verified_by_human",
+      "allowed": false,
+      "required_human_action": "Resolve conflict, document why one source controls, and preserve dissenting evidence notes.",
+      "required_documentation": "Conflict summary, controlling source rationale, reviewer note, and limitation statement.",
+      "risk_if_skipped": "A conflict may be buried and later undermine the Proof Pack.",
+      "proof_pack_consequence": "Must remain flagged as conflicting until resolution is documented.",
+      "prototype_boundary": "Blocked transition in prototype and production design intent."
+    },
+    {
+      "id": "stale-to-needs-verification",
+      "from_state": "stale",
+      "to_state": "needs_verification",
+      "allowed": true,
+      "required_human_action": "Review source date, current applicability, and replacement source needs.",
+      "required_documentation": "Original date, reviewed date, currency rationale, and next source update action.",
+      "risk_if_skipped": "Old evidence may be used for current decisions.",
+      "proof_pack_consequence": "Evidence can remain in the Proof Pack only with currency caveat until updated.",
+      "prototype_boundary": "Local prototype transition only. No live source freshness check."
+    }
+  ],
+  "definition_of_done": [
+    "Transition cards appear in Evidence and Runtime",
+    "Allowed and blocked transitions are visually distinguishable",
+    "Required human action is visible per transition",
+    "Proof Pack consequence is visible per transition",
+    "Transition log modal and download work",
+    "No live workflow, automated verification, ticketing, notification, persistence, or integration claims"
+  ]
+}
