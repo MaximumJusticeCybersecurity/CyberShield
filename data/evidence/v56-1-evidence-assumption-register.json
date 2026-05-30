@@ -1,0 +1,100 @@
+{
+  "version": "V56.1",
+  "name": "Evidence and Assumption Register",
+  "status": "demo_directional_register",
+  "boundary": "This register is static advisory prototype data. It does not retrieve live evidence, validate compliance, verify bank information, certify CMMC status, validate healthcare compliance, or perform live integrations.",
+  "evidence_states": [
+    {"id": "provided", "label": "Provided", "meaning": "Evidence is represented as available in the prototype context."},
+    {"id": "missing", "label": "Missing", "meaning": "Required evidence is not represented and should be gathered before relying on the claim or action."},
+    {"id": "stale", "label": "Stale", "meaning": "Evidence exists but may be too old for the decision purpose."},
+    {"id": "assumed", "label": "Assumed", "meaning": "The prototype assumes this item for demonstration and it must be verified in a real assessment."},
+    {"id": "conflicting", "label": "Conflicting", "meaning": "Evidence points in different directions and needs review."},
+    {"id": "needs_verification", "label": "Needs Verification", "meaning": "Evidence may exist, but a credible verification path is required before action."}
+  ],
+  "register_items": [
+    {
+      "id": "ev-cloud-logging-current",
+      "domain_id": "cloud",
+      "asset_id": "logging",
+      "title": "Current cloud logging configuration",
+      "state": "assumed",
+      "evidence_type": "configuration evidence",
+      "owner": "Cloud / Infrastructure Owner",
+      "verification_path": "Review current cloud logging settings and retention policy",
+      "decision_risk_if_wrong": "Leadership may assume events are reviewable when logs are incomplete or missing.",
+      "linked_models": ["operational_trust_score", "scenario_trust_score"]
+    },
+    {
+      "id": "ev-identity-mfa-coverage",
+      "domain_id": "identity",
+      "asset_id": "mfa",
+      "title": "MFA coverage for privileged and remote users",
+      "state": "needs_verification",
+      "evidence_type": "identity control evidence",
+      "owner": "Identity Owner",
+      "verification_path": "Review identity provider MFA enforcement and exception list",
+      "decision_risk_if_wrong": "Privilege and access trust may be overstated if MFA gaps exist.",
+      "linked_models": ["operational_trust_score", "scenario_trust_score"]
+    },
+    {
+      "id": "ev-identity-privileged-accounts",
+      "domain_id": "identity",
+      "asset_id": "priv",
+      "title": "Privileged account inventory and approval authority",
+      "state": "missing",
+      "evidence_type": "owner and access evidence",
+      "owner": "Security / IAM Owner",
+      "verification_path": "Confirm privileged account list, business owner, and approval workflow",
+      "decision_risk_if_wrong": "Excessive admin privileges may persist without visible ownership.",
+      "linked_models": ["operational_trust_score", "purpose_protocol_readiness"]
+    },
+    {
+      "id": "ev-apps-cui-boundary",
+      "domain_id": "cmmc",
+      "asset_id": "cuiBoundary",
+      "title": "CUI boundary definition",
+      "state": "missing",
+      "evidence_type": "scope and compliance evidence",
+      "owner": "Compliance / CMMC Owner",
+      "verification_path": "Confirm systems, data flows, users, and vendors that handle CUI or FCI",
+      "decision_risk_if_wrong": "CMMC applicability and readiness may be materially wrong if the boundary is wrong.",
+      "linked_models": ["scenario_trust_score", "operational_trust_score"]
+    },
+    {
+      "id": "ev-third-vendor-data-sharing",
+      "domain_id": "third",
+      "asset_id": "vendors",
+      "title": "Vendor data sharing and permitted use terms",
+      "state": "needs_verification",
+      "evidence_type": "contract / vendor evidence",
+      "owner": "Vendor Owner",
+      "verification_path": "Review contract, DPA, security addendum, and permitted use language",
+      "decision_risk_if_wrong": "Sensitive data may be shared or reused outside leadership intent.",
+      "linked_models": ["scenario_trust_score", "purpose_protocol_readiness"]
+    },
+    {
+      "id": "ev-ai-tool-access",
+      "domain_id": "ai",
+      "asset_id": "aiTools",
+      "title": "Approved AI tool inventory and access list",
+      "state": "assumed",
+      "evidence_type": "AI governance evidence",
+      "owner": "AI Governance Owner",
+      "verification_path": "Confirm approved AI tools, users, data classes, and usage boundaries",
+      "decision_risk_if_wrong": "Shadow AI usage may expose customer, regulated, or proprietary data.",
+      "linked_models": ["scenario_trust_score", "purpose_protocol_readiness"]
+    },
+    {
+      "id": "ev-payment-bank-change",
+      "domain_id": "third",
+      "asset_id": "vendors",
+      "title": "Vendor banking change verification",
+      "state": "missing",
+      "evidence_type": "payment verification evidence",
+      "owner": "Controller / Finance Owner",
+      "verification_path": "Confirm banking change through approved out-of-band verification and controller approval",
+      "decision_risk_if_wrong": "Payment may be sent to fraudulent or unauthorized destination.",
+      "linked_models": ["purpose_protocol_readiness", "scenario_trust_score"]
+    }
+  ]
+}
