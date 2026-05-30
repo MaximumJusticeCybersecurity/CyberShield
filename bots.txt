@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V60.2 Evidence-to-Score Impact Preview
+Current implemented build: V60.3 Universal Model Trace Inspector
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.2 Evidence-to-Score Impact Preview.
+CyberShield V60.3 Universal Model Trace Inspector.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.2.
+No new top-level tabs were added for V60.3.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -22,20 +22,21 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
-V60.2 Evidence-to-Score Impact Preview:
-- adds `data/evidence/v60-2-evidence-to-score-impact-preview.json`
-- adds `src/ui/v60-2-evidence-to-score-impact-preview.js`
-- loads V60.2 after V60.1 in `src/ui/v52-7-operational-layer.js`
-- shows static score impact previews for evidence state changes
-- separates trust score delta from confidence delta
-- shows reliance risk may stay high even if trust improves
-- shows runtime action change preview
-- shows Proof Pack defensibility change preview
-- adds impact trace modal
-- adds impact trace JSON download
-- preserves V60.1 Evidence State Transition Prototype
-- preserves V60 Trust Evidence Workbench
-- preserves V59 Internet Trust Engine scaffold and guardrails
+Model maturity rule:
+CyberShield scoring models are Expert-Derived V1 Trust Scoring Models. They are not Statistically Validated Trust Models. The architecture has high confidence because it separates trust, confidence, evidence quality, reliance risk, runtime admissibility, and defensibility. The initial factors have medium confidence. The default weights have lower confidence until calibrated against test scenarios, expert review, red-team attempts, and real-world use cases.
+
+V60.3 Universal Model Trace Inspector:
+- adds `data/models/v60-3-calibratable-trust-model-registry.json`
+- adds `src/ui/v60-3-universal-model-trace-inspector.js`
+- loads V60.3 after V60.2 in `src/ui/v52-7-operational-layer.js`
+- labels models as Expert-Derived V1 Trust Scoring Models
+- avoids claiming statistically validated trust models
+- adds Universal Model Trace Inspector UI
+- adds sample score trace objects
+- adds calibratable metadata: model version, factor weights, thresholds, override notes, calibration history, test scenario results, limitations, and human review notes
+- adds core calibratable model definitions for Evidence Trust, Confidence, Reliance Risk, Runtime Admissibility, Proof Pack Defensibility, and Human Verification Maturity
+- adds placeholder roadmap models for Internet Trust, Vendor Trust, AI Agent Trust, Purpose Alignment, Identity Trust, Data Trust, Control Trust, Policy Trust, Trust Debt, Agentic Action Risk, Prompt Injection Exposure, Tool Use Risk, and Organizational Trust Maturity
+- preserves V60.2 Evidence-to-Score Impact Preview
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 
@@ -43,10 +44,10 @@ Forward roadmap:
 - `docs/v60-v70-cybershield-engineering-roadmap.md`
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistical validation, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
+Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, and Proof Pack, confirm Evidence-to-Score Impact Preview appears, confirm impact trace modal and download work, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, Proof Pack, Architecture, and Settings, confirm Universal Model Trace Inspector appears, confirm Inspect model and Why this score actions work, confirm factor weights are visible but labeled as calibratable V1 defaults, confirm no new top-level tab exists, and confirm no live-capability or statistically validated scoring overclaims appear.
