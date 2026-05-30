@@ -16,3 +16,4 @@ import './v56-3-universal-score-contract.js';
 import './v56-4-core-trust-scoring-models.js';
 import './v57-model-driven-proof-pack.js';
 import './v57-1-board-executive-narrative.js';
+import './v58-operational-trust-control-pane.js';
