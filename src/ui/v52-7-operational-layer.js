@@ -25,3 +25,4 @@ import './v59-2-claim-model-proof-trace.js';
 import './v59-3-internet-trust-proof-pack-export-contract.js';
 import './v59-4-internet-trust-board-narrative.js';
 import './v59-5-internet-trust-qa-copy-guardrails.js';
+import './v60-trust-evidence-workbench.js';
