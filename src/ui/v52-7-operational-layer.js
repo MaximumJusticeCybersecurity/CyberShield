@@ -19,3 +19,4 @@ import './v57-1-board-executive-narrative.js';
 import './v58-operational-trust-control-pane.js';
 import './v58-1-runtime-action-queue.js';
 import './v58-2-queue-proof-trace-linkage.js';
+import './v59-internet-trust-engine-mvp-scaffold.js';
