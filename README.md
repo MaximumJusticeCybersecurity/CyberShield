@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V59.4 Internet Trust Board Narrative Add-On**
+Current build label: **V59.5 Internet Trust QA and Copy Guardrail Pass**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-4-internet-trust-board-narrative&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-5-internet-trust-qa-copy-guardrails&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V59.4
+V59.5
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,33 +32,30 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V59.4.
+No new top-level tabs were added for V59.5.
 
-## Current implemented build: V59.4
+## Current implemented build: V59.5
 
-V59.4 adds the Internet Trust Board Narrative Add-On. It converts the V59.3 Internet Trust Proof Pack Export Contract into concise board and executive language for artifact reliance decisions.
+V59.5 adds the Internet Trust QA and Copy Guardrail Pass. It hardens labels, boundary language, prohibited branding checks, overclaim controls, and GitHub Pages QA notes before moving beyond V59.
 
-V59.4 changes:
+V59.5 changes:
 
-- adds `data/internet-trust/v59-4-internet-trust-board-narrative.json`
-- adds `src/ui/v59-4-internet-trust-board-narrative.js`
-- loads V59.4 after V59.3 in `src/ui/v52-7-operational-layer.js`
-- adds Internet Trust Board Narrative into Proof Pack
-- adds Internet Trust Board Narrative into Evidence
-- adds board decision options
-- adds board narrative modal
-- adds bounded board narrative text download
-- includes explicit limitations in narrative and download
+- adds `data/internet-trust/v59-5-internet-trust-qa-copy-guardrails.json`
+- adds `src/ui/v59-5-internet-trust-qa-copy-guardrails.js`
+- loads V59.5 after V59.4 in `src/ui/v52-7-operational-layer.js`
+- adds Internet Trust QA Guardrails into Evidence
+- adds Internet Trust QA Guardrails into Proof Pack
+- adds Internet Trust QA Guardrails into Settings/Admin context
+- makes allowed terms visible
+- makes prohibited terms visible
+- makes overclaim guardrails visible
+- makes surface label guardrails visible
+- makes GitHub Pages browser QA checklist visible and downloadable
+- preserves V59.4 Internet Trust Board Narrative Add-On
 - preserves V59.3 Internet Trust Proof Pack Export Contract
 - preserves V59.2 Claim Row to Model Trace and Proof Pack Output
 - preserves V59.1 Artifact Intake and Claim Table Prototype
 - preserves V59 Internet Trust Engine MVP Scaffold
-- preserves V58.2 Runtime Action Queue to Proof Pack Trace Linkage
-- preserves V58.1 Runtime Action Queue
-- preserves V58 Operational Trust Control Pane
-- preserves V57.1 Board and Executive Narrative Layer
-- preserves V57 Model-Driven Proof Pack
-- preserves V56.4 Core Trust Scoring Models
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 
@@ -74,6 +71,11 @@ Evidence-Based Decision Trust
 Reliance checking
 artifact reliance review
 claim-level trust mapping
+claim review
+evidence state
+human review required
+prototype boundary
+static advisory prototype
 ```
 
 Avoid:
@@ -83,8 +85,13 @@ fact-checker
 truth engine
 misinformation detector
 political validation
-trusted or untrusted person labels
-artifact-level trust score as the MVP anchor
+trusted person
+untrusted person
+verified fact
+certified true
+live verified
+automated truth
+proves accuracy
 ```
 
 ## Internet Trust Engine principle
@@ -93,39 +100,39 @@ artifact-level trust score as the MVP anchor
 CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 ```
 
-## V59.4 board narrative sections
+## V59.5 overclaim guardrails
 
 ```text
-Executive Summary
-Decision Required
-Why It Matters
-What CyberShield Reviewed
-What Remains Unverified
-Reliance Risk
-Recommended Next Move
-Limitations
-```
-
-## V59.4 board decision options
-
-```text
-Use as Demonstration Only
-Constrain Reliance Until Verified
-Escalate for Human Review
+Do not claim live URL ingestion
+Do not claim live internet retrieval
+Do not claim live evidence retrieval
+Do not claim live claim extraction
+Do not claim live scoring
+Do not claim political validation
+Do not claim legal or compliance determinations
+Do not claim CMMC certification or healthcare compliance validation
+Do not claim report delivery, ticketing, notifications, or workflow automation
+Do not label people or sources as trusted/untrusted
 ```
 
 ## Current architecture files
+
+Internet Trust QA Copy Guardrails registry:
+
+```text
+data/internet-trust/v59-5-internet-trust-qa-copy-guardrails.json
+```
+
+Internet Trust QA Copy Guardrails UI:
+
+```text
+src/ui/v59-5-internet-trust-qa-copy-guardrails.js
+```
 
 Internet Trust Board Narrative registry:
 
 ```text
 data/internet-trust/v59-4-internet-trust-board-narrative.json
-```
-
-Internet Trust Board Narrative UI:
-
-```text
-src/ui/v59-4-internet-trust-board-narrative.js
 ```
 
 Internet Trust Proof Pack Export Contract registry:
@@ -152,30 +159,6 @@ Internet Trust Engine scaffold registry:
 data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json
 ```
 
-Core Trust Scoring Models:
-
-```text
-data/models/v56-4-core-trust-scoring-models.json
-```
-
-Evidence and assumption register:
-
-```text
-data/evidence/v56-1-evidence-assumption-register.json
-```
-
-Decision record schema:
-
-```text
-data/decisions/v56-2-decision-record-schema.json
-```
-
-Model-Driven Proof Pack schema:
-
-```text
-data/proof/v57-model-driven-proof-pack-schema.json
-```
-
 ## Purpose Protocol doctrine
 
 CyberShield turns purpose into protocol.
@@ -186,20 +169,19 @@ Purpose is not governance until it can cause a refusal.
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, workflow automation, notifications, or production agent enforcement systems.
 
-## Known V59.4 limitations
+## Known V59.5 limitations
 
-- Board narrative is a static prototype narrative
-- Board narrative download is a text file, not a branded PDF or board deck
-- V59.4 does not perform live URL ingestion
-- V59.4 does not retrieve internet content
-- V59.4 does not retrieve live evidence
-- V59.4 does not perform live claim extraction
-- V59.4 does not perform live scoring
-- V59.4 does not perform live verification
-- V59.4 does not perform political validation
-- V59.4 does not label people or sources as trusted/untrusted
-- V59.4 does not make legal or compliance determinations
-- Core Trust Scoring Models remain prototype model definitions, not production-calibrated scoring engines
+- QA guardrails are static prototype guardrails
+- V59.5 does not perform automated repository-wide copy scanning
+- V59.5 does not perform live browser QA
+- V59.5 does not retrieve internet content
+- V59.5 does not retrieve live evidence
+- V59.5 does not perform live claim extraction
+- V59.5 does not perform live scoring
+- V59.5 does not perform live verification
+- V59.5 does not perform political validation
+- V59.5 does not label people or sources as trusted/untrusted
+- V59.5 does not make legal or compliance determinations
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
 
 ## GitHub Pages browser QA required
@@ -211,14 +193,19 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
-open Proof Pack
-confirm Internet Trust Board Narrative appears
-confirm board narrative modal opens and closes
-confirm board narrative text download works
-confirm Internet Trust Proof Pack Export Contract still appears
 open Evidence
-confirm Internet Trust Board Narrative appears
-confirm V59.4 metadata is present in Settings/admin context
+confirm Internet Trust QA Guardrails appears
+confirm allowed terms appear
+confirm prohibited terms appear
+confirm overclaim guardrails appear
+confirm QA guardrail modal opens and closes
+confirm QA checklist text download works
+open Proof Pack
+confirm Internet Trust QA Guardrails appears
+open Settings
+confirm V59.5 metadata is present in Settings/admin context
+confirm Internet Trust Board Narrative still appears
+confirm Internet Trust Proof Pack Export Contract still appears
 confirm Claim Row to Model Trace still appears
 confirm Artifact Intake and Claim Table still appears
 confirm Internet Trust Engine scaffold still appears
@@ -240,4 +227,4 @@ confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, liv
 
 ## Next build
 
-The next build should be **V59.5 Internet Trust QA and Copy Guardrail Pass**. It should harden labels, boundary language, prohibited branding checks, and GitHub Pages QA notes before moving beyond V59.
+The next build should be **V60 Trust Evidence Workbench Scaffold**. It should move beyond the V59 Internet Trust scaffold into a broader evidence workbench that supports manual evidence entry, evidence state transitions, and proof-pack traceability while preserving prototype boundaries and avoiding live integration claims.
