@@ -1,0 +1,92 @@
+{
+  "version": "V56",
+  "name": "Trust Model Registry and Score Explanation Layer",
+  "status": "demo_directional_registry",
+  "boundary": "These models are advisory and demo-directional. They do not represent certification, legal determination, healthcare compliance validation, CMMC assessment outcome, live evidence retrieval, or production-calibrated scoring.",
+  "model_status_labels": [
+    "demo-directional",
+    "analyst-assisted",
+    "pilot-validated",
+    "production-calibrated"
+  ],
+  "score_models": [
+    {
+      "id": "operational_trust_score",
+      "label": "Operational Trust Score",
+      "status": "demo-directional",
+      "purpose": "Estimate whether the operating environment has enough trusted information, ownership, evidence, and control clarity for executive action.",
+      "displayed_in": ["Briefing", "TrustMap", "Runtime"],
+      "inputs": [
+        {"id": "information_reliability", "label": "Information Reliability", "weight": 0.24, "description": "How reliable the current information appears based on source quality, currency, consistency, and completeness."},
+        {"id": "evidence_confidence", "label": "Evidence Confidence", "weight": 0.22, "description": "How well the claim, control, asset, or action is supported by reviewable evidence."},
+        {"id": "owner_accountability", "label": "Owner Accountability", "weight": 0.18, "description": "Whether a named accountable owner exists and can act on the finding."},
+        {"id": "verification_path", "label": "Verification Path", "weight": 0.18, "description": "Whether the information can be verified through a credible route before action."},
+        {"id": "consequence_alignment", "label": "Consequence Alignment", "weight": 0.18, "description": "Whether recommendation severity reflects the business consequence if the information is wrong."}
+      ],
+      "thresholds": [
+        {"range": "80-100", "label": "Strong", "meaning": "Trusted enough for the current purpose, assuming stated boundaries hold."},
+        {"range": "60-79", "label": "Moderate", "meaning": "Conditionally trusted. Proceed with monitoring or targeted verification."},
+        {"range": "40-59", "label": "Weak", "meaning": "Do not rely without verification, owner action, or evidence improvement."},
+        {"range": "0-39", "label": "Critical", "meaning": "Escalate, pause, or refuse action unless required evidence and authority exist."}
+      ],
+      "limitations": [
+        "Demo-directional score only",
+        "Not statistically validated",
+        "Not connected to live telemetry",
+        "Not a compliance certification",
+        "Not a legal determination"
+      ],
+      "evidence_requirements": [
+        "source documentation",
+        "owner confirmation",
+        "current control or system evidence",
+        "decision record",
+        "verification trail"
+      ]
+    },
+    {
+      "id": "scenario_trust_score",
+      "label": "Scenario Trust Score",
+      "status": "demo-directional",
+      "purpose": "Estimate trustworthiness of the selected scenario lens based on active domains, assets, risks, and evidence assumptions.",
+      "displayed_in": ["TrustMap", "Runtime", "Proof Pack"],
+      "inputs": [
+        {"id": "active_domain_strength", "label": "Active Domain Strength", "weight": 0.25, "description": "Trust strength of the domains touched by the selected scenario."},
+        {"id": "critical_asset_exposure", "label": "Critical Asset Exposure", "weight": 0.2, "description": "Degree to which weak or critical assets affect the scenario."},
+        {"id": "evidence_gap_severity", "label": "Evidence Gap Severity", "weight": 0.2, "description": "Severity of missing, stale, or assumed evidence."},
+        {"id": "decision_consequence", "label": "Decision Consequence", "weight": 0.2, "description": "Business impact if the scenario recommendation is wrong."},
+        {"id": "verification_readiness", "label": "Verification Readiness", "weight": 0.15, "description": "Ability to verify before action."}
+      ],
+      "thresholds": [
+        {"range": "80-100", "label": "Strong", "meaning": "Scenario is trusted enough for current purpose."},
+        {"range": "60-79", "label": "Moderate", "meaning": "Scenario is conditionally trusted with targeted verification."},
+        {"range": "40-59", "label": "Weak", "meaning": "Scenario has material trust gaps."},
+        {"range": "0-39", "label": "Critical", "meaning": "Scenario should pause, escalate, or refuse action unless required evidence exists."}
+      ],
+      "limitations": ["Demo-directional score only", "Scenario inputs are prototype data", "Does not retrieve live evidence", "Does not certify compliance"],
+      "evidence_requirements": ["scenario source", "asset owner", "active evidence", "risk consequence", "verification path"]
+    },
+    {
+      "id": "purpose_protocol_readiness",
+      "label": "Purpose Protocol Readiness",
+      "status": "demo-directional",
+      "purpose": "Estimate whether executive intent, constraints, refusal conditions, and escalation paths are clear enough for action governance.",
+      "displayed_in": ["Runtime", "Architecture", "Proof Pack"],
+      "inputs": [
+        {"id": "constraint_clarity", "label": "Constraint Clarity", "weight": 0.24, "description": "Whether the system knows what must not happen."},
+        {"id": "decision_rule_clarity", "label": "Decision Rule Clarity", "weight": 0.22, "description": "Whether trade-off rules are defined when no immediate human answer exists."},
+        {"id": "identity_and_owner_visibility", "label": "Identity and Owner Visibility", "weight": 0.2, "description": "Whether human judgment, accountable owner, and authority remain visible."},
+        {"id": "refusal_condition_strength", "label": "Refusal Condition Strength", "weight": 0.2, "description": "Whether high-risk actions can be refused based on missing evidence or authority."},
+        {"id": "escalation_path", "label": "Escalation Path", "weight": 0.14, "description": "Whether there is a clear route to human review."}
+      ],
+      "thresholds": [
+        {"range": "80-100", "label": "Strong", "meaning": "Protocol is clear enough to guide action under stated boundaries."},
+        {"range": "60-79", "label": "Moderate", "meaning": "Protocol is usable but needs targeted refinement."},
+        {"range": "40-59", "label": "Weak", "meaning": "Protocol gaps could cause inconsistent decisions."},
+        {"range": "0-39", "label": "Critical", "meaning": "Do not rely on the protocol without executive review and constraint definition."}
+      ],
+      "limitations": ["Static advisory scaffold", "No live enforcement", "No live payment blocking", "No backend workflow"],
+      "evidence_requirements": ["written purpose statement", "risk appetite", "refusal rule", "owner authority", "escalation path"]
+    }
+  ]
+}
