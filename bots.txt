@@ -1,46 +1,51 @@
 CyberShield Executive OS
-Current implemented build: V60 Trust Evidence Workbench Scaffold
+Current implemented build: V60.1 Evidence State Transition Prototype
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60 Trust Evidence Workbench Scaffold.
+CyberShield V60.1 Evidence State Transition Prototype.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.
+No new top-level tabs were added for V60.1.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
 
-V60 Trust Evidence Workbench Scaffold:
-- adds `data/evidence/v60-trust-evidence-workbench.json`
-- adds `src/ui/v60-trust-evidence-workbench.js`
-- loads V60 after V59.5 in `src/ui/v52-7-operational-layer.js`
-- adds Trust Evidence Workbench into Evidence
-- adds Trust Evidence Workbench into Runtime
-- adds Trust Evidence Workbench into Proof Pack
-- adds editable-looking manual evidence fields
-- adds evidence state definitions
-- adds sample evidence objects linked to claims, decisions, and Proof Pack sections
-- adds state transition rules
-- adds workbench trace modal
-- adds evidence workbench text download
-- preserves V59.5 Internet Trust QA and Copy Guardrail Pass
+Guiding principle:
+No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
+
+V60.1 Evidence State Transition Prototype:
+- adds `data/evidence/v60-1-evidence-state-transition-prototype.json`
+- adds `src/ui/v60-1-evidence-state-transition-prototype.js`
+- loads V60.1 after V60 in `src/ui/v52-7-operational-layer.js`
+- shows allowed and blocked evidence state transitions
+- shows required human action per transition
+- shows required documentation per transition
+- shows risk if skipped
+- shows Proof Pack consequence
+- adds transition trace export
+- preserves V60 Trust Evidence Workbench
+- preserves V59 Internet Trust Engine scaffold and guardrails
+- preserves V56 Trust Model Registry and Evidence Register chain
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 
 Forward roadmap:
 - `docs/v60-v70-cybershield-engineering-roadmap.md`
 
-V60 evidence states:
+V60.1 evidence states:
 provided, missing, stale, assumed, conflicting, needs_verification, verified_by_human.
+
+Evidence transition principle:
+Evidence cannot jump from weak or ambiguous states straight into trusted status. An assumption cannot become verified evidence until it is first converted into provided evidence, routed through verification, and reviewed by a qualified human.
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.
@@ -49,4 +54,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, and Proof Pack, confirm Trust Evidence Workbench appears, confirm manual evidence fields, state definitions, modal, and download work, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, and Proof Pack, confirm Trust Evidence Workbench appears, confirm Evidence State Transition Prototype appears, confirm transition trace export works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
