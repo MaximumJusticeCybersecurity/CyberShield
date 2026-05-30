@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V56.3 Universal Score Object and Score Band Contract
+Current implemented build: V56.4 Core Trust Scoring Models MVP
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V56.3 Universal Score Object and Score Band Contract.
+CyberShield V56.4 Core Trust Scoring Models MVP.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V56.3.
+No new top-level tabs were added for V56.4.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V56.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V56.4. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -26,21 +26,29 @@ Preferred product term: Trust Scoring Models.
 Preferred architectural term: Trust Model Registry.
 Do not call these risk scores only. CyberShield evaluates trust, confidence, evidence, reliance, purpose, runtime admissibility, and defensibility.
 
-V56.3 Universal Score Object and Score Band Contract:
-- adds `data/models/v56-3-universal-score-contract.json`
-- adds `src/ui/v56-3-universal-score-contract.js`
-- loads V56.3 after V56.2 in `src/ui/v52-7-operational-layer.js`
-- formalizes universal score bands
-- formalizes required score object fields
-- formalizes runtime action ladder
-- formalizes model trace fields
-- exposes the contract in Architecture, Evidence, and Proof Pack
+V56.4 Core Trust Scoring Models MVP:
+- adds `data/models/v56-4-core-trust-scoring-models.json`
+- adds `src/ui/v56-4-core-trust-scoring-models.js`
+- loads V56.4 after V56.3 in `src/ui/v52-7-operational-layer.js`
+- adds the first seven Core Trust Scoring Models
+- exposes model cards in Architecture, Evidence, and Proof Pack
+- adds model inspection modal with factors, weights, evidence standards, failure conditions, and runtime mapping
+- preserves V56.3 Universal Score Object and Score Band Contract
 - preserves V56.2 Decision Record Hardening
 - preserves V56.1 Evidence and Assumption Register
 - preserves V56 Trust Model Registry and Score Explanation Layer
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
+
+Core Trust Scoring Models in V56.4:
+- Artifact Trust Model
+- Claim Trust Model
+- Sentence-Level Trust Model
+- Evidence Trust Model
+- Confidence Model
+- Reliance Risk Model
+- Runtime Admissibility Model
 
 Universal score bands:
 - 90-100: High trust -> Allow
@@ -57,13 +65,13 @@ TrustMap doctrine:
 The CyberShield TrustMap is a radar-constellation interface. CyberShield Core is a thick neon-blue shield-boundary trust kernel, not a normal node. Complexity lives at the edge. Trust is established at the center.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V56.3 live feature and not a standalone product pillar.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V56.4 live feature and not a standalone product pillar. V56.4 defines models needed later, but does not implement live Internet Trust Engine behavior.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, internet claim verification, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, live scoring, live claim extraction, internet claim verification, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
+Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Architecture, Evidence, and Proof Pack, confirm Universal Score Contract appears, confirm full score contract modal opens and closes, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Architecture, Evidence, and Proof Pack, confirm Core Trust Scoring Models appear, confirm model inspection modal opens and closes, confirm seven models are listed, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
