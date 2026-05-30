@@ -1,0 +1,152 @@
+{
+  "version": "V56.4",
+  "name": "Core Trust Scoring Models MVP",
+  "status": "model_registry_mvp",
+  "source_doctrine": "CyberShield Trust Model Registry and Scoring Requirements",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "These Trust Scoring Models are advisory prototype models. They are not production-calibrated, statistically validated, compliance certifications, legal determinations, live evidence retrieval systems, or live enforcement systems.",
+  "score_contract": "data/models/v56-3-universal-score-contract.json",
+  "models": [
+    {
+      "id": "artifact_trust_model",
+      "name": "Artifact Trust Model",
+      "version": "1.0",
+      "score_name": "Artifact Trust Score",
+      "maturity": "demo-directional",
+      "purpose": "Evaluate whether an artifact as a whole is reliable enough for the intended reliance purpose after considering source wrapper, metadata, claims, evidence, and consequence.",
+      "object_type": "artifact",
+      "factors": [
+        {"id": "source_context", "label": "Source Context", "weight": 0.18, "description": "Who or what produced the artifact, how it was distributed, and whether the source context is clear."},
+        {"id": "wrapper_integrity", "label": "Wrapper Integrity", "weight": 0.14, "description": "Whether title, date, author, transcript, metadata, and surrounding context are internally consistent."},
+        {"id": "claim_quality", "label": "Claim Quality", "weight": 0.18, "description": "Whether factual claims are specific, separable, and testable."},
+        {"id": "evidence_alignment", "label": "Evidence Alignment", "weight": 0.22, "description": "Whether claims align with credible supporting evidence."},
+        {"id": "currency_and_scope", "label": "Currency and Scope", "weight": 0.13, "description": "Whether timing, jurisdiction, domain, and scope match the reliance purpose."},
+        {"id": "consequence_if_wrong", "label": "Consequence if Wrong", "weight": 0.15, "description": "Whether the artifact could cause harm, bad decisions, or reputational damage if relied upon incorrectly."}
+      ],
+      "evidence_standard": ["artifact metadata", "source context", "claim table", "primary source links or citations", "date/scope verification", "reliance purpose"],
+      "failure_conditions": ["unknown source context", "material claims unsupported", "date/scope mismatch", "high consequence without primary-source evidence"],
+      "runtime_mapping": "Universal score bands from V56.3"
+    },
+    {
+      "id": "claim_trust_model",
+      "name": "Claim Trust Model",
+      "version": "1.0",
+      "score_name": "Claim Trust Score",
+      "maturity": "demo-directional",
+      "purpose": "Evaluate whether a specific factual claim can be relied on for the current decision purpose.",
+      "object_type": "claim",
+      "factors": [
+        {"id": "claim_specificity", "label": "Claim Specificity", "weight": 0.12, "description": "Whether the claim is precise enough to verify."},
+        {"id": "primary_source_support", "label": "Primary Source Support", "weight": 0.26, "description": "Whether a primary or authoritative source supports the claim."},
+        {"id": "cross_source_consistency", "label": "Cross-Source Consistency", "weight": 0.17, "description": "Whether credible sources agree or reveal material conflict."},
+        {"id": "context_preservation", "label": "Context Preservation", "weight": 0.14, "description": "Whether the claim preserves definitions, time period, jurisdiction, and caveats."},
+        {"id": "evidence_freshness", "label": "Evidence Freshness", "weight": 0.13, "description": "Whether evidence is current enough for the reliance purpose."},
+        {"id": "risk_if_wrong", "label": "Risk if Wrong", "weight": 0.18, "description": "How much damage would result if the claim were false, incomplete, or misapplied."}
+      ],
+      "evidence_standard": ["claim text", "claim type", "primary source", "supporting source", "date/scope match", "risk if wrong"],
+      "failure_conditions": ["claim too vague", "no primary source for high-stakes claim", "conflicting evidence unresolved", "future/current-status claim without current evidence"],
+      "runtime_mapping": "Universal score bands from V56.3"
+    },
+    {
+      "id": "sentence_level_trust_model",
+      "name": "Sentence-Level Trust Model",
+      "version": "1.0",
+      "score_name": "Sentence-Level Trust Score",
+      "maturity": "demo-directional",
+      "purpose": "Evaluate a sentence based on whether it contains claims, how many claims it contains, and whether those claims are individually reliable enough for reliance.",
+      "object_type": "sentence",
+      "factors": [
+        {"id": "claim_density", "label": "Claim Density", "weight": 0.12, "description": "How many factual assertions are packed into the sentence."},
+        {"id": "claim_separability", "label": "Claim Separability", "weight": 0.13, "description": "Whether the sentence can be decomposed into verifiable claim units."},
+        {"id": "lowest_claim_score", "label": "Lowest Claim Score", "weight": 0.25, "description": "The weakest claim in the sentence constrains sentence-level reliance."},
+        {"id": "evidence_coverage", "label": "Evidence Coverage", "weight": 0.2, "description": "Whether all material claims in the sentence have evidence."},
+        {"id": "context_and_qualification", "label": "Context and Qualification", "weight": 0.14, "description": "Whether the sentence preserves important caveats and conditions."},
+        {"id": "reliance_consequence", "label": "Reliance Consequence", "weight": 0.16, "description": "How harmful it would be to quote, brief, or act on the sentence incorrectly."}
+      ],
+      "evidence_standard": ["sentence text", "claim extraction", "claim scores", "evidence coverage", "context notes", "reliance purpose"],
+      "failure_conditions": ["multiple unsupported claims", "one critical unsupported claim", "misleading compression", "unsupported causal or numerical assertion"],
+      "runtime_mapping": "Universal score bands from V56.3"
+    },
+    {
+      "id": "evidence_trust_model",
+      "name": "Evidence Trust Model",
+      "version": "1.0",
+      "score_name": "Evidence Trust Score",
+      "maturity": "demo-directional",
+      "purpose": "Evaluate whether a piece of evidence is reliable, current, relevant, and strong enough to support the claim or decision at hand.",
+      "object_type": "evidence",
+      "factors": [
+        {"id": "source_authority", "label": "Source Authority", "weight": 0.2, "description": "Whether the evidence source is authoritative for the specific claim type."},
+        {"id": "directness", "label": "Directness", "weight": 0.18, "description": "Whether the evidence directly supports the claim or only indirectly relates."},
+        {"id": "freshness", "label": "Freshness", "weight": 0.15, "description": "Whether the evidence is current enough for the decision purpose."},
+        {"id": "scope_match", "label": "Scope Match", "weight": 0.15, "description": "Whether the evidence matches the jurisdiction, time period, population, system, or business scope."},
+        {"id": "integrity", "label": "Integrity", "weight": 0.17, "description": "Whether the evidence appears complete, unaltered, and traceable."},
+        {"id": "independence", "label": "Independence", "weight": 0.15, "description": "Whether the evidence is independent or self-serving."}
+      ],
+      "evidence_standard": ["source", "source type", "date", "direct quote or table", "scope note", "integrity note"],
+      "failure_conditions": ["source not authoritative for claim", "stale evidence", "scope mismatch", "untraceable source", "self-serving claim without independent evidence"],
+      "runtime_mapping": "Universal score bands from V56.3"
+    },
+    {
+      "id": "confidence_model",
+      "name": "Confidence Model",
+      "version": "1.0",
+      "score_name": "Confidence Score",
+      "maturity": "demo-directional",
+      "purpose": "Estimate how confident CyberShield should be in the score based on evidence quality, completeness, agreement, and uncertainty.",
+      "object_type": "score_confidence",
+      "factors": [
+        {"id": "evidence_completeness", "label": "Evidence Completeness", "weight": 0.22, "description": "How much of the needed evidence is present."},
+        {"id": "evidence_quality", "label": "Evidence Quality", "weight": 0.22, "description": "How strong and authoritative the evidence is."},
+        {"id": "source_agreement", "label": "Source Agreement", "weight": 0.16, "description": "Whether sources agree or conflict."},
+        {"id": "model_fit", "label": "Model Fit", "weight": 0.14, "description": "Whether the selected model fits the object being scored."},
+        {"id": "uncertainty_visibility", "label": "Uncertainty Visibility", "weight": 0.13, "description": "Whether key uncertainty is surfaced rather than hidden."},
+        {"id": "human_review_status", "label": "Human Review Status", "weight": 0.13, "description": "Whether a qualified human reviewed the result when stakes require it."}
+      ],
+      "evidence_standard": ["evidence state", "model match", "conflict check", "uncertainty notes", "review status"],
+      "failure_conditions": ["missing evidence hidden", "model mismatch", "conflicting sources unresolved", "high stakes without review"],
+      "runtime_mapping": "Confidence does not replace trust score; it qualifies how much reliance the score deserves."
+    },
+    {
+      "id": "reliance_risk_model",
+      "name": "Reliance Risk Model",
+      "version": "1.0",
+      "score_name": "Reliance Risk Score",
+      "maturity": "demo-directional",
+      "purpose": "Evaluate the business, legal, operational, reputational, or security risk of relying on an artifact, claim, evidence item, model output, or action.",
+      "object_type": "reliance_risk",
+      "factors": [
+        {"id": "decision_criticality", "label": "Decision Criticality", "weight": 0.2, "description": "How important the decision is."},
+        {"id": "harm_if_wrong", "label": "Harm if Wrong", "weight": 0.24, "description": "Potential damage if the information is false, incomplete, or misapplied."},
+        {"id": "reversibility", "label": "Reversibility", "weight": 0.14, "description": "Whether the action can be reversed easily."},
+        {"id": "stakeholder_exposure", "label": "Stakeholder Exposure", "weight": 0.13, "description": "Whether customers, regulators, employees, partners, or public audiences are affected."},
+        {"id": "evidence_gap_severity", "label": "Evidence Gap Severity", "weight": 0.17, "description": "How severe the missing or weak evidence is."},
+        {"id": "time_pressure", "label": "Time Pressure", "weight": 0.12, "description": "Whether urgency increases the chance of poor reliance."}
+      ],
+      "evidence_standard": ["decision purpose", "stakeholder impact", "harm analysis", "reversibility", "evidence gaps", "time sensitivity"],
+      "failure_conditions": ["high consequence with low evidence", "irreversible action", "public or regulatory exposure", "material financial or security impact"],
+      "runtime_mapping": "Higher reliance risk can force Escalate, Block, Refuse, or Quarantine even when trust score is moderate."
+    },
+    {
+      "id": "runtime_admissibility_model",
+      "name": "Runtime Admissibility Model",
+      "version": "1.0",
+      "score_name": "Runtime Admissibility Score",
+      "maturity": "demo-directional",
+      "purpose": "Evaluate whether an action should be allowed, allowed with caveat, constrained, escalated, blocked, refused, or quarantined before runtime execution or leadership reliance.",
+      "object_type": "action",
+      "factors": [
+        {"id": "trust_score", "label": "Trust Score", "weight": 0.18, "description": "Underlying trust score for the object or claim."},
+        {"id": "confidence_score", "label": "Confidence Score", "weight": 0.14, "description": "Confidence in the trust score."},
+        {"id": "reliance_risk", "label": "Reliance Risk", "weight": 0.2, "description": "Risk of relying on the information or allowing the action."},
+        {"id": "required_evidence_present", "label": "Required Evidence Present", "weight": 0.18, "description": "Whether mandatory evidence exists for the action."},
+        {"id": "owner_authority", "label": "Owner Authority", "weight": 0.14, "description": "Whether the accountable owner has authority and is visible."},
+        {"id": "policy_or_purpose_constraint", "label": "Policy or Purpose Constraint", "weight": 0.16, "description": "Whether the action violates stated constraints or refusal rules."}
+      ],
+      "evidence_standard": ["trust score", "confidence score", "reliance risk", "required evidence", "owner authority", "purpose/protocol constraints"],
+      "failure_conditions": ["required evidence missing", "purpose constraint violated", "high reliance risk", "owner authority absent", "low confidence under high stakes"],
+      "runtime_mapping": "Produces the runtime action ladder output for the decision record."
+    }
+  ],
+  "mvp_rule": "V56.4 creates the core model definitions and UI inspection surface only. It does not perform live claim extraction, live scoring, live evidence retrieval, or Internet Trust Engine implementation."
+}
