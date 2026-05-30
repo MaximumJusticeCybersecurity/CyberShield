@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V59 Internet Trust Engine MVP Scaffold
+Current implemented build: V59.1 Artifact Intake and Claim Table Prototype
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V59 Internet Trust Engine MVP Scaffold.
+CyberShield V59.1 Artifact Intake and Claim Table Prototype.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V59.
+No new top-level tabs were added for V59.1.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V59. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V59.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -22,20 +22,18 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Internet Trust Engine principle:
 CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 
-V59 Internet Trust Engine MVP Scaffold:
-- adds `data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json`
-- adds `src/ui/v59-internet-trust-engine-mvp-scaffold.js`
-- loads V59 after V58.2 in `src/ui/v52-7-operational-layer.js`
-- adds Internet Trust Engine scaffold surface into Evidence
-- adds Internet Trust Engine scaffold surface into Proof Pack
-- adds Internet Trust Engine scaffold surface into Architecture
-- adds USAFacts-style pilot artifact structure
-- adds sample claim rows and claim type taxonomy
-- adds artifact field requirements
-- adds evidence state mapping
-- adds model trace mapping to existing Core Trust Scoring Models
-- adds scaffold trace modal
-- adds scaffold summary text download
+V59.1 Artifact Intake and Claim Table Prototype:
+- adds `data/internet-trust/v59-1-artifact-intake-claim-table.json`
+- adds `src/ui/v59-1-artifact-intake-claim-table.js`
+- loads V59.1 after V59 in `src/ui/v52-7-operational-layer.js`
+- adds artifact intake panel into Evidence
+- adds artifact intake panel into Proof Pack
+- adds editable-looking artifact metadata fields
+- adds static claim table rows
+- maps claims to evidence states, confidence labels, model traces, reliance risk, missing evidence, next step, and proof-pack readiness
+- adds artifact intake trace modal
+- adds claim table text download
+- preserves V59 Internet Trust Engine MVP Scaffold
 - preserves V58.2 Runtime Action Queue to Proof Pack Trace Linkage
 - preserves V58.1 Runtime Action Queue
 - preserves V58 Operational Trust Control Pane
@@ -51,10 +49,10 @@ Use CyberShield Internet Trust Engine, CyberShield Artifact Trust Engine, Claim 
 Avoid fact-checker, truth engine, misinformation detector, political validation, trusted/untrusted person labels, and artifact-level trust score as the MVP anchor.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype scaffold. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
+Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Proof Pack, and Architecture, confirm Internet Trust Engine scaffold appears, confirm scaffold trace modal and download work, confirm no new top-level tab exists, and confirm no live-capability overclaims or prohibited branding appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence and Proof Pack, confirm Artifact Intake and Claim Table appears, confirm intake fields appear editable-looking, confirm claim table appears, confirm intake trace modal and download work, confirm no new top-level tab exists, and confirm no live-capability overclaims or prohibited branding appear.
