@@ -1,66 +1,60 @@
 CyberShield Executive OS
-Current implemented build: V58.2 Runtime Action Queue to Proof Pack Trace Linkage
+Current implemented build: V59 Internet Trust Engine MVP Scaffold
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V58.2 Runtime Action Queue to Proof Pack Trace Linkage.
+CyberShield V59 Internet Trust Engine MVP Scaffold.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V58.2.
+No new top-level tabs were added for V59.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V58.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V59. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
 
-Guiding principle:
-No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
+Internet Trust Engine principle:
+CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 
-Preferred product term: Trust Scoring Models.
-Preferred architectural term: Trust Model Registry.
-
-V58.2 Runtime Action Queue to Proof Pack Trace Linkage:
-- adds `data/runtime/v58-2-queue-proof-trace-linkage.json`
-- adds `src/ui/v58-2-queue-proof-trace-linkage.js`
-- loads V58.2 after V58.1 in `src/ui/v52-7-operational-layer.js`
-- adds queue-to-proof trace linkage surface into Proof Pack
-- adds queue-to-proof trace linkage surface into Runtime
-- adds trace-link modal showing linked decision records, evidence items, Proof Pack sections, and board narrative sections
-- enhances Runtime Action Queue cards with proof-trace access when matching links are available
+V59 Internet Trust Engine MVP Scaffold:
+- adds `data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json`
+- adds `src/ui/v59-internet-trust-engine-mvp-scaffold.js`
+- loads V59 after V58.2 in `src/ui/v52-7-operational-layer.js`
+- adds Internet Trust Engine scaffold surface into Evidence
+- adds Internet Trust Engine scaffold surface into Proof Pack
+- adds Internet Trust Engine scaffold surface into Architecture
+- adds USAFacts-style pilot artifact structure
+- adds sample claim rows and claim type taxonomy
+- adds artifact field requirements
+- adds evidence state mapping
+- adds model trace mapping to existing Core Trust Scoring Models
+- adds scaffold trace modal
+- adds scaffold summary text download
+- preserves V58.2 Runtime Action Queue to Proof Pack Trace Linkage
 - preserves V58.1 Runtime Action Queue
 - preserves V58 Operational Trust Control Pane
 - preserves V57.1 Board and Executive Narrative Layer
 - preserves V57 Model-Driven Proof Pack
 - preserves V56.4 Core Trust Scoring Models
-- preserves V56.3 Universal Score Object and Score Band Contract
-- preserves V56.2 Decision Record Hardening
-- preserves V56.1 Evidence and Assumption Register
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
-- keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-Queue-to-proof trace fields:
-- queue_item_id
-- decision_record_ids
-- evidence_item_ids
-- proof_pack_sections
-- board_narrative_sections
-- trace_summary
-- proof_gap
-- next_trace_action
-- prototype_boundary
+Required framing:
+Use CyberShield Internet Trust Engine, CyberShield Artifact Trust Engine, Claim Trust Intelligence, Evidence-Based Decision Trust, Reliance checking, artifact reliance review, and claim-level trust mapping.
+
+Avoid fact-checker, truth engine, misinformation detector, political validation, trusted/untrusted person labels, and artifact-level trust score as the MVP anchor.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype scaffold. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
+Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Runtime and Proof Pack, confirm queue-to-proof trace linkage appears, confirm proof trace buttons/modal work, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Proof Pack, and Architecture, confirm Internet Trust Engine scaffold appears, confirm scaffold trace modal and download work, confirm no new top-level tab exists, and confirm no live-capability overclaims or prohibited branding appear.
