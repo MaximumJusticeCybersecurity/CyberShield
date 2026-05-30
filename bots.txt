@@ -1,57 +1,52 @@
 CyberShield Executive OS
-Current implemented build: V59.5 Internet Trust QA and Copy Guardrail Pass
+Current implemented build: V60 Trust Evidence Workbench Scaffold
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V59.5 Internet Trust QA and Copy Guardrail Pass.
+CyberShield V60 Trust Evidence Workbench Scaffold.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V59.5.
+No new top-level tabs were added for V60.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V59.5. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
 
-Internet Trust Engine principle:
-CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
-
-V59.5 Internet Trust QA and Copy Guardrail Pass:
-- adds `data/internet-trust/v59-5-internet-trust-qa-copy-guardrails.json`
-- adds `src/ui/v59-5-internet-trust-qa-copy-guardrails.js`
-- loads V59.5 after V59.4 in `src/ui/v52-7-operational-layer.js`
-- adds Internet Trust QA Guardrails into Evidence
-- adds Internet Trust QA Guardrails into Proof Pack
-- adds Internet Trust QA Guardrails into Settings/Admin context
-- makes allowed terms visible
-- makes prohibited terms visible
-- makes overclaim guardrails visible
-- makes surface label guardrails visible
-- makes GitHub Pages browser QA checklist visible and downloadable
-- preserves V59.4 Internet Trust Board Narrative Add-On
-- preserves V59.3 Internet Trust Proof Pack Export Contract
-- preserves V59.2 Claim Row to Model Trace and Proof Pack Output
-- preserves V59.1 Artifact Intake and Claim Table Prototype
-- preserves V59 Internet Trust Engine MVP Scaffold
+V60 Trust Evidence Workbench Scaffold:
+- adds `data/evidence/v60-trust-evidence-workbench.json`
+- adds `src/ui/v60-trust-evidence-workbench.js`
+- loads V60 after V59.5 in `src/ui/v52-7-operational-layer.js`
+- adds Trust Evidence Workbench into Evidence
+- adds Trust Evidence Workbench into Runtime
+- adds Trust Evidence Workbench into Proof Pack
+- adds editable-looking manual evidence fields
+- adds evidence state definitions
+- adds sample evidence objects linked to claims, decisions, and Proof Pack sections
+- adds state transition rules
+- adds workbench trace modal
+- adds evidence workbench text download
+- preserves V59.5 Internet Trust QA and Copy Guardrail Pass
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 
-Required framing:
-Use CyberShield Internet Trust Engine, CyberShield Artifact Trust Engine, Claim Trust Intelligence, Evidence-Based Decision Trust, Reliance checking, artifact reliance review, claim-level trust mapping, claim review, evidence state, human review required, prototype boundary, and static advisory prototype.
+Forward roadmap:
+- `docs/v60-v70-cybershield-engineering-roadmap.md`
 
-Avoid fact-checker, truth engine, misinformation detector, political validation, trusted person, untrusted person, verified fact, certified true, live verified, automated truth, and proves accuracy.
+V60 evidence states:
+provided, missing, stale, assumed, conflicting, needs_verification, verified_by_human.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, or takedown automation.
+The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.
 
 Overclaim prohibitions:
-Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, or live enterprise integrations.
+Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Proof Pack, and Settings, confirm Internet Trust QA Guardrails appears, confirm modal/download work, confirm no new top-level tab exists, and confirm no live-capability overclaims or prohibited branding appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, and Proof Pack, confirm Trust Evidence Workbench appears, confirm manual evidence fields, state definitions, modal, and download work, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
