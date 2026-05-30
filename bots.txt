@@ -1,44 +1,41 @@
 CyberShield Executive OS
-Current implemented build: V55.6 TrustMap Interaction Reliability
+Current implemented build: V56 Trust Model Registry and Score Explanation Layer
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V55.6 TrustMap Interaction Reliability.
+CyberShield V56 Trust Model Registry and Score Explanation Layer.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V55.6.
+No new top-level tabs were added for V56.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V55.6. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V56. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Core thesis:
 CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
 
-TrustMap visual doctrine:
-The CyberShield TrustMap is a radar-constellation interface. Radar means orientation, active scanning, and situational awareness. Constellation means connected assets, dependencies, and trust relationships. It must not look like a process-flow diagram.
+Trust Model doctrine:
+CyberShield evaluates whether the information behind a critical action or claim can be trusted before the organization acts. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, consequence if wrong, and decision reliance are the point.
 
-Visual complexity rule:
-Complexity lives at the edge. Trust is established at the center.
-
-V55.6 TrustMap interaction reliability:
-- adds `src/ui/v55-6-trustmap-interaction-reliability.js`
-- loads V55.6 after V55.5 in `src/ui/v52-7-operational-layer.js`
-- preserves registry-rendered TrustMap from `data/trustmap/v55-3-trustmap-registry.json`
-- preserves stylesheet ownership through `src/styles/trustmap-v55-5.css`
-- adds richer TrustMap domain and asset explanation behavior
-- adds route buttons from TrustMap object detail to Runtime, Evidence, and Proof Pack
-- adds route feedback so users know why they moved to another workspace
-- adds accessibility labels and titles to domains, assets, and CyberShield Core
-- keeps CyberShield Core as a thick neon-blue shield-boundary trust kernel
-- keeps no black bevel around CyberShield Core
-- keeps V55 Purpose Protocol active
-- keeps no-new-top-level-tabs rule intact
+V56 Trust Model Registry and Score Explanation Layer:
+- adds `data/models/v56-trust-score-models.json`
+- adds `src/ui/v56-trust-model-score-explanations.js`
+- loads V56 after V55.6 in `src/ui/v52-7-operational-layer.js`
+- adds model explanations for Operational Trust Score, Scenario Trust Score, and Purpose Protocol Readiness
+- shows model inputs, weights, thresholds, evidence requirements, and limitations
+- labels models as demo-directional
+- keeps all scores advisory unless validated otherwise
+- preserves no-new-top-level-tabs rule
+- preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
+
+TrustMap doctrine:
+The CyberShield TrustMap is a radar-constellation interface. CyberShield Core is a thick neon-blue shield-boundary trust kernel, not a normal node. Complexity lives at the edge. Trust is established at the center.
 
 Minimum Layer 1 operating environment inputs:
 - Cloud & Infrastructure
@@ -49,13 +46,10 @@ Minimum Layer 1 operating environment inputs:
 - Devices & Endpoints
 
 Purpose Protocol doctrine:
-CyberShield turns purpose into protocol. Purpose is not governance until it can cause a refusal. Purpose Protocol converts executive intent, mission, risk appetite, and operating principles into machine-readable constraints, trade-off rules, refusal conditions, evidence requirements, escalation paths, and visible human ownership before action.
-
-Priority Purpose Protocol scenario:
-Vendor payment destination change. If banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
+CyberShield turns purpose into protocol. Purpose is not governance until it can cause a refusal.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V55.6 live feature and not a standalone product pillar.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V56 live feature and not a standalone product pillar.
 
 Requirements doc:
 `docs/internet-trust-engine-requirements.md`
@@ -82,4 +76,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V55.6 metadata appears in Settings/admin context, confirm TrustMap renders from registry data, confirm object detail includes reliability note and route buttons, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V56 metadata appears in Settings/admin context, confirm score model buttons appear, confirm model explanation modal opens and closes, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
