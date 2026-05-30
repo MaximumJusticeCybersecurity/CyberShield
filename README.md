@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.1 Runtime Evidence Panel Correction**
+Current build label: **V60.3.2 Show-Readiness Cleanup Pass**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-1-runtime-evidence-panel-correction&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-2-show-readiness-cleanup&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.1
+V60.3.2
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,19 +32,22 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.1.
+No new top-level tabs were added for V60.3.2.
 
-## Current implemented build: V60.3.1
+## Current implemented build: V60.3.2
 
-V60.3.1 corrects the Runtime/Evidence information architecture defect.  The full Manual Evidence Workbench now belongs only in the Evidence workspace.  Runtime now receives a compact Runtime Evidence Requirements panel focused on evidence blocking or constraining action.  Proof Pack receives proof-oriented evidence trace context.
+V60.3.2 is a show-readiness cleanup pass.  It does not add a new capability layer.  It makes the prototype cleaner for advisor, expert, prospect, and pilot feedback by adding concise workspace framing, reducing duplicated scaffolding, demoting supporting detail, and preserving the corrected Runtime/Evidence/Proof Pack information architecture.
 
-V60.3.1 changes:
+V60.3.2 changes:
 
-- updates `src/ui/v60-trust-evidence-workbench.js`
-- keeps the full Manual Evidence Workbench in Evidence
-- removes the full Manual Evidence Workbench behavior from Runtime
-- replaces Runtime evidence content with a compact Runtime Evidence Requirements panel
-- keeps Proof Pack focused on evidence defensibility trace
+- adds `src/ui/v60-3-2-show-readiness-cleanup.js`
+- loads V60.3.2 after V60.3 in `src/ui/v52-7-operational-layer.js`
+- adds show-ready workspace framing to Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
+- preserves Evidence as the full Manual Evidence Workbench workspace
+- preserves Runtime as the compact Runtime Evidence Requirements workspace
+- preserves Proof Pack as the proof-oriented evidence trace workspace
+- demotes repeated supporting detail where it risks visual clutter
+- adds workspace focus notes for Runtime, Evidence, and Proof Pack
 - preserves V60.3 Universal Model Trace Inspector
 - preserves V60.2 Evidence-to-Score Impact Preview
 - preserves no-new-top-level-tabs rule
@@ -61,6 +64,22 @@ Proof Pack tab = proof-oriented evidence trace
 
 Runtime should feel like command authority, not a junk drawer.  It should show what is blocking, constraining, escalating, or allowing the action now.
 
+## Show-readiness principle
+
+CyberShield should be clean enough to show advisors, prospects, experts, and potential pilot users without making them sort through accumulated build scaffolding.
+
+Each workspace should have one primary job:
+
+```text
+Briefing = executive decision posture
+TrustMap = trust universe and relationships
+Runtime = command authority and allowed action
+Evidence = manual evidence handling and traceability
+Proof Pack = defensibility and export context
+Architecture = doctrine and system structure
+Settings = build status and prototype metadata
+```
+
 ## Controlling doctrine
 
 ```text
@@ -72,20 +91,6 @@ No score without a model. No model without evidence. No evidence without traceab
 The CyberShield scoring models are currently expert-derived V1 trust models.  We have high confidence in the architecture because it separates trust, confidence, evidence quality, reliance risk, runtime admissibility, and defensibility.  We have medium confidence in the initial scoring factors and lower confidence in the default weights until they are calibrated against test scenarios, expert review, and real-world use cases.
 
 Therefore, the models are implemented as versioned, registry-backed, inspectable, and calibratable models, not hardcoded scoring truth.
-
-## Why this correction matters
-
-CyberShield must be clean enough to show advisors, prospects, experts, and potential pilot users without making them sort through duplicated workbenches.
-
-The Runtime workspace should answer:
-
-```text
-What action is under review?
-What evidence is blocking or constraining the action?
-Who owns the next human step?
-What happens if we are wrong?
-What runtime action follows?
-```
 
 ## Forward roadmap
 
@@ -108,6 +113,8 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
+open each workspace
+confirm show-ready workspace framing appears
 open Evidence
 confirm full Manual Evidence Workbench appears in Evidence
 open Runtime
@@ -115,11 +122,12 @@ confirm full Manual Evidence Workbench does not appear in Runtime
 confirm Runtime Evidence Requirements panel appears in Runtime
 open Proof Pack
 confirm Proof Pack shows evidence trace, not manual workbench clutter
-confirm V60.3 Universal Model Trace Inspector still appears
+confirm duplicated supporting sections are demoted rather than dominating the page
+confirm V60.3 Universal Model Trace Inspector still works
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
 
 ## Next likely decision point
 
-After V60.3.1 browser QA passes, the next build should focus on show-readiness cleanup: reduce duplicate sections across Evidence, Runtime, Proof Pack, Architecture, and Settings so CyberShield presents as a crisp executive prototype rather than accumulated build layers.
+After V60.3.2 browser QA passes, the next build should be a final advisor-demo review pass: polish copy, reduce remaining clutter, and identify the three to five advisor feedback questions Dr. Justice should ask when showing CyberShield Executive OS to others.
