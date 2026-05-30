@@ -1,20 +1,27 @@
 CyberShield Executive OS
-Current implemented build: V60.3 Universal Model Trace Inspector
+Current implemented build: V60.3.1 Runtime Evidence Panel Correction
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3 Universal Model Trace Inspector.
+CyberShield V60.3.1 Runtime Evidence Panel Correction.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.
+No new top-level tabs were added for V60.3.1.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+
+Correct information architecture:
+Evidence tab = full Manual Evidence Workbench.
+Runtime tab = compact Runtime Evidence Requirements panel.
+Proof Pack tab = proof-oriented evidence trace.
+
+Runtime should feel like command authority, not a junk drawer. It should show what is blocking, constraining, escalating, or allowing the action now.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -22,23 +29,23 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
-Model maturity rule:
-CyberShield scoring models are Expert-Derived V1 Trust Scoring Models. They are not Statistically Validated Trust Models. The architecture has high confidence because it separates trust, confidence, evidence quality, reliance risk, runtime admissibility, and defensibility. The initial factors have medium confidence. The default weights have lower confidence until calibrated against test scenarios, expert review, red-team attempts, and real-world use cases.
-
-V60.3 Universal Model Trace Inspector:
-- adds `data/models/v60-3-calibratable-trust-model-registry.json`
-- adds `src/ui/v60-3-universal-model-trace-inspector.js`
-- loads V60.3 after V60.2 in `src/ui/v52-7-operational-layer.js`
-- labels models as Expert-Derived V1 Trust Scoring Models
-- avoids claiming statistically validated trust models
-- adds Universal Model Trace Inspector UI
-- adds sample score trace objects
-- adds calibratable metadata: model version, factor weights, thresholds, override notes, calibration history, test scenario results, limitations, and human review notes
-- adds core calibratable model definitions for Evidence Trust, Confidence, Reliance Risk, Runtime Admissibility, Proof Pack Defensibility, and Human Verification Maturity
-- adds placeholder roadmap models for Internet Trust, Vendor Trust, AI Agent Trust, Purpose Alignment, Identity Trust, Data Trust, Control Trust, Policy Trust, Trust Debt, Agentic Action Risk, Prompt Injection Exposure, Tool Use Risk, and Organizational Trust Maturity
+V60.3.1 Runtime Evidence Panel Correction:
+- updates `src/ui/v60-trust-evidence-workbench.js`
+- keeps the full Manual Evidence Workbench in Evidence
+- removes full Manual Evidence Workbench behavior from Runtime
+- replaces Runtime evidence content with compact Runtime Evidence Requirements panel
+- keeps Proof Pack focused on evidence defensibility trace
+- preserves V60.3 Universal Model Trace Inspector
 - preserves V60.2 Evidence-to-Score Impact Preview
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
+- preserves prototype boundary language
+
+V60.3 Universal Model Trace Inspector remains active:
+- `data/models/v60-3-calibratable-trust-model-registry.json`
+- `src/ui/v60-3-universal-model-trace-inspector.js`
+- Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models
+- model version, factor weights, thresholds, override notes, calibration history, test scenario results, limitations, and human review notes
 
 Forward roadmap:
 - `docs/v60-v70-cybershield-engineering-roadmap.md`
@@ -50,4 +57,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, Proof Pack, Architecture, and Settings, confirm Universal Model Trace Inspector appears, confirm Inspect model and Why this score actions work, confirm factor weights are visible but labeled as calibratable V1 defaults, confirm no new top-level tab exists, and confirm no live-capability or statistically validated scoring overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, and Proof Pack. Confirm full Manual Evidence Workbench appears in Evidence, full Manual Evidence Workbench does not appear in Runtime, compact Runtime Evidence Requirements panel appears in Runtime, Proof Pack shows evidence trace rather than manual workbench clutter, Universal Model Trace Inspector still appears, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
