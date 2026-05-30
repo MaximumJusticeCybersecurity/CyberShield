@@ -1,37 +1,45 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.1 Evidence State Transition Prototype",
+  "current_implemented_build": "V60.2 Evidence-to-Score Impact Preview",
   "build_date": "2026-05-29",
-  "patch_type": "Evidence state transition prototype over V60 Trust Evidence Workbench",
-  "release_chain_status": "V60.1 is the current implemented build. It loads after V60 in src/ui/v52-7-operational-layer.js. It shows how evidence moves from weak states to verified_by_human with required human action, required documentation, risk if skipped, and Proof Pack consequence. GitHub Pages browser QA is required after deploy.",
+  "patch_type": "Evidence-to-score impact preview over V60.1 Evidence State Transition Prototype",
+  "release_chain_status": "V60.2 is the current implemented build. It loads after V60.1 in src/ui/v52-7-operational-layer.js. It shows how evidence state transitions would affect trust score, confidence, reliance risk, runtime admissibility, and Proof Pack defensibility without claiming live scoring. GitHub Pages browser QA is required after deploy.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-1-evidence-state-transitions&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-2-evidence-to-score-impact-preview&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "uploaded_requirements_source": "CyberShield Trust Model Registry and Scoring Requirements uploaded by Dr. Justice; controlling product doctrine for scoring/model work.",
   "forward_roadmap": "docs/v60-v70-cybershield-engineering-roadmap.md",
-  "v60_1_changes": [
-    "adds data/evidence/v60-1-evidence-state-transition-prototype.json",
-    "adds src/ui/v60-1-evidence-state-transition-prototype.js",
-    "loads V60.1 after V60",
-    "shows allowed and blocked evidence state transitions",
-    "shows required human action per transition",
-    "shows required documentation per transition",
-    "shows risk if skipped",
-    "shows Proof Pack consequence",
-    "adds transition trace export",
+  "v60_2_changes": [
+    "adds data/evidence/v60-2-evidence-to-score-impact-preview.json",
+    "adds src/ui/v60-2-evidence-to-score-impact-preview.js",
+    "loads V60.2 after V60.1",
+    "shows static score impact previews for evidence state changes",
+    "separates trust score delta from confidence delta",
+    "shows reliance risk may stay high even if trust improves",
+    "shows runtime action change preview",
+    "shows Proof Pack defensibility change preview",
+    "adds impact trace modal",
+    "adds impact trace JSON download",
+    "preserves V60.1 Evidence State Transition Prototype",
     "preserves V60 Trust Evidence Workbench",
     "preserves V59 Internet Trust Engine scaffold and guardrails",
-    "preserves V56 Trust Model Registry and Evidence Register chain",
     "keeps no-new-top-level-tabs rule intact"
   ],
+  "evidence_to_score_impact_preview": {
+    "status": "active_static_preview",
+    "registry": "data/evidence/v60-2-evidence-to-score-impact-preview.json",
+    "ui": "src/ui/v60-2-evidence-to-score-impact-preview.js",
+    "workspaces": ["Evidence", "Runtime", "Proof Pack"],
+    "boundary": "Static advisory prototype only. Score impact previews are illustrative and not live calculations. No backend persistence, live scoring, live evidence retrieval, automated verification, workflow automation, ticketing, notifications, or enforcement is performed."
+  },
   "evidence_state_transitions": {
     "status": "active_static_prototype",
     "registry": "data/evidence/v60-1-evidence-state-transition-prototype.json",
     "ui": "src/ui/v60-1-evidence-state-transition-prototype.js",
-    "evidence_states": ["provided", "missing", "stale", "assumed", "conflicting", "needs_verification", "verified_by_human"],
-    "boundary": "Static advisory prototype only. No backend persistence, live evidence retrieval, automated verification, workflow automation, ticketing, notifications, or enforcement is performed."
+    "evidence_states": ["provided", "missing", "stale", "assumed", "conflicting", "needs_verification", "verified_by_human"]
   },
   "trust_evidence_workbench": {
     "status": "active_static_scaffold",
@@ -46,9 +54,9 @@
   "artifact_intake_claim_table": { "status": "active_static_prototype", "registry": "data/internet-trust/v59-1-artifact-intake-claim-table.json", "ui": "src/ui/v59-1-artifact-intake-claim-table.js", "workspaces": ["Evidence", "Proof Pack"] },
   "internet_trust_engine_mvp_scaffold": { "status": "active_scaffold", "registry": "data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json", "ui": "src/ui/v59-internet-trust-engine-mvp-scaffold.js", "workspaces": ["Evidence", "Proof Pack", "Architecture"] },
   "core_trust_scoring_models": { "status": "active", "path": "data/models/v56-4-core-trust-scoring-models.json", "ui": "src/ui/v56-4-core-trust-scoring-models.js", "models": ["Artifact Trust Model", "Claim Trust Model", "Sentence-Level Trust Model", "Evidence Trust Model", "Confidence Model", "Reliance Risk Model", "Runtime Admissibility Model"] },
-  "recommended_next_build": { "label": "V60.2 Evidence-to-Score Impact Preview", "goals": ["show how evidence state transitions would affect trust score", "show how transitions would affect confidence", "show how transitions would affect reliance risk", "show how transitions would affect runtime admissibility", "show how transitions would affect Proof Pack defensibility", "preserve prototype boundaries and avoid live scoring claims"] },
-  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype" },
+  "recommended_next_build": { "label": "V60.3 Universal Model Trace Inspector", "goals": ["expose one common inspection pattern for any score, evidence item, decision record, TrustMap object, runtime action, Proof Pack recommendation, or Internet Trust claim row", "show model name, version, score, confidence, evidence, missing evidence, assumptions, reliance risk, runtime action, owner, and next step", "preserve prototype boundaries and avoid live scoring claims"] },
+  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype", "v60.2": "Evidence-to-Score Impact Preview" },
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live URL ingestion, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.",
   "overclaim_prohibitions": ["live monitoring", "live enforcement", "live evidence retrieval", "backend persistence", "live scoring", "live claim extraction", "live internet retrieval", "live URL ingestion", "live ticketing", "live notifications", "workflow automation", "legal determinations", "CMMC certification", "healthcare compliance validation", "live integrations"],
-  "known_limitations": ["Evidence State Transition Prototype is static", "Transitions are illustrative and local-only", "V60.1 does not persist evidence to a backend", "V60.1 does not retrieve live evidence", "V60.1 does not perform live verification", "V60.1 does not create tickets or send notifications", "V60.1 does not perform workflow automation", "GitHub Pages browser QA required after deploy"]
+  "known_limitations": ["Evidence-to-Score Impact Preview is static", "Score impact previews are illustrative and not live calculations", "V60.2 does not persist evidence to a backend", "V60.2 does not retrieve live evidence", "V60.2 does not perform live scoring", "V60.2 does not create tickets or send notifications", "V60.2 does not perform workflow automation", "GitHub Pages browser QA required after deploy"]
 }
