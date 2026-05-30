@@ -1,25 +1,37 @@
 CyberShield Executive OS
-Current implemented build: V60.3.1 Runtime Evidence Panel Correction
+Current implemented build: V60.3.2 Show-Readiness Cleanup Pass
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3.1 Runtime Evidence Panel Correction.
+CyberShield V60.3.2 Show-Readiness Cleanup Pass.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.1.
+No new top-level tabs were added for V60.3.2.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.1. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Correct information architecture:
 Evidence tab = full Manual Evidence Workbench.
 Runtime tab = compact Runtime Evidence Requirements panel.
 Proof Pack tab = proof-oriented evidence trace.
+
+Show-readiness rule:
+CyberShield should be clean enough to show advisors, prospects, experts, and potential pilot users without making them sort through accumulated build scaffolding.
+
+Workspace focus:
+Briefing = executive decision posture.
+TrustMap = trust universe and relationships.
+Runtime = command authority and allowed action.
+Evidence = manual evidence handling and traceability.
+Proof Pack = defensibility and export context.
+Architecture = doctrine and system structure.
+Settings = build status and prototype metadata.
 
 Runtime should feel like command authority, not a junk drawer. It should show what is blocking, constraining, escalating, or allowing the action now.
 
@@ -29,12 +41,15 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
-V60.3.1 Runtime Evidence Panel Correction:
-- updates `src/ui/v60-trust-evidence-workbench.js`
-- keeps the full Manual Evidence Workbench in Evidence
-- removes full Manual Evidence Workbench behavior from Runtime
-- replaces Runtime evidence content with compact Runtime Evidence Requirements panel
-- keeps Proof Pack focused on evidence defensibility trace
+V60.3.2 Show-Readiness Cleanup Pass:
+- adds `src/ui/v60-3-2-show-readiness-cleanup.js`
+- loads V60.3.2 after V60.3 in `src/ui/v52-7-operational-layer.js`
+- adds show-ready workspace framing to Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
+- preserves Evidence as the full Manual Evidence Workbench workspace
+- preserves Runtime as the compact Runtime Evidence Requirements workspace
+- preserves Proof Pack as the proof-oriented evidence trace workspace
+- demotes repeated supporting detail where it risks visual clutter
+- adds workspace focus notes for Runtime, Evidence, and Proof Pack
 - preserves V60.3 Universal Model Trace Inspector
 - preserves V60.2 Evidence-to-Score Impact Preview
 - preserves no-new-top-level-tabs rule
@@ -57,4 +72,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Evidence, Runtime, and Proof Pack. Confirm full Manual Evidence Workbench appears in Evidence, full Manual Evidence Workbench does not appear in Runtime, compact Runtime Evidence Requirements panel appears in Runtime, Proof Pack shows evidence trace rather than manual workbench clutter, Universal Model Trace Inspector still appears, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open each workspace and confirm show-ready workspace framing appears, Evidence keeps the full Manual Evidence Workbench, Runtime does not show the full Manual Evidence Workbench, Runtime shows the compact Runtime Evidence Requirements panel, Proof Pack shows evidence trace rather than manual workbench clutter, duplicated supporting sections are demoted, Universal Model Trace Inspector still works, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
