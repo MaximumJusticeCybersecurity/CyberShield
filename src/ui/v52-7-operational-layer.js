@@ -9,3 +9,4 @@ import './v55-3-1-core-shield-boundary-fix.js';
 import './v55-4-trustmap-registry-consumption.js';
 import './v55-5-trustmap-css-visual-cleanup.js';
 import './v55-6-trustmap-interaction-reliability.js';
+import './v56-trust-model-score-explanations.js';
