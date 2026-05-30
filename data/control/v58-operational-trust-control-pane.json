@@ -1,0 +1,68 @@
+{
+  "version": "V58",
+  "name": "Operational Trust Control Pane",
+  "status": "executive_control_registry",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "Static advisory prototype only. The control pane consolidates local prototype registry data and does not perform live monitoring, live evidence retrieval, live scoring, live integrations, live enforcement, report delivery, ticketing, or workflow automation.",
+  "purpose": "Give executives one operational inspection surface that shows what is trusted, what is missing, what decision is required, what action CyberShield recommends, who owns the next move, and what proof can be shown later.",
+  "source_layers": [
+    {"id": "trustmap", "label": "TrustMap", "source": "data/trustmap/v55-3-trustmap-registry.json", "role": "Shows the operating trust universe and connected trust objects."},
+    {"id": "runtime", "label": "Runtime", "source": "Purpose Protocol and decision records", "role": "Shows whether the action should proceed, constrain, escalate, block, refuse, or quarantine."},
+    {"id": "evidence", "label": "Evidence", "source": "data/evidence/v56-1-evidence-assumption-register.json", "role": "Shows provided, missing, stale, assumed, conflicting, and needs-verification evidence."},
+    {"id": "models", "label": "Trust Scoring Models", "source": "data/models/v56-4-core-trust-scoring-models.json", "role": "Shows which models explain the scores and runtime posture."},
+    {"id": "decision_records", "label": "Decision Records", "source": "data/decisions/v56-2-decision-record-schema.json", "role": "Shows defensible decision trace."},
+    {"id": "proof_pack", "label": "Proof Pack", "source": "data/proof/v57-model-driven-proof-pack-schema.json", "role": "Shows what can be documented and exported."},
+    {"id": "board_narrative", "label": "Board Narrative", "source": "data/proof/v57-1-board-executive-narrative-schema.json", "role": "Shows executive-ready language for leadership and board review."}
+  ],
+  "control_cards": [
+    {
+      "id": "decision_required",
+      "label": "Decision Required",
+      "priority": 1,
+      "summary": "Leadership must decide whether to proceed with caveats, constrain, escalate, block, refuse, or quarantine the current action or reliance path.",
+      "route": "runtime",
+      "primary_question": "What action is under review and what should happen next?"
+    },
+    {
+      "id": "evidence_gaps",
+      "label": "Evidence Gaps",
+      "priority": 2,
+      "summary": "Evidence gaps, assumptions, stale items, and verification needs must be visible before reliance.",
+      "route": "evidence",
+      "primary_question": "What is missing or assumed?"
+    },
+    {
+      "id": "model_trace",
+      "label": "Model Trace",
+      "priority": 3,
+      "summary": "Every score must route to a named, versioned model with factors, weights, evidence standard, and failure conditions.",
+      "route": "architecture",
+      "primary_question": "Why did CyberShield score it this way?"
+    },
+    {
+      "id": "proof_ready",
+      "label": "Proof Ready",
+      "priority": 4,
+      "summary": "Proof Pack and board narrative must show what was relied upon, what is limited, and what next action is recommended.",
+      "route": "proof",
+      "primary_question": "What can we show later?"
+    }
+  ],
+  "next_action_rules": [
+    "If required evidence is missing, escalate or constrain before reliance.",
+    "If reliance risk is high and confidence is low, block or refuse until human review.",
+    "If assumptions are material, document them in the decision record and Proof Pack.",
+    "If board or external reliance is expected, generate the Board Narrative and verify evidence first.",
+    "If a runtime action is Refuse or Quarantine, do not soften the language into recommendation-only copy. Show the limitation that the prototype is advisory and not live enforcement."
+  ],
+  "executive_questions": [
+    "What decision is required?",
+    "What information are we relying on?",
+    "What evidence is missing or assumed?",
+    "What model explains the score?",
+    "What happens if the information is wrong?",
+    "Who owns the next move?",
+    "What proof can we show later?",
+    "What are the prototype limitations?"
+  ]
+}
