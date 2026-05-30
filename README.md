@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V58.2 Runtime Action Queue to Proof Pack Trace Linkage**
+Current build label: **V59 Internet Trust Engine MVP Scaffold**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v58-2-queue-proof-trace-linkage&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v59-internet-trust-engine-mvp-scaffold&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V58.2
+V59
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,79 +32,115 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V58.2.
+No new top-level tabs were added for V59.
 
-## Current implemented build: V58.2
+## Current implemented build: V59
 
-V58.2 adds Runtime Action Queue to Proof Pack Trace Linkage. It connects queue items directly to related decision records, evidence register items, Proof Pack sections, and board narrative language without adding a new top-level tab.
+V59 adds the Internet Trust Engine MVP Scaffold as a bounded CyberShield scenario family. It introduces artifact intake placeholders, wrapper and metadata review, claim decomposition placeholders, evidence state mapping, reliance checking, model trace mapping, and Proof Pack output structure without claiming live internet verification or live evidence retrieval.
 
-V58.2 changes:
+V59 changes:
 
-- adds `data/runtime/v58-2-queue-proof-trace-linkage.json`
-- adds `src/ui/v58-2-queue-proof-trace-linkage.js`
-- loads V58.2 after V58.1 in `src/ui/v52-7-operational-layer.js`
-- adds queue-to-proof trace linkage surface into Proof Pack
-- adds queue-to-proof trace linkage surface into Runtime
-- adds trace-link modal showing linked decision records, evidence items, Proof Pack sections, and board narrative sections
-- enhances Runtime Action Queue cards with proof-trace access when matching links are available
+- adds `data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json`
+- adds `src/ui/v59-internet-trust-engine-mvp-scaffold.js`
+- loads V59 after V58.2 in `src/ui/v52-7-operational-layer.js`
+- adds Internet Trust Engine scaffold surface into Evidence
+- adds Internet Trust Engine scaffold surface into Proof Pack
+- adds Internet Trust Engine scaffold surface into Architecture
+- adds USAFacts-style pilot artifact structure
+- adds sample claim rows and claim type taxonomy
+- adds artifact field requirements
+- adds evidence state mapping
+- adds model trace mapping to existing Core Trust Scoring Models
+- adds scaffold trace modal
+- adds scaffold summary text download
+- preserves V58.2 Runtime Action Queue to Proof Pack Trace Linkage
 - preserves V58.1 Runtime Action Queue
 - preserves V58 Operational Trust Control Pane
 - preserves V57.1 Board and Executive Narrative Layer
 - preserves V57 Model-Driven Proof Pack
 - preserves V56.4 Core Trust Scoring Models
-- preserves V56.3 Universal Score Object and Score Band Contract
-- preserves V56.2 Decision Record Hardening
-- preserves V56.1 Evidence and Assumption Register
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
-- keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-## Controlling scoring doctrine
+## Required framing
 
-The controlling doctrine for CyberShield scoring is:
+Use:
 
 ```text
-No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
+CyberShield Internet Trust Engine
+CyberShield Artifact Trust Engine
+Claim Trust Intelligence
+Evidence-Based Decision Trust
+Reliance checking
+artifact reliance review
+claim-level trust mapping
 ```
 
-Preferred product term:
+Avoid:
 
 ```text
-Trust Scoring Models
+fact-checker
+truth engine
+misinformation detector
+political validation
+trusted or untrusted person labels
+artifact-level trust score as the MVP anchor
 ```
 
-Preferred architectural term:
+## Internet Trust Engine principle
 
 ```text
-Trust Model Registry
+CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.
 ```
 
-## Queue-to-proof trace fields
+## MVP flow
 
 ```text
-queue_item_id
-decision_record_ids
-evidence_item_ids
-proof_pack_sections
-board_narrative_sections
-trace_summary
-proof_gap
-next_trace_action
-prototype_boundary
+Artifact intake placeholder
+Wrapper and metadata review
+Sentence and claim decomposition placeholder
+Claim type classification placeholder
+Evidence state mapping
+Reliance purpose and risk mapping
+Model trace to Core Trust Scoring Models
+Decision record and Proof Pack output
+```
+
+## V59 pilot artifact
+
+```text
+USAFacts / Steve Ballmer government responsibilities video
+```
+
+The pilot is useful because it appears factual and data-driven but still requires validation of fiscal numbers, government entity definitions, Medicaid funding rules, education funding splits, time periods, and future legal-policy shifts.
+
+## V59 proof output sections
+
+```text
+Artifact summary
+Reliance purpose
+Claim table
+Sentence-level trust map
+Evidence state map
+Missing verification list
+Reliance risk statement
+Model trace
+Decision record
+Explicit limitations
 ```
 
 ## Current architecture files
 
-Runtime Action Queue registry:
+Internet Trust Engine scaffold registry:
 
 ```text
-data/runtime/v58-1-runtime-action-queue.json
+data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json
 ```
 
-Runtime Action Queue UI:
+Internet Trust Engine scaffold UI:
 
 ```text
-src/ui/v58-1-runtime-action-queue.js
+src/ui/v59-internet-trust-engine-mvp-scaffold.js
 ```
 
 Queue to Proof Trace Linkage registry:
@@ -113,16 +149,16 @@ Queue to Proof Trace Linkage registry:
 data/runtime/v58-2-queue-proof-trace-linkage.json
 ```
 
-Queue to Proof Trace Linkage UI:
+Runtime Action Queue registry:
 
 ```text
-src/ui/v58-2-queue-proof-trace-linkage.js
+data/runtime/v58-1-runtime-action-queue.json
 ```
 
-Decision record schema:
+Core Trust Scoring Models:
 
 ```text
-data/decisions/v56-2-decision-record-schema.json
+data/models/v56-4-core-trust-scoring-models.json
 ```
 
 Evidence and assumption register:
@@ -137,68 +173,28 @@ Model-Driven Proof Pack schema:
 data/proof/v57-model-driven-proof-pack-schema.json
 ```
 
-Board and Executive Narrative schema:
-
-```text
-data/proof/v57-1-board-executive-narrative-schema.json
-```
-
-Operational Trust Control Pane registry:
-
-```text
-data/control/v58-operational-trust-control-pane.json
-```
-
 ## Purpose Protocol doctrine
 
 CyberShield turns purpose into protocol.
 
 Purpose is not governance until it can cause a refusal.
 
-## Internet Trust Engine future track
-
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V58.2 live feature.
-
-Requirements live at:
-
-```text
-docs/internet-trust-engine-requirements.md
-```
-
-Preferred framing:
-
-```text
-CyberShield Internet Trust Engine
-CyberShield Artifact Trust Engine
-Claim Trust Intelligence
-Evidence-Based Decision Trust
-Reliance checking
-```
-
-Avoid:
-
-```text
-fact-checker
-truth engine
-misinformation detector
-political validation
-trusted or untrusted person labels
-artifact-level trust score as the MVP anchor
-```
-
 ## Boundary
 
-The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live monitoring, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, workflow automation, notifications, or production agent enforcement systems.
+The current public build is a static advisory prototype scaffold. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live monitoring, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, live internet claim verification, report delivery, ticketing, workflow automation, notifications, or production agent enforcement systems.
 
-## Known V58.2 limitations
+## Known V59 limitations
 
-- Queue-to-proof linkage uses static prototype and loaded in-browser registry data
-- Trace linkage does not retrieve live evidence
-- Trace linkage does not create tickets, send notifications, send reports, or trigger workflows
-- Trace linkage does not enforce, block, refuse, or quarantine actions in live systems
-- Trace linkage modal is advisory and not a production audit record
-- Core Trust Scoring Models are prototype model definitions, not production-calibrated scoring engines
-- Internet Trust Engine is captured as a future scenario track but not yet implemented
+- Internet Trust Engine is a scaffold, not a live artifact-analysis engine
+- V59 does not retrieve internet content
+- V59 does not retrieve live evidence
+- V59 does not perform live claim extraction
+- V59 does not perform live scoring
+- V59 does not perform political validation
+- V59 does not label people or sources as trusted/untrusted
+- V59 does not make legal or compliance determinations
+- V59 download is a text file, not a branded PDF or board deck
+- Core Trust Scoring Models remain prototype model definitions, not production-calibrated scoring engines
 - hands-on browser QA should be performed in Firefox, Brave, Android, and desktop after GitHub Pages deploys
 
 ## GitHub Pages browser QA required
@@ -210,15 +206,17 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
-open Runtime
-confirm Runtime Action Queue still appears
-confirm queue-to-proof trace linkage appears
-confirm Show proof trace buttons appear where matching links are available
-confirm trace-link modal opens and closes
+open Evidence
+confirm Internet Trust Engine scaffold appears
+confirm scaffold trace modal opens and closes
+confirm scaffold summary text download works
 open Proof Pack
-confirm Queue to Proof Trace Linkage appears
-confirm all trace links can be opened
-confirm V58.2 metadata is present in Settings/admin context
+confirm Internet Trust Engine scaffold appears
+open Architecture
+confirm Internet Trust Engine scaffold appears
+confirm V59 metadata is present in Settings/admin context
+confirm Queue to Proof Trace Linkage still appears
+confirm Runtime Action Queue still appears
 confirm Operational Trust Control Pane still appears
 confirm Executive Proof Narrative still appears
 confirm Model-Driven Proof Pack still appears
@@ -230,9 +228,9 @@ confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
 confirm V55 Purpose Protocol still works
 confirm no new top-level tab exists
-confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, live scoring, live claim extraction, Internet Trust, Artifact Trust, report delivery, ticketing, notification, or workflow overclaims appear
+confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, live scoring, live claim extraction, live internet retrieval, live evidence retrieval, political validation, fact-checker branding, truth-engine branding, Internet Trust overclaim, Artifact Trust overclaim, report delivery, ticketing, notification, or workflow overclaims appear
 ```
 
 ## Next build
 
-The next build should be **V59 Internet Trust Engine MVP Scaffold**. It should introduce the Internet Trust Engine as a scenario family and prototype scaffold only, with artifact ingestion, claim extraction model placeholders, evidence state mapping, reliance checking, and Proof Pack output. It must not claim live internet verification, live evidence retrieval, fact-checker branding, truth-engine branding, or political validation.
+The next build should be **V59.1 Artifact Intake and Claim Table Prototype**. It should add a static artifact intake panel and editable-looking claim table prototype, still without live ingestion, live extraction, live verification, or new top-level tabs.
