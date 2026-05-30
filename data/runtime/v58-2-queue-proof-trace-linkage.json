@@ -1,0 +1,72 @@
+{
+  "version": "V58.2",
+  "name": "Runtime Action Queue to Proof Pack Trace Linkage",
+  "status": "trace_linkage_registry",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "Static advisory prototype only. Trace linkage connects local prototype registry records and does not retrieve live evidence, create tickets, send notifications, enforce actions, or integrate with workflow systems.",
+  "purpose": "Connect Runtime Action Queue items directly to related decision records, evidence register items, Proof Pack sections, board narrative language, and next action traceability.",
+  "source_layers": {
+    "runtime_action_queue": "data/runtime/v58-1-runtime-action-queue.json",
+    "decision_records": "data/decisions/v56-2-decision-record-schema.json",
+    "evidence_register": "data/evidence/v56-1-evidence-assumption-register.json",
+    "proof_pack": "data/proof/v57-model-driven-proof-pack-schema.json",
+    "board_narrative": "data/proof/v57-1-board-executive-narrative-schema.json"
+  },
+  "trace_fields": [
+    "queue_item_id",
+    "decision_record_ids",
+    "evidence_item_ids",
+    "proof_pack_sections",
+    "board_narrative_sections",
+    "trace_summary",
+    "proof_gap",
+    "next_trace_action",
+    "prototype_boundary"
+  ],
+  "trace_links": [
+    {
+      "queue_item_id": "qa-payment-bank-change",
+      "decision_record_ids": ["dr-vendor-payment-change-001"],
+      "evidence_item_ids": ["ev-payment-bank-change", "ev-third-vendor-data-sharing"],
+      "proof_pack_sections": ["Action or Reliance Purpose", "Evidence State", "Missing Evidence", "Risk if Wrong", "Owner and Escalation Path", "Recommended Next Step"],
+      "board_narrative_sections": ["Decision Required", "What Is Missing or Assumed", "Risk If Wrong", "Recommended Next Move", "Explicit Limitations"],
+      "trace_summary": "The banking-change queue item traces to the vendor payment decision record and missing banking verification evidence. It should not be treated as proof-ready until out-of-band verification and controller approval are documented.",
+      "proof_gap": "Missing out-of-band verification, callback evidence, and controller approval.",
+      "next_trace_action": "Attach verification evidence to the decision record, update Proof Pack, and regenerate board narrative before payment reliance.",
+      "prototype_boundary": "Advisory only. CyberShield does not verify banking details or block payment systems."
+    },
+    {
+      "queue_item_id": "qa-cui-boundary",
+      "decision_record_ids": ["dr-cui-boundary-001"],
+      "evidence_item_ids": ["ev-apps-cui-boundary"],
+      "proof_pack_sections": ["Action or Reliance Purpose", "Score and Model Trace", "Evidence State", "Missing Evidence", "Risk if Wrong"],
+      "board_narrative_sections": ["Decision Required", "Why It Matters", "What CyberShield Relied On", "What Is Missing or Assumed", "Explicit Limitations"],
+      "trace_summary": "The CUI boundary queue item traces to the CMMC readiness decision record and missing CUI boundary evidence. It should remain partial proof until scope, systems, users, vendors, and data flows are mapped.",
+      "proof_gap": "Missing CUI boundary, system inventory, data flow mapping, and vendor flow-down evidence.",
+      "next_trace_action": "Map CUI/FCI environment and update the evidence register before using the Proof Pack for customer or board reliance.",
+      "prototype_boundary": "Advisory only. CyberShield does not certify CMMC readiness or make legal determinations."
+    },
+    {
+      "queue_item_id": "qa-ai-tool-governance",
+      "decision_record_ids": ["dr-ai-tool-access-001"],
+      "evidence_item_ids": ["ev-ai-tool-access", "ev-third-vendor-data-sharing"],
+      "proof_pack_sections": ["Score and Model Trace", "Evidence State", "Assumptions and Caveats", "Risk if Wrong", "Recommended Next Step"],
+      "board_narrative_sections": ["Why It Matters", "What CyberShield Relied On", "What Is Missing or Assumed", "Recommended Next Move"],
+      "trace_summary": "The AI governance queue item traces to the AI tool decision record and assumed AI inventory evidence. It should remain constrained until approved tools, users, data classes, and vendor data-use terms are verified.",
+      "proof_gap": "Approved AI tool list, data class rules, user access list, and vendor data-use terms are missing or assumed.",
+      "next_trace_action": "Verify approved AI tool inventory and data-use boundaries, then regenerate the Proof Pack and board narrative.",
+      "prototype_boundary": "Advisory only. CyberShield does not detect live AI usage or enforce AI tool restrictions."
+    },
+    {
+      "queue_item_id": "qa-proof-pack-review",
+      "decision_record_ids": ["dr-vendor-payment-change-001", "dr-cui-boundary-001", "dr-ai-tool-access-001"],
+      "evidence_item_ids": ["ev-payment-bank-change", "ev-apps-cui-boundary", "ev-ai-tool-access"],
+      "proof_pack_sections": ["Executive Summary", "Score and Model Trace", "Missing Evidence", "Assumptions and Caveats", "Prototype Boundary"],
+      "board_narrative_sections": ["Executive Summary", "Decision Required", "Risk If Wrong", "Explicit Limitations"],
+      "trace_summary": "The Proof Pack review queue item traces across the current decision records and evidence gaps. It is proof-ready with caveats only for internal governance review unless evidence is independently validated.",
+      "proof_gap": "Prototype evidence is static and must be validated before external reliance.",
+      "next_trace_action": "Review all caveats, verify missing evidence, regenerate Proof Pack, and approve board narrative limitations before external use.",
+      "prototype_boundary": "Advisory only. CyberShield does not deliver reports or validate external reliance."
+    }
+  ]
+}
