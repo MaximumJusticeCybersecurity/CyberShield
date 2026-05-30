@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V55.3 TrustMap Registry and Visual Object Stabilization
+Current implemented build: V55.4 TrustMap Registry Consumption
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V55.3 TrustMap Registry and Visual Object Stabilization.
+CyberShield V55.4 TrustMap Registry Consumption.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V55.3.
+No new top-level tabs were added for V55.4.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V55.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V55.4. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Core thesis:
 CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
@@ -31,35 +31,19 @@ The CyberShield TrustMap is a radar-constellation interface. Radar means orienta
 Visual complexity rule:
 Complexity lives at the edge. Trust is established at the center.
 
-V55.3 TrustMap registry stabilization:
-- adds `data/trustmap/v55-3-trustmap-registry.json`
-- adds `src/ui/v55-3-trustmap-registry-stabilization.js`
-- loads V55.3 after V55.2 in `src/ui/v52-7-operational-layer.js`
-- adds `docs/trustmap-visual-object-style-guide.md`
-- stores visual references under `assets/reference/`
-- preserves V55.2 visual behavior
+V55.4 TrustMap registry consumption:
+- adds `src/ui/v55-4-trustmap-registry-consumption.js`
+- loads V55.4 after V55.3.1 in `src/ui/v52-7-operational-layer.js`
+- renders Layer 1 domains from `data/trustmap/v55-3-trustmap-registry.json`
+- renders Layer 2 assets from registry data
+- renders Layer 3 tags from registry data
+- renders scenario lenses from registry data
+- preserves the radar-constellation interface
+- keeps CyberShield Core as a thick neon-blue shield-boundary trust kernel
+- removes/avoids black bevel behavior around the core
 - keeps V55 Purpose Protocol active
 - keeps no-new-top-level-tabs rule intact
-- validates that the TrustMap registry contains CyberShield Core, baseline Layer 1 domains, and scenario lenses
-- documents GitHub Pages browser QA required after deploy
-
-V55.3 TrustMap rules:
-- CyberShield Core is a clean neon shield boundary and trust kernel, not a normal node
-- shield interior must stay clean: MJC logo, CyberShield Core, organization name, Trust Kernel
-- connector lines must not visibly pass through or clutter the shield interior
-- Layer 1 domains are neon-blue graphical trust objects, not cards
-- baseline Layer 1 domains stay visually alive even when they are not scenario-highlighted
-- Fit Map is for orientation, not reading
-- Domain View is for interpretation
-- Object View is for detail
-- Proof Pack is for documentation
-- connectors are straight point-to-point lines
-- connector thickness decreases by depth
-- core-to-domain connectors are thickest and neon blue
-- domain-to-asset connectors are medium
-- asset-to-tag connectors are thin and subtle
-- Layer 3 stars are present in Fit Map but labels stay hidden until hover/focus/Object View
-- cross-domain links stay faint until selected or scenario-highlighted
+- keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
 Minimum Layer 1 operating environment inputs:
 - Cloud & Infrastructure
@@ -81,7 +65,7 @@ Priority Purpose Protocol scenario:
 Vendor payment destination change. If banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V55.3 live feature and not a standalone product pillar.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V55.4 live feature and not a standalone product pillar.
 
 Requirements doc:
 `docs/internet-trust-engine-requirements.md`
@@ -114,4 +98,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V55.2 behavior remains intact, confirm V55.3 metadata appears in Settings/admin context, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V55.4 metadata appears in Settings/admin context, confirm TrustMap renders from registry data, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
