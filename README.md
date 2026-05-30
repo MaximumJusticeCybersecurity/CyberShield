@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3 Universal Model Trace Inspector**
+Current build label: **V60.3.1 Runtime Evidence Panel Correction**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-universal-model-trace-inspector&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-1-runtime-evidence-panel-correction&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3
+V60.3.1
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,28 +32,34 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.
+No new top-level tabs were added for V60.3.1.
 
-## Current implemented build: V60.3
+## Current implemented build: V60.3.1
 
-V60.3 adds the Universal Model Trace Inspector and a calibratable Trust Model Registry.  It implements the model-builder guidance that CyberShield’s scores are **Expert-Derived V1 Trust Scoring Models**, not statistically validated scoring truth.
+V60.3.1 corrects the Runtime/Evidence information architecture defect.  The full Manual Evidence Workbench now belongs only in the Evidence workspace.  Runtime now receives a compact Runtime Evidence Requirements panel focused on evidence blocking or constraining action.  Proof Pack receives proof-oriented evidence trace context.
 
-V60.3 changes:
+V60.3.1 changes:
 
-- adds `data/models/v60-3-calibratable-trust-model-registry.json`
-- adds `src/ui/v60-3-universal-model-trace-inspector.js`
-- loads V60.3 after V60.2 in `src/ui/v52-7-operational-layer.js`
-- labels models as Expert-Derived V1 Trust Scoring Models
-- explicitly avoids claiming statistically validated trust models
-- adds Universal Model Trace Inspector UI
-- adds sample score trace objects
-- adds calibratable metadata: model version, factor weights, thresholds, override notes, calibration history, test scenario results, limitations, and human review notes
-- adds core calibratable model definitions for Evidence Trust, Confidence, Reliance Risk, Runtime Admissibility, Proof Pack Defensibility, and Human Verification Maturity
-- adds placeholder roadmap models for Internet Trust, Vendor Trust, AI Agent Trust, Purpose Alignment, Identity Trust, Data Trust, Control Trust, Policy Trust, Trust Debt, Agentic Action Risk, Prompt Injection Exposure, Tool Use Risk, and Organizational Trust Maturity
+- updates `src/ui/v60-trust-evidence-workbench.js`
+- keeps the full Manual Evidence Workbench in Evidence
+- removes the full Manual Evidence Workbench behavior from Runtime
+- replaces Runtime evidence content with a compact Runtime Evidence Requirements panel
+- keeps Proof Pack focused on evidence defensibility trace
+- preserves V60.3 Universal Model Trace Inspector
 - preserves V60.2 Evidence-to-Score Impact Preview
-- preserves V60.1 Evidence State Transition Prototype
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
+- preserves prototype boundary language
+
+## Correct information architecture
+
+```text
+Evidence tab = full Manual Evidence Workbench
+Runtime tab = compact Runtime Evidence Requirements panel
+Proof Pack tab = proof-oriented evidence trace
+```
+
+Runtime should feel like command authority, not a junk drawer.  It should show what is blocking, constraining, escalating, or allowing the action now.
 
 ## Controlling doctrine
 
@@ -67,31 +73,18 @@ The CyberShield scoring models are currently expert-derived V1 trust models.  We
 
 Therefore, the models are implemented as versioned, registry-backed, inspectable, and calibratable models, not hardcoded scoring truth.
 
-## Why V60.3 matters
+## Why this correction matters
 
-CyberShield’s first advantage is model transparency.  Its second advantage will come from calibration over time.
+CyberShield must be clean enough to show advisors, prospects, experts, and potential pilot users without making them sort through duplicated workbenches.
 
-The separation remains the moat:
-
-```text
-Trust: Can this be relied on?
-Confidence: How sure are we?
-Evidence Trust: How strong is the proof?
-Reliance Risk: How dangerous is it if wrong?
-Runtime Admissibility: What action is allowed?
-Proof Pack Defensibility: Can we defend this later?
-```
-
-## Calibration requirements for 90%+ confidence
+The Runtime workspace should answer:
 
 ```text
-20 to 50 test scenarios across internet trust, vendor trust, AI agent action, policy/control trust, and executive decisions
-Known-good and known-bad examples
-Edge cases where trust and confidence diverge
-Expert review from cybersecurity, legal, audit, and AI governance perspectives
-Red-team attempts to manipulate the scores
-Score calibration after observing false positives and false negatives
-Clear documentation of model limits
+What action is under review?
+What evidence is blocking or constraining the action?
+Who owns the next human step?
+What happens if we are wrong?
+What runtime action follows?
 ```
 
 ## Forward roadmap
@@ -116,20 +109,17 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open Evidence
+confirm full Manual Evidence Workbench appears in Evidence
 open Runtime
+confirm full Manual Evidence Workbench does not appear in Runtime
+confirm Runtime Evidence Requirements panel appears in Runtime
 open Proof Pack
-open Architecture
-open Settings
-confirm V60.3 metadata is present in Settings/admin context
-confirm Universal Model Trace Inspector appears
-confirm Inspect model opens model details
-confirm Why this score opens score trace details
-confirm factor weights are visible but labeled as calibratable V1 defaults
-confirm model maturity statement is visible
+confirm Proof Pack shows evidence trace, not manual workbench clutter
+confirm V60.3 Universal Model Trace Inspector still appears
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
 
 ## Next likely decision point
 
-After V60.3 browser QA passes, the next build should correct the Runtime/Evidence information architecture: keep the full Manual Evidence Workbench in Evidence, keep Proof Pack evidence trace in Proof Pack, and replace the full Runtime workbench with a compact Runtime Evidence Requirements panel.
+After V60.3.1 browser QA passes, the next build should focus on show-readiness cleanup: reduce duplicate sections across Evidence, Runtime, Proof Pack, Architecture, and Settings so CyberShield presents as a crisp executive prototype rather than accumulated build layers.
