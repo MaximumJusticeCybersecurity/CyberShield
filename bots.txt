@@ -1,20 +1,20 @@
 CyberShield Executive OS
-Current implemented build: V56.2 Decision Record Hardening
+Current implemented build: V56.3 Universal Score Object and Score Band Contract
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V56.2 Decision Record Hardening.
+CyberShield V56.3 Universal Score Object and Score Band Contract.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V56.2.
+No new top-level tabs were added for V56.3.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V56.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V56.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -26,45 +26,38 @@ Preferred product term: Trust Scoring Models.
 Preferred architectural term: Trust Model Registry.
 Do not call these risk scores only. CyberShield evaluates trust, confidence, evidence, reliance, purpose, runtime admissibility, and defensibility.
 
-V56.2 Decision Record Hardening:
-- adds `data/decisions/v56-2-decision-record-schema.json`
-- adds `src/ui/v56-2-decision-record-hardening.js`
-- loads V56.2 after V56.1 in `src/ui/v52-7-operational-layer.js`
-- adds decision records into Runtime, Evidence, and Proof Pack workspaces
-- adds a decision record modal
-- adds text download for demo decision records
-- preserves V56 model explanations
+V56.3 Universal Score Object and Score Band Contract:
+- adds `data/models/v56-3-universal-score-contract.json`
+- adds `src/ui/v56-3-universal-score-contract.js`
+- loads V56.3 after V56.2 in `src/ui/v52-7-operational-layer.js`
+- formalizes universal score bands
+- formalizes required score object fields
+- formalizes runtime action ladder
+- formalizes model trace fields
+- exposes the contract in Architecture, Evidence, and Proof Pack
+- preserves V56.2 Decision Record Hardening
 - preserves V56.1 Evidence and Assumption Register
-- preserves V55.6 TrustMap interaction reliability
+- preserves V56 Trust Model Registry and Score Explanation Layer
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
-Decision records must show:
-- action under review
-- object under review
-- model used
-- model version
-- score
-- confidence
-- decision band
-- runtime action
-- evidence state
-- evidence inputs
-- missing evidence
-- assumptions
-- caveats
-- risk if wrong
-- owner
-- escalation path
-- recommended next step
-- prototype boundary
+Universal score bands:
+- 90-100: High trust -> Allow
+- 75-89: Trustworthy with caveats -> Allow with caveat
+- 60-74: Moderate trust -> Constrain or verify
+- 40-59: Low trust -> Escalate
+- 20-39: Very low trust -> Block
+- 0-19: Untrusted -> Refuse or quarantine
+
+Required score object fields:
+score_name, model_id, model_version, score, confidence, decision_band, runtime_action, top_score_drivers, missing_evidence, assumptions, caveats, risk_if_wrong, recommended_next_step, owner, escalation_path, prototype_boundary.
 
 TrustMap doctrine:
 The CyberShield TrustMap is a radar-constellation interface. CyberShield Core is a thick neon-blue shield-boundary trust kernel, not a normal node. Complexity lives at the edge. Trust is established at the center.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V56.2 live feature and not a standalone product pillar.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V56.3 live feature and not a standalone product pillar.
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live evidence retrieval, internet claim verification, or takedown automation.
@@ -73,4 +66,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Runtime, Evidence, and Proof Pack, confirm Decision Records appear, confirm decision record modal and text download work, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open Architecture, Evidence, and Proof Pack, confirm Universal Score Contract appears, confirm full score contract modal opens and closes, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
