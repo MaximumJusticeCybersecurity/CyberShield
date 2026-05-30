@@ -1,0 +1,121 @@
+{
+  "version": "V60",
+  "name": "Trust Evidence Workbench Scaffold",
+  "status": "static_evidence_workbench_scaffold",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "Static advisory prototype only. The Trust Evidence Workbench does not retrieve live evidence, persist evidence to a backend, create tickets, send notifications, enforce actions, integrate with external systems, or perform automated verification.",
+  "purpose": "Provide a broader evidence workbench for manual evidence entry, evidence state transitions, ownership, review accountability, and proof-pack traceability while preserving prototype boundaries.",
+  "workspaces": ["Evidence", "Runtime", "Proof Pack"],
+  "evidence_states": [
+    {"id": "provided", "label": "Provided", "meaning": "Evidence is present but may still require quality review."},
+    {"id": "missing", "label": "Missing", "meaning": "Required evidence is absent."},
+    {"id": "stale", "label": "Stale", "meaning": "Evidence exists but may be outdated."},
+    {"id": "assumed", "label": "Assumed", "meaning": "Reliance depends on an assumption rather than verified evidence."},
+    {"id": "conflicting", "label": "Conflicting", "meaning": "Available evidence conflicts or does not reconcile."},
+    {"id": "needs_verification", "label": "Needs Verification", "meaning": "Evidence requires qualified human review before reliance."},
+    {"id": "verified_by_human", "label": "Verified by Human", "meaning": "A qualified reviewer has verified the evidence for the stated reliance purpose."}
+  ],
+  "manual_entry_fields": [
+    "evidence_id",
+    "evidence_title",
+    "evidence_type",
+    "source_note",
+    "current_state",
+    "owner",
+    "reviewer",
+    "review_due",
+    "linked_claims",
+    "linked_decisions",
+    "linked_proof_sections",
+    "risk_if_wrong",
+    "next_action",
+    "limitations"
+  ],
+  "sample_evidence_items": [
+    {
+      "evidence_id": "ev-claim-source-definitions",
+      "evidence_title": "Official source definitions and scope notes",
+      "evidence_type": "source definition",
+      "source_note": "Manual source reference placeholder. No live retrieval performed.",
+      "current_state": "needs_verification",
+      "owner": "Research Owner",
+      "reviewer": "Qualified Human Reviewer",
+      "review_due": "prototype placeholder",
+      "linked_claims": ["claim-001"],
+      "linked_decisions": ["dr-artifact-reliance-001"],
+      "linked_proof_sections": ["Evidence state map", "Missing verification list", "Reliance risk statement"],
+      "risk_if_wrong": "Definitions may be misused in executive or public explanation.",
+      "next_action": "Verify definitions against authoritative source and update evidence state.",
+      "limitations": "Static prototype item only."
+    },
+    {
+      "evidence_id": "ev-medicaid-funding-rules",
+      "evidence_title": "Current Medicaid matching rules and state context",
+      "evidence_type": "policy and funding evidence",
+      "source_note": "Manual source reference placeholder. No live retrieval performed.",
+      "current_state": "missing",
+      "owner": "Policy Analyst",
+      "reviewer": "Qualified Human Reviewer",
+      "review_due": "prototype placeholder",
+      "linked_claims": ["claim-002"],
+      "linked_decisions": ["dr-artifact-reliance-001"],
+      "linked_proof_sections": ["Missing verification list", "Reliance risk statement", "Explicit limitations"],
+      "risk_if_wrong": "Policy or financial reliance may be materially wrong.",
+      "next_action": "Collect current federal and state Medicaid references and review fiscal-year context.",
+      "limitations": "Static prototype item only."
+    },
+    {
+      "evidence_id": "ev-education-funding-splits",
+      "evidence_title": "Education funding split by year and jurisdiction",
+      "evidence_type": "fiscal evidence",
+      "source_note": "Manual source reference placeholder. No live retrieval performed.",
+      "current_state": "needs_verification",
+      "owner": "Research Owner",
+      "reviewer": "Qualified Human Reviewer",
+      "review_due": "prototype placeholder",
+      "linked_claims": ["claim-003"],
+      "linked_decisions": ["dr-artifact-reliance-001"],
+      "linked_proof_sections": ["Claim table", "Evidence state map", "Missing verification list"],
+      "risk_if_wrong": "Education funding responsibilities may be misstated for the wrong jurisdiction or year.",
+      "next_action": "Verify funding split by year, jurisdiction, and source methodology.",
+      "limitations": "Static prototype item only."
+    },
+    {
+      "evidence_id": "ev-cybershield-doctrine",
+      "evidence_title": "CyberShield reliance doctrine demonstration",
+      "evidence_type": "product doctrine",
+      "source_note": "Internal product doctrine placeholder.",
+      "current_state": "provided",
+      "owner": "Product Owner",
+      "reviewer": "CyberShield Builder",
+      "review_due": "prototype placeholder",
+      "linked_claims": ["claim-004"],
+      "linked_decisions": ["dr-artifact-reliance-001"],
+      "linked_proof_sections": ["Artifact summary", "Model trace", "Explicit limitations"],
+      "risk_if_wrong": "Product doctrine may be overstated as live verification capability.",
+      "next_action": "Keep limitations attached to any demo or board narrative.",
+      "limitations": "Static doctrine item only."
+    }
+  ],
+  "state_transition_rules": [
+    "missing may move to provided only when a human adds a source note or artifact reference",
+    "provided may move to needs_verification when reliance is high-stakes",
+    "needs_verification may move to verified_by_human only after reviewer, review note, and scope are documented",
+    "assumed may not move directly to verified_by_human without evidence being provided first",
+    "conflicting may not move to verified_by_human until conflict resolution is documented",
+    "stale may not move to verified_by_human until currency and source date are reviewed"
+  ],
+  "proof_pack_traceability": {
+    "required_links": ["claim_id", "decision_record_id", "proof_pack_section", "owner", "reviewer", "evidence_state"],
+    "required_disclosures": ["missing evidence", "assumptions", "review limitations", "risk if wrong", "prototype boundary"]
+  },
+  "definition_of_done": [
+    "Workbench appears in Evidence, Runtime, and Proof Pack",
+    "Manual evidence entry fields appear editable-looking but local-only",
+    "Evidence state definitions are visible",
+    "Sample evidence items are traceable to claims, decisions, and Proof Pack sections",
+    "State transition rules are visible",
+    "Workbench modal and download work",
+    "No backend persistence, live evidence retrieval, ticketing, notification, or workflow automation claims"
+  ]
+}
