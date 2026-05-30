@@ -1,0 +1,90 @@
+{
+  "version": "V59.2",
+  "name": "Claim Row to Model Trace and Proof Pack Output",
+  "status": "static_trace_registry",
+  "product_framing": "CyberShield Internet Trust Engine",
+  "controlling_principle": "CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.",
+  "boundary": "Static advisory prototype only. Claim-to-model trace links static claim rows to prototype model definitions, evidence states, decision records, and Proof Pack sections. It does not perform live claim extraction, live evidence retrieval, live scoring, live verification, political validation, or legal determinations.",
+  "source_layers": {
+    "artifact_intake_claim_table": "data/internet-trust/v59-1-artifact-intake-claim-table.json",
+    "core_trust_scoring_models": "data/models/v56-4-core-trust-scoring-models.json",
+    "evidence_register": "data/evidence/v56-1-evidence-assumption-register.json",
+    "decision_records": "data/decisions/v56-2-decision-record-schema.json",
+    "proof_pack": "data/proof/v57-model-driven-proof-pack-schema.json"
+  },
+  "trace_fields": [
+    "claim_id",
+    "model_ids",
+    "evidence_state",
+    "evidence_register_refs",
+    "decision_record_refs",
+    "proof_pack_sections",
+    "proof_output_sentence",
+    "runtime_reliance_action",
+    "human_review_required",
+    "prototype_boundary"
+  ],
+  "claim_traces": [
+    {
+      "claim_id": "claim-001",
+      "model_ids": ["claim_trust_model", "evidence_trust_model", "reliance_risk_model"],
+      "evidence_state": "needs_verification",
+      "evidence_register_refs": ["ev-claim-source-definitions"],
+      "decision_record_refs": ["dr-artifact-reliance-001"],
+      "proof_pack_sections": ["Claim table", "Evidence state map", "Missing verification list", "Reliance risk statement"],
+      "proof_output_sentence": "This claim is plausible but not reliance-ready until official source definitions and scope notes are verified.",
+      "runtime_reliance_action": "Constrain or verify",
+      "human_review_required": true,
+      "prototype_boundary": "Static trace only. No live source verification was performed."
+    },
+    {
+      "claim_id": "claim-002",
+      "model_ids": ["claim_trust_model", "evidence_trust_model", "confidence_model", "reliance_risk_model"],
+      "evidence_state": "needs_verification",
+      "evidence_register_refs": ["ev-medicaid-funding-rules", "ev-fiscal-year-context"],
+      "decision_record_refs": ["dr-artifact-reliance-001"],
+      "proof_pack_sections": ["Claim table", "Evidence state map", "Missing verification list", "Reliance risk statement", "Explicit limitations"],
+      "proof_output_sentence": "This funding claim is not proof-ready for policy or financial reliance until current Medicaid rules, state-specific context, and fiscal-year references are verified.",
+      "runtime_reliance_action": "Escalate",
+      "human_review_required": true,
+      "prototype_boundary": "Static trace only. No live Medicaid source retrieval or verification was performed."
+    },
+    {
+      "claim_id": "claim-003",
+      "model_ids": ["claim_trust_model", "evidence_trust_model", "sentence_level_trust_model"],
+      "evidence_state": "needs_verification",
+      "evidence_register_refs": ["ev-education-funding-splits", "ev-jurisdiction-year-scope"],
+      "decision_record_refs": ["dr-artifact-reliance-001"],
+      "proof_pack_sections": ["Claim table", "Sentence-level trust map", "Evidence state map", "Missing verification list"],
+      "proof_output_sentence": "This education-funding claim needs year, jurisdiction, and methodology verification before it is used in executive or public briefing material.",
+      "runtime_reliance_action": "Constrain or verify",
+      "human_review_required": true,
+      "prototype_boundary": "Static trace only. No live education funding source verification was performed."
+    },
+    {
+      "claim_id": "claim-004",
+      "model_ids": ["artifact_trust_model", "reliance_risk_model", "runtime_admissibility_model"],
+      "evidence_state": "provided",
+      "evidence_register_refs": ["ev-cybershield-doctrine"],
+      "decision_record_refs": ["dr-artifact-reliance-001"],
+      "proof_pack_sections": ["Artifact summary", "Reliance purpose", "Model trace", "Explicit limitations"],
+      "proof_output_sentence": "This claim is acceptable as a CyberShield doctrine demonstration, but it should not be represented as live external verification.",
+      "runtime_reliance_action": "Allow with caveat",
+      "human_review_required": false,
+      "prototype_boundary": "Static doctrine demonstration only."
+    }
+  ],
+  "proof_pack_output_template": {
+    "headline": "Claim rows have been mapped to prototype trust models, evidence states, reliance actions, and Proof Pack sections.",
+    "decision_use": "Use this output to understand how future artifact reliance review will structure traceability. Do not use it as verified factual output.",
+    "limitation": "All claim traces are static prototype mappings. They are not generated by live claim extraction, live scoring, or live evidence retrieval."
+  },
+  "definition_of_done": [
+    "Claim traces appear in Evidence and Proof Pack",
+    "Each claim row maps to named model IDs",
+    "Each claim row maps to evidence state and Proof Pack output section",
+    "Runtime reliance action is visible",
+    "Human review requirement is visible",
+    "No live extraction, scoring, verification, or new top-level tab"
+  ]
+}
