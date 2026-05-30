@@ -1,0 +1,81 @@
+{
+  "version": "V58.1",
+  "name": "Runtime Action Queue",
+  "status": "prioritized_action_queue_registry",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "boundary": "Static advisory prototype only. The action queue does not create tickets, send notifications, enforce actions, retrieve live evidence, perform live monitoring, or integrate with workflow systems.",
+  "purpose": "Convert CyberShield findings into a prioritized executive action queue with owner, evidence gap, runtime action, recommended next move, and proof-ready status.",
+  "queue_fields": [
+    "priority",
+    "action_title",
+    "runtime_action",
+    "owner",
+    "evidence_gap",
+    "risk_if_wrong",
+    "recommended_next_move",
+    "proof_ready_status",
+    "route",
+    "prototype_boundary"
+  ],
+  "runtime_action_order": ["Refuse", "Quarantine", "Block", "Escalate", "Constrain", "Allow with caveat", "Allow"],
+  "proof_ready_statuses": [
+    {"id": "not_ready", "label": "Not Proof-Ready", "meaning": "Required evidence or owner accountability is missing."},
+    {"id": "partial", "label": "Partially Proof-Ready", "meaning": "A record exists, but caveats, assumptions, or verification gaps remain."},
+    {"id": "ready_with_caveats", "label": "Proof-Ready with Caveats", "meaning": "Usable for internal reliance with limitations disclosed."},
+    {"id": "ready", "label": "Proof-Ready", "meaning": "Ready for the stated reliance purpose, subject to prototype boundary."}
+  ],
+  "queue_items": [
+    {
+      "id": "qa-payment-bank-change",
+      "priority": 1,
+      "action_title": "Verify vendor banking change before payment approval",
+      "runtime_action": "Escalate",
+      "owner": "Controller / Finance Owner",
+      "evidence_gap": "Out-of-band bank verification and controller approval are missing.",
+      "risk_if_wrong": "Payment may be sent to fraudulent or unauthorized destination.",
+      "recommended_next_move": "Perform approved out-of-band verification, document callback evidence, and attach controller approval before release.",
+      "proof_ready_status": "not_ready",
+      "route": "runtime",
+      "prototype_boundary": "Advisory only. CyberShield does not verify banking details or block payment systems."
+    },
+    {
+      "id": "qa-cui-boundary",
+      "priority": 2,
+      "action_title": "Define CUI boundary before relying on CMMC readiness posture",
+      "runtime_action": "Escalate",
+      "owner": "Compliance / CMMC Owner",
+      "evidence_gap": "CUI boundary, system inventory, data flow, and vendor flow-down evidence are missing.",
+      "risk_if_wrong": "CMMC scope, cost, timeline, and remediation priority may be materially wrong.",
+      "recommended_next_move": "Map CUI/FCI systems, users, vendors, data flows, and required controls before board or customer reliance.",
+      "proof_ready_status": "partial",
+      "route": "evidence",
+      "prototype_boundary": "Advisory only. CyberShield does not certify CMMC readiness or make legal determinations."
+    },
+    {
+      "id": "qa-ai-tool-governance",
+      "priority": 3,
+      "action_title": "Confirm approved AI tool inventory and permitted data classes",
+      "runtime_action": "Constrain",
+      "owner": "AI Governance Owner",
+      "evidence_gap": "Approved AI tool list, user access list, vendor data-use terms, and data class rules are assumed or missing.",
+      "risk_if_wrong": "Sensitive, proprietary, regulated, or customer data may be exposed to unapproved AI systems.",
+      "recommended_next_move": "Confirm approved tools, data-use boundaries, and user access before allowing company or client data in AI systems.",
+      "proof_ready_status": "partial",
+      "route": "architecture",
+      "prototype_boundary": "Advisory only. CyberShield does not detect live AI usage or enforce AI tool restrictions."
+    },
+    {
+      "id": "qa-proof-pack-review",
+      "priority": 4,
+      "action_title": "Generate Proof Pack before high-stakes reliance",
+      "runtime_action": "Allow with caveat",
+      "owner": "Executive Owner / vCISO Reviewer",
+      "evidence_gap": "Proof Pack exists as prototype text output and requires evidence validation before external use.",
+      "risk_if_wrong": "Leadership may brief, publish, or rely on unsupported conclusions.",
+      "recommended_next_move": "Review Proof Pack, verify missing evidence, and regenerate the board narrative before external reliance.",
+      "proof_ready_status": "ready_with_caveats",
+      "route": "proof",
+      "prototype_boundary": "Advisory only. CyberShield does not deliver reports or validate external reliance."
+    }
+  ]
+}
