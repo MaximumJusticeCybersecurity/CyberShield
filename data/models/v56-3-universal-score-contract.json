@@ -1,0 +1,100 @@
+{
+  "version": "V56.3",
+  "name": "Universal Score Object and Score Band Contract",
+  "status": "contract_registry",
+  "source_doctrine": "CyberShield Trust Model Registry and Scoring Requirements",
+  "controlling_principle": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "preferred_terms": {
+    "product_term": "Trust Scoring Models",
+    "architecture_term": "Trust Model Registry"
+  },
+  "boundary": "This contract governs static advisory prototype scoring. It does not create production-calibrated scoring, live enforcement, live evidence retrieval, compliance certification, legal determinations, or live integrations.",
+  "universal_score_bands": [
+    {"min": 90, "max": 100, "label": "High trust", "meaning": "Strong evidence, low unresolved risk", "runtime_action": "Allow"},
+    {"min": 75, "max": 89, "label": "Trustworthy with caveats", "meaning": "Usable, caveats must be visible", "runtime_action": "Allow with caveat"},
+    {"min": 60, "max": 74, "label": "Moderate trust", "meaning": "Plausible but incomplete", "runtime_action": "Constrain or verify"},
+    {"min": 40, "max": 59, "label": "Low trust", "meaning": "Weak, stale, incomplete, or risky", "runtime_action": "Escalate"},
+    {"min": 20, "max": 39, "label": "Very low trust", "meaning": "Significant concern", "runtime_action": "Block"},
+    {"min": 0, "max": 19, "label": "Untrusted", "meaning": "Unsupported, contradicted, or unverifiable", "runtime_action": "Refuse or quarantine"}
+  ],
+  "runtime_action_ladder": ["Allow", "Allow with caveat", "Constrain", "Escalate", "Block", "Refuse", "Quarantine"],
+  "required_score_object": {
+    "score_name": "string",
+    "model_id": "string",
+    "model_version": "string",
+    "score": "number_0_to_100",
+    "confidence": "number_0_to_100",
+    "decision_band": "string",
+    "runtime_action": "Allow | Allow with caveat | Constrain | Escalate | Block | Refuse | Quarantine",
+    "top_score_drivers": ["string"],
+    "missing_evidence": ["string"],
+    "assumptions": ["string"],
+    "caveats": ["string"],
+    "risk_if_wrong": "string",
+    "recommended_next_step": "string",
+    "owner": "string",
+    "escalation_path": "string",
+    "prototype_boundary": "string"
+  },
+  "required_model_trace_fields": [
+    "Model",
+    "Version",
+    "Score",
+    "Confidence",
+    "Object or Claim Type",
+    "Evidence Standard",
+    "Strongest Evidence",
+    "Missing Evidence",
+    "Assumptions",
+    "Risk if Wrong",
+    "Runtime Action",
+    "Owner",
+    "Next Step"
+  ],
+  "example_score_objects": [
+    {
+      "score_name": "Claim Trust Score",
+      "model_id": "claim_trust_model",
+      "model_version": "1.0",
+      "score": 84,
+      "confidence": 78,
+      "decision_band": "Trustworthy with caveats",
+      "runtime_action": "Allow with caveat",
+      "top_score_drivers": ["Primary source alignment", "Strong cross-source consistency", "Clear numeric claim"],
+      "missing_evidence": ["Exact source table", "Methodology reconciliation"],
+      "assumptions": ["The claim uses the same reporting year and definition as the source dataset"],
+      "caveats": ["The claim may require normalization if source categories differ"],
+      "risk_if_wrong": "Executive briefing error or public trust damage",
+      "recommended_next_step": "Verify against primary source table before board-level use",
+      "owner": "Analyst / vCISO / Executive",
+      "escalation_path": "Human review before executive publication",
+      "prototype_boundary": "Static advisory prototype only. No live verification."
+    },
+    {
+      "score_name": "Runtime Admissibility Score",
+      "model_id": "runtime_admissibility_model",
+      "model_version": "1.0",
+      "score": 42,
+      "confidence": 68,
+      "decision_band": "Low trust",
+      "runtime_action": "Escalate",
+      "top_score_drivers": ["Missing bank verification", "High financial consequence", "Approval authority unclear"],
+      "missing_evidence": ["out-of-band verification", "controller approval", "vendor callback record"],
+      "assumptions": ["Banking details changed within 30 days"],
+      "caveats": ["Prototype does not verify banking information"],
+      "risk_if_wrong": "Payment may be sent to fraudulent or unauthorized destination",
+      "recommended_next_step": "Perform approved out-of-band verification and attach evidence before approval",
+      "owner": "Controller / Finance Owner",
+      "escalation_path": "Controller review",
+      "prototype_boundary": "Static advisory prototype only. No live banking verification or payment blocking."
+    }
+  ],
+  "ui_requirements": {
+    "every_visible_score_must_expose": "Why this score?",
+    "score_trace_must_show": ["model name", "model version", "score factors", "factor weights", "evidence inputs", "missing evidence", "confidence explanation", "reliance risk", "runtime decision", "recommended next action"],
+    "required_language": [
+      "CyberShield does not decide whether a person or source is good or bad. It evaluates whether a claim, artifact, relationship, or action has enough verified evidence to be relied on before the business acts.",
+      "Popularity is not trust. Authority is not proof. Evidence, context, accountability, and consequence define trust."
+    ]
+  }
+}
