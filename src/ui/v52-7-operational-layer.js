@@ -18,3 +18,4 @@ import './v57-model-driven-proof-pack.js';
 import './v57-1-board-executive-narrative.js';
 import './v58-operational-trust-control-pane.js';
 import './v58-1-runtime-action-queue.js';
+import './v58-2-queue-proof-trace-linkage.js';
