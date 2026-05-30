@@ -1,29 +1,23 @@
 CyberShield Executive OS
-Current implemented build: V55.4 TrustMap Registry Consumption
+Current implemented build: V55.6 TrustMap Interaction Reliability
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V55.4 TrustMap Registry Consumption.
+CyberShield V55.6 TrustMap Interaction Reliability.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V55.4.
+No new top-level tabs were added for V55.6.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V55.4. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V55.6. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 Core thesis:
 CyberShield evaluates whether a consequential claim or action should be trusted before it is acted upon.
-
-Core question:
-Can we trust the information behind this action or claim before the business acts, cites, shares, briefs, teaches, or relies on it?
-
-Trust Model doctrine:
-Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, consequence if wrong, and decision reliance are the point.
 
 TrustMap visual doctrine:
 The CyberShield TrustMap is a radar-constellation interface. Radar means orientation, active scanning, and situational awareness. Constellation means connected assets, dependencies, and trust relationships. It must not look like a process-flow diagram.
@@ -31,16 +25,17 @@ The CyberShield TrustMap is a radar-constellation interface. Radar means orienta
 Visual complexity rule:
 Complexity lives at the edge. Trust is established at the center.
 
-V55.4 TrustMap registry consumption:
-- adds `src/ui/v55-4-trustmap-registry-consumption.js`
-- loads V55.4 after V55.3.1 in `src/ui/v52-7-operational-layer.js`
-- renders Layer 1 domains from `data/trustmap/v55-3-trustmap-registry.json`
-- renders Layer 2 assets from registry data
-- renders Layer 3 tags from registry data
-- renders scenario lenses from registry data
-- preserves the radar-constellation interface
+V55.6 TrustMap interaction reliability:
+- adds `src/ui/v55-6-trustmap-interaction-reliability.js`
+- loads V55.6 after V55.5 in `src/ui/v52-7-operational-layer.js`
+- preserves registry-rendered TrustMap from `data/trustmap/v55-3-trustmap-registry.json`
+- preserves stylesheet ownership through `src/styles/trustmap-v55-5.css`
+- adds richer TrustMap domain and asset explanation behavior
+- adds route buttons from TrustMap object detail to Runtime, Evidence, and Proof Pack
+- adds route feedback so users know why they moved to another workspace
+- adds accessibility labels and titles to domains, assets, and CyberShield Core
 - keeps CyberShield Core as a thick neon-blue shield-boundary trust kernel
-- removes/avoids black bevel behavior around the core
+- keeps no black bevel around CyberShield Core
 - keeps V55 Purpose Protocol active
 - keeps no-new-top-level-tabs rule intact
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
@@ -53,11 +48,6 @@ Minimum Layer 1 operating environment inputs:
 - Third Parties & Vendors
 - Devices & Endpoints
 
-Visual references stored in repo:
-- `assets/reference/trustmap-radar-constellation-reference.svg`
-- `assets/reference/operational-trust-workflow-reference.svg`
-- `assets/reference/dr-max-justice-leadership-reference.svg`
-
 Purpose Protocol doctrine:
 CyberShield turns purpose into protocol. Purpose is not governance until it can cause a refusal. Purpose Protocol converts executive intent, mission, risk appetite, and operating principles into machine-readable constraints, trade-off rules, refusal conditions, evidence requirements, escalation paths, and visible human ownership before action.
 
@@ -65,7 +55,7 @@ Priority Purpose Protocol scenario:
 Vendor payment destination change. If banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
 
 Internet Trust Engine future track:
-Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V55.4 live feature and not a standalone product pillar.
+Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a V55.6 live feature and not a standalone product pillar.
 
 Requirements doc:
 `docs/internet-trust-engine-requirements.md`
@@ -76,12 +66,6 @@ Preferred framing:
 - Claim Trust Intelligence
 - Evidence-Based Decision Trust
 - Reliance checking
-
-Core future question:
-Do we have sufficient trust in this information for the decision, action, briefing, citation, or reliance purpose in front of us, and what is the risk if we are wrong?
-
-Decision chain:
-Artifact -> Wrapper -> Transcript -> Sentence -> Claim -> Evidence -> Confidence -> Decision Impact -> Reliance Guidance -> Action
 
 Avoid:
 - fact-checker branding
@@ -98,4 +82,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live enforcement, live payment blocking, live banking verification, live evidence retrieval, live internet claim verification, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V55.4 metadata appears in Settings/admin context, confirm TrustMap renders from registry data, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype, reset onboarding, open TrustMap, confirm V55.6 metadata appears in Settings/admin context, confirm TrustMap renders from registry data, confirm object detail includes reliability note and route buttons, confirm Purpose Protocol still works, confirm no new top-level tab exists, and confirm no live-capability overclaims appear.
