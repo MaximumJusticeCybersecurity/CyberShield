@@ -1,0 +1,90 @@
+{
+  "version": "V59.5",
+  "name": "Internet Trust QA and Copy Guardrail Pass",
+  "status": "qa_copy_guardrail_registry",
+  "product_framing": "CyberShield Internet Trust Engine",
+  "controlling_principle": "CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.",
+  "boundary": "Static advisory prototype QA pass only. No live extraction, live verification, live evidence retrieval, live URL ingestion, live scoring, political validation, legal determination, report delivery, ticketing, notifications, or workflow automation is performed.",
+  "purpose": "Harden Internet Trust labels, boundary language, prohibited-branding checks, overclaim controls, and GitHub Pages QA notes before moving beyond V59.",
+  "allowed_terms": [
+    "CyberShield Internet Trust Engine",
+    "CyberShield Artifact Trust Engine",
+    "Claim Trust Intelligence",
+    "Evidence-Based Decision Trust",
+    "Reliance checking",
+    "artifact reliance review",
+    "claim-level trust mapping",
+    "claim review",
+    "evidence state",
+    "human review required",
+    "prototype boundary",
+    "static advisory prototype"
+  ],
+  "prohibited_terms": [
+    "fact-checker",
+    "truth engine",
+    "misinformation detector",
+    "political validation",
+    "trusted person",
+    "untrusted person",
+    "verified fact",
+    "certified true",
+    "live verified",
+    "automated truth",
+    "proves accuracy"
+  ],
+  "overclaim_guardrails": [
+    "Do not claim live URL ingestion",
+    "Do not claim live internet retrieval",
+    "Do not claim live evidence retrieval",
+    "Do not claim live claim extraction",
+    "Do not claim live scoring",
+    "Do not claim political validation",
+    "Do not claim legal or compliance determinations",
+    "Do not claim CMMC certification or healthcare compliance validation",
+    "Do not claim report delivery, ticketing, notifications, or workflow automation",
+    "Do not label people or sources as trusted/untrusted"
+  ],
+  "label_guardrails": [
+    {
+      "surface": "Evidence",
+      "required_copy": "Static advisory prototype. Evidence states show what must be verified before reliance."
+    },
+    {
+      "surface": "Proof Pack",
+      "required_copy": "Prototype proof output. Validate evidence before board, customer, legal, financial, public, or policy reliance."
+    },
+    {
+      "surface": "Architecture",
+      "required_copy": "Scenario-family scaffold. No live internet retrieval or automated verification."
+    },
+    {
+      "surface": "Settings",
+      "required_copy": "V59.5 guardrails active. GitHub Pages browser QA required after deploy."
+    }
+  ],
+  "github_pages_qa_required": [
+    "Hard refresh live prototype",
+    "Complete or reset onboarding",
+    "Open Evidence and confirm Internet Trust scaffold, artifact intake, claim table, claim trace, export contract, and board narrative appear",
+    "Open Proof Pack and confirm Internet Trust Board Narrative and Proof Pack Export Contract appear",
+    "Open Architecture and confirm Internet Trust scaffold still appears",
+    "Confirm no new top-level tab exists",
+    "Confirm all modal open/close actions work",
+    "Confirm all text downloads work",
+    "Confirm Settings/admin metadata shows V59.5",
+    "Search visible copy for prohibited terms",
+    "Confirm no live URL ingestion, internet retrieval, evidence retrieval, claim extraction, scoring, verification, political validation, report delivery, ticketing, notification, workflow, certification, or compliance overclaims appear",
+    "Confirm TrustMap still has thick neon-blue CyberShield core perimeter and no black bevel",
+    "Confirm Purpose Protocol still works"
+  ],
+  "definition_of_done": [
+    "Guardrail registry exists",
+    "Guardrail UI appears in Evidence, Proof Pack, and Settings/Admin context",
+    "Allowed and prohibited terms are visible for builders",
+    "QA checklist is visible and downloadable",
+    "README, bots.txt, governance-summary.json, and loader are updated",
+    "No new top-level tab",
+    "No live capability overclaims"
+  ]
+}
