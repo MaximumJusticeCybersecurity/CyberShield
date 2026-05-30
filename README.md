@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V56.2 Decision Record Hardening**
+Current build label: **V56.3 Universal Score Object and Score Band Contract**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-2-decision-record-hardening&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v56-3-universal-score-contract&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V56.2
+V56.3
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,23 +32,25 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V56.2.
+No new top-level tabs were added for V56.3.
 
-## Current implemented build: V56.2
+## Current implemented build: V56.3
 
-V56.2 hardens CyberShield decision records so each consequential recommendation can show the action under review, model used, model version, score, confidence, evidence state, missing evidence, assumptions, caveats, risk if wrong, runtime action, owner, escalation path, next step, and prototype boundary.
+V56.3 adds the Universal Score Object and Score Band Contract. This turns the scoring doctrine into a reusable product contract for all future Trust Scoring Models, including Artifact Trust, Claim Trust, Sentence-Level Trust, Evidence Trust, Confidence, Reliance Risk, and Runtime Admissibility.
 
-V56.2 changes:
+V56.3 changes:
 
-- adds `data/decisions/v56-2-decision-record-schema.json`
-- adds `src/ui/v56-2-decision-record-hardening.js`
-- loads V56.2 after V56.1 in `src/ui/v52-7-operational-layer.js`
-- adds decision records into Runtime, Evidence, and Proof Pack workspaces
-- adds a decision record modal
-- adds text download for demo decision records
-- preserves V56 model explanations
+- adds `data/models/v56-3-universal-score-contract.json`
+- adds `src/ui/v56-3-universal-score-contract.js`
+- loads V56.3 after V56.2 in `src/ui/v52-7-operational-layer.js`
+- formalizes universal score bands
+- formalizes required score object fields
+- formalizes runtime action ladder
+- formalizes model trace fields
+- exposes the contract in Architecture, Evidence, and Proof Pack
+- preserves V56.2 Decision Record Hardening
 - preserves V56.1 Evidence and Assumption Register
-- preserves V55.6 TrustMap interaction reliability
+- preserves V56 Trust Model Registry and Score Explanation Layer
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
@@ -74,6 +76,56 @@ Trust Model Registry
 ```
 
 CyberShield must not show decorative scores. Every score must come from a named, versioned model with defined factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and runtime consequence.
+
+## Universal score bands
+
+```text
+90-100: High trust -> Allow
+75-89: Trustworthy with caveats -> Allow with caveat
+60-74: Moderate trust -> Constrain or verify
+40-59: Low trust -> Escalate
+20-39: Very low trust -> Block
+0-19: Untrusted -> Refuse or quarantine
+```
+
+## Required score object fields
+
+```text
+score_name
+model_id
+model_version
+score
+confidence
+decision_band
+runtime_action
+top_score_drivers
+missing_evidence
+assumptions
+caveats
+risk_if_wrong
+recommended_next_step
+owner
+escalation_path
+prototype_boundary
+```
+
+## Required model trace fields
+
+```text
+Model
+Version
+Score
+Confidence
+Object or Claim Type
+Evidence Standard
+Strongest Evidence
+Missing Evidence
+Assumptions
+Risk if Wrong
+Runtime Action
+Owner
+Next Step
+```
 
 ## CyberShield Trust Model Doctrine
 
@@ -125,70 +177,22 @@ Evidence and assumption register:
 data/evidence/v56-1-evidence-assumption-register.json
 ```
 
-Evidence register UI:
-
-```text
-src/ui/v56-1-evidence-assumption-register.js
-```
-
 Decision record schema:
 
 ```text
 data/decisions/v56-2-decision-record-schema.json
 ```
 
-Decision record UI:
+Universal score contract:
 
 ```text
-src/ui/v56-2-decision-record-hardening.js
+data/models/v56-3-universal-score-contract.json
 ```
 
-## Decision record required fields
+Universal score contract UI:
 
 ```text
-record_id
-created_at
-action_under_review
-object_under_review
-model_used
-model_version
-score
-confidence
-decision_band
-runtime_action
-evidence_state
-evidence_inputs
-missing_evidence
-assumptions
-caveats
-risk_if_wrong
-owner
-escalation_path
-recommended_next_step
-prototype_boundary
-```
-
-## Runtime action ladder
-
-```text
-Allow
-Allow with caveat
-Constrain
-Escalate
-Block
-Refuse
-Quarantine
-```
-
-## Evidence state taxonomy
-
-```text
-Provided
-Missing
-Stale
-Assumed
-Conflicting
-Needs Verification
+src/ui/v56-3-universal-score-contract.js
 ```
 
 ## Purpose Protocol doctrine
@@ -197,15 +201,9 @@ CyberShield turns purpose into protocol.
 
 Purpose is not governance until it can cause a refusal.
 
-V55 priority scenario:
-
-```text
-Vendor payment destination change: if banking details changed within 30 days, payment approval is refused unless current banking verification and controller approval are present.
-```
-
 ## Internet Trust Engine future track
 
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.2 implementation.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar and not a V56.3 implementation.
 
 Requirements live at:
 
@@ -238,14 +236,14 @@ artifact-level trust score as the MVP anchor
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, or production agent enforcement systems.
 
-## Known V56.2 limitations
+## Known V56.3 limitations
 
+- Universal score contract is a prototype contract, not production-calibrated scoring
+- Score bands are advisory defaults and may require stricter thresholds for some models
+- Score contract does not perform live calculations
 - Decision records use static prototype data
-- Decision record downloads are text files, not branded PDFs
-- Decision records do not create tickets, send approvals, retrieve evidence, or trigger live workflow
 - Evidence states do not retrieve or validate live evidence
 - Model explanations are demo-directional and not statistically validated
-- TrustMap object routes are static advisory routes, not backend workflow actions
 - CMMC guidance is advisory and does not represent legal advice, certification, or assessment outcome
 - healthcare scenario guidance is advisory and does not represent compliance validation
 - Internet Trust Engine is captured as a future scenario track but not yet implemented
@@ -260,17 +258,17 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
-open Runtime
-confirm Decision Records appear
+open Architecture
+confirm Universal Score Contract appears
+confirm full score contract modal opens and closes
 open Evidence
-confirm Decision Records and Evidence Register appear
+confirm Universal Score Contract appears
 open Proof Pack
-confirm Decision Records appear
-confirm decision record modal opens and closes
-confirm decision record text download works
-confirm V56.2 metadata is present in Settings/admin context
+confirm Universal Score Contract appears
+confirm V56.3 metadata is present in Settings/admin context
 confirm score model buttons still work
-confirm TrustMap object detail still shows related evidence state when available
+confirm decision records still work
+confirm evidence register still works
 confirm black bevel is gone
 confirm thick neon-blue shield perimeter remains
 confirm V55 Purpose Protocol still works
@@ -280,4 +278,4 @@ confirm no live enforcement, banking, payment, CMMC, healthcare, Internet Trust,
 
 ## Next build
 
-The next build should be **V56.3 Universal Score Object and Score Band Contract**. It should formalize the required score object, universal score bands, runtime action ladder, and trace requirements from the scoring doctrine so every future Trust Scoring Model follows the same contract.
+The next build should be **V56.4 Core Trust Scoring Models MVP**. It should implement the first seven Trust Scoring Models as versioned model JSON files: Artifact Trust, Claim Trust, Sentence-Level Trust, Evidence Trust, Confidence, Reliance Risk, and Runtime Admissibility.
