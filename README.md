@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V55.3 TrustMap Registry and Visual Object Stabilization**
+Current build label: **V55.4 TrustMap Registry Consumption**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v55-3-trustmap-registry-stabilization&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v55-4-trustmap-registry-consumption&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V55.3
+V55.4
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -36,26 +36,23 @@ Build and version labels belong in Settings/admin metadata and repo documentatio
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V55.3.
+No new top-level tabs were added for V55.4.
 
-## Current implemented build: V55.3
+## Current implemented build: V55.4
 
-V55.3 is a TrustMap registry and visual object stabilization pass over V55.2. It preserves V55.2 visual behavior while moving the TrustMap source-of-truth direction into a formal registry, adding a TrustMap Visual Object Style Guide, storing visual references in the repo, and wiring a lightweight registry validation layer.
+V55.4 converts the TrustMap from registry-documented to registry-rendered. It renders the TrustMap from `data/trustmap/v55-3-trustmap-registry.json` while preserving the V55.3.1 visual doctrine: radar-constellation interface, no process flow, no black bevel, thick neon-blue CyberShield Core shield perimeter, and connectors visually terminating at the core boundary.
 
-V55.3 changes:
+V55.4 changes:
 
-- adds `data/trustmap/v55-3-trustmap-registry.json`
-- adds `src/ui/v55-3-trustmap-registry-stabilization.js`
-- loads V55.3 after V55.2 in `src/ui/v52-7-operational-layer.js`
-- adds `docs/trustmap-visual-object-style-guide.md`
-- stores visual reference assets under `assets/reference/`
-- preserves V55.2 TrustMap visual behavior
-- keeps V55 Purpose Protocol active
-- keeps no-new-top-level-tabs constraint intact
-- keeps CyberShield Core as a clean neon shield boundary and trust kernel
-- keeps baseline Layer 1 domains visually alive
-- keeps Layer 3 points present in Fit Map as faint constellation stars
-- keeps Layer 3 labels hidden until hover/focus/Object View
+- adds `src/ui/v55-4-trustmap-registry-consumption.js`
+- loads V55.4 after V55.3.1 in `src/ui/v52-7-operational-layer.js`
+- renders Layer 1 domains from `data/trustmap/v55-3-trustmap-registry.json`
+- renders Layer 2 assets from registry data
+- renders Layer 3 tags from registry data
+- renders scenario lenses from registry data
+- preserves CyberShield Core as the thick neon-blue shield-boundary trust kernel
+- preserves V55 Purpose Protocol
+- preserves no-new-top-level-tabs rule
 - keeps Internet Trust Engine as a documented future requirement track, not a live feature
 
 ## CyberShield Trust Model Doctrine
@@ -78,14 +75,14 @@ Not process flow = no left-to-right workflow pretending to be a map
 
 Fit Map is for orientation, not reading. Domain View is for interpretation. Object View is for detail. Proof Pack is for documentation.
 
-The CyberShield Core is a clean shield boundary and trust kernel, not a normal node. No connector should visually pass through or clutter the shield interior.
+The CyberShield Core is a clean neon-blue shield boundary and trust kernel, not a normal node. No connector should visually pass through or clutter the shield interior.
 
 Layer 1 domains are neon-blue graphical trust objects, not cards.
 
 Connector rules:
 
 ```text
-Core -> Layer 1: thickest, neon blue, straight point-to-point
+Core -> Layer 1: thickest, neon blue, straight point-to-point, terminating at the shield boundary
 Layer 1 -> Layer 2: medium, straight point-to-point
 Layer 2 -> Layer 3: thin, subtle, straight point-to-point
 Cross-domain links: faint until selected or scenario-highlighted
@@ -112,42 +109,40 @@ Devices & Endpoints
 
 Scenario domains such as CMMC & Compliance may be added, but the six baseline domains should not disappear.
 
-## V55.3 registry and visual references
+## V55.4 registry consumption
 
-The TrustMap registry now lives at:
+The TrustMap registry lives at:
 
 ```text
 data/trustmap/v55-3-trustmap-registry.json
 ```
 
-The registry captures:
+The active V55.4 renderer now consumes this registry for:
 
 ```text
-TrustMap doctrine
-CyberShield Core object metadata
 Layer 1 domains
 Layer 2 assets
 Layer 3 tags
 scenario lenses
+scores
+movement
+risk drivers
 visual metadata
-prototype boundary language
 ```
 
-The official V55.3 visual style guide lives at:
+The V55.3 visual style guide remains authoritative for the visual object language:
 
 ```text
 docs/trustmap-visual-object-style-guide.md
 ```
 
-Visual references are stored at:
+Visual references remain stored at:
 
 ```text
 assets/reference/trustmap-radar-constellation-reference.svg
 assets/reference/operational-trust-workflow-reference.svg
 assets/reference/dr-max-justice-leadership-reference.svg
 ```
-
-These are builder references. They are not intended to be rendered directly into the product UI unless explicitly approved.
 
 ## Purpose Protocol doctrine
 
@@ -157,14 +152,6 @@ Purpose is not governance until it can cause a refusal.
 
 CyberShield should help organizations convert executive intent, mission, risk appetite, and operating principles into machine-readable governance protocols that AI agents and human decision workflows can use before action.
 
-Protocol architecture:
-
-```text
-Constraint Layer: what agents or workflows must never do
-Decision Layer: how trade-offs are resolved when no human is present
-Identity Layer: what human judgment, ownership, and mission boundaries must remain visible
-```
-
 V55 priority scenario:
 
 ```text
@@ -173,7 +160,7 @@ Vendor payment destination change: if banking details changed within 30 days, pa
 
 ## Internet Trust Engine future track
 
-The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet and not a V55.3 implementation.
+The Internet Trust Engine should be treated as a future CyberShield trust domain and scenario family, not a standalone product pillar yet and not a V55.4 implementation.
 
 Requirements live at:
 
@@ -208,26 +195,16 @@ Core future question:
 Do we have sufficient trust in this information for the decision, action, briefing, citation, or reliance purpose in front of us, and what is the risk if we are wrong?
 ```
 
-Decision chain:
-
-```text
-Artifact -> Wrapper -> Transcript -> Sentence -> Claim -> Evidence -> Confidence -> Decision Impact -> Reliance Guidance -> Action
-```
-
-V55.3 does not implement the Internet Trust Engine. It only preserves the requirement track and keeps the platform ready for future claim-reliance scenarios.
-
 ## Boundary
 
 The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, or production agent enforcement systems.
 
-## Known V55.3 limitations
+## Known V55.4 limitations
 
-- V55.3 validates the TrustMap registry but does not yet fully render the TrustMap from the registry
-- V55.2 remains the active visual behavior layer
-- TrustMap registry consumption should be completed in a later stabilization build
-- Layer 1 icons are still SVG/CSS approximations and should be refined from the visual object style guide
-- CMMC Pentagon icon is stylized and not final artwork
-- CSS remains injected rather than fully extracted to a stylesheet
+- V55.4 renders TrustMap from the registry but still keeps CSS in an injected UI module
+- V55.4 has not yet split styles into a dedicated stylesheet
+- Layer 1 icons remain SVG/CSS approximations
+- CMMC Pentagon icon remains stylized and not final artwork
 - reports download as text files, not branded PDF reports yet
 - CMMC guidance is advisory and does not represent legal advice, certification, or assessment outcome
 - healthcare scenario guidance is advisory and does not represent compliance validation
@@ -245,11 +222,11 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm V55.3 metadata is present in Settings/admin context
-confirm V55.2 TrustMap behavior remains intact
+confirm V55.4 metadata is present in Settings/admin context
+confirm TrustMap renders from registry data
 confirm Fit Map feels radar + constellation
-confirm shield bevel is gone
-confirm neon shield perimeter remains
+confirm black bevel is gone
+confirm thick neon-blue shield perimeter remains
 confirm baseline Layer 1 domains stay visible
 confirm Layer 3 stars are visible in Fit Map
 confirm Layer 3 labels stay hidden until hover/focus/Object View
@@ -261,4 +238,4 @@ confirm no live enforcement, banking, payment, CMMC, healthcare, Internet Trust,
 
 ## Next likely decision point
 
-After V55.3 browser QA passes, the next builder should complete TrustMap registry consumption or move carefully into a scoped Internet Trust Engine MVP only if the TrustMap remains stable. The safer next step is still registry consumption and CSS reduction before new feature expansion.
+After V55.4 browser QA passes, the next build should reduce injected CSS and clean up visual object styling without changing the TrustMap doctrine. The likely next version is **V55.5 TrustMap CSS and Visual Object Cleanup**.
