@@ -1,0 +1,86 @@
+{
+  "version": "V59.3",
+  "name": "Internet Trust Proof Pack Export Contract",
+  "status": "static_export_contract",
+  "product_framing": "CyberShield Internet Trust Engine",
+  "controlling_principle": "CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.",
+  "boundary": "Static advisory prototype export contract only. No live extraction, live verification, live evidence retrieval, live URL ingestion, live scoring, political validation, legal determination, report delivery, ticketing, notifications, or workflow automation is performed.",
+  "purpose": "Define one prototype export contract that consolidates artifact intake, claim table, claim-to-model trace, evidence state, runtime reliance action, human review requirement, proof sections, and explicit limitations.",
+  "source_layers": {
+    "artifact_intake": "data/internet-trust/v59-1-artifact-intake-claim-table.json",
+    "claim_model_proof_trace": "data/internet-trust/v59-2-claim-model-proof-trace.json",
+    "internet_trust_scaffold": "data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json",
+    "core_trust_scoring_models": "data/models/v56-4-core-trust-scoring-models.json",
+    "proof_pack_schema": "data/proof/v57-model-driven-proof-pack-schema.json"
+  },
+  "export_sections": [
+    "Executive artifact summary",
+    "Reliance purpose",
+    "Artifact intake metadata",
+    "Claim table",
+    "Claim-to-model trace",
+    "Evidence state map",
+    "Runtime reliance actions",
+    "Human review requirements",
+    "Proof Pack output sentences",
+    "Missing evidence and verification needs",
+    "Explicit limitations",
+    "Prototype boundary"
+  ],
+  "required_export_fields": [
+    "export_id",
+    "export_version",
+    "artifact_title",
+    "artifact_type",
+    "source_note",
+    "reliance_purpose",
+    "audience",
+    "risk_if_wrong",
+    "claim_count",
+    "claims_requiring_human_review",
+    "runtime_action_summary",
+    "claim_rows",
+    "model_trace_summary",
+    "proof_pack_sections",
+    "limitations",
+    "prototype_boundary"
+  ],
+  "sample_export": {
+    "export_id": "ite-proof-pack-usafacts-pilot-001",
+    "export_version": "V59.3",
+    "artifact_title": "USAFacts / Steve Ballmer government responsibilities video",
+    "artifact_type": "public educational video transcript",
+    "source_note": "Static prototype source note only. No live retrieval performed.",
+    "reliance_purpose": "Executive education, civic literacy, decision support, public briefing preparation, and artifact trust demonstration",
+    "audience": "executives, analysts, educators, board members, public-sector leaders",
+    "risk_if_wrong": "Bad briefing, incorrect public explanation, flawed policy interpretation, reputational damage, or inappropriate reliance on outdated fiscal assumptions",
+    "claim_count": 4,
+    "claims_requiring_human_review": 3,
+    "runtime_action_summary": "Most factual claims require constrain, verify, or escalate posture before executive or public reliance. One doctrine demonstration claim is allowable with caveat.",
+    "limitations": [
+      "No live URL ingestion",
+      "No live internet retrieval",
+      "No live evidence retrieval",
+      "No live claim extraction",
+      "No live scoring",
+      "No political validation",
+      "No fact-checker or truth-engine branding",
+      "No trusted/untrusted person labeling",
+      "No legal or compliance determination"
+    ]
+  },
+  "export_readiness_rules": [
+    "If any high-reliance claim has missing evidence, the export must show human review required.",
+    "If evidence state is needs_verification, stale, missing, assumed, or conflicting, the export must show a caveat or escalation posture.",
+    "If the artifact is used for executive, public, legal, financial, or policy reliance, the export must disclose prototype limitations.",
+    "If a claim maps to multiple model IDs, the export must show the model trace rather than flattening it into one score.",
+    "If the output is downloaded, the boundary must remain in the exported text."
+  ],
+  "definition_of_done": [
+    "Export contract appears in Proof Pack and Evidence",
+    "Export contract consolidates artifact intake and claim trace data",
+    "Export modal shows required export fields and sample export",
+    "Export text download includes explicit limitations",
+    "No live extraction, live verification, live scoring, or new top-level tab"
+  ]
+}
