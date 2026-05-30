@@ -1,0 +1,137 @@
+{
+  "version": "V59",
+  "name": "Internet Trust Engine MVP Scaffold",
+  "status": "scenario_family_scaffold",
+  "product_framing": "CyberShield Internet Trust Engine",
+  "allowed_language": [
+    "CyberShield Internet Trust Engine",
+    "CyberShield Artifact Trust Engine",
+    "Claim Trust Intelligence",
+    "Evidence-Based Decision Trust",
+    "Reliance checking",
+    "artifact reliance review",
+    "claim-level trust mapping"
+  ],
+  "avoid_language": [
+    "fact-checker",
+    "truth engine",
+    "misinformation detector",
+    "political validation",
+    "trusted/untrusted person labels",
+    "artifact-level trust score as the MVP anchor"
+  ],
+  "controlling_principle": "CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.",
+  "boundary": "Static advisory prototype scaffold only. No live internet retrieval, live evidence retrieval, live claim extraction, live scoring, political validation, legal determination, or automated verification is performed.",
+  "mvp_purpose": "Create a prototype scaffold for reviewing internet artifacts by ingesting artifact metadata and text, decomposing claims, mapping evidence states, checking reliance risk, and producing Proof Pack-ready output.",
+  "mvp_flow": [
+    "Artifact intake placeholder",
+    "Wrapper and metadata review",
+    "Sentence and claim decomposition placeholder",
+    "Claim type classification placeholder",
+    "Evidence state mapping",
+    "Reliance purpose and risk mapping",
+    "Model trace to Core Trust Scoring Models",
+    "Decision record and Proof Pack output"
+  ],
+  "artifact_fields": [
+    "artifact_title",
+    "artifact_url_or_source_note",
+    "artifact_type",
+    "publisher_or_source",
+    "author_or_presenter",
+    "publication_date",
+    "retrieval_date",
+    "transcript_or_text",
+    "reliance_purpose",
+    "audience",
+    "risk_if_wrong"
+  ],
+  "claim_types": [
+    "numeric claim",
+    "definition claim",
+    "causal claim",
+    "comparison claim",
+    "current-status claim",
+    "future-looking claim",
+    "legal or policy claim",
+    "funding or budget claim",
+    "attribution claim",
+    "scope or jurisdiction claim"
+  ],
+  "evidence_state_mapping": [
+    "provided",
+    "missing",
+    "stale",
+    "assumed",
+    "conflicting",
+    "needs_verification"
+  ],
+  "model_mapping": [
+    "Artifact Trust Model",
+    "Claim Trust Model",
+    "Sentence-Level Trust Model",
+    "Evidence Trust Model",
+    "Confidence Model",
+    "Reliance Risk Model",
+    "Runtime Admissibility Model"
+  ],
+  "pilot_artifact": {
+    "id": "pilot-usafacts-government-responsibilities-video",
+    "title": "USAFacts / Steve Ballmer government responsibilities video",
+    "artifact_type": "public educational video transcript",
+    "why_useful": "Appears factual and data-driven, but still requires validation of fiscal numbers, government entity definitions, Medicaid funding rules, education funding splits, time periods, and future legal-policy shifts.",
+    "reliance_purpose": "Executive education, civic literacy, decision support, public briefing preparation, and artifact trust demonstration",
+    "prototype_boundary": "Pilot scaffold only. No live transcript retrieval, live source retrieval, or automated verification."
+  },
+  "sample_claim_rows": [
+    {
+      "claim_id": "claim-001",
+      "sentence": "Federal, state, and local governments divide responsibility for public services in different ways.",
+      "claim_type": "definition claim",
+      "initial_evidence_state": "needs_verification",
+      "model_trace": ["Claim Trust Model", "Evidence Trust Model", "Reliance Risk Model"],
+      "reliance_risk": "moderate",
+      "next_step": "Verify against official government data definitions before using in executive briefing."
+    },
+    {
+      "claim_id": "claim-002",
+      "sentence": "Medicaid funding involves both federal and state government responsibility.",
+      "claim_type": "funding or budget claim",
+      "initial_evidence_state": "needs_verification",
+      "model_trace": ["Claim Trust Model", "Evidence Trust Model", "Confidence Model", "Reliance Risk Model"],
+      "reliance_risk": "high if used for policy or financial decision",
+      "next_step": "Verify current Medicaid matching rules and state-specific context before reliance."
+    },
+    {
+      "claim_id": "claim-003",
+      "sentence": "Education funding responsibilities differ across federal, state, and local levels.",
+      "claim_type": "funding or budget claim",
+      "initial_evidence_state": "needs_verification",
+      "model_trace": ["Claim Trust Model", "Evidence Trust Model", "Sentence-Level Trust Model"],
+      "reliance_risk": "moderate to high depending on jurisdiction and year",
+      "next_step": "Verify funding splits by year, jurisdiction, and source methodology."
+    }
+  ],
+  "proof_pack_output_sections": [
+    "Artifact summary",
+    "Reliance purpose",
+    "Claim table",
+    "Sentence-level trust map",
+    "Evidence state map",
+    "Missing verification list",
+    "Reliance risk statement",
+    "Model trace",
+    "Decision record",
+    "Explicit limitations"
+  ],
+  "runtime_action_rule": "If evidence is missing, stale, conflicting, or unverified for a high-stakes reliance purpose, CyberShield should escalate or constrain reliance until evidence is reviewed by a qualified human.",
+  "definition_of_done": [
+    "Scaffold appears in existing workspaces only",
+    "No new top-level tab",
+    "No live verification claims",
+    "No fact-checker or truth-engine branding",
+    "Pilot artifact is clearly labeled as a scaffold",
+    "Proof Pack output is advisory and boundary-protected",
+    "Model trace routes to existing Trust Scoring Models"
+  ]
+}
