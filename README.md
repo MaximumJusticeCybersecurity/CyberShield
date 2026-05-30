@@ -59,6 +59,51 @@ V59.5 changes:
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 
+## Forward roadmap
+
+The active forward engineering roadmap is:
+
+```text
+docs/v60-v70-cybershield-engineering-roadmap.md
+```
+
+Planned release train:
+
+```text
+V60 Trust Evidence Workbench Scaffold
+V60.1 Evidence State Transition Prototype
+V60.2 Evidence-to-Decision Trace Matrix
+V60.3 Evidence Workbench QA Pass
+V61 Trust Operations Console Scaffold
+V61.1 Executive Attention Model
+V61.2 Trust Operations QA and Boundary Pass
+V62 Trust Score Calibration Lab Scaffold
+V62.1 Score Rationale Builder
+V62.2 Calibration QA Pass
+V63 TrustMap Evidence Overlay Scaffold
+V63.1 TrustMap Runtime Overlay
+V63.2 TrustMap Overlay QA Pass
+V64 Manual Intake and Review Workflow Scaffold
+V64.1 Human Reviewer Packet
+V64.2 Manual Workflow QA Pass
+V65 Executive Advisor Layer Expansion
+V65.1 Role-Based Proof Pack Variants
+V65.2 Executive Advisor QA Pass
+V66 Trust Network and Reciprocity Scaffold
+V66.1 Member Trust Factor Prototype
+V66.2 Trust Network QA Pass
+V67 Builder Governance and Release Discipline Layer
+V67.1 Build Health Panel
+V67.2 Governance QA Pass
+V68 Prototype Persistence and Local Session State Scaffold
+V68.1 Export/Import Trace Bundle Prototype
+V68.2 Local State QA Pass
+V69 Integration Readiness Blueprint
+V69.1 Connector Trust Model
+V69.2 Integration Readiness QA Pass
+V70 Strategic Demo Package and Investor/Customer Readiness
+```
+
 ## Required framing
 
 Use:
@@ -159,6 +204,12 @@ Internet Trust Engine scaffold registry:
 data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json
 ```
 
+Forward roadmap:
+
+```text
+docs/v60-v70-cybershield-engineering-roadmap.md
+```
+
 ## Purpose Protocol doctrine
 
 CyberShield turns purpose into protocol.
@@ -227,4 +278,4 @@ confirm no live monitoring, enforcement, banking, payment, CMMC, healthcare, liv
 
 ## Next build
 
-The next build should be **V60 Trust Evidence Workbench Scaffold**. It should move beyond the V59 Internet Trust scaffold into a broader evidence workbench that supports manual evidence entry, evidence state transitions, and proof-pack traceability while preserving prototype boundaries and avoiding live integration claims.
+The next build is **V60 Trust Evidence Workbench Scaffold**. It moves beyond the V59 Internet Trust scaffold into a broader evidence workbench that supports manual evidence entry, evidence state transitions, and proof-pack traceability while preserving prototype boundaries and avoiding live integration claims.
