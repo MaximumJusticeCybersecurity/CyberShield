@@ -1,0 +1,111 @@
+{
+  "version": "V59.1",
+  "name": "Artifact Intake and Claim Table Prototype",
+  "status": "static_prototype_registry",
+  "product_framing": "CyberShield Internet Trust Engine",
+  "controlling_principle": "CyberShield does not ask whether we trust a person. It asks which claims, artifacts, evidence paths, and reliance decisions can be trusted, at what confidence, for what purpose, and with what risk if wrong.",
+  "boundary": "Static advisory prototype only. The artifact intake and claim table do not ingest live URLs, retrieve internet content, extract claims automatically, verify evidence, calculate live scores, or perform political validation.",
+  "purpose": "Create a static artifact intake panel and editable-looking claim table so users can understand the future Internet Trust workflow without live ingestion or live verification claims.",
+  "artifact_intake": {
+    "artifact_title": "USAFacts / Steve Ballmer government responsibilities video",
+    "artifact_source_note": "Public educational video transcript placeholder",
+    "artifact_type": "public educational video transcript",
+    "publisher_or_source": "USAFacts-style public data explainer",
+    "author_or_presenter": "Steve Ballmer-style presenter field placeholder",
+    "publication_date": "prototype placeholder",
+    "retrieval_date": "prototype placeholder",
+    "reliance_purpose": "Executive education, civic literacy, decision support, public briefing preparation, and artifact trust demonstration",
+    "audience": "executives, analysts, educators, board members, public-sector leaders",
+    "risk_if_wrong": "Bad briefing, incorrect public explanation, flawed policy interpretation, reputational damage, or inappropriate reliance on outdated fiscal assumptions"
+  },
+  "intake_fields": [
+    {"id": "artifact_title", "label": "Artifact Title", "required": true},
+    {"id": "artifact_source_note", "label": "Source or URL Note", "required": true},
+    {"id": "artifact_type", "label": "Artifact Type", "required": true},
+    {"id": "publisher_or_source", "label": "Publisher or Source", "required": true},
+    {"id": "author_or_presenter", "label": "Author or Presenter", "required": false},
+    {"id": "publication_date", "label": "Publication Date", "required": false},
+    {"id": "retrieval_date", "label": "Retrieval Date", "required": false},
+    {"id": "reliance_purpose", "label": "Reliance Purpose", "required": true},
+    {"id": "audience", "label": "Audience", "required": true},
+    {"id": "risk_if_wrong", "label": "Risk If Wrong", "required": true}
+  ],
+  "claim_table_columns": [
+    "claim_id",
+    "sentence",
+    "claim_type",
+    "evidence_state",
+    "model_trace",
+    "reliance_risk",
+    "confidence_label",
+    "missing_evidence",
+    "next_step",
+    "proof_pack_ready"
+  ],
+  "claim_rows": [
+    {
+      "claim_id": "claim-001",
+      "sentence": "Federal, state, and local governments divide responsibility for public services in different ways.",
+      "claim_type": "definition claim",
+      "evidence_state": "needs_verification",
+      "model_trace": ["Claim Trust Model", "Evidence Trust Model", "Reliance Risk Model"],
+      "reliance_risk": "moderate",
+      "confidence_label": "prototype-low until verified",
+      "missing_evidence": "Official source definitions and scope notes",
+      "next_step": "Verify against official government data definitions before executive briefing reliance.",
+      "proof_pack_ready": "partial"
+    },
+    {
+      "claim_id": "claim-002",
+      "sentence": "Medicaid funding involves both federal and state government responsibility.",
+      "claim_type": "funding or budget claim",
+      "evidence_state": "needs_verification",
+      "model_trace": ["Claim Trust Model", "Evidence Trust Model", "Confidence Model", "Reliance Risk Model"],
+      "reliance_risk": "high if used for policy or financial decision",
+      "confidence_label": "prototype-low until current rules verified",
+      "missing_evidence": "Current Medicaid matching rules, state-specific context, and fiscal year reference",
+      "next_step": "Verify current Medicaid matching rules and state-specific context before reliance.",
+      "proof_pack_ready": "not_ready"
+    },
+    {
+      "claim_id": "claim-003",
+      "sentence": "Education funding responsibilities differ across federal, state, and local levels.",
+      "claim_type": "funding or budget claim",
+      "evidence_state": "needs_verification",
+      "model_trace": ["Claim Trust Model", "Evidence Trust Model", "Sentence-Level Trust Model"],
+      "reliance_risk": "moderate to high depending on jurisdiction and year",
+      "confidence_label": "prototype-low until jurisdiction and year are confirmed",
+      "missing_evidence": "Funding split by year, jurisdiction, and source methodology",
+      "next_step": "Verify funding splits by year, jurisdiction, and source methodology.",
+      "proof_pack_ready": "partial"
+    },
+    {
+      "claim_id": "claim-004",
+      "sentence": "A data-driven artifact can still require claim-level verification before leadership relies on it.",
+      "claim_type": "reliance claim",
+      "evidence_state": "provided",
+      "model_trace": ["Artifact Trust Model", "Reliance Risk Model", "Runtime Admissibility Model"],
+      "reliance_risk": "moderate",
+      "confidence_label": "prototype-medium as doctrine demonstration",
+      "missing_evidence": "None for doctrine demonstration; real artifact use still requires verification",
+      "next_step": "Use as CyberShield doctrine example, not as verified external fact output.",
+      "proof_pack_ready": "ready_with_caveats"
+    }
+  ],
+  "editable_prototype_behavior": [
+    "Fields appear editable to show future workflow intent",
+    "Changes are local UI state only and are not saved to a backend",
+    "Claim rows can be inspected but are not produced by live extraction",
+    "Proof Pack readiness labels are static advisory placeholders",
+    "All reliance must remain bounded by prototype limitations"
+  ],
+  "definition_of_done": [
+    "Static artifact intake appears in existing workspaces only",
+    "Editable-looking claim table appears in existing workspaces only",
+    "No live ingestion or extraction claims",
+    "No fact-checker or truth-engine branding",
+    "Claim rows map to evidence states and Trust Scoring Models",
+    "Claim table can export text summary",
+    "Settings/admin metadata reflects V59.1"
+  ]
+}
