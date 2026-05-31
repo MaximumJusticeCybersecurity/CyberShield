@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.2 Show-Readiness Cleanup Pass**
+Current build label: **V60.3.3 First-Layer Decision Brief and TrustMap Snapshot**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-2-show-readiness-cleanup&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-3-first-layer-decision-brief&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.2
+V60.3.3
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,52 +32,66 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.2.
+No new top-level tabs were added for V60.3.3.
 
-## Current implemented build: V60.3.2
+## Current implemented build: V60.3.3
 
-V60.3.2 is a show-readiness cleanup pass.  It does not add a new capability layer.  It makes the prototype cleaner for advisor, expert, prospect, and pilot feedback by adding concise workspace framing, reducing duplicated scaffolding, demoting supporting detail, and preserving the corrected Runtime/Evidence/Proof Pack information architecture.
+V60.3.3 adds the first-layer executive decision pattern: **Decision Brief on the left, TrustMap Snapshot on the right, proof details underneath**.  It makes the Briefing workspace immediately understandable while keeping the TrustMap visible as proof support, not as visual theater.
 
-V60.3.2 changes:
+V60.3.3 changes:
 
-- adds `src/ui/v60-3-2-show-readiness-cleanup.js`
-- loads V60.3.2 after V60.3 in `src/ui/v52-7-operational-layer.js`
-- adds show-ready workspace framing to Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
-- preserves Evidence as the full Manual Evidence Workbench workspace
-- preserves Runtime as the compact Runtime Evidence Requirements workspace
-- preserves Proof Pack as the proof-oriented evidence trace workspace
-- demotes repeated supporting detail where it risks visual clutter
-- adds workspace focus notes for Runtime, Evidence, and Proof Pack
+- adds `data/briefing/v60-3-3-first-layer-decision-brief.json`
+- adds `src/ui/v60-3-3-first-layer-decision-brief-trustmap-snapshot.js`
+- loads V60.3.3 after V60.3.2 in `src/ui/v52-7-operational-layer.js`
+- adds Decision Brief first-layer panel
+- adds compact TrustMap Snapshot beside the Decision Brief on desktop
+- adds proof detail blocks beneath the first layer
+- routes from the Decision Brief to Runtime, Evidence, Proof Pack, and full TrustMap
+- preserves full TrustMap workspace
+- preserves corrected Evidence / Runtime / Proof Pack information architecture
 - preserves V60.3 Universal Model Trace Inspector
-- preserves V60.2 Evidence-to-Score Impact Preview
 - preserves no-new-top-level-tabs rule
 - preserves Purpose Protocol
 - preserves prototype boundary language
 
+## First-layer UI doctrine
+
+```text
+Decision first. Map beside it. Proof underneath.
+```
+
+The TrustMap should not ask the user to discover the decision.  The TrustMap should help the user understand and challenge the decision.
+
+## Target 9-second read
+
+Within 9 seconds, a first-time executive should understand:
+
+```text
+What CyberShield thinks is happening
+What action is allowed, constrained, escalated, or refused
+Why it matters
+What evidence is missing
+Where to inspect the proof
+```
+
 ## Correct information architecture
 
 ```text
-Evidence tab = full Manual Evidence Workbench
-Runtime tab = compact Runtime Evidence Requirements panel
-Proof Pack tab = proof-oriented evidence trace
-```
-
-Runtime should feel like command authority, not a junk drawer.  It should show what is blocking, constraining, escalating, or allowing the action now.
-
-## Show-readiness principle
-
-CyberShield should be clean enough to show advisors, prospects, experts, and potential pilot users without making them sort through accumulated build scaffolding.
-
-Each workspace should have one primary job:
-
-```text
-Briefing = executive decision posture
-TrustMap = trust universe and relationships
+Briefing = Decision Brief + TrustMap Snapshot + proof summary
+TrustMap = full interactive trust universe
 Runtime = command authority and allowed action
-Evidence = manual evidence handling and traceability
+Evidence = full Manual Evidence Workbench
 Proof Pack = defensibility and export context
 Architecture = doctrine and system structure
 Settings = build status and prototype metadata
+```
+
+## Responsive layout rule
+
+```text
+Desktop = Decision Brief left, TrustMap Snapshot right, details below
+Tablet = Decision Brief first, TrustMap Snapshot second, details below
+Mobile = Decision Brief first, collapsed TrustMap Snapshot underneath, details below
 ```
 
 ## Controlling doctrine
@@ -113,16 +127,18 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
-open each workspace
-confirm show-ready workspace framing appears
-open Evidence
-confirm full Manual Evidence Workbench appears in Evidence
+open Briefing
+confirm Decision Brief appears first
+confirm TrustMap Snapshot appears beside Decision Brief on desktop
+confirm proof detail blocks appear underneath
+confirm Decision Brief routes to Runtime, Evidence, Proof Pack, and TrustMap
+confirm TrustMap Snapshot is compact, not the full universe
+open TrustMap
+confirm full TrustMap still works
 open Runtime
 confirm full Manual Evidence Workbench does not appear in Runtime
-confirm Runtime Evidence Requirements panel appears in Runtime
-open Proof Pack
-confirm Proof Pack shows evidence trace, not manual workbench clutter
-confirm duplicated supporting sections are demoted rather than dominating the page
+open Evidence
+confirm full Manual Evidence Workbench appears in Evidence
 confirm V60.3 Universal Model Trace Inspector still works
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
@@ -130,4 +146,4 @@ confirm no live evidence retrieval, live scoring, statistical validation, backen
 
 ## Next likely decision point
 
-After V60.3.2 browser QA passes, the next build should be a final advisor-demo review pass: polish copy, reduce remaining clutter, and identify the three to five advisor feedback questions Dr. Justice should ask when showing CyberShield Executive OS to others.
+After V60.3.3 browser QA passes, the next build should be a **live demo polish pass**: tighten spacing, reduce remaining visual noise, tune copy, and prepare the advisor feedback script.
