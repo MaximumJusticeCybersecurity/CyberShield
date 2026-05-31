@@ -1,0 +1,77 @@
+{
+  "version": "V60.3.3",
+  "name": "First-Layer Decision Brief and TrustMap Snapshot",
+  "status": "static_executive_first_layer_registry",
+  "purpose": "Create the first screen pattern for CyberShield Executive OS: Decision Brief on the left, TrustMap Snapshot on the right, proof details underneath.",
+  "governing_doctrine": "Decision first. Map beside it. Proof underneath.",
+  "trustmap_rule": "The TrustMap should not ask the user to discover the decision. The TrustMap should help the user understand and challenge the decision.",
+  "target_9_second_read": [
+    "What CyberShield thinks is happening",
+    "What action is allowed, constrained, escalated, or refused",
+    "Why it matters",
+    "What evidence is missing",
+    "Where to inspect the proof"
+  ],
+  "responsive_layout": {
+    "desktop": "Decision Brief left, TrustMap Snapshot right, details below",
+    "tablet": "Decision Brief first, TrustMap Snapshot second, details below",
+    "mobile": "Decision Brief first, collapsed TrustMap Snapshot underneath, details below"
+  },
+  "sample_decision_brief": {
+    "decision": "Escalate",
+    "runtime_posture": "Constrain until human review",
+    "what_cybershield_thinks_is_happening": "CyberShield detected a high-consequence action with missing or unverified evidence.",
+    "why_it_matters": "A consequential action may proceed without sufficient proof, owner confirmation, or verified evidence.",
+    "risk_if_wrong": "High financial, operational, compliance, or reputational consequence if the action is trusted too early.",
+    "next_action": "Assign the required owner, verify missing evidence, and generate a decision record before proceeding.",
+    "owner": "Required business or control owner",
+    "confidence_label": "Medium confidence, high reliance risk",
+    "model_trace": "Expert-Derived V1 models. Weights are calibratable and not statistically validated."
+  },
+  "trustmap_snapshot": {
+    "central_decision_node": "Action under review",
+    "affected_domains": [
+      {"label": "Identity", "state": "moderate", "reason": "approval authority and access context affect action admissibility"},
+      {"label": "Vendor", "state": "weak", "reason": "vendor proof or contract evidence may be stale or missing"},
+      {"label": "Data", "state": "moderate", "reason": "data sensitivity changes reliance risk"},
+      {"label": "Purpose", "state": "strong", "reason": "Purpose Protocol constrains unsupported action"},
+      {"label": "Consequence", "state": "critical", "reason": "risk if wrong is high enough to escalate"}
+    ],
+    "weak_link": "Vendor proof stale or missing",
+    "evidence_gap": "Human verification or required proof not yet attached",
+    "human_approval_path": "Assigned owner -> qualified reviewer -> decision record -> Proof Pack"
+  },
+  "details_below": [
+    {
+      "label": "Why this matters",
+      "content": "CyberShield is not a visualization tool first. It is a trust decision system that tells leaders whether an action can be relied on before consequence."
+    },
+    {
+      "label": "Missing evidence",
+      "content": "Required verification evidence, owner approval, and documented limitations are not yet complete."
+    },
+    {
+      "label": "Recommended next action",
+      "content": "Escalate to the assigned owner and attach verification evidence before relying on the action."
+    },
+    {
+      "label": "Model trace",
+      "content": "Inspect the Expert-Derived V1 model, version, inputs, factor weights, missing evidence, assumptions, confidence, and reliance risk."
+    },
+    {
+      "label": "Proof Pack",
+      "content": "Generate or review the decision record, evidence trace, caveats, and defensibility summary."
+    }
+  ],
+  "non_negotiables": [
+    "Do not add a new top-level tab",
+    "Do not replace the full TrustMap workspace",
+    "Do not show the full TrustMap universe on the first layer",
+    "Decision Brief comes before or beside TrustMap Snapshot",
+    "TrustMap Snapshot is compact and decision-specific",
+    "Details live underneath the first layer",
+    "Preserve prototype boundary language",
+    "Do not claim live scoring, live evidence retrieval, live enforcement, statistical validation, CMMC certification, healthcare compliance validation, or live integrations"
+  ],
+  "boundary": "Static advisory prototype only. The first-layer Decision Brief and TrustMap Snapshot are demo scaffolds. They do not perform live scoring, live evidence retrieval, statistical validation, workflow automation, ticketing, notification, backend persistence, or enforcement."
+}
