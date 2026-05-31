@@ -1,60 +1,73 @@
 CyberShield Executive OS
-Current implemented build: V60.3.2 Show-Readiness Cleanup Pass
+Current implemented build: V60.3.3 First-Layer Decision Brief and TrustMap Snapshot
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3.2 Show-Readiness Cleanup Pass.
+CyberShield V60.3.3 First-Layer Decision Brief and TrustMap Snapshot.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.2.
+No new top-level tabs were added for V60.3.3.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.2. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+
+First-layer UI doctrine:
+Decision first. Map beside it. Proof underneath.
+
+TrustMap rule:
+The TrustMap should not ask the user to discover the decision. The TrustMap should help the user understand and challenge the decision.
+
+Target 9-second read:
+- What CyberShield thinks is happening
+- What action is allowed, constrained, escalated, or refused
+- Why it matters
+- What evidence is missing
+- Where to inspect the proof
+
+Responsive layout:
+Desktop = Decision Brief left, TrustMap Snapshot right, details below.
+Tablet = Decision Brief first, TrustMap Snapshot second, details below.
+Mobile = Decision Brief first, collapsed TrustMap Snapshot underneath, details below.
+
+Workspace focus:
+Briefing = Decision Brief + TrustMap Snapshot + proof summary.
+TrustMap = full interactive trust universe.
+Runtime = command authority and allowed action.
+Evidence = full Manual Evidence Workbench.
+Proof Pack = defensibility and export context.
+Architecture = doctrine and system structure.
+Settings = build status and prototype metadata.
+
+V60.3.3 First-Layer Decision Brief and TrustMap Snapshot:
+- adds `data/briefing/v60-3-3-first-layer-decision-brief.json`
+- adds `src/ui/v60-3-3-first-layer-decision-brief-trustmap-snapshot.js`
+- loads V60.3.3 after V60.3.2 in `src/ui/v52-7-operational-layer.js`
+- adds Decision Brief first-layer panel
+- adds compact TrustMap Snapshot beside the Decision Brief on desktop
+- adds proof detail blocks beneath the first layer
+- routes from Decision Brief to Runtime, Evidence, Proof Pack, and full TrustMap
+- preserves full TrustMap workspace
+- preserves corrected Evidence / Runtime / Proof Pack information architecture
+- preserves V60.3 Universal Model Trace Inspector
+- preserves no-new-top-level-tabs rule
+- preserves Purpose Protocol
+- preserves prototype boundary language
 
 Correct information architecture:
 Evidence tab = full Manual Evidence Workbench.
 Runtime tab = compact Runtime Evidence Requirements panel.
 Proof Pack tab = proof-oriented evidence trace.
 
-Show-readiness rule:
-CyberShield should be clean enough to show advisors, prospects, experts, and potential pilot users without making them sort through accumulated build scaffolding.
-
-Workspace focus:
-Briefing = executive decision posture.
-TrustMap = trust universe and relationships.
-Runtime = command authority and allowed action.
-Evidence = manual evidence handling and traceability.
-Proof Pack = defensibility and export context.
-Architecture = doctrine and system structure.
-Settings = build status and prototype metadata.
-
-Runtime should feel like command authority, not a junk drawer. It should show what is blocking, constraining, escalating, or allowing the action now.
-
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
-
-V60.3.2 Show-Readiness Cleanup Pass:
-- adds `src/ui/v60-3-2-show-readiness-cleanup.js`
-- loads V60.3.2 after V60.3 in `src/ui/v52-7-operational-layer.js`
-- adds show-ready workspace framing to Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, and Settings
-- preserves Evidence as the full Manual Evidence Workbench workspace
-- preserves Runtime as the compact Runtime Evidence Requirements workspace
-- preserves Proof Pack as the proof-oriented evidence trace workspace
-- demotes repeated supporting detail where it risks visual clutter
-- adds workspace focus notes for Runtime, Evidence, and Proof Pack
-- preserves V60.3 Universal Model Trace Inspector
-- preserves V60.2 Evidence-to-Score Impact Preview
-- preserves no-new-top-level-tabs rule
-- preserves Purpose Protocol
-- preserves prototype boundary language
 
 V60.3 Universal Model Trace Inspector remains active:
 - `data/models/v60-3-calibratable-trust-model-registry.json`
@@ -72,4 +85,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open each workspace and confirm show-ready workspace framing appears, Evidence keeps the full Manual Evidence Workbench, Runtime does not show the full Manual Evidence Workbench, Runtime shows the compact Runtime Evidence Requirements panel, Proof Pack shows evidence trace rather than manual workbench clutter, duplicated supporting sections are demoted, Universal Model Trace Inspector still works, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open Briefing and confirm Decision Brief appears first, TrustMap Snapshot appears beside it on desktop, proof details appear underneath, and route buttons open Runtime, Evidence, Proof Pack, and TrustMap. Confirm full TrustMap still works, Evidence keeps the full Manual Evidence Workbench, Runtime does not show the full Manual Evidence Workbench, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
