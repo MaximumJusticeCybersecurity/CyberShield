@@ -1,21 +1,21 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.6 TrustMap Layer 1 Asset Rendering Correction",
+  "current_implemented_build": "V60.3.7 TrustMap Reference Layout Renderer",
   "build_date": "2026-05-29",
-  "patch_type": "TrustMap existing-bubble artwork correction over V60.3.5 overlay misfire",
-  "release_chain_status": "V60.3.6 is the current implemented build. It removes the mistaken V60.3.5 floating overlay from the loader and replaces it with a narrow renderer that preserves the existing TrustMap radar, constellation layer, three-ring spatial system, Layer 1 positions, and interaction behavior while changing only the artwork inside existing Layer 1 asset bubbles. GitHub Pages browser QA is required after deploy.",
+  "patch_type": "TrustMap approved reference layout renderer over V60.3.6 artwork correction",
+  "release_chain_status": "V60.3.7 is the current implemented build. It renders the TrustMap first layer in the approved reference layout with dark digital universe, radar rings, seven holographic Layer 1 trust assets around a central active decision, relationship lines, trust status legend, and a right-side detail panel that changes when the user hovers, focuses, or clicks each graphical asset. GitHub Pages browser QA is required after deploy.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-6-trustmap-asset-rendering-correction&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-7-trustmap-reference-layout&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.6. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
-  "v60_3_6_correction_rule": "Do not create a new TrustMap overlay. Do not replace the radar / constellation environment. Do not move Layer 1 assets out of their current positions. Only improve the visual representation inside each existing Layer 1 asset bubble.",
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.7. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "v60_3_7_reference_layout_rule": "Render the TrustMap first layer in the approved reference style: dark digital universe, radar rings, seven holographic Layer 1 trust assets around a central active decision, relationship lines, trust status legend, and a right-side detail panel that changes when the user hovers, focuses, or clicks each graphical asset.",
   "public_trustmap_language": {
-    "title": "TrustMap",
+    "title": "CyberShield TrustMap",
     "subtitle": "Decision Trust Universe",
-    "rule": "Do not expose builder language such as registry-driven, renders from registry, versioned render source, or V55.3 registry in executive-facing TrustMap UI."
+    "rule": "Do not expose builder language such as registry-driven, renders from registry, versioned render source, implementation layer, or internal version source in executive-facing TrustMap UI."
   },
-  "trustmap_visual_doctrine": "The radar and constellation background is the environment. The existing Layer 1 bubbles are the interface. The active decision is the gravity center.",
+  "trustmap_visual_doctrine": "The dark digital universe and radar rings are the environment. The seven holographic Layer 1 graphical assets are the interface. The active decision is the gravity center. The right-side panel explains the selected asset.",
   "layer1_trustmap_assets": [
     "Cloud & Infrastructure",
     "Identities & Access",
@@ -26,33 +26,29 @@
     "CMMC & Compliance"
   ],
   "score_rule": "Every visible score must be clickable and must explain or route to the model, evidence, assumptions, missing inputs, confidence, reliance risk, and decision rationale behind that score.",
-  "trust_distribution_rule": "Operational Trust Score is a current decision posture score. Trust Level Distribution is a count or percentage distribution across Layer 1 trust assets. They should not show the same number unless intentionally representing the same metric.",
   "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context. Settings owns build/version/governance/prototype metadata.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
   "model_maturity_rule": "CyberShield scoring models are Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models. Default weights are calibratable and not authoritative until validated through test scenarios, expert review, red-team attempts, and real-world use cases.",
-  "v60_3_6_changes": [
-    "adds src/ui/v60-3-6-trustmap-asset-artwork-renderer.js",
-    "removes the V60.3.5 overlay import from src/ui/v52-7-operational-layer.js",
-    "loads V60.3.6 after V60.3.4",
-    "preserves the existing radar / constellation TrustMap",
-    "preserves the existing three-ring spatial model",
-    "preserves existing Layer 1 asset positions and click behavior",
-    "replaces flat inner icons inside existing Layer 1 asset bubbles with more dimensional holographic object artwork",
-    "renders Cloud & Infrastructure as a dimensional cloud with infrastructure glow beneath it",
-    "renders CMMC & Compliance as a Pentagon-inspired dimensional building form inside the existing bubble",
-    "renders identity, data, AI, vendor, and endpoint assets as richer volumetric objects",
-    "removes the mistaken floating TrustMap overlay layer from the operational path",
-    "keeps public TrustMap language as TrustMap and Decision Trust Universe",
-    "preserves V60.3.4 explicit actionability and modal disclosure architecture",
-    "preserves no-new-top-level-tabs rule",
-    "preserves Purpose Protocol"
+  "v60_3_7_changes": [
+    "adds src/ui/v60-3-7-trustmap-reference-layout-renderer.js",
+    "replaces the V60.3.6 artwork renderer import in src/ui/v52-7-operational-layer.js",
+    "renders the TrustMap first layer to match the approved reference composition",
+    "includes seven Layer 1 graphical trust assets",
+    "includes CMMC & Compliance as the governance/compliance trust asset",
+    "includes a central active decision node",
+    "includes status lines from the center to each trust asset",
+    "includes a trust status legend",
+    "includes a right-side detail panel",
+    "updates the right-side panel on hover, focus, and click",
+    "includes action buttons for Open Evidence, Inspect Trace, Preview Proof Pack, and View Controls",
+    "preserves the no-new-top-level-tabs rule",
+    "preserves Settings as the place for build/version/governance/prototype metadata"
   ],
-  "trustmap_asset_rendering_correction": {
-    "status": "active_existing_bubble_artwork_renderer",
-    "ui": "src/ui/v60-3-6-trustmap-asset-artwork-renderer.js",
-    "disables_overlay_layer": "v6035Layer",
-    "rule": "Preserve existing TrustMap radar, constellation, rings, object positions, and interactions. Replace only the artwork inside existing Layer 1 asset bubbles.",
-    "boundary": "Static advisory visual correction only. No live scoring, evidence retrieval, workflow automation, ticketing, notifications, backend persistence, enforcement, statistical validation, certification, compliance validation, or live integrations."
+  "trustmap_reference_layout": {
+    "status": "active_reference_layout",
+    "ui": "src/ui/v60-3-7-trustmap-reference-layout-renderer.js",
+    "interaction": "right panel updates on hover, focus, and click",
+    "boundary": "Static advisory visual and interaction renderer only. No live scoring, evidence retrieval, workflow automation, ticketing, notifications, backend persistence, enforcement, statistical validation, certification, compliance validation, or live integrations."
   },
   "explicit_actionability_modal_disclosure": {
     "status": "active_registry_backed_layer",
@@ -77,9 +73,9 @@
     "maturity_label": "Expert-Derived V1 Trust Scoring Models",
     "not_label": "Statistically Validated Trust Models"
   },
-  "recommended_next_build": { "label": "V60.3.7 TrustMap Asset Artwork Tuning", "goals": ["browser QA the existing-bubble artwork", "improve cloud realism", "improve Pentagon dimensionality", "improve endpoint/device object quality", "confirm existing TrustMap interactions remain intact", "preserve no-new-top-level-tabs and Settings-only governance metadata"] },
-  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype", "v60.2": "Evidence-to-Score Impact Preview", "v60.3": "Universal Model Trace Inspector", "v60.3.1": "Runtime Evidence Panel Correction", "v60.3.2": "Show-Readiness Cleanup Pass", "v60.3.3": "First-Layer Decision Brief and TrustMap Snapshot", "v60.3.4": "Explicit Actionability and Modal Disclosure Architecture", "v60.3.5": "TrustMap Layer 1 Graphical Asset Redesign", "v60.3.6": "TrustMap Layer 1 Asset Rendering Correction" },
+  "recommended_next_build": { "label": "V60.3.8 TrustMap Reference Layout Fidelity Pass", "goals": ["browser QA the reference layout", "tune asset cube realism", "tune right-panel spacing", "tune radar ring density", "tune asset placement", "confirm hover/focus/click behavior", "preserve no-new-top-level-tabs and Settings-only governance metadata"] },
+  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype", "v60.2": "Evidence-to-Score Impact Preview", "v60.3": "Universal Model Trace Inspector", "v60.3.1": "Runtime Evidence Panel Correction", "v60.3.2": "Show-Readiness Cleanup Pass", "v60.3.3": "First-Layer Decision Brief and TrustMap Snapshot", "v60.3.4": "Explicit Actionability and Modal Disclosure Architecture", "v60.3.5": "TrustMap Layer 1 Graphical Asset Redesign", "v60.3.6": "TrustMap Layer 1 Asset Rendering Correction", "v60.3.7": "TrustMap Reference Layout Renderer" },
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live URL ingestion, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, statistical validation, or takedown automation.",
   "overclaim_prohibitions": ["live monitoring", "live enforcement", "live evidence retrieval", "backend persistence", "live scoring", "statistically validated scoring", "live claim extraction", "live internet retrieval", "live URL ingestion", "live ticketing", "live notifications", "workflow automation", "legal determinations", "CMMC certification", "healthcare compliance validation", "live integrations"],
-  "known_limitations": ["V60.3.6 is static and advisory", "Layer 1 artwork requires browser QA", "Dimensional artwork is CSS/SVG-based and may require visual tuning", "Models are expert-derived V1 and not statistically validated", "No live scoring, evidence retrieval, ticketing, notifications, or workflow automation", "GitHub Pages browser QA required after deploy"]
+  "known_limitations": ["V60.3.7 is static and advisory", "Reference layout requires browser QA", "Holographic assets are CSS/SVG-based and may require visual tuning", "Models are expert-derived V1 and not statistically validated", "No live scoring, evidence retrieval, ticketing, notifications, or workflow automation", "GitHub Pages browser QA required after deploy"]
 }
