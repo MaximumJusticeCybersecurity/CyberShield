@@ -1,26 +1,26 @@
 CyberShield Executive OS
-Current implemented build: V60.3.5 TrustMap Layer 1 Graphical Asset Redesign
+Current implemented build: V60.3.6 TrustMap Layer 1 Asset Rendering Correction
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3.5 TrustMap Layer 1 Graphical Asset Redesign.
+CyberShield V60.3.6 TrustMap Layer 1 Asset Rendering Correction.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.5.
+No new top-level tabs were added for V60.3.6.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.5. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.6. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
-Public TrustMap language:
-Use TrustMap and Decision Trust Universe in executive-facing screens. Do not expose registry-driven, render source, V55.3 registry, or other implementation-language outside Settings/admin metadata and repo docs.
+V60.3.6 correction rule:
+Do not create a new TrustMap overlay. Do not replace the radar / constellation environment. Do not move Layer 1 assets out of their current positions. Only improve the visual representation inside each existing Layer 1 asset bubble.
 
 TrustMap visual doctrine:
-The radar and constellation background is the environment. The Layer 1 graphical trust assets are the interface. The active decision is the gravity center.
+The radar and constellation background is the environment. The existing Layer 1 bubbles are the interface. The active decision is the gravity center.
 
 Baseline Layer 1 TrustMap assets:
 - Cloud & Infrastructure
@@ -31,28 +31,28 @@ Baseline Layer 1 TrustMap assets:
 - Devices & Endpoints
 - CMMC & Compliance
 
+V60.3.6 TrustMap Layer 1 Asset Rendering Correction:
+- adds `src/ui/v60-3-6-trustmap-asset-artwork-renderer.js`
+- removes the V60.3.5 overlay import from `src/ui/v52-7-operational-layer.js`
+- loads V60.3.6 after V60.3.4
+- preserves the existing radar / constellation TrustMap
+- preserves the existing three-ring spatial model
+- preserves existing Layer 1 asset positions and click behavior
+- replaces flat inner icons inside existing Layer 1 asset bubbles with more dimensional holographic object artwork
+- renders Cloud & Infrastructure as a dimensional cloud with infrastructure glow beneath it
+- renders CMMC & Compliance as a Pentagon-inspired dimensional building form inside the existing bubble
+- renders identity, data, AI, vendor, and endpoint assets as richer volumetric objects
+- removes the mistaken floating TrustMap overlay layer from the operational path
+- keeps public TrustMap language as TrustMap and Decision Trust Universe
+- preserves V60.3.4 explicit actionability and modal disclosure architecture
+- preserves no-new-top-level-tabs rule
+- preserves Purpose Protocol
+
 Score rule:
 Every visible score must be clickable and must explain or route to the model, evidence, assumptions, missing inputs, confidence, reliance risk, and decision rationale behind that score.
 
 Trust distribution rule:
 Operational Trust Score is a current decision posture score. Trust Level Distribution is a count or percentage distribution across Layer 1 trust assets. They should not show the same number unless intentionally representing the same metric.
-
-V60.3.5 TrustMap Layer 1 Graphical Asset Redesign:
-- adds `data/trustmap/v60-3-5-layer1-graphical-assets.json`
-- adds `src/ui/v60-3-5-trustmap-layer1-assets.js`
-- loads V60.3.5 after V60.3.4 in `src/ui/v52-7-operational-layer.js`
-- changes public TrustMap language to TrustMap and Decision Trust Universe
-- removes architectural phrases from executive TrustMap UI
-- adds seven Layer 1 graphical trust assets
-- preserves the baseline six operational assets
-- includes CMMC & Compliance as a Layer 1 governance/compliance trust asset
-- adds asset drilldown drawer for each Layer 1 trust asset
-- makes score panels clickable so scores explain model, evidence, missing inputs, assumptions, confidence, reliance risk, and rationale
-- changes Trust Level Distribution into counts by Layer 1 asset state instead of duplicating the Operational Trust Score number
-- repairs the dead drilldown for AI-generated analysis action review
-- preserves V60.3.4 explicit actionability and modal disclosure architecture
-- preserves no-new-top-level-tabs rule
-- preserves Purpose Protocol
 
 Correct information architecture:
 Briefing = Decision Brief + TrustMap Snapshot + proof summary.
@@ -76,4 +76,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm TrustMap / Decision Trust Universe language, seven Layer 1 graphical assets, CMMC & Compliance asset, quieter background, clickable asset drawers, score explanation behavior, Trust Level Distribution counts, repaired AI-generated-analysis drilldown, no new top-level tab, and no live-capability or statistically validated scoring overclaims.
+After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm no V60.3.5 floating overlay appears, the original radar / constellation environment remains, the three-ring spatial model remains, Layer 1 positions are unchanged, inner bubble artwork is improved, Cloud & Infrastructure shows dimensional cloud artwork, CMMC & Compliance shows a Pentagon-inspired dimensional building, existing click behavior still works, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
