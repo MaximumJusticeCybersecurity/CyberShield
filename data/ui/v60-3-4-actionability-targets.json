@@ -1,0 +1,122 @@
+{
+  "version": "V60.3.4",
+  "name": "Explicit Actionability and Modal Disclosure Targets",
+  "status": "registry_backed_ui_hardening",
+  "purpose": "Define explicit click targets, modal disclosure targets, urgency meter rules, and metadata visibility rules without broad text-scrubbing patches.",
+  "doctrine": "If it needs executive action, it must route. If it is proof detail, it opens on demand. If it is metadata, it lives in Settings. If it is urgent, the urgency bar must show red/yellow/green with a marker. If it is a drilldown, it must drill down.",
+  "metadata_visibility_rule": "Build labels, version labels, governance metadata, QA language, prototype boundary language, and internal build status belong in Settings/admin metadata and repo documentation only, not executive-facing tabs.",
+  "progressive_disclosure_rule": "Primary tabs show conclusions, posture, risk, evidence gaps, and next action. Trace objects, report previews, raw scaffolds, model internals, registries, and export previews open through buttons and modals.",
+  "route_targets": [
+    {
+      "id": "needs_verification",
+      "labels": ["Needs Verification", "needs verification", "verify", "verification required"],
+      "target_view": "evidence",
+      "target_section": "missing_verification",
+      "route_label": "Review what needs verification",
+      "message": "Evidence opened to show what needs verification, what is missing, and who owns the next step."
+    },
+    {
+      "id": "evidence_gaps",
+      "labels": ["Evidence gaps", "Missing evidence", "7 evidence gaps", "evidence gap"],
+      "target_view": "evidence",
+      "target_section": "evidence_gaps",
+      "route_label": "Open evidence gaps",
+      "message": "Evidence opened to show missing proof, assumptions, and verification requirements."
+    },
+    {
+      "id": "decision_records",
+      "labels": ["Decision records", "Decision required", "3 decision records"],
+      "target_view": "proof",
+      "target_section": "decision_records",
+      "route_label": "Open decision records",
+      "message": "Proof Pack opened to show decision records and defensibility context."
+    },
+    {
+      "id": "trust_models",
+      "labels": ["Trust models", "Model trace", "Universal score contract", "Trust model doctrine"],
+      "target_view": "architecture",
+      "target_section": "model_trace",
+      "route_label": "Inspect model trace",
+      "message": "Architecture opened to show model trace, score contract, and trust model doctrine."
+    },
+    {
+      "id": "boundary",
+      "labels": ["Boundary", "No overclaim boundary", "No overclaimed boundary", "prototype boundary", "limitations"],
+      "target_view": "settings",
+      "target_section": "governance_boundary",
+      "route_label": "Open boundary in Settings",
+      "message": "Settings opened because governance, boundaries, versions, and prototype metadata belong there."
+    },
+    {
+      "id": "healthcare_data_workflow",
+      "labels": ["healthcare provider", "patient data", "clinical adjacent data", "AI-enabled workflow"],
+      "target_view": "evidence",
+      "target_section": "healthcare_data_verification",
+      "route_label": "Review healthcare data verification",
+      "message": "Evidence opened to show healthcare and clinical-adjacent data verification requirements."
+    },
+    {
+      "id": "runtime_posture",
+      "labels": ["what should happen next", "runtime", "allowed", "constrained", "escalated", "refused"],
+      "target_view": "runtime",
+      "target_section": "runtime_action",
+      "route_label": "Open runtime action",
+      "message": "Runtime opened to show allowed action, constraints, escalation, and next human step."
+    },
+    {
+      "id": "proof_pack",
+      "labels": ["Proof Pack", "Board-ready reports", "reports", "executive brief preview"],
+      "target_view": "proof",
+      "target_section": "proof_pack_preview",
+      "route_label": "Open Proof Pack preview",
+      "message": "Proof Pack opened to show report preview and defensibility context."
+    }
+  ],
+  "modal_targets": [
+    {
+      "id": "model_trace_panel",
+      "source_selector": "#v603Trace_evidence,#v603Trace_runtime,#v603Trace_proof,#v603Trace_architecture",
+      "button_label": "Inspect Model Trace",
+      "modal_title": "Model Trace"
+    },
+    {
+      "id": "evidence_impact_panel",
+      "source_selector": "#v602Impact_evidence,#v602Impact_runtime,#v602Impact_proof",
+      "button_label": "Preview Evidence Impact",
+      "modal_title": "Evidence-to-Score Impact Preview"
+    },
+    {
+      "id": "decision_records_panel",
+      "source_selector": "#v562RuntimeRecords,#v562ProofRecords,#v562EvidenceRecords",
+      "button_label": "Open Decision Records",
+      "modal_title": "Decision Records"
+    },
+    {
+      "id": "raw_trace_buttons",
+      "source_selector": ".v60-boundary,.v602-boundary,.v603-boundary,.v6033-boundary",
+      "button_label": "View Advisory Note",
+      "modal_title": "Advisory Note"
+    }
+  ],
+  "urgency_meter": {
+    "color_rule": "Always render red/yellow/green, with no gray segment.",
+    "labels": ["Urgent", "Verify", "Trusted"],
+    "positions": {
+      "critical": "16%",
+      "high": "28%",
+      "needs_verification": "48%",
+      "moderate": "58%",
+      "trusted": "84%"
+    },
+    "sort_order": ["critical", "high", "needs_verification", "moderate", "trusted"]
+  },
+  "architecture_order_rule": [
+    "Trust Model Doctrine",
+    "Six Deep Scenario Spines",
+    "Board-Ready Reports",
+    "No Overclaim Boundary",
+    "Navigation / drilldown cards",
+    "Supporting details"
+  ],
+  "boundary": "Static advisory UI hardening only. This registry does not perform live scoring, live evidence retrieval, workflow automation, ticketing, notifications, backend persistence, enforcement, statistical validation, CMMC certification, healthcare compliance validation, or live integrations."
+}
