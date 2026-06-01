@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.6 TrustMap Layer 1 Asset Rendering Correction**
+Current build label: **V60.3.7 TrustMap Reference Layout Renderer**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-6-trustmap-asset-rendering-correction&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-7-trustmap-reference-layout&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.6
+V60.3.7
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,37 +32,56 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.6.
+No new top-level tabs were added for V60.3.7.
 
-## Current implemented build: V60.3.6
+## Current implemented build: V60.3.7
 
-V60.3.6 corrects the TrustMap visual implementation.  The V60.3.5 floating overlay approach is removed from the loader and replaced with a narrow asset renderer that preserves the existing TrustMap radar, constellation layer, three-ring spatial system, Layer 1 positions, and interaction behavior.  The correction changes only the artwork inside the existing Layer 1 asset bubbles.
+V60.3.7 renders the TrustMap first layer in the approved reference layout: dark digital universe, radar rings, seven holographic Layer 1 trust assets around a central active decision, relationship lines, trust status legend, and a right-side detail panel that changes when the user hovers, focuses, or clicks each graphical asset.
 
-V60.3.6 changes:
+V60.3.7 changes:
 
-- adds `src/ui/v60-3-6-trustmap-asset-artwork-renderer.js`
-- removes the V60.3.5 overlay import from `src/ui/v52-7-operational-layer.js`
-- loads V60.3.6 after V60.3.4
-- preserves the existing radar / constellation TrustMap
-- preserves the existing three-ring spatial model
-- preserves existing Layer 1 asset positions and click behavior
-- replaces flat inner icons inside existing Layer 1 asset bubbles with more dimensional holographic object artwork
-- renders Cloud & Infrastructure as a dimensional cloud with infrastructure glow beneath it
-- renders CMMC & Compliance as a Pentagon-inspired dimensional building form inside the existing bubble
-- renders identity, data, AI, vendor, and endpoint assets as richer volumetric objects
-- removes the mistaken floating TrustMap overlay layer from the operational path
-- keeps public TrustMap language as `TrustMap` and `Decision Trust Universe`
-- preserves V60.3.4 explicit actionability and modal disclosure architecture
-- preserves no-new-top-level-tabs rule
-- preserves Purpose Protocol
+- adds `src/ui/v60-3-7-trustmap-reference-layout-renderer.js`
+- replaces the V60.3.6 artwork renderer import in `src/ui/v52-7-operational-layer.js`
+- renders the TrustMap first layer to match the approved reference composition
+- includes seven Layer 1 graphical trust assets
+- includes CMMC & Compliance as the governance/compliance trust asset
+- includes a central active decision node
+- includes status lines from the center to each trust asset
+- includes a trust status legend
+- includes a right-side detail panel
+- updates the right-side panel on hover, focus, and click
+- includes action buttons for Open Evidence, Inspect Trace, Preview Proof Pack, and View Controls
+- preserves the no-new-top-level-tabs rule
+- preserves Settings as the place for build/version/governance/prototype metadata
 
-## Correct TrustMap rendering rule
+## Reference layout requirements
 
 ```text
-Do not create a new TrustMap overlay.
-Do not replace the radar / constellation environment.
-Do not move Layer 1 assets out of their current positions.
-Only improve the visual representation inside each existing Layer 1 asset bubble.
+Left/main canvas:
+CyberShield TrustMap brand mark
+Dark digital universe
+Radar rings
+Seven 3D holographic asset cubes
+Central active decision
+Status legend
+Relationship lines from center to assets
+
+Right side:
+Decision state / last updated
+Selected asset panel
+Asset graphic
+State pill
+Why this matters
+Key gaps
+Next action
+Related controls
+Action buttons
+
+Interaction:
+Hover/focus/click any Layer 1 asset
+Right panel changes immediately to that asset
+Selected asset line intensifies
+Selected asset graphic glows stronger
 ```
 
 ## Layer 1 TrustMap assets
@@ -77,14 +96,12 @@ Devices & Endpoints
 CMMC & Compliance
 ```
 
-The radar and constellation background is the environment.  The existing Layer 1 bubbles are the interface.  The active decision remains the gravity center.
-
 ## Public TrustMap language rule
 
 Use product language in executive-facing screens:
 
 ```text
-TrustMap
+CyberShield TrustMap
 Decision Trust Universe
 ```
 
@@ -95,7 +112,7 @@ registry-driven
 renders from registry
 versioned render source
 V55.3 registry
-radar constellation implementation
+implementation layer
 ```
 
 That language belongs in Settings/admin metadata and repo documentation only.
@@ -105,15 +122,6 @@ That language belongs in Settings/admin metadata and repo documentation only.
 ```text
 Every visible score must be clickable and must explain or route to the model, evidence, assumptions, missing inputs, confidence, reliance risk, and decision rationale behind that score.
 ```
-
-## Trust distribution rule
-
-```text
-Operational Trust Score = current decision posture score
-Trust Level Distribution = count or percentage distribution across Layer 1 trust assets
-```
-
-Those should not show the same number unless they intentionally represent the same metric.
 
 ## Boundary
 
@@ -129,22 +137,23 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm no V60.3.5 floating overlay layer appears
-confirm original radar / constellation environment remains
-confirm three-ring spatial model remains
-confirm existing Layer 1 asset positions remain unchanged
-confirm Cloud & Infrastructure bubble contains dimensional cloud artwork, not a flat cloud pictogram
-confirm CMMC & Compliance bubble contains Pentagon-inspired dimensional building artwork
-confirm the other Layer 1 bubbles contain improved dimensional artwork
-confirm existing TrustMap click behavior still works
-confirm public title reads TrustMap / Decision Trust Universe
-confirm architectural speak does not appear in executive TrustMap UI
-confirm Operational Trust Score remains distinct from Trust Level Distribution
-confirm visible scores remain explainable/clickable
+confirm the first layer resembles the approved reference image
+confirm dark digital universe remains
+confirm radar rings remain
+confirm seven holographic assets appear around the central decision
+confirm CMMC & Compliance appears in the lower-right/lower-center trust asset set
+confirm right-side detail panel is visible
+hover over each asset and confirm the right panel changes
+focus each asset with keyboard and confirm the right panel changes
+click each asset and confirm selected line/asset intensifies
+confirm Open Evidence routes to Evidence
+confirm Inspect Trace routes to Architecture
+confirm Preview Proof Pack routes to Proof Pack
+confirm View Controls routes to Runtime
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
 
 ## Next likely decision point
 
-After V60.3.6 browser QA, the next build should tune the artwork itself: cloud realism, Pentagon dimensionality, endpoint/device object quality, and whether the inner asset objects feel futuristic enough without corrupting the existing TrustMap system.
+After V60.3.7 browser QA, the next build should tune exact visual fidelity: cube realism, right-panel spacing, radar ring density, asset placement, responsive behavior, and the visual quality of each holographic object.
