@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.9 TrustMap Rendered Layer 1 Asset Integration and Scoring Correction**
+Current build label: **V60.3.9.1 TrustMap Render Stability and Core Anchor Correction**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-9-rendered-layer1-assets&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-9-1-render-stability-core-anchor&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.9
+V60.3.9.1
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,35 +32,33 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.9.
+No new top-level tabs were added for V60.3.9.1.
 
-## Current implemented build: V60.3.9
+## Current implemented build: V60.3.9.1
 
-V60.3.9 moves Layer 1 visuals from CSS/SVG approximation to rendered image-asset integration.  It preserves the original TrustMap shell, center CyberShield Core, MJC shield/logo, left Operational Trust Score, right selected-asset score area, radar rings, Layer 2, Layer 3, pan/zoom, and mode controls.  It replaces only the Layer 1 domain graphics with rendered WebP assets in the approved holographic-cube visual style.
+V60.3.9.1 stabilizes the TrustMap rendered Layer 1 asset work from V60.3.9.  It preserves the original TrustMap shell, center CyberShield Core, MJC shield/logo, left Operational Trust Score, right Selected Asset Trust Score, radar rings, Layer 2, Layer 3, pan/zoom, and mode controls.  It adds a MutationObserver-driven stabilization layer so old flat SVG icons do not flash back after clicks, mode changes, or TrustMap re-renders.
 
-V60.3.9 changes:
+V60.3.9.1 changes:
 
-- adds `src/ui/v60-3-9-trustmap-rendered-layer1-assets.js`
-- replaces the V60.3.8 renderer import in `src/ui/v52-7-operational-layer.js`
-- expects rendered asset files in `assets/trustmap/layer1/`
-- uses actual rendered Layer 1 image assets, not CSS/SVG approximations
-- preserves the original TrustMap layout and scoring panels
-- preserves the center CyberShield Core with MJC shield/logo, organization name, and Trust Kernel language
-- improves the center core as a neon MJC-shield-shaped trust kernel with a blue hover/energy-glow base
-- preserves the original left Operational Trust Score panel
-- changes the right score area to `Selected Asset Trust Score`
-- makes the right score change by hovered/focused Layer 1 asset
-- replaces only Layer 1 asset graphics with rendered holographic-cube assets
-- adds a selected-asset model explanation panel below the right-side score area
-- folds redundant Layer 1 domain detail into the selected-asset model explanation
-- wires Daily / Weekly / Monthly trend buttons to redraw static prototype trend lines
-- keeps public TrustMap language product-facing
+- adds `src/ui/v60-3-9-1-trustmap-render-stability-core-anchor.js`
+- loads V60.3.9.1 after `src/ui/v60-3-9-trustmap-rendered-layer1-assets.js`
+- keeps V60.3.9 rendered WebP asset paths as the preferred source
+- adds inline SVG holographic fallback visuals if WebP files are missing
+- adds a MutationObserver to re-apply Layer 1 assets when the base TrustMap renderer mutates
+- hides old flat SVG icons inside Layer 1 domains so they cannot flash back during re-render cycles
+- reduces Layer 1 image footprint to reduce overlap
+- moves the TrustMap world upward inside the center column
+- strengthens the CyberShield Core as a shield-shaped MJC/CyberShield trust kernel
+- adds a blue energy/hover pad under the core
+- keeps right Selected Asset Trust Score distinct from left Operational Trust Score
+- keeps selected-asset model explanation below the right score area
+- keeps Daily / Weekly / Monthly trend redraw behavior
 - preserves no-new-top-level-tabs rule
 - preserves Settings as the place for build/version/governance/prototype metadata
 
 ## Required rendered asset files
 
-The runtime expects these files:
+The runtime prefers these files when present:
 
 ```text
 assets/trustmap/layer1/cloud-infrastructure.webp
@@ -72,11 +70,7 @@ assets/trustmap/layer1/devices-endpoints.webp
 assets/trustmap/layer1/cmmc-compliance.webp
 ```
 
-A ZIP package containing the seven rendered WebP assets was generated for upload into that folder:
-
-```text
-cybershield_layer1_assets_v6039.zip
-```
+If those files are missing, V60.3.9.1 uses inline holographic fallback visuals so the TrustMap does not revert to the old one-dimensional icon set.
 
 ## Non-negotiable TrustMap scope rule
 
@@ -154,17 +148,16 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm original center CyberShield Core is back
-confirm MJC shield/logo remains in the center core
+confirm map sits higher in the center column
+confirm original center CyberShield Core remains
 confirm center core is shield-shaped and blue-glow anchored
-confirm organization name and Trust Kernel language fit inside the shield
-confirm left Operational Trust Score panel is visible
+confirm MJC shield/logo remains visible
+confirm left Operational Trust Score is visible
 confirm right Selected Asset Trust Score is visible
 confirm right score changes when hovering/focusing Layer 1 assets
-confirm rendered image assets load from assets/trustmap/layer1/
-confirm Layer 1 assets resemble the approved rendered visual target
+confirm old flat cloud/monitor/SVG icons do not flash back after clicks
+confirm Layer 1 graphics do not overlap badly
 confirm selected-asset model explanation appears below the right score area
-confirm redundant Layer 1 Domain Detail does not compete with the model explanation
 confirm Daily / Weekly / Monthly trend buttons redraw the trend line
 confirm radar rings and constellation background remain
 confirm Layer 2 and Layer 3 are still present
@@ -175,4 +168,4 @@ confirm no live evidence retrieval, live scoring, statistical validation, backen
 
 ## Next likely decision point
 
-After the seven WebP files are uploaded and V60.3.9 browser QA runs, the next build should tune exact visual placement: Layer 1 image scale, hover glow, shield/core text fit, map vertical centering, right score/panel spacing, and whether the rendered assets match the approved target closely enough in the real browser.
+After V60.3.9.1 browser QA, the next build should tune exact visual fidelity: final WebP asset upload path, image scale, hover glow, shield/core text fit, map vertical centering, connector anchor feel, and right score/panel spacing.
