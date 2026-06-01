@@ -32,4 +32,4 @@ import './v60-3-universal-model-trace-inspector.js';
 import './v60-3-2-show-readiness-cleanup.js';
 import './v60-3-3-first-layer-decision-brief-trustmap-snapshot.js';
 import './v60-3-4-explicit-actionability-modal-disclosure.js';
-import './v60-3-8-trustmap-layer1-reference-assets.js';
+import './v60-3-9-trustmap-rendered-layer1-assets.js';
