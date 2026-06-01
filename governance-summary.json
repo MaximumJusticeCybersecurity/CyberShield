@@ -1,92 +1,84 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.3 First-Layer Decision Brief and TrustMap Snapshot",
+  "current_implemented_build": "V60.3.5 TrustMap Layer 1 Graphical Asset Redesign",
   "build_date": "2026-05-29",
-  "patch_type": "First-layer executive Decision Brief and TrustMap Snapshot over V60.3.2 Show-Readiness Cleanup Pass",
-  "release_chain_status": "V60.3.3 is the current implemented build. It adds a first-layer executive screen pattern with Decision Brief on the left, TrustMap Snapshot on the right, and proof details underneath. GitHub Pages browser QA is required after deploy.",
+  "patch_type": "TrustMap first-layer graphical asset redesign over V60.3.4 explicit actionability architecture",
+  "release_chain_status": "V60.3.5 is the current implemented build. It redesigns the TrustMap first layer around seven graphical trust assets inside the digital trust universe, removes architectural speak from executive TrustMap UI, makes scores clickable, corrects Trust Level Distribution, and repairs the AI-generated-analysis drilldown. GitHub Pages browser QA is required after deploy.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-3-first-layer-decision-brief&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-5-trustmap-layer1-assets&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.3. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
-  "first_layer_doctrine": "Decision first. Map beside it. Proof underneath.",
-  "trustmap_rule": "The TrustMap should not ask the user to discover the decision. The TrustMap should help the user understand and challenge the decision.",
-  "target_9_second_read": [
-    "What CyberShield thinks is happening",
-    "What action is allowed, constrained, escalated, or refused",
-    "Why it matters",
-    "What evidence is missing",
-    "Where to inspect the proof"
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.5. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "public_trustmap_language": {
+    "title": "TrustMap",
+    "subtitle": "Decision Trust Universe",
+    "rule": "Do not expose builder language such as registry-driven, renders from registry, versioned render source, or V55.3 registry in executive-facing TrustMap UI."
+  },
+  "trustmap_visual_doctrine": "The radar and constellation background is the environment. The Layer 1 graphical trust assets are the interface. The active decision is the gravity center.",
+  "layer1_trustmap_assets": [
+    "Cloud & Infrastructure",
+    "Identities & Access",
+    "Applications & Data",
+    "AI Systems & Agents",
+    "Third Parties & Vendors",
+    "Devices & Endpoints",
+    "CMMC & Compliance"
   ],
-  "responsive_layout": {
-    "desktop": "Decision Brief left, TrustMap Snapshot right, details below",
-    "tablet": "Decision Brief first, TrustMap Snapshot second, details below",
-    "mobile": "Decision Brief first, collapsed TrustMap Snapshot underneath, details below"
-  },
-  "workspace_focus": {
-    "Briefing": "Decision Brief + TrustMap Snapshot + proof summary",
-    "TrustMap": "full interactive trust universe",
-    "Runtime": "command authority and allowed action",
-    "Evidence": "full Manual Evidence Workbench",
-    "Proof Pack": "defensibility and export context",
-    "Architecture": "doctrine and system structure",
-    "Settings": "build status and prototype metadata"
-  },
-  "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context.",
+  "score_rule": "Every visible score must be clickable and must explain or route to the model, evidence, assumptions, missing inputs, confidence, reliance risk, and decision rationale behind that score.",
+  "trust_distribution_rule": "Operational Trust Score is a current decision posture score. Trust Level Distribution is a count or percentage distribution across Layer 1 trust assets. They should not show the same number unless intentionally representing the same metric.",
+  "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context. Settings owns build/version/governance/prototype metadata.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
   "model_maturity_rule": "CyberShield scoring models are Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models. Default weights are calibratable and not authoritative until validated through test scenarios, expert review, red-team attempts, and real-world use cases.",
-  "v60_3_3_changes": [
-    "adds data/briefing/v60-3-3-first-layer-decision-brief.json",
-    "adds src/ui/v60-3-3-first-layer-decision-brief-trustmap-snapshot.js",
-    "loads V60.3.3 after V60.3.2",
-    "adds Decision Brief first-layer panel",
-    "adds compact TrustMap Snapshot beside Decision Brief on desktop",
-    "adds proof detail blocks beneath the first layer",
-    "routes from Decision Brief to Runtime, Evidence, Proof Pack, and full TrustMap",
-    "preserves full TrustMap workspace",
-    "preserves corrected Evidence / Runtime / Proof Pack information architecture",
-    "preserves V60.3 Universal Model Trace Inspector",
+  "v60_3_5_changes": [
+    "adds data/trustmap/v60-3-5-layer1-graphical-assets.json",
+    "adds src/ui/v60-3-5-trustmap-layer1-assets.js",
+    "loads V60.3.5 after V60.3.4",
+    "changes public TrustMap language to TrustMap and Decision Trust Universe",
+    "removes architectural phrases from executive TrustMap UI",
+    "adds seven Layer 1 graphical trust assets",
+    "preserves the baseline six operational assets",
+    "includes CMMC & Compliance as a Layer 1 governance/compliance trust asset",
+    "adds asset drilldown drawer for each Layer 1 trust asset",
+    "makes score panels clickable so scores explain model, evidence, missing inputs, assumptions, confidence, reliance risk, and rationale",
+    "changes Trust Level Distribution into counts by Layer 1 asset state instead of duplicating Operational Trust Score",
+    "repairs the dead drilldown for AI-generated analysis action review",
+    "preserves V60.3.4 explicit actionability and modal disclosure architecture",
     "preserves no-new-top-level-tabs rule",
-    "preserves Purpose Protocol",
-    "preserves prototype boundary language"
+    "preserves Purpose Protocol"
   ],
+  "trustmap_layer1_graphical_assets": {
+    "status": "active_static_visual_layer",
+    "registry": "data/trustmap/v60-3-5-layer1-graphical-assets.json",
+    "ui": "src/ui/v60-3-5-trustmap-layer1-assets.js",
+    "layer1_asset_count": 7,
+    "boundary": "Static advisory visual and interaction layer only. No live scoring, evidence retrieval, workflow automation, ticketing, notifications, backend persistence, enforcement, statistical validation, certification, compliance validation, or live integrations."
+  },
+  "explicit_actionability_modal_disclosure": {
+    "status": "active_registry_backed_layer",
+    "registry": "data/ui/v60-3-4-actionability-targets.json",
+    "ui": "src/ui/v60-3-4-explicit-actionability-modal-disclosure.js"
+  },
   "first_layer_decision_brief": {
     "status": "active_static_first_layer",
     "registry": "data/briefing/v60-3-3-first-layer-decision-brief.json",
-    "ui": "src/ui/v60-3-3-first-layer-decision-brief-trustmap-snapshot.js",
-    "boundary": "Static advisory prototype only. The first-layer Decision Brief and TrustMap Snapshot are demo scaffolds. They do not perform live scoring, live evidence retrieval, statistical validation, workflow automation, ticketing, notification, backend persistence, or enforcement."
-  },
-  "show_readiness_cleanup": {
-    "status": "active_static_cleanup",
-    "ui": "src/ui/v60-3-2-show-readiness-cleanup.js",
-    "boundary": "Static advisory cleanup pass. It changes presentation, framing, and section emphasis only. It does not add live scoring, evidence retrieval, backend persistence, ticketing, notifications, workflow automation, or enforcement."
+    "ui": "src/ui/v60-3-3-first-layer-decision-brief-trustmap-snapshot.js"
   },
   "trust_evidence_workbench": {
     "status": "corrected_by_workspace",
     "registry": "data/evidence/v60-trust-evidence-workbench.json",
     "ui": "src/ui/v60-trust-evidence-workbench.js",
-    "workspace_placement": {
-      "Evidence": "full Manual Evidence Workbench",
-      "Runtime": "compact Runtime Evidence Requirements panel",
-      "Proof Pack": "proof-oriented evidence trace"
-    },
-    "boundary": "Static advisory prototype only. No live evidence retrieval, backend persistence, ticketing, notifications, workflow automation, or enforcement."
+    "workspace_placement": { "Evidence": "full Manual Evidence Workbench", "Runtime": "compact Runtime Evidence Requirements panel", "Proof Pack": "proof-oriented evidence trace" }
   },
   "universal_model_trace_inspector": {
     "status": "active_static_inspector",
     "registry": "data/models/v60-3-calibratable-trust-model-registry.json",
     "ui": "src/ui/v60-3-universal-model-trace-inspector.js",
     "maturity_label": "Expert-Derived V1 Trust Scoring Models",
-    "not_label": "Statistically Validated Trust Models",
-    "workspaces": ["Evidence", "Runtime", "Proof Pack", "Architecture", "Settings"],
-    "boundary": "Static advisory prototype only. The registry defines expert-derived V1 calibratable models. It does not perform live scoring, live evidence retrieval, statistical validation, certification, legal determination, workflow automation, ticketing, notification, backend persistence, or enforcement."
+    "not_label": "Statistically Validated Trust Models"
   },
-  "evidence_to_score_impact_preview": { "status": "active_static_preview", "registry": "data/evidence/v60-2-evidence-to-score-impact-preview.json", "ui": "src/ui/v60-2-evidence-to-score-impact-preview.js", "workspaces": ["Evidence", "Runtime", "Proof Pack"] },
-  "evidence_state_transitions": { "status": "active_static_prototype", "registry": "data/evidence/v60-1-evidence-state-transition-prototype.json", "ui": "src/ui/v60-1-evidence-state-transition-prototype.js", "evidence_states": ["provided", "missing", "stale", "assumed", "conflicting", "needs_verification", "verified_by_human"] },
-  "internet_trust_engine_mvp_scaffold": { "status": "active_scaffold", "registry": "data/internet-trust/v59-internet-trust-engine-mvp-scaffold.json", "ui": "src/ui/v59-internet-trust-engine-mvp-scaffold.js", "workspaces": ["Evidence", "Proof Pack", "Architecture"] },
-  "recommended_next_build": { "label": "V60.3.4 Live Demo Polish Pass", "goals": ["tighten spacing", "reduce remaining visual noise", "tune copy", "prepare advisor feedback script", "preserve no-new-top-level-tabs and prototype boundary language"] },
-  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype", "v60.2": "Evidence-to-Score Impact Preview", "v60.3": "Universal Model Trace Inspector", "v60.3.1": "Runtime Evidence Panel Correction", "v60.3.2": "Show-Readiness Cleanup Pass", "v60.3.3": "First-Layer Decision Brief and TrustMap Snapshot" },
+  "recommended_next_build": { "label": "V60.3.6 TrustMap Visual Polish Pass", "goals": ["browser QA the seven graphical trust assets", "tighten spacing and asset positioning", "adjust line intensity and background quieting", "confirm score click behavior", "confirm drilldown drawer usability", "preserve no-new-top-level-tabs and Settings-only governance metadata"] },
+  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype", "v60.2": "Evidence-to-Score Impact Preview", "v60.3": "Universal Model Trace Inspector", "v60.3.1": "Runtime Evidence Panel Correction", "v60.3.2": "Show-Readiness Cleanup Pass", "v60.3.3": "First-Layer Decision Brief and TrustMap Snapshot", "v60.3.4": "Explicit Actionability and Modal Disclosure Architecture", "v60.3.5": "TrustMap Layer 1 Graphical Asset Redesign" },
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live URL ingestion, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, statistical validation, or takedown automation.",
   "overclaim_prohibitions": ["live monitoring", "live enforcement", "live evidence retrieval", "backend persistence", "live scoring", "statistically validated scoring", "live claim extraction", "live internet retrieval", "live URL ingestion", "live ticketing", "live notifications", "workflow automation", "legal determinations", "CMMC certification", "healthcare compliance validation", "live integrations"],
-  "known_limitations": ["V60.3.3 is static and advisory", "First-layer Decision Brief uses demo registry content", "TrustMap Snapshot is compact and not the full universe", "Models are expert-derived V1 and not statistically validated", "Default weights are calibratable and not authoritative", "No live scoring, evidence retrieval, ticketing, notifications, or workflow automation", "GitHub Pages browser QA required after deploy"]
+  "known_limitations": ["V60.3.5 is static and advisory", "Layer 1 graphical asset layer requires browser QA", "Score explanations are prototype explanations", "Trust distribution uses registry-defined Layer 1 asset states", "Models are expert-derived V1 and not statistically validated", "No live scoring, evidence retrieval, ticketing, notifications, or workflow automation", "GitHub Pages browser QA required after deploy"]
 }
