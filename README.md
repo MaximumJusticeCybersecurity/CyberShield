@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.7 TrustMap Reference Layout Renderer**
+Current build label: **V60.3.8 TrustMap Layer 1 Reference Asset Replacement**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-7-trustmap-reference-layout&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-8-layer1-reference-assets&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.7
+V60.3.8
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,56 +32,39 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.7.
+No new top-level tabs were added for V60.3.8.
 
-## Current implemented build: V60.3.7
+## Current implemented build: V60.3.8
 
-V60.3.7 renders the TrustMap first layer in the approved reference layout: dark digital universe, radar rings, seven holographic Layer 1 trust assets around a central active decision, relationship lines, trust status legend, and a right-side detail panel that changes when the user hovers, focuses, or clicks each graphical asset.
+V60.3.8 corrects the V60.3.7 overreach.  It restores the original TrustMap shell, original center core, original left operational score panel, original right score/distribution area, radar rings, Layer 2 behavior, Layer 3 behavior, and TrustMap navigation controls.  It replaces only the Layer 1 asset graphics with reference-style holographic cube objects and places the selected-asset detail panel underneath the existing right-side score area.
 
-V60.3.7 changes:
+V60.3.8 changes:
 
-- adds `src/ui/v60-3-7-trustmap-reference-layout-renderer.js`
-- replaces the V60.3.6 artwork renderer import in `src/ui/v52-7-operational-layer.js`
-- renders the TrustMap first layer to match the approved reference composition
-- includes seven Layer 1 graphical trust assets
-- includes CMMC & Compliance as the governance/compliance trust asset
-- includes a central active decision node
-- includes status lines from the center to each trust asset
-- includes a trust status legend
-- includes a right-side detail panel
-- updates the right-side panel on hover, focus, and click
-- includes action buttons for Open Evidence, Inspect Trace, Preview Proof Pack, and View Controls
-- preserves the no-new-top-level-tabs rule
+- adds `src/ui/v60-3-8-trustmap-layer1-reference-assets.js`
+- replaces the V60.3.7 full-page reference renderer import in `src/ui/v52-7-operational-layer.js`
+- preserves the original TrustMap layout and scoring panels
+- preserves the center CyberShield Core with MJC shield/logo, organization name, and Trust Kernel language
+- preserves the original left Operational Trust Score panel
+- preserves the original upper-right score/distribution area
+- preserves radar rings, constellation grid, Layer 2, Layer 3, pan, zoom, and mode controls
+- replaces only Layer 1 asset graphics with reference-style holographic cube objects
+- adds a selected-asset detail panel below the right-side score/distribution area
+- updates the selected-asset panel on hover and focus over Layer 1 graphics
+- keeps public TrustMap language product-facing
+- preserves no-new-top-level-tabs rule
 - preserves Settings as the place for build/version/governance/prototype metadata
 
-## Reference layout requirements
+## Non-negotiable TrustMap scope rule
 
 ```text
-Left/main canvas:
-CyberShield TrustMap brand mark
-Dark digital universe
-Radar rings
-Seven 3D holographic asset cubes
-Central active decision
-Status legend
-Relationship lines from center to assets
-
-Right side:
-Decision state / last updated
-Selected asset panel
-Asset graphic
-State pill
-Why this matters
-Key gaps
-Next action
-Related controls
-Action buttons
-
-Interaction:
-Hover/focus/click any Layer 1 asset
-Right panel changes immediately to that asset
-Selected asset line intensifies
-Selected asset graphic glows stronger
+Do not replace the TrustMap page.
+Do not replace the center CyberShield Core.
+Do not remove the MJC shield/logo.
+Do not remove the left Operational Trust Score panel.
+Do not remove the upper-right score/distribution area.
+Do not remove Layer 2 or Layer 3.
+Do not replace the radar / constellation environment.
+Only replace the graphical representation of the Layer 1 assets.
 ```
 
 ## Layer 1 TrustMap assets
@@ -94,6 +77,14 @@ AI Systems & Agents
 Third Parties & Vendors
 Devices & Endpoints
 CMMC & Compliance
+```
+
+## Selected asset panel rule
+
+```text
+The selected-asset panel belongs below the existing right-side score/distribution area.
+It changes when the user hovers or focuses a Layer 1 graphical asset.
+It must not replace the score/distribution area above it.
 ```
 
 ## Public TrustMap language rule
@@ -137,23 +128,22 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm the first layer resembles the approved reference image
-confirm dark digital universe remains
-confirm radar rings remain
-confirm seven holographic assets appear around the central decision
-confirm CMMC & Compliance appears in the lower-right/lower-center trust asset set
-confirm right-side detail panel is visible
-hover over each asset and confirm the right panel changes
-focus each asset with keyboard and confirm the right panel changes
-click each asset and confirm selected line/asset intensifies
-confirm Open Evidence routes to Evidence
-confirm Inspect Trace routes to Architecture
-confirm Preview Proof Pack routes to Proof Pack
-confirm View Controls routes to Runtime
+confirm original center CyberShield Core is back
+confirm MJC shield/logo remains in the center core
+confirm organization name and Trust Kernel language remain
+confirm left Operational Trust Score panel is visible
+confirm upper-right score/distribution area is visible
+confirm selected-asset panel appears below the right-side score area
+confirm radar rings and constellation background remain
+confirm Layer 2 and Layer 3 are still present
+confirm pan, zoom, Fit Map, Kernel View, Domain View, and Object View still work
+confirm only Layer 1 graphics changed
+confirm Layer 1 graphics resemble the approved reference style more closely
+confirm hovering/focusing a Layer 1 asset updates the selected-asset panel
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
 
 ## Next likely decision point
 
-After V60.3.7 browser QA, the next build should tune exact visual fidelity: cube realism, right-panel spacing, radar ring density, asset placement, responsive behavior, and the visual quality of each holographic object.
+After V60.3.8 browser QA, the next build should tune exact Layer 1 graphical fidelity: cube size, glow, icon realism, reference-image similarity, score panel preservation, and whether the right-side panel placement works at desktop size.
