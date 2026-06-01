@@ -31,3 +31,4 @@ import './v60-2-evidence-to-score-impact-preview.js';
 import './v60-3-universal-model-trace-inspector.js';
 import './v60-3-2-show-readiness-cleanup.js';
 import './v60-3-3-first-layer-decision-brief-trustmap-snapshot.js';
+import './v60-3-4-explicit-actionability-modal-disclosure.js';
