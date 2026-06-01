@@ -1,30 +1,41 @@
 CyberShield Executive OS
-Current implemented build: V60.3.8 TrustMap Layer 1 Reference Asset Replacement
+Current implemented build: V60.3.9 TrustMap Rendered Layer 1 Asset Integration and Scoring Correction
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3.8 TrustMap Layer 1 Reference Asset Replacement.
+CyberShield V60.3.9 TrustMap Rendered Layer 1 Asset Integration and Scoring Correction.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.8.
+No new top-level tabs were added for V60.3.9.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.8. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.9. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
-V60.3.8 scope rule:
-Restore the original TrustMap shell, original center core, original left operational score panel, original right score/distribution area, radar rings, Layer 2 behavior, Layer 3 behavior, and TrustMap navigation controls. Replace only the Layer 1 asset graphics with reference-style holographic cube objects. Place the selected-asset detail panel underneath the existing right-side score area.
+V60.3.9 scope rule:
+Preserve the original TrustMap shell, center CyberShield Core, MJC shield/logo, left Operational Trust Score, right selected-asset score area, radar rings, Layer 2, Layer 3, pan/zoom, and mode controls. Replace only the Layer 1 domain graphics with rendered WebP assets in the approved holographic-cube visual style.
+
+Required rendered asset files:
+- assets/trustmap/layer1/cloud-infrastructure.webp
+- assets/trustmap/layer1/identities-access.webp
+- assets/trustmap/layer1/applications-data.webp
+- assets/trustmap/layer1/ai-systems-agents.webp
+- assets/trustmap/layer1/third-parties-vendors.webp
+- assets/trustmap/layer1/devices-endpoints.webp
+- assets/trustmap/layer1/cmmc-compliance.webp
+
+A generated ZIP package named `cybershield_layer1_assets_v6039.zip` contains the seven WebP assets and must be uploaded/extracted into `assets/trustmap/layer1/` if the files are not already present in the repository.
 
 Non-negotiable TrustMap scope rule:
 - Do not replace the TrustMap page
 - Do not replace the center CyberShield Core
 - Do not remove the MJC shield/logo
 - Do not remove the left Operational Trust Score panel
-- Do not remove the upper-right score/distribution area
+- Do not remove the right-side score area
 - Do not remove Layer 2 or Layer 3
 - Do not replace the radar / constellation environment
 - Only replace the graphical representation of the Layer 1 assets
@@ -38,26 +49,30 @@ Baseline Layer 1 TrustMap assets:
 - Devices & Endpoints
 - CMMC & Compliance
 
-V60.3.8 TrustMap Layer 1 Reference Asset Replacement:
-- adds `src/ui/v60-3-8-trustmap-layer1-reference-assets.js`
-- replaces the V60.3.7 full-page reference renderer import in `src/ui/v52-7-operational-layer.js`
+V60.3.9 TrustMap Rendered Layer 1 Asset Integration and Scoring Correction:
+- adds `src/ui/v60-3-9-trustmap-rendered-layer1-assets.js`
+- replaces the V60.3.8 renderer import in `src/ui/v52-7-operational-layer.js`
+- expects rendered asset files in `assets/trustmap/layer1/`
+- uses actual rendered Layer 1 image assets, not CSS/SVG approximations
 - preserves the original TrustMap layout and scoring panels
 - preserves the center CyberShield Core with MJC shield/logo, organization name, and Trust Kernel language
+- improves the center core as a neon MJC-shield-shaped trust kernel with a blue hover/energy-glow base
 - preserves the original left Operational Trust Score panel
-- preserves the original upper-right score/distribution area
-- preserves radar rings, constellation grid, Layer 2, Layer 3, pan, zoom, and mode controls
-- replaces only Layer 1 asset graphics with reference-style holographic cube objects
-- adds a selected-asset detail panel below the right-side score/distribution area
-- updates the selected-asset panel on hover and focus over Layer 1 graphics
+- changes the right score area to Selected Asset Trust Score
+- makes the right score change by hovered/focused Layer 1 asset
+- replaces only Layer 1 asset graphics with rendered holographic-cube assets
+- adds a selected-asset model explanation panel below the right-side score area
+- folds redundant Layer 1 domain detail into the selected-asset model explanation
+- wires Daily / Weekly / Monthly trend buttons to redraw static prototype trend lines
 - keeps public TrustMap language product-facing
 - preserves no-new-top-level-tabs rule
 - preserves Settings as the place for build/version/governance/prototype metadata
 
 Selected asset panel rule:
-The selected-asset panel belongs below the existing right-side score/distribution area. It changes when the user hovers or focuses a Layer 1 graphical asset. It must not replace the score/distribution area above it.
+The selected-asset panel belongs below the existing right-side score area. It changes when the user hovers or focuses a Layer 1 graphical asset. It must not replace the score area above it.
 
 Score rule:
-Every visible score must be clickable and must explain or route to the model, evidence, assumptions, missing inputs, confidence, reliance risk, and decision rationale behind that score.
+Left score is the Operational Trust Score for the current scenario/environment. Right score is the Selected Asset Trust Score for the hovered/focused Layer 1 asset. Those scores must not be duplicated unless they intentionally represent the same metric.
 
 Correct information architecture:
 Briefing = Decision Brief + TrustMap Snapshot + proof summary.
@@ -81,4 +96,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm original center core is back, MJC shield/logo remains, left Operational Trust Score panel is visible, upper-right score/distribution area is visible, selected-asset panel appears below the right-side score area, radar rings and constellation remain, Layer 2 and Layer 3 remain, only Layer 1 graphics changed, hover/focus updates selected panel, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
+After GitHub Pages deploys and the rendered WebP assets are present, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm center core is shield-shaped and blue-glow anchored, MJC shield/logo remains, left Operational Trust Score is visible, right Selected Asset Trust Score changes on hover/focus, rendered image assets load from assets/trustmap/layer1/, selected-asset model explanation appears below the right score area, Daily / Weekly / Monthly trend buttons redraw the trend line, Layer 2 and Layer 3 remain, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
