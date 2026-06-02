@@ -1,3 +1,5 @@
+import './v60-3-14-trustmap-background-oval-highlight-spacing.js';
+
 // V60.3.13 Stoplight Trust Color and PNG Path Recovery
 // Purpose: trust-state colors must use stoplight red/yellow/green, while PNG art keeps its native color. Also retries likely uploaded PNG filenames and asset-folder locations.
 // Boundary: static advisory prototype only. No live scoring, evidence retrieval, workflow automation, or enforcement.
@@ -184,6 +186,7 @@ function v60313MarkMeta(){
     parsed.stoplight_trust_color_and_png_path_recovery = {
       status: 'active',
       rule: 'Hover rings, selected rings, score rings, and status states use stoplight green/yellow/red. PNG art remains native. Runtime retries likely uploaded PNG filenames from assets/trustmap/v60-3-12/ and assets/.',
+      next_layer: 'V60.3.14 handles background blend, oval highlight containment, Layer 1 spacing, and fiber-optic connector visuals.',
       github_pages_browser_qa_required: true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
