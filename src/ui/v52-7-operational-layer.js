@@ -1,8 +1,9 @@
-// V60.3.22 Mobile Performance Gate and TrustMap Image Prewarm
-// Purpose: keep the faster app shell while warming TrustMap PNG assets after the shell is usable. Load the heavy TrustMap stack only when TrustMap is opened.
-// Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
+// V60.3.23 Mobile Performance Gate, Image Prewarm, and TrustMap Asset Manifest
+// Purpose: keep the faster app shell, warm TrustMap image assets after shell usability, and govern future rebuilt assets through a manifest.
+// Boundary: static advisory prototype only. No live scoring, live retrieval beyond static repo JSON/assets, workflow automation, enforcement, or backend persistence.
 
 import './v60-3-21-mobile-load-performance.js';
+import './v60-3-23-trustmap-asset-manifest-loader.js';
 import './v60-3-22-trustmap-image-prewarm.js';
 
 let cyberShieldTrustMapStackPromise = null;
