@@ -127,11 +127,24 @@ function v60314InstallStyles(){
       background:transparent!important;
     }
 
+    #trustmap.active .v554-domain[data-v554-domain="third"] .v60312-layer1-img{
+      width:148px!important;
+      height:148px!important;
+      transform:translateY(-5px)!important;
+      object-fit:contain!important;
+    }
+
     #trustmap.active .v554-domain:hover .v60312-layer1-img,
     #trustmap.active .v554-domain:focus-visible .v60312-layer1-img,
     #trustmap.active .v554-domain.v60312-selected .v60312-layer1-img{
       transform:translateY(-19px) scale(1.035)!important;
       filter:none!important;
+    }
+
+    #trustmap.active .v554-domain[data-v554-domain="third"]:hover .v60312-layer1-img,
+    #trustmap.active .v554-domain[data-v554-domain="third"]:focus-visible .v60312-layer1-img,
+    #trustmap.active .v554-domain[data-v554-domain="third"].v60312-selected .v60312-layer1-img{
+      transform:translateY(-5px) scale(1.035)!important;
     }
 
     #trustmap.active .v554-domain-label{
@@ -170,6 +183,12 @@ function v60314InstallStyles(){
       filter:none!important;
       border-radius:999px!important;
     }
+
+    #trustmap.active #v60312RightAuthority img[alt="Third Parties & Vendors"]{
+      width:82px!important;
+      height:82px!important;
+      object-fit:contain!important;
+    }
   `;
   document.head.appendChild(style);
 }
@@ -199,8 +218,9 @@ function v60314MarkMeta(){
     parsed.previous_operational_build = 'V60.3.13 Stoplight Trust Color and PNG Path Recovery';
     parsed.trustmap_background_oval_spacing = {
       status:'active_visual_tuning_layer',
-      rule:'Blend PNG canvases with TrustMap background, keep Layer 1 normal state neutral, move trust highlight to hover/focus/selected oval containment layer, and render connectors as CyberShield fiber-optic trust lines.',
+      rule:'Blend PNG canvases with TrustMap background, keep Layer 1 normal state neutral, move trust highlight to hover/focus/selected oval containment layer, render connectors as CyberShield fiber-optic trust lines, and apply Third Parties & Vendors asset-fit override.',
       connector_rule:'Default connectors use white-blue fiber-optic styling. Trust-state connector highlights may use stoplight green, yellow, or red.',
+      asset_fit_rule:'Third Parties & Vendors uses a smaller asset fit because its rendered content fills more of the PNG canvas than the other six Layer 1 images.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
