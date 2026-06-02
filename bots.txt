@@ -1,46 +1,63 @@
 CyberShield Executive OS
-Current implemented build: V60.3.11 TrustMap Visual QA Tuning Only
+Current implemented build: V60.3.12 TrustMap PNG Asset Integration and Interaction Recovery
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3.11 TrustMap Visual QA Tuning Only.
+CyberShield V60.3.12 TrustMap PNG Asset Integration and Interaction Recovery.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.11.
+No new top-level tabs were added for V60.3.12.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.11. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.12. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
-V60.3.11 scope rule:
-V60.3.11 is a visual QA tuning layer after V60.3.10. It does not add new features, panels, score models, or tabs. V60.3.10 remains the functional TrustMap post-render authority; V60.3.11 only tunes alignment, sizing, scroll behavior, and visual fit.
+V60.3.12 scope rule:
+V60.3.12 maps externally rendered hologram PNG assets into the existing TrustMap slots and restores the base TrustMap interaction model. The base V55.4 TrustMap renderer owns drag-to-pan, wheel zoom, plus/minus zoom, Fit Map, Kernel View, Domain View, and Object View. The uploaded PNG assets own the Layer 1 and CyberShield Core visuals.
 
-V60.3.11 TrustMap Visual QA Tuning Only:
-- adds `src/ui/v60-3-11-trustmap-visual-qa-tuning.js`
-- loads after `src/ui/v60-3-10-trustmap-authoritative-render-consolidation.js`
-- further top-biases the center TrustMap world
-- tightens center map panel height and alignment
-- makes the right selected-asset panel more readable and less likely to clip
-- slightly reduces Layer 1 visual footprint
-- slightly reduces selected asset score and mini-card sizing
-- tightens CyberShield Core shield size, logo size, and text fit
+V60.3.12 TrustMap PNG Asset Integration and Interaction Recovery:
+- adds `src/ui/v60-3-12-trustmap-png-asset-integration.js`
+- loads after `src/ui/v60-3-4-explicit-actionability-modal-disclosure.js`
+- removes V60.3.10 and V60.3.11 from the operational loader
+- maps the rendered CyberShield Trust Kernel PNG into `.v554-kernel`
+- maps rendered Layer 1 PNG assets into `.v554-domain .orb`
+- keeps the base TrustMap movement system operational
+- does not override `#v554World` transform in CSS
+- adds Pan X, Pan Y, and Zoom sliders to existing TrustMap controls
+- sliders simulate the same base TrustMap drag/wheel behavior instead of creating a second transform system
+- adds neon circular hover/focus/selected rings around Layer 1 assets
+- keeps right Selected Asset Trust Score distinct from left Operational Trust Score
+- keeps the selected-asset explanation panel single and non-duplicated
 - preserves Layer 2, Layer 3, pan, zoom, Fit Map, Kernel View, Domain View, and Object View
 - preserves no-new-top-level-tabs rule
 - preserves Settings as the place for build/version/governance/prototype metadata
 
+Required PNG asset paths:
+- assets/trustmap/v60-3-12/cybershield-trust-kernel.png
+- assets/trustmap/v60-3-12/cloud-infrastructure.png
+- assets/trustmap/v60-3-12/identities-access.png
+- assets/trustmap/v60-3-12/applications-data.png
+- assets/trustmap/v60-3-12/ai-systems-agents.png
+- assets/trustmap/v60-3-12/devices-endpoints.png
+- assets/trustmap/v60-3-12/cmmc-compliance.png
+- assets/trustmap/v60-3-12/third-parties-vendors.png
+
+Important connector limitation:
+The GitHub text connector can create and update UTF-8 text files but cannot directly upload binary PNG files. The generated `cybershield_v60_3_12_trustmap_png_assets.zip` must be manually uploaded/extracted into the repository path `assets/trustmap/v60-3-12/`, or the PNG files must be uploaded manually through GitHub.
+
 Non-negotiable TrustMap scope rule:
 - Do not replace the TrustMap page
-- Do not replace the center CyberShield Core
-- Do not remove the MJC shield/logo
 - Do not remove the left Operational Trust Score panel
 - Do not remove the right-side score area
 - Do not remove Layer 2 or Layer 3
 - Do not replace the radar / constellation environment
-- Only tune the graphical representation of the Layer 1 assets, map positioning, right panel fit, and core visual fit
+- Do not override #v554World transform with CSS
+- Do not create a second movement system
+- Only map rendered PNG assets into the existing TrustMap core and Layer 1 slots
 
 Baseline Layer 1 TrustMap assets:
 - Cloud & Infrastructure
@@ -53,6 +70,9 @@ Baseline Layer 1 TrustMap assets:
 
 Selected asset panel rule:
 The selected-asset panel belongs below the right-side selected asset score. It changes when the user hovers or focuses a Layer 1 graphical asset. It must not duplicate the base Layer 1 Domain Detail panel.
+
+Layer 1 hover/focus/selected rule:
+Hovering, focusing, or selecting any Layer 1 PNG asset must show a neon circular selection ring around that asset. Clicking a Layer 1 asset keeps the ring active until another Layer 1 asset is selected. The right panel must match the selected Layer 1 asset.
 
 Score rule:
 Left score is the Operational Trust Score for the current scenario/environment. Right score is the Selected Asset Trust Score for the hovered/focused Layer 1 asset. Those scores must not be duplicated unless they intentionally represent the same metric.
@@ -72,6 +92,9 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
+Build lesson:
+For high-fidelity branded visuals, do not ask the coding assistant to invent production-grade art. Use a graphic artist or image-generation workflow for rendered visual assets. Use the assistant for integration, layout, interaction recovery, repo hygiene, source-of-truth documentation, and QA discipline.
+
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistical validation, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.
 
@@ -79,4 +102,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm V60.3.10 and V60.3.11 load after V60.3.4, V60.3.9 and V60.3.9.1 no longer load, map sits higher in the center column, center core is shield-shaped and blue-glow anchored, MJC shield/logo remains visible, left Operational Trust Score is visible, right Selected Asset Trust Score changes on hover/focus, no duplicate model explanation appears, right panel is not chopped, old flat cloud/monitor/SVG icons do not flash back after clicks, Layer 1 graphics do not overlap badly, trend buttons redraw the line, Layer 2 and Layer 3 remain, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
+After GitHub Pages deploys and the PNG assets are present, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm V60.3.12 loads after V60.3.4, V60.3.10 and V60.3.11 no longer load, all eight PNG assets appear, no old flat SVG icons appear, Layer 1 hover/focus/selected rings appear, map can be dragged, mouse wheel zoom works, plus/minus zoom works, Pan X/Pan Y/Zoom sliders work, Fit Map/Kernel View/Domain View/Object View work, Layer 2 and Layer 3 remain, right panel does not duplicate or clip, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
