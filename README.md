@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.12 TrustMap PNG Asset Integration and Interaction Recovery**
+Current build label: **V60.3.13 Stoplight Trust Color and PNG Path Recovery**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-12-png-asset-integration&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-13-stoplight-trust-color&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.12
+V60.3.13
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,33 +32,35 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.12.
+No new top-level tabs were added for V60.3.13.
 
-## Current implemented build: V60.3.12
+## Current implemented build: V60.3.13
 
-V60.3.12 integrates the externally rendered hologram PNG assets into the existing TrustMap while recovering the base TrustMap interaction model.  The base V55.4 TrustMap renderer owns drag-to-pan, wheel zoom, plus/minus zoom, Fit Map, Kernel View, Domain View, and Object View.  The uploaded PNG assets own the Layer 1 and CyberShield Core visuals.
+V60.3.13 corrects the TrustMap color logic so trust-state visuals use stoplight colors only: green, yellow, and red.  The hologram PNG art keeps its native visual color, but the hover ring, selected ring, status dot, selected asset score ring, selected asset score accents, and trust-state indicators use stoplight color.
 
-V60.3.12 changes:
+V60.3.13 also adds PNG path recovery for likely uploaded filenames, including underscore, title-case, ampersand, and human-readable filename variants.
 
-- adds `src/ui/v60-3-12-trustmap-png-asset-integration.js`
-- loads after `src/ui/v60-3-4-explicit-actionability-modal-disclosure.js`
-- removes V60.3.10 and V60.3.11 from the operational loader
-- maps the rendered CyberShield Trust Kernel PNG into `.v554-kernel`
-- maps rendered Layer 1 PNG assets into `.v554-domain .orb`
-- keeps the base TrustMap movement system operational
-- does not override `#v554World` transform in CSS
-- adds Pan X, Pan Y, and Zoom sliders to the existing TrustMap controls
-- sliders simulate the same base TrustMap drag/wheel behavior instead of creating a second transform system
-- adds neon circular hover/focus/selected rings around Layer 1 assets
-- keeps right Selected Asset Trust Score distinct from left Operational Trust Score
-- keeps the selected-asset explanation panel single and non-duplicated
-- preserves Layer 2, Layer 3, pan, zoom, Fit Map, Kernel View, Domain View, and Object View
+## V60.3.13 changes
+
+- adds `src/ui/v60-3-13-stoplight-trust-color-and-png-path-recovery.js`
+- loads after `src/ui/v60-3-12-trustmap-png-asset-integration.js`
+- enforces stoplight trust color: green, yellow, red
+- green = Good / Strong / Allowed
+- yellow = Needs Verification / Constrained / Moderate
+- red = At Risk / Critical / Refused
+- keeps native hologram PNG colors intact
+- applies stoplight color to Layer 1 hover rings
+- applies stoplight color to Layer 1 selected rings
+- applies stoplight color to Layer 1 status dots
+- applies stoplight color to the right Selected Asset Trust Score ring
+- applies stoplight color to selected asset score accents
+- retries likely PNG filename variants if the first image path fails
+- preserves V60.3.12 movement recovery and slider behavior
 - preserves no-new-top-level-tabs rule
-- preserves Settings as the place for build/version/governance/prototype metadata
 
 ## Required PNG assets
 
-The runtime expects these exact files:
+Preferred normalized runtime paths:
 
 ```text
 assets/trustmap/v60-3-12/cybershield-trust-kernel.png
@@ -71,13 +73,17 @@ assets/trustmap/v60-3-12/cmmc-compliance.png
 assets/trustmap/v60-3-12/third-parties-vendors.png
 ```
 
-A ZIP package with the correct folder structure was generated for upload:
+The runtime also tries likely fallback names such as:
 
 ```text
-cybershield_v60_3_12_trustmap_png_assets.zip
+CyberShield Trust Kernel.png
+cloud_infrastructure.png
+AI_systems_and_Agents.png
+CMMC_and_Compliance.png
+Third Parties and Vendors.png
 ```
 
-The GitHub text connector cannot directly upload binary PNG files.  The ZIP must be uploaded/extracted into the repository, or the PNG files must be uploaded manually through GitHub at the paths above.
+The GitHub text connector cannot directly upload binary PNG files.  The PNG files must be manually uploaded to `assets/trustmap/v60-3-12/` or extracted from the generated ZIP package.
 
 ## Non-negotiable TrustMap scope rule
 
@@ -90,6 +96,7 @@ Do not replace the radar / constellation environment.
 Do not override #v554World transform with CSS.
 Do not create a second movement system.
 Only map rendered PNG assets into the existing TrustMap core and Layer 1 slots.
+Trust-state colors are stoplight green, yellow, red only.
 ```
 
 ## Layer 1 TrustMap assets
@@ -103,6 +110,16 @@ Third Parties & Vendors
 Devices & Endpoints
 CMMC & Compliance
 ```
+
+## Stoplight trust color rule
+
+```text
+Green = Good / Strong / Allowed
+Yellow = Needs Verification / Constrained / Moderate
+Red = At Risk / Critical / Refused
+```
+
+The selected asset score and the Layer 1 hover/focus/selected ring must match the trust-state color, not the native hologram image color.
 
 ## Score rule
 
@@ -126,6 +143,7 @@ It must not duplicate the base Layer 1 Domain Detail panel.
 Hovering, focusing, or selecting any Layer 1 PNG asset must show a neon circular selection ring around that asset.
 Clicking a Layer 1 asset keeps the ring active until another Layer 1 asset is selected.
 The right panel must match the selected Layer 1 asset.
+The ring color must be stoplight green, yellow, or red based on that asset's trust state.
 ```
 
 ## Public TrustMap language rule
@@ -163,20 +181,16 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm V60.3.12 loads after V60.3.4
-confirm V60.3.10 and V60.3.11 no longer load
+confirm V60.3.13 loads after V60.3.12
 confirm all eight PNG asset files are present in assets/trustmap/v60-3-12/
 confirm CyberShield Trust Kernel PNG appears at the center
-confirm Cloud & Infrastructure PNG appears as a Layer 1 asset
-confirm Identities & Access PNG appears as a Layer 1 asset
-confirm Applications & Data PNG appears as a Layer 1 asset
-confirm AI Systems & Agents PNG appears as a Layer 1 asset
-confirm Devices & Endpoints PNG appears as a Layer 1 asset
-confirm CMMC & Compliance PNG appears as a Layer 1 asset
-confirm Third Parties & Vendors PNG appears as a Layer 1 asset
+confirm all Layer 1 PNGs appear
 confirm no old flat SVG icons appear
-confirm Layer 1 hover/focus/selected ring appears
-confirm selected ring persists after clicking a Layer 1 asset
+confirm hover/focus/selected rings appear
+confirm hover/focus/selected rings use stoplight green/yellow/red only
+confirm status dots use stoplight green/yellow/red only
+confirm right selected asset score ring uses stoplight green/yellow/red only
+confirm the selected score color matches the Layer 1 hover/selected ring color
 confirm map can be dragged
 confirm mouse wheel zoom works
 confirm + / − zoom works
@@ -193,7 +207,7 @@ confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
 
-## Lessons learned applied in V60.3.12
+## Lessons learned applied
 
 ```text
 Do not ask the assistant to invent production-grade visual art when high-fidelity branded graphics are required.
@@ -201,9 +215,9 @@ Use a specialist graphic artist or image generation workflow for rendered hologr
 Use the assistant for integration, layout, interaction recovery, repo hygiene, and QA discipline.
 The base TrustMap renderer must own movement.
 Rendered PNG assets must own visuals.
-A V60 layer should map assets into existing slots, not fight the base renderer with transform overrides.
+Trust-state colors must be stoplight green/yellow/red, not arbitrary asset accent colors.
 ```
 
 ## Next likely decision point
 
-After V60.3.12 browser QA, tune only if minor spacing is off.  If the map still fights movement or layout, stop post-render tuning and refactor the base TrustMap renderer directly.
+After V60.3.13 browser QA, fix only broken asset paths or minor visual sizing.  If the PNG files are not present in the repo path, upload those binary assets before more code changes.
