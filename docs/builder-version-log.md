@@ -6,6 +6,72 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260602-009
+
+Date: 2026-06-02
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, V60.3.20 through V60.3.23 TrustMap performance and asset-governance sequence
+
+CyberShield versions affected:
+
+- V60.3.20 Layer 1 Visual Consistency and TrustMap Stack Consolidation
+- V60.3.21 Mobile Load Performance Controls
+- V60.3.22 TrustMap Image Prewarm
+- V60.3.23 TrustMap Asset Manifest and Intake Contract
+
+Files materially changed or created:
+
+- `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`
+- `src/ui/v60-3-21-mobile-load-performance.js`
+- `src/ui/v60-3-22-trustmap-image-prewarm.js`
+- `src/ui/v60-3-23-trustmap-asset-manifest-loader.js`
+- `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js`
+- `src/ui/v52-7-operational-layer.js`
+- `data/trustmap/v60-3-23-asset-manifest.json`
+- `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `docs/builder-version-log.md`
+- `docs/successor-builder-handoff-and-job-docket.md`
+
+Primary value add:
+
+Moved the V60.3 line from reactive TrustMap visual patching into an engineered sequence.  V60.3.20 consolidated competing Layer 1 visual recovery layers.  V60.3.21 restored phone performance by deferring the heavy TrustMap stack until explicitly requested.  V60.3.22 warmed TrustMap images after shell usability.  V60.3.23 introduced a governed asset manifest and future intake contract for rebuilt black-background / all-blue cube Layer 1 assets.
+
+What got better:
+
+- App shell loads faster on phone because the full TrustMap stack is not forced into the startup path.
+- TrustMap image prewarm begins after shell usability rather than during critical startup.
+- Layer 1 visual recovery is consolidated into V60.3.20 instead of split between V60.3.18 and V60.3.19 runtime imports.
+- V60.3.18 and V60.3.19 remain for audit history but are no longer imported through the V60.3.14 chain.
+- A formal asset manifest now governs current and future TrustMap image slots.
+- Future rebuilt black-background / all-blue cube assets have defined WebP/PNG paths and fallback rules.
+- A V60.3.23 to V60.3.30 roadmap exists before further builds proceed.
+- README, bots.txt, and governance-summary.json now align on V60.3.23.
+
+Remaining risks or limitations:
+
+- Hands-on phone QA is still required after GitHub Pages deploys.
+- The current image files may still be too large or visually inconsistent until rebuilt by the asset creator.
+- V60.3.23 creates future manifest slots but does not add the new black-background all-blue cube assets yet.
+- TrustMap still has multiple historical enhancement modules; V60.3.24 should introduce a render lifecycle controller before more visual logic is added.
+- V60.3.25 depends on new optimized assets or WebP/AVIF variants.
+
+Lessons from this pass:
+
+- Lazy-loading the TrustMap stack improved shell speed, but image loading needs governed prewarm and eventual asset optimization.
+- More JavaScript is not the right fix for oversized or inconsistent artwork.
+- Future image swaps must be manifest-driven, not hardcoded across scattered modules.
+- The correct sequence is roadmap first, manifest second, lifecycle controller third, asset optimization fourth.
+- User QA from a phone was essential; desktop-only QA would have missed the real performance bottleneck.
+
+Next recommended build action:
+
+Run V60.3.23 browser QA on phone first, then desktop.  Confirm shell speed remains fast, asset manifest loads or falls back cleanly, current PNG assets still load, TrustMap images prewarm without slowing startup, no new top-level tab exists, and no live capability overclaims appear.  After QA, build V60.3.24 as a TrustMap render lifecycle controller that reduces scattered delayed timers and reapply calls.  Do not add more cosmetic overlay patches.
+
+---
+
 ### Builder-20260529-008
 
 Date: 2026-05-29
