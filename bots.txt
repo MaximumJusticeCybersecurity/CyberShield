@@ -1,38 +1,34 @@
 CyberShield Executive OS
-Current implemented build: V60.3.10 TrustMap Authoritative Render Consolidation
+Current implemented build: V60.3.11 TrustMap Visual QA Tuning Only
 Build date: 2026-05-29
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
 Current live build:
-CyberShield V60.3.10 TrustMap Authoritative Render Consolidation.
+CyberShield V60.3.11 TrustMap Visual QA Tuning Only.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.10.
+No new top-level tabs were added for V60.3.11.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.10. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.11. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
-V60.3.10 scope rule:
-Preserve the original TrustMap shell, center CyberShield Core, MJC shield/logo, left Operational Trust Score, right Selected Asset Trust Score, radar rings, Layer 2, Layer 3, pan/zoom, and mode controls. Make V60.3.10 the only TrustMap post-render authority after V60.3.4.
+V60.3.11 scope rule:
+V60.3.11 is a visual QA tuning layer after V60.3.10. It does not add new features, panels, score models, or tabs. V60.3.10 remains the functional TrustMap post-render authority; V60.3.11 only tunes alignment, sizing, scroll behavior, and visual fit.
 
-V60.3.10 TrustMap Authoritative Render Consolidation:
-- adds `src/ui/v60-3-10-trustmap-authoritative-render-consolidation.js`
-- loads after `src/ui/v60-3-4-explicit-actionability-modal-disclosure.js`
-- removes V60.3.9 and V60.3.9.1 from the operational loader
-- uses embedded holographic Layer 1 visuals so the TrustMap does not depend on missing WebP files
-- suppresses old flat SVG icons inside Layer 1 domains so they cannot flash back
-- replaces duplicate right-side model explanations with one selected-asset score and one selected-asset explanation
-- top-biases the TrustMap world so it aligns better with the left and right score cards
-- makes the right panel scroll instead of clipping selected-asset content
-- reduces Layer 1 image footprint to reduce overlap
-- strengthens the CyberShield Core as a shield-shaped MJC/CyberShield trust kernel
-- adds a blue energy/hover pad under the core
-- keeps right Selected Asset Trust Score distinct from left Operational Trust Score
-- keeps Daily / Weekly / Monthly trend redraw behavior
+V60.3.11 TrustMap Visual QA Tuning Only:
+- adds `src/ui/v60-3-11-trustmap-visual-qa-tuning.js`
+- loads after `src/ui/v60-3-10-trustmap-authoritative-render-consolidation.js`
+- further top-biases the center TrustMap world
+- tightens center map panel height and alignment
+- makes the right selected-asset panel more readable and less likely to clip
+- slightly reduces Layer 1 visual footprint
+- slightly reduces selected asset score and mini-card sizing
+- tightens CyberShield Core shield size, logo size, and text fit
+- preserves Layer 2, Layer 3, pan, zoom, Fit Map, Kernel View, Domain View, and Object View
 - preserves no-new-top-level-tabs rule
 - preserves Settings as the place for build/version/governance/prototype metadata
 
@@ -44,7 +40,7 @@ Non-negotiable TrustMap scope rule:
 - Do not remove the right-side score area
 - Do not remove Layer 2 or Layer 3
 - Do not replace the radar / constellation environment
-- Only replace the graphical representation of the Layer 1 assets
+- Only tune the graphical representation of the Layer 1 assets, map positioning, right panel fit, and core visual fit
 
 Baseline Layer 1 TrustMap assets:
 - Cloud & Infrastructure
@@ -83,4 +79,4 @@ Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
 GitHub Pages browser QA required:
-After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm loader uses only V60.3.10 after V60.3.4, map sits higher in the center column, center core is shield-shaped and blue-glow anchored, MJC shield/logo remains visible, left Operational Trust Score is visible, right Selected Asset Trust Score changes on hover/focus, no duplicate model explanation appears, right panel is not chopped, old flat cloud/monitor/SVG icons do not flash back after clicks, Layer 1 graphics do not overlap badly, trend buttons redraw the line, Layer 2 and Layer 3 remain, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
+After GitHub Pages deploys, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm V60.3.10 and V60.3.11 load after V60.3.4, V60.3.9 and V60.3.9.1 no longer load, map sits higher in the center column, center core is shield-shaped and blue-glow anchored, MJC shield/logo remains visible, left Operational Trust Score is visible, right Selected Asset Trust Score changes on hover/focus, no duplicate model explanation appears, right panel is not chopped, old flat cloud/monitor/SVG icons do not flash back after clicks, Layer 1 graphics do not overlap badly, trend buttons redraw the line, Layer 2 and Layer 3 remain, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
