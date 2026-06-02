@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Current implemented build: V60.3.22 TrustMap Image Prewarm
+Current implemented build: V60.3.23 TrustMap Asset Manifest and Intake Contract
 Build date: 2026-06-02
 
 Purpose for bots and AI readers:
@@ -8,10 +8,10 @@ This file provides machine-readable context for CyberShield separate from the hu
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.22.
+No new top-level tabs were added for V60.3.23.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.22. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.23. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
 
 Current TrustMap visual and performance stack:
 - V60.3.12 = PNG asset mapping and interaction recovery
@@ -23,15 +23,19 @@ Current TrustMap visual and performance stack:
 - V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
 - V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
 - V60.3.22 = TrustMap PNG image prewarm after shell readiness
+- V60.3.23 = TrustMap asset manifest and governed future asset intake
 
-V60.3.22 scope:
-V60.3.22 keeps the faster V60.3.21 app shell and addresses slow TrustMap PNG loading. The TrustMap stack still loads on demand, but the kernel, Layer 1 PNGs, and Briefing snapshot begin warming after the shell is usable. When TrustMap is explicitly opened, image priority is raised.
+V60.3.23 scope:
+V60.3.23 stops reactive image-path patching and creates a governed TrustMap asset intake contract. It keeps the faster V60.3.21/V60.3.22 shell and prewarm architecture, while preparing CyberShield for rebuilt Layer 1 assets with black backgrounds, uniform scale, and optional WebP variants.
 
 Runtime import rule:
 The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.
 
+Asset manifest rule:
+TrustMap assets should be governed by `data/trustmap/v60-3-23-asset-manifest.json`. Current PNG files remain valid fallbacks. Future rebuilt black-background all-blue cube assets should be added through the manifest rather than hardcoded in scattered modules.
+
 Image prewarm rule:
-Do not force image prewarm into the critical startup path. Start prewarm after shell readiness. Warm the CyberShield Trust Kernel first, then Layer 1 PNGs and Briefing snapshot. If images remain slow, compress/resize PNG assets or add WebP/AVIF variants before adding more runtime logic.
+Do not force image prewarm into the critical startup path. Start prewarm after shell readiness. Prefer manifest paths. Warm the CyberShield Trust Kernel first, then Layer 1 PNGs and Briefing snapshot. If images remain slow, compress/resize PNG assets or add WebP/AVIF variants before adding more runtime logic.
 
 Layer 1 asset rules:
 - Layer 1 assets should not have constant red/yellow/green glow in normal state.
@@ -41,6 +45,13 @@ Layer 1 asset rules:
 - Third Parties & Vendors must not be smaller, cropped, zoomed, square-boxed, or styled differently from the others.
 - The visual priority is a bright, consistent holographic cube look across all Layer 1 assets.
 
+Future asset intake rule:
+- Use one locked template for canvas size, cube scale, camera angle, lighting, and margins.
+- Use black or near-black backgrounds.
+- Keep base art neutral blue/white/black.
+- Green/yellow/red remain UI trust-state overlays only.
+- Provide web-ready PNG and preferably WebP variants.
+
 Performance doctrine:
 - Load the executive shell first.
 - Do not force mobile users to pay the full TrustMap cost during startup.
@@ -49,13 +60,7 @@ Performance doctrine:
 - Prioritize TrustMap images when TrustMap is explicitly opened.
 - Prefer one owned render/reapply path over stacked timers and event listeners.
 
-Stoplight trust color rule:
-- Green = Good / Strong / Allowed
-- Yellow = Needs Verification / Constrained / Moderate
-- Red = At Risk / Critical / Refused
-- Blue is neutral brand/system/fiber/AI-working state, not trust-state severity.
-
-Required PNG assets in root assets folder:
+Required current PNG assets in root assets folder:
 - assets/CyberShield Trust Kernel.png
 - assets/cloud_infrastructure.png
 - assets/identities_access.png
@@ -96,4 +101,4 @@ Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
 
 Next builder first action:
-Run browser QA on V60.3.22 from a phone. Verify the app shell remains fast, TrustMap images appear faster than V60.3.21, the kernel appears first or near-first, and no app-level slowdown returns.
+Run browser QA on V60.3.23 from a phone. Verify app shell remains fast, asset manifest loads or gracefully falls back, current assets still load, future asset paths are governed by the manifest, and no app-level slowdown returns.
