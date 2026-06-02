@@ -1,0 +1,118 @@
+{
+  "version": "V60.3.23",
+  "name": "TrustMap Asset Manifest and Intake Contract",
+  "purpose": "Provide a governed asset contract for current and future CyberShield TrustMap images, including rebuilt black-background and all-blue cube assets.",
+  "canvas_contract": {
+    "required_consistency": "All Layer 1 assets must use one locked template for canvas size, cube scale, camera angle, lighting, and margins.",
+    "background": "black_or_near_black",
+    "normal_state_trust_color": "none",
+    "trust_color_rule": "Green, yellow, and red are UI trust-state overlays only. Base art should remain neutral blue/white/black.",
+    "preferred_web_formats": ["webp", "png"],
+    "fallback_format": "png",
+    "performance_note": "If images remain slow, optimize asset dimensions and file size before adding more runtime logic."
+  },
+  "slots": [
+    {
+      "id": "kernel",
+      "label": "CyberShield Trust Kernel",
+      "layer": "core",
+      "status": "current_png_available",
+      "current_png": "assets/CyberShield Trust Kernel.png",
+      "current_encoded_png": "assets/CyberShield%20Trust%20Kernel.png",
+      "future_webp": "assets/trustmap/v60-3-23/CyberShield-Trust-Kernel.webp",
+      "future_png": "assets/trustmap/v60-3-23/CyberShield-Trust-Kernel.png",
+      "prewarm_priority": 1
+    },
+    {
+      "id": "cloud",
+      "label": "Cloud & Infrastructure",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/cloud_infrastructure.png",
+      "future_webp": "assets/trustmap/v60-3-23/cloud-infrastructure.webp",
+      "future_png": "assets/trustmap/v60-3-23/cloud-infrastructure.png",
+      "prewarm_priority": 2
+    },
+    {
+      "id": "identity",
+      "label": "Identities & Access",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/identities_access.png",
+      "future_webp": "assets/trustmap/v60-3-23/identities-access.webp",
+      "future_png": "assets/trustmap/v60-3-23/identities-access.png",
+      "prewarm_priority": 3
+    },
+    {
+      "id": "appsData",
+      "label": "Applications & Data",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/applications_data.png",
+      "future_webp": "assets/trustmap/v60-3-23/applications-data.webp",
+      "future_png": "assets/trustmap/v60-3-23/applications-data.png",
+      "prewarm_priority": 4
+    },
+    {
+      "id": "ai",
+      "label": "AI Systems & Agents",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/AI_systems_and_Agents.png",
+      "future_webp": "assets/trustmap/v60-3-23/ai-systems-agents.webp",
+      "future_png": "assets/trustmap/v60-3-23/ai-systems-agents.png",
+      "prewarm_priority": 5
+    },
+    {
+      "id": "endpoints",
+      "label": "Devices & Endpoints",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/devices_endpoints.png",
+      "future_webp": "assets/trustmap/v60-3-23/devices-endpoints.webp",
+      "future_png": "assets/trustmap/v60-3-23/devices-endpoints.png",
+      "prewarm_priority": 6
+    },
+    {
+      "id": "cmmc",
+      "label": "CMMC & Compliance",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/CMMC_and_Compliance.png",
+      "future_webp": "assets/trustmap/v60-3-23/cmmc-compliance.webp",
+      "future_png": "assets/trustmap/v60-3-23/cmmc-compliance.png",
+      "prewarm_priority": 7
+    },
+    {
+      "id": "third",
+      "label": "Third Parties & Vendors",
+      "layer": "layer1",
+      "status": "current_png_available",
+      "current_png": "assets/Third Parties and Vendors.png",
+      "current_encoded_png": "assets/Third%20Parties%20and%20Vendors.png",
+      "future_webp": "assets/trustmap/v60-3-23/third-parties-vendors.webp",
+      "future_png": "assets/trustmap/v60-3-23/third-parties-vendors.png",
+      "prewarm_priority": 8
+    },
+    {
+      "id": "briefingSnapshot",
+      "label": "Briefing TrustMap Snapshot",
+      "layer": "briefing",
+      "status": "current_png_available",
+      "current_png": "assets/The Trust Map.png",
+      "current_encoded_png": "assets/The%20Trust%20Map.png",
+      "future_webp": "assets/trustmap/v60-3-23/the-trust-map.webp",
+      "future_png": "assets/trustmap/v60-3-23/the-trust-map.png",
+      "prewarm_priority": 9
+    }
+  ],
+  "future_asset_intake_checklist": [
+    "Confirm every asset uses the same canvas size.",
+    "Confirm every asset uses the same apparent cube scale.",
+    "Confirm every asset has a black or near-black background.",
+    "Confirm no green spill, transparency artifact, halo box, or square-edge mismatch exists.",
+    "Confirm all-blue cube rendering preserves the same subject matter.",
+    "Confirm web-ready files are optimized before release.",
+    "Confirm manifest future_webp and future_png paths are updated when files are added."
+  ]
+}
