@@ -1,8 +1,8 @@
 // V60.3.13 Stoplight Trust Color and PNG Path Recovery
-// Purpose: trust-state colors must use stoplight red/yellow/green, while PNG art keeps its native color. Also retries likely uploaded PNG filenames.
+// Purpose: trust-state colors must use stoplight red/yellow/green, while PNG art keeps its native color. Also retries likely uploaded PNG filenames and asset-folder locations.
 // Boundary: static advisory prototype only. No live scoring, evidence retrieval, workflow automation, or enforcement.
 
-const V60313_BASE = 'assets/trustmap/v60-3-12/';
+const V60313_BASES = ['assets/trustmap/v60-3-12/', 'assets/'];
 const V60313_DOMAIN_STATE = {
   cloud: 'green',
   identity: 'green',
@@ -82,7 +82,13 @@ function v60313$(selector, root=document){ return root.querySelector(selector); 
 function v60313$$(selector, root=document){ return Array.from(root.querySelectorAll(selector)); }
 function v60313StoplightForDomain(id){ return V60313_COLOR[V60313_DOMAIN_STATE[id] || 'yellow'] || V60313_COLOR.yellow; }
 function v60313LabelForImg(img){ return img?.getAttribute('alt') || ''; }
-function v60313EncodePath(file){ return V60313_BASE + encodeURIComponent(file).replaceAll('%2F','/'); }
+function v60313EncodePath(base, file){ return base + encodeURIComponent(file).replaceAll('%2F','/'); }
+function v60313PathCandidates(label){
+  const files = V60313_FILE_CANDIDATES[label] || [];
+  const out = [];
+  V60313_BASES.forEach(base => files.forEach(file => out.push(v60313EncodePath(base, file))));
+  return out;
+}
 function v60313InstallStyles(){
   if(v60313$('#v60-3-13-style')) return;
   const style = document.createElement('style');
@@ -147,19 +153,20 @@ function v60313ApplyStoplightColors(){
 function v60313AttachFallbacksToImage(img){
   if(!img || img.dataset.v60313FallbackReady === 'true') return;
   const label = v60313LabelForImg(img);
-  const candidates = V60313_FILE_CANDIDATES[label];
-  if(!candidates || !candidates.length) return;
+  const paths = v60313PathCandidates(label);
+  if(!paths.length) return;
   img.dataset.v60313FallbackReady = 'true';
   img.dataset.v60313CandidateIndex = '0';
   img.addEventListener('error', () => {
     const currentIndex = Number(img.dataset.v60313CandidateIndex || '0');
     const nextIndex = currentIndex + 1;
-    if(nextIndex >= candidates.length) return;
+    if(nextIndex >= paths.length) return;
     img.dataset.v60313CandidateIndex = String(nextIndex);
-    img.src = v60313EncodePath(candidates[nextIndex]);
+    img.src = paths[nextIndex];
   });
   const current = img.getAttribute('src') || '';
-  if(!current.includes(V60313_BASE) && candidates[0]) img.src = v60313EncodePath(candidates[0]);
+  const alreadyCandidate = paths.some(path => current.endsWith(path) || current.includes(path));
+  if(!alreadyCandidate) img.src = paths[0];
 }
 function v60313ApplyPngFallbacks(){
   const trustmap = v60313$('#trustmap.active');
@@ -176,7 +183,7 @@ function v60313MarkMeta(){
     parsed.previous_operational_build = 'V60.3.12 TrustMap PNG Asset Integration and Interaction Recovery';
     parsed.stoplight_trust_color_and_png_path_recovery = {
       status: 'active',
-      rule: 'Hover rings, selected rings, score rings, and status states use stoplight green/yellow/red. PNG art remains native. Runtime retries likely uploaded PNG filenames.',
+      rule: 'Hover rings, selected rings, score rings, and status states use stoplight green/yellow/red. PNG art remains native. Runtime retries likely uploaded PNG filenames from assets/trustmap/v60-3-12/ and assets/.',
       github_pages_browser_qa_required: true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
