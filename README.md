@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors**
+Current build label: **V60.3.17 Briefing TrustMap Snapshot Image**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-14-trustmap-visual-blend&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-17-briefing-trustmap-snapshot&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.14
+V60.3.17
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,31 +32,43 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.14.
+No new top-level tabs were added for V60.3.17.
 
-## Current implemented build: V60.3.14
+## Current implemented build: V60.3.17
 
-V60.3.14 tunes the TrustMap visual integration after the PNG assets were uploaded to the root `assets/` folder.  It keeps V60.3.12 for PNG mapping and interaction recovery, keeps V60.3.13 for stoplight trust-state color logic and path fallback, and adds a visual blend layer for the Enterprise Trust Map.
+V60.3.17 is a focused Briefing-only visual layer.  It replaces the generated TrustMap Snapshot mockup on the Briefing page with the rendered image asset:
 
-V60.3.14 changes:
+```text
+assets/The Trust Map.png
+```
 
-- adds `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js`
-- is chained through the V60.3.13 module because the loader update was blocked by the connector safety check
-- blends the TrustMap background toward the dark blue-black PNG canvas tone
-- moves trust highlighting from the PNG image rectangle to an oval containment layer
-- reduces the visible square-highlight artifact around rendered PNG assets
-- keeps stoplight green/yellow/red trust-state highlighting
-- expands and strengthens the oval hover/focus/selected highlight
-- adjusts Cloud and CMMC positioning to reduce overlap
-- adds fiber-optic connector styling based on the white-blue light line in the CyberShield Trust Kernel image
-- default connectors use white-blue MJC fiber-optic styling
-- trust-state connector highlights may use stoplight green, yellow, or red when applicable
-- preserves V60.3.12 movement recovery and slider behavior
+The full TrustMap tab remains interactive and unchanged by this build.
+
+## V60.3.17 changes
+
+- adds `src/ui/v60-3-17-briefing-trustmap-snapshot-image.js`
+- wires it immediately after `src/ui/v60-3-3-first-layer-decision-brief-trustmap-snapshot.js`
+- replaces only `.v6033-map-wrap` inside the Briefing first-layer snapshot panel
+- uses `assets/The Trust Map.png` as the primary Briefing TrustMap Snapshot image
+- includes fallback paths for likely snapshot names
+- preserves Decision Brief copy and action buttons
+- preserves the full interactive TrustMap tab
 - preserves no-new-top-level-tabs rule
+
+## Current TrustMap visual stack
+
+```text
+V60.3.12 = PNG asset mapping and interaction recovery
+V60.3.13 = stoplight trust color and PNG path recovery
+V60.3.14 = background blend, oval highlight, asset fit, and fiber styling
+V60.3.16 = centerline fiber connector overlay and three-pane separation
+V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
+V60.3.17 = Briefing TrustMap Snapshot image
+```
 
 ## Required PNG assets
 
-The PNG files currently live in the root assets folder:
+The TrustMap Layer 1/Core PNG files currently live in the root assets folder:
 
 ```text
 assets/CyberShield Trust Kernel.png
@@ -69,20 +81,11 @@ assets/CMMC_and_Compliance.png
 assets/Third Parties and Vendors.png
 ```
 
-Preferred normalized runtime paths remain:
+The Briefing snapshot image should live at:
 
 ```text
-assets/trustmap/v60-3-12/cybershield-trust-kernel.png
-assets/trustmap/v60-3-12/cloud-infrastructure.png
-assets/trustmap/v60-3-12/identities-access.png
-assets/trustmap/v60-3-12/applications-data.png
-assets/trustmap/v60-3-12/ai-systems-agents.png
-assets/trustmap/v60-3-12/devices-endpoints.png
-assets/trustmap/v60-3-12/cmmc-compliance.png
-assets/trustmap/v60-3-12/third-parties-vendors.png
+assets/The Trust Map.png
 ```
-
-The runtime tries both `assets/trustmap/v60-3-12/` and `assets/`, including likely filename variants.
 
 ## Non-negotiable TrustMap scope rule
 
@@ -98,16 +101,35 @@ Only map rendered PNG assets into the existing TrustMap core and Layer 1 slots.
 Trust-state colors are stoplight green, yellow, red only.
 ```
 
-## Layer 1 TrustMap assets
+## Briefing snapshot rule
 
 ```text
-Cloud & Infrastructure
-Identities & Access
-Applications & Data
-AI Systems & Agents
-Third Parties & Vendors
-Devices & Endpoints
-CMMC & Compliance
+The Briefing page TrustMap Snapshot uses assets/The Trust Map.png.
+The snapshot is a static executive preview.
+The full interactive TrustMap remains on the TrustMap tab.
+Do not make the Briefing snapshot replace the full TrustMap page.
+```
+
+## Three-pane layout rule
+
+```text
+TrustMap dashboard has three distinct panes:
+Left = Operational Trust Score and executive trust context
+Center = Enterprise Trust Map
+Right = selected item breakdown
+All three panes must share the same top start line.
+All three panes must share the same bottom stop line.
+The right pane must not overlap or visually swallow the center map pane.
+```
+
+## Connector rule
+
+```text
+Default connectors should resemble the white-blue fiber optic line in the CyberShield Trust Kernel image.
+Connectors should be drawn center-point to center-point behind the rendered objects.
+Rendered images stay above connector lines so lines appear to terminate at object perimeters.
+Trust-state connector highlights may use digital fiber optic green, yellow, or red depending on selected/scenario path.
+Connectors should look illuminated and data-bearing, not like flat SVG line work.
 ```
 
 ## Stoplight trust color rule
@@ -123,55 +145,39 @@ The selected asset score and the Layer 1 hover/focus/selected ring must match th
 ## Oval highlight rule
 
 ```text
+Normal state = native hologram asset blended into the TrustMap background.
+No constant red/yellow/green glow in normal state.
+Hover/focus = stoplight oval glow appears.
+Click/select = stoplight oval glow persists until another asset is selected.
 The trust-state highlight belongs to the oval containment layer around the Layer 1 object, not to the rectangular PNG image canvas.
-Hover, focus, and selected states should show a bold stoplight oval glow.
-The image itself should keep its native hologram art color.
 ```
 
-## Connector rule
+## CyberShield Trust Kernel detail rule
 
 ```text
-Default connectors should resemble the white-blue fiber optic line in the CyberShield Trust Kernel image.
-Trust-state connector highlights may use digital fiber optic green, yellow, or red depending on the scenario or selected trust path.
-Connectors should look illuminated and data-bearing, not like flat SVG line work.
+Hovering or focusing the CyberShield Trust Kernel should update the right pane.
+The right pane score should match the Operational Trust Score.
+The right pane should show core model explanation, assumed activity, evidence gaps, and what happens next.
+Click behavior can still route to Runtime if needed, but hover/focus should provide inspection detail in place.
 ```
 
-## Score rule
+## Risk row color rule
 
 ```text
-Left score = Operational Trust Score for the current scenario/environment.
-Right score = Selected Asset Trust Score for the hovered/focused Layer 1 asset.
-Those scores must not be duplicated unless they intentionally represent the same metric.
+Top Trust Break Drivers:
+1. Critical = red
+2. High = red
+3. Medium = yellow
+4. Low = yellow
+
+Active Risks:
+1. Critical = red
+2. High = red
+3. High = red
+4. Medium = yellow
+
+Risk rows must never use blue for trust severity.  Blue means neutral brand/system/fiber/AI-working state.
 ```
-
-## Selected asset panel rule
-
-```text
-The selected-asset panel belongs below the right-side selected asset score.
-It changes when the user hovers or focuses a Layer 1 graphical asset.
-It must not duplicate the base Layer 1 Domain Detail panel.
-```
-
-## Public TrustMap language rule
-
-Use product language in executive-facing screens:
-
-```text
-Enterprise Trust Map
-Decision Trust Universe
-```
-
-Do not expose builder language such as:
-
-```text
-registry-driven
-renders from registry
-versioned render source
-V55.3 registry
-implementation layer
-```
-
-That language belongs in Settings/admin metadata and repo documentation only.
 
 ## Boundary
 
@@ -186,31 +192,26 @@ Priority checks:
 ```text
 hard refresh live prototype
 complete/reset onboarding
+open Briefing
+confirm TrustMap Snapshot uses assets/The Trust Map.png
+confirm Decision Brief remains intact
+confirm Expand full TrustMap still routes to TrustMap
 open TrustMap
-confirm V60.3.12 and V60.3.13 still load
-confirm V60.3.14 is active through the V60.3.13 chain
 confirm all eight PNGs appear from assets/
-confirm CyberShield Trust Kernel PNG appears at the center
-confirm all Layer 1 PNGs appear
-confirm the TrustMap background blends with the PNG backgrounds
-confirm the visible square-highlight artifact is reduced or gone
-confirm hover/focus/selected rings are oval, not square
-confirm hover/focus/selected rings use stoplight green/yellow/red only
-confirm Cloud and CMMC no longer badly overlap
+confirm all seven Layer 1 assets are evenly distributed
+confirm no constant red/yellow/green glow in normal Layer 1 state
+confirm hover/focus/selected rings are oval and stoplight colored
+confirm connectors draw center-to-center behind the objects
+confirm rendered objects sit above connector lines
 confirm connectors look like white-blue fiber optic trust lines
 confirm selected/path connectors can highlight in stoplight trust color
-confirm map can be dragged
-confirm mouse wheel zoom works
-confirm + / − zoom works
-confirm Pan X slider works
-confirm Pan Y slider works
-confirm Zoom slider works
-confirm Fit Map works
-confirm Kernel View works
-confirm Domain View works
-confirm Object View works
-confirm Layer 2 and Layer 3 still show
-confirm right panel does not duplicate or clip
+confirm left, center, and right panes share the same top and bottom alignment
+confirm right pane does not overlap the center Enterprise Trust Map
+confirm hovering/focusing CyberShield Trust Kernel updates the right pane
+confirm Trust Kernel right-pane score matches the Operational Trust Score
+confirm Top Trust Break Drivers use red/red/yellow/yellow and no blue
+confirm Active Risks use red/red/red/yellow and no blue
+confirm map drag, wheel zoom, +/− zoom, sliders, Fit Map, Kernel View, Domain View, and Object View still work
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
@@ -226,8 +227,11 @@ Rendered PNG assets must own visuals.
 Trust-state colors must be stoplight green/yellow/red, not arbitrary asset accent colors.
 Highlight containers, not rectangular PNG canvases.
 Connector visuals should follow the CyberShield Trust Kernel fiber-optic light-line metaphor.
+Controlled build layers should be narrow, explicit, and reversible.
+Avoid broad renderer rewrites unless visual layers can no longer meet the requirement.
+Briefing snapshot image and full TrustMap interaction are separate surfaces.
 ```
 
 ## Next likely decision point
 
-After V60.3.14 browser QA, fix only minor visual sizing, spacing, or connector intensity.  If the PNG image backgrounds still show as obvious dark squares, the graphic assets themselves may need transparent export or background-matched re-export by the graphics workflow.
+After V60.3.17 browser QA, fix only minor image fit/crop, Briefing snapshot height, or cache/path issues.  Do not touch the full TrustMap renderer for Briefing snapshot work.
