@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.10 TrustMap Authoritative Render Consolidation**
+Current build label: **V60.3.11 TrustMap Visual QA Tuning Only**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-10-authoritative-render&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-11-visual-qa-tuning&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.10
+V60.3.11
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,28 +32,24 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.10.
+No new top-level tabs were added for V60.3.11.
 
-## Current implemented build: V60.3.10
+## Current implemented build: V60.3.11
 
-V60.3.10 consolidates the TrustMap post-render stack into one authoritative layer.  It removes the competing V60.3.9 and V60.3.9.1 runtime imports from the operational loader and replaces them with one finalization file.  It preserves the original TrustMap shell, center CyberShield Core, MJC shield/logo, left Operational Trust Score, right selected-asset score, radar rings, Layer 2, Layer 3, pan/zoom, and mode controls while making the final TrustMap state stable.
+V60.3.11 is a visual QA tuning layer after V60.3.10.  It does not add new features, panels, score models, or tabs.  V60.3.10 remains the functional TrustMap post-render authority; V60.3.11 only tunes alignment, sizing, scroll behavior, and visual fit.
 
-V60.3.10 changes:
+V60.3.11 changes:
 
-- adds `src/ui/v60-3-10-trustmap-authoritative-render-consolidation.js`
-- removes `src/ui/v60-3-9-trustmap-rendered-layer1-assets.js` from the loader
-- removes `src/ui/v60-3-9-1-trustmap-render-stability-core-anchor.js` from the loader
-- makes V60.3.10 the only TrustMap post-render authority after V60.3.4
-- uses embedded holographic Layer 1 visuals so the map does not depend on missing WebP files
-- suppresses old flat one-dimensional SVG icons inside Layer 1 domains
-- replaces duplicated right-panel content with one selected-asset score and one selected-asset explanation
-- top-biases the TrustMap world so it aligns better with the left and right score cards
-- makes the right panel scroll instead of clipping selected-asset content
-- reduces Layer 1 asset footprint to reduce overlap
-- strengthens the center CyberShield Core as a shield-shaped MJC/CyberShield trust kernel
-- adds a blue energy/hover pad under the core
-- keeps right Selected Asset Trust Score distinct from left Operational Trust Score
-- keeps Daily / Weekly / Monthly trend redraw behavior
+- adds `src/ui/v60-3-11-trustmap-visual-qa-tuning.js`
+- loads after `src/ui/v60-3-10-trustmap-authoritative-render-consolidation.js`
+- keeps V60.3.10 as the functional TrustMap authority
+- further top-biases the center TrustMap world
+- tightens the center map panel height and alignment
+- makes the right selected-asset panel more readable and less likely to clip
+- slightly reduces Layer 1 visual footprint
+- slightly reduces selected asset score and mini-card sizing
+- tightens CyberShield Core shield size, logo size, and text fit
+- preserves Layer 2, Layer 3, pan, zoom, Fit Map, Kernel View, Domain View, and Object View
 - preserves no-new-top-level-tabs rule
 - preserves Settings as the place for build/version/governance/prototype metadata
 
@@ -67,7 +63,7 @@ Do not remove the left Operational Trust Score panel.
 Do not remove the right-side score area.
 Do not remove Layer 2 or Layer 3.
 Do not replace the radar / constellation environment.
-Only replace the graphical representation of the Layer 1 assets.
+Only tune the graphical representation of the Layer 1 assets, map positioning, right panel fit, and core visual fit.
 ```
 
 ## Layer 1 TrustMap assets
@@ -133,7 +129,7 @@ Priority checks:
 hard refresh live prototype
 complete/reset onboarding
 open TrustMap
-confirm loader uses only V60.3.10 after V60.3.4
+confirm V60.3.10 and V60.3.11 load after V60.3.4
 confirm V60.3.9 and V60.3.9.1 no longer load
 confirm map sits higher in the center column
 confirm left Operational Trust Score is top-aligned with the center map and right score area
@@ -156,4 +152,4 @@ confirm no live evidence retrieval, live scoring, statistical validation, backen
 
 ## Next likely decision point
 
-After V60.3.10 browser QA, the next build should tune visual fidelity only: final rendered WebP asset upload path, exact shield geometry, map top alignment, Layer 1 image scale, connector anchor feel, and right-panel spacing.
+After V60.3.11 browser QA, the next decision is binary: if only minor spacing is off, tune visually once more; if the map still fights alignment or old renderer behavior, stop tuning and refactor the base TrustMap renderer directly.
