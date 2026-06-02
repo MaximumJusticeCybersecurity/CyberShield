@@ -1,6 +1,6 @@
 {
-  "version": "V55.3",
-  "name": "TrustMap Registry and Visual Object Stabilization",
+  "version": "V60.3.15",
+  "name": "TrustMap Layer 1 Equal Ring Distribution",
   "status": "registry_source_of_truth",
   "do_not_add_top_level_tabs": true,
   "visual_doctrine": {
@@ -8,8 +8,9 @@
     "not": "process-flow",
     "core_rule": "CyberShield Core is a clean neon shield boundary and trust kernel, not a normal node.",
     "complexity_rule": "Complexity lives at the edge. Trust is established at the center.",
-    "layer_1_rule": "Layer 1 domains are neon-blue graphical trust objects, not cards.",
-    "fit_map_rule": "Fit Map is for orientation, not reading. Domain View is for interpretation. Object View is for detail. Proof Pack is for documentation."
+    "layer_1_rule": "Layer 1 domains are evenly distributed graphical trust objects around the first trust ring, not cards.",
+    "fit_map_rule": "Fit Map is for orientation, not reading. Domain View is for interpretation. Object View is for detail. Proof Pack is for documentation.",
+    "layer_1_distribution_rule": "The seven Layer 1 graphical assets must be equally distributed around the Layer 1 ring at approximately 51.43 degree intervals. Do not rely on ad hoc visual nudges to correct overlap."
   },
   "center": {
     "id": "cybershield-core",
@@ -25,7 +26,7 @@
       "label": "Cloud & Infrastructure",
       "baseline_required": true,
       "icon": "cloud",
-      "angle": -96,
+      "angle": -90,
       "status": "strong",
       "visual_metaphor": "cloud boundary and infrastructure trust object",
       "assets": [
@@ -40,7 +41,7 @@
       "label": "Identities & Access",
       "baseline_required": true,
       "icon": "identity",
-      "angle": -42,
+      "angle": -38.57,
       "status": "moderate",
       "visual_metaphor": "people, roles, and privilege trust object",
       "assets": [
@@ -55,7 +56,7 @@
       "label": "Applications & Data",
       "baseline_required": true,
       "icon": "data",
-      "angle": 14,
+      "angle": 12.86,
       "status": "weak",
       "visual_metaphor": "data store, application, and classification trust object",
       "assets": [
@@ -70,7 +71,7 @@
       "label": "AI Systems & Agents",
       "baseline_required": true,
       "icon": "brain",
-      "angle": 70,
+      "angle": 64.29,
       "status": "moderate",
       "visual_metaphor": "neon-blue graphical brain / agent governance trust object",
       "assets": [
@@ -85,7 +86,7 @@
       "label": "Third Parties & Vendors",
       "baseline_required": true,
       "icon": "handshake",
-      "angle": 128,
+      "angle": 115.71,
       "status": "weak",
       "visual_metaphor": "partner, vendor, and supplier trust object",
       "assets": [
@@ -100,7 +101,7 @@
       "label": "Devices & Endpoints",
       "baseline_required": true,
       "icon": "endpoint",
-      "angle": 188,
+      "angle": 167.14,
       "status": "moderate",
       "visual_metaphor": "workstation, server, mobile, and IoT trust object",
       "assets": [
@@ -116,7 +117,7 @@
       "baseline_required": false,
       "scenario_domain": true,
       "icon": "pentagon",
-      "angle": 246,
+      "angle": 218.57,
       "status": "weak",
       "visual_metaphor": "Pentagon-inspired compliance and evidence trust object",
       "assets": [
