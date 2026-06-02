@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.22 TrustMap Image Prewarm**
+Current build label: **V60.3.23 TrustMap Asset Manifest and Intake Contract**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-22-trustmap-image-prewarm&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-23-trustmap-asset-manifest&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.22
+V60.3.23
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,13 +32,11 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.22.
+No new top-level tabs were added for V60.3.23.
 
-## Current implemented build: V60.3.22
+## Current implemented build: V60.3.23
 
-V60.3.22 keeps the faster V60.3.21 shell-load architecture and addresses the next observed bottleneck: TrustMap PNG images were still loading slowly after the app itself became faster.
-
-The correction is controlled image prewarming. The app shell still loads first. After the shell is usable, CyberShield starts warming the TrustMap Kernel, Layer 1 PNGs, and Briefing snapshot in sequence. When the user explicitly opens TrustMap, those image requests are prioritized.
+V60.3.23 stops reactive image-path patching and creates a governed TrustMap asset intake contract.  It keeps the faster V60.3.21/V60.3.22 shell and prewarm architecture, while preparing CyberShield for the rebuilt Layer 1 assets with black backgrounds, uniform scale, and optional WebP variants.
 
 ## Current TrustMap visual and performance stack
 
@@ -52,20 +50,33 @@ V60.3.17 = Briefing TrustMap Snapshot image
 V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
 V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
 V60.3.22 = TrustMap PNG image prewarm after shell readiness
+V60.3.23 = TrustMap asset manifest and governed future asset intake
 ```
 
 V60.3.18 and V60.3.19 remain in the repository for audit history but are no longer imported at runtime through the V60.3.14 chain.
 
-## V60.3.22 changes
+## V60.3.23 changes
 
-- Adds `src/ui/v60-3-22-trustmap-image-prewarm.js`
-- Updates `src/ui/v52-7-operational-layer.js` to import the image prewarm module
-- Preserves V60.3.21 lazy TrustMap stack loading
-- Starts TrustMap PNG prewarm after the app shell is usable
-- Prioritizes TrustMap images when the user opens TrustMap or expands full TrustMap from Briefing
-- Warms the CyberShield Trust Kernel first, then Layer 1 PNGs and the Briefing snapshot
-- Keeps image decoding async where possible
+- Adds `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
+- Adds `data/trustmap/v60-3-23-asset-manifest.json`
+- Adds `src/ui/v60-3-23-trustmap-asset-manifest-loader.js`
+- Updates `src/ui/v60-3-22-trustmap-image-prewarm.js` to prefer manifest paths and fall back to the V60.3.22 static asset list
+- Updates `src/ui/v52-7-operational-layer.js` to load the asset manifest before image prewarm
+- Preserves V60.3.21/V60.3.22 fast shell and on-demand TrustMap loading
+- Creates governed future slots for WebP/PNG black-background all-blue cube assets
 - Preserves no-new-top-level-tabs rule
+
+## Asset intake contract
+
+```text
+All Layer 1 assets must use one locked template for canvas size, cube scale, camera angle, lighting, and margins.
+Base artwork should use black or near-black backgrounds.
+Green, yellow, and red are UI trust-state overlays only.
+Base art should remain neutral blue/white/black.
+Current PNG files remain valid fallbacks.
+Future WebP/PNG paths are defined in the asset manifest.
+If images remain slow, optimize image dimensions and file size before adding more runtime logic.
+```
 
 ## Performance doctrine
 
@@ -79,9 +90,7 @@ Prefer one owned render/reapply path over stacked timers and event listeners.
 If the TrustMap remains slow, compress/resize PNG assets or convert them to WebP/AVIF before adding more runtime logic.
 ```
 
-## Required PNG assets
-
-The TrustMap Layer 1/Core PNG files currently live in the root assets folder:
+## Required current PNG assets
 
 ```text
 assets/CyberShield Trust Kernel.png
@@ -92,11 +101,6 @@ assets/AI_systems_and_Agents.png
 assets/devices_endpoints.png
 assets/CMMC_and_Compliance.png
 assets/Third Parties and Vendors.png
-```
-
-The Briefing snapshot image should live at:
-
-```text
 assets/The Trust Map.png
 ```
 
@@ -113,54 +117,18 @@ Trust-state colors are stoplight green, yellow, red only.
 Do not make the Briefing snapshot replace the full TrustMap page.
 ```
 
-## Briefing snapshot rule
-
-```text
-The Briefing page TrustMap Snapshot uses assets/The Trust Map.png.
-The snapshot is a static executive preview.
-The full interactive TrustMap remains on the TrustMap tab.
-```
-
-## Layer 1 neutral state and sizing rule
-
-```text
-Layer 1 assets should not have constant color highlight or glow.
-Layer 1 stoplight glow appears only on hover, focus, or selected/clicked state.
-Selected glow persists until another Layer 1 asset is selected.
-All Layer 1 holographic cubes must render at the same apparent size.
-Third Parties & Vendors must not be smaller, cropped, zoomed, square-boxed, or styled differently from the others.
-The visual priority is a bright, consistent holographic cube look across all Layer 1 assets.
-```
-
-## Three-pane layout rule
-
-```text
-TrustMap dashboard has three distinct panes:
-Left = Operational Trust Score and executive trust context
-Center = Enterprise Trust Map
-Right = selected item breakdown
-All three panes must share the same top start line.
-All three panes must share the same bottom stop line.
-The right pane must not overlap or visually swallow the center map pane.
-```
-
-## Boundary
-
-The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, live scoring, live claim extraction, statistical validation, backend persistence, workflow automation, notifications, or production agent enforcement systems.
-
 ## GitHub Pages browser QA required
 
 ```text
 hard refresh live prototype
 complete/reset onboarding
 confirm initial app shell remains fast on phone
+confirm asset manifest loads or gracefully falls back
 wait briefly after shell load so image prewarm can begin
 open TrustMap
-confirm TrustMap images appear faster than V60.3.21
-confirm CyberShield Trust Kernel appears first or near-first
-confirm all Layer 1 PNGs appear from assets/
-confirm Briefing snapshot still uses assets/The Trust Map.png
-confirm no app-level slowdown returns
+confirm current PNG assets still load
+confirm manifest-backed prewarm does not slow the app shell
+confirm future WebP/PNG asset paths are documented in data/trustmap/v60-3-23-asset-manifest.json
 confirm no new top-level tab exists
 confirm no overclaims appear
 ```
