@@ -1,5 +1,5 @@
-// V60.3.14 TrustMap Background Blend, Oval Highlight, and Layer 1 Spacing
-// Purpose: blend rendered PNG canvases with the TrustMap background, make stoplight highlights oval instead of square, and reduce Cloud/CMMC overlap.
+// V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors
+// Purpose: blend rendered PNG canvases with the TrustMap background, make stoplight highlights oval instead of square, reduce Cloud/CMMC overlap, and make connectors look like CyberShield fiber-optic trust lines.
 // Boundary: static advisory prototype only. No live scoring, evidence retrieval, workflow automation, or enforcement.
 
 function v60314$(selector, root=document){ return root.querySelector(selector); }
@@ -14,6 +14,8 @@ function v60314InstallStyles(){
       --v60314-map-bg:#02050b;
       --v60314-map-bg-soft:#04101d;
       --v60314-mjc-light:#dff9ff;
+      --v60314-fiber-blue:#dff9ff;
+      --v60314-fiber-blue-core:#6eeaff;
     }
 
     #trustmap.active .v554-map-panel,
@@ -27,8 +29,35 @@ function v60314InstallStyles(){
       box-shadow:inset 0 0 80px rgba(2,5,11,.95), 0 0 34px rgba(66,215,255,.12)!important;
     }
 
-    #trustmap.active .v554-rings circle,
+    #trustmap.active .v554-rings circle{
+      mix-blend-mode:screen;
+    }
+
     #trustmap.active .v554-edges line{
+      stroke:var(--v60314-fiber-blue)!important;
+      stroke-width:2.2!important;
+      stroke-linecap:round!important;
+      opacity:.74!important;
+      mix-blend-mode:screen;
+      filter:
+        drop-shadow(0 0 3px rgba(223,249,255,.96))
+        drop-shadow(0 0 8px rgba(110,234,255,.68))
+        drop-shadow(0 0 18px rgba(66,215,255,.32))!important;
+    }
+
+    #trustmap.active .v554-edges line.core,
+    #trustmap.active .v554-edges line[data-depth="1"]{
+      stroke:var(--v60314-fiber-blue-core)!important;
+      stroke-width:3.8!important;
+      opacity:.96!important;
+      filter:
+        drop-shadow(0 0 4px rgba(255,255,255,.95))
+        drop-shadow(0 0 10px rgba(110,234,255,.86))
+        drop-shadow(0 0 26px rgba(66,215,255,.55))!important;
+    }
+
+    #trustmap.active .v554-domain[data-v554-domain="cloud"] ~ .v554-edges line,
+    #trustmap.active .v554-domain:hover ~ .v554-edges line{
       mix-blend-mode:screen;
     }
 
@@ -155,17 +184,32 @@ function v60314InstallStyles(){
   document.head.appendChild(style);
 }
 
+function v60314ApplyConnectorTrustState(){
+  const trustmap = v60314$('#trustmap.active');
+  if(!trustmap) return;
+  const selected = trustmap.querySelector('.v554-domain.v60312-selected')?.dataset.v554Domain;
+  const selectedColor = selected ? getComputedStyle(trustmap.querySelector(`.v554-domain[data-v554-domain="${selected}"]`)).getPropertyValue('--v60313-stoplight').trim() : '';
+  v60314$$('.v554-edges line', trustmap).forEach(line => {
+    line.style.removeProperty('--v60314-active-fiber');
+    if(selectedColor && line.classList.contains('core')){
+      line.style.stroke = selectedColor;
+      line.style.filter = `drop-shadow(0 0 4px rgba(255,255,255,.95)) drop-shadow(0 0 11px ${selectedColor}) drop-shadow(0 0 28px ${selectedColor})`;
+    }
+  });
+}
+
 function v60314MarkMeta(){
   const payload = v60314$('#adminPayload');
   if(!payload) return;
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
-    parsed.build = 'V60.3.14 TrustMap Background Blend, Oval Highlight, and Layer 1 Spacing';
+    parsed.build = 'V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors';
     parsed.version = 'V60.3.14';
     parsed.previous_operational_build = 'V60.3.13 Stoplight Trust Color and PNG Path Recovery';
     parsed.trustmap_background_oval_spacing = {
       status:'active_visual_tuning_layer',
-      rule:'Blend PNG canvases with TrustMap background, move trust highlight from image rectangle to oval containment layer, and reduce Cloud/CMMC overlap.',
+      rule:'Blend PNG canvases with TrustMap background, move trust highlight from image rectangle to oval containment layer, reduce Cloud/CMMC overlap, and render connectors as CyberShield fiber-optic trust lines.',
+      connector_rule:'Default connectors use white-blue fiber-optic styling. Trust-state connector highlights may use stoplight green, yellow, or red.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
@@ -175,6 +219,7 @@ function v60314MarkMeta(){
 function v60314Apply(){
   if(!v60314$('#trustmap.active')) return;
   v60314InstallStyles();
+  v60314ApplyConnectorTrustState();
   v60314MarkMeta();
 }
 
