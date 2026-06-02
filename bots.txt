@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Current implemented build: V60.3.21 Mobile Load Performance Controls
+Current implemented build: V60.3.22 TrustMap Image Prewarm
 Build date: 2026-06-02
 
 Purpose for bots and AI readers:
@@ -8,10 +8,10 @@ This file provides machine-readable context for CyberShield separate from the hu
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.21.
+No new top-level tabs were added for V60.3.22.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.21. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.22. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
 
 Current TrustMap visual and performance stack:
 - V60.3.12 = PNG asset mapping and interaction recovery
@@ -22,12 +22,16 @@ Current TrustMap visual and performance stack:
 - V60.3.17 = Briefing TrustMap Snapshot image
 - V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
 - V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
+- V60.3.22 = TrustMap PNG image prewarm after shell readiness
 
-V60.3.21 scope:
-V60.3.21 addresses phone QA feedback that CyberShield was slow to load and that the TrustMap still showed jitter. The heavy TrustMap stack is now dynamically imported only when the TrustMap tab or the Briefing Expand full TrustMap action is used. A lightweight placeholder appears while the TrustMap stack loads, mobile connector animations and expensive filters are reduced, and images are marked for async decode where possible.
+V60.3.22 scope:
+V60.3.22 keeps the faster V60.3.21 app shell and addresses slow TrustMap PNG loading. The TrustMap stack still loads on demand, but the kernel, Layer 1 PNGs, and Briefing snapshot begin warming after the shell is usable. When TrustMap is explicitly opened, image priority is raised.
 
 Runtime import rule:
 The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.
+
+Image prewarm rule:
+Do not force image prewarm into the critical startup path. Start prewarm after shell readiness. Warm the CyberShield Trust Kernel first, then Layer 1 PNGs and Briefing snapshot. If images remain slow, compress/resize PNG assets or add WebP/AVIF variants before adding more runtime logic.
 
 Layer 1 asset rules:
 - Layer 1 assets should not have constant red/yellow/green glow in normal state.
@@ -40,24 +44,16 @@ Layer 1 asset rules:
 Performance doctrine:
 - Load the executive shell first.
 - Do not force mobile users to pay the full TrustMap cost during startup.
+- Warm TrustMap images after the shell is usable.
 - Load the full interactive TrustMap only when requested.
+- Prioritize TrustMap images when TrustMap is explicitly opened.
 - Prefer one owned render/reapply path over stacked timers and event listeners.
-- If the TrustMap remains slow, consolidate connector rendering and reduce animated SVG/filter load before adding any more visual overlays.
 
 Stoplight trust color rule:
 - Green = Good / Strong / Allowed
 - Yellow = Needs Verification / Constrained / Moderate
 - Red = At Risk / Critical / Refused
 - Blue is neutral brand/system/fiber/AI-working state, not trust-state severity.
-
-Connector rule:
-Default connectors should resemble the white-blue fiber optic line in the CyberShield Trust Kernel image. Connectors should be drawn center-point to center-point behind rendered objects. Rendered images stay above connector lines so lines appear to terminate at object perimeters. Trust-state connector highlights may use digital fiber optic green, yellow, or red depending on selected/scenario path.
-
-Three-pane layout rule:
-TrustMap dashboard has three distinct panes: left = Operational Trust Score and executive trust context, center = Enterprise Trust Map, right = selected item breakdown. All three panes must share the same top start line and bottom stop line. The right pane must not overlap or visually swallow the center map pane.
-
-Briefing snapshot rule:
-The Briefing page TrustMap Snapshot uses assets/The Trust Map.png. The snapshot is a static executive preview. The full interactive TrustMap remains on the TrustMap tab.
 
 Required PNG assets in root assets folder:
 - assets/CyberShield Trust Kernel.png
@@ -100,4 +96,4 @@ Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
 
 Next builder first action:
-Run browser QA on V60.3.21 from a phone. Verify initial page load is faster, the TrustMap loads only when requested, the TrustMap placeholder appears instead of a frozen screen, connector jitter is reduced, and all V60.3.20 visual consistency rules still hold.
+Run browser QA on V60.3.22 from a phone. Verify the app shell remains fast, TrustMap images appear faster than V60.3.21, the kernel appears first or near-first, and no app-level slowdown returns.
