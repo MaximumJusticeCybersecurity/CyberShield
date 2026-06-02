@@ -1,37 +1,53 @@
-import './v53-trust-model-spines.js';
-import './v53-metadata-patch.js';
-import './v54-2-enterprise-trust-universe.js';
-import './v55-purpose-protocol-constraint-layer.js';
-import './v55-1-trustmap-radar-constellation.js';
-import './v55-2-trustmap-constellation-polish.js';
-import './v55-3-trustmap-registry-stabilization.js';
-import './v55-3-1-core-shield-boundary-fix.js';
-import './v55-4-trustmap-registry-consumption.js';
-import './v55-5-trustmap-css-visual-cleanup.js';
-import './v55-6-trustmap-interaction-reliability.js';
-import './v56-trust-model-score-explanations.js';
-import './v56-1-evidence-assumption-register.js';
-import './v56-2-decision-record-hardening.js';
-import './v56-3-universal-score-contract.js';
-import './v56-4-core-trust-scoring-models.js';
-import './v57-model-driven-proof-pack.js';
-import './v57-1-board-executive-narrative.js';
-import './v58-operational-trust-control-pane.js';
-import './v58-1-runtime-action-queue.js';
-import './v58-2-queue-proof-trace-linkage.js';
-import './v59-internet-trust-engine-mvp-scaffold.js';
-import './v59-1-artifact-intake-claim-table.js';
-import './v59-2-claim-model-proof-trace.js';
-import './v59-3-internet-trust-proof-pack-export-contract.js';
-import './v59-4-internet-trust-board-narrative.js';
-import './v59-5-internet-trust-qa-copy-guardrails.js';
-import './v60-trust-evidence-workbench.js';
-import './v60-1-evidence-state-transition-prototype.js';
-import './v60-2-evidence-to-score-impact-preview.js';
-import './v60-3-universal-model-trace-inspector.js';
-import './v60-3-2-show-readiness-cleanup.js';
-import './v60-3-3-first-layer-decision-brief-trustmap-snapshot.js';
-import './v60-3-17-briefing-trustmap-snapshot-image.js';
-import './v60-3-4-explicit-actionability-modal-disclosure.js';
-import './v60-3-12-trustmap-png-asset-integration.js';
-import './v60-3-13-stoplight-trust-color-and-png-path-recovery.js';
+// V60.3.21 Mobile Performance Gate for Operational Layer
+// Purpose: stop loading the heavy TrustMap chain during initial page load. Load it only when the TrustMap is opened.
+// Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
+
+let cyberShieldTrustMapStackPromise = null;
+let cyberShieldBriefingLayerPromise = null;
+
+function cyberShieldIdle(callback){
+  if('requestIdleCallback' in window) return window.requestIdleCallback(callback, { timeout: 2200 });
+  return window.setTimeout(callback, 900);
+}
+
+function cyberShieldLoadBriefingLayer(){
+  if(!cyberShieldBriefingLayerPromise){
+    cyberShieldBriefingLayerPromise = import('./v60-3-3-first-layer-decision-brief-trustmap-snapshot.js')
+      .then(() => import('./v60-3-17-briefing-trustmap-snapshot-image.js'))
+      .catch(error => console.warn('CyberShield briefing layer deferred load failed', error));
+  }
+  return cyberShieldBriefingLayerPromise;
+}
+
+function cyberShieldLoadTrustMapStack(){
+  if(!cyberShieldTrustMapStackPromise){
+    cyberShieldTrustMapStackPromise = import('./v55-4-trustmap-registry-consumption.js')
+      .then(() => import('./v60-3-12-trustmap-png-asset-integration.js'))
+      .then(() => import('./v60-3-13-stoplight-trust-color-and-png-path-recovery.js'))
+      .then(() => {
+        document.dispatchEvent(new CustomEvent('cybershield:trustmap-stack-loaded'));
+      })
+      .catch(error => console.warn('CyberShield TrustMap stack deferred load failed', error));
+  }
+  return cyberShieldTrustMapStackPromise;
+}
+
+window.CyberShieldLoadTrustMapStack = cyberShieldLoadTrustMapStack;
+window.CyberShieldLoadBriefingLayer = cyberShieldLoadBriefingLayer;
+
+document.addEventListener('click', event => {
+  const nav = event.target.closest('#mainNav button[data-view="trustmap"], [data-v6033-route="trustmap"]');
+  if(nav){
+    setTimeout(cyberShieldLoadTrustMapStack, 0);
+  }
+}, true);
+
+window.addEventListener('hashchange', () => {
+  if(location.hash === '#trustmap') cyberShieldLoadTrustMapStack();
+});
+
+cyberShieldIdle(() => {
+  const appVisible = !document.querySelector('#app')?.hidden;
+  if(appVisible) cyberShieldLoadBriefingLayer();
+  if(document.querySelector('#trustmap.active')) cyberShieldLoadTrustMapStack();
+});
