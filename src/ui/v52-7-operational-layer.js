@@ -33,3 +33,4 @@ import './v60-3-2-show-readiness-cleanup.js';
 import './v60-3-3-first-layer-decision-brief-trustmap-snapshot.js';
 import './v60-3-4-explicit-actionability-modal-disclosure.js';
 import './v60-3-10-trustmap-authoritative-render-consolidation.js';
+import './v60-3-11-trustmap-visual-qa-tuning.js';
