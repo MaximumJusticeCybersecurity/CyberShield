@@ -1,49 +1,60 @@
 CyberShield Executive OS
-Current implemented build: V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors
-Build date: 2026-05-29
+Current implemented build: V60.3.19 TrustMap View-Mode Reapply and Performance Stabilization
+Build date: 2026-06-02
 
 Purpose for bots and AI readers:
 This file provides machine-readable context for CyberShield separate from the human-facing interface.
 
-Current live build:
-CyberShield V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors.
-
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.14.
+No new top-level tabs were added for V60.3.19.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.14. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.19. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
-V60.3.14 scope rule:
-V60.3.14 is a TrustMap visual integration layer chained through V60.3.13. It blends rendered PNG canvases into the Enterprise Trust Map background, moves stoplight trust highlighting from the image rectangle to the oval containment layer, reduces Cloud/CMMC overlap, and makes connectors look like CyberShield fiber-optic trust lines.
+Current TrustMap visual stack:
+- V60.3.12 = PNG asset mapping and interaction recovery
+- V60.3.13 = stoplight trust color and PNG path recovery
+- V60.3.14 = background blend, oval highlight, asset fit, and fiber styling
+- V60.3.16 = centerline fiber connector overlay and three-pane separation
+- V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
+- V60.3.17 = Briefing TrustMap Snapshot image
+- V60.3.18 = Layer 1 neutral state and uniform hologram cube sizing
+- V60.3.19 = View-mode reapply and performance stabilization
 
-V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors:
-- adds `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js`
-- is chained through `src/ui/v60-3-13-stoplight-trust-color-and-png-path-recovery.js`
-- blends the TrustMap background toward the dark blue-black PNG canvas tone
-- moves trust highlighting from the PNG image rectangle to an oval containment layer
-- reduces the visible square-highlight artifact around rendered PNG assets
-- keeps stoplight green/yellow/red trust-state highlighting
-- expands and strengthens the oval hover/focus/selected highlight
-- adjusts Cloud and CMMC positioning to reduce overlap
-- adds fiber-optic connector styling based on the white-blue light line in the CyberShield Trust Kernel image
-- default connectors use white-blue MJC fiber-optic styling
-- trust-state connector highlights may use stoplight green, yellow, or red when applicable
-- preserves V60.3.12 movement recovery and slider behavior
-- preserves no-new-top-level-tabs rule
+V60.3.19 scope:
+V60.3.19 is a controlled recovery layer. It re-applies the final neutral Layer 1 visual state after Fit Map, Kernel View, Domain View, Object View, pan, zoom, and slider activity. It forces the CyberShield Trust Kernel PNG and Layer 1 PNGs back into the TrustMap if the base renderer re-renders old SVG visuals. It removes old image-level drop-shadow glow in normal state and throttles repeated recovery work.
+
+Known unresolved visual issues for the next builder:
+- Layer 1 hologram transparency is inconsistent. CMMC, Devices & Endpoints, and Cloud & Infrastructure appear more transparent. The preferred direction is that all Layer 1 images should appear bright and solid like the non-transparent/brighter assets, unless explicitly changed by Dr. Justice.
+- Third Parties & Vendors still appears as a square neon box and must render the same visible holographic cube size/style as the other Layer 1 assets.
+- Verify whether V60.3.19 successfully removes the old glow after Fit Map and Kernel View. If it does not, do not add another overlay layer blindly. Refactor the TrustMap render stack or consolidate visual rules.
+- The CyberShield Trust Kernel must always be visible in the TrustMap center. It should not only appear after Fit Map or Kernel View.
+- The map should not feel slow or jittery. If it does, reduce stacked event listeners and consolidate visual reapply behavior.
+
+Layer 1 asset rules:
+- Layer 1 assets should not have constant red/yellow/green glow in normal state.
+- Stoplight glow appears only on hover, focus, or selected/clicked state.
+- Click/select glow persists until another Layer 1 asset is selected.
+- All Layer 1 holographic cube images must render at the same apparent size.
+- Third Parties & Vendors must not be smaller, cropped, zoomed, or boxed differently from the others.
+- The visual priority is a bright, consistent holographic cube look across all Layer 1 assets.
 
 Stoplight trust color rule:
 - Green = Good / Strong / Allowed
 - Yellow = Needs Verification / Constrained / Moderate
 - Red = At Risk / Critical / Refused
-
-Oval highlight rule:
-The trust-state highlight belongs to the oval containment layer around the Layer 1 object, not to the rectangular PNG image canvas. Hover, focus, and selected states should show a bold stoplight oval glow. The image itself should keep its native hologram art color.
+- Blue is neutral brand/system/fiber/AI-working state, not trust-state severity.
 
 Connector rule:
-Default connectors should resemble the white-blue fiber optic line in the CyberShield Trust Kernel image. Trust-state connector highlights may use digital fiber optic green, yellow, or red depending on the scenario or selected trust path. Connectors should look illuminated and data-bearing, not like flat SVG line work.
+Default connectors should resemble the white-blue fiber optic line in the CyberShield Trust Kernel image. Connectors should be drawn center-point to center-point behind rendered objects. Rendered images stay above connector lines so lines appear to terminate at object perimeters. Trust-state connector highlights may use digital fiber optic green, yellow, or red depending on selected/scenario path.
+
+Three-pane layout rule:
+TrustMap dashboard has three distinct panes: left = Operational Trust Score and executive trust context, center = Enterprise Trust Map, right = selected item breakdown. All three panes must share the same top start line and bottom stop line. The right pane must not overlap or visually swallow the center map pane.
+
+Briefing snapshot rule:
+The Briefing page TrustMap Snapshot uses assets/The Trust Map.png. The snapshot is a static executive preview. The full interactive TrustMap remains on the TrustMap tab.
 
 Required PNG assets in root assets folder:
 - assets/CyberShield Trust Kernel.png
@@ -54,35 +65,17 @@ Required PNG assets in root assets folder:
 - assets/devices_endpoints.png
 - assets/CMMC_and_Compliance.png
 - assets/Third Parties and Vendors.png
+- assets/The Trust Map.png
 
 Non-negotiable TrustMap scope rule:
-- Do not replace the TrustMap page
-- Do not remove the left Operational Trust Score panel
-- Do not remove the right-side score area
-- Do not remove Layer 2 or Layer 3
-- Do not replace the radar / constellation environment
-- Do not override #v554World transform with CSS
-- Do not create a second movement system
-- Only map rendered PNG assets into the existing TrustMap core and Layer 1 slots
-- Trust-state colors must be stoplight green, yellow, or red only
-
-Baseline Layer 1 TrustMap assets:
-- Cloud & Infrastructure
-- Identities & Access
-- Applications & Data
-- AI Systems & Agents
-- Third Parties & Vendors
-- Devices & Endpoints
-- CMMC & Compliance
-
-Selected asset panel rule:
-The selected-asset panel belongs below the right-side selected asset score. It changes when the user hovers or focuses a Layer 1 graphical asset. It must not duplicate the base Layer 1 Domain Detail panel.
-
-Layer 1 hover/focus/selected rule:
-Hovering, focusing, or selecting any Layer 1 PNG asset must show a neon circular/oval selection ring around that asset. Clicking a Layer 1 asset keeps the ring active until another Layer 1 asset is selected. The right panel must match the selected Layer 1 asset. The ring color must be stoplight green, yellow, or red based on that asset's trust state.
-
-Score rule:
-Left score is the Operational Trust Score for the current scenario/environment. Right score is the Selected Asset Trust Score for the hovered/focused Layer 1 asset. Those scores must not be duplicated unless they intentionally represent the same metric. Selected asset score color must match the asset's stoplight trust state.
+- Do not replace the TrustMap page unless explicitly directed as a refactor.
+- Do not remove the left Operational Trust Score panel.
+- Do not remove the right-side selected asset score/detail area.
+- Do not remove Layer 2 or Layer 3.
+- Do not replace the radar / constellation environment.
+- Do not create a second movement system.
+- Trust-state colors must be stoplight green, yellow, or red only.
+- Do not make the Briefing snapshot replace the full TrustMap page.
 
 Correct information architecture:
 Briefing = Decision Brief + TrustMap Snapshot + proof summary.
@@ -99,8 +92,19 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
-Build lesson:
-For high-fidelity branded visuals, do not ask the coding assistant to invent production-grade art. Use a graphic artist or image-generation workflow for rendered visual assets. Use the assistant for integration, layout, interaction recovery, repo hygiene, source-of-truth documentation, and QA discipline. Highlight containers, not rectangular PNG canvases. Connector visuals should follow the CyberShield Trust Kernel fiber-optic light-line metaphor.
+Build lessons learned:
+- Do not ask the assistant to invent production-grade visual art when high-fidelity branded graphics are required.
+- Use a specialist graphic artist or image-generation workflow for rendered hologram assets.
+- Use the assistant for integration, layout, interaction recovery, repo hygiene, source-of-truth documentation, and QA discipline.
+- The base TrustMap renderer must own movement.
+- Rendered PNG assets must own visuals.
+- Trust-state colors must be stoplight green/yellow/red, not arbitrary asset accent colors.
+- Highlight containers, not rectangular PNG canvases.
+- Connector visuals should follow the CyberShield Trust Kernel fiber-optic light-line metaphor.
+- Controlled build layers should be narrow, explicit, and reversible.
+- Avoid broad renderer rewrites unless visual layers can no longer meet the requirement.
+- If stacked overlay layers start fighting each other, stop adding overlays and consolidate/refactor.
+- Briefing snapshot image and full TrustMap interaction are separate surfaces.
 
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistical validation, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, or takedown automation.
@@ -108,5 +112,5 @@ The current GitHub Pages build is a lightweight static advisory prototype. It is
 Overclaim prohibitions:
 Do not represent the current build as performing live monitoring, live enforcement, live payment blocking, live banking verification, live internet retrieval, live URL ingestion, live evidence retrieval, live scoring, live claim extraction, statistically validated scoring, live internet claim verification, live political validation, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notifications, live ticketing, legal determinations, CMMC certification, healthcare compliance validation, live report delivery, workflow automation, backend persistence, or live enterprise integrations.
 
-GitHub Pages browser QA required:
-After GitHub Pages deploys and the PNG assets are present, hard refresh the live prototype and reset onboarding. Open TrustMap and confirm V60.3.14 is active through the V60.3.13 chain, all eight PNG assets appear, the TrustMap background blends with PNG backgrounds, square-highlight artifacts are reduced or gone, hover/focus/selected rings are oval and stoplight colored, Cloud and CMMC no longer badly overlap, connectors look like white-blue fiber optic trust lines, selected/path connectors can highlight in stoplight trust color, map can be dragged, mouse wheel zoom works, plus/minus zoom works, Pan X/Pan Y/Zoom sliders work, Fit Map/Kernel View/Domain View/Object View work, Layer 2 and Layer 3 remain, right panel does not duplicate or clip, no new top-level tab exists, and no live-capability or statistically validated scoring overclaims appear.
+Next builder first action:
+Start with browser QA on V60.3.19. Then address Layer 1 visual consistency, especially transparent-looking assets and the Third Parties & Vendors square-box rendering. If the TrustMap remains slow or the old glow returns after view controls, consolidate the TrustMap visual stack instead of adding another overlay layer.
