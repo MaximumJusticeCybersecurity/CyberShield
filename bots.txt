@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Current implemented build: V60.3.20 Layer 1 Visual Consistency and TrustMap Stack Consolidation
+Current implemented build: V60.3.21 Mobile Load Performance Controls
 Build date: 2026-06-02
 
 Purpose for bots and AI readers:
@@ -8,12 +8,12 @@ This file provides machine-readable context for CyberShield separate from the hu
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.20.
+No new top-level tabs were added for V60.3.21.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.20. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.21. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
 
-Current TrustMap visual stack:
+Current TrustMap visual and performance stack:
 - V60.3.12 = PNG asset mapping and interaction recovery
 - V60.3.13 = stoplight trust color and PNG path recovery
 - V60.3.14 = connector trust-state preservation and chain loader
@@ -21,12 +21,13 @@ Current TrustMap visual stack:
 - V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
 - V60.3.17 = Briefing TrustMap Snapshot image
 - V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
+- V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
 
-V60.3.20 scope:
-V60.3.20 consolidates the former V60.3.18 neutral-state rules and V60.3.19 view-mode recovery rules into one debounced visual recovery module. It keeps the CyberShield Trust Kernel visible, forces Layer 1 PNGs back into their asset slots if older visuals return, makes Layer 1 assets bright and consistently sized, removes normal-state image-level drop-shadow glow, preserves stoplight oval hover/focus/selected rings, and re-applies the final visual state after TrustMap view controls, pan, zoom, and slider activity.
+V60.3.21 scope:
+V60.3.21 addresses phone QA feedback that CyberShield was slow to load and that the TrustMap still showed jitter. The heavy TrustMap stack is now dynamically imported only when the TrustMap tab or the Briefing Expand full TrustMap action is used. A lightweight placeholder appears while the TrustMap stack loads, mobile connector animations and expensive filters are reduced, and images are marked for async decode where possible.
 
-Runtime import change:
-V60.3.18 and V60.3.19 remain in the repository for audit history but are no longer imported at runtime through the V60.3.14 chain. V60.3.14 now imports V60.3.20 and preserves connector trust-state behavior only.
+Runtime import rule:
+The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.
 
 Layer 1 asset rules:
 - Layer 1 assets should not have constant red/yellow/green glow in normal state.
@@ -35,6 +36,13 @@ Layer 1 asset rules:
 - All Layer 1 holographic cube images must render at the same apparent size.
 - Third Parties & Vendors must not be smaller, cropped, zoomed, square-boxed, or styled differently from the others.
 - The visual priority is a bright, consistent holographic cube look across all Layer 1 assets.
+
+Performance doctrine:
+- Load the executive shell first.
+- Do not force mobile users to pay the full TrustMap cost during startup.
+- Load the full interactive TrustMap only when requested.
+- Prefer one owned render/reapply path over stacked timers and event listeners.
+- If the TrustMap remains slow, consolidate connector rendering and reduce animated SVG/filter load before adding any more visual overlays.
 
 Stoplight trust color rule:
 - Green = Good / Strong / Allowed
@@ -88,22 +96,8 @@ CyberShield must not show decorative scores. Every score must trace to a named, 
 Guiding principle:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
-Build lessons learned:
-- Do not ask the assistant to invent production-grade visual art when high-fidelity branded graphics are required.
-- Use a specialist graphic artist or image-generation workflow for rendered hologram assets.
-- Use the assistant for integration, layout, interaction recovery, repo hygiene, source-of-truth documentation, and QA discipline.
-- The base TrustMap renderer must own movement.
-- Rendered PNG assets must own visuals.
-- Trust-state colors must be stoplight green/yellow/red, not arbitrary asset accent colors.
-- Highlight containers, not rectangular PNG canvases.
-- Connector visuals should follow the CyberShield Trust Kernel fiber-optic light-line metaphor.
-- Controlled build layers should be narrow, explicit, and reversible.
-- Avoid broad renderer rewrites unless visual layers can no longer meet the requirement.
-- If stacked overlay layers start fighting each other, stop adding overlays and consolidate/refactor.
-- Briefing snapshot image and full TrustMap interaction are separate surfaces.
-
 Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
 
 Next builder first action:
-Run browser QA on V60.3.20. Verify the CyberShield Trust Kernel appears immediately and stays visible, all Layer 1 assets are bright and consistently sized, Third Parties & Vendors is no longer a square box, old glow does not return after view controls, and the map no longer feels slow or jittery.
+Run browser QA on V60.3.21 from a phone. Verify initial page load is faster, the TrustMap loads only when requested, the TrustMap placeholder appears instead of a frozen screen, connector jitter is reduced, and all V60.3.20 visual consistency rules still hold.
