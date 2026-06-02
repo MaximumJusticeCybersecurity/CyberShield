@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.20 Layer 1 Visual Consistency and TrustMap Stack Consolidation**
+Current build label: **V60.3.21 Mobile Load Performance Controls**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-20-layer1-visual-consistency-stack-consolidation&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-21-mobile-load-performance&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.20
+V60.3.21
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,15 +32,15 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.20.
+No new top-level tabs were added for V60.3.21.
 
-## Current implemented build: V60.3.20
+## Current implemented build: V60.3.21
 
-V60.3.20 consolidates the TrustMap visual recovery stack instead of adding another overlay bandage. It replaces the runtime imports for V60.3.18 and V60.3.19 with one debounced consolidation module: `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`.
+V60.3.21 addresses the mobile load problem reported during phone QA. The key correction is architectural: the heavy TrustMap chain is no longer loaded during initial app startup. It is deferred until the TrustMap tab or the Briefing “Expand full TrustMap” action is used.
 
-The goal is to keep the CyberShield Trust Kernel visible, keep all Layer 1 PNG assets bright and consistently sized, remove the old constant red/yellow/green image glow in normal state, fix the Third Parties & Vendors square/neon-box appearance, and reapply the final visual state after Fit Map / Kernel View / Domain View / Object View without stacking more competing event listeners.
+This is not a cosmetic patch. It is a performance gate. The app should load the executive shell and normal dashboard first, then load the full interactive TrustMap only when requested.
 
-## Current TrustMap visual stack
+## Current TrustMap visual and performance stack
 
 ```text
 V60.3.12 = PNG asset mapping and interaction recovery
@@ -50,22 +50,32 @@ V60.3.16 = centerline fiber connector overlay and three-pane separation
 V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
 V60.3.17 = Briefing TrustMap Snapshot image
 V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
+V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
 ```
 
 V60.3.18 and V60.3.19 remain in the repository for audit history but are no longer imported at runtime through the V60.3.14 chain.
 
-## V60.3.20 changes
+## V60.3.21 changes
 
-- Adds `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`
-- Updates `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js` to import V60.3.20 instead of V60.3.18 and V60.3.19
-- Consolidates Layer 1 neutral-state sizing, image brightness, and view-mode reapply behavior into one debounced module
-- Forces all Layer 1 PNGs, including Third Parties & Vendors, to render at the same apparent cube size
-- Removes normal-state image-level trust glow while preserving stoplight oval hover/focus/selected rings
-- Keeps the CyberShield Trust Kernel PNG visible in the center
-- Preserves the base TrustMap renderer as the movement owner
-- Preserves fiber connector layer, right selected-asset detail, left Operational Trust Score panel, Layer 2, and Layer 3
-- Reduces redundant event listeners from the prior stacked recovery layers
+- Updates `src/ui/v52-7-operational-layer.js` so the heavy TrustMap stack is dynamically imported only when TrustMap is opened
+- Adds `src/ui/v60-3-21-mobile-load-performance.js`
+- Shows a lightweight TrustMap loading placeholder on phones so the page does not appear frozen
+- Defers the first-layer Briefing enhancement separately from the TrustMap stack
+- Keeps the full interactive TrustMap available from the TrustMap tab and Briefing expand action
+- Reduces expensive mobile animation and filter cost for connector lines, glow effects, drop shadows, and TrustMap transitions
+- Sets image decoding behavior to async where possible
+- Preserves V60.3.20 Layer 1 visual consistency rules
 - Preserves no-new-top-level-tabs rule
+
+## Performance doctrine
+
+```text
+Load the executive shell first.
+Do not force mobile users to pay the full TrustMap cost during startup.
+Load the full interactive TrustMap only when requested.
+Prefer one owned render/reapply path over stacked timers and event listeners.
+If the TrustMap remains slow, consolidate connector rendering and reduce animated SVG/filter load before adding any more visual overlays.
+```
 
 ## Required PNG assets
 
@@ -187,34 +197,21 @@ The current public build is a static advisory prototype. It is not connected to 
 ```text
 hard refresh live prototype
 complete/reset onboarding
+confirm initial page load is noticeably faster on phone
 open Briefing
 confirm TrustMap Snapshot uses assets/The Trust Map.png
 confirm Decision Brief remains intact
-confirm Expand full TrustMap still routes to TrustMap
+confirm Expand full TrustMap routes to TrustMap and triggers the deferred TrustMap stack
 open TrustMap
-confirm CyberShield Trust Kernel appears immediately and stays visible
+confirm lightweight TrustMap loading placeholder appears briefly instead of a frozen screen
+confirm CyberShield Trust Kernel appears and stays visible after the TrustMap stack loads
 confirm all eight PNGs appear from assets/
-confirm all seven Layer 1 assets are evenly distributed
-confirm all Layer 1 holographic cubes render at the same apparent size
+confirm all seven Layer 1 assets are evenly distributed and same apparent cube size
 confirm no constant red/yellow/green glow in normal Layer 1 state
-confirm old glow does not return after Fit Map
-confirm old glow does not return after Kernel View
-confirm hover/focus/selected rings are oval and stoplight colored
-confirm selected glow persists until another Layer 1 asset is selected
-confirm Third Parties & Vendors is no longer rendered as a square box or different-sized cube
-confirm CMMC, Devices & Endpoints, Cloud & Infrastructure are not faded compared to the other assets
-confirm connectors draw center-to-center behind the objects
-confirm rendered objects sit above connector lines
-confirm connectors look like white-blue fiber optic trust lines
-confirm selected/path connectors can highlight in stoplight trust color
-confirm left, center, and right panes share the same top and bottom alignment
-confirm right pane does not overlap the center Enterprise Trust Map
-confirm hovering/focusing CyberShield Trust Kernel updates the right pane
-confirm Trust Kernel right-pane score matches the Operational Trust Score
-confirm Top Trust Break Drivers use red/red/yellow/yellow and no blue
-confirm Active Risks use red/red/red/yellow and no blue
+confirm old glow does not return after Fit Map or Kernel View
+confirm mobile connector animation/filter cost is reduced
 confirm map drag, wheel zoom, +/− zoom, sliders, Fit Map, Kernel View, Domain View, and Object View still work
-confirm map does not feel slow or jittery
+confirm map feels less slow or jittery on phone
 confirm no new top-level tab exists
-confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
+confirm no overclaims appear
 ```
