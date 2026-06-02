@@ -2,6 +2,8 @@
 // Purpose: stop loading the heavy TrustMap chain during initial page load. Load it only when the TrustMap is opened.
 // Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
 
+import './v60-3-21-mobile-load-performance.js';
+
 let cyberShieldTrustMapStackPromise = null;
 let cyberShieldBriefingLayerPromise = null;
 
