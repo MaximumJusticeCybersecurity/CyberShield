@@ -1,23 +1,23 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
-Date: 2026-05-29
-Current implemented build: V53 Trust Model and Deep Scenario Spine Build
+Date: 2026-06-02
+Current implemented build: V60.3.23 TrustMap Asset Manifest and Intake Contract
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v53-trust-model-spines&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-23-trustmap-asset-manifest&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-V53 reframes CyberShield as a Trust Model: CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.  V53 adds six deep scenario spines, prioritizes CMMC, adds scenario switching, CMMC Yes/No/I don’t know questions, TrustMap trust propagation paths, Decision Records, scenario-driven reports, score-improvement guidance, and the “How CyberShield Determines Trust” explanation.
+V60.3.23 marks the transition from reactive TrustMap visual patching to an engineered version sequence.  It preserves the faster V60.3.21/V60.3.22 app shell and image-prewarm behavior, while adding a governed TrustMap asset manifest and future intake contract for rebuilt Layer 1 assets.
 
 ## Release chain status
 
-V53 is now the current implemented build.
+V60.3.23 is now the current implemented build.
 
-README, bots.txt, governance-summary.json, builder-version-log, this handoff, and Settings/admin metadata should identify V53 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
+Governance-summary, README, bots.txt, builder-version-log, and this handoff identify V60.3.23 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
 
 ## Required builder reading order
 
@@ -30,66 +30,47 @@ README, bots.txt, governance-summary.json, builder-version-log, this handoff, an
 7. `docs/builder-requirements-acceptance-checklist.md`
 8. `docs/recurring-build-issues-and-regression-watchlist.md`
 9. `docs/builder-lessons-learned.md`
-10. `docs/v52-v59-control-plane-build-plan.md`
+10. `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
 11. `docs/builder-version-log.md`
 12. `docs/release-checklist.md`
 13. `docs/qa-checklist.md`
 14. this handoff and job docket
 
-## What changed in V53
+## What changed in the V60.3.20 through V60.3.23 sequence
 
-- Added `src/ui/v53-trust-model-spines.js`
-- Added `src/ui/v53-metadata-patch.js`
-- Converted `src/ui/v52-7-operational-layer.js` into a compatibility loader for V53
-- Reframed first screen as Trust Model Dashboard
-- Added six dashboard concepts: Action, Information, Trust Status, Decision, Owner, Consequence
-- Added CMMC Applicability Trust Check
-- Added CMMC Readiness Trust Check
-- Added Community Bank Payment Trust Verification
-- Added Manufacturing Vendor AI Access Trust
-- Added Healthcare Data / Vendor / AI Trust
-- Added AI Output Trust
-- Added CMMC Yes / No / I don’t know question branch
-- Added scenario selector with CMMC first
-- Added TrustMap trust propagation path view
-- Added Decision Record content and scenario report output
-- Added score-improvement guidance
-- Added “How CyberShield Determines Trust” explanation
-- Kept reports contact-gated for download/print
-- Kept email disabled because no backend integration exists
-- Added no new top-level tabs
+### V60.3.20
 
-## Trust Model doctrine
+- Added `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`
+- Updated `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js`
+- Removed V60.3.18 and V60.3.19 from the active runtime chain
+- Consolidated Layer 1 neutral visual recovery and view-mode reapply behavior
+- Preserved Trust Kernel visibility and Layer 1 consistency rules
 
-CyberShield evaluates whether the information behind a critical action can be trusted before the business acts.
+### V60.3.21
 
-Executives rarely have perfect information. CyberShield is not about perfect evidence. Evidence supports the Trust Model, but evidence volume is not the point. Information reliability, source confidence, owner accountability, verification path, and consequence if wrong are the point.
+- Added `src/ui/v60-3-21-mobile-load-performance.js`
+- Updated `src/ui/v52-7-operational-layer.js` so the heavy TrustMap stack loads only when TrustMap is requested
+- Reduced mobile animation/filter cost
+- Added lightweight loading placeholder behavior
+- Preserved full TrustMap availability from TrustMap tab and Briefing expansion path
 
-CyberShield is intentionally cross-industry. The constraint is coherence under Trust Before Action, not narrowness.
+### V60.3.22
 
-## Six V53 scenario spines
+- Added `src/ui/v60-3-22-trustmap-image-prewarm.js`
+- Added controlled post-shell TrustMap image prewarm
+- Prioritized visible TrustMap images when the TrustMap is explicitly opened
+- Preserved the fast shell architecture
 
-1. CMMC Applicability Trust Check
-2. CMMC Readiness Trust Check
-3. Community Bank Payment Trust Verification
-4. Manufacturing Vendor AI Access Trust
-5. Healthcare Data / Vendor / AI Trust
-6. AI Output Trust
+### V60.3.23
 
-## Known limitations from V53
+- Added `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
+- Added `data/trustmap/v60-3-23-asset-manifest.json`
+- Added `src/ui/v60-3-23-trustmap-asset-manifest-loader.js`
+- Updated `src/ui/v60-3-22-trustmap-image-prewarm.js` to prefer manifest paths and fall back to the V60.3.22 static asset list
+- Updated `src/ui/v52-7-operational-layer.js` to load the manifest before image prewarm
+- Created governed future asset slots for WebP/PNG black-background all-blue cube assets
 
-- V53 behavior is layered over the current V52 app shell, not a full app rewrite
-- TrustMap visual objects remain prototype-grade
-- CSS remains inline or injected instead of extracted to `assets/css/styles.css`
-- Reports download as text files, not branded PDFs
-- Contact capture is client-side only and is not yet stored or emailed
-- CMMC guidance is advisory and does not represent legal advice, certification, or assessment outcome
-- Healthcare scenario guidance is advisory and does not represent compliance validation
-- Model registry remains scaffold-level and demo-directional
-- Scoring is not statistically validated
-- Hands-on QA in Firefox, Brave, and Android should still be performed after GitHub Pages deploys
-
-## User-facing navigation
+## Current user-facing navigation
 
 - Briefing
 - TrustMap
@@ -99,40 +80,78 @@ CyberShield is intentionally cross-industry. The constraint is coherence under T
 - Architecture
 - Settings
 
-No new top-level tabs were added for V53.
+No new top-level tabs were added.
+
+## Current asset doctrine
+
+The current PNG files remain valid fallbacks:
+
+- `assets/CyberShield Trust Kernel.png`
+- `assets/cloud_infrastructure.png`
+- `assets/identities_access.png`
+- `assets/applications_data.png`
+- `assets/AI_systems_and_Agents.png`
+- `assets/devices_endpoints.png`
+- `assets/CMMC_and_Compliance.png`
+- `assets/Third Parties and Vendors.png`
+- `assets/The Trust Map.png`
+
+Future rebuilt assets should enter through:
+
+- `data/trustmap/v60-3-23-asset-manifest.json`
+- optional WebP paths under `assets/trustmap/v60-3-23/`
+- PNG fallback paths under `assets/trustmap/v60-3-23/`
+
+## Future asset intake rules
+
+1. Use one locked template for canvas size, cube scale, camera angle, lighting, and margins.
+2. Use black or near-black backgrounds.
+3. Keep base art neutral blue/white/black.
+4. Green/yellow/red remain UI trust-state overlays only.
+5. Provide web-ready PNG and preferably WebP variants.
+6. Update the asset manifest when files are added.
+7. Do not solve oversized or inconsistent assets with more JavaScript.
 
 ## Current next-build doctrine
 
-V54 should stabilize and polish V53, not expand recklessly.
+The next build should be **V60.3.24 TrustMap Render Lifecycle Controller**.
 
-Priority V54 work:
+Priority V60.3.24 work:
 
-- verify V53 behavior on Firefox, Brave, desktop, and Android
-- extract V53 injected CSS into a real stylesheet
-- turn scenario spines into JSON or a dedicated data registry
-- improve TrustMap path visuals and status badges
-- refine CMMC applicability and readiness scoring language with authoritative references
-- improve report design toward MJC letterhead, board-ready output, and signature-ready review flow
-- prepare board-ready Executive Oversight Report as a later polished artifact
-- keep email, CRM, CMMC certification, healthcare compliance validation, and live enforcement claims disabled unless actually implemented
+- Introduce one named lifecycle controller for TrustMap open, asset-manifest-loaded, images-prewarmed, map-rendered, view-mode-change, and visual-stabilized events
+- Reduce scattered delayed timers and reapply calls
+- Do not rewrite the TrustMap renderer
+- Do not add visual overlays
+- Preserve phone shell speed
+- Preserve manifest-backed prewarm
+- Preserve no-new-top-level-tabs rule
+
+V60.3.25 should wait until new optimized artwork or WebP/AVIF variants exist.
+
+## Known limitations from V60.3.23
+
+- Hands-on phone QA is still required after GitHub Pages deploys.
+- Current image files may remain large or visually inconsistent until rebuilt by the asset creator.
+- V60.3.23 creates future manifest slots but does not add the new rebuilt black-background all-blue cube assets.
+- TrustMap still has multiple historical enhancement modules and delayed timers.  V60.3.24 should reduce that with lifecycle control.
+- App uses a static advisory prototype architecture, not live integrations.
 
 ## Prototype boundary
 
-The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, or production agent enforcement systems.
+The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, live scoring, live claim extraction, statistical validation, backend persistence, workflow automation, notifications, or production agent enforcement systems.
 
-Do not represent the current build as performing live enforcement, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, or live enterprise integrations.
+Do not represent the current build as performing live enforcement, live takedown automation, live marketplace scanning, live ad-platform enforcement, live identity verification, live CRM sync, live notification/ticketing, legal determinations, CMMC certification, healthcare compliance validation, live scoring, live internet retrieval, or live enterprise integrations.
 
 ## What the successor should do first
 
-1. Read the required builder files above
-2. Run or manually perform release-chain check
-3. Open V53 on GitHub Pages after deployment
-4. Test guided onboarding from reset URL
-5. Test CMMC Applicability and CMMC Readiness scenarios first
-6. Test scenario switching after onboarding
-7. Test Trust Model Dashboard, TrustMap path, Decision Record, scenario reports, contact gate, download, and print
-8. Test Android, Firefox, and Brave readability
-9. Verify no executive-facing build labels appear outside Settings/admin context
-10. Continue V54 stabilization, stylesheet cleanup, data registry extraction, and branded report-output build
-
-This file must be updated after every future material build.
+1. Read the required builder files above.
+2. Run release-chain check: governance-summary, README, bots, builder log, and this handoff must agree on V60.3.23.
+3. Open the V60.3.23 reset URL after GitHub Pages deploys.
+4. Test guided onboarding.
+5. Confirm app shell remains fast on phone.
+6. Confirm asset manifest loads or gracefully falls back.
+7. Confirm current PNG assets still load.
+8. Confirm manifest-backed prewarm does not slow startup.
+9. Confirm no new top-level tab exists.
+10. Confirm no live capability overclaims appear.
+11. Build V60.3.24 lifecycle controller only after QA confirms V60.3.23 is stable.
