@@ -1,8 +1,8 @@
-// V60.3.22 TrustMap Image Prewarm
-// Purpose: keep the faster V60.3.21 app shell while warming TrustMap PNG assets after the shell is usable so images do not load late when TrustMap opens.
-// Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
+// V60.3.22/V60.3.23 TrustMap Image Prewarm
+// Purpose: keep the faster shell while warming TrustMap image assets after the shell is usable. Prefer the governed V60.3.23 asset manifest when available.
+// Boundary: static advisory prototype only. No live scoring, live retrieval beyond static repo JSON/assets, workflow automation, enforcement, or backend persistence.
 
-const V60322_TRUSTMAP_IMAGE_PATHS = [
+const V60322_FALLBACK_TRUSTMAP_IMAGE_PATHS = [
   'assets/CyberShield%20Trust%20Kernel.png',
   'assets/cloud_infrastructure.png',
   'assets/identities_access.png',
@@ -16,6 +16,8 @@ const V60322_TRUSTMAP_IMAGE_PATHS = [
 
 let v60322Started = false;
 let v60322Complete = false;
+let v60322ManifestUsed = false;
+let v60322LastPathCount = V60322_FALLBACK_TRUSTMAP_IMAGE_PATHS.length;
 
 function v60322$(selector, root = document){ return root.querySelector(selector); }
 
@@ -32,6 +34,25 @@ function v60322AddPreconnect(){
   preloadMarker.name = 'cybershield-trustmap-image-prewarm';
   preloadMarker.content = 'active';
   head.appendChild(preloadMarker);
+}
+
+async function v60322GetPaths(){
+  const api = window.CyberShieldTrustMapAssetManifestV60323Api;
+  if(api?.getPrewarmPaths){
+    try{
+      const paths = await api.getPrewarmPaths();
+      if(Array.isArray(paths) && paths.length){
+        v60322ManifestUsed = Boolean(window.CyberShieldTrustMapAssetManifestV60323);
+        v60322LastPathCount = paths.length;
+        return paths;
+      }
+    }catch(error){
+      console.warn('CyberShield TrustMap manifest prewarm path lookup failed; using fallback paths.', error);
+    }
+  }
+  v60322ManifestUsed = false;
+  v60322LastPathCount = V60322_FALLBACK_TRUSTMAP_IMAGE_PATHS.length;
+  return V60322_FALLBACK_TRUSTMAP_IMAGE_PATHS;
 }
 
 function v60322WarmOne(src, priority = 'low'){
@@ -54,16 +75,17 @@ async function v60322WarmSequential(paths, priority){
   }
 }
 
-function v60322StartPrewarm(reason = 'idle'){
+async function v60322StartPrewarm(reason = 'idle'){
   if(v60322Started) return;
   v60322Started = true;
   v60322AddPreconnect();
-  const [kernel, ...rest] = V60322_TRUSTMAP_IMAGE_PATHS;
+  const paths = await v60322GetPaths();
+  const [kernel, ...rest] = paths;
   v60322WarmOne(kernel, reason === 'trustmap-request' ? 'high' : 'auto')
     .then(() => v60322WarmSequential(rest, reason === 'trustmap-request' ? 'high' : 'low'))
     .finally(() => {
       v60322Complete = true;
-      document.dispatchEvent(new CustomEvent('cybershield:trustmap-images-prewarmed', { detail:{ reason } }));
+      document.dispatchEvent(new CustomEvent('cybershield:trustmap-images-prewarmed', { detail:{ reason, manifest_used:v60322ManifestUsed, image_count:v60322LastPathCount } }));
     });
 }
 
@@ -81,10 +103,11 @@ function v60322MarkMeta(){
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
     parsed.trustmap_image_prewarm = {
-      build:'V60.3.22 TrustMap Image Prewarm',
+      build:'V60.3.23 TrustMap Asset Manifest and Image Prewarm Integration',
       status:v60322Complete ? 'prewarm_complete_or_attempted' : v60322Started ? 'prewarm_started' : 'prewarm_waiting',
-      rule:'Warm the TrustMap kernel, Layer 1 PNGs, and Briefing snapshot after the shell is usable, and raise priority when TrustMap is explicitly requested.',
-      image_count:V60322_TRUSTMAP_IMAGE_PATHS.length,
+      rule:'Warm TrustMap images after shell usability. Prefer the V60.3.23 governed asset manifest and fall back to the V60.3.22 static asset list.',
+      manifest_used:v60322ManifestUsed,
+      image_count:v60322LastPathCount,
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
@@ -106,6 +129,7 @@ function v60322Handlers(){
     v60322PrioritizeVisibleTrustMapImages();
     setTimeout(v60322MarkMeta, 500);
   });
+  document.addEventListener('cybershield:trustmap-asset-manifest-loaded', () => setTimeout(v60322MarkMeta, 250));
 }
 
 v60322Handlers();
