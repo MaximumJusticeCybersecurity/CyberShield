@@ -1,14 +1,14 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.21 Mobile Load Performance Controls",
+  "current_implemented_build": "V60.3.22 TrustMap Image Prewarm",
   "build_date": "2026-06-02",
-  "patch_type": "Mobile load performance gate after phone QA feedback",
-  "release_chain_status": "V60.3.21 is the current implemented build. It defers the heavy TrustMap stack until the TrustMap is requested, adds a lightweight loading placeholder, and reduces mobile animation/filter cost.",
+  "patch_type": "TrustMap PNG image prewarm after mobile performance gate",
+  "release_chain_status": "V60.3.22 is the current implemented build. It keeps the V60.3.21 fast shell and warms TrustMap PNG assets after shell readiness so images appear faster when TrustMap opens.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-21-mobile-load-performance&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-22-trustmap-image-prewarm&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.21. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.22. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
   "trustmap_visual_and_performance_stack": {
     "v60_3_12": "PNG asset mapping and interaction recovery",
     "v60_3_13": "Stoplight trust color and PNG path recovery",
@@ -17,28 +17,32 @@
     "v60_3_16_1": "Trust Kernel right-panel detail and stoplight-only risk rows",
     "v60_3_17": "Briefing TrustMap Snapshot image",
     "v60_3_20": "Consolidated Layer 1 visual consistency and view-mode recovery",
-    "v60_3_21": "Mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction"
+    "v60_3_21": "Mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction",
+    "v60_3_22": "TrustMap PNG image prewarm after shell readiness"
   },
   "runtime_import_rule": "The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.",
+  "image_prewarm_rule": "Do not force image prewarm into the critical startup path. Start prewarm after shell readiness. Warm the CyberShield Trust Kernel first, then Layer 1 PNGs and Briefing snapshot. If images remain slow, compress/resize PNG assets or add WebP/AVIF variants before adding more runtime logic.",
   "performance_doctrine": [
     "Load the executive shell first.",
     "Do not force mobile users to pay the full TrustMap cost during startup.",
+    "Warm TrustMap images after the shell is usable.",
     "Load the full interactive TrustMap only when requested.",
+    "Prioritize TrustMap images when TrustMap is explicitly opened.",
     "Prefer one owned render/reapply path over stacked timers and event listeners.",
-    "If the TrustMap remains slow, consolidate connector rendering and reduce animated SVG/filter load before adding visual overlays."
+    "If the TrustMap remains slow, compress/resize PNG assets or convert them to WebP/AVIF before adding more runtime logic."
   ],
   "retired_runtime_layers": {
     "v60_3_18": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain.",
     "v60_3_19": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain."
   },
-  "v60_3_21_changes": [
-    "Updates src/ui/v52-7-operational-layer.js so the heavy TrustMap stack is dynamically imported only when TrustMap is opened",
-    "Adds src/ui/v60-3-21-mobile-load-performance.js",
-    "Shows a lightweight TrustMap loading placeholder instead of a frozen screen",
-    "Defers the first-layer Briefing enhancement separately from the TrustMap stack",
-    "Reduces expensive mobile animation and filter cost for connector lines, glow effects, drop shadows, and TrustMap transitions",
-    "Sets image decoding behavior to async where possible",
-    "Preserves V60.3.20 Layer 1 visual consistency rules",
+  "v60_3_22_changes": [
+    "Adds src/ui/v60-3-22-trustmap-image-prewarm.js",
+    "Updates src/ui/v52-7-operational-layer.js to import the image prewarm module",
+    "Preserves V60.3.21 lazy TrustMap stack loading",
+    "Starts TrustMap PNG prewarm after the app shell is usable",
+    "Prioritizes TrustMap images when the user opens TrustMap or expands full TrustMap from Briefing",
+    "Warms the CyberShield Trust Kernel first, then Layer 1 PNGs and the Briefing snapshot",
+    "Keeps image decoding async where possible",
     "Preserves no-new-top-level-tabs rule"
   ],
   "required_png_asset_paths": [
@@ -78,8 +82,6 @@
     "red": "At Risk / Critical / Refused",
     "principle": "Blue is neutral brand/system/fiber/AI-working state, not trust-state severity."
   },
-  "connector_rule": "Default connectors should resemble white-blue fiber optic trust lines, draw center-to-center behind rendered objects, and allow selected/path highlights in stoplight green, yellow, or red.",
-  "three_pane_layout_rule": "Left = Operational Trust Score and executive trust context. Center = Enterprise Trust Map. Right = selected item breakdown. All panes share top and bottom alignment and the right pane must not overlap the center pane.",
   "briefing_snapshot_rule": "The Briefing page TrustMap Snapshot uses assets/The Trust Map.png as a static executive preview. The full interactive TrustMap remains on the TrustMap tab.",
   "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context. Settings owns build/version/governance/prototype metadata.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
@@ -87,19 +89,16 @@
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the V60.3.21 test URL",
+    "Hard refresh the V60.3.22 test URL",
     "Complete or reset onboarding",
-    "Verify initial page load is noticeably faster on phone",
-    "Open Briefing and confirm TrustMap Snapshot uses assets/The Trust Map.png",
-    "Confirm Expand full TrustMap routes to TrustMap and triggers the deferred TrustMap stack",
-    "Open TrustMap and confirm lightweight placeholder appears instead of a frozen screen",
-    "Verify the CyberShield Trust Kernel appears and stays visible after the TrustMap stack loads",
-    "Verify all eight PNGs load from assets or accepted fallback paths",
-    "Verify all seven Layer 1 assets are evenly distributed and same apparent cube size",
-    "Verify Third Parties & Vendors is no longer square-boxed or visually different",
-    "Verify no constant red/yellow/green glow in normal Layer 1 state",
-    "Verify old glow does not return after TrustMap view controls",
-    "Verify map drag, wheel zoom, buttons, sliders, and view modes still work",
-    "Verify map feels less slow or jittery on phone"
+    "Verify initial app shell remains fast on phone",
+    "Wait briefly after shell load so image prewarm can begin",
+    "Open TrustMap and confirm TrustMap images appear faster than V60.3.21",
+    "Verify CyberShield Trust Kernel appears first or near-first",
+    "Verify all Layer 1 PNGs appear from assets",
+    "Verify Briefing snapshot still uses assets/The Trust Map.png",
+    "Verify no app-level slowdown returns",
+    "Verify no new top-level tab exists",
+    "Verify no overclaims appear"
   ]
 }
