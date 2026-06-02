@@ -1,28 +1,46 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.20 Layer 1 Visual Consistency and TrustMap Stack Consolidation",
+  "current_implemented_build": "V60.3.21 Mobile Load Performance Controls",
   "build_date": "2026-06-02",
-  "patch_type": "TrustMap visual stack consolidation after V60.3.19",
-  "release_chain_status": "V60.3.20 is the current implemented build. It consolidates the previous Layer 1 neutral-state and view-mode recovery behavior into one debounced module instead of stacking additional overlay layers.",
+  "patch_type": "Mobile load performance gate after phone QA feedback",
+  "release_chain_status": "V60.3.21 is the current implemented build. It defers the heavy TrustMap stack until the TrustMap is requested, adds a lightweight loading placeholder, and reduces mobile animation/filter cost.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-20-layer1-visual-consistency-stack-consolidation&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-21-mobile-load-performance&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.20. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
-  "trustmap_visual_stack": {
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.21. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "trustmap_visual_and_performance_stack": {
     "v60_3_12": "PNG asset mapping and interaction recovery",
     "v60_3_13": "Stoplight trust color and PNG path recovery",
     "v60_3_14": "Connector trust-state preservation and chain loader",
     "v60_3_16": "Centerline fiber connector overlay and three-pane separation",
     "v60_3_16_1": "Trust Kernel right-panel detail and stoplight-only risk rows",
     "v60_3_17": "Briefing TrustMap Snapshot image",
-    "v60_3_20": "Consolidated Layer 1 visual consistency and view-mode recovery"
+    "v60_3_20": "Consolidated Layer 1 visual consistency and view-mode recovery",
+    "v60_3_21": "Mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction"
   },
+  "runtime_import_rule": "The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.",
+  "performance_doctrine": [
+    "Load the executive shell first.",
+    "Do not force mobile users to pay the full TrustMap cost during startup.",
+    "Load the full interactive TrustMap only when requested.",
+    "Prefer one owned render/reapply path over stacked timers and event listeners.",
+    "If the TrustMap remains slow, consolidate connector rendering and reduce animated SVG/filter load before adding visual overlays."
+  ],
   "retired_runtime_layers": {
     "v60_3_18": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain.",
     "v60_3_19": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain."
   },
-  "v60_3_20_scope_rule": "V60.3.20 owns one debounced recovery layer for Layer 1 neutral brightness, uniform cube size, Third Parties sizing, Trust Kernel visibility, and post-view-mode visual recovery. It does not create a new movement system.",
+  "v60_3_21_changes": [
+    "Updates src/ui/v52-7-operational-layer.js so the heavy TrustMap stack is dynamically imported only when TrustMap is opened",
+    "Adds src/ui/v60-3-21-mobile-load-performance.js",
+    "Shows a lightweight TrustMap loading placeholder instead of a frozen screen",
+    "Defers the first-layer Briefing enhancement separately from the TrustMap stack",
+    "Reduces expensive mobile animation and filter cost for connector lines, glow effects, drop shadows, and TrustMap transitions",
+    "Sets image decoding behavior to async where possible",
+    "Preserves V60.3.20 Layer 1 visual consistency rules",
+    "Preserves no-new-top-level-tabs rule"
+  ],
   "required_png_asset_paths": [
     "assets/CyberShield Trust Kernel.png",
     "assets/cloud_infrastructure.png",
@@ -33,16 +51,6 @@
     "assets/CMMC_and_Compliance.png",
     "assets/Third Parties and Vendors.png",
     "assets/The Trust Map.png"
-  ],
-  "accepted_png_filename_variants": [
-    "CyberShield Trust Kernel.png",
-    "cloud_infrastructure.png",
-    "identities_access.png",
-    "applications_data.png",
-    "AI_systems_and_Agents.png",
-    "devices_endpoints.png",
-    "CMMC_and_Compliance.png",
-    "Third Parties and Vendors.png"
   ],
   "non_negotiable_trustmap_scope": [
     "Do not replace the TrustMap page",
@@ -76,30 +84,22 @@
   "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context. Settings owns build/version/governance/prototype metadata.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
   "model_maturity_rule": "CyberShield scoring models are Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models. Default weights are calibratable and not authoritative until validated through test scenarios, expert review, red-team attempts, and real-world use cases.",
-  "v60_3_20_changes": [
-    "Adds src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js",
-    "Updates src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js to import V60.3.20 instead of V60.3.18 and V60.3.19",
-    "Consolidates Layer 1 neutral visual consistency and view-mode recovery into one debounced module",
-    "Forces the CyberShield Trust Kernel PNG and Layer 1 PNGs back into the TrustMap when older visuals return",
-    "Forces all Layer 1 PNGs, including Third Parties & Vendors, to the same apparent cube size",
-    "Removes normal-state image-level trust glow while preserving stoplight oval hover/focus/selected rings",
-    "Reduces redundant event listeners from the previous stacked visual recovery layers",
-    "Preserves no-new-top-level-tabs rule"
-  ],
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the V60.3.20 test URL",
+    "Hard refresh the V60.3.21 test URL",
     "Complete or reset onboarding",
-    "Verify Briefing snapshot uses assets/The Trust Map.png",
-    "Open TrustMap and verify the CyberShield Trust Kernel appears immediately and stays visible",
+    "Verify initial page load is noticeably faster on phone",
+    "Open Briefing and confirm TrustMap Snapshot uses assets/The Trust Map.png",
+    "Confirm Expand full TrustMap routes to TrustMap and triggers the deferred TrustMap stack",
+    "Open TrustMap and confirm lightweight placeholder appears instead of a frozen screen",
+    "Verify the CyberShield Trust Kernel appears and stays visible after the TrustMap stack loads",
     "Verify all eight PNGs load from assets or accepted fallback paths",
-    "Verify all seven Layer 1 assets are evenly distributed and the same apparent cube size",
+    "Verify all seven Layer 1 assets are evenly distributed and same apparent cube size",
     "Verify Third Parties & Vendors is no longer square-boxed or visually different",
-    "Verify CMMC, Devices & Endpoints, and Cloud & Infrastructure are not faded compared to other assets",
     "Verify no constant red/yellow/green glow in normal Layer 1 state",
     "Verify old glow does not return after TrustMap view controls",
     "Verify map drag, wheel zoom, buttons, sliders, and view modes still work",
-    "Verify map does not feel slow or jittery"
+    "Verify map feels less slow or jittery on phone"
   ]
 }
