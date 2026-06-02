@@ -1,8 +1,9 @@
-// V60.3.21 Mobile Performance Gate for Operational Layer
-// Purpose: stop loading the heavy TrustMap chain during initial page load. Load it only when the TrustMap is opened.
+// V60.3.22 Mobile Performance Gate and TrustMap Image Prewarm
+// Purpose: keep the faster app shell while warming TrustMap PNG assets after the shell is usable. Load the heavy TrustMap stack only when TrustMap is opened.
 // Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
 
 import './v60-3-21-mobile-load-performance.js';
+import './v60-3-22-trustmap-image-prewarm.js';
 
 let cyberShieldTrustMapStackPromise = null;
 let cyberShieldBriefingLayerPromise = null;
