@@ -1,7 +1,7 @@
-# V60.3.23 to V60.3.30 Engineering Roadmap
+# V60.3.23 to V60.3.31 Engineering Roadmap
 
 Date: 2026-06-02
-Current baseline: V60.3.22 TrustMap Image Prewarm
+Current baseline: V60.3.23 TrustMap Asset Manifest and Intake Contract
 
 ## Purpose
 
@@ -18,10 +18,11 @@ This roadmap stops reactive patching and defines the next CyberShield build sequ
 7. Keep model/scoring work registry-driven.
 8. Update README, bots.txt, governance-summary.json, builder-version-log, and successor handoff after material changes.
 9. Do not claim live integrations, live retrieval, live scoring, live enforcement, certification, or compliance determination.
+10. Treat slow current images as an asset-weight problem, not an app architecture problem, unless fresh QA proves otherwise.
 
 ## V60.3.23: TrustMap Asset Manifest and Intake Contract
 
-Status: build now.
+Status: built.
 
 Goal:
 Create a formal asset manifest so future rebuilt Layer 1 assets can be added cleanly without hardcoded filename patches.
@@ -37,6 +38,9 @@ Acceptance:
 - TrustMap images still prewarm.
 - Current assets still load.
 - Future black-background all-blue cube assets have a governed drop-in path.
+
+QA status:
+User phone QA reported that the app runs okay and the shell is faster.  Current images remain slow/low because of file size, but that is being handled through asset optimization outside the app code.
 
 ## V60.3.24: TrustMap Render Lifecycle Controller
 
@@ -157,6 +161,38 @@ Acceptance:
 - Next builder can understand what changed, what remains, and where to start.
 - Version labels are aligned.
 - No source-of-truth drift.
+
+## V60.3.31: Integrating the World's Best Map Maker
+
+Status: earmarked only.  Do not build until the user provides the details.
+
+Working title:
+Integrating the World's Best Map Maker, also referred to as Incorporating the World's Best Map Maker.
+
+Known intent:
+This is the final earmarked version in this roadmap.  It is expected to integrate advanced mapmaking doctrine into CyberShield so the TrustMap does not merely display controls, assets, or scores, but teaches the user how to read operational trust as a map.
+
+Current conceptual anchors:
+- CyberShield itself is a map, not merely a dashboard with a map tab.
+- TrustMap is the visual demonstration of the CyberShield trust formula.
+- Prior mapmaking inspirations include Minard, John Snow, and Harry Beck.
+- The future requirement is expected to incorporate the user's forthcoming definition of “the world's best map maker.”
+
+Do-not-build constraints:
+- Do not guess the mapmaker or the method.
+- Do not implement code before the user provides the source material and design intent.
+- Do not replace the TrustMap from scratch without explicit approval.
+- Do not add a new top-level tab.
+- Do not reduce CyberShield to a decorative visualization.
+
+Likely future output:
+- A formal mapmaking doctrine document.
+- TrustMap reading rules.
+- Visual grammar refinements.
+- Potential changes to labeling, layering, legend, orientation, path emphasis, consequence representation, and executive map literacy.
+- Integration into TrustMap, Briefing, Proof Pack, and Architecture without creating a separate product surface.
+
+Acceptance will be defined later after user input.
 
 ## Known dependency: rebuilt Layer 1 assets
 
