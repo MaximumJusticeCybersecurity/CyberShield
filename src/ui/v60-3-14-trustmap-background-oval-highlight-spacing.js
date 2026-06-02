@@ -1,3 +1,6 @@
+import './v60-3-16-trustmap-centerline-fiber-connectors-and-pane-grid.js';
+import './v60-3-16-1-trust-kernel-detail-and-stoplight-risk-rows.js';
+
 // V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors
 // Purpose: blend rendered PNG canvases with the TrustMap background, make stoplight highlights oval instead of square, reduce Cloud/CMMC overlap, and make connectors look like CyberShield fiber-optic trust lines.
 // Boundary: static advisory prototype only. No live scoring, evidence retrieval, workflow automation, or enforcement.
@@ -213,14 +216,12 @@ function v60314MarkMeta(){
   if(!payload) return;
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
-    parsed.build = 'V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors';
-    parsed.version = 'V60.3.14';
-    parsed.previous_operational_build = 'V60.3.13 Stoplight Trust Color and PNG Path Recovery';
-    parsed.trustmap_background_oval_spacing = {
-      status:'active_visual_tuning_layer',
-      rule:'Blend PNG canvases with TrustMap background, keep Layer 1 normal state neutral, move trust highlight to hover/focus/selected oval containment layer, render connectors as CyberShield fiber-optic trust lines, and apply Third Parties & Vendors asset-fit override.',
-      connector_rule:'Default connectors use white-blue fiber-optic styling. Trust-state connector highlights may use stoplight green, yellow, or red.',
-      asset_fit_rule:'Third Parties & Vendors uses a smaller asset fit because its rendered content fills more of the PNG canvas than the other six Layer 1 images.',
+    parsed.build = 'V60.3.16 TrustMap Centerline Fiber Connectors, Three-Pane Separation, Trust Kernel Detail, and Stoplight Risk Rows';
+    parsed.version = 'V60.3.16';
+    parsed.previous_operational_build = 'V60.3.15 Layer 1 Equal Ring Distribution';
+    parsed.trustmap_v60_3_16_chain = {
+      status:'active_chained_visual_layers',
+      rule:'V60.3.14 chains V60.3.16 and V60.3.16.1. Centerline fiber connectors, three-pane separation, Trust Kernel hover detail, and stoplight-only risk rows are active through this chain.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
