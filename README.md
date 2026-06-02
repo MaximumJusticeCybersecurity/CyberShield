@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.19 TrustMap View-Mode Reapply and Performance Stabilization**
+Current build label: **V60.3.20 Layer 1 Visual Consistency and TrustMap Stack Consolidation**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-19-view-mode-stabilization&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-20-layer1-visual-consistency-stack-consolidation&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.19
+V60.3.20
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,58 +32,40 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.19.
+No new top-level tabs were added for V60.3.20.
 
-## Current implemented build: V60.3.19
+## Current implemented build: V60.3.20
 
-V60.3.19 is a controlled TrustMap recovery layer.  It was added because Fit Map / Kernel View / Domain View / Object View can trigger older TrustMap visual rules and reintroduce old glow behavior or make the CyberShield Trust Kernel PNG appear inconsistently.
+V60.3.20 consolidates the TrustMap visual recovery stack instead of adding another overlay bandage. It replaces the runtime imports for V60.3.18 and V60.3.19 with one debounced consolidation module: `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`.
 
-V60.3.19 re-applies the final visual state after view-mode changes, keeps the CyberShield Trust Kernel image visible, removes image-level drop-shadow glow in normal state, and throttles repeated recovery work.
+The goal is to keep the CyberShield Trust Kernel visible, keep all Layer 1 PNG assets bright and consistently sized, remove the old constant red/yellow/green image glow in normal state, fix the Third Parties & Vendors square/neon-box appearance, and reapply the final visual state after Fit Map / Kernel View / Domain View / Object View without stacking more competing event listeners.
 
 ## Current TrustMap visual stack
 
 ```text
 V60.3.12 = PNG asset mapping and interaction recovery
 V60.3.13 = stoplight trust color and PNG path recovery
-V60.3.14 = background blend, oval highlight, asset fit, and fiber styling
+V60.3.14 = connector trust-state preservation and chain loader
 V60.3.16 = centerline fiber connector overlay and three-pane separation
 V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
 V60.3.17 = Briefing TrustMap Snapshot image
-V60.3.18 = Layer 1 neutral state and uniform hologram cube sizing
-V60.3.19 = TrustMap view-mode reapply and performance stabilization
+V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
 ```
 
-## V60.3.19 changes
+V60.3.18 and V60.3.19 remain in the repository for audit history but are no longer imported at runtime through the V60.3.14 chain.
 
-- adds `src/ui/v60-3-19-trustmap-view-mode-reapply-performance.js`
-- chains through `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js`
-- re-applies final Layer 1 neutral visual state after Fit Map / Kernel View / Domain View / Object View
-- forces CyberShield Trust Kernel PNG back into the center if an older renderer state replaces it
-- forces Layer 1 PNG images back into their asset slots if old SVG icons return
-- removes image-level drop-shadow glow in normal Layer 1 state
-- preserves stoplight oval glow only for hover/focus/selected state
-- throttles recovery work to reduce sluggishness and jitter
-- preserves no-new-top-level-tabs rule
+## V60.3.20 changes
 
-## Known unresolved visual issues for next builder
-
-```text
-Layer 1 hologram transparency is inconsistent.
-CMMC, Devices & Endpoints, and Cloud & Infrastructure appear more transparent.
-Preferred direction: all Layer 1 images should appear bright and solid like the non-transparent/brighter assets, unless explicitly changed by Dr. Justice.
-
-Third Parties & Vendors still appears as a square neon box.
-It must render the same visible holographic cube size/style as the other Layer 1 assets.
-
-Verify whether V60.3.19 removes the old glow after Fit Map and Kernel View.
-If it does not, stop adding overlay layers and consolidate/refactor the TrustMap visual stack.
-
-The CyberShield Trust Kernel must always be visible in the TrustMap center.
-It should not only appear after Fit Map or Kernel View.
-
-The TrustMap should not feel slow or jittery.
-If it does, reduce stacked event listeners and consolidate visual reapply behavior.
-```
+- Adds `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`
+- Updates `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js` to import V60.3.20 instead of V60.3.18 and V60.3.19
+- Consolidates Layer 1 neutral-state sizing, image brightness, and view-mode reapply behavior into one debounced module
+- Forces all Layer 1 PNGs, including Third Parties & Vendors, to render at the same apparent cube size
+- Removes normal-state image-level trust glow while preserving stoplight oval hover/focus/selected rings
+- Keeps the CyberShield Trust Kernel PNG visible in the center
+- Preserves the base TrustMap renderer as the movement owner
+- Preserves fiber connector layer, right selected-asset detail, left Operational Trust Score panel, Layer 2, and Layer 3
+- Reduces redundant event listeners from the prior stacked recovery layers
+- Preserves no-new-top-level-tabs rule
 
 ## Required PNG assets
 
@@ -134,7 +116,7 @@ Layer 1 assets should not have constant color highlight or glow.
 Layer 1 stoplight glow appears only on hover, focus, or selected/clicked state.
 Selected glow persists until another Layer 1 asset is selected.
 All Layer 1 holographic cubes must render at the same apparent size.
-Third Parties & Vendors must not be smaller, cropped, zoomed, or boxed differently from the others.
+Third Parties & Vendors must not be smaller, cropped, zoomed, square-boxed, or styled differently from the others.
 The visual priority is a bright, consistent holographic cube look across all Layer 1 assets.
 ```
 
@@ -198,7 +180,7 @@ Risk rows must never use blue for trust severity.
 
 ## Boundary
 
-The current public build is a static advisory prototype.  It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, live scoring, live claim extraction, statistical validation, backend persistence, workflow automation, ticketing, notifications, or production agent enforcement systems.
+The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, live scoring, live claim extraction, statistical validation, backend persistence, workflow automation, notifications, or production agent enforcement systems.
 
 ## GitHub Pages browser QA required
 
@@ -236,25 +218,3 @@ confirm map does not feel slow or jittery
 confirm no new top-level tab exists
 confirm no live evidence retrieval, live scoring, statistical validation, backend persistence, ticketing, notification, workflow, enforcement, CMMC, healthcare, or Internet Trust overclaims appear
 ```
-
-## Lessons learned applied
-
-```text
-Do not ask the assistant to invent production-grade visual art when high-fidelity branded graphics are required.
-Use a specialist graphic artist or image-generation workflow for rendered hologram assets.
-Use the assistant for integration, layout, interaction recovery, repo hygiene, and QA discipline.
-The base TrustMap renderer must own movement.
-Rendered PNG assets must own visuals.
-Trust-state colors must be stoplight green/yellow/red, not arbitrary asset accent colors.
-Highlight containers, not rectangular PNG canvases.
-Connector visuals should follow the CyberShield Trust Kernel fiber-optic light-line metaphor.
-Controlled build layers should be narrow, explicit, and reversible.
-Avoid broad renderer rewrites unless visual layers can no longer meet the requirement.
-If stacked overlay layers start fighting each other, stop adding overlays and consolidate/refactor.
-Briefing snapshot image and full TrustMap interaction are separate surfaces.
-Normal Layer 1 hologram state must be visually neutral.  Stoplight color appears only on hover/focus/selected state.
-```
-
-## Next likely decision point
-
-The next builder should start with browser QA on V60.3.19, then address Layer 1 visual consistency.  If the TrustMap remains slow, the old glow returns, or the CyberShield Trust Kernel still appears inconsistently, do not add another overlay layer.  Consolidate the TrustMap visual stack or refactor the TrustMap renderer directly.
