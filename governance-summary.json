@@ -1,30 +1,38 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.13 Stoplight Trust Color and PNG Path Recovery",
-  "build_date": "2026-05-29",
-  "patch_type": "Stoplight trust-state color correction after V60.3.12 PNG asset integration",
-  "release_chain_status": "V60.3.13 is the current implemented build. It loads after V60.3.12, enforces stoplight green/yellow/red for TrustMap hover rings, selected rings, status dots, selected asset score rings, selected asset score accents, and retries likely uploaded PNG filename variants. GitHub Pages browser QA is required after deploy and after the PNG assets are uploaded to assets/trustmap/v60-3-12/.",
+  "current_implemented_build": "V60.3.20 Layer 1 Visual Consistency and TrustMap Stack Consolidation",
+  "build_date": "2026-06-02",
+  "patch_type": "TrustMap visual stack consolidation after V60.3.19",
+  "release_chain_status": "V60.3.20 is the current implemented build. It consolidates the previous Layer 1 neutral-state and view-mode recovery behavior into one debounced module instead of stacking additional overlay layers.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-13-stoplight-trust-color&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-20-layer1-visual-consistency-stack-consolidation&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.13. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
-  "v60_3_13_scope_rule": "V60.3.13 corrects trust-state color logic after V60.3.12. The hologram PNG art keeps its native color, but hover rings, selected rings, status dots, selected asset score rings, selected asset score accents, and trust-state indicators use stoplight green, yellow, or red.",
-  "stoplight_trust_color_rule": {
-    "green": "Good / Strong / Allowed",
-    "yellow": "Needs Verification / Constrained / Moderate",
-    "red": "At Risk / Critical / Refused",
-    "principle": "Trust-state colors are stoplight green, yellow, and red only. Do not use neon blue as the default hover or trust-state color when an object has a trust state. Neon blue may remain a neutral brand/structure color, but trust-state affordances must use stoplight color."
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.20. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "trustmap_visual_stack": {
+    "v60_3_12": "PNG asset mapping and interaction recovery",
+    "v60_3_13": "Stoplight trust color and PNG path recovery",
+    "v60_3_14": "Connector trust-state preservation and chain loader",
+    "v60_3_16": "Centerline fiber connector overlay and three-pane separation",
+    "v60_3_16_1": "Trust Kernel right-panel detail and stoplight-only risk rows",
+    "v60_3_17": "Briefing TrustMap Snapshot image",
+    "v60_3_20": "Consolidated Layer 1 visual consistency and view-mode recovery"
   },
+  "retired_runtime_layers": {
+    "v60_3_18": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain.",
+    "v60_3_19": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain."
+  },
+  "v60_3_20_scope_rule": "V60.3.20 owns one debounced recovery layer for Layer 1 neutral brightness, uniform cube size, Third Parties sizing, Trust Kernel visibility, and post-view-mode visual recovery. It does not create a new movement system.",
   "required_png_asset_paths": [
-    "assets/trustmap/v60-3-12/cybershield-trust-kernel.png",
-    "assets/trustmap/v60-3-12/cloud-infrastructure.png",
-    "assets/trustmap/v60-3-12/identities-access.png",
-    "assets/trustmap/v60-3-12/applications-data.png",
-    "assets/trustmap/v60-3-12/ai-systems-agents.png",
-    "assets/trustmap/v60-3-12/devices-endpoints.png",
-    "assets/trustmap/v60-3-12/cmmc-compliance.png",
-    "assets/trustmap/v60-3-12/third-parties-vendors.png"
+    "assets/CyberShield Trust Kernel.png",
+    "assets/cloud_infrastructure.png",
+    "assets/identities_access.png",
+    "assets/applications_data.png",
+    "assets/AI_systems_and_Agents.png",
+    "assets/devices_endpoints.png",
+    "assets/CMMC_and_Compliance.png",
+    "assets/Third Parties and Vendors.png",
+    "assets/The Trust Map.png"
   ],
   "accepted_png_filename_variants": [
     "CyberShield Trust Kernel.png",
@@ -36,91 +44,62 @@
     "CMMC_and_Compliance.png",
     "Third Parties and Vendors.png"
   ],
-  "connector_limitation": "The GitHub text connector can create and update UTF-8 text files but cannot directly upload binary PNG files. The generated cybershield_v60_3_12_trustmap_png_assets.zip must be manually uploaded/extracted into assets/trustmap/v60-3-12/, or the PNG files must be uploaded manually through GitHub. If the PNG files are not physically present in the repo path, GitHub Pages cannot render them regardless of JS mapping logic.",
   "non_negotiable_trustmap_scope": [
     "Do not replace the TrustMap page",
     "Do not remove the left Operational Trust Score panel",
-    "Do not remove the right-side score area",
+    "Do not remove the right-side score/detail area",
     "Do not remove Layer 2 or Layer 3",
     "Do not replace the radar / constellation environment",
     "Do not override #v554World transform with CSS",
     "Do not create a second movement system",
     "Only map rendered PNG assets into the existing TrustMap core and Layer 1 slots",
-    "Trust-state colors must be stoplight green, yellow, or red only"
+    "Trust-state colors must be stoplight green, yellow, or red only",
+    "Do not make the Briefing snapshot replace the full TrustMap page"
   ],
-  "public_trustmap_language": {
-    "title": "Enterprise Trust Map",
-    "subtitle": "Decision Trust Universe",
-    "rule": "Do not expose builder language such as registry-driven, renders from registry, versioned render source, implementation layer, or internal version source in executive-facing TrustMap UI."
+  "layer1_rules": [
+    "Normal state uses the native hologram cube with no red/yellow/green image glow.",
+    "Hover/focus shows a stoplight oval glow.",
+    "Click/select keeps the stoplight oval glow until another asset is selected.",
+    "All Layer 1 holographic cubes must render at the same apparent size.",
+    "Third Parties & Vendors must not be smaller, cropped, zoomed, square-boxed, or styled differently from the others.",
+    "Layer 1 assets should appear bright and solid unless explicitly changed."
+  ],
+  "stoplight_trust_color_rule": {
+    "green": "Good / Strong / Allowed",
+    "yellow": "Needs Verification / Constrained / Moderate",
+    "red": "At Risk / Critical / Refused",
+    "principle": "Blue is neutral brand/system/fiber/AI-working state, not trust-state severity."
   },
-  "trustmap_visual_doctrine": "The original TrustMap shell is preserved. Rendered PNG assets own the core and Layer 1 visuals. The base V55.4 renderer owns movement and detail modes. V60.3.12 maps assets into existing slots and adds sliders that simulate the same base drag/wheel interactions. V60.3.13 applies stoplight trust-state colors over those assets and score states.",
-  "layer1_trustmap_assets": [
-    "Cloud & Infrastructure",
-    "Identities & Access",
-    "Applications & Data",
-    "AI Systems & Agents",
-    "Third Parties & Vendors",
-    "Devices & Endpoints",
-    "CMMC & Compliance"
-  ],
-  "selected_asset_panel_rule": "The selected-asset panel belongs below the right-side selected asset score. It changes when the user hovers or focuses a Layer 1 graphical asset. It must not duplicate the base Layer 1 Domain Detail panel.",
-  "layer1_hover_focus_selected_rule": "Hovering, focusing, or selecting any Layer 1 PNG asset must show a neon circular selection ring around that asset. Clicking a Layer 1 asset keeps the ring active until another Layer 1 asset is selected. The right panel must match the selected Layer 1 asset. The ring color must be stoplight green, yellow, or red based on that asset's trust state.",
-  "score_rule": "Left score is the Operational Trust Score for the current scenario/environment. Right score is the Selected Asset Trust Score for the hovered/focused Layer 1 asset. Those scores must not be duplicated unless they intentionally represent the same metric. Selected asset score color must match the asset's stoplight trust state.",
+  "connector_rule": "Default connectors should resemble white-blue fiber optic trust lines, draw center-to-center behind rendered objects, and allow selected/path highlights in stoplight green, yellow, or red.",
+  "three_pane_layout_rule": "Left = Operational Trust Score and executive trust context. Center = Enterprise Trust Map. Right = selected item breakdown. All panes share top and bottom alignment and the right pane must not overlap the center pane.",
+  "briefing_snapshot_rule": "The Briefing page TrustMap Snapshot uses assets/The Trust Map.png as a static executive preview. The full interactive TrustMap remains on the TrustMap tab.",
   "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context. Settings owns build/version/governance/prototype metadata.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
   "model_maturity_rule": "CyberShield scoring models are Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models. Default weights are calibratable and not authoritative until validated through test scenarios, expert review, red-team attempts, and real-world use cases.",
-  "v60_3_13_changes": [
-    "adds src/ui/v60-3-13-stoplight-trust-color-and-png-path-recovery.js",
-    "loads after src/ui/v60-3-12-trustmap-png-asset-integration.js",
-    "enforces stoplight green/yellow/red for trust-state visual indicators",
-    "keeps native hologram PNG art colors intact",
-    "applies stoplight color to Layer 1 hover rings",
-    "applies stoplight color to Layer 1 selected rings",
-    "applies stoplight color to Layer 1 status dots",
-    "applies stoplight color to the right Selected Asset Trust Score ring",
-    "applies stoplight color to selected asset score accents",
-    "retries likely PNG filename variants when the initial normalized path fails",
-    "preserves V60.3.12 movement recovery and slider behavior",
-    "preserves no-new-top-level-tabs rule"
+  "v60_3_20_changes": [
+    "Adds src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js",
+    "Updates src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js to import V60.3.20 instead of V60.3.18 and V60.3.19",
+    "Consolidates Layer 1 neutral visual consistency and view-mode recovery into one debounced module",
+    "Forces the CyberShield Trust Kernel PNG and Layer 1 PNGs back into the TrustMap when older visuals return",
+    "Forces all Layer 1 PNGs, including Third Parties & Vendors, to the same apparent cube size",
+    "Removes normal-state image-level trust glow while preserving stoplight oval hover/focus/selected rings",
+    "Reduces redundant event listeners from the previous stacked visual recovery layers",
+    "Preserves no-new-top-level-tabs rule"
   ],
-  "trustmap_png_asset_integration": {
-    "status": "active_png_asset_mapping_and_interaction_recovery",
-    "ui": "src/ui/v60-3-12-trustmap-png-asset-integration.js",
-    "asset_manifest": "data/trustmap/v60-3-12-rendered-png-assets.json",
-    "asset_base": "assets/trustmap/v60-3-12/",
-    "loads_after": "src/ui/v60-3-4-explicit-actionability-modal-disclosure.js",
-    "boundary": "Static advisory visual integration and interaction recovery only. No live scoring, evidence retrieval, workflow automation, ticketing, notifications, backend persistence, enforcement, statistical validation, certification, compliance validation, or live integrations."
-  },
-  "stoplight_trust_color_and_png_path_recovery": {
-    "status": "active_stoplight_trust_state_layer",
-    "ui": "src/ui/v60-3-13-stoplight-trust-color-and-png-path-recovery.js",
-    "loads_after": "src/ui/v60-3-12-trustmap-png-asset-integration.js",
-    "boundary": "Static visual trust-state correction and filename fallback recovery only. No live scoring or evidence retrieval."
-  },
-  "recommended_next_build": {
-    "label": "V60.3.14 Global Stoplight Trust State and MJC Light Background Pass",
-    "goals": [
-      "apply stoplight green/yellow/red hover/focus/selected trust-state affordances across CyberShield, not only TrustMap",
-      "replace confusing default neon-blue hover highlights for trust-state objects",
-      "keep neon blue for neutral brand/structure lines only where no trust state is implied",
-      "lighten the main body background from midnight/command-center blue toward the bright white-blue MJC shield teleportal glow",
-      "keep the Operational Trust Control Plane black command-center style where appropriate",
-      "preserve no-new-top-level-tabs rule",
-      "do not change TrustMap PNG asset wiring until PNG files are physically present in the repo path"
-    ]
-  },
-  "implemented_release_train": { "v56": "Trust Model Registry and Score Explanation Layer", "v56.1": "Evidence and Assumption Register", "v56.2": "Decision Record Hardening", "v56.3": "Universal Score Contract", "v56.4": "Core Trust Scoring Models", "v57": "Model-Driven Proof Pack", "v58": "Operational Trust Control Pane", "v59": "Internet Trust Engine MVP Scaffold", "v59.5": "Internet Trust QA and Copy Guardrail Pass", "v60": "Trust Evidence Workbench Scaffold", "v60.1": "Evidence State Transition Prototype", "v60.2": "Evidence-to-Score Impact Preview", "v60.3": "Universal Model Trace Inspector", "v60.3.1": "Runtime Evidence Panel Correction", "v60.3.2": "Show-Readiness Cleanup Pass", "v60.3.3": "First-Layer Decision Brief and TrustMap Snapshot", "v60.3.4": "Explicit Actionability and Modal Disclosure Architecture", "v60.3.5": "TrustMap Layer 1 Graphical Asset Redesign", "v60.3.6": "TrustMap Layer 1 Asset Rendering Correction", "v60.3.7": "TrustMap Reference Layout Renderer", "v60.3.8": "TrustMap Layer 1 Reference Asset Replacement", "v60.3.9": "TrustMap Rendered Layer 1 Asset Integration and Scoring Correction", "v60.3.9.1": "TrustMap Render Stability and Core Anchor Correction", "v60.3.10": "TrustMap Authoritative Render Consolidation", "v60.3.11": "TrustMap Visual QA Tuning Only", "v60.3.12": "TrustMap PNG Asset Integration and Interaction Recovery", "v60.3.13": "Stoplight Trust Color and PNG Path Recovery" },
-  "lessons_learned": [
-    "Do not ask the assistant to invent production-grade visual art when high-fidelity branded graphics are required.",
-    "Use a specialist graphic artist or image generation workflow for rendered hologram assets.",
-    "Use the assistant for integration, layout, interaction recovery, repo hygiene, source-of-truth documentation, and QA discipline.",
-    "The base TrustMap renderer must own movement.",
-    "Rendered PNG assets must own visuals.",
-    "A V60 layer should map assets into existing slots, not fight the base renderer with transform overrides.",
-    "When a connector cannot upload binary assets, package the assets and document the exact manual upload path rather than pretending the assets are operational.",
-    "Trust-state color and native visual asset color are different concepts. Trust-state means stoplight green, yellow, or red."
-  ],
-  "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It is not connected to live enterprise telemetry, SIEM, EDR, IAM, Microsoft 365, cloud control planes, GRC tooling, production agent enforcement, Google Sheets, CRM sync, ticketing, notifications, marketplace systems, ad platforms, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking/payment systems, live monitoring, live URL ingestion, live internet retrieval, live evidence retrieval, live scoring, live claim extraction, internet claim verification, report delivery, ticketing, workflow automation, notifications, backend persistence, statistical validation, or takedown automation.",
-  "overclaim_prohibitions": ["live monitoring", "live enforcement", "live evidence retrieval", "backend persistence", "live scoring", "statistically validated scoring", "live claim extraction", "live internet retrieval", "live URL ingestion", "live ticketing", "live notifications", "workflow automation", "legal determinations", "CMMC certification", "healthcare compliance validation", "live integrations"],
-  "known_limitations": ["V60.3.13 is static and advisory", "Browser QA is required", "PNG assets must be uploaded to assets/trustmap/v60-3-12/", "If PNG files are absent, GitHub Pages cannot render them", "Models are expert-derived V1 and not statistically validated", "No live scoring, evidence retrieval, ticketing, notifications, or workflow automation"]
+  "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.",
+  "github_pages_browser_qa_required": true,
+  "qa_priority": [
+    "Hard refresh the V60.3.20 test URL",
+    "Complete or reset onboarding",
+    "Verify Briefing snapshot uses assets/The Trust Map.png",
+    "Open TrustMap and verify the CyberShield Trust Kernel appears immediately and stays visible",
+    "Verify all eight PNGs load from assets or accepted fallback paths",
+    "Verify all seven Layer 1 assets are evenly distributed and the same apparent cube size",
+    "Verify Third Parties & Vendors is no longer square-boxed or visually different",
+    "Verify CMMC, Devices & Endpoints, and Cloud & Infrastructure are not faded compared to other assets",
+    "Verify no constant red/yellow/green glow in normal Layer 1 state",
+    "Verify old glow does not return after TrustMap view controls",
+    "Verify map drag, wheel zoom, buttons, sliders, and view modes still work",
+    "Verify map does not feel slow or jittery"
+  ]
 }
