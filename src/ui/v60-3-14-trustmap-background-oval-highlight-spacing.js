@@ -56,11 +56,6 @@ function v60314InstallStyles(){
         drop-shadow(0 0 26px rgba(66,215,255,.55))!important;
     }
 
-    #trustmap.active .v554-domain[data-v554-domain="cloud"] ~ .v554-edges line,
-    #trustmap.active .v554-domain:hover ~ .v554-edges line{
-      mix-blend-mode:screen;
-    }
-
     #trustmap.active .v554-domain{
       width:170px!important;
       min-height:190px!important;
@@ -85,10 +80,10 @@ function v60314InstallStyles(){
       position:absolute;
       inset:-6px -10px;
       border-radius:999px;
-      background:radial-gradient(ellipse at 50% 55%, color-mix(in srgb,var(--v60313-stoplight,#ffd43b) 22%, transparent), transparent 68%);
-      border:1.5px solid color-mix(in srgb,var(--v60313-stoplight,#ffd43b) 40%, transparent);
-      box-shadow:0 0 16px color-mix(in srgb,var(--v60313-stoplight,#ffd43b) 22%, transparent);
-      opacity:.42;
+      background:radial-gradient(ellipse at 50% 55%, rgba(2,5,11,.72), rgba(2,5,11,.32) 56%, transparent 74%);
+      border:1px solid rgba(223,249,255,.10);
+      box-shadow:0 0 10px rgba(2,5,11,.62);
+      opacity:.52;
       pointer-events:none;
       z-index:0;
     }
@@ -141,8 +136,15 @@ function v60314InstallStyles(){
 
     #trustmap.active .v554-domain-label{
       background:rgba(2,5,11,.72)!important;
-      border:1px solid color-mix(in srgb,var(--v60313-stoplight,#ffd43b) 28%, transparent)!important;
+      border:1px solid rgba(223,249,255,.11)!important;
       box-shadow:0 0 14px rgba(0,0,0,.68)!important;
+    }
+
+    #trustmap.active .v554-domain:hover .v554-domain-label,
+    #trustmap.active .v554-domain:focus-visible .v554-domain-label,
+    #trustmap.active .v554-domain.v60312-selected .v554-domain-label{
+      border-color:color-mix(in srgb,var(--v60313-stoplight,#ffd43b) 48%, transparent)!important;
+      box-shadow:0 0 16px color-mix(in srgb,var(--v60313-stoplight,#ffd43b) 32%, transparent)!important;
     }
 
     #trustmap.active .v554-kernel{
@@ -168,18 +170,6 @@ function v60314InstallStyles(){
       filter:none!important;
       border-radius:999px!important;
     }
-
-    #trustmap.active .v554-domain[data-v554-domain="cmmc"]{
-      transform:translate(-34px,-24px)!important;
-    }
-
-    #trustmap.active .v554-domain[data-v554-domain="cloud"]{
-      transform:translate(30px,-20px)!important;
-    }
-
-    #trustmap.active .v554-domain[data-v554-domain="endpoints"]{
-      transform:translate(-8px,10px)!important;
-    }
   `;
   document.head.appendChild(style);
 }
@@ -188,7 +178,8 @@ function v60314ApplyConnectorTrustState(){
   const trustmap = v60314$('#trustmap.active');
   if(!trustmap) return;
   const selected = trustmap.querySelector('.v554-domain.v60312-selected')?.dataset.v554Domain;
-  const selectedColor = selected ? getComputedStyle(trustmap.querySelector(`.v554-domain[data-v554-domain="${selected}"]`)).getPropertyValue('--v60313-stoplight').trim() : '';
+  const selectedEl = selected ? trustmap.querySelector(`.v554-domain[data-v554-domain="${selected}"]`) : null;
+  const selectedColor = selectedEl ? getComputedStyle(selectedEl).getPropertyValue('--v60313-stoplight').trim() : '';
   v60314$$('.v554-edges line', trustmap).forEach(line => {
     line.style.removeProperty('--v60314-active-fiber');
     if(selectedColor && line.classList.contains('core')){
@@ -208,7 +199,7 @@ function v60314MarkMeta(){
     parsed.previous_operational_build = 'V60.3.13 Stoplight Trust Color and PNG Path Recovery';
     parsed.trustmap_background_oval_spacing = {
       status:'active_visual_tuning_layer',
-      rule:'Blend PNG canvases with TrustMap background, move trust highlight from image rectangle to oval containment layer, reduce Cloud/CMMC overlap, and render connectors as CyberShield fiber-optic trust lines.',
+      rule:'Blend PNG canvases with TrustMap background, keep Layer 1 normal state neutral, move trust highlight to hover/focus/selected oval containment layer, and render connectors as CyberShield fiber-optic trust lines.',
       connector_rule:'Default connectors use white-blue fiber-optic styling. Trust-state connector highlights may use stoplight green, yellow, or red.',
       github_pages_browser_qa_required:true
     };
