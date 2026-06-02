@@ -1,6 +1,7 @@
 import './v60-3-16-trustmap-centerline-fiber-connectors-and-pane-grid.js';
 import './v60-3-16-1-trust-kernel-detail-and-stoplight-risk-rows.js';
 import './v60-3-18-layer1-neutral-state-uniform-cubes.js';
+import './v60-3-19-trustmap-view-mode-reapply-performance.js';
 
 // V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors
 // Purpose: blend rendered PNG canvases with the TrustMap background, make stoplight highlights oval instead of square, reduce Cloud/CMMC overlap, and make connectors look like CyberShield fiber-optic trust lines.
@@ -217,12 +218,12 @@ function v60314MarkMeta(){
   if(!payload) return;
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
-    parsed.build = 'V60.3.18 Layer 1 Neutral State and Uniform Hologram Cube Sizing';
-    parsed.version = 'V60.3.18';
-    parsed.previous_operational_build = 'V60.3.17 Briefing TrustMap Snapshot Image';
-    parsed.trustmap_v60_3_18_chain = {
+    parsed.build = 'V60.3.19 TrustMap View-Mode Reapply and Performance Stabilization';
+    parsed.version = 'V60.3.19';
+    parsed.previous_operational_build = 'V60.3.18 Layer 1 Neutral State and Uniform Hologram Cube Sizing';
+    parsed.trustmap_v60_3_19_chain = {
       status:'active_chained_visual_layers',
-      rule:'V60.3.14 chains V60.3.16, V60.3.16.1, and V60.3.18. Layer 1 holographic cubes render uniformly and stoplight highlight appears only on hover/focus/selected state.',
+      rule:'V60.3.14 chains V60.3.16, V60.3.16.1, V60.3.18, and V60.3.19. View-mode changes reapply final neutral Layer 1 visual state, keep the CyberShield Trust Kernel visible, and throttle recovery work.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
