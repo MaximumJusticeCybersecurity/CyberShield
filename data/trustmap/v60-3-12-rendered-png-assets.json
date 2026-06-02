@@ -1,0 +1,59 @@
+{
+  "build": "V60.3.12 TrustMap PNG Asset Integration and Interaction Recovery",
+  "asset_base": "assets/trustmap/v60-3-12/",
+  "rule": "These PNG assets are the visual source of truth for the CyberShield TrustMap core and Layer 1 trust-domain visuals. The base TrustMap renderer owns pan, drag, wheel zoom, +/- zoom, Fit Map, Kernel View, Domain View, and Object View.",
+  "core": {
+    "id": "cybershield-core",
+    "label": "CyberShield Core / Trust Kernel",
+    "file": "cybershield-trust-kernel.png"
+  },
+  "domains": {
+    "cloud": {
+      "label": "Cloud & Infrastructure",
+      "file": "cloud-infrastructure.png"
+    },
+    "identity": {
+      "label": "Identities & Access",
+      "file": "identities-access.png"
+    },
+    "appsData": {
+      "label": "Applications & Data",
+      "file": "applications-data.png"
+    },
+    "ai": {
+      "label": "AI Systems & Agents",
+      "file": "ai-systems-agents.png"
+    },
+    "endpoints": {
+      "label": "Devices & Endpoints",
+      "file": "devices-endpoints.png"
+    },
+    "cmmc": {
+      "label": "CMMC & Compliance",
+      "file": "cmmc-compliance.png"
+    },
+    "third": {
+      "label": "Third Parties & Vendors",
+      "file": "third-parties-vendors.png"
+    }
+  },
+  "required_repository_paths": [
+    "assets/trustmap/v60-3-12/cybershield-trust-kernel.png",
+    "assets/trustmap/v60-3-12/cloud-infrastructure.png",
+    "assets/trustmap/v60-3-12/identities-access.png",
+    "assets/trustmap/v60-3-12/applications-data.png",
+    "assets/trustmap/v60-3-12/ai-systems-agents.png",
+    "assets/trustmap/v60-3-12/devices-endpoints.png",
+    "assets/trustmap/v60-3-12/cmmc-compliance.png",
+    "assets/trustmap/v60-3-12/third-parties-vendors.png"
+  ],
+  "interaction_requirements": [
+    "Layer 1 PNG assets replace only .v554-domain .orb content",
+    "CyberShield Trust Kernel PNG replaces only .v554-kernel content",
+    "Do not override #v554World transform in CSS",
+    "Base TrustMap renderer must own pan, drag, wheel zoom, +/- zoom, and view modes",
+    "Layer 1 hover, focus, and selected states must show neon circular selection rings",
+    "Pan X, Pan Y, and Zoom sliders must control the same base TrustMap movement system, not create a second transform system"
+  ],
+  "github_pages_browser_qa_required": true
+}
