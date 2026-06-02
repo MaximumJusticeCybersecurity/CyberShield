@@ -33,3 +33,4 @@ import './v60-3-2-show-readiness-cleanup.js';
 import './v60-3-3-first-layer-decision-brief-trustmap-snapshot.js';
 import './v60-3-4-explicit-actionability-modal-disclosure.js';
 import './v60-3-12-trustmap-png-asset-integration.js';
+import './v60-3-13-stoplight-trust-color-and-png-path-recovery.js';
