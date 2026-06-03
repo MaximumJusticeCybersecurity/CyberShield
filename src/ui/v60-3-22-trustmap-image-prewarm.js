@@ -1,6 +1,5 @@
-// V60.3.22/V60.3.23 TrustMap Image Prewarm
-// Purpose: keep the faster shell while warming TrustMap image assets after the shell is usable. Prefer the governed V60.3.23 asset manifest when available.
-// Boundary: static advisory prototype only. No live scoring, live retrieval beyond static repo JSON/assets, workflow automation, enforcement, or backend persistence.
+// V60.3.22/V60.3.24 TrustMap Image Prewarm
+// Purpose: warm TrustMap images after shell usability and emit lifecycle events.
 
 const V60322_FALLBACK_TRUSTMAP_IMAGE_PATHS = [
   'assets/CyberShield%20Trust%20Kernel.png',
@@ -80,6 +79,7 @@ async function v60322StartPrewarm(reason = 'idle'){
   v60322Started = true;
   v60322AddPreconnect();
   const paths = await v60322GetPaths();
+  document.dispatchEvent(new CustomEvent('cybershield:trustmap-images-prewarm-started', { detail:{ reason, manifest_used:v60322ManifestUsed, image_count:paths.length } }));
   const [kernel, ...rest] = paths;
   v60322WarmOne(kernel, reason === 'trustmap-request' ? 'high' : 'auto')
     .then(() => v60322WarmSequential(rest, reason === 'trustmap-request' ? 'high' : 'low'))
@@ -103,9 +103,8 @@ function v60322MarkMeta(){
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
     parsed.trustmap_image_prewarm = {
-      build:'V60.3.23 TrustMap Asset Manifest and Image Prewarm Integration',
+      build:'V60.3.24 TrustMap Image Prewarm Lifecycle Integration',
       status:v60322Complete ? 'prewarm_complete_or_attempted' : v60322Started ? 'prewarm_started' : 'prewarm_waiting',
-      rule:'Warm TrustMap images after shell usability. Prefer the V60.3.23 governed asset manifest and fall back to the V60.3.22 static asset list.',
       manifest_used:v60322ManifestUsed,
       image_count:v60322LastPathCount,
       github_pages_browser_qa_required:true
