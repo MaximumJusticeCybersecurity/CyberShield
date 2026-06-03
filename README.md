@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **20260603-0638 Timestamp Governance Runtime Alignment**
+Current build label: **20260603-0648 Source-of-Truth Drift Guard**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0638-timestamp-governance&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0648-source-of-truth-drift-guard&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current implemented build:
 
 ```text
-20260603-0638 Timestamp Governance Runtime Alignment
+20260603-0648 Source-of-Truth Drift Guard
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -50,15 +50,15 @@ docs/versioning-schema.md
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for 20260603-0638.
+No new top-level tabs were added for 20260603-0648.
 
-## Current implemented build: 20260603-0638
+## Current implemented build: 20260603-0648
 
-This build reconciles runtime and source-of-truth versioning after the post-V60 timestamp transition.
+This build adds an admin/runtime source-of-truth drift guard.  It helps future builders detect when runtime/admin metadata, timestamp versioning, Layer 1 v2 lineage, and release-train metadata begin to disagree.
 
-It preserves the Layer 1 v2 source rewrite work already active in the runtime loader and makes the admin payload identify the current timestamped build cleanly.
+It preserves the Layer 1 v2 source rewrite work and timestamp governance alignment already active in the runtime loader.
 
-This is not a TrustMap redesign.  This is a governance/runtime alignment release.
+This is not a TrustMap redesign.  This is a source-of-truth protection release.
 
 ## Current TrustMap visual, performance, governance, and asset stack
 
@@ -83,13 +83,15 @@ V60.3.30 = release hardening and source-of-truth reconciliation
 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
 20260602-1735 = Layer 1 v2 source rewrite shim
 20260603-0638 = timestamp governance runtime alignment
+20260603-0648 = source-of-truth drift guard
 ```
 
-## 20260603-0638 changes
+## 20260603-0648 changes
 
-- Adds `src/ui/20260603-0638-timestamp-governance-runtime-alignment.js`
-- Updates `src/ui/v52-7-operational-layer.js` to import the timestamp governance runtime alignment module
-- Updates admin payload metadata to identify the current timestamp build
+- Adds `src/ui/20260603-0648-source-of-truth-drift-guard.js`
+- Updates `src/ui/v52-7-operational-layer.js` to import the drift guard
+- Adds admin payload metadata under `source_of_truth_drift_guard`
+- Flags whether timestamp schema, current build metadata, prior runtime alignment, Layer 1 v2 rewrite metadata, and release-train metadata are observed
 - Preserves `20260602-1735-layer1-v2-src-rewrite.js`
 - Preserves fast shell load and TrustMap on-demand loading
 - Preserves no-new-top-level-tabs rule
@@ -171,15 +173,12 @@ hard refresh live prototype
 complete/reset onboarding
 confirm initial app shell remains fast
 open TrustMap
-confirm timestamp governance metadata appears in admin payload
+confirm source_of_truth_drift_guard appears in admin payload
+confirm drift guard status is aligned or explains watch blockers
 confirm no broken image icons appear if v2 binaries are not uploaded yet
 upload v2 PNGs to assets/layer1-v2/ when available
 hard refresh again
 confirm v2 assets load instead of legacy assets
-confirm all seven Layer 1 assets have the same apparent size
-confirm black-background cube treatment blends into the dark TrustMap environment
-confirm no green spill or transparency artifact appears
-confirm legacy fallback still works if a v2 file is missing
 confirm TrustMap drag, zoom, view controls, hover, and click behavior still work
 confirm no new top-level tab exists
 confirm no prototype overclaims appear
