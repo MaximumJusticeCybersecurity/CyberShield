@@ -4,6 +4,14 @@
   "build_date": "2026-06-02",
   "patch_type": "Safe V60.3 release-train completion through hardening",
   "release_chain_status": "V60.3.30 is the current implemented build. V60.3.25 through V60.3.29 were added as conservative scaffolds/controls. V60.3.31 remains earmarked only until the user provides the world-class mapmaker source material.",
+  "versioning_schema_after_v60_3_30": {
+    "schema": "YYYYMMDD-HHMM",
+    "timezone": "America/New_York",
+    "time_format": "24-hour",
+    "example": "20260602-2145 TrustMap Mapmaker Doctrine Intake",
+    "canonical_document": "docs/versioning-schema.md",
+    "rule": "The next implemented build after V60.3.30 should use timestamp-based versioning. V60.3.31 remains an earmarked concept only unless explicitly directed."
+  },
   "live_app_file": "index.html",
   "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-30-release-hardening&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
@@ -69,6 +77,7 @@
     "Verify release hardening appears in admin metadata",
     "Verify no visible UI clutter was added",
     "Verify no new top-level tab exists",
-    "Verify no overclaims appear"
+    "Verify no overclaims appear",
+    "Verify timestamp versioning guidance before starting the next implemented build"
   ]
 }
