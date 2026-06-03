@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Current implemented build: V60.3.24 TrustMap Render Lifecycle Controller
+Current implemented build: V60.3.30 Release Hardening and Source-of-Truth Reconciliation
 Build date: 2026-06-02
 
 Purpose for bots and AI readers:
@@ -8,12 +8,12 @@ This file provides machine-readable context for CyberShield separate from the hu
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.24.
+No new top-level tabs were added for V60.3.30.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.24. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
+Public product name is CyberShield Executive OS. Current prototype build is V60.3.30. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
 
-Current TrustMap visual and performance stack:
+Current TrustMap visual, performance, and governance stack:
 - V60.3.12 = PNG asset mapping and interaction recovery
 - V60.3.13 = stoplight trust color and PNG path recovery
 - V60.3.14 = connector trust-state preservation and chain loader
@@ -25,39 +25,22 @@ Current TrustMap visual and performance stack:
 - V60.3.22 = TrustMap PNG image prewarm after shell readiness
 - V60.3.23 = TrustMap asset manifest and governed future asset intake
 - V60.3.24 = TrustMap render lifecycle controller
+- V60.3.25 = asset optimization and format upgrade path, scaffold built, optimized assets pending
+- V60.3.26 = mobile TrustMap fidelity mode
+- V60.3.27 = no-dead-click and interaction meaning audit
+- V60.3.28 = model trace and evidence trust alignment scaffold
+- V60.3.29 = commercial Artifact Trust scenario scaffold
+- V60.3.30 = release hardening and source-of-truth reconciliation
+- V60.3.31 = earmarked: Integrating the World's Best Map Maker, do not build until user provides source material
 
-V60.3.24 scope:
-V60.3.24 adds one traceable lifecycle path for TrustMap request, stack load, asset manifest load, image prewarm, render detection, view-mode changes, and visual stabilization. It does not redesign the TrustMap or solve asset file size. Slow current images remain an asset optimization issue.
+V60.3.30 scope:
+V60.3.30 completes the safe release train through hardening. V60.3.25 through V60.3.29 are conservative scaffolds or controls. V60.3.31 remains earmarked only.
 
 Runtime import rule:
 The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.
 
-Lifecycle rule:
-TrustMap render state should be tracked through lifecycle events and admin metadata rather than scattered timing assumptions. V60.3.24 introduces the lifecycle controller but does not yet refactor every historical timer out of prior modules.
-
-Lifecycle events:
-- cybershield:trustmap-requested
-- cybershield:trustmap-stack-load-started
-- cybershield:trustmap-stack-loaded
-- cybershield:trustmap-asset-manifest-loaded
-- cybershield:trustmap-images-prewarm-started
-- cybershield:trustmap-images-prewarmed
-- cybershield:trustmap-render-detected
-- cybershield:trustmap-view-mode-changed
-- cybershield:trustmap-visual-stabilized
-
 Asset manifest rule:
-TrustMap assets should be governed by `data/trustmap/v60-3-23-asset-manifest.json`. Current PNG files remain valid fallbacks. Future rebuilt black-background all-blue cube assets should be added through the manifest rather than hardcoded in scattered modules.
-
-Image prewarm rule:
-Do not force image prewarm into the critical startup path. Start prewarm after shell readiness. Prefer manifest paths. Warm the CyberShield Trust Kernel first, then Layer 1 PNGs and Briefing snapshot. If images remain slow, compress/resize PNG assets or add WebP/AVIF variants before adding more runtime logic.
-
-Future asset intake rule:
-- Use one locked template for canvas size, cube scale, camera angle, lighting, and margins.
-- Use black or near-black backgrounds.
-- Keep base art neutral blue/white/black.
-- Green/yellow/red remain UI trust-state overlays only.
-- Provide web-ready PNG and preferably WebP variants.
+TrustMap assets should be governed by `data/trustmap/v60-3-23-asset-manifest.json`. Current PNG files remain valid fallbacks. Future rebuilt black-background all-blue cube assets should be added through the manifest rather than hardcoded in scattered modules. Optimized future paths are preferred only when marked available.
 
 Performance doctrine:
 - Load the executive shell first.
@@ -67,27 +50,13 @@ Performance doctrine:
 - Track render lifecycle before attempting more visual fixes.
 - If the TrustMap remains slow because images are heavy, optimize files before adding more runtime logic.
 
-Required current PNG assets in root assets folder:
-- assets/CyberShield Trust Kernel.png
-- assets/cloud_infrastructure.png
-- assets/identities_access.png
-- assets/applications_data.png
-- assets/AI_systems_and_Agents.png
-- assets/devices_endpoints.png
-- assets/CMMC_and_Compliance.png
-- assets/Third Parties and Vendors.png
-- assets/The Trust Map.png
-
-Non-negotiable TrustMap scope rule:
-- Do not replace the TrustMap page unless explicitly directed as a refactor.
-- Do not remove the left Operational Trust Score panel.
-- Do not remove the right-side score/detail area.
-- Do not remove Layer 2 or Layer 3.
-- Do not replace the radar / constellation environment.
-- Do not override #v554World transform with CSS.
-- Do not create a second movement system.
-- Trust-state colors must be stoplight green, yellow, or red only.
-- Do not make the Briefing snapshot replace the full TrustMap page.
+Scaffold boundaries:
+- V60.3.25 does not create optimized assets.
+- V60.3.26 does not create a separate mobile product.
+- V60.3.27 does not invent backend actions.
+- V60.3.28 does not claim statistical validation.
+- V60.3.29 does not perform live retrieval or fact-checking.
+- V60.3.31 is not implemented.
 
 Controlling scoring doctrine:
 CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
@@ -99,4 +68,4 @@ Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
 
 Next builder first action:
-Run browser QA on V60.3.24 from a phone. Verify shell speed, TrustMap on-demand loading, manifest fallback, current asset loading, lifecycle metadata, view controls, and no new UI clutter.
+Run browser QA on V60.3.30 from a phone. Verify shell speed, TrustMap on-demand loading, current asset loading, no missing-future-asset preference, fidelity metadata, interaction audit metadata, model trace scaffold metadata, artifact trust scaffold metadata, release hardening metadata, and no new UI clutter.
