@@ -1,11 +1,13 @@
-// 20260602-1825 TrustMap Single Render Authority Gate
-// Purpose: stop users seeing legacy TrustMap renditions by hiding the canvas during stacked historical render passes and revealing only the settled current render.
+// 20260602-1840 TrustMap Single Render Authority Hardening
+// Purpose: suppress legacy TrustMap render flashes without trapping the map hidden after navigation or normal object clicks.
 // Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
 
 let trustMapAuthorityOpen202606021825 = false;
 let trustMapAuthorityRevealTimer202606021825 = null;
 let trustMapAuthorityObserver202606021825 = null;
 let trustMapAuthorityRenderCount202606021825 = 0;
+let trustMapAuthoritySettleStarted202606021825 = 0;
+let trustMapAuthorityForceRevealTimer202606021825 = null;
 
 function tmAuthority$(selector, root = document){ return root.querySelector(selector); }
 function tmAuthority$$(selector, root = document){ return Array.from(root.querySelectorAll(selector)); }
@@ -26,10 +28,15 @@ function tmAuthorityInstallStyles202606021825(){
     #trustmap[data-single-render-state="ready"] .v554-map-panel,
     #trustmap[data-single-render-state="ready"] .v554-viewport,
     #trustmap[data-single-render-state="ready"] #v554World,
-    #trustmap[data-single-render-state="ready"] #trustCanvas{
+    #trustmap[data-single-render-state="ready"] #trustCanvas,
+    #trustmap[data-single-render-state="force-ready"] .v554-map-panel,
+    #trustmap[data-single-render-state="force-ready"] .v554-viewport,
+    #trustmap[data-single-render-state="force-ready"] #v554World,
+    #trustmap[data-single-render-state="force-ready"] #trustCanvas{
       opacity:1!important;
       visibility:visible!important;
       transition:opacity .12s ease!important;
+      pointer-events:auto!important;
     }
     #trustmap .tm-single-render-loader{
       display:none;
@@ -44,6 +51,8 @@ function tmAuthorityInstallStyles202606021825(){
       color:#dff7ff;
     }
     #trustmap[data-single-render-state="settling"] .tm-single-render-loader{display:grid!important}
+    #trustmap[data-single-render-state="ready"] .tm-single-render-loader,
+    #trustmap[data-single-render-state="force-ready"] .tm-single-render-loader{display:none!important}
     #trustmap .tm-single-render-loader strong{display:block;color:#fff;font-size:1.14rem;margin-bottom:6px}
     #trustmap .tm-single-render-loader span{display:block;color:#8fd6ff;font-size:.86rem;max-width:44rem}
   `;
@@ -69,7 +78,10 @@ function tmAuthoritySettle202606021825(reason = 'settle'){
   trustmap.dataset.singleRenderState = 'settling';
   trustmap.dataset.singleRenderReason = reason;
   trustMapAuthorityOpen202606021825 = false;
+  trustMapAuthoritySettleStarted202606021825 = performance.now();
   window.clearTimeout(trustMapAuthorityRevealTimer202606021825);
+  window.clearTimeout(trustMapAuthorityForceRevealTimer202606021825);
+  trustMapAuthorityForceRevealTimer202606021825 = window.setTimeout(() => tmAuthorityForceReveal202606021825('max-wait-fallback'), 2200);
 }
 
 function tmAuthorityHasCurrentAssets202606021825(){
@@ -81,18 +93,39 @@ function tmAuthorityHasCurrentAssets202606021825(){
   return imgs.length >= 7;
 }
 
+function tmAuthorityHasRenderableMap202606021825(){
+  const trustmap = tmAuthority$('#trustmap.active');
+  if(!trustmap) return false;
+  return Boolean(tmAuthority$('.v554-shell', trustmap) && (tmAuthority$('#v554World', trustmap) || tmAuthority$('.v554-map-panel', trustmap)));
+}
+
 function tmAuthorityReveal202606021825(reason = 'ready'){
   const trustmap = tmAuthority$('#trustmap.active');
   if(!trustmap) return;
-  if(!tmAuthorityHasCurrentAssets202606021825()){
-    tmAuthorityScheduleReveal202606021825('waiting-current-assets', 220);
+  const currentAssetsReady = tmAuthorityHasCurrentAssets202606021825();
+  const renderableMapReady = tmAuthorityHasRenderableMap202606021825();
+  const waitedMs = trustMapAuthoritySettleStarted202606021825 ? performance.now() - trustMapAuthoritySettleStarted202606021825 : 0;
+  if(!currentAssetsReady && !renderableMapReady && waitedMs < 1800){
+    tmAuthorityScheduleReveal202606021825('waiting-current-render', 220);
     return;
   }
+  window.clearTimeout(trustMapAuthorityForceRevealTimer202606021825);
   window.CyberShieldLayer1V2SrcRewrite202606021735?.rewriteExisting?.();
   window.CyberShieldTrustMapAssetManifestV60323Api?.prewarm?.();
-  window.CyberShieldTrustMapLifecycleV60324?.renderSettled?.({ source:'single-render-authority', reason });
-  trustmap.dataset.singleRenderState = 'ready';
+  window.CyberShieldTrustMapLifecycleV60324?.renderSettled?.({ source:'single-render-authority', reason, currentAssetsReady, renderableMapReady });
+  trustmap.dataset.singleRenderState = currentAssetsReady ? 'ready' : 'force-ready';
   trustmap.dataset.singleRenderReason = reason;
+  trustmap.dataset.singleRenderFallback = String(!currentAssetsReady && renderableMapReady);
+  trustMapAuthorityOpen202606021825 = true;
+  tmAuthorityMarkMeta202606021825();
+}
+
+function tmAuthorityForceReveal202606021825(reason = 'force-ready'){
+  const trustmap = tmAuthority$('#trustmap.active');
+  if(!trustmap) return;
+  trustmap.dataset.singleRenderState = 'force-ready';
+  trustmap.dataset.singleRenderReason = reason;
+  trustmap.dataset.singleRenderFallback = 'true';
   trustMapAuthorityOpen202606021825 = true;
   tmAuthorityMarkMeta202606021825();
 }
@@ -123,10 +156,12 @@ function tmAuthorityMarkMeta202606021825(){
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
     parsed.trustmap_single_render_authority = {
-      build:'20260602-1825 TrustMap Single Render Authority',
+      build:'20260602-1840 TrustMap Single Render Authority Hardening',
       status:tmAuthority$('#trustmap')?.dataset.singleRenderState || 'unknown',
+      reason:tmAuthority$('#trustmap')?.dataset.singleRenderReason || 'unknown',
+      fallback:tmAuthority$('#trustmap')?.dataset.singleRenderFallback || 'false',
       render_mutation_count:trustMapAuthorityRenderCount202606021825,
-      rule:'Hide stacked historical TrustMap render passes and reveal only the current settled v2 render.',
+      rule:'Hide stacked historical TrustMap render passes, but never keep the TrustMap hidden after navigation or normal object clicks.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
@@ -141,10 +176,18 @@ function tmAuthorityHandlers202606021825(){
     if(trustMapRequest){
       tmAuthoritySettle202606021825('trustmap-request');
       tmAuthorityScheduleReveal202606021825('trustmap-request-settled', 900);
+      return;
     }
-    if(event.target.closest('#trustmap [data-v554-mode], #trustmap [data-v554-domain], #trustmap .v554-domain, #trustmap .v554-kernel')){
-      tmAuthoritySettle202606021825('trustmap-control-click');
-      tmAuthorityScheduleReveal202606021825('control-click-settled', 520);
+    const viewControl = event.target.closest('#trustmap [data-v554-mode], #trustmap [data-v554-reset], #trustmap [data-v554-zoom]');
+    if(viewControl){
+      tmAuthoritySettle202606021825('trustmap-view-control');
+      tmAuthorityScheduleReveal202606021825('view-control-settled', 520);
+      return;
+    }
+    const normalMapObject = event.target.closest('#trustmap [data-v554-domain], #trustmap .v554-domain, #trustmap .v554-kernel');
+    if(normalMapObject){
+      window.clearTimeout(trustMapAuthorityRevealTimer202606021825);
+      tmAuthorityScheduleReveal202606021825('normal-object-click-safe-reveal', 80);
     }
   }, true);
   document.addEventListener('cybershield:trustmap-stack-loaded', () => {
