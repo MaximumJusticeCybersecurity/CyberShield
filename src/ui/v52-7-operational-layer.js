@@ -1,10 +1,11 @@
-// V60.3.23 Mobile Performance Gate, Image Prewarm, and TrustMap Asset Manifest
-// Purpose: keep the faster app shell, warm TrustMap image assets after shell usability, and govern future rebuilt assets through a manifest.
+// V60.3.24 Mobile Performance Gate, Image Prewarm, Asset Manifest, and TrustMap Lifecycle
+// Purpose: keep the faster app shell, warm TrustMap image assets after shell usability, govern future assets through a manifest, and trace TrustMap render lifecycle.
 // Boundary: static advisory prototype only. No live scoring, live retrieval beyond static repo JSON/assets, workflow automation, enforcement, or backend persistence.
 
 import './v60-3-21-mobile-load-performance.js';
 import './v60-3-23-trustmap-asset-manifest-loader.js';
 import './v60-3-22-trustmap-image-prewarm.js';
+import './v60-3-24-trustmap-render-lifecycle-controller.js';
 
 let cyberShieldTrustMapStackPromise = null;
 let cyberShieldBriefingLayerPromise = null;
@@ -24,6 +25,7 @@ function cyberShieldLoadBriefingLayer(){
 }
 
 function cyberShieldLoadTrustMapStack(){
+  window.CyberShieldTrustMapLifecycleV60324?.stackLoadStarted?.({ source: 'operational-loader' });
   if(!cyberShieldTrustMapStackPromise){
     cyberShieldTrustMapStackPromise = import('./v55-4-trustmap-registry-consumption.js')
       .then(() => import('./v60-3-12-trustmap-png-asset-integration.js'))
@@ -42,12 +44,16 @@ window.CyberShieldLoadBriefingLayer = cyberShieldLoadBriefingLayer;
 document.addEventListener('click', event => {
   const nav = event.target.closest('#mainNav button[data-view="trustmap"], [data-v6033-route="trustmap"]');
   if(nav){
+    window.CyberShieldTrustMapLifecycleV60324?.requestTrustMap?.({ source: 'operational-loader-click' });
     setTimeout(cyberShieldLoadTrustMapStack, 0);
   }
 }, true);
 
 window.addEventListener('hashchange', () => {
-  if(location.hash === '#trustmap') cyberShieldLoadTrustMapStack();
+  if(location.hash === '#trustmap'){
+    window.CyberShieldTrustMapLifecycleV60324?.requestTrustMap?.({ source: 'operational-loader-hashchange' });
+    cyberShieldLoadTrustMapStack();
+  }
 });
 
 cyberShieldIdle(() => {
