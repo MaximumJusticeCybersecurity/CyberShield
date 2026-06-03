@@ -1,11 +1,16 @@
-// V60.3.24 Mobile Performance Gate, Image Prewarm, Asset Manifest, and TrustMap Lifecycle
-// Purpose: keep the faster app shell, warm TrustMap image assets after shell usability, govern future assets through a manifest, and trace TrustMap render lifecycle.
-// Boundary: static advisory prototype only. No live scoring, live retrieval beyond static repo JSON/assets, workflow automation, enforcement, or backend persistence.
+// V60.3.30 Release Train Loader
+// Purpose: preserve fast shell, TrustMap on-demand loading, asset manifesting, lifecycle tracing, fidelity control, interaction audit, model trace, artifact trust scaffold, and release hardening.
 
 import './v60-3-21-mobile-load-performance.js';
 import './v60-3-23-trustmap-asset-manifest-loader.js';
 import './v60-3-22-trustmap-image-prewarm.js';
 import './v60-3-24-trustmap-render-lifecycle-controller.js';
+import './v60-3-25-asset-optimization-and-format-upgrade.js';
+import './v60-3-26-mobile-trustmap-fidelity-mode.js';
+import './v60-3-27-no-dead-click-interaction-meaning.js';
+import './v60-3-28-model-trace-and-evidence-trust.js';
+import './v60-3-29-artifact-trust-scenario-scaffold.js';
+import './v60-3-30-release-hardening-and-source-truth.js';
 
 let cyberShieldTrustMapStackPromise = null;
 let cyberShieldBriefingLayerPromise = null;
