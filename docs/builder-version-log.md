@@ -6,6 +6,48 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260602-012
+
+Date: 2026-06-02
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, timestamp versioning schema session
+
+CyberShield versions affected:
+
+- V60.3.30 Release Hardening and Source-of-Truth Reconciliation
+- Future post-V60.3 timestamp versioning schema
+
+Files materially changed or created:
+
+- `docs/versioning-schema.md`
+- `README.md`
+- `governance-summary.json`
+- `docs/builder-version-log.md`
+- `docs/successor-builder-handoff-and-job-docket.md`
+
+Primary value add:
+
+Established the new CyberShield versioning schema for implemented builds after V60.3.30.  Future builds should use timestamp-based versioning in `YYYYMMDD-HHMM` format using 24-hour America/New_York time unless the user explicitly changes the project timezone.
+
+What got better:
+
+- Version identity is now chronological and unique.
+- The old V60.x sequence is preserved as historical release lineage.
+- V60.3.31 remains earmarked only for Integrating the World's Best Map Maker.
+- The next implemented build after V60.3.30 should use timestamp versioning.
+- `docs/versioning-schema.md` is now the canonical schema document.
+
+Remaining risks or limitations:
+
+- Builders must remember not to continue the V60.x numbering for implemented builds unless explicitly directed.
+- Source-of-truth files must be updated to the timestamp version whenever the next implemented build ships.
+
+Next recommended build action:
+
+Run V60.3.30 QA.  If another implemented build is needed after QA, name it using timestamp format, for example `YYYYMMDD-HHMM Short Build Name`, not `V60.3.32`.
+
+---
+
 ### Builder-20260602-011
 
 Date: 2026-06-02
@@ -67,59 +109,3 @@ Remaining risks or limitations:
 Next recommended build action:
 
 Run V60.3.30 QA on phone first.  Confirm shell speed, TrustMap on-demand loading, current asset fallback, no missing-future-asset preference, mobile fidelity metadata, interaction audit metadata, model trace metadata, artifact trust metadata, release-hardening metadata, no new top-level tab, and no live capability overclaims.
-
----
-
-### Builder-20260602-010
-
-Date: 2026-06-02
-
-Builder / agent identifier: GPT-5.5 Thinking, JAFO, V60.3.24 TrustMap Render Lifecycle Controller session
-
-CyberShield versions affected:
-
-- V60.3.24 TrustMap Render Lifecycle Controller
-
-Files materially changed or created:
-
-- `docs/v60-3-24-to-v60-3-31-release-engineering-packages.md`
-- `src/ui/v60-3-24-trustmap-render-lifecycle-controller.js`
-- `src/ui/v52-7-operational-layer.js`
-- `src/ui/v60-3-22-trustmap-image-prewarm.js`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-- `docs/successor-builder-handoff-and-job-docket.md`
-
-Primary value add:
-
-Implemented V60.3.24 as the first lifecycle-control layer for TrustMap.  The release does not redesign the TrustMap or alter asset sizing.  It creates a traceable lifecycle path for TrustMap request, stack load start, stack loaded, manifest loaded, image prewarm started, image prewarm completed, render detection, view-mode changes, and visual stabilization.
-
-What got better:
-
-- A detailed release engineering package document now exists for V60.3.24 through V60.3.31.
-- TrustMap lifecycle state is exposed through `window.CyberShieldTrustMapLifecycleV60324`.
-- Admin payload records lifecycle state, counters, and recent lifecycle events.
-- Operational loader emits TrustMap request and stack-load-started signals.
-- Image prewarm now emits `cybershield:trustmap-images-prewarm-started`.
-- Lifecycle tracking uses a narrow TrustMap-scoped observer, not a full-body observer.
-- V60.3.23 manifest-backed image prewarm and on-demand TrustMap loading remain intact.
-
-Remaining risks or limitations:
-
-- V60.3.24 traces lifecycle but does not yet refactor every historical delayed timer out of prior modules.
-- Hands-on phone QA is required after GitHub Pages deploys.
-- Current images may still load slowly if the files remain large.
-- V60.3.25 should wait for optimized assets or at least known target file specs.
-
-Lessons from this pass:
-
-- The right next fix after asset manifesting is lifecycle traceability, not another visual patch.
-- Lifecycle state should be visible in admin metadata before deeper timer cleanup begins.
-- Full-body observers remain a regression risk; TrustMap-scoped observation is safer.
-- Each release should have an engineering package before code changes.
-
-Next recommended build action:
-
-Run V60.3.24 browser QA on phone and desktop.  Confirm shell speed, TrustMap on-demand loading, lifecycle metadata, view controls, current image loading, and no visible UI clutter.  If V60.3.24 passes, proceed to V60.3.25 only after optimized assets or target asset specs are ready.  Otherwise, use V60.3.24 lifecycle metadata to identify the next bottleneck.
