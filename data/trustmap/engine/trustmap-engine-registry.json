@@ -1,0 +1,132 @@
+{
+  "build": "20260602-1915 TrustMap Engine Scaffold",
+  "status": "scaffold_only_not_runtime_wired",
+  "purpose": "Define the future TrustMap Engine data contract so the next renderer can be built beside the old chain before runtime switch.",
+  "boundary": "This registry is not wired into the live TrustMap runtime yet. It does not perform live scoring, live evidence retrieval, backend persistence, workflow automation, or production enforcement.",
+  "doctrine": "CyberShield is the map. TrustMap is the visual surface. One engine must own render truth.",
+  "modes": [
+    { "id": "executive", "label": "Executive TrustMap", "purpose": "Decision, consequence, risk, confidence, and next action." },
+    { "id": "analyst", "label": "Analyst TrustMap", "purpose": "Evidence, scores, controls, anomalies, and missing data." },
+    { "id": "builder", "label": "Builder TrustMap", "purpose": "Architecture, dependencies, model versions, registry, and data flows." },
+    { "id": "board", "label": "Board TrustMap", "purpose": "Governance exposure, ownership, trend, residual risk, and proof status." },
+    { "id": "incident", "label": "Incident TrustMap", "purpose": "Blast radius, containment, trust degradation, recovery path, and decision log." }
+  ],
+  "assets": {
+    "kernel": {
+      "id": "kernel",
+      "label": "CyberShield Trust Kernel",
+      "primary": "assets/CyberShield Trust Kernel.png",
+      "encodedPrimary": "assets/CyberShield%20Trust%20Kernel.png",
+      "fallbacks": ["assets/cybershield-trust-kernel.png", "assets/CyberShield_Trust_Kernel.png"],
+      "shape": "kernel-shield",
+      "background": "none",
+      "objectFit": "contain",
+      "displayWidth": 282,
+      "displayHeight": 282
+    },
+    "cloud": {
+      "id": "cloud",
+      "label": "Cloud & Infrastructure",
+      "primary": "assets/Cloud_infrastructure_v2.png",
+      "fallbacks": ["assets/cloud_infrastructure.png", "assets/trustmap/v60-3-12/cloud-infrastructure.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    },
+    "identity": {
+      "id": "identity",
+      "label": "Identities & Access",
+      "primary": "assets/Identities_access_v2.png",
+      "fallbacks": ["assets/identities_access.png", "assets/trustmap/v60-3-12/identities-access.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    },
+    "appsData": {
+      "id": "appsData",
+      "label": "Applications & Data",
+      "primary": "assets/Applications_Data_v2.png",
+      "fallbacks": ["assets/applications_data.png", "assets/trustmap/v60-3-12/applications-data.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    },
+    "ai": {
+      "id": "ai",
+      "label": "AI Systems & Agents",
+      "primary": "assets/AI_Systems_Agents_v2.png",
+      "fallbacks": ["assets/AI_systems_and_Agents.png", "assets/trustmap/v60-3-12/ai-systems-agents.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    },
+    "endpoints": {
+      "id": "endpoints",
+      "label": "Devices & Endpoints",
+      "primary": "assets/Devices_end_Points v2.png",
+      "encodedPrimary": "assets/Devices_end_Points%20v2.png",
+      "fallbacks": ["assets/devices_endpoints.png", "assets/trustmap/v60-3-12/devices-endpoints.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    },
+    "cmmc": {
+      "id": "cmmc",
+      "label": "CMMC & Compliance",
+      "primary": "assets/Cmmc_and_Compliance v2.png",
+      "encodedPrimary": "assets/Cmmc_and_Compliance%20v2.png",
+      "fallbacks": ["assets/CMMC_and_Compliance.png", "assets/trustmap/v60-3-12/cmmc-compliance.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    },
+    "third": {
+      "id": "third",
+      "label": "Third Parties & Vendors",
+      "primary": "assets/Third_Parties_and_Vendors v2.png",
+      "encodedPrimary": "assets/Third_Parties_and_Vendors%20v2.png",
+      "fallbacks": ["assets/Third Parties and Vendors.png", "assets/Third%20Parties%20and%20Vendors.png", "assets/trustmap/v60-3-12/third-parties-vendors.png"],
+      "shape": "square-black-frame",
+      "background": "black",
+      "objectFit": "cover",
+      "displayWidth": 168,
+      "displayHeight": 168
+    }
+  },
+  "nodes": [
+    { "id": "kernel", "label": "CyberShield Trust Kernel", "type": "kernel", "assetId": "kernel", "trustState": "conditional", "score": 72, "confidence": "medium-high", "owner": "Executive Advisor Layer", "evidenceStatus": "partial", "riskIfWrong": "A conditional approval could be treated as final approval without evidence closure.", "availableAction": "Open decision trace", "route": "runtime:decision-trace" },
+    { "id": "cloud", "label": "Cloud & Infrastructure", "type": "layer1-domain", "assetId": "cloud", "trustState": "needs-verification", "score": 68, "confidence": "medium", "owner": "CIO / CTO", "evidenceStatus": "partial", "riskIfWrong": "Cloud control assumptions could be accepted without fresh evidence.", "availableAction": "Open evidence requirements", "route": "evidence:cloud" },
+    { "id": "identity", "label": "Identities & Access", "type": "layer1-domain", "assetId": "identity", "trustState": "strong", "score": 82, "confidence": "medium-high", "owner": "CISO / IAM Owner", "evidenceStatus": "reviewed", "riskIfWrong": "Excessive access could be missed if identity evidence is stale.", "availableAction": "Inspect access path", "route": "evidence:identity" },
+    { "id": "appsData", "label": "Applications & Data", "type": "layer1-domain", "assetId": "appsData", "trustState": "conditional", "score": 74, "confidence": "medium", "owner": "Application / Data Owner", "evidenceStatus": "partial", "riskIfWrong": "Sensitive data movement could be approved without full lineage.", "availableAction": "Inspect data route", "route": "evidence:appsData" },
+    { "id": "ai", "label": "AI Systems & Agents", "type": "layer1-domain", "assetId": "ai", "trustState": "needs-verification", "score": 61, "confidence": "medium", "owner": "AI Governance Owner", "evidenceStatus": "incomplete", "riskIfWrong": "Agent authority or model output could be trusted beyond its evidence base.", "availableAction": "Open AI governance trace", "route": "architecture:model-library:ai" },
+    { "id": "endpoints", "label": "Devices & Endpoints", "type": "layer1-domain", "assetId": "endpoints", "trustState": "conditional", "score": 70, "confidence": "medium", "owner": "Endpoint / Operations Owner", "evidenceStatus": "partial", "riskIfWrong": "Endpoint posture gaps could create hidden exposure.", "availableAction": "Open device evidence", "route": "evidence:endpoints" },
+    { "id": "cmmc", "label": "CMMC & Compliance", "type": "layer1-domain", "assetId": "cmmc", "trustState": "needs-verification", "score": 65, "confidence": "medium", "owner": "Compliance Owner", "evidenceStatus": "partial", "riskIfWrong": "Compliance readiness could be overstated if control evidence is incomplete.", "availableAction": "Open compliance trace", "route": "proof:cmmc" },
+    { "id": "third", "label": "Third Parties & Vendors", "type": "layer1-domain", "assetId": "third", "trustState": "at-risk", "score": 54, "confidence": "medium", "owner": "Vendor / Procurement Owner", "evidenceStatus": "incomplete", "riskIfWrong": "Vendor dependency could be approved without current proof.", "availableAction": "Open vendor trust summary", "route": "proof:vendor-trust" }
+  ],
+  "edges": [
+    { "id": "kernel-cloud", "from": "kernel", "to": "cloud", "type": "trust-dependency", "state": "needs-verification", "strength": 0.68 },
+    { "id": "kernel-identity", "from": "kernel", "to": "identity", "type": "trust-dependency", "state": "strong", "strength": 0.82 },
+    { "id": "kernel-appsData", "from": "kernel", "to": "appsData", "type": "trust-dependency", "state": "conditional", "strength": 0.74 },
+    { "id": "kernel-ai", "from": "kernel", "to": "ai", "type": "trust-dependency", "state": "needs-verification", "strength": 0.61 },
+    { "id": "kernel-endpoints", "from": "kernel", "to": "endpoints", "type": "trust-dependency", "state": "conditional", "strength": 0.70 },
+    { "id": "kernel-cmmc", "from": "kernel", "to": "cmmc", "type": "trust-dependency", "state": "needs-verification", "strength": 0.65 },
+    { "id": "kernel-third", "from": "kernel", "to": "third", "type": "trust-dependency", "state": "at-risk", "strength": 0.54 }
+  ],
+  "futureExtensions": {
+    "trustMovementEvents": ["evidence-added", "evidence-expired", "human-verified", "model-confidence-changed", "control-failed", "control-passed", "vendor-posture-changed", "assumption-challenged", "decision-overridden", "risk-accepted", "proof-pack-generated"],
+    "routes": ["Identity Rail", "Data Rail", "Evidence Rail", "Model Rail", "Vendor Rail", "Control Rail", "Decision Rail", "Proof Rail", "Human Accountability Rail"],
+    "overlays": ["blast-radius", "root-cause-cluster", "trust-degradation-timeline", "proof-pack-trail", "human-decision-checkpoints"]
+  }
+}
