@@ -13,6 +13,9 @@ No new top-level tabs were added for V60.3.30.
 Public naming rule:
 Public product name is CyberShield Executive OS. Current prototype build is V60.3.30. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
 
+Versioning rule after V60.3.30:
+The V60.x style sequence ends with the current V60.3 release train. Future implemented builds should use timestamp-based versioning in this format: YYYYMMDD-HHMM. Use 24-hour America/New_York time unless the user explicitly changes the project timezone. Example: 20260602-2145 TrustMap Mapmaker Doctrine Intake. V60.3.31 remains an earmarked concept only for Integrating the World's Best Map Maker and should not be implemented under V60.x numbering unless explicitly directed. Canonical schema document: docs/versioning-schema.md.
+
 Current TrustMap visual, performance, and governance stack:
 - V60.3.12 = PNG asset mapping and interaction recovery
 - V60.3.13 = stoplight trust color and PNG path recovery
@@ -68,4 +71,4 @@ Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
 
 Next builder first action:
-Run browser QA on V60.3.30 from a phone. Verify shell speed, TrustMap on-demand loading, current asset loading, no missing-future-asset preference, fidelity metadata, interaction audit metadata, model trace scaffold metadata, artifact trust scaffold metadata, release hardening metadata, and no new UI clutter.
+Run browser QA on V60.3.30 from a phone. Verify shell speed, TrustMap on-demand loading, current asset loading, no missing-future-asset preference, fidelity metadata, interaction audit metadata, model trace scaffold metadata, artifact trust scaffold metadata, release hardening metadata, no new UI clutter, and timestamp versioning guidance before starting the next implemented build.
