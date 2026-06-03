@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.23 TrustMap Asset Manifest and Intake Contract**
+Current build label: **V60.3.24 TrustMap Render Lifecycle Controller**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-23-trustmap-asset-manifest&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-24-trustmap-render-lifecycle&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.23
+V60.3.24
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,11 +32,13 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.23.
+No new top-level tabs were added for V60.3.24.
 
-## Current implemented build: V60.3.23
+## Current implemented build: V60.3.24
 
-V60.3.23 stops reactive image-path patching and creates a governed TrustMap asset intake contract.  It keeps the faster V60.3.21/V60.3.22 shell and prewarm architecture, while preparing CyberShield for the rebuilt Layer 1 assets with black backgrounds, uniform scale, and optional WebP variants.
+V60.3.24 adds a TrustMap render lifecycle controller.  The goal is not to redesign the TrustMap.  The goal is to create one traceable lifecycle path for TrustMap request, stack load, asset manifest load, image prewarm, render detection, view-mode changes, and visual stabilization.
+
+This release preserves the faster V60.3.21/V60.3.22 shell and the V60.3.23 asset manifest path.
 
 ## Current TrustMap visual and performance stack
 
@@ -51,20 +53,32 @@ V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
 V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
 V60.3.22 = TrustMap PNG image prewarm after shell readiness
 V60.3.23 = TrustMap asset manifest and governed future asset intake
+V60.3.24 = TrustMap render lifecycle controller
 ```
 
-V60.3.18 and V60.3.19 remain in the repository for audit history but are no longer imported at runtime through the V60.3.14 chain.
+## V60.3.24 changes
 
-## V60.3.23 changes
-
-- Adds `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
-- Adds `data/trustmap/v60-3-23-asset-manifest.json`
-- Adds `src/ui/v60-3-23-trustmap-asset-manifest-loader.js`
-- Updates `src/ui/v60-3-22-trustmap-image-prewarm.js` to prefer manifest paths and fall back to the V60.3.22 static asset list
-- Updates `src/ui/v52-7-operational-layer.js` to load the asset manifest before image prewarm
-- Preserves V60.3.21/V60.3.22 fast shell and on-demand TrustMap loading
-- Creates governed future slots for WebP/PNG black-background all-blue cube assets
+- Adds `docs/v60-3-24-to-v60-3-31-release-engineering-packages.md`
+- Adds `src/ui/v60-3-24-trustmap-render-lifecycle-controller.js`
+- Updates `src/ui/v52-7-operational-layer.js` to load the lifecycle controller and emit TrustMap request / stack-start events
+- Updates `src/ui/v60-3-22-trustmap-image-prewarm.js` to emit `cybershield:trustmap-images-prewarm-started`
+- Preserves V60.3.23 manifest-backed image prewarm
+- Preserves fast shell and on-demand TrustMap loading
 - Preserves no-new-top-level-tabs rule
+
+## Lifecycle events now tracked
+
+```text
+cybershield:trustmap-requested
+cybershield:trustmap-stack-load-started
+cybershield:trustmap-stack-loaded
+cybershield:trustmap-asset-manifest-loaded
+cybershield:trustmap-images-prewarm-started
+cybershield:trustmap-images-prewarmed
+cybershield:trustmap-render-detected
+cybershield:trustmap-view-mode-changed
+cybershield:trustmap-visual-stabilized
+```
 
 ## Asset intake contract
 
@@ -90,20 +104,6 @@ Prefer one owned render/reapply path over stacked timers and event listeners.
 If the TrustMap remains slow, compress/resize PNG assets or convert them to WebP/AVIF before adding more runtime logic.
 ```
 
-## Required current PNG assets
-
-```text
-assets/CyberShield Trust Kernel.png
-assets/cloud_infrastructure.png
-assets/identities_access.png
-assets/applications_data.png
-assets/AI_systems_and_Agents.png
-assets/devices_endpoints.png
-assets/CMMC_and_Compliance.png
-assets/Third Parties and Vendors.png
-assets/The Trust Map.png
-```
-
 ## Non-negotiable TrustMap scope rule
 
 ```text
@@ -124,11 +124,12 @@ hard refresh live prototype
 complete/reset onboarding
 confirm initial app shell remains fast on phone
 confirm asset manifest loads or gracefully falls back
-wait briefly after shell load so image prewarm can begin
+confirm TrustMap lifecycle metadata appears in admin payload
 open TrustMap
 confirm current PNG assets still load
-confirm manifest-backed prewarm does not slow the app shell
-confirm future WebP/PNG asset paths are documented in data/trustmap/v60-3-23-asset-manifest.json
+confirm lifecycle events update after TrustMap opens
+confirm view controls still work
+confirm no visible UI clutter was added
 confirm no new top-level tab exists
 confirm no overclaims appear
 ```
