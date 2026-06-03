@@ -1,9 +1,9 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "20260603-0638 Timestamp Governance Runtime Alignment",
+  "current_implemented_build": "20260603-0648 Source-of-Truth Drift Guard",
   "build_date": "2026-06-03",
-  "patch_type": "Timestamp governance and runtime/source-of-truth alignment",
-  "release_chain_status": "20260603-0638 is the current implemented build after V60.3.30 and the 20260602 Layer 1 v2 asset work. It aligns runtime/admin metadata with the timestamp versioning schema while preserving the v2 asset source rewrite and Great Map doctrine intake lineage.",
+  "patch_type": "Runtime/admin source-of-truth drift guard",
+  "release_chain_status": "20260603-0648 is the current implemented build after 20260603-0638. It adds admin/runtime drift-guard metadata to detect whether timestamp schema, current build metadata, prior runtime alignment, Layer 1 v2 rewrite metadata, and release-train metadata are observed.",
   "versioning_schema_after_v60_3_30": {
     "schema": "YYYYMMDD-HHMM",
     "timezone": "America/New_York",
@@ -11,21 +11,23 @@
     "rule": "Future implemented builds use timestamp-based versioning. Historical V60.x labels remain lineage only."
   },
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0638-timestamp-governance&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0648-source-of-truth-drift-guard&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs.",
   "lineage": {
     "v60_3_30": "Completed safe V60.3 release train through hardening",
     "20260602_1730": "Layer 1 v2 asset integration and Great Map doctrine intake",
     "20260602_1735": "Layer 1 v2 source rewrite shim active in runtime loader",
-    "20260603_0638": "Timestamp governance runtime alignment"
+    "20260603_0638": "Timestamp governance runtime alignment",
+    "20260603_0648": "Source-of-truth drift guard"
   },
   "files_added_or_updated_in_current_build": [
-    "src/ui/20260603-0638-timestamp-governance-runtime-alignment.js",
+    "src/ui/20260603-0648-source-of-truth-drift-guard.js",
     "src/ui/v52-7-operational-layer.js",
     "README.md",
     "governance-summary.json"
   ],
+  "drift_guard_rule": "The admin payload should expose source_of_truth_drift_guard with status aligned or watch. Watch blockers indicate metadata observed late or not yet observed, not necessarily broken runtime behavior.",
   "binary_asset_upload_required_for_full_v2_value": true,
   "binary_asset_folder": "assets/layer1-v2/",
   "required_layer1_v2_filenames": [
@@ -55,14 +57,14 @@
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the 20260603-0638 test URL",
+    "Hard refresh the 20260603-0648 test URL",
     "Verify initial app shell remains fast on phone",
     "Open TrustMap and confirm no broken image icons appear before v2 binaries are uploaded",
-    "Confirm timestamp governance metadata appears in admin payload",
+    "Confirm source_of_truth_drift_guard appears in admin payload",
+    "Confirm drift guard status is aligned or explains watch blockers",
     "Upload the seven v2 PNG files to assets/layer1-v2/ when available",
     "Hard refresh again",
     "Confirm v2 assets replace legacy assets",
-    "Confirm all seven Layer 1 assets have the same apparent size",
     "Confirm no new top-level tab exists"
   ]
 }
