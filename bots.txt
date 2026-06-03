@@ -1,6 +1,6 @@
 CyberShield Executive OS
-Current implemented build: 20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake
-Build date: 2026-06-02
+Current implemented build: 20260603-0638 Timestamp Governance Runtime Alignment
+Build date: 2026-06-03
 
 Purpose:
 Machine-readable context for CyberShield builders and AI readers.
@@ -8,10 +8,10 @@ Machine-readable context for CyberShield builders and AI readers.
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for 20260602-1730.
+No new top-level tabs were added for 20260603-0638.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current implemented build is 20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake.
+Public product name is CyberShield Executive OS. Current implemented build is 20260603-0638 Timestamp Governance Runtime Alignment.
 
 Versioning rule after V60.3.30:
 Use timestamp-based versioning in this format: YYYYMMDD-HHMM. Use 24-hour America/New_York time unless changed by the user. V60.3.31 remains earmarked only for Integrating the World's Best Map Maker unless explicitly directed. Canonical schema: docs/versioning-schema.md.
@@ -35,9 +35,11 @@ Current TrustMap stack:
 - V60.3.29 = Artifact Trust scenario scaffold
 - V60.3.30 = release hardening
 - 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
+- 20260602-1735 = Layer 1 v2 source rewrite shim active in runtime loader
+- 20260603-0638 = timestamp governance runtime alignment
 
-20260602-1730 scope:
-This is an immediate in-between release. It prefers the new same-size black-background blue/white Layer 1 v2 asset family, keeps legacy Layer 1 assets as fallback, and preserves the Great Map doctrine for a later design pass.
+20260603-0638 scope:
+This build aligns runtime/admin metadata with the timestamp versioning schema while preserving the Layer 1 v2 source rewrite, Great Map doctrine intake, fast shell, TrustMap on-demand loading, and existing prototype boundaries.
 
 Layer 1 v2 asset location:
 assets/layer1-v2/
@@ -52,7 +54,7 @@ Required Layer 1 v2 filenames:
 - Third_Parties_and_Vendors_v2.png
 
 Asset rule:
-Layer 1 v2 assets are preferred only when available at assets/layer1-v2/. Legacy PNG files remain fallback. Do not remove fallback behavior until browser QA confirms the v2 files.
+Layer 1 v2 assets are preferred only when available. Legacy PNG files remain fallback. Do not remove fallback behavior until browser QA confirms the v2 files.
 
 Great Map doctrine:
 CyberShield should evolve from a platform that contains a TrustMap into a platform that behaves like a map. The governing metaphor is Minard + John Snow + Harry Beck. This doctrine is captured in docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md.
@@ -70,4 +72,4 @@ Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype and not a production integration.
 
 Next builder first action:
-Verify or add the seven Layer 1 v2 PNG files under assets/layer1-v2/. Then run phone/browser QA on the 20260602-1730 test URL.
+Run phone/browser QA on the 20260603-0638 test URL. Confirm timestamp governance metadata appears in admin payload, v2 asset fallback still works, no new top-level tab exists, and source-of-truth files agree on 20260603-0638.
