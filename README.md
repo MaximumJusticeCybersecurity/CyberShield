@@ -26,6 +26,30 @@ V60.3.30
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
+## Versioning rule after V60.3.30
+
+The V60.x style sequence ends with the current V60.3 release train.  After V60.3.30, new implemented builds should use timestamp-based versioning:
+
+```text
+YYYYMMDD-HHMM
+```
+
+Use 24-hour **America/New_York** time unless the user explicitly changes the project timezone.
+
+Example:
+
+```text
+20260602-2145 TrustMap Mapmaker Doctrine Intake
+```
+
+V60.3.31 remains an earmarked concept only for **Integrating the World's Best Map Maker**.  Do not implement it under the V60.x numbering scheme unless explicitly directed.  The next implemented build after V60.3.30 should use the timestamp schema.
+
+Canonical schema document:
+
+```text
+docs/versioning-schema.md
+```
+
 ## User-facing workspace
 
 ```text
