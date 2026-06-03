@@ -1,28 +1,32 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake",
-  "build_date": "2026-06-02",
-  "patch_type": "Layer 1 v2 asset integration and Great Map doctrine intake",
-  "release_chain_status": "20260602-1730 is the current implemented build after V60.3.30. It adds code support for the new same-size black-background blue-white Layer 1 v2 assets, keeps legacy fallbacks, and captures Great Map doctrine for a future design pass.",
+  "current_implemented_build": "20260603-0638 Timestamp Governance Runtime Alignment",
+  "build_date": "2026-06-03",
+  "patch_type": "Timestamp governance and runtime/source-of-truth alignment",
+  "release_chain_status": "20260603-0638 is the current implemented build after V60.3.30 and the 20260602 Layer 1 v2 asset work. It aligns runtime/admin metadata with the timestamp versioning schema while preserving the v2 asset source rewrite and Great Map doctrine intake lineage.",
   "versioning_schema_after_v60_3_30": {
     "schema": "YYYYMMDD-HHMM",
     "timezone": "America/New_York",
-    "canonical_document": "docs/versioning-schema.md"
+    "canonical_document": "docs/versioning-schema.md",
+    "rule": "Future implemented builds use timestamp-based versioning. Historical V60.x labels remain lineage only."
   },
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260602-1730-layer1-v2-assets&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0638-timestamp-governance&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs.",
+  "lineage": {
+    "v60_3_30": "Completed safe V60.3 release train through hardening",
+    "20260602_1730": "Layer 1 v2 asset integration and Great Map doctrine intake",
+    "20260602_1735": "Layer 1 v2 source rewrite shim active in runtime loader",
+    "20260603_0638": "Timestamp governance runtime alignment"
+  },
   "files_added_or_updated_in_current_build": [
-    "data/trustmap/v60-3-23-layer1-v2-assets.json",
-    "src/ui/v60-3-23-layer1-v2-asset-integration.js",
-    "src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js",
-    "docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md",
+    "src/ui/20260603-0638-timestamp-governance-runtime-alignment.js",
+    "src/ui/v52-7-operational-layer.js",
     "README.md",
-    "bots.txt",
     "governance-summary.json"
   ],
-  "binary_asset_upload_required": true,
+  "binary_asset_upload_required_for_full_v2_value": true,
   "binary_asset_folder": "assets/layer1-v2/",
   "required_layer1_v2_filenames": [
     "AI_Systems_Agents_v2.png",
@@ -33,7 +37,7 @@
     "Identities_Access_v2.png",
     "Third_Parties_and_Vendors_v2.png"
   ],
-  "asset_rule": "Layer 1 v2 assets are preferred only when available at assets/layer1-v2/. Legacy PNG files remain fallbacks until browser QA confirms the v2 files.",
+  "asset_rule": "Layer 1 v2 assets are preferred only when available. Legacy PNG files remain fallbacks until browser QA confirms the v2 files.",
   "great_map_doctrine": {
     "summary": "CyberShield should evolve from a platform that contains a TrustMap into a platform that behaves like a map.",
     "metaphor": "Minard + John Snow + Harry Beck",
@@ -51,10 +55,11 @@
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the 20260602-1730 test URL",
+    "Hard refresh the 20260603-0638 test URL",
     "Verify initial app shell remains fast on phone",
     "Open TrustMap and confirm no broken image icons appear before v2 binaries are uploaded",
-    "Upload the seven v2 PNG files to assets/layer1-v2/",
+    "Confirm timestamp governance metadata appears in admin payload",
+    "Upload the seven v2 PNG files to assets/layer1-v2/ when available",
     "Hard refresh again",
     "Confirm v2 assets replace legacy assets",
     "Confirm all seven Layer 1 assets have the same apparent size",
