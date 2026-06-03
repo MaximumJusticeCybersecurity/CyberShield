@@ -1,0 +1,29 @@
+{
+  "version": "V60.3.28",
+  "name": "Model Trace and Evidence Trust Alignment Registry",
+  "doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
+  "maturity": "Expert-Derived V1 Trust Scoring Models, not statistically validated.",
+  "models": [
+    {
+      "id": "universal_model_trace_inspector",
+      "label": "Universal Model Trace Inspector",
+      "status": "scaffold",
+      "purpose": "Explain what score is shown, what model produced it, what evidence supports it, what is missing, what assumptions exist, confidence level, risk if wrong, and action consequence.",
+      "required_fields": ["score_name", "model_id", "model_version", "inputs", "evidence", "missing_evidence", "assumptions", "confidence", "risk_if_wrong", "action_consequence"]
+    },
+    {
+      "id": "evidence_trust_score",
+      "label": "Evidence Trust Score",
+      "status": "scaffold",
+      "purpose": "Score source credibility, freshness, completeness, relevance, chain of custody, human verification state, and conflict status.",
+      "factors": ["source_credibility", "freshness", "completeness", "relevance", "traceability", "human_verification", "conflict_status"]
+    },
+    {
+      "id": "confidence_score",
+      "label": "Confidence Score",
+      "status": "scaffold",
+      "purpose": "Represent confidence separately from trust. A claim can be trusted but low-confidence, or high-confidence but still high-risk.",
+      "factors": ["evidence_volume", "evidence_quality", "model_fit", "contradiction_level", "assumption_load", "decision_sensitivity"]
+    }
+  ]
+}
