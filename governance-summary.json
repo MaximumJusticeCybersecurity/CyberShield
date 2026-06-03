@@ -1,14 +1,14 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.23 TrustMap Asset Manifest and Intake Contract",
+  "current_implemented_build": "V60.3.24 TrustMap Render Lifecycle Controller",
   "build_date": "2026-06-02",
-  "patch_type": "Governed TrustMap asset manifest after image prewarm",
-  "release_chain_status": "V60.3.23 is the current implemented build. It keeps the V60.3.21/V60.3.22 fast shell and image prewarm architecture while adding a governed asset manifest and future intake contract for rebuilt Layer 1 artwork.",
+  "patch_type": "TrustMap render lifecycle trace after asset manifest",
+  "release_chain_status": "V60.3.24 is the current implemented build. It preserves the V60.3.21/V60.3.22 fast shell, the V60.3.23 asset manifest, and adds a lifecycle controller for TrustMap request, stack loading, manifest loading, image prewarm, render detection, view-mode changes, and visual stabilization.",
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-23-trustmap-asset-manifest&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-24-trustmap-render-lifecycle&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.23. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
+  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.24. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
   "trustmap_visual_and_performance_stack": {
     "v60_3_12": "PNG asset mapping and interaction recovery",
     "v60_3_13": "Stoplight trust color and PNG path recovery",
@@ -19,9 +19,22 @@
     "v60_3_20": "Consolidated Layer 1 visual consistency and view-mode recovery",
     "v60_3_21": "Mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction",
     "v60_3_22": "TrustMap PNG image prewarm after shell readiness",
-    "v60_3_23": "TrustMap asset manifest and governed future asset intake"
+    "v60_3_23": "TrustMap asset manifest and governed future asset intake",
+    "v60_3_24": "TrustMap render lifecycle controller"
   },
   "runtime_import_rule": "The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.",
+  "lifecycle_rule": "TrustMap render state should be tracked through lifecycle events and admin metadata rather than scattered timing assumptions. V60.3.24 introduces the lifecycle controller but does not yet refactor every historical timer out of prior modules.",
+  "lifecycle_events": [
+    "cybershield:trustmap-requested",
+    "cybershield:trustmap-stack-load-started",
+    "cybershield:trustmap-stack-loaded",
+    "cybershield:trustmap-asset-manifest-loaded",
+    "cybershield:trustmap-images-prewarm-started",
+    "cybershield:trustmap-images-prewarmed",
+    "cybershield:trustmap-render-detected",
+    "cybershield:trustmap-view-mode-changed",
+    "cybershield:trustmap-visual-stabilized"
+  ],
   "asset_manifest_rule": "TrustMap assets should be governed by data/trustmap/v60-3-23-asset-manifest.json. Current PNG files remain valid fallbacks. Future rebuilt black-background all-blue cube assets should be added through the manifest rather than hardcoded in scattered modules.",
   "image_prewarm_rule": "Do not force image prewarm into the critical startup path. Start prewarm after shell readiness. Prefer manifest paths. Warm the CyberShield Trust Kernel first, then Layer 1 PNGs and Briefing snapshot. If images remain slow, compress/resize PNG assets or add WebP/AVIF variants before adding more runtime logic.",
   "performance_doctrine": [
@@ -29,9 +42,8 @@
     "Do not force mobile users to pay the full TrustMap cost during startup.",
     "Warm TrustMap images after the shell is usable.",
     "Load the full interactive TrustMap only when requested.",
-    "Prioritize TrustMap images when TrustMap is explicitly opened.",
-    "Prefer one owned render/reapply path over stacked timers and event listeners.",
-    "If the TrustMap remains slow, compress/resize PNG assets or convert them to WebP/AVIF before adding more runtime logic."
+    "Track render lifecycle before attempting more visual fixes.",
+    "If the TrustMap remains slow because images are heavy, optimize files before adding more runtime logic."
   ],
   "future_asset_intake_rule": [
     "Use one locked template for canvas size, cube scale, camera angle, lighting, and margins.",
@@ -41,18 +53,13 @@
     "Provide web-ready PNG and preferably WebP variants.",
     "Update the asset manifest when files are added."
   ],
-  "retired_runtime_layers": {
-    "v60_3_18": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain.",
-    "v60_3_19": "Remains in repository for audit history but is no longer imported at runtime through the V60.3.14 chain."
-  },
-  "v60_3_23_changes": [
-    "Adds docs/v60-3-23-to-v60-3-30-engineering-roadmap.md",
-    "Adds data/trustmap/v60-3-23-asset-manifest.json",
-    "Adds src/ui/v60-3-23-trustmap-asset-manifest-loader.js",
-    "Updates src/ui/v60-3-22-trustmap-image-prewarm.js to prefer manifest paths and fall back to the V60.3.22 static asset list",
-    "Updates src/ui/v52-7-operational-layer.js to load the asset manifest before image prewarm",
-    "Preserves V60.3.21/V60.3.22 fast shell and on-demand TrustMap loading",
-    "Creates governed future slots for WebP/PNG black-background all-blue cube assets",
+  "v60_3_24_changes": [
+    "Adds docs/v60-3-24-to-v60-3-31-release-engineering-packages.md",
+    "Adds src/ui/v60-3-24-trustmap-render-lifecycle-controller.js",
+    "Updates src/ui/v52-7-operational-layer.js to load the lifecycle controller and emit TrustMap request / stack-start events",
+    "Updates src/ui/v60-3-22-trustmap-image-prewarm.js to emit cybershield:trustmap-images-prewarm-started",
+    "Preserves V60.3.23 manifest-backed image prewarm",
+    "Preserves fast shell and on-demand TrustMap loading",
     "Preserves no-new-top-level-tabs rule"
   ],
   "required_current_png_asset_paths": [
@@ -79,29 +86,20 @@
     "Trust-state colors must be stoplight green, yellow, or red only",
     "Do not make the Briefing snapshot replace the full TrustMap page"
   ],
-  "layer1_rules": [
-    "Normal state uses the native hologram cube with no red/yellow/green image glow.",
-    "Hover/focus shows a stoplight oval glow.",
-    "Click/select keeps the stoplight oval glow until another asset is selected.",
-    "All Layer 1 holographic cubes must render at the same apparent size.",
-    "Third Parties & Vendors must not be smaller, cropped, zoomed, square-boxed, or styled differently from the others.",
-    "Layer 1 assets should appear bright and solid unless explicitly changed."
-  ],
-  "briefing_snapshot_rule": "The Briefing page TrustMap Snapshot uses assets/The Trust Map.png as a static executive preview. The full interactive TrustMap remains on the TrustMap tab.",
-  "information_architecture_rule": "Evidence tab owns the full Manual Evidence Workbench. Runtime tab owns compact evidence requirements for action. Proof Pack tab owns proof-oriented evidence trace and defensibility context. Settings owns build/version/governance/prototype metadata.",
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
   "model_maturity_rule": "CyberShield scoring models are Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models. Default weights are calibratable and not authoritative until validated through test scenarios, expert review, red-team attempts, and real-world use cases.",
   "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the V60.3.23 test URL",
+    "Hard refresh the V60.3.24 test URL",
     "Complete or reset onboarding",
     "Verify initial app shell remains fast on phone",
     "Verify asset manifest loads or gracefully falls back",
-    "Wait briefly after shell load so image prewarm can begin",
+    "Verify TrustMap lifecycle metadata appears in admin payload",
     "Open TrustMap and confirm current PNG assets still load",
-    "Verify manifest-backed prewarm does not slow the app shell",
-    "Verify future WebP/PNG asset paths are documented in data/trustmap/v60-3-23-asset-manifest.json",
+    "Verify lifecycle events update after TrustMap opens",
+    "Verify view controls still work",
+    "Verify no visible UI clutter was added",
     "Verify no new top-level tab exists",
     "Verify no overclaims appear"
   ]
