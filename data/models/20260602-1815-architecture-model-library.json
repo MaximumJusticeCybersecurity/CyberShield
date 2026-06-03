@@ -1,0 +1,185 @@
+{
+  "build": "20260602-1815 Architecture Model Library Restoration",
+  "purpose": "Restore CyberShield's model library inside Architecture as the system-of-thinking layer, while Proof Pack remains the evidence-backed output layer.",
+  "boundary": "Prototype model library only. These entries describe intended model behavior and demo/scaffold use. They do not perform live retrieval, live fact-checking, live scoring, statistical validation, backend persistence, or production enforcement.",
+  "architecture_rule": "Architecture explains how CyberShield thinks. Proof Pack shows what CyberShield can defend later.",
+  "categories": [
+    { "id": "core", "label": "Core Trust Models", "description": "Models that explain trust posture, runtime authority, and executive decision state." },
+    { "id": "evidence", "label": "Evidence Models", "description": "Models that assess source quality, evidence completeness, freshness, relevance, and traceability." },
+    { "id": "internet", "label": "Internet Trust Engine", "description": "Models for online artifacts, claims, sources, transcripts, wrapper metadata, and risk if believed." },
+    { "id": "ai", "label": "AI Governance Models", "description": "Models for AI systems, agent authority, model provenance, tool use, and human review." },
+    { "id": "vendor", "label": "Vendor and Supply Chain Models", "description": "Models for third-party trust, contractual reliance, dependency concentration, and vendor proof." },
+    { "id": "decision", "label": "Decision and Consequence Models", "description": "Models that connect trust state to business consequence, approval, exception, and next action." },
+    { "id": "proof", "label": "Proof Pack Models", "description": "Models that turn decision records, evidence, assumptions, and model traces into defensible outputs." }
+  ],
+  "models": [
+    {
+      "id": "universal-model-trace-inspector",
+      "name": "Universal Model Trace Inspector",
+      "category": "core",
+      "status": "highest-priority scaffold",
+      "purpose": "Inspect every score, model output, recommendation, map node, or trust state and explain what produced it.",
+      "inputs": ["score id", "model id", "model version", "input fields", "evidence references", "assumptions", "confidence state"],
+      "outputs": ["model trace", "evidence support", "missing evidence", "assumption list", "confidence level", "risk if wrong", "action consequence"],
+      "used_in": ["Architecture", "TrustMap", "Runtime", "Evidence", "Proof Pack"],
+      "proof_pack_outputs": ["Model Trace Report", "Confidence and Assumptions Report"],
+      "boundary": "Inspection scaffold only until connected to the full model registry and runtime evidence store."
+    },
+    {
+      "id": "core-trust-score",
+      "name": "Core Trust Score",
+      "category": "core",
+      "status": "prototype directional",
+      "purpose": "Summarize whether the evaluated action is trusted, provisionally trusted, degraded, contested, or blocked.",
+      "inputs": ["evidence posture", "vendor state", "role authority", "policy lineage", "runtime context", "business priority"],
+      "outputs": ["trust score", "trust state", "top trust drivers", "next action"],
+      "used_in": ["Briefing", "Runtime", "TrustMap", "Proof Pack"],
+      "proof_pack_outputs": ["Executive Decision Brief"]
+    },
+    {
+      "id": "operational-trust-score",
+      "name": "Operational Trust Score",
+      "category": "core",
+      "status": "prototype directional",
+      "purpose": "Evaluate whether current operating conditions support allowing, constraining, escalating, or blocking an action.",
+      "inputs": ["runtime control", "identity authority", "control evidence", "system dependency", "owner accountability"],
+      "outputs": ["operational trust posture", "runtime recommendation", "control gaps"],
+      "used_in": ["Briefing", "Runtime", "TrustMap"],
+      "proof_pack_outputs": ["Operational Decision Record"]
+    },
+    {
+      "id": "evidence-trust-score",
+      "name": "Evidence Trust Score",
+      "category": "evidence",
+      "status": "high-priority scaffold",
+      "purpose": "Score how much confidence CyberShield should place in the evidence supporting a decision or claim.",
+      "inputs": ["source credibility", "freshness", "completeness", "relevance", "chain of custody", "human verification", "conflict status"],
+      "outputs": ["evidence trust score", "evidence gaps", "conflict flags", "human review need"],
+      "used_in": ["Evidence", "Runtime", "Proof Pack", "Architecture"],
+      "proof_pack_outputs": ["Evidence Trace Report", "Audit Readiness Packet"]
+    },
+    {
+      "id": "confidence-score",
+      "name": "Confidence Score",
+      "category": "evidence",
+      "status": "high-priority scaffold",
+      "purpose": "Separate confidence from trust so a claim or decision can be trusted but low-confidence, or high-confidence but high-risk.",
+      "inputs": ["evidence quantity", "evidence quality", "model maturity", "input completeness", "assumption count", "conflict state"],
+      "outputs": ["confidence level", "confidence drivers", "uncertainty explanation"],
+      "used_in": ["Briefing", "Evidence", "Proof Pack", "Universal Trace Drawer"],
+      "proof_pack_outputs": ["Confidence and Assumptions Report"]
+    },
+    {
+      "id": "internet-artifact-trust-model",
+      "name": "Internet Artifact Trust Model",
+      "category": "internet",
+      "status": "scenario scaffold",
+      "purpose": "Evaluate an online artifact as untrusted until verified, including the wrapper, source, transcript, claims, evidence chain, and sentence-level assertions.",
+      "inputs": ["artifact text", "transcript", "source metadata", "publisher", "author or speaker", "claims", "citations", "timestamps", "known evidence"],
+      "outputs": ["artifact trust score", "claim table", "evidence gaps", "confidence level", "risk if believed", "recommended action"],
+      "used_in": ["Architecture", "Evidence", "Runtime", "Proof Pack", "TrustMap"],
+      "proof_pack_outputs": ["Artifact Trust Report", "Claim Verification Report", "Source Evidence Trace"],
+      "pilot_scenario": "USAFacts / Steve Ballmer video transcript pilot. The model asks which claims can be trusted, at what confidence, based on what evidence, and with what operational risk if believed."
+    },
+    {
+      "id": "claim-extraction-model",
+      "name": "Claim Extraction Model",
+      "category": "internet",
+      "status": "prototype scaffold",
+      "purpose": "Extract factual claims from a transcript, article, report, webpage, ad, or AI-generated artifact.",
+      "inputs": ["artifact text", "sentences", "metadata", "speaker labels", "citation markers"],
+      "outputs": ["claim list", "claim type", "claim priority", "verification need", "source sentence"],
+      "used_in": ["Evidence", "Proof Pack", "Internet Trust Engine"],
+      "proof_pack_outputs": ["Claim Table", "Claim Verification Report"]
+    },
+    {
+      "id": "fact-verification-model",
+      "name": "Fact Verification Model",
+      "category": "internet",
+      "status": "future capability scaffold",
+      "purpose": "Compare extracted claims against primary or trusted sources and classify whether each claim is supported, contradicted, incomplete, stale, or unverified.",
+      "inputs": ["claim table", "evidence sources", "source authority", "date/freshness", "jurisdiction or scope", "conflicting evidence"],
+      "outputs": ["verification state", "source trace", "conflict flags", "confidence level"],
+      "used_in": ["Evidence", "Proof Pack", "Internet Trust Engine"],
+      "proof_pack_outputs": ["Claim Verification Report", "Evidence Trace Report"],
+      "boundary": "No live fact-checking is performed in the current static prototype."
+    },
+    {
+      "id": "source-credibility-model",
+      "name": "Source Credibility Model",
+      "category": "internet",
+      "status": "prototype scaffold",
+      "purpose": "Evaluate source authority, independence, reputation, proximity to primary evidence, and potential conflict of interest.",
+      "inputs": ["publisher", "author", "domain", "citation chain", "source type", "ownership or sponsorship", "recency"],
+      "outputs": ["source credibility rating", "source risk flags", "preferred verification path"],
+      "used_in": ["Evidence", "Internet Trust Engine", "Proof Pack"],
+      "proof_pack_outputs": ["Source Evidence Trace"]
+    },
+    {
+      "id": "risk-if-wrong-model",
+      "name": "Risk-if-Wrong Model",
+      "category": "decision",
+      "status": "prototype scaffold",
+      "purpose": "Explain what could happen if CyberShield or the executive relies on the wrong assumption, claim, source, or evidence set.",
+      "inputs": ["decision context", "business value", "impact type", "confidence", "trust state", "evidence gaps"],
+      "outputs": ["risk if wrong", "blast radius", "decision warning", "escalation need"],
+      "used_in": ["Briefing", "Runtime", "TrustMap", "Proof Pack"],
+      "proof_pack_outputs": ["Risk-if-Wrong Memo", "Board Summary"]
+    },
+    {
+      "id": "decision-consequence-model",
+      "name": "Decision Consequence Model",
+      "category": "decision",
+      "status": "prototype directional",
+      "purpose": "Connect trust posture to approval, conditional approval, escalation, block, override, or risk acceptance.",
+      "inputs": ["trust score", "confidence", "evidence gaps", "role authority", "priority", "exposure"],
+      "outputs": ["decision state", "next action", "owner", "proof requirement"],
+      "used_in": ["Briefing", "Runtime", "Proof Pack"],
+      "proof_pack_outputs": ["Executive Decision Brief", "Risk Acceptance Memo"]
+    },
+    {
+      "id": "vendor-trust-model",
+      "name": "Vendor Trust Model",
+      "category": "vendor",
+      "status": "prototype scaffold",
+      "purpose": "Evaluate whether an external provider, platform, vendor, partner, or payment destination can be relied upon.",
+      "inputs": ["vendor approval", "contract owner", "SOC 2 or equivalent proof", "data-use terms", "dependency criticality", "payment validation"],
+      "outputs": ["vendor trust state", "vendor evidence gaps", "dependency risk", "recommended action"],
+      "used_in": ["TrustMap", "Runtime", "Evidence", "Proof Pack"],
+      "proof_pack_outputs": ["Vendor Trust Summary"]
+    },
+    {
+      "id": "ai-governance-trust-model",
+      "name": "AI Governance Trust Model",
+      "category": "ai",
+      "status": "prototype scaffold",
+      "purpose": "Evaluate AI system or agent use based on provenance, authority, permitted use, tool access, evidence, and human review.",
+      "inputs": ["AI use case", "model provenance", "input authority", "tool permissions", "human verification", "policy lineage"],
+      "outputs": ["AI trust state", "agent authority warning", "review requirement", "proof route"],
+      "used_in": ["Architecture", "TrustMap", "Runtime", "Proof Pack"],
+      "proof_pack_outputs": ["AI Governance Review"]
+    },
+    {
+      "id": "human-verification-model",
+      "name": "Human Verification Model",
+      "category": "decision",
+      "status": "prototype scaffold",
+      "purpose": "Track whether a qualified human has verified, approved, overridden, escalated, or accepted risk for a decision.",
+      "inputs": ["human owner", "role authority", "verification state", "decision state", "override reason", "timestamp"],
+      "outputs": ["verification status", "owner accountability", "approval checkpoint", "decision record"],
+      "used_in": ["Runtime", "Proof Pack", "TrustMap", "Architecture"],
+      "proof_pack_outputs": ["Human Review Record", "Risk Acceptance Memo"]
+    },
+    {
+      "id": "proof-pack-artifact-model",
+      "name": "Proof Pack Artifact Model",
+      "category": "proof",
+      "status": "prototype scaffold",
+      "purpose": "Transform model outputs, evidence, assumptions, confidence, and human review into role-tailored defensible reports.",
+      "inputs": ["decision record", "model traces", "evidence trace", "confidence", "audience", "boundary language"],
+      "outputs": ["executive brief", "evidence trace", "model trace", "audit packet", "board summary", "risk memo"],
+      "used_in": ["Proof Pack", "Architecture"],
+      "proof_pack_outputs": ["Executive Decision Brief", "Evidence Trace Report", "Model Trace Report", "Board Summary", "Audit Readiness Packet"]
+    }
+  ]
+}
