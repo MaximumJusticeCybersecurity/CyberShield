@@ -1,6 +1,5 @@
-// V60.3.23 TrustMap Asset Manifest Loader
-// Purpose: load the governed TrustMap asset manifest so future rebuilt assets can be swapped without hardcoded filename patches.
-// Boundary: static advisory prototype only. No live retrieval beyond static repo JSON/assets, no live scoring, no enforcement, no backend persistence.
+// V60.3.23/V60.3.25 TrustMap Asset Manifest Loader
+// Purpose: load governed TrustMap assets and prefer optimized paths only when slots mark them available.
 
 const V60323_MANIFEST_PATH = 'data/trustmap/v60-3-23-asset-manifest.json';
 const V60323_FALLBACK_PATHS = [
@@ -24,6 +23,15 @@ function v60323CanUseWebP(){
   if(!canvas.toDataURL) return false;
   try { return canvas.toDataURL('image/webp').startsWith('data:image/webp'); } catch { return false; }
 }
+function v60323CanUseAvif(){
+  const canvas = document.createElement('canvas');
+  if(!canvas.toDataURL) return false;
+  try { return canvas.toDataURL('image/avif').startsWith('data:image/avif'); } catch { return false; }
+}
+function v60323OptimizedReady(slot){
+  const status = String(slot?.status || '');
+  return Boolean(slot?.optimized_available || slot?.future_assets_available || status.includes('optimized_available') || status.includes('webp_available') || status.includes('future_assets_available'));
+}
 
 async function v60323LoadManifest(){
   if(v60323ManifestPromise) return v60323ManifestPromise;
@@ -38,17 +46,19 @@ async function v60323LoadManifest(){
       return manifest;
     })
     .catch(error => {
-      console.warn('CyberShield V60.3.23 asset manifest unavailable; using fallback asset list.', error);
+      console.warn('CyberShield asset manifest unavailable; using fallback asset list.', error);
       window.CyberShieldTrustMapAssetManifestV60323 = null;
       return null;
     });
   return v60323ManifestPromise;
 }
 
-function v60323SlotPath(slot, preferWebP = v60323CanUseWebP()){
+function v60323SlotPath(slot){
   if(!slot) return null;
-  if(preferWebP && slot.future_webp) return v60323Encode(slot.future_webp);
-  if(slot.future_png) return v60323Encode(slot.future_png);
+  const optimizedReady = v60323OptimizedReady(slot);
+  if(optimizedReady && v60323CanUseAvif() && slot.future_avif) return v60323Encode(slot.future_avif);
+  if(optimizedReady && v60323CanUseWebP() && slot.future_webp) return v60323Encode(slot.future_webp);
+  if(optimizedReady && slot.future_png) return v60323Encode(slot.future_png);
   if(slot.current_encoded_png) return slot.current_encoded_png;
   if(slot.current_png) return v60323Encode(slot.current_png);
   return null;
@@ -81,11 +91,11 @@ function v60323MarkMeta(){
     const parsed = JSON.parse(payload.textContent || '{}');
     const manifest = window.CyberShieldTrustMapAssetManifestV60323;
     parsed.trustmap_asset_manifest = {
-      build:'V60.3.23 TrustMap Asset Manifest and Intake Contract',
+      build:'V60.3.25 TrustMap Asset Manifest Format Upgrade Path',
       status: manifest ? 'manifest_loaded' : 'fallback_static_asset_list',
       manifest_path: V60323_MANIFEST_PATH,
       slot_count: Array.isArray(manifest?.slots) ? manifest.slots.length : 0,
-      rule:'TrustMap assets should be governed by manifest slots, with current PNG fallback and future WebP/black-background/all-blue cube paths.',
+      rule:'Current PNG is fallback. Optimized future paths are preferred only when the manifest slot marks them available.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
@@ -96,7 +106,9 @@ window.CyberShieldTrustMapAssetManifestV60323Api = {
   loadManifest: v60323LoadManifest,
   getPrewarmPaths: v60323GetPrewarmPaths,
   findSlotById: v60323FindSlotById,
-  fallbackPaths: V60323_FALLBACK_PATHS.slice()
+  fallbackPaths: V60323_FALLBACK_PATHS.slice(),
+  slotPath: v60323SlotPath,
+  optimizedReady: v60323OptimizedReady
 };
 
 v60323LoadManifest().then(v60323MarkMeta);
