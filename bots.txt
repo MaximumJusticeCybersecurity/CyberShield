@@ -1,5 +1,5 @@
 CyberShield Executive OS
-Current implemented build: 20260603-0638 Timestamp Governance Runtime Alignment
+Current implemented build: 20260603-0648 Source-of-Truth Drift Guard
 Build date: 2026-06-03
 
 Purpose:
@@ -8,10 +8,10 @@ Machine-readable context for CyberShield builders and AI readers.
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for 20260603-0638.
+No new top-level tabs were added for 20260603-0648.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current implemented build is 20260603-0638 Timestamp Governance Runtime Alignment.
+Public product name is CyberShield Executive OS. Current implemented build is 20260603-0648 Source-of-Truth Drift Guard.
 
 Versioning rule after V60.3.30:
 Use timestamp-based versioning in this format: YYYYMMDD-HHMM. Use 24-hour America/New_York time unless changed by the user. V60.3.31 remains earmarked only for Integrating the World's Best Map Maker unless explicitly directed. Canonical schema: docs/versioning-schema.md.
@@ -37,9 +37,13 @@ Current TrustMap stack:
 - 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
 - 20260602-1735 = Layer 1 v2 source rewrite shim active in runtime loader
 - 20260603-0638 = timestamp governance runtime alignment
+- 20260603-0648 = source-of-truth drift guard
 
-20260603-0638 scope:
-This build aligns runtime/admin metadata with the timestamp versioning schema while preserving the Layer 1 v2 source rewrite, Great Map doctrine intake, fast shell, TrustMap on-demand loading, and existing prototype boundaries.
+20260603-0648 scope:
+This build adds admin/runtime drift-guard metadata so future builders can detect source-of-truth disagreement. It preserves Layer 1 v2 source rewrite, Great Map doctrine intake, fast shell, TrustMap on-demand loading, and existing prototype boundaries.
+
+Drift guard rule:
+Admin payload should expose source_of_truth_drift_guard with status aligned or watch. Watch blockers identify late/missing observed metadata and should guide QA before more build work.
 
 Layer 1 v2 asset location:
 assets/layer1-v2/
@@ -72,4 +76,4 @@ Prototype boundary:
 The current GitHub Pages build is a lightweight static advisory prototype and not a production integration.
 
 Next builder first action:
-Run phone/browser QA on the 20260603-0638 test URL. Confirm timestamp governance metadata appears in admin payload, v2 asset fallback still works, no new top-level tab exists, and source-of-truth files agree on 20260603-0638.
+Run phone/browser QA on the 20260603-0648 test URL. Confirm source_of_truth_drift_guard appears in admin payload, status is aligned or explains watch blockers, v2 asset fallback still works, no new top-level tab exists, and source-of-truth files agree on 20260603-0648.
