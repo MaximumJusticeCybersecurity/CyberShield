@@ -1,0 +1,48 @@
+{
+  "build": "V60.3.23 Layer 1 v2 Asset Integration",
+  "status": "manifest_ready_binary_assets_required",
+  "asset_folder": "assets/layer1-v2/",
+  "observed_uploaded_asset_size_px": "1254 x 1254",
+  "observed_uploaded_file_size_range_mb": "2.37 to 2.69",
+  "purpose": "Use the new same-size black-background blue/white cube renditions as the preferred Layer 1 TrustMap assets while falling back to the previous assets if binaries are not yet uploaded.",
+  "canonical_assets": {
+    "ai": {
+      "label": "AI Systems & Agents",
+      "preferred": "assets/layer1-v2/AI_Systems_Agents_v2.png",
+      "fallbacks": ["assets/AI_systems_and_Agents.png", "assets/AI Systems & Agents.png"]
+    },
+    "appsData": {
+      "label": "Applications & Data",
+      "preferred": "assets/layer1-v2/Applications_Data_v2.png",
+      "fallbacks": ["assets/applications_data.png", "assets/Applications & Data.png"]
+    },
+    "cloud": {
+      "label": "Cloud & Infrastructure",
+      "preferred": "assets/layer1-v2/Cloud_Infrastructure_v2.png",
+      "fallbacks": ["assets/cloud_infrastructure.png", "assets/Cloud & Infrastructure.png"]
+    },
+    "cmmc": {
+      "label": "CMMC & Compliance",
+      "preferred": "assets/layer1-v2/CMMC_and_Compliance_v2.png",
+      "fallbacks": ["assets/CMMC_and_Compliance.png", "assets/CMMC & Compliance.png"]
+    },
+    "endpoints": {
+      "label": "Devices & Endpoints",
+      "preferred": "assets/layer1-v2/Devices_End_Points_v2.png",
+      "fallbacks": ["assets/devices_endpoints.png", "assets/Devices & Endpoints.png"]
+    },
+    "identity": {
+      "label": "Identities & Access",
+      "preferred": "assets/layer1-v2/Identities_Access_v2.png",
+      "fallbacks": ["assets/identities_access.png", "assets/Identities & Access.png"]
+    },
+    "third": {
+      "label": "Third Parties & Vendors",
+      "preferred": "assets/layer1-v2/Third_Parties_and_Vendors_v2.png",
+      "fallbacks": ["assets/Third Parties and Vendors.png", "assets/Third Parties & Vendors.png"]
+    }
+  },
+  "binary_upload_required": true,
+  "binary_upload_note": "Upload the seven PNG files to assets/layer1-v2/ using the canonical filenames above. This GitHub connector can commit text/code but does not expose a binary image upload action.",
+  "performance_note": "If mobile image loading remains slow, create WebP/AVIF variants or resize the 1254px PNGs before adding more JavaScript."
+}
