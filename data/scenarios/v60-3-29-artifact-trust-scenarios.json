@@ -1,0 +1,53 @@
+{
+  "version": "V60.3.29",
+  "name": "Artifact Trust Scenario Scaffold",
+  "boundary": "Static advisory prototype. No live retrieval, no automated fact verification, no fact-checker branding, and no person or brand trust labeling.",
+  "doctrine": "The question is not whether we trust a person or brand. The question is whether this artifact contains enough reliable evidence to support a specific action, with known consequence if wrong.",
+  "scenarios": [
+    {
+      "id": "vendor_soc2_claim",
+      "label": "Vendor SOC 2 Claim",
+      "claim": "A vendor claims it is SOC 2 compliant.",
+      "decision": "Can this vendor be approved for sensitive system or data access?",
+      "evidence_needed": ["current SOC 2 report", "report period", "scope", "exceptions", "bridge letter", "security owner review"],
+      "risk_if_wrong": "Vendor access may be approved based on stale, scoped-out, or misleading assurance evidence.",
+      "action_guidance": "Constrain approval until scope, report period, exceptions, and owner review are documented."
+    },
+    {
+      "id": "ai_vendor_training_data_claim",
+      "label": "AI Vendor Training Data Claim",
+      "claim": "An AI vendor says it does not train on customer data.",
+      "decision": "Can company data be entered into or integrated with the AI service?",
+      "evidence_needed": ["contract terms", "data processing addendum", "privacy policy", "tenant controls", "retention settings", "security review"],
+      "risk_if_wrong": "Sensitive data may be retained, reused, exposed, or processed outside approved boundaries.",
+      "action_guidance": "Require contractual evidence and technical control confirmation before approval."
+    },
+    {
+      "id": "acquisition_security_posture_claim",
+      "label": "Acquisition Security Posture Claim",
+      "claim": "An acquisition target says its security program meets NIST expectations.",
+      "decision": "Can leadership rely on the target's security posture during diligence?",
+      "evidence_needed": ["control mapping", "assessment results", "open findings", "incident history", "tool coverage", "security owner attestation"],
+      "risk_if_wrong": "Security debt, breach exposure, or integration risk may be underestimated before deal close.",
+      "action_guidance": "Treat as unverified until evidence, gaps, and consequence are mapped."
+    },
+    {
+      "id": "supplier_cyber_insurance_claim",
+      "label": "Supplier Cyber Insurance Claim",
+      "claim": "A supplier says it maintains cyber insurance.",
+      "decision": "Can contract risk be accepted based on supplier coverage?",
+      "evidence_needed": ["certificate of insurance", "coverage limits", "exclusions", "effective dates", "named insured", "contractual requirements"],
+      "risk_if_wrong": "Coverage may be expired, insufficient, excluded, or unrelated to the contracted risk.",
+      "action_guidance": "Require current coverage evidence and confirm it maps to the risk."
+    },
+    {
+      "id": "cfo_wire_approval_claim",
+      "label": "CFO Wire Approval Claim",
+      "claim": "A wire request says it was approved by the CFO.",
+      "decision": "Can the payment be released?",
+      "evidence_needed": ["known approval channel", "out-of-band verification", "vendor banking history", "change history", "controller approval", "segregation of duties"],
+      "risk_if_wrong": "Fraudulent payment may be released based on spoofed or compromised approval evidence.",
+      "action_guidance": "Refuse or hold payment until approval and banking evidence are independently verified."
+    }
+  ]
+}
