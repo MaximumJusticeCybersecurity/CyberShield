@@ -1,15 +1,50 @@
-// V60.3.23 Layer 1 v2 Asset Integration
-// Purpose: prefer the new same-size black-background blue/white Layer 1 cube assets, while preserving safe fallbacks until binary files are uploaded.
+// 20260602-1730 Layer 1 v2 Asset Integration
+// Purpose: prefer the uploaded same-size black-background blue/white Layer 1 cube assets, while preserving safe fallbacks.
 // Boundary: static advisory prototype only. No live scoring, live retrieval, workflow automation, enforcement, or backend persistence.
 
 const V60323_LAYER1_V2 = {
-  ai: ['assets/layer1-v2/AI_Systems_Agents_v2.png', 'assets/AI_systems_and_Agents.png', 'assets/AI%20Systems%20%26%20Agents.png'],
-  appsData: ['assets/layer1-v2/Applications_Data_v2.png', 'assets/applications_data.png', 'assets/Applications%20%26%20Data.png'],
-  cloud: ['assets/layer1-v2/Cloud_Infrastructure_v2.png', 'assets/cloud_infrastructure.png', 'assets/Cloud%20%26%20Infrastructure.png'],
-  cmmc: ['assets/layer1-v2/CMMC_and_Compliance_v2.png', 'assets/CMMC_and_Compliance.png', 'assets/CMMC%20%26%20Compliance.png'],
-  endpoints: ['assets/layer1-v2/Devices_End_Points_v2.png', 'assets/devices_endpoints.png', 'assets/Devices%20%26%20Endpoints.png'],
-  identity: ['assets/layer1-v2/Identities_Access_v2.png', 'assets/identities_access.png', 'assets/Identities%20%26%20Access.png'],
-  third: ['assets/layer1-v2/Third_Parties_and_Vendors_v2.png', 'assets/Third%20Parties%20and%20Vendors.png', 'assets/Third%20Parties%20%26%20Vendors.png']
+  ai: [
+    'assets/AI_Systems_Agents_v2.png',
+    'assets/layer1-v2/AI_Systems_Agents_v2.png',
+    'assets/AI_systems_and_Agents.png',
+    'assets/AI%20Systems%20%26%20Agents.png'
+  ],
+  appsData: [
+    'assets/Applications_Data_v2.png',
+    'assets/layer1-v2/Applications_Data_v2.png',
+    'assets/applications_data.png',
+    'assets/Applications%20%26%20Data.png'
+  ],
+  cloud: [
+    'assets/Cloud_infrastructure_v2.png',
+    'assets/layer1-v2/Cloud_Infrastructure_v2.png',
+    'assets/cloud_infrastructure.png',
+    'assets/Cloud%20%26%20Infrastructure.png'
+  ],
+  cmmc: [
+    'assets/Cmmc_and_Compliance%20v2.png',
+    'assets/layer1-v2/CMMC_and_Compliance_v2.png',
+    'assets/CMMC_and_Compliance.png',
+    'assets/CMMC%20%26%20Compliance.png'
+  ],
+  endpoints: [
+    'assets/Devices_end_Points%20v2.png',
+    'assets/layer1-v2/Devices_End_Points_v2.png',
+    'assets/devices_endpoints.png',
+    'assets/Devices%20%26%20Endpoints.png'
+  ],
+  identity: [
+    'assets/Identities_access_v2.png',
+    'assets/layer1-v2/Identities_Access_v2.png',
+    'assets/identities_access.png',
+    'assets/Identities%20%26%20Access.png'
+  ],
+  third: [
+    'assets/Third_Parties_and_Vendors%20v2.png',
+    'assets/layer1-v2/Third_Parties_and_Vendors_v2.png',
+    'assets/Third%20Parties%20and%20Vendors.png',
+    'assets/Third%20Parties%20%26%20Vendors.png'
+  ]
 };
 
 function v60323$(selector, root = document){ return root.querySelector(selector); }
@@ -105,10 +140,10 @@ function v60323MarkMeta(){
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
     parsed.layer1_v2_asset_integration = {
-      build:'V60.3.23 Layer 1 v2 Asset Integration',
-      status:'active_code_ready_binary_assets_required',
-      preferred_folder:'assets/layer1-v2/',
-      rule:'Prefer same-size black-background blue/white v2 Layer 1 cube assets, with legacy assets as fallback until binaries are uploaded.',
+      build:'20260602-1730 Layer 1 v2 Asset Integration',
+      status:'active_using_uploaded_root_assets_with_fallbacks',
+      preferred_paths:'assets/*_v2.png root uploads first, assets/layer1-v2 canonical paths second, legacy assets third',
+      rule:'Prefer same-size black-background blue/white v2 Layer 1 cube assets, with legacy assets as fallback.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
