@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **V60.3.24 TrustMap Render Lifecycle Controller**
+Current build label: **V60.3.30 Release Hardening and Source-of-Truth Reconciliation**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-24-trustmap-render-lifecycle&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-30-release-hardening&reset=onboarding
 
 ## Public naming rule
 
@@ -21,7 +21,7 @@ CyberShield Executive OS
 Current prototype build:
 
 ```text
-V60.3.24
+V60.3.30
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
@@ -32,15 +32,13 @@ Do not call the public build **CyberShield OS v8** unless the repo, README, load
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for V60.3.24.
+No new top-level tabs were added for V60.3.30.
 
-## Current implemented build: V60.3.24
+## Current implemented build: V60.3.30
 
-V60.3.24 adds a TrustMap render lifecycle controller.  The goal is not to redesign the TrustMap.  The goal is to create one traceable lifecycle path for TrustMap request, stack load, asset manifest load, image prewarm, render detection, view-mode changes, and visual stabilization.
+V60.3.30 completes the safe V60.3 release train through release hardening.  V60.3.25 through V60.3.29 were built as conservative scaffolds where full value depends on optimized assets, QA, or future source material.  V60.3.31 remains earmarked only until the user provides the world-class mapmaker source material and design intent.
 
-This release preserves the faster V60.3.21/V60.3.22 shell and the V60.3.23 asset manifest path.
-
-## Current TrustMap visual and performance stack
+## Current TrustMap visual, performance, and governance stack
 
 ```text
 V60.3.12 = PNG asset mapping and interaction recovery
@@ -54,42 +52,39 @@ V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile anim
 V60.3.22 = TrustMap PNG image prewarm after shell readiness
 V60.3.23 = TrustMap asset manifest and governed future asset intake
 V60.3.24 = TrustMap render lifecycle controller
+V60.3.25 = asset optimization and format upgrade path, scaffold built, optimized assets pending
+V60.3.26 = mobile TrustMap fidelity mode
+V60.3.27 = no-dead-click and interaction meaning audit
+V60.3.28 = model trace and evidence trust alignment scaffold
+V60.3.29 = commercial Artifact Trust scenario scaffold
+V60.3.30 = release hardening and source-of-truth reconciliation
+V60.3.31 = earmarked: Integrating the World's Best Map Maker, do not build until user provides source material
 ```
 
-## V60.3.24 changes
+## V60.3.25 through V60.3.30 changes
 
-- Adds `docs/v60-3-24-to-v60-3-31-release-engineering-packages.md`
-- Adds `src/ui/v60-3-24-trustmap-render-lifecycle-controller.js`
-- Updates `src/ui/v52-7-operational-layer.js` to load the lifecycle controller and emit TrustMap request / stack-start events
-- Updates `src/ui/v60-3-22-trustmap-image-prewarm.js` to emit `cybershield:trustmap-images-prewarm-started`
-- Preserves V60.3.23 manifest-backed image prewarm
-- Preserves fast shell and on-demand TrustMap loading
-- Preserves no-new-top-level-tabs rule
+- Adds `src/ui/v60-3-25-asset-optimization-and-format-upgrade.js`
+- Updates `src/ui/v60-3-23-trustmap-asset-manifest-loader.js` so future optimized paths are preferred only when a manifest slot marks them available
+- Adds `src/ui/v60-3-26-mobile-trustmap-fidelity-mode.js`
+- Adds `docs/v60-3-27-no-dead-click-audit.md`
+- Adds `src/ui/v60-3-27-no-dead-click-interaction-meaning.js`
+- Adds `data/models/v60-3-28-model-trace-registry.json`
+- Adds `src/ui/v60-3-28-model-trace-and-evidence-trust.js`
+- Adds `data/scenarios/v60-3-29-artifact-trust-scenarios.json`
+- Adds `src/ui/v60-3-29-artifact-trust-scenario-scaffold.js`
+- Adds `src/ui/v60-3-30-release-hardening-and-source-truth.js`
+- Updates `src/ui/v52-7-operational-layer.js` to wire the safe release-train modules
 
-## Lifecycle events now tracked
-
-```text
-cybershield:trustmap-requested
-cybershield:trustmap-stack-load-started
-cybershield:trustmap-stack-loaded
-cybershield:trustmap-asset-manifest-loaded
-cybershield:trustmap-images-prewarm-started
-cybershield:trustmap-images-prewarmed
-cybershield:trustmap-render-detected
-cybershield:trustmap-view-mode-changed
-cybershield:trustmap-visual-stabilized
-```
-
-## Asset intake contract
+## Boundaries
 
 ```text
-All Layer 1 assets must use one locked template for canvas size, cube scale, camera angle, lighting, and margins.
-Base artwork should use black or near-black backgrounds.
-Green, yellow, and red are UI trust-state overlays only.
-Base art should remain neutral blue/white/black.
-Current PNG files remain valid fallbacks.
-Future WebP/PNG paths are defined in the asset manifest.
-If images remain slow, optimize image dimensions and file size before adding more runtime logic.
+V60.3.25 does not create optimized image files. It only prepares the path and avoids preferring missing future assets.
+V60.3.26 controls fidelity but does not create a separate mobile product.
+V60.3.27 audits interaction meaning but does not invent backend actions.
+V60.3.28 scaffolds model trace doctrine but does not claim statistical validation.
+V60.3.29 scaffolds commercial artifact trust but does not perform live retrieval or fact-checking.
+V60.3.30 reconciles the release train.
+V60.3.31 is not implemented yet.
 ```
 
 ## Performance doctrine
@@ -99,23 +94,13 @@ Load the executive shell first.
 Do not force mobile users to pay the full TrustMap cost during startup.
 Warm TrustMap images after the shell is usable.
 Load the full interactive TrustMap only when requested.
-Prioritize TrustMap images when TrustMap is explicitly opened.
-Prefer one owned render/reapply path over stacked timers and event listeners.
-If the TrustMap remains slow, compress/resize PNG assets or convert them to WebP/AVIF before adding more runtime logic.
+Track render lifecycle before attempting more visual fixes.
+If the TrustMap remains slow because images are heavy, optimize files before adding more runtime logic.
 ```
 
-## Non-negotiable TrustMap scope rule
+## Prototype boundary
 
-```text
-Do not replace the TrustMap page unless explicitly directed as a refactor.
-Do not remove the left Operational Trust Score panel.
-Do not remove the right-side selected asset score/detail area.
-Do not remove Layer 2 or Layer 3.
-Do not replace the radar / constellation environment.
-Do not create a second movement system.
-Trust-state colors are stoplight green, yellow, red only.
-Do not make the Briefing snapshot replace the full TrustMap page.
-```
+The current public build is a static advisory prototype. It is not connected to live enterprise telemetry, live internet retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
 
 ## GitHub Pages browser QA required
 
@@ -123,13 +108,15 @@ Do not make the Briefing snapshot replace the full TrustMap page.
 hard refresh live prototype
 complete/reset onboarding
 confirm initial app shell remains fast on phone
-confirm asset manifest loads or gracefully falls back
-confirm TrustMap lifecycle metadata appears in admin payload
-open TrustMap
+confirm TrustMap still opens on demand
 confirm current PNG assets still load
-confirm lifecycle events update after TrustMap opens
-confirm view controls still work
+confirm optimized future assets are not preferred unless marked available
+confirm mobile fidelity mode appears in admin metadata
+confirm interaction meaning audit appears in admin metadata
+confirm model trace scaffold appears in admin metadata
+confirm artifact trust scaffold appears in admin metadata without fact-checker language
+confirm release hardening appears in admin metadata
 confirm no visible UI clutter was added
 confirm no new top-level tab exists
-confirm no overclaims appear
+confirm no live capability overclaims appear
 ```
