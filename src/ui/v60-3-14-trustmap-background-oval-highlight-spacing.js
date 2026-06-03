@@ -1,10 +1,10 @@
 import './v60-3-16-trustmap-centerline-fiber-connectors-and-pane-grid.js';
 import './v60-3-16-1-trust-kernel-detail-and-stoplight-risk-rows.js';
 import './v60-3-20-layer1-visual-consistency-stack-consolidation.js';
-import './v60-3-23-layer1-v2-asset-integration.js';
 
 // V60.3.14 TrustMap Background Blend, Oval Highlight, Layer 1 Spacing, and Fiber Optic Connectors
-// Current role: preserve connector trust-state behavior while later layers own Layer 1 visual assets and view-mode recovery.
+// Current role: preserve connector trust-state behavior while V60.3.20 owns Layer 1 visual consistency.
+// Note: 20260602 Layer 1 v2 asset integration is intentionally not imported here because its layout overrides can remove the center TrustMap pane.
 // Boundary: static advisory prototype only. No live scoring, evidence retrieval, workflow automation, or enforcement.
 
 function v60314$(selector, root=document){ return root.querySelector(selector); }
@@ -31,8 +31,8 @@ function v60314MarkMeta(){
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
     parsed.trustmap_v60_3_14_connector_layer = {
-      status:'active_connector_trust_state_layer',
-      rule:'V60.3.14 preserves connector trust-state behavior only. V60.3.20 owns consolidated Layer 1 visual consistency. V60.3.23 v2 integration owns preferred same-size Layer 1 asset candidates.',
+      status:'active_connector_trust_state_layer_v2_integration_disabled',
+      rule:'V60.3.14 preserves connector trust-state behavior. V60.3.20 owns visual consistency. Layer 1 v2 integration is disabled until it can be refactored without affecting center pane layout.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
