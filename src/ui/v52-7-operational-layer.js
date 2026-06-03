@@ -1,5 +1,5 @@
-// 20260603-0648 Release Train Loader
-// Purpose: preserve fast shell, TrustMap on-demand loading, asset manifesting, lifecycle tracing, fidelity control, interaction audit, model trace, artifact trust scaffold, release hardening, v2 asset source rewrite, timestamp governance alignment, and source-of-truth drift guard.
+// 20260602-1815 Release Train Loader
+// Purpose: preserve fast shell, TrustMap on-demand loading, asset manifesting, lifecycle tracing, fidelity control, interaction audit, model trace, artifact trust scaffold, release hardening, v2 asset source rewrite, timestamp governance alignment, source-of-truth drift guard, and Architecture Model Library restoration.
 
 import './20260602-1735-layer1-v2-src-rewrite.js';
 import './v60-3-21-mobile-load-performance.js';
@@ -14,6 +14,7 @@ import './v60-3-29-artifact-trust-scenario-scaffold.js';
 import './v60-3-30-release-hardening-and-source-truth.js';
 import './20260603-0638-timestamp-governance-runtime-alignment.js';
 import './20260603-0648-source-of-truth-drift-guard.js';
+import './20260602-1815-architecture-model-library.js';
 
 let cyberShieldTrustMapStackPromise = null;
 let cyberShieldBriefingLayerPromise = null;
