@@ -1,23 +1,23 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-06-02
-Current implemented build: V60.3.23 TrustMap Asset Manifest and Intake Contract
+Current implemented build: V60.3.24 TrustMap Render Lifecycle Controller
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-23-trustmap-asset-manifest&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-24-trustmap-render-lifecycle&reset=onboarding
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-V60.3.23 marks the transition from reactive TrustMap visual patching to an engineered version sequence.  It preserves the faster V60.3.21/V60.3.22 app shell and image-prewarm behavior, while adding a governed TrustMap asset manifest and future intake contract for rebuilt Layer 1 assets.
+V60.3.24 adds the first TrustMap render lifecycle controller.  It preserves the faster shell, on-demand TrustMap loading, and manifest-backed image prewarm from V60.3.21 through V60.3.23 while making TrustMap readiness traceable through events and admin metadata.
 
 ## Release chain status
 
-V60.3.23 is now the current implemented build.
+V60.3.24 is now the current implemented build.
 
-Governance-summary, README, bots.txt, builder-version-log, and this handoff identify V60.3.23 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
+Governance-summary, README, bots.txt, builder-version-log, and this handoff identify V60.3.24 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
 
 ## Required builder reading order
 
@@ -31,44 +31,32 @@ Governance-summary, README, bots.txt, builder-version-log, and this handoff iden
 8. `docs/recurring-build-issues-and-regression-watchlist.md`
 9. `docs/builder-lessons-learned.md`
 10. `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
-11. `docs/builder-version-log.md`
-12. `docs/release-checklist.md`
-13. `docs/qa-checklist.md`
-14. this handoff and job docket
+11. `docs/v60-3-24-to-v60-3-31-release-engineering-packages.md`
+12. `docs/builder-version-log.md`
+13. `docs/release-checklist.md`
+14. `docs/qa-checklist.md`
+15. this handoff and job docket
 
-## What changed in the V60.3.20 through V60.3.23 sequence
+## What changed in V60.3.24
 
-### V60.3.20
+- Added `docs/v60-3-24-to-v60-3-31-release-engineering-packages.md`
+- Added `src/ui/v60-3-24-trustmap-render-lifecycle-controller.js`
+- Updated `src/ui/v52-7-operational-layer.js` to load the lifecycle controller
+- Updated `src/ui/v52-7-operational-layer.js` to emit TrustMap requested and stack-load-started lifecycle calls
+- Updated `src/ui/v60-3-22-trustmap-image-prewarm.js` to emit `cybershield:trustmap-images-prewarm-started`
+- Updated README, bots, governance-summary, builder log, and this handoff
 
-- Added `src/ui/v60-3-20-layer1-visual-consistency-stack-consolidation.js`
-- Updated `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js`
-- Removed V60.3.18 and V60.3.19 from the active runtime chain
-- Consolidated Layer 1 neutral visual recovery and view-mode reapply behavior
-- Preserved Trust Kernel visibility and Layer 1 consistency rules
+## Lifecycle events tracked
 
-### V60.3.21
-
-- Added `src/ui/v60-3-21-mobile-load-performance.js`
-- Updated `src/ui/v52-7-operational-layer.js` so the heavy TrustMap stack loads only when TrustMap is requested
-- Reduced mobile animation/filter cost
-- Added lightweight loading placeholder behavior
-- Preserved full TrustMap availability from TrustMap tab and Briefing expansion path
-
-### V60.3.22
-
-- Added `src/ui/v60-3-22-trustmap-image-prewarm.js`
-- Added controlled post-shell TrustMap image prewarm
-- Prioritized visible TrustMap images when the TrustMap is explicitly opened
-- Preserved the fast shell architecture
-
-### V60.3.23
-
-- Added `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
-- Added `data/trustmap/v60-3-23-asset-manifest.json`
-- Added `src/ui/v60-3-23-trustmap-asset-manifest-loader.js`
-- Updated `src/ui/v60-3-22-trustmap-image-prewarm.js` to prefer manifest paths and fall back to the V60.3.22 static asset list
-- Updated `src/ui/v52-7-operational-layer.js` to load the manifest before image prewarm
-- Created governed future asset slots for WebP/PNG black-background all-blue cube assets
+- `cybershield:trustmap-requested`
+- `cybershield:trustmap-stack-load-started`
+- `cybershield:trustmap-stack-loaded`
+- `cybershield:trustmap-asset-manifest-loaded`
+- `cybershield:trustmap-images-prewarm-started`
+- `cybershield:trustmap-images-prewarmed`
+- `cybershield:trustmap-render-detected`
+- `cybershield:trustmap-view-mode-changed`
+- `cybershield:trustmap-visual-stabilized`
 
 ## Current user-facing navigation
 
@@ -114,26 +102,16 @@ Future rebuilt assets should enter through:
 
 ## Current next-build doctrine
 
-The next build should be **V60.3.24 TrustMap Render Lifecycle Controller**.
+The next code build should be **V60.3.25 Asset Optimization and Format Upgrade Path**, but only after optimized assets or target asset specs are available.
 
-Priority V60.3.24 work:
+If optimized assets are not ready, pause code work and use V60.3.24 lifecycle metadata to QA the current behavior.  Do not keep adding visual patches.
 
-- Introduce one named lifecycle controller for TrustMap open, asset-manifest-loaded, images-prewarmed, map-rendered, view-mode-change, and visual-stabilized events
-- Reduce scattered delayed timers and reapply calls
-- Do not rewrite the TrustMap renderer
-- Do not add visual overlays
-- Preserve phone shell speed
-- Preserve manifest-backed prewarm
-- Preserve no-new-top-level-tabs rule
+## Known limitations from V60.3.24
 
-V60.3.25 should wait until new optimized artwork or WebP/AVIF variants exist.
-
-## Known limitations from V60.3.23
-
+- V60.3.24 traces lifecycle but does not yet refactor every historical delayed timer out of prior modules.
 - Hands-on phone QA is still required after GitHub Pages deploys.
 - Current image files may remain large or visually inconsistent until rebuilt by the asset creator.
-- V60.3.23 creates future manifest slots but does not add the new rebuilt black-background all-blue cube assets.
-- TrustMap still has multiple historical enhancement modules and delayed timers.  V60.3.24 should reduce that with lifecycle control.
+- V60.3.25 depends on optimized assets or target asset specs.
 - App uses a static advisory prototype architecture, not live integrations.
 
 ## Prototype boundary
@@ -145,13 +123,13 @@ Do not represent the current build as performing live enforcement, live takedown
 ## What the successor should do first
 
 1. Read the required builder files above.
-2. Run release-chain check: governance-summary, README, bots, builder log, and this handoff must agree on V60.3.23.
-3. Open the V60.3.23 reset URL after GitHub Pages deploys.
+2. Run release-chain check: governance-summary, README, bots, builder log, and this handoff must agree on V60.3.24.
+3. Open the V60.3.24 reset URL after GitHub Pages deploys.
 4. Test guided onboarding.
 5. Confirm app shell remains fast on phone.
 6. Confirm asset manifest loads or gracefully falls back.
 7. Confirm current PNG assets still load.
-8. Confirm manifest-backed prewarm does not slow startup.
-9. Confirm no new top-level tab exists.
-10. Confirm no live capability overclaims appear.
-11. Build V60.3.24 lifecycle controller only after QA confirms V60.3.23 is stable.
+8. Confirm lifecycle metadata appears in the admin payload.
+9. Confirm TrustMap request, stack load, prewarm, render detection, and stabilization events update after TrustMap opens.
+10. Confirm no new top-level tab exists.
+11. Confirm no live capability overclaims appear.
