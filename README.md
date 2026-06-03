@@ -2,13 +2,13 @@
 
 ## Current live build
 
-Current build label: **20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake**
+Current build label: **20260603-0638 Timestamp Governance Runtime Alignment**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260602-1730-layer1-v2-assets&reset=onboarding
+Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0638-timestamp-governance&reset=onboarding
 
 ## Public naming rule
 
@@ -21,14 +21,14 @@ CyberShield Executive OS
 Current implemented build:
 
 ```text
-20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake
+20260603-0638 Timestamp Governance Runtime Alignment
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
 ## Versioning rule after V60.3.30
 
-The V60.x style sequence ends with the V60.3 release train.  After V60.3.30, new implemented builds should use timestamp-based versioning:
+The V60.x style sequence ends with the V60.3 release train.  After V60.3.30, new implemented builds use timestamp-based versioning:
 
 ```text
 YYYYMMDD-HHMM
@@ -50,18 +50,15 @@ docs/versioning-schema.md
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for 20260602-1730.
+No new top-level tabs were added for 20260603-0638.
 
-## Current implemented build: 20260602-1730
+## Current implemented build: 20260603-0638
 
-This is an immediate in-between release between the current V60.3.30 release train and the future map-maker feedback pass.
+This build reconciles runtime and source-of-truth versioning after the post-V60 timestamp transition.
 
-It does two separate things without confusing them:
+It preserves the Layer 1 v2 source rewrite work already active in the runtime loader and makes the admin payload identify the current timestamped build cleanly.
 
-1. Integrates the new Layer 1 v2 asset set as the preferred TrustMap visual asset family
-2. Preserves the larger CyberShield Great Map guidance as doctrine for the next design and architecture pass
-
-This is not a full TrustMap redesign.  The immediate release is intentionally narrow.
+This is not a TrustMap redesign.  This is a governance/runtime alignment release.
 
 ## Current TrustMap visual, performance, governance, and asset stack
 
@@ -84,21 +81,22 @@ V60.3.28 = model trace and evidence trust alignment scaffold
 V60.3.29 = commercial Artifact Trust scenario scaffold
 V60.3.30 = release hardening and source-of-truth reconciliation
 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
+20260602-1735 = Layer 1 v2 source rewrite shim
+20260603-0638 = timestamp governance runtime alignment
 ```
 
-## 20260602-1730 changes
+## 20260603-0638 changes
 
-- Adds `data/trustmap/v60-3-23-layer1-v2-assets.json`
-- Adds `src/ui/v60-3-23-layer1-v2-asset-integration.js`
-- Updates `src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js` to import the v2 integration layer after V60.3.20 visual consistency consolidation
-- Adds `docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md`
-- Keeps legacy Layer 1 images as fallback until the new binaries are uploaded
+- Adds `src/ui/20260603-0638-timestamp-governance-runtime-alignment.js`
+- Updates `src/ui/v52-7-operational-layer.js` to import the timestamp governance runtime alignment module
+- Updates admin payload metadata to identify the current timestamp build
+- Preserves `20260602-1735-layer1-v2-src-rewrite.js`
 - Preserves fast shell load and TrustMap on-demand loading
 - Preserves no-new-top-level-tabs rule
 
-## Binary asset upload required
+## Binary asset upload still required for full v2 visual value
 
-The code is ready, but the seven image binaries still need to be uploaded separately because the current GitHub connector can commit text/code but does not expose binary image upload.
+The code path for v2 Layer 1 assets exists, but visual quality depends on the actual optimized image files being present and correctly sized.
 
 Upload the new PNGs to:
 
@@ -117,8 +115,6 @@ Devices_End_Points_v2.png
 Identities_Access_v2.png
 Third_Parties_and_Vendors_v2.png
 ```
-
-The v2 integration tries these first and falls back to the existing legacy assets if any v2 file is missing.
 
 ## Great Map doctrine
 
@@ -166,7 +162,7 @@ Do not make the Briefing snapshot replace the full TrustMap page.
 
 ## Boundary
 
-The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, live scoring, live claim extraction, statistical validation, backend persistence, workflow automation, notifications, or production agent enforcement systems.
+The current public build is a static advisory prototype. It is not connected to production telemetry, production workflow automation, backend persistence, validated scoring, certification authority, or production enforcement.
 
 ## GitHub Pages browser QA required
 
@@ -175,8 +171,9 @@ hard refresh live prototype
 complete/reset onboarding
 confirm initial app shell remains fast
 open TrustMap
+confirm timestamp governance metadata appears in admin payload
 confirm no broken image icons appear if v2 binaries are not uploaded yet
-upload v2 PNGs to assets/layer1-v2/
+upload v2 PNGs to assets/layer1-v2/ when available
 hard refresh again
 confirm v2 assets load instead of legacy assets
 confirm all seven Layer 1 assets have the same apparent size
