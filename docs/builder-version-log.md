@@ -6,6 +6,52 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-20260603-014
+
+Date: 2026-06-03
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, 20260603-0648 source-of-truth drift guard session
+
+CyberShield versions affected:
+
+- 20260603-0648 Source-of-Truth Drift Guard
+- 20260603-0638 Timestamp Governance Runtime Alignment, preserved as prior timestamp alignment
+- 20260602-1735 Layer 1 v2 Source Rewrite Shim, preserved as active runtime lineage
+
+Files materially changed or created:
+
+- `src/ui/20260603-0648-source-of-truth-drift-guard.js`
+- `src/ui/v52-7-operational-layer.js`
+- `README.md`
+- `governance-summary.json`
+- `bots.txt`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Implemented an admin/runtime source-of-truth drift guard.  The guard records whether timestamp schema, current build metadata, previous runtime alignment, Layer 1 v2 rewrite metadata, and release-train metadata are observed.  This helps future builders detect source-of-truth disagreement before more code is added.
+
+What got better:
+
+- Runtime loader now imports the 20260603-0648 drift guard.
+- Admin payload now exposes `source_of_truth_drift_guard`.
+- Drift guard reports `aligned` or `watch` with blockers.
+- README, bots, and governance-summary now identify 20260603-0648 as current.
+- Layer 1 v2 rewrite and Great Map doctrine lineage remain preserved.
+
+Remaining risks or limitations:
+
+- Drift guard is metadata/audit support, not a live repository validator.
+- Watch blockers can appear during startup before all modules have written metadata.
+- Phone/browser QA is still required after GitHub Pages deploys.
+- Full v2 visual value still depends on correctly named optimized asset binaries.
+
+Next recommended build action:
+
+Run phone/browser QA on the 20260603-0648 test URL.  Confirm `source_of_truth_drift_guard` appears in admin payload, status is aligned or explains watch blockers, v2 asset fallback still works, TrustMap opens on demand, no new top-level tab exists, and source-of-truth files agree on 20260603-0648.
+
+---
+
 ### Builder-20260603-013
 
 Date: 2026-06-03
@@ -108,45 +154,3 @@ CyberShield versions affected:
 - V60.3.29 Artifact Trust Scenario Scaffold
 - V60.3.30 Release Hardening and Source-of-Truth Reconciliation
 - V60.3.31 Integrating the World's Best Map Maker, earmarked only
-
-Files materially changed or created:
-
-- `src/ui/v60-3-25-asset-optimization-and-format-upgrade.js`
-- `src/ui/v60-3-26-mobile-trustmap-fidelity-mode.js`
-- `docs/v60-3-27-no-dead-click-audit.md`
-- `src/ui/v60-3-27-no-dead-click-interaction-meaning.js`
-- `data/models/v60-3-28-model-trace-registry.json`
-- `src/ui/v60-3-28-model-trace-and-evidence-trust.js`
-- `data/scenarios/v60-3-29-artifact-trust-scenarios.json`
-- `src/ui/v60-3-29-artifact-trust-scenario-scaffold.js`
-- `src/ui/v60-3-30-release-hardening-and-source-truth.js`
-- `src/ui/v60-3-23-trustmap-asset-manifest-loader.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `bots.txt`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-- `docs/successor-builder-handoff-and-job-docket.md`
-
-Primary value add:
-
-Completed the remaining safe V60.3 release-train buildout through V60.3.30.  The work intentionally avoids unsupported live capability claims and avoids pretending to solve heavy image files with more JavaScript.  V60.3.25 fixes the optimized-asset preference path so future assets are only preferred when marked available.  V60.3.26 adds mobile fidelity control.  V60.3.27 adds no-dead-click audit scaffolding.  V60.3.28 adds model trace and evidence trust scaffolding.  V60.3.29 adds commercial artifact-trust scenario scaffolding.  V60.3.30 adds release hardening metadata.  V60.3.31 remains earmarked until the user provides mapmaker source material.
-
-What got better:
-
-- Future optimized image paths are not preferred unless manifest slots mark them available.
-- Mobile/phone fidelity now has a stable/standard/rich mode path.
-- Interaction meaning audit metadata can identify unknown or decorative interactions for QA.
-- Model trace registry now captures Universal Model Trace Inspector, Evidence Trust Score, and Confidence Score scaffolds.
-- Artifact Trust scenario registry now frames commercial evidence sufficiency use cases without fact-checker branding.
-- Release-hardening metadata summarizes the V60.3 train in admin payload.
-- README, bots.txt, and governance-summary.json now align on V60.3.30.
-
-Remaining risks or limitations:
-
-- Hands-on phone QA is required after GitHub Pages deploys.
-- V60.3.25 full value depends on optimized asset files from the creator.
-- V60.3.27 is an audit scaffold, not a full manual click-by-click remediation pass.
-- V60.3.28 is a model trace scaffold, not statistical validation.
-- V60.3.29 is static scenario scaffolding, not live artifact verification.
-- V60.3.31 is not implemented and must wait for the user's mapmaker source material.
