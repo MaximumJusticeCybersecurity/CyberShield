@@ -1,6 +1,6 @@
 CyberShield Executive OS
-Current implemented build: 20260603-0648 Source-of-Truth Drift Guard
-Build date: 2026-06-03
+Current implemented build: 20260602-1815 Architecture Model Library Restoration
+Build date: 2026-06-02
 
 Purpose:
 Machine-readable context for CyberShield builders and AI readers.
@@ -8,72 +8,49 @@ Machine-readable context for CyberShield builders and AI readers.
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for 20260603-0648.
+No new top-level tabs were added for 20260602-1815.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current implemented build is 20260603-0648 Source-of-Truth Drift Guard.
+Public product name is CyberShield Executive OS. Current implemented build is 20260602-1815 Architecture Model Library Restoration.
 
 Versioning rule after V60.3.30:
 Use timestamp-based versioning in this format: YYYYMMDD-HHMM. Use 24-hour America/New_York time unless changed by the user. V60.3.31 remains earmarked only for Integrating the World's Best Map Maker unless explicitly directed. Canonical schema: docs/versioning-schema.md.
 
-Current TrustMap stack:
-- V60.3.12 = PNG asset mapping and interaction recovery
-- V60.3.13 = stoplight trust color and PNG path recovery
-- V60.3.14 = connector trust-state preservation and chain loader
-- V60.3.16 = centerline fiber connector overlay and three-pane separation
-- V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
-- V60.3.17 = Briefing TrustMap Snapshot image
-- V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
-- V60.3.21 = mobile load performance gate
-- V60.3.22 = TrustMap image prewarm
-- V60.3.23 = asset manifest and future asset intake
-- V60.3.24 = render lifecycle controller
-- V60.3.25 = asset optimization path scaffold
-- V60.3.26 = mobile TrustMap fidelity mode
-- V60.3.27 = no-dead-click audit
-- V60.3.28 = model trace and evidence trust scaffold
-- V60.3.29 = Artifact Trust scenario scaffold
-- V60.3.30 = release hardening
+Current stack additions:
 - 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
 - 20260602-1735 = Layer 1 v2 source rewrite shim active in runtime loader
 - 20260603-0638 = timestamp governance runtime alignment
 - 20260603-0648 = source-of-truth drift guard
+- 20260602-1815 = Architecture Model Library Restoration
 
-20260603-0648 scope:
-This build adds admin/runtime drift-guard metadata so future builders can detect source-of-truth disagreement. It preserves Layer 1 v2 source rewrite, Great Map doctrine intake, fast shell, TrustMap on-demand loading, and existing prototype boundaries.
+20260602-1815 scope:
+Restores CyberShield's model library inside the Architecture tab. Architecture owns model definitions and system thinking. Proof Pack owns defensible outputs generated from model results, evidence, assumptions, and human review.
 
-Drift guard rule:
-Admin payload should expose source_of_truth_drift_guard with status aligned or watch. Watch blockers identify late/missing observed metadata and should guide QA before more build work.
+Files added or updated:
+- data/models/20260602-1815-architecture-model-library.json
+- src/ui/20260602-1815-architecture-model-library.js
+- src/ui/v52-7-operational-layer.js
+- README.md
+- bots.txt
 
-Layer 1 v2 asset location:
-assets/layer1-v2/
+Restored model groups:
+- Core Trust Models
+- Evidence Models
+- Internet Trust Engine
+- AI Governance Models
+- Vendor and Supply Chain Models
+- Decision and Consequence Models
+- Proof Pack Models
 
-Required Layer 1 v2 filenames:
-- AI_Systems_Agents_v2.png
-- Applications_Data_v2.png
-- Cloud_Infrastructure_v2.png
-- CMMC_and_Compliance_v2.png
-- Devices_End_Points_v2.png
-- Identities_Access_v2.png
-- Third_Parties_and_Vendors_v2.png
+Internet Trust Engine note:
+The model library restores the earlier Internet Trust direction, including the USAFacts / Steve Ballmer-style pilot. The model asks which artifact claims can be trusted, at what confidence, based on what evidence, and with what risk if believed.
 
-Asset rule:
-Layer 1 v2 assets are preferred only when available. Legacy PNG files remain fallback. Do not remove fallback behavior until browser QA confirms the v2 files.
+Boundary:
+This is a static prototype model library. It does not perform live internet checking, live retrieval, live scoring, statistical validation, backend persistence, or production enforcement.
 
-Great Map doctrine:
-CyberShield should evolve from a platform that contains a TrustMap into a platform that behaves like a map. The governing metaphor is Minard + John Snow + Harry Beck. This doctrine is captured in docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md.
-
-Performance doctrine:
-- Load the executive shell first.
-- Load the full interactive TrustMap only when requested.
-- Warm TrustMap images after the shell is usable.
-- Prefer asset optimization over more runtime patches when images remain slow.
-
-Scoring doctrine:
-No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
-
-Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype and not a production integration.
+Architecture / Proof Pack separation:
+Architecture = how CyberShield thinks.
+Proof Pack = what CyberShield can defend later.
 
 Next builder first action:
-Run phone/browser QA on the 20260603-0648 test URL. Confirm source_of_truth_drift_guard appears in admin payload, status is aligned or explains watch blockers, v2 asset fallback still works, no new top-level tab exists, and source-of-truth files agree on 20260603-0648.
+Open Architecture and QA the Model Library pane. Confirm categories, model cards, detail panel, Internet Trust Engine entries, USAFacts / Steve Ballmer pilot note, route buttons, no new top-level tab, and no live-capability overclaim.
