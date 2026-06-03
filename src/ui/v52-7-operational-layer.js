@@ -1,6 +1,6 @@
-// 20260602-1855 Release Train Loader
-// Purpose: restore one stable TrustMap asset path while keeping shell performance and architecture model library work.
-// Notes: the single-render gate and v2 source rewrite are not imported in this loader because both caused TrustMap regressions.
+// 20260602-1930 Release Train Loader
+// Purpose: keep the live TrustMap stable while adding a safe Architecture-hosted TrustMap Engine preview.
+// Notes: the single-render gate and v2 source rewrite remain disabled because both caused TrustMap regressions.
 
 import './v60-3-21-mobile-load-performance.js';
 import './v60-3-23-trustmap-asset-manifest-loader.js';
@@ -15,6 +15,7 @@ import './v60-3-30-release-hardening-and-source-truth.js';
 import './20260603-0638-timestamp-governance-runtime-alignment.js';
 import './20260603-0648-source-of-truth-drift-guard.js';
 import './20260602-1815-architecture-model-library.js';
+import './20260602-1930-trustmap-engine-preview-host.js';
 
 let cyberShieldTrustMapStackPromise = null;
 let cyberShieldBriefingLayerPromise = null;
