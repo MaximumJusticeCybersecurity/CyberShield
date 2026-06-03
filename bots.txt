@@ -1,22 +1,22 @@
 CyberShield Executive OS
-Current implemented build: V60.3.30 Release Hardening and Source-of-Truth Reconciliation
+Current implemented build: 20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake
 Build date: 2026-06-02
 
-Purpose for bots and AI readers:
-This file provides machine-readable context for CyberShield separate from the human-facing interface.
+Purpose:
+Machine-readable context for CyberShield builders and AI readers.
 
 Current user-facing navigation:
 Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
 
-No new top-level tabs were added for V60.3.30.
+No new top-level tabs were added for 20260602-1730.
 
 Public naming rule:
-Public product name is CyberShield Executive OS. Current prototype build is V60.3.30. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.
+Public product name is CyberShield Executive OS. Current implemented build is 20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake.
 
 Versioning rule after V60.3.30:
-The V60.x style sequence ends with the current V60.3 release train. Future implemented builds should use timestamp-based versioning in this format: YYYYMMDD-HHMM. Use 24-hour America/New_York time unless the user explicitly changes the project timezone. Example: 20260602-2145 TrustMap Mapmaker Doctrine Intake. V60.3.31 remains an earmarked concept only for Integrating the World's Best Map Maker and should not be implemented under V60.x numbering unless explicitly directed. Canonical schema document: docs/versioning-schema.md.
+Use timestamp-based versioning in this format: YYYYMMDD-HHMM. Use 24-hour America/New_York time unless changed by the user. V60.3.31 remains earmarked only for Integrating the World's Best Map Maker unless explicitly directed. Canonical schema: docs/versioning-schema.md.
 
-Current TrustMap visual, performance, and governance stack:
+Current TrustMap stack:
 - V60.3.12 = PNG asset mapping and interaction recovery
 - V60.3.13 = stoplight trust color and PNG path recovery
 - V60.3.14 = connector trust-state preservation and chain loader
@@ -24,51 +24,50 @@ Current TrustMap visual, performance, and governance stack:
 - V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
 - V60.3.17 = Briefing TrustMap Snapshot image
 - V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
-- V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
-- V60.3.22 = TrustMap PNG image prewarm after shell readiness
-- V60.3.23 = TrustMap asset manifest and governed future asset intake
-- V60.3.24 = TrustMap render lifecycle controller
-- V60.3.25 = asset optimization and format upgrade path, scaffold built, optimized assets pending
+- V60.3.21 = mobile load performance gate
+- V60.3.22 = TrustMap image prewarm
+- V60.3.23 = asset manifest and future asset intake
+- V60.3.24 = render lifecycle controller
+- V60.3.25 = asset optimization path scaffold
 - V60.3.26 = mobile TrustMap fidelity mode
-- V60.3.27 = no-dead-click and interaction meaning audit
-- V60.3.28 = model trace and evidence trust alignment scaffold
-- V60.3.29 = commercial Artifact Trust scenario scaffold
-- V60.3.30 = release hardening and source-of-truth reconciliation
-- V60.3.31 = earmarked: Integrating the World's Best Map Maker, do not build until user provides source material
+- V60.3.27 = no-dead-click audit
+- V60.3.28 = model trace and evidence trust scaffold
+- V60.3.29 = Artifact Trust scenario scaffold
+- V60.3.30 = release hardening
+- 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
 
-V60.3.30 scope:
-V60.3.30 completes the safe release train through hardening. V60.3.25 through V60.3.29 are conservative scaffolds or controls. V60.3.31 remains earmarked only.
+20260602-1730 scope:
+This is an immediate in-between release. It prefers the new same-size black-background blue/white Layer 1 v2 asset family, keeps legacy Layer 1 assets as fallback, and preserves the Great Map doctrine for a later design pass.
 
-Runtime import rule:
-The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.
+Layer 1 v2 asset location:
+assets/layer1-v2/
 
-Asset manifest rule:
-TrustMap assets should be governed by `data/trustmap/v60-3-23-asset-manifest.json`. Current PNG files remain valid fallbacks. Future rebuilt black-background all-blue cube assets should be added through the manifest rather than hardcoded in scattered modules. Optimized future paths are preferred only when marked available.
+Required Layer 1 v2 filenames:
+- AI_Systems_Agents_v2.png
+- Applications_Data_v2.png
+- Cloud_Infrastructure_v2.png
+- CMMC_and_Compliance_v2.png
+- Devices_End_Points_v2.png
+- Identities_Access_v2.png
+- Third_Parties_and_Vendors_v2.png
+
+Asset rule:
+Layer 1 v2 assets are preferred only when available at assets/layer1-v2/. Legacy PNG files remain fallback. Do not remove fallback behavior until browser QA confirms the v2 files.
+
+Great Map doctrine:
+CyberShield should evolve from a platform that contains a TrustMap into a platform that behaves like a map. The governing metaphor is Minard + John Snow + Harry Beck. This doctrine is captured in docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md.
 
 Performance doctrine:
 - Load the executive shell first.
-- Do not force mobile users to pay the full TrustMap cost during startup.
-- Warm TrustMap images after the shell is usable.
 - Load the full interactive TrustMap only when requested.
-- Track render lifecycle before attempting more visual fixes.
-- If the TrustMap remains slow because images are heavy, optimize files before adding more runtime logic.
+- Warm TrustMap images after the shell is usable.
+- Prefer asset optimization over more runtime patches when images remain slow.
 
-Scaffold boundaries:
-- V60.3.25 does not create optimized assets.
-- V60.3.26 does not create a separate mobile product.
-- V60.3.27 does not invent backend actions.
-- V60.3.28 does not claim statistical validation.
-- V60.3.29 does not perform live retrieval or fact-checking.
-- V60.3.31 is not implemented.
-
-Controlling scoring doctrine:
-CyberShield must not show decorative scores. Every score must trace to a named, versioned model with factors, weights, evidence inputs, confidence logic, missing evidence, assumptions, risk if wrong, and action consequence.
-
-Guiding principle:
+Scoring doctrine:
 No score without a model. No model without evidence. No evidence without traceability. No action without consequence.
 
 Prototype boundary:
-The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.
+The current GitHub Pages build is a lightweight static advisory prototype and not a production integration.
 
 Next builder first action:
-Run browser QA on V60.3.30 from a phone. Verify shell speed, TrustMap on-demand loading, current asset loading, no missing-future-asset preference, fidelity metadata, interaction audit metadata, model trace scaffold metadata, artifact trust scaffold metadata, release hardening metadata, no new UI clutter, and timestamp versioning guidance before starting the next implemented build.
+Verify or add the seven Layer 1 v2 PNG files under assets/layer1-v2/. Then run phone/browser QA on the 20260602-1730 test URL.
