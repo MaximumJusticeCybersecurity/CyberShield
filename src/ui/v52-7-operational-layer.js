@@ -1,8 +1,7 @@
-// 20260602-1845 Release Train Loader
-// Purpose: preserve fast shell, TrustMap on-demand loading, asset manifesting, lifecycle tracing, fidelity control, interaction audit, model trace, artifact trust scaffold, release hardening, v2 asset source rewrite, timestamp governance alignment, source-of-truth drift guard, and Architecture Model Library restoration.
-// Note: 20260602-1825 TrustMap single render authority is intentionally not imported because it can hide the center TrustMap pane after navigation.
+// 20260602-1855 Release Train Loader
+// Purpose: restore one stable TrustMap asset path while keeping shell performance and architecture model library work.
+// Notes: the single-render gate and v2 source rewrite are not imported in this loader because both caused TrustMap regressions.
 
-import './20260602-1735-layer1-v2-src-rewrite.js';
 import './v60-3-21-mobile-load-performance.js';
 import './v60-3-23-trustmap-asset-manifest-loader.js';
 import './v60-3-22-trustmap-image-prewarm.js';
