@@ -1,6 +1,7 @@
-// V60.3.30 Release Train Loader
-// Purpose: preserve fast shell, TrustMap on-demand loading, asset manifesting, lifecycle tracing, fidelity control, interaction audit, model trace, artifact trust scaffold, and release hardening.
+// 20260602-1735 Release Train Loader
+// Purpose: preserve fast shell, TrustMap on-demand loading, asset manifesting, lifecycle tracing, fidelity control, interaction audit, model trace, artifact trust scaffold, release hardening, and v2 asset source rewrite.
 
+import './20260602-1735-layer1-v2-src-rewrite.js';
 import './v60-3-21-mobile-load-performance.js';
 import './v60-3-23-trustmap-asset-manifest-loader.js';
 import './v60-3-22-trustmap-image-prewarm.js';
