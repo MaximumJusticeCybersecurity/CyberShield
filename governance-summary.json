@@ -1,70 +1,59 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "20260603-0648 Source-of-Truth Drift Guard",
-  "build_date": "2026-06-03",
-  "patch_type": "Runtime/admin source-of-truth drift guard",
-  "release_chain_status": "20260603-0648 is the current implemented build after 20260603-0638. It adds admin/runtime drift-guard metadata to detect whether timestamp schema, current build metadata, prior runtime alignment, Layer 1 v2 rewrite metadata, and release-train metadata are observed.",
+  "current_implemented_build": "20260602-1815 Architecture Model Library Restoration",
+  "build_date": "2026-06-02",
+  "patch_type": "Architecture Model Library restoration",
+  "release_chain_status": "20260602-1815 restores CyberShield model library concepts inside the Architecture tab while preserving Proof Pack as the defensible output layer.",
   "versioning_schema_after_v60_3_30": {
     "schema": "YYYYMMDD-HHMM",
     "timezone": "America/New_York",
-    "canonical_document": "docs/versioning-schema.md",
-    "rule": "Future implemented builds use timestamp-based versioning. Historical V60.x labels remain lineage only."
+    "canonical_document": "docs/versioning-schema.md"
   },
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0648-source-of-truth-drift-guard&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260602-1815-architecture-model-library&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
   "top_level_tab_rule": "Do not add more top-level tabs.",
-  "lineage": {
-    "v60_3_30": "Completed safe V60.3 release train through hardening",
-    "20260602_1730": "Layer 1 v2 asset integration and Great Map doctrine intake",
-    "20260602_1735": "Layer 1 v2 source rewrite shim active in runtime loader",
-    "20260603_0638": "Timestamp governance runtime alignment",
-    "20260603_0648": "Source-of-truth drift guard"
-  },
   "files_added_or_updated_in_current_build": [
-    "src/ui/20260603-0648-source-of-truth-drift-guard.js",
+    "data/models/20260602-1815-architecture-model-library.json",
+    "src/ui/20260602-1815-architecture-model-library.js",
     "src/ui/v52-7-operational-layer.js",
     "README.md",
+    "bots.txt",
     "governance-summary.json"
   ],
-  "drift_guard_rule": "The admin payload should expose source_of_truth_drift_guard with status aligned or watch. Watch blockers indicate metadata observed late or not yet observed, not necessarily broken runtime behavior.",
-  "binary_asset_upload_required_for_full_v2_value": true,
-  "binary_asset_folder": "assets/layer1-v2/",
-  "required_layer1_v2_filenames": [
-    "AI_Systems_Agents_v2.png",
-    "Applications_Data_v2.png",
-    "Cloud_Infrastructure_v2.png",
-    "CMMC_and_Compliance_v2.png",
-    "Devices_End_Points_v2.png",
-    "Identities_Access_v2.png",
-    "Third_Parties_and_Vendors_v2.png"
-  ],
-  "asset_rule": "Layer 1 v2 assets are preferred only when available. Legacy PNG files remain fallbacks until browser QA confirms the v2 files.",
-  "great_map_doctrine": {
-    "summary": "CyberShield should evolve from a platform that contains a TrustMap into a platform that behaves like a map.",
-    "metaphor": "Minard + John Snow + Harry Beck",
-    "doctrine_document": "docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md",
-    "status": "doctrine intake for future design pass"
+  "architecture_model_library": {
+    "status": "active_inside_architecture_tab",
+    "rule": "Architecture owns model definitions and system thinking. Proof Pack owns model-generated defensible outputs.",
+    "model_groups": [
+      "Core Trust Models",
+      "Evidence Models",
+      "Internet Trust Engine",
+      "AI Governance Models",
+      "Vendor and Supply Chain Models",
+      "Decision and Consequence Models",
+      "Proof Pack Models"
+    ],
+    "internet_trust_pilot": "USAFacts / Steve Ballmer-style artifact trust pilot restored as a model-library scenario note."
   },
-  "runtime_import_rule": "The executive shell loads first. The full TrustMap loads when requested.",
-  "performance_doctrine": [
-    "Load the executive shell first.",
-    "Load the full TrustMap only when requested.",
-    "Warm TrustMap images after the shell is usable.",
-    "Prefer asset optimization over more runtime patches when images remain slow."
-  ],
-  "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
-  "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype.",
+  "architecture_proof_pack_separation": {
+    "architecture": "how CyberShield thinks",
+    "evidence": "what CyberShield knows",
+    "runtime": "what CyberShield is deciding now",
+    "trustmap": "where trust is moving and breaking",
+    "proof_pack": "what CyberShield can defend later"
+  },
+  "prototype_boundary": "Static prototype model library only.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the 20260603-0648 test URL",
-    "Verify initial app shell remains fast on phone",
-    "Open TrustMap and confirm no broken image icons appear before v2 binaries are uploaded",
-    "Confirm source_of_truth_drift_guard appears in admin payload",
-    "Confirm drift guard status is aligned or explains watch blockers",
-    "Upload the seven v2 PNG files to assets/layer1-v2/ when available",
-    "Hard refresh again",
-    "Confirm v2 assets replace legacy assets",
+    "Hard refresh the 20260602-1815 test URL",
+    "Open Architecture",
+    "Confirm original four Architecture cards still appear",
+    "Confirm CyberShield Model Library appears inside Architecture",
+    "Confirm category buttons work",
+    "Confirm model cards switch detail view",
+    "Confirm Internet Trust Engine category includes Internet Artifact Trust Model, Claim Extraction Model, Fact Verification Model, and Source Credibility Model",
+    "Confirm USAFacts / Steve Ballmer pilot scenario appears",
+    "Confirm route buttons go to Evidence, Proof Pack, Runtime, and TrustMap",
     "Confirm no new top-level tab exists"
   ]
 }
