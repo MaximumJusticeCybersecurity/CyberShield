@@ -1,83 +1,63 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "V60.3.30 Release Hardening and Source-of-Truth Reconciliation",
+  "current_implemented_build": "20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake",
   "build_date": "2026-06-02",
-  "patch_type": "Safe V60.3 release-train completion through hardening",
-  "release_chain_status": "V60.3.30 is the current implemented build. V60.3.25 through V60.3.29 were added as conservative scaffolds/controls. V60.3.31 remains earmarked only until the user provides the world-class mapmaker source material.",
+  "patch_type": "Layer 1 v2 asset integration and Great Map doctrine intake",
+  "release_chain_status": "20260602-1730 is the current implemented build after V60.3.30. It adds code support for the new same-size black-background blue-white Layer 1 v2 assets, keeps legacy fallbacks, and captures Great Map doctrine for a future design pass.",
   "versioning_schema_after_v60_3_30": {
     "schema": "YYYYMMDD-HHMM",
     "timezone": "America/New_York",
-    "time_format": "24-hour",
-    "example": "20260602-2145 TrustMap Mapmaker Doctrine Intake",
-    "canonical_document": "docs/versioning-schema.md",
-    "rule": "The next implemented build after V60.3.30 should use timestamp-based versioning. V60.3.31 remains an earmarked concept only unless explicitly directed."
+    "canonical_document": "docs/versioning-schema.md"
   },
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=v60-3-30-release-hardening&reset=onboarding",
+  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260602-1730-layer1-v2-assets&reset=onboarding",
   "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
-  "top_level_tab_rule": "Do not add more top-level tabs. Upgrade existing workspaces only.",
-  "public_naming_rule": "Public product name is CyberShield Executive OS. Current prototype build is V60.3.30. Do not call the public build CyberShield OS v8 unless the repo, README, loader, Settings/admin metadata, and public UX intentionally move to that version scheme.",
-  "release_train": {
-    "v60_3_23": "TrustMap asset manifest and governed future asset intake",
-    "v60_3_24": "TrustMap render lifecycle controller",
-    "v60_3_25": "Asset optimization and format upgrade path, scaffold built, optimized assets pending",
-    "v60_3_26": "Mobile TrustMap fidelity mode",
-    "v60_3_27": "No-dead-click and interaction meaning audit",
-    "v60_3_28": "Model trace and evidence trust alignment scaffold",
-    "v60_3_29": "Commercial Artifact Trust scenario scaffold",
-    "v60_3_30": "Release hardening and source-of-truth reconciliation",
-    "v60_3_31": "Earmarked only: Integrating the World's Best Map Maker"
+  "top_level_tab_rule": "Do not add more top-level tabs.",
+  "files_added_or_updated_in_current_build": [
+    "data/trustmap/v60-3-23-layer1-v2-assets.json",
+    "src/ui/v60-3-23-layer1-v2-asset-integration.js",
+    "src/ui/v60-3-14-trustmap-background-oval-highlight-spacing.js",
+    "docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md",
+    "README.md",
+    "bots.txt",
+    "governance-summary.json"
+  ],
+  "binary_asset_upload_required": true,
+  "binary_asset_folder": "assets/layer1-v2/",
+  "required_layer1_v2_filenames": [
+    "AI_Systems_Agents_v2.png",
+    "Applications_Data_v2.png",
+    "Cloud_Infrastructure_v2.png",
+    "CMMC_and_Compliance_v2.png",
+    "Devices_End_Points_v2.png",
+    "Identities_Access_v2.png",
+    "Third_Parties_and_Vendors_v2.png"
+  ],
+  "asset_rule": "Layer 1 v2 assets are preferred only when available at assets/layer1-v2/. Legacy PNG files remain fallbacks until browser QA confirms the v2 files.",
+  "great_map_doctrine": {
+    "summary": "CyberShield should evolve from a platform that contains a TrustMap into a platform that behaves like a map.",
+    "metaphor": "Minard + John Snow + Harry Beck",
+    "doctrine_document": "docs/20260602-1730-layer1-v2-assets-and-great-map-guidance.md",
+    "status": "doctrine intake for future design pass"
   },
-  "runtime_import_rule": "The operational layer should not statically import the full TrustMap stack during initial page load. The executive shell should load first. The full interactive TrustMap loads on demand.",
-  "asset_manifest_rule": "TrustMap assets should be governed by data/trustmap/v60-3-23-asset-manifest.json. Current PNG files remain valid fallbacks. Future optimized paths are preferred only when a manifest slot marks them available.",
+  "runtime_import_rule": "The executive shell loads first. The full TrustMap loads when requested.",
   "performance_doctrine": [
     "Load the executive shell first.",
-    "Do not force mobile users to pay the full TrustMap cost during startup.",
+    "Load the full TrustMap only when requested.",
     "Warm TrustMap images after the shell is usable.",
-    "Load the full interactive TrustMap only when requested.",
-    "Track render lifecycle before attempting more visual fixes.",
-    "If the TrustMap remains slow because images are heavy, optimize files before adding more runtime logic."
-  ],
-  "scaffold_boundaries": [
-    "V60.3.25 does not create optimized image files.",
-    "V60.3.26 does not create a separate mobile product.",
-    "V60.3.27 does not invent backend actions.",
-    "V60.3.28 does not claim statistical validation.",
-    "V60.3.29 does not perform live retrieval or fact-checking.",
-    "V60.3.31 is not implemented yet."
-  ],
-  "files_added_or_updated_in_release_train": [
-    "src/ui/v60-3-25-asset-optimization-and-format-upgrade.js",
-    "src/ui/v60-3-26-mobile-trustmap-fidelity-mode.js",
-    "docs/v60-3-27-no-dead-click-audit.md",
-    "src/ui/v60-3-27-no-dead-click-interaction-meaning.js",
-    "data/models/v60-3-28-model-trace-registry.json",
-    "src/ui/v60-3-28-model-trace-and-evidence-trust.js",
-    "data/scenarios/v60-3-29-artifact-trust-scenarios.json",
-    "src/ui/v60-3-29-artifact-trust-scenario-scaffold.js",
-    "src/ui/v60-3-30-release-hardening-and-source-truth.js",
-    "src/ui/v52-7-operational-layer.js",
-    "src/ui/v60-3-23-trustmap-asset-manifest-loader.js"
+    "Prefer asset optimization over more runtime patches when images remain slow."
   ],
   "controlling_doctrine": "No score without a model. No model without evidence. No evidence without traceability. No action without consequence.",
-  "model_maturity_rule": "CyberShield scoring models are Expert-Derived V1 Trust Scoring Models, not Statistically Validated Trust Models. Default weights are calibratable and not authoritative until validated through test scenarios, expert review, red-team attempts, and real-world use cases.",
-  "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype. It does not perform live enterprise integrations, live retrieval, live scoring, statistical validation, backend persistence, workflow automation, production enforcement, certification, or compliance determination.",
+  "prototype_boundary": "The current GitHub Pages build is a lightweight static advisory prototype.",
   "github_pages_browser_qa_required": true,
   "qa_priority": [
-    "Hard refresh the V60.3.30 test URL",
-    "Complete or reset onboarding",
+    "Hard refresh the 20260602-1730 test URL",
     "Verify initial app shell remains fast on phone",
-    "Verify TrustMap still opens on demand",
-    "Verify current PNG assets still load",
-    "Verify optimized future assets are not preferred unless marked available",
-    "Verify mobile fidelity mode appears in admin metadata",
-    "Verify interaction meaning audit appears in admin metadata",
-    "Verify model trace scaffold appears in admin metadata",
-    "Verify artifact trust scaffold appears in admin metadata without fact-checker language",
-    "Verify release hardening appears in admin metadata",
-    "Verify no visible UI clutter was added",
-    "Verify no new top-level tab exists",
-    "Verify no overclaims appear",
-    "Verify timestamp versioning guidance before starting the next implemented build"
+    "Open TrustMap and confirm no broken image icons appear before v2 binaries are uploaded",
+    "Upload the seven v2 PNG files to assets/layer1-v2/",
+    "Hard refresh again",
+    "Confirm v2 assets replace legacy assets",
+    "Confirm all seven Layer 1 assets have the same apparent size",
+    "Confirm no new top-level tab exists"
   ]
 }
