@@ -60,25 +60,37 @@ function runSmokeTest() {
 
 function render() {
   const result = runSmokeTest();
+  const goNoGo = result.failed ? 'NO-GO' : 'GO';
+  const totalClaims = result.analyses.reduce((sum, item) => sum + item.record.extracted_claims.length, 0);
+  const reviewRequired = result.analyses.filter(item => item.record.human_review.required).length;
+  const conservativeActions = result.analyses.filter(item => ['Request Evidence', 'Escalate for Review', 'Quarantine', 'Accept with Caveat'].includes(item.record.recommended_action)).length;
   const rows = result.tests.map(test => `<tr class="${test.status}"><td>${test.status.toUpperCase()}</td><td>${test.name}</td><td>${test.details}</td></tr>`).join('');
-  const demoRows = result.analyses.map(item => `<tr><td>${item.mode.label}</td><td>${item.record.extracted_claims.length}</td><td>${item.record.risk_if_wrong.band}</td><td>${item.record.confidence_band}</td><td>${item.record.recommended_action}</td><td>${item.validation.valid ? 'Valid' : 'Invalid'}</td></tr>`).join('');
+  const demoRows = result.analyses.map(item => `<tr><td>${item.mode.label}</td><td>${item.record.extracted_claims.length}</td><td>${item.record.risk_if_wrong.band}</td><td>${item.record.confidence_band}</td><td>${item.record.recommended_action}</td><td>${item.record.human_review.required ? 'Required' : 'Not Required'}</td><td>${item.validation.valid ? 'Valid' : 'Invalid'}</td></tr>`).join('');
   const findings = result.analyses.flatMap(item => item.validation.findings.map(f => `<li>${item.mode.label}: ${f.severity.toUpperCase()} ${f.path}: ${f.message}</li>`)).join('') || '<li>No validation findings.</li>';
   document.querySelector('#result').innerHTML = `
     <section class="summary ${result.failed ? 'fail' : 'pass'}">
-      <h2>${result.failed ? 'Smoke test failed' : 'Smoke test passed'}</h2>
-      <p>${result.passed} passed. ${result.failed} failed.</p>
+      <div class="eyebrow">Demo Readiness Decision</div>
+      <h2>${goNoGo}: ${result.failed ? 'Fix before showing' : 'Ready for controlled demo'}</h2>
+      <p>${result.passed} checks passed. ${result.failed} checks failed.</p>
     </section>
+    <section class="kpis">
+      <div class="kpi"><span>Demo Modes</span><strong>${result.analyses.length}</strong></div>
+      <div class="kpi"><span>Total Claims</span><strong>${totalClaims}</strong></div>
+      <div class="kpi"><span>Review Required</span><strong>${reviewRequired}/${result.analyses.length}</strong></div>
+      <div class="kpi"><span>Conservative Actions</span><strong>${conservativeActions}/${result.analyses.length}</strong></div>
+    </section>
+    <h2>Demo Scenario Results</h2>
+    <table>
+      <thead><tr><th>Demo</th><th>Claims</th><th>Risk</th><th>Confidence</th><th>Action</th><th>Review</th><th>Schema</th></tr></thead>
+      <tbody>${demoRows}</tbody>
+    </table>
+    <h2>Readiness Checks</h2>
     <table>
       <thead><tr><th>Status</th><th>Check</th><th>Details</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>
-    <h2>Demo Results</h2>
-    <table>
-      <thead><tr><th>Demo</th><th>Claims</th><th>Risk</th><th>Confidence</th><th>Action</th><th>Schema</th></tr></thead>
-      <tbody>${demoRows}</tbody>
-    </table>
     <h2>Schema Findings</h2>
-    <ul>${findings}</ul>`;
+    <section class="card"><ul>${findings}</ul></section>`;
 }
 
 render();
