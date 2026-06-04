@@ -90,6 +90,7 @@ atdr-smoke.html
 ## Docs to Read First
 
 ```text
+docs/2026060415-atdr-presenter-script.md
 docs/2026060415-atdr-merge-readiness-plan.md
 docs/2026060420V1-static-mvp-release-note-draft.md
 docs/2026060415-atdr-engineering-plan-for-review.md
@@ -130,6 +131,7 @@ before the PR is marked ready for review or merged.
 - Schema validation
 - Model contract registry
 - Demo Coach
+- Presenter script
 - Source-of-truth docs aligned
 
 ## Current Known Weaknesses
