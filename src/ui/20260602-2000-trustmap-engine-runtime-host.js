@@ -1,5 +1,5 @@
-// 20260602-2000 TrustMap Engine Runtime Host
-// Purpose: render the live TrustMap tab with the new TrustMap Engine only. No legacy TrustMap renderer is imported here.
+// 20260602-2010 TrustMap Engine Runtime Host Hardening
+// Purpose: render the live TrustMap tab with the new TrustMap Engine only, without exposing preview QA scaffolding to executives.
 // Boundary: static advisory prototype only. No live scoring, live evidence retrieval, workflow automation, enforcement, or backend persistence.
 
 let tmEngineRuntimeLoaded202606022000 = false;
@@ -19,7 +19,9 @@ function tmRuntimeInstallStyles202606022000(){
     #trustmap .tm-engine-runtime-header p{margin:.35rem 0 0;color:var(--muted)}
     #trustmap .tm-engine-runtime-status{border:1px solid rgba(146,205,232,.24);border-radius:14px;padding:8px 11px;background:rgba(0,0,0,.18);font-size:.82rem;color:var(--muted);max-width:34rem}
     #trustmap .tm-engine-runtime-status strong{color:#fff}
+    #trustmap .tm-engine-runtime-status pre{display:none!important}
     #trustmap .tm-engine-runtime-target{min-height:760px;overflow:visible}
+    #trustmap .tm-engine-runtime-error{border:1px solid rgba(255,92,92,.35);background:rgba(255,92,92,.08);border-radius:16px;padding:14px;color:#ffd6d6}
   `;
   document.head.appendChild(style);
 }
@@ -30,9 +32,9 @@ function tmRuntimeShell202606022000(){
       <div>
         <span class="chip">TrustMap Engine</span>
         <h2>CyberShield TrustMap</h2>
-        <p>Single-render engine view. Legacy TrustMap stack is not loaded in this path.</p>
+        <p>Executive trust navigation across the Kernel, domains, evidence posture, and decision exposure.</p>
       </div>
-      <div class="tm-engine-runtime-status" id="trustMapEngineRuntimeStatus"><strong>Status:</strong> initializing</div>
+      <div class="tm-engine-runtime-status" id="trustMapEngineRuntimeStatus"><strong>Status:</strong> preparing TrustMap</div>
     </div>
     <div class="tm-engine-runtime-target" id="trustMapEngineRuntimeTarget"></div>
   `;
@@ -41,7 +43,8 @@ function tmRuntimeShell202606022000(){
 function tmRuntimeSetStatus202606022000(message, detail = null){
   const status = tmRuntime$('#trustMapEngineRuntimeStatus');
   if(!status) return;
-  status.innerHTML = `<strong>Status:</strong> ${tmRuntimeEsc(message)}${detail ? `<pre>${tmRuntimeEsc(JSON.stringify(detail, null, 2))}</pre>` : ''}`;
+  const hiddenDetail = detail ? `<span hidden data-trustmap-runtime-qa="${tmRuntimeEsc(JSON.stringify(detail))}"></span>` : '';
+  status.innerHTML = `<strong>Status:</strong> ${tmRuntimeEsc(message)}${hiddenDetail}`;
 }
 
 async function tmRuntimeRender202606022000(reason = 'runtime-render'){
@@ -51,7 +54,7 @@ async function tmRuntimeRender202606022000(reason = 'runtime-render'){
   trustmap.dataset.trustmapEngineRuntime = 'active';
   trustmap.dataset.trustmapEngineRuntimeReason = reason;
   trustmap.innerHTML = tmRuntimeShell202606022000();
-  tmRuntimeSetStatus202606022000('loading TrustMap Engine');
+  tmRuntimeSetStatus202606022000('preparing TrustMap');
   try{
     if(!tmEngineRuntimeLoaded202606022000){
       await import('../trustmap-engine/trustmap-engine-loader.js');
@@ -60,13 +63,15 @@ async function tmRuntimeRender202606022000(reason = 'runtime-render'){
     const target = tmRuntime$('#trustMapEngineRuntimeTarget');
     tmEngineRuntimeResult202606022000 = await window.CyberShieldTrustMapEngineScaffold.createPreview(target, { state:{ activeMode:'domain', selectedObjectId:'kernel', lastRenderReason:reason } });
     const qa = tmEngineRuntimeResult202606022000.qa;
-    tmRuntimeSetStatus202606022000(qa.ok ? 'engine rendered and QA passed' : 'engine rendered with QA findings', qa);
+    tmRuntimeSetStatus202606022000(qa.ok ? 'TrustMap ready' : 'TrustMap ready with diagnostics', qa);
     tmRuntimeMarkMeta202606022000(qa, reason);
     return tmEngineRuntimeResult202606022000;
   }catch(error){
     console.warn('TrustMap Engine runtime render failed', error);
     const qa = { ok:false, errors:[String(error?.message || error)] };
-    tmRuntimeSetStatus202606022000('engine render failed', qa);
+    const target = tmRuntime$('#trustMapEngineRuntimeTarget');
+    if(target) target.innerHTML = `<section class="tm-engine-runtime-error"><strong>TrustMap did not render.</strong><br>${tmRuntimeEsc(String(error?.message || error))}</section>`;
+    tmRuntimeSetStatus202606022000('TrustMap render failed', qa);
     tmRuntimeMarkMeta202606022000(qa, reason);
     return null;
   }
@@ -78,11 +83,11 @@ function tmRuntimeMarkMeta202606022000(qa, reason){
   try{
     const parsed = JSON.parse(payload.textContent || '{}');
     parsed.trustmap_engine_runtime_switch = {
-      build:'20260602-2000 TrustMap Engine Runtime Switch',
-      status:'active_new_engine_runtime_path',
+      build:'20260602-2010 TrustMap Engine Runtime Hardening',
+      status:'active_new_engine_runtime_path_executive_facing',
       reason,
       qa:qa || null,
-      rule:'Live TrustMap tab renders with new TrustMap Engine only. Legacy TrustMap dynamic imports are not used by the runtime loader.',
+      rule:'Live TrustMap tab renders with new TrustMap Engine only. Runtime status is executive-facing and QA details are hidden in metadata.',
       github_pages_browser_qa_required:true
     };
     payload.textContent = JSON.stringify(parsed, null, 2);
