@@ -1,0 +1,92 @@
+{
+  "manifest_version": "2026060415V1",
+  "package_name": "CyberShield AI Decision Assurance Static MVP Demo Package",
+  "primary_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
+  "primary_artifact": "AI Trust Decision Record",
+  "primary_demo_route_after_merge": "/demo.html",
+  "trust_surface": "Trust Kernel",
+  "routes": [
+    {
+      "path": "/demo.html",
+      "label": "Demo Control Room",
+      "purpose": "Run the demo in the recommended order.",
+      "readiness_role": "primary_entry"
+    },
+    {
+      "path": "/launch.html",
+      "label": "AI Decision Assurance Launch Page",
+      "purpose": "Introduce the product story and launch the main demo routes.",
+      "readiness_role": "narrative_entry"
+    },
+    {
+      "path": "/atdr.html",
+      "label": "ATDR Workbench",
+      "purpose": "Run the guided AI Trust Decision Record workflow.",
+      "readiness_role": "workflow_demo"
+    },
+    {
+      "path": "/brief.html",
+      "label": "Executive Brief Preview",
+      "purpose": "Show the standalone AI Trust Decision Record artifact and browser print/PDF path.",
+      "readiness_role": "artifact_demo"
+    },
+    {
+      "path": "/atdr-smoke.html",
+      "label": "Demo Readiness Check",
+      "purpose": "Run deterministic GO / NO-GO checks across all static demo paths.",
+      "readiness_role": "qa_gate"
+    },
+    {
+      "path": "/index.html",
+      "label": "Trust Kernel",
+      "purpose": "Preserve access to the existing CyberShield trust surface.",
+      "readiness_role": "preserved_surface"
+    }
+  ],
+  "demo_modes": [
+    {
+      "id": "vendor-risk-contradictory-evidence",
+      "label": "Vendor Risk: Contradictory Evidence",
+      "default": true,
+      "sales_role": "primary_wedge"
+    },
+    {
+      "id": "security-vulnerability-risk-acceptance",
+      "label": "Security: Vulnerability Risk Acceptance",
+      "default": false,
+      "sales_role": "security_buyer_path"
+    },
+    {
+      "id": "compliance-nist-control-claim",
+      "label": "Compliance: NIST Control Claim",
+      "default": false,
+      "sales_role": "grc_buyer_path"
+    }
+  ],
+  "go_no_go_checks": [
+    "All demo routes load",
+    "All demo modes analyze",
+    "Vendor-risk demo atomizes into expected claim structure",
+    "Every demo produces Risk If Wrong",
+    "Every demo produces conservative action",
+    "Every demo includes limitations",
+    "Framework mappings include not-verified-as-compliant warning language",
+    "JSON export is parseable",
+    "Schema validation passes",
+    "Trust Kernel remains accessible"
+  ],
+  "non_claims": [
+    "No backend persistence",
+    "No auth or RBAC enforcement",
+    "No tenant isolation enforcement",
+    "No enterprise evidence storage",
+    "No file security scanning",
+    "No live LLM verification",
+    "No server-side DOCX or PDF generation",
+    "No compliance certification",
+    "No legal determination",
+    "No audit opinion",
+    "No production approval",
+    "No autonomous remediation"
+  ]
+}
