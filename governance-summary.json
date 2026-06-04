@@ -1,59 +1,97 @@
 {
   "product": "CyberShield Executive OS",
-  "current_implemented_build": "20260602-1815 Architecture Model Library Restoration",
-  "build_date": "2026-06-02",
-  "patch_type": "Architecture Model Library restoration",
-  "release_chain_status": "20260602-1815 restores CyberShield model library concepts inside the Architecture tab while preserving Proof Pack as the defensible output layer.",
-  "versioning_schema_after_v60_3_30": {
-    "schema": "YYYYMMDD-HHMM",
+  "current_strategic_direction": "2026060411 AI Trust Decision Record Pivot",
+  "build_direction_date": "2026-06-04",
+  "primary_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
+  "first_target_workflow": "AI-generated security, compliance, and vendor-risk recommendations",
+  "current_priority": "Build the AI Trust Decision Record workflow before dashboards, TrustMap, broad governance, runtime agents, or generic trust scores.",
+  "versioning_schema": {
+    "schema": "YYYYMMDDHH",
     "timezone": "America/New_York",
+    "example": "2026060411",
     "canonical_document": "docs/versioning-schema.md"
   },
   "live_app_file": "index.html",
-  "test_url": "https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260602-1815-architecture-model-library&reset=onboarding",
-  "user_facing_navigation": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
-  "top_level_tab_rule": "Do not add more top-level tabs.",
-  "files_added_or_updated_in_current_build": [
-    "data/models/20260602-1815-architecture-model-library.json",
-    "src/ui/20260602-1815-architecture-model-library.js",
-    "src/ui/v52-7-operational-layer.js",
+  "live_prototype": "https://maximumjusticecybersecurity.github.io/CyberShield/",
+  "recommended_next_build": "2026060412 ATDR Workflow Scaffold",
+  "user_facing_navigation_current": ["Briefing", "TrustMap", "Runtime", "Evidence", "Proof Pack", "Architecture", "Settings"],
+  "top_level_tab_rule": "Do not add more top-level tabs unless explicitly approved. Prefer implementing the first ATDR workflow inside Evidence, Proof Pack, or a clearly labeled workflow pane.",
+  "required_atdr_workflow_steps": [
+    "Ingest an AI-generated recommendation",
+    "Extract claims",
+    "Map evidence",
+    "Identify missing support",
+    "Classify risk if wrong",
+    "Assign confidence bands",
+    "Recommend action",
+    "Require human review where needed",
+    "Export a defensible AI Trust Decision Record"
+  ],
+  "required_atdr_output_sections": [
+    "Record ID",
+    "Timestamp",
+    "Original recommendation",
+    "Recommendation summary",
+    "Extracted claims",
+    "Claim classification",
+    "Evidence map",
+    "Evidence gaps",
+    "Missing support",
+    "Risk-if-wrong analysis",
+    "Confidence band",
+    "Recommended action",
+    "Human review requirement",
+    "Human reviewer fields",
+    "Decision status",
+    "Boundary and limitation statement",
+    "Export-ready proof package"
+  ],
+  "deprioritized_but_preserved": {
+    "trustmap": "Deferred. Preserve files and docs. Do not continue TrustMap engineering unless explicitly redirected.",
+    "dashboards": "Deferred until ATDR workflow works.",
+    "broad_governance": "Deferred until ATDR workflow works.",
+    "runtime_agents": "Deferred until ATDR workflow works.",
+    "generic_trust_scores": "Deferred until ATDR workflow works.",
+    "architecture_model_library_expansion": "Deferred unless needed directly for ATDR."
+  },
+  "required_reading_order": [
+    "docs/2026060411-ai-trust-decision-record-pivot.md",
+    "docs/2026060411-ai-trust-decision-record-builder-package.md",
     "README.md",
     "bots.txt",
-    "governance-summary.json"
+    "docs/20260602-1900-trustmap-engine-refactor-package.md",
+    "docs/20260602-1915-trustmap-engine-scaffold-handoff.md",
+    "docs/20260602-2000-trustmap-engine-runtime-switch-handoff.md"
   ],
-  "architecture_model_library": {
-    "status": "active_inside_architecture_tab",
-    "rule": "Architecture owns model definitions and system thinking. Proof Pack owns model-generated defensible outputs.",
-    "model_groups": [
-      "Core Trust Models",
-      "Evidence Models",
-      "Internet Trust Engine",
-      "AI Governance Models",
-      "Vendor and Supply Chain Models",
-      "Decision and Consequence Models",
-      "Proof Pack Models"
-    ],
-    "internet_trust_pilot": "USAFacts / Steve Ballmer-style artifact trust pilot restored as a model-library scenario note."
-  },
-  "architecture_proof_pack_separation": {
-    "architecture": "how CyberShield thinks",
-    "evidence": "what CyberShield knows",
-    "runtime": "what CyberShield is deciding now",
-    "trustmap": "where trust is moving and breaking",
-    "proof_pack": "what CyberShield can defend later"
-  },
-  "prototype_boundary": "Static prototype model library only.",
+  "builder_skill_requirements": [
+    "JavaScript modular architecture",
+    "Structured data modeling",
+    "Claim extraction logic",
+    "Evidence mapping logic",
+    "Security and compliance vocabulary",
+    "Vendor-risk workflow basics",
+    "Confidence banding",
+    "Risk-if-wrong analysis",
+    "Human-in-the-loop review design",
+    "Exportable decision records",
+    "Audit trail design",
+    "Defensive UX",
+    "Product boundary discipline"
+  ],
+  "prototype_boundary": "Static advisory prototype. Do not claim autonomous approval, live compliance certification, live vendor approval, legal determination, audit opinion, CMMC certification, production enforcement, live evidence retrieval, live internet verification, or backend persistence.",
+  "core_doctrine": "Do not ask only, 'Do we trust the AI?' Ask, 'Which parts of the AI recommendation can be trusted, at what confidence level, based on what evidence, with what risk if wrong, and what human decision is required?'",
   "github_pages_browser_qa_required": true,
-  "qa_priority": [
-    "Hard refresh the 20260602-1815 test URL",
-    "Open Architecture",
-    "Confirm original four Architecture cards still appear",
-    "Confirm CyberShield Model Library appears inside Architecture",
-    "Confirm category buttons work",
-    "Confirm model cards switch detail view",
-    "Confirm Internet Trust Engine category includes Internet Artifact Trust Model, Claim Extraction Model, Fact Verification Model, and Source Credibility Model",
-    "Confirm USAFacts / Steve Ballmer pilot scenario appears",
-    "Confirm route buttons go to Evidence, Proof Pack, Runtime, and TrustMap",
-    "Confirm no new top-level tab exists"
+  "qa_priority_for_next_build": [
+    "User can paste an AI recommendation",
+    "System extracts structured claims",
+    "System classifies claim types",
+    "System maps user-provided evidence to claims",
+    "System identifies missing support",
+    "System classifies risk if wrong",
+    "System assigns confidence band with reasons",
+    "System recommends action",
+    "System flags human review when required",
+    "System exports a structured AI Trust Decision Record",
+    "TrustMap is not the main workflow"
   ]
 }
