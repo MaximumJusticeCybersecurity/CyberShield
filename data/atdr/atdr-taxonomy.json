@@ -1,0 +1,133 @@
+{
+  "version": "2026060414V1",
+  "workflow": "ai-trust-decision-record",
+  "productPromise": "CyberShield turns AI-generated recommendations into defensible AI Trust Decision Records.",
+  "doctrine": [
+    "AI confidence is not evidence.",
+    "The record is the product.",
+    "The models are the engine.",
+    "Missing evidence is a finding, not a failure.",
+    "Framework relevance is not compliance proof.",
+    "Evidence is untrusted input unless verified by an accountable human."
+  ],
+  "domains": ["security", "compliance", "vendor-risk", "mixed"],
+  "workflowStages": [
+    "Intake",
+    "Classification",
+    "Claims",
+    "Evidence",
+    "Gaps",
+    "Risk If Wrong",
+    "Confidence",
+    "Review",
+    "Decision Record",
+    "Export"
+  ],
+  "claimTypes": [
+    "Factual claim",
+    "Technical claim",
+    "Security claim",
+    "Control claim",
+    "Compliance claim",
+    "Vendor claim",
+    "Risk conclusion",
+    "Causal claim",
+    "Comparative claim",
+    "Predictive claim",
+    "Legal/regulatory claim",
+    "Assumption",
+    "Recommendation step",
+    "Unsupported leap"
+  ],
+  "evidenceTypes": [
+    "Vulnerability scan output",
+    "Asset inventory",
+    "Security policy",
+    "Control implementation evidence",
+    "Control test result",
+    "Vendor SOC 2 report",
+    "Vendor security whitepaper",
+    "Contract clause",
+    "Data processing agreement",
+    "Architecture diagram",
+    "Risk register entry",
+    "Ticket or issue",
+    "Screenshot",
+    "Framework reference",
+    "Human reviewer note",
+    "Other"
+  ],
+  "evidenceSufficiencyBands": [
+    "Sufficient",
+    "Sufficient with caveat",
+    "Partially sufficient",
+    "Insufficient",
+    "Contradicted",
+    "Not provided"
+  ],
+  "missingSupportBands": ["Critical", "High", "Moderate", "Low", "Informational"],
+  "conflictBands": ["No conflict", "Minor caveat", "Material conflict", "Blocking conflict", "Unresolved conflict"],
+  "riskIfWrongBands": ["Severe", "High", "Moderate", "Low", "Minimal"],
+  "confidenceBands": ["High confidence", "Medium confidence", "Low confidence", "Unknown confidence", "Contradicted"],
+  "recommendedActions": [
+    "Accept",
+    "Accept with caveat",
+    "Request evidence",
+    "Revise recommendation",
+    "Escalate for review",
+    "Reject",
+    "Quarantine"
+  ],
+  "recordDefensibilityBands": [
+    "Export-ready",
+    "Export-ready with caveat",
+    "Internal-use only",
+    "Not defensible",
+    "Incomplete"
+  ],
+  "reviewerRoles": [
+    "vCISO",
+    "Security SME",
+    "Compliance owner",
+    "Vendor-risk owner",
+    "Legal counsel",
+    "Data protection officer",
+    "Procurement owner",
+    "Executive sponsor",
+    "System owner"
+  ],
+  "frameworkReferences": [
+    "NIST CSF 2.0",
+    "NIST SP 800-53",
+    "NIST SP 800-161",
+    "NIST AI RMF",
+    "NIST Generative AI Profile",
+    "OWASP Top 10 for LLM Applications",
+    "SOC 2 Trust Services Criteria"
+  ],
+  "frameworkWarning": "Relevant to [framework/control]. Not verified as compliant.",
+  "aiOutputHazards": [
+    "Unsupported certainty",
+    "Hallucinated framework mapping",
+    "Fabricated citation",
+    "Overgeneralized compliance conclusion",
+    "Vendor claim accepted without evidence",
+    "Scope mismatch",
+    "Missing caveats",
+    "Prompt injection suspected",
+    "Sensitive data exposure",
+    "Excessive agency",
+    "Legal conclusion without authority",
+    "False equivalence between certification and risk acceptance"
+  ],
+  "boundary": {
+    "staticPrototype": true,
+    "liveInternetVerification": false,
+    "backendPersistence": false,
+    "autonomousApproval": false,
+    "productionEnforcement": false,
+    "legalDetermination": false,
+    "auditOpinion": false,
+    "complianceCertification": false
+  }
+}
