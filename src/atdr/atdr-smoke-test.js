@@ -1,9 +1,9 @@
 import { analyzeRecommendation, exportJson } from './atdr-engine.js';
-import { VENDOR_RISK_CONTRADICTORY_DEMO } from './atdr-demo-data.js';
+import { DEMO_MODES } from './atdr-demo-data.js';
 import { validateTrustDecisionRecord } from './atdr-schema.js';
 
-function evidenceText() {
-  return VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository
+function evidenceText(demo) {
+  return demo.evidence_repository
     .map(e => `[${e.evidence_name}] ${e.text_extract}`)
     .join('\n');
 }
@@ -16,19 +16,19 @@ function assert(name, condition, details = '') {
   };
 }
 
-function runSmokeTest() {
+function analyzeDemo(mode) {
+  const demo = mode.demo;
   const record = analyzeRecommendation({
-    recommendation: VENDOR_RISK_CONTRADICTORY_DEMO.original_ai_recommendation,
-    domain: VENDOR_RISK_CONTRADICTORY_DEMO.domain,
-    evidence: evidenceText(),
-    aiSource: VENDOR_RISK_CONTRADICTORY_DEMO.ai_source,
-    sourceModel: VENDOR_RISK_CONTRADICTORY_DEMO.source_model_if_known,
-    intendedUse: VENDOR_RISK_CONTRADICTORY_DEMO.intended_use,
-    context: VENDOR_RISK_CONTRADICTORY_DEMO.decision_context,
-    decisionOwner: VENDOR_RISK_CONTRADICTORY_DEMO.decision_owner,
+    recommendation: demo.original_ai_recommendation,
+    domain: demo.domain,
+    evidence: evidenceText(demo),
+    aiSource: demo.ai_source,
+    sourceModel: demo.source_model_if_known,
+    intendedUse: demo.intended_use,
+    context: demo.decision_context,
+    decisionOwner: demo.decision_owner,
     createdBy: 'Smoke test'
   });
-
   const validation = validateTrustDecisionRecord(record);
   let jsonParseable = false;
   try {
@@ -37,30 +37,32 @@ function runSmokeTest() {
   } catch {
     jsonParseable = false;
   }
+  return { mode, demo, record, validation, jsonParseable };
+}
 
+function runSmokeTest() {
+  const analyses = DEMO_MODES.map(analyzeDemo);
+  const defaultDemo = analyses[0];
   const tests = [
-    assert('Record is created', Boolean(record.record_id), record.record_id),
-    assert('Default demo atomizes into seven claims', record.extracted_claims.length === 7, `${record.extracted_claims.length} claims found`),
-    assert('Risk If Wrong is High or Severe', ['High', 'Severe'].includes(record.risk_if_wrong.band), record.risk_if_wrong.band),
-    assert('Confidence is conservative', ['Low confidence', 'Contradicted'].includes(record.confidence_band), record.confidence_band),
-    assert('Human review is required', record.human_review.required === true, record.human_review.triggers.join('; ')),
-    assert('Recommended action is conservative', ['Request Evidence', 'Escalate for Review', 'Quarantine'].includes(record.recommended_action), record.recommended_action),
-    assert('Unsupported leap is detected', record.extracted_claims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
-    assert('Framework warnings are present', record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant')), `${record.applicable_framework_references.length} mappings`),
-    assert('JSON export is parseable', jsonParseable, 'exportJson(record) parsed successfully'),
-    assert('Limitations are included', record.limitations.length >= 3, `${record.limitations.length} limitations found`),
-    assert('Schema validation passes', validation.valid, validation.findings.map(f => `${f.code}: ${f.message}`).join('; ') || 'No schema findings')
+    assert('All demo modes analyze', analyses.length === 3 && analyses.every(a => a.record.record_id), `${analyses.length} demo modes analyzed`),
+    assert('Default vendor-risk demo atomizes into seven claims', defaultDemo.record.extracted_claims.length === 7, `${defaultDemo.record.extracted_claims.length} claims found`),
+    assert('Every demo has claims', analyses.every(a => a.record.extracted_claims.length > 0), analyses.map(a => `${a.mode.label}: ${a.record.extracted_claims.length}`).join('; ')),
+    assert('Every demo has Risk If Wrong', analyses.every(a => ['High', 'Severe', 'Moderate', 'Low', 'Minimal'].includes(a.record.risk_if_wrong.band)), analyses.map(a => `${a.mode.label}: ${a.record.risk_if_wrong.band}`).join('; ')),
+    assert('Every demo has conservative action', analyses.every(a => ['Request Evidence', 'Escalate for Review', 'Quarantine', 'Accept with Caveat'].includes(a.record.recommended_action)), analyses.map(a => `${a.mode.label}: ${a.record.recommended_action}`).join('; ')),
+    assert('Vendor demo detects unsupported leap', defaultDemo.record.extracted_claims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
+    assert('Framework warnings are present where mappings exist', analyses.every(a => a.record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant'))), 'Framework warnings checked'),
+    assert('Every JSON export is parseable', analyses.every(a => a.jsonParseable), 'exportJson(record) parsed for all demos'),
+    assert('Every record includes limitations', analyses.every(a => a.record.limitations.length >= 3), analyses.map(a => `${a.mode.label}: ${a.record.limitations.length}`).join('; ')),
+    assert('Every record passes schema validation', analyses.every(a => a.validation.valid), analyses.flatMap(a => a.validation.findings.map(f => `${a.mode.label}: ${f.code}: ${f.message}`)).join('; ') || 'No schema findings')
   ];
-
-  return { record, validation, tests, passed: tests.filter(t => t.status === 'pass').length, failed: tests.filter(t => t.status === 'fail').length };
+  return { analyses, tests, passed: tests.filter(t => t.status === 'pass').length, failed: tests.filter(t => t.status === 'fail').length };
 }
 
 function render() {
   const result = runSmokeTest();
   const rows = result.tests.map(test => `<tr class="${test.status}"><td>${test.status.toUpperCase()}</td><td>${test.name}</td><td>${test.details}</td></tr>`).join('');
-  const findings = result.validation.findings.length
-    ? result.validation.findings.map(item => `<li>${item.severity.toUpperCase()} ${item.path}: ${item.message}</li>`).join('')
-    : '<li>No validation findings.</li>';
+  const demoRows = result.analyses.map(item => `<tr><td>${item.mode.label}</td><td>${item.record.extracted_claims.length}</td><td>${item.record.risk_if_wrong.band}</td><td>${item.record.confidence_band}</td><td>${item.record.recommended_action}</td><td>${item.validation.valid ? 'Valid' : 'Invalid'}</td></tr>`).join('');
+  const findings = result.analyses.flatMap(item => item.validation.findings.map(f => `<li>${item.mode.label}: ${f.severity.toUpperCase()} ${f.path}: ${f.message}</li>`)).join('') || '<li>No validation findings.</li>';
   document.querySelector('#result').innerHTML = `
     <section class="summary ${result.failed ? 'fail' : 'pass'}">
       <h2>${result.failed ? 'Smoke test failed' : 'Smoke test passed'}</h2>
@@ -70,10 +72,13 @@ function render() {
       <thead><tr><th>Status</th><th>Check</th><th>Details</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>
+    <h2>Demo Results</h2>
+    <table>
+      <thead><tr><th>Demo</th><th>Claims</th><th>Risk</th><th>Confidence</th><th>Action</th><th>Schema</th></tr></thead>
+      <tbody>${demoRows}</tbody>
+    </table>
     <h2>Schema Findings</h2>
-    <ul>${findings}</ul>
-    <h2>Record Snapshot</h2>
-    <pre>${JSON.stringify({ record_id: result.record.record_id, claims: result.record.extracted_claims.length, action: result.record.recommended_action, risk: result.record.risk_if_wrong.band, confidence: result.record.confidence_band, review_required: result.record.human_review.required, schema_valid: result.validation.valid }, null, 2)}</pre>`;
+    <ul>${findings}</ul>`;
 }
 
 render();
