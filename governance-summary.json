@@ -117,6 +117,7 @@
     "architecture_model_library_expansion": "Deferred unless needed directly for ATDR."
   },
   "required_reading_order": [
+    "docs/2026060415-successor-builder-handoff.md",
     "docs/2026060415-atdr-merge-readiness-plan.md",
     "docs/2026060420V1-static-mvp-release-note-draft.md",
     "docs/2026060415-atdr-engineering-plan-for-review.md",
