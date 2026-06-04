@@ -1,14 +1,18 @@
 # CyberShield Executive OS
 
-## Current live build
+## Current strategic direction
 
-Current build label: **20260602-1815 Architecture Model Library Restoration**
+CyberShield is pivoting to one primary workflow:
+
+```text
+AI-generated recommendation in → AI Trust Decision Record out
+```
+
+Current build direction: **2026060411 AI Trust Decision Record Pivot**
 
 Live app file: `index.html`
 
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
-
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260602-1815-architecture-model-library&reset=onboarding
 
 ## Public naming rule
 
@@ -18,25 +22,23 @@ Public product name:
 CyberShield Executive OS
 ```
 
-Current implemented build:
+Near-term working product concept:
 
 ```text
-20260602-1815 Architecture Model Library Restoration
+CyberShield AI Trust Decision Record
 ```
 
 Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
 
-## Versioning rule after V60.3.30
+## Versioning rule
 
-The V60.x style sequence ends with the V60.3 release train.  After V60.3.30, new implemented builds use timestamp-based versioning:
+After the V60.3 release train, new implemented builds use timestamp-based versioning:
 
 ```text
-YYYYMMDD-HHMM
+YYYYMMDDHH
 ```
 
-Use 24-hour **America/New_York** time unless the user explicitly changes the project timezone.
-
-V60.3.31 remains an earmarked concept only for **Integrating the World's Best Map Maker**.  Do not implement it under the V60.x numbering scheme unless explicitly directed.
+Use 24-hour **America/New_York** time unless the user explicitly changes the project timezone.  Example: `2026060411`.
 
 Canonical schema document:
 
@@ -44,111 +46,151 @@ Canonical schema document:
 docs/versioning-schema.md
 ```
 
-## User-facing workspace
+## Active priority
+
+The next build should focus on the AI Trust Decision Record workflow.
+
+First target workflow:
+
+```text
+AI-generated security, compliance, and vendor-risk recommendations
+```
+
+The system must:
+
+```text
+1. Ingest an AI-generated recommendation
+2. Extract claims
+3. Map evidence
+4. Identify missing support
+5. Classify risk if wrong
+6. Assign confidence bands
+7. Recommend action
+8. Require human review where needed
+9. Export a defensible AI Trust Decision Record
+```
+
+## Deprioritized but preserved work
+
+The following work is preserved for later phases, but is not the next build priority:
+
+```text
+TrustMap
+Dashboards
+Broad governance surfaces
+Runtime agents
+Generic trust scores
+Great Map visual system
+Architecture model library expansion
+```
+
+Do not delete this work.  File it away.  CyberShield expects to return to these capabilities after the AI Trust Decision Record workflow works.
+
+## Required next-builder reading order
+
+Read these first:
+
+```text
+docs/2026060411-ai-trust-decision-record-pivot.md
+docs/2026060411-ai-trust-decision-record-builder-package.md
+docs/20260602-1900-trustmap-engine-refactor-package.md
+docs/20260602-1915-trustmap-engine-scaffold-handoff.md
+docs/20260602-2000-trustmap-engine-runtime-switch-handoff.md
+bots.txt
+governance-summary.json
+```
+
+The TrustMap documents explain what was built and why it is now deferred.  They are not the active next-build priority.
+
+## Current navigation
+
+Existing navigation may still show:
 
 ```text
 Briefing | TrustMap | Runtime | Evidence | Proof Pack | Architecture | Settings
 ```
 
-No new top-level tabs were added for 20260602-1815.
+For the next ATDR workflow build, do not add a new top-level tab unless explicitly approved.  Prefer implementing the first ATDR workflow inside an existing screen, most likely **Evidence** or **Proof Pack**, or as a clearly labeled workflow pane.
 
-## Current implemented build: 20260602-1815
+## AI Trust Decision Record doctrine
 
-This build restores CyberShield's model library inside the Architecture tab.  Architecture now explains how CyberShield thinks.  Proof Pack remains the place where model outputs become defensible artifacts.
-
-The model library includes restored Internet Trust Engine concepts, including the USAFacts / Steve Ballmer-style artifact trust pilot, claim extraction, fact verification scaffold, source credibility, evidence trust, confidence, risk-if-wrong, vendor trust, AI governance, human verification, and Proof Pack artifact models.
-
-This is not live fact-checking.  This is a governed prototype model-library restoration.
-
-## Current TrustMap visual, performance, governance, model, and asset stack
+Do not ask only:
 
 ```text
-V60.3.12 = PNG asset mapping and interaction recovery
-V60.3.13 = stoplight trust color and PNG path recovery
-V60.3.14 = connector trust-state preservation and chain loader
-V60.3.16 = centerline fiber connector overlay and three-pane separation
-V60.3.16.1 = Trust Kernel right-panel detail and stoplight-only risk rows
-V60.3.17 = Briefing TrustMap Snapshot image
-V60.3.20 = consolidated Layer 1 visual consistency and view-mode recovery
-V60.3.21 = mobile load performance gate, TrustMap lazy-load trigger, mobile animation/filter reduction
-V60.3.22 = TrustMap PNG image prewarm after shell readiness
-V60.3.23 = TrustMap asset manifest and governed future asset intake
-V60.3.24 = TrustMap render lifecycle controller
-V60.3.25 = asset optimization and format upgrade path, scaffold built, optimized assets pending
-V60.3.26 = mobile TrustMap fidelity mode
-V60.3.27 = no-dead-click and interaction meaning audit
-V60.3.28 = model trace and evidence trust alignment scaffold
-V60.3.29 = commercial Artifact Trust scenario scaffold
-V60.3.30 = release hardening and source-of-truth reconciliation
-20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
-20260602-1735 = Layer 1 v2 source rewrite shim
-20260603-0638 = timestamp governance runtime alignment
-20260603-0648 = source-of-truth drift guard
-20260602-1815 = Architecture Model Library Restoration
+Do we trust the AI?
 ```
 
-## 20260602-1815 changes
-
-- Adds `data/models/20260602-1815-architecture-model-library.json`
-- Adds `src/ui/20260602-1815-architecture-model-library.js`
-- Updates `src/ui/v52-7-operational-layer.js` to import the Architecture Model Library UI
-- Adds an Architecture tab Model Library pane without adding a top-level tab
-- Restores Internet Trust Engine model concepts as prototype/scaffold entries
-- Makes model cards inspectable by category
-- Adds route buttons from model detail to Evidence, Proof Pack, Runtime, and TrustMap
-- Preserves the rule that Architecture owns model definitions and Proof Pack owns defensible outputs
-
-## Architecture / Proof Pack separation rule
+Ask:
 
 ```text
-Architecture = how CyberShield thinks
-Evidence = what CyberShield knows
-Runtime = what CyberShield is deciding now
-TrustMap = where trust is moving and breaking
-Proof Pack = what CyberShield can defend later
+Which parts of the AI recommendation can be trusted, at what confidence level, based on what evidence, with what risk if wrong, and what human decision is required?
 ```
 
-## Restored model groups
+## Required ATDR output
+
+The AI Trust Decision Record should include:
 
 ```text
-Core Trust Models
-Evidence Models
-Internet Trust Engine
-AI Governance Models
-Vendor and Supply Chain Models
-Decision and Consequence Models
-Proof Pack Models
+Record ID
+Timestamp
+Original recommendation
+Recommendation summary
+Extracted claims
+Claim classification
+Evidence map
+Evidence gaps
+Missing support
+Risk-if-wrong analysis
+Confidence band
+Recommended action
+Human review requirement
+Human reviewer fields
+Decision status
+Boundary and limitation statement
+Export-ready proof package
 ```
 
-## Internet Trust Engine restoration
+## Builder skills needed next
 
-The model library restores the earlier Internet Trust / media literacy direction, including the USAFacts / Steve Ballmer-style pilot scenario.
-
-The key doctrine is:
+The next builder should understand:
 
 ```text
-Do not ask, “Do we trust the person?”
-Ask, “Which claims in this artifact can be trusted, at what confidence level, based on what evidence, and with what operational risk if believed?”
+JavaScript modular architecture
+Structured data modeling
+Claim extraction logic
+Evidence mapping logic
+Security and compliance vocabulary
+Vendor-risk workflow basics
+Confidence banding
+Risk-if-wrong analysis
+Human-in-the-loop review
+Exportable decision records
+Audit trail design
+Defensive UX
+Product boundary discipline
 ```
 
 ## Boundary
 
-The current public build is a static advisory prototype. It is not connected to live SIEM, EDR, IAM, Microsoft 365, GRC, CRM, cloud telemetry, Google Sheets sync, platform takedown systems, marketplace systems, ad platforms, ticketing systems, notification systems, domain-intelligence systems, identity verification systems, CMMC certification systems, healthcare compliance validation systems, banking systems, payment systems, live evidence retrieval, live internet claim verification, live scoring, live claim extraction, statistical validation, backend persistence, workflow automation, notifications, or production agent enforcement systems.
+The current public build is still a static advisory prototype.  The next ATDR build must not claim autonomous approval, live compliance certification, live vendor approval, legal determination, CMMC certification, audit opinion, production enforcement, live evidence retrieval, live internet verification, or backend persistence unless those capabilities are explicitly built and validated later.
 
-## GitHub Pages browser QA required
+## Recommended next build package
 
 ```text
-hard refresh live prototype
-complete/reset onboarding
-open Architecture
-confirm the original four Architecture cards still appear
-confirm CyberShield Model Library appears inside Architecture
-confirm category buttons work
-confirm model cards switch detail view
-confirm Internet Trust Engine category includes Internet Artifact Trust Model, Claim Extraction Model, Fact Verification Model, and Source Credibility Model
-confirm USAFacts / Steve Ballmer pilot scenario appears in Internet Artifact Trust Model
-confirm route buttons go to Evidence, Proof Pack, Runtime, and TrustMap
-confirm no new top-level tab exists
-confirm Proof Pack is still described as output/artifact layer, not model library
-confirm no live fact-checking or live retrieval claim appears
+2026060412 ATDR Workflow Scaffold
+```
+
+Acceptance criteria:
+
+```text
+User can paste an AI recommendation
+System extracts structured claims
+System maps available evidence
+System identifies missing support
+System classifies risk if wrong
+System assigns confidence band with reasons
+System recommends action
+System flags human review when required
+System exports a structured AI Trust Decision Record
+TrustMap is not the primary workflow
 ```
