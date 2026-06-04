@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Executive Brief Preview</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101d29;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.app{width:min(1100px,calc(100vw - 28px));margin:0 auto;padding:24px 0}.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}select,button{font:inherit;border:1px solid var(--line);border-radius:12px;background:#08131f;color:var(--text);padding:10px 12px}button{cursor:pointer}.doc{background:#fff;color:#111;padding:.72in;box-shadow:0 18px 48px rgba(0,0,0,.35);min-height:11in}.doc h1{font-size:24pt;margin:0 0 8px;color:#082033}.doc h2{font-size:14pt;margin:16px 0 6px;border-bottom:1px solid #ccd3da;padding-bottom:4px;color:#102a3b}.doc p{margin:6px 0}.callout{border:1px solid #98b8ce;border-left:6px solid #137aa8;padding:10px;margin:12px 0;background:#f6fbff}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.box{border:1px solid #ccd3da;padding:8px;background:#f8fbfd}table{width:100%;border-collapse:collapse;font-size:9.3pt}th,td{border:1px solid #ccd3da;padding:6px;vertical-align:top}th{background:#eef5fb}.signature{height:96px;border:1px solid #444;margin:8px 0;background:#fff}.footer{font-size:8.5pt;color:#555;border-top:1px solid #ddd;margin-top:18px;padding-top:6px}@media print{body{background:#fff}.app{width:auto;margin:0;padding:0}.toolbar{display:none}.doc{box-shadow:none;padding:.65in}.doc h1{font-size:22pt}.grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:800px){.grid{grid-template-columns:1fr}.toolbar{display:block}.toolbar>*{width:100%;margin:4px 0}.doc{padding:24px}}
+</style>
+</head>
+<body>
+<main class="app">
+<section class="toolbar"><div><strong>CyberShield Executive Brief Preview</strong><br><span style="color:var(--muted)">Standalone print/PDF review surface</span></div><div><select id="scenario"></select><button id="print">Print / Save PDF</button><a style="color:var(--blue);margin-left:10px" href="atdr.html">Back to Workbench</a></div></section>
+<section class="doc" id="doc"></section>
+</main>
+<script type="module" src="src/atdr/atdr-brief-preview.js"></script>
+</body>
+</html>
