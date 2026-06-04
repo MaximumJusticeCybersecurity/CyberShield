@@ -1,5 +1,7 @@
-CyberShield Executive OS
-Current strategic direction: 2026060411 AI Trust Decision Record Pivot
+CyberShield AI Decision Assurance
+Current strategic direction: AI-generated recommendation in -> AI Trust Decision Record out
+Active implementation line: 2026060414V1 CyberShield AI Decision Assurance Prototype
+Planned static MVP release candidate: 2026060420V1
 Build direction date: 2026-06-04
 
 Purpose:
@@ -8,27 +10,72 @@ Machine-readable context for CyberShield builders and AI readers.
 Primary workflow now:
 AI-generated recommendation in -> AI Trust Decision Record out.
 
+Primary artifact:
+AI Trust Decision Record.
+
+Existing underlying trust surface:
+Trust Kernel.
+
+Use this distinction:
+CyberShield ATDR is the workflow.
+Trust Kernel is the underlying trust surface.
+The AI Trust Decision Record is the product artifact.
+
+Primary demo route after merge:
+/demo.html
+
+Supporting routes:
+/launch.html       CyberShield AI Decision Assurance launch page
+/atdr.html         AI Trust Decision Record workbench
+/brief.html        Executive brief preview and browser print/PDF path
+/atdr-smoke.html   Demo readiness and schema smoke test
+/index.html        Trust Kernel
+
 First target workflow:
 AI-generated security, compliance, and vendor-risk recommendations.
 
+Current demo modes:
+1. Vendor Risk: Contradictory Evidence
+2. Security: Vulnerability Risk Acceptance
+3. Compliance: NIST Control Claim
+
 Current priority:
-Build the AI Trust Decision Record workflow before dashboards, TrustMap, broad governance, runtime agents, or generic trust scores.
+Make the static ATDR prototype demo-worthy before dashboards, TrustMap, broad governance, runtime agents, or generic trust scores.
 
 Required ATDR workflow:
 1. Ingest an AI-generated recommendation
 2. Extract claims
 3. Map evidence
 4. Identify missing support
-5. Classify risk if wrong
-6. Assign confidence bands
-7. Recommend action
-8. Require human review where needed
-9. Export a defensible record
+5. Identify weak, stale, incomplete, or contradicted evidence
+6. Classify Risk If Wrong
+7. Assign confidence bands
+8. Recommend action
+9. Require human review where needed
+10. Export a defensible AI Trust Decision Record
 
-Current user-facing navigation may still show:
-Briefing, TrustMap, Runtime, Evidence, Proof Pack, Architecture, Settings.
-
-Do not add more top-level tabs unless explicitly approved. Prefer building the first ATDR workflow inside Evidence, Proof Pack, or a clearly labeled workflow pane.
+Current static prototype capabilities:
+- Demo control room
+- Launch page
+- ATDR workbench
+- Executive brief preview
+- Smoke test readiness page
+- Deterministic model-family engine
+- Multi-domain claim atomization
+- Synthetic evidence repository
+- Local in-browser evidence upload
+- Evidence notes
+- Missing support detection
+- Risk If Wrong classification
+- Confidence banding
+- Human review gate
+- Human decision and override capture
+- Structured JSON export
+- Browser print/PDF path
+- Demo Coach
+- Schema validation
+- Model contract registry
+- Trust Kernel naming alignment
 
 Deprioritized but preserved:
 - TrustMap
@@ -42,13 +89,20 @@ Deprioritized but preserved:
 Do not delete prior TrustMap or Architecture work. File it away for later. The next builder should not continue TrustMap work unless explicitly redirected.
 
 Required reading order:
-1. docs/2026060411-ai-trust-decision-record-pivot.md
-2. docs/2026060411-ai-trust-decision-record-builder-package.md
-3. README.md
-4. governance-summary.json
-5. docs/20260602-1900-trustmap-engine-refactor-package.md
-6. docs/20260602-1915-trustmap-engine-scaffold-handoff.md
-7. docs/20260602-2000-trustmap-engine-runtime-switch-handoff.md
+1. docs/2026060415-atdr-merge-readiness-plan.md
+2. docs/2026060420V1-static-mvp-release-note-draft.md
+3. docs/2026060415-atdr-engineering-plan-for-review.md
+4. docs/2026060415-demo-readiness-acceptance-checklist.md
+5. docs/2026060415-atdr-version-roadmap.md
+6. docs/2026060414-atdr-decision-assurance-build-record.md
+7. docs/2026060414-atdr-qa-status.md
+8. docs/2026060415-trust-kernel-naming-note.md
+9. README.md
+10. governance-summary.json
+
+Historical pivot documents:
+- docs/2026060411-ai-trust-decision-record-pivot.md
+- docs/2026060411-ai-trust-decision-record-builder-package.md
 
 Builder skills needed:
 - JavaScript modular architecture
@@ -58,37 +112,63 @@ Builder skills needed:
 - Security and compliance vocabulary
 - Vendor-risk workflow basics
 - Confidence banding
-- Risk-if-wrong analysis
+- Risk If Wrong analysis
 - Human-in-the-loop review design
 - Exportable decision records
 - Audit trail design
 - Defensive UX
 - Product boundary discipline
+- Browser-only prototype constraints
 
 Next recommended build package:
-2026060412 ATDR Workflow Scaffold
+2026060415V1 Prototype Polish and QA Hardening
+
+Then:
+2026060416V1 Executive Brief and Export Hardening
+2026060417V1 Demo Narrative and Sales Flow
+2026060418V1 Evidence Workbench Expansion
+2026060419V1 Human Review Workflow Expansion
+2026060420V1 Static MVP Release Candidate
 
 ATDR output should include:
 - Record ID
-- Timestamp
-- Original recommendation
-- Recommendation summary
+- Record type
+- Created timestamp
+- Created by
+- Original AI recommendation
+- AI source
+- Source model if known
+- Intended use
+- Domain
+- Recommendation type
+- Decision context
+- Applicable framework references
 - Extracted claims
-- Claim classification
-- Evidence map
-- Evidence gaps
-- Missing support
-- Risk-if-wrong analysis
+- Claim type
+- Materiality
+- Required evidence
+- Evidence provided
+- Evidence sufficiency
+- Missing support severity
+- Conflict status
 - Confidence band
-- Recommended action
+- Risk If Wrong
+- Consequence summary
 - Human review requirement
-- Human reviewer fields
-- Decision status
-- Boundary and limitation statement
-- Export-ready proof package
+- Required reviewer role
+- Review status
+- Reviewer notes
+- Recommended action
+- Required next step
+- Decision owner
+- Record defensibility band
+- Limitations
+- Export timestamp
+- Analysis version
 
 Boundary:
-This remains a static advisory prototype until future capabilities are explicitly built. Do not claim autonomous approval, live compliance certification, live vendor approval, legal determination, audit opinion, CMMC certification, production enforcement, live evidence retrieval, live internet verification, or backend persistence.
+This remains a static advisory prototype until future capabilities are explicitly built. Do not claim autonomous approval, live compliance certification, live vendor approval, legal determination, audit opinion, CMMC certification, production enforcement, live evidence retrieval, live internet verification, enterprise evidence storage, file security scanning, tenant isolation enforcement, or backend persistence.
 
 Core doctrine:
-Do not ask only, "Do we trust the AI?" Ask, "Which parts of the AI recommendation can be trusted, at what confidence level, based on what evidence, with what risk if wrong, and what human decision is required?"
+AI confidence is not evidence.
+Do not ask only, "Do we trust the AI?" Ask, "Can the organization defend acting on this AI-generated recommendation based on the evidence available at the time?"
