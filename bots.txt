@@ -89,16 +89,17 @@ Deprioritized but preserved:
 Do not delete prior TrustMap or Architecture work. File it away for later. The next builder should not continue TrustMap work unless explicitly redirected.
 
 Required reading order:
-1. docs/2026060415-atdr-merge-readiness-plan.md
-2. docs/2026060420V1-static-mvp-release-note-draft.md
-3. docs/2026060415-atdr-engineering-plan-for-review.md
-4. docs/2026060415-demo-readiness-acceptance-checklist.md
-5. docs/2026060415-atdr-version-roadmap.md
-6. docs/2026060414-atdr-decision-assurance-build-record.md
-7. docs/2026060414-atdr-qa-status.md
-8. docs/2026060415-trust-kernel-naming-note.md
-9. README.md
-10. governance-summary.json
+1. docs/2026060415-successor-builder-handoff.md
+2. docs/2026060415-atdr-merge-readiness-plan.md
+3. docs/2026060420V1-static-mvp-release-note-draft.md
+4. docs/2026060415-atdr-engineering-plan-for-review.md
+5. docs/2026060415-demo-readiness-acceptance-checklist.md
+6. docs/2026060415-atdr-version-roadmap.md
+7. docs/2026060414-atdr-decision-assurance-build-record.md
+8. docs/2026060414-atdr-qa-status.md
+9. docs/2026060415-trust-kernel-naming-note.md
+10. README.md
+11. governance-summary.json
 
 Historical pivot documents:
 - docs/2026060411-ai-trust-decision-record-pivot.md
