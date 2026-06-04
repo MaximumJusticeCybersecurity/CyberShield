@@ -1,0 +1,35 @@
+[
+  {
+    "fixtureId": "security-vulnerability-risk-acceptance",
+    "domain": "security",
+    "title": "Vulnerability risk acceptance",
+    "recommendation": "AI recommends accepting this vulnerability as low risk because exploitation is unlikely.",
+    "expectedFindings": [
+      "Extract severity, exploitability, exposure, compensating control, and business impact claims.",
+      "Flag unsupported low-risk conclusion when no scan, exploit intelligence, exposure, or risk owner evidence is provided.",
+      "Require security review when production systems, high risk, or missing material evidence are present."
+    ]
+  },
+  {
+    "fixtureId": "compliance-nist-control-claim",
+    "domain": "compliance",
+    "title": "NIST 800-53 compliance claim",
+    "recommendation": "AI says this control satisfies NIST 800-53 based on the current policy.",
+    "expectedFindings": [
+      "Separate policy existence from implementation evidence and test evidence.",
+      "Map framework relevance without claiming compliance proof.",
+      "Apply warning: Relevant to [framework/control]. Not verified as compliant."
+    ]
+  },
+  {
+    "fixtureId": "vendor-risk-soc2-approval",
+    "domain": "vendor-risk",
+    "title": "Vendor SOC 2 approval claim",
+    "recommendation": "AI recommends approving Vendor X because they have SOC 2 and encrypt customer data.",
+    "expectedFindings": [
+      "Extract vendor approval, SOC 2, encryption, data access, and contractual control claims.",
+      "Flag unsupported leap from SOC 2 to low risk or approval.",
+      "Require vendor-risk review when sensitive data, regulated data, or customer-facing operations are involved."
+    ]
+  }
+]
