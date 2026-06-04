@@ -1,5 +1,6 @@
 import { analyzeRecommendation, exportJson } from './atdr-engine.js';
 import { VENDOR_RISK_CONTRADICTORY_DEMO } from './atdr-demo-data.js';
+import { validateTrustDecisionRecord } from './atdr-schema.js';
 
 function evidenceText() {
   return VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository
@@ -28,6 +29,7 @@ function runSmokeTest() {
     createdBy: 'Smoke test'
   });
 
+  const validation = validateTrustDecisionRecord(record);
   let jsonParseable = false;
   try {
     JSON.parse(exportJson(record));
@@ -46,15 +48,19 @@ function runSmokeTest() {
     assert('Unsupported leap is detected', record.extracted_claims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
     assert('Framework warnings are present', record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant')), `${record.applicable_framework_references.length} mappings`),
     assert('JSON export is parseable', jsonParseable, 'exportJson(record) parsed successfully'),
-    assert('Limitations are included', record.limitations.length >= 3, `${record.limitations.length} limitations found`)
+    assert('Limitations are included', record.limitations.length >= 3, `${record.limitations.length} limitations found`),
+    assert('Schema validation passes', validation.valid, validation.findings.map(f => `${f.code}: ${f.message}`).join('; ') || 'No schema findings')
   ];
 
-  return { record, tests, passed: tests.filter(t => t.status === 'pass').length, failed: tests.filter(t => t.status === 'fail').length };
+  return { record, validation, tests, passed: tests.filter(t => t.status === 'pass').length, failed: tests.filter(t => t.status === 'fail').length };
 }
 
 function render() {
   const result = runSmokeTest();
   const rows = result.tests.map(test => `<tr class="${test.status}"><td>${test.status.toUpperCase()}</td><td>${test.name}</td><td>${test.details}</td></tr>`).join('');
+  const findings = result.validation.findings.length
+    ? result.validation.findings.map(item => `<li>${item.severity.toUpperCase()} ${item.path}: ${item.message}</li>`).join('')
+    : '<li>No validation findings.</li>';
   document.querySelector('#result').innerHTML = `
     <section class="summary ${result.failed ? 'fail' : 'pass'}">
       <h2>${result.failed ? 'Smoke test failed' : 'Smoke test passed'}</h2>
@@ -64,8 +70,10 @@ function render() {
       <thead><tr><th>Status</th><th>Check</th><th>Details</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>
+    <h2>Schema Findings</h2>
+    <ul>${findings}</ul>
     <h2>Record Snapshot</h2>
-    <pre>${JSON.stringify({ record_id: result.record.record_id, claims: result.record.extracted_claims.length, action: result.record.recommended_action, risk: result.record.risk_if_wrong.band, confidence: result.record.confidence_band, review_required: result.record.human_review.required }, null, 2)}</pre>`;
+    <pre>${JSON.stringify({ record_id: result.record.record_id, claims: result.record.extracted_claims.length, action: result.record.recommended_action, risk: result.record.risk_if_wrong.band, confidence: result.record.confidence_band, review_required: result.record.human_review.required, schema_valid: result.validation.valid }, null, 2)}</pre>`;
 }
 
 render();
