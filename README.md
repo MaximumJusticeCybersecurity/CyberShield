@@ -192,6 +192,7 @@ Do not delete this work.  File it away.  CyberShield expects to return to these 
 Read these first:
 
 ```text
+docs/2026060415-successor-builder-handoff.md
 docs/2026060415-atdr-merge-readiness-plan.md
 docs/2026060420V1-static-mvp-release-note-draft.md
 docs/2026060415-atdr-engineering-plan-for-review.md
