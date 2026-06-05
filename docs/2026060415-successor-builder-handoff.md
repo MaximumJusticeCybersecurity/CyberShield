@@ -39,7 +39,7 @@ Use this first:
 Branch preview:
 
 ```text
-https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/feature/2026060414-atdr-decision-assurance/demo.html
+https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/preview-atdr-2026060414/demo.html
 ```
 
 After merge to main:
@@ -90,6 +90,7 @@ atdr-smoke.html
 ## Docs to Read First
 
 ```text
+docs/2026060416-20260607-atdr-next-version-build-plan.md
 docs/2026060415-atdr-presenter-script.md
 docs/2026060415-atdr-merge-readiness-plan.md
 docs/2026060420V1-static-mvp-release-note-draft.md
@@ -132,6 +133,7 @@ before the PR is marked ready for review or merged.
 - Model contract registry
 - Demo Coach
 - Presenter script
+- Next-version build plan
 - Source-of-truth docs aligned
 
 ## Current Known Weaknesses
@@ -154,7 +156,7 @@ Do not overclaim compliance, legal, audit, production, or autonomous approval ca
 
 ## Next Best Build Steps
 
-1. Browser QA all routes through RawGitHack
+1. Browser QA all routes through RawGitHack preview branch
 2. Confirm smoke test GO
 3. Confirm executive brief prints cleanly
 4. Fix any route or copy defects
