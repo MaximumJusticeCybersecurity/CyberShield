@@ -102,12 +102,33 @@ function nav() {
   $$('[data-stage]').forEach(button => button.onclick = () => { state.stage = button.dataset.stage; render(); });
 }
 
+function contradictionHighlights(record = state.record) {
+  if (!record) return [];
+  const claimConflicts = record.extracted_claims
+    .filter(c => c.conflict_status === 'Material conflict')
+    .map(c => ({
+      source: c.normalized_claim,
+      finding: c.evidence_links?.find(link => link.caveat)?.caveat || c.conflict_status,
+      claim_id: c.claim_id
+    }));
+  const known = [];
+  const names = state.activeEvidence.map(e => `${e.evidence_name} ${e.text_extract} ${e.caveat || ''}`).join(' ').toLowerCase();
+  if (names.includes('not expressly listed') || names.includes('not clearly included')) known.push({ claim_id: 'SOC2-SCOPE', source: 'SOC 2 scope', finding: 'SOC 2 exists, but the evaluated AI service is not clearly in scope.' });
+  if (names.includes('service improvement') || names.includes('derived service data')) known.push({ claim_id: 'DPA-DATA-USE', source: 'DPA data use', finding: 'The DPA allows customer data or derived data to be used for service improvement.' });
+  if (names.includes('available upon request') || names.includes('additional analytics')) known.push({ claim_id: 'SUBPROCESSORS', source: 'Subprocessor list', finding: 'AI analytics subprocessors are not fully identified.' });
+  if (names.includes('without undue delay')) known.push({ claim_id: 'INCIDENT-NOTICE', source: 'Incident notification', finding: 'Incident notification language lacks a specific fixed timeline.' });
+  if (names.includes('business owner requests approval')) known.push({ claim_id: 'BUSINESS-PRESSURE', source: 'Business owner note', finding: 'Business urgency is context, not evidence of vendor-risk defensibility.' });
+  return [...known, ...claimConflicts].slice(0, 8);
+}
+
 function decisionBrief() {
   const record = state.record;
   if (!record) return '<span class="chip">Decision Brief</span><h2>No record analyzed yet</h2><p>Load a demo or paste a recommendation to generate a decision brief.</p>';
-  const primaryIssue = record.missing_support?.[0]?.finding || record.ai_output_hazards?.[0]?.hazard || record.confidence_rationale;
-  const topConflict = record.extracted_claims.find(c => c.conflict_status !== 'No conflict')?.conflict_status || 'No confirmed contradiction in static rules';
+  const contradictions = contradictionHighlights(record);
+  const primaryIssue = contradictions[0]?.finding || record.missing_support?.[0]?.finding || record.ai_output_hazards?.[0]?.hazard || record.confidence_rationale;
+  const topConflict = contradictions[0]?.finding || record.extracted_claims.find(c => c.conflict_status !== 'No conflict')?.conflict_status || 'No confirmed contradiction in static rules';
   const readiness = record.can_act ? 'Conditionally Actionable' : record.record_defensibility_band === 'Not defensible' ? 'Not Defensible' : 'Not Defensible Yet';
+  const contradictionList = contradictions.length ? `<ul>${contradictions.slice(0, 5).map(c => `<li>${escapeHtml(c.finding)}</li>`).join('')}</ul>` : '<p>No material contradiction highlighted by static rules.</p>';
   return `
     <span class="chip">Persistent Decision Brief</span>
     <h2>${escapeHtml(readiness)}</h2>
@@ -116,7 +137,8 @@ function decisionBrief() {
     <div class="brief-card"><span class="label">Risk If Wrong</span><div class="metric bad">${escapeHtml(record.risk_if_wrong.band)}</div><p>${escapeHtml(record.risk_if_wrong.consequence_summary)}</p></div>
     <div class="brief-card"><span class="label">Confidence Band</span><div class="metric ${record.confidence_band.includes('Low') || record.confidence_band === 'Contradicted' ? 'bad' : 'warn'}">${escapeHtml(record.confidence_band)}</div><p>${escapeHtml(record.confidence_rationale)}</p></div>
     <div class="brief-card"><span class="label">Primary Issue</span><p>${escapeHtml(primaryIssue)}</p></div>
-    <div class="brief-card"><span class="label">Top Contradiction / Conflict</span><p>${escapeHtml(topConflict)}</p></div>
+    <div class="brief-card"><span class="label">Top Contradiction</span><p>${escapeHtml(topConflict)}</p></div>
+    <div class="brief-card"><span class="label">Contradiction Highlights</span>${contradictionList}</div>
     <div class="brief-card"><span class="label">Review Required</span><p>${record.human_review.required ? 'Yes' : 'Not required by static rules'}: ${escapeHtml(record.human_review.required_reviewer_role)}</p></div>
     <div class="brief-card"><span class="label">Export Status</span><p>${escapeHtml(record.record_defensibility_band)}. Executive brief includes limitations.</p></div>`;
 }
@@ -150,8 +172,17 @@ function renderClaims() {
   <section class="panel"><div class="table-wrap"><table><thead><tr><th>Claim ID</th><th>Original Sentence</th><th>Normalized Claim</th><th>Type</th><th>Materiality</th><th>Required Evidence</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
 }
 
+function evidenceFlags(e) {
+  const flags = [];
+  if (e.contradiction_flag) flags.push('<span class="tag bad">Contradiction</span>');
+  if (e.self_attestation_flag || e.independence_band === 'Self-attested' || e.independence_band === 'Vendor assertion') flags.push('<span class="tag bad">Self-attested</span>');
+  if (e.scope_status) flags.push(`<span class="tag warn">${escapeHtml(e.scope_status)}</span>`);
+  if (e.caveat) flags.push(`<p><strong>Caveat:</strong> ${escapeHtml(e.caveat)}</p>`);
+  return flags.join('');
+}
+
 function renderEvidence() {
-  const synthetic = state.activeEvidence.map(e => `<article class="evidence-card"><h3>${escapeHtml(e.evidence_name)}</h3><p>${escapeHtml(e.text_extract)}</p><span class="tag">${escapeHtml(e.evidence_type)}</span><span class="tag ${e.freshness_band === 'Stale' ? 'bad' : 'warn'}">${escapeHtml(e.freshness_band)}</span><span class="tag ${e.independence_band === 'Self-attested' ? 'bad' : ''}">${escapeHtml(e.independence_band)}</span></article>`).join('');
+  const synthetic = state.activeEvidence.map(e => `<article class="evidence-card"><h3>${escapeHtml(e.evidence_name)}</h3><p>${escapeHtml(e.text_extract)}</p><span class="tag">${escapeHtml(e.evidence_type)}</span><span class="tag ${e.freshness_band === 'Stale' ? 'bad' : 'warn'}">${escapeHtml(e.freshness_band)}</span><span class="tag ${e.independence_band === 'Self-attested' || e.independence_band === 'Vendor assertion' ? 'bad' : ''}">${escapeHtml(e.independence_band)}</span>${evidenceFlags(e)}</article>`).join('');
   const uploads = state.uploadedEvidence.map(e => `<article class="evidence-card"><h3>${escapeHtml(e.name)}</h3><p>${escapeHtml(e.text.slice(0, 650))}${e.text.length > 650 ? '...' : ''}</p><span class="tag warn">Local in-browser upload</span></article>`).join('') || '<p>No local uploaded evidence yet.</p>';
   const notes = state.evidenceNotes.map(e => `<article class="evidence-card"><h3>${escapeHtml(e.title)}</h3><p>${escapeHtml(e.summary)}</p><span class="tag warn">Evidence note. Source file not uploaded.</span><p><strong>Caveat:</strong> ${escapeHtml(e.caveat)}</p></article>`).join('') || '<p>No evidence notes yet.</p>';
   return `${stageHeader('Evidence', 'Synthetic evidence, local-only uploads, and evidence notes feed the same decision record. Uploaded files are not stored or transmitted by this static prototype.')}
@@ -163,7 +194,9 @@ function renderEvidence() {
 function renderGaps() {
   const missing = state.record.missing_support.map(m => `<tr><td>${escapeHtml(m.claim_id)}</td><td>${escapeHtml(m.category)}</td><td><span class="tag ${m.severity === 'High' ? 'bad' : 'warn'}">${escapeHtml(m.severity)}</span></td><td>${escapeHtml(m.finding)}</td></tr>`).join('');
   const hazards = state.record.ai_output_hazards.map(h => `<tr><td>${escapeHtml(h.hazard_id)}</td><td>${escapeHtml(h.hazard)}</td><td><span class="tag ${h.band === 'Quarantine' ? 'bad' : 'warn'}">${escapeHtml(h.band)}</span></td></tr>`).join('') || '<tr><td colspan="3">No AI output hazards detected by static rules.</td></tr>';
+  const contradictions = contradictionHighlights().map(c => `<tr><td>${escapeHtml(c.claim_id)}</td><td>${escapeHtml(c.source)}</td><td><span class="tag bad">Material</span></td><td>${escapeHtml(c.finding)}</td></tr>`).join('') || '<tr><td colspan="4">No material contradiction highlighted by static rules.</td></tr>';
   return `${stageHeader('Gaps', 'CyberShield surfaces missing support, unsupported leaps, stale evidence, self-attestation, and conflicts instead of hiding them.')}
+  <section class="panel"><h2>Contradictory Evidence</h2><div class="table-wrap"><table><thead><tr><th>ID</th><th>Source</th><th>Severity</th><th>Finding</th></tr></thead><tbody>${contradictions}</tbody></table></div></section>
   <section class="panel"><h2>Missing Support</h2><div class="table-wrap"><table><thead><tr><th>Claim</th><th>Missing Evidence</th><th>Severity</th><th>Finding</th></tr></thead><tbody>${missing}</tbody></table></div></section>
   <section class="panel"><h2>AI Output Hazards</h2><div class="table-wrap"><table><thead><tr><th>ID</th><th>Hazard</th><th>Band</th></tr></thead><tbody>${hazards}</tbody></table></div></section>`;
 }
@@ -186,7 +219,7 @@ function renderReview() {
 }
 
 function renderDecisionRecord() {
-  return `${stageHeader('Decision Record', 'This is the complete structured AI Trust Decision Record before export.')}
+  return `${stageHeader('Decision Record', 'This is the complete structured Trust Decision Record before export.')}
   <section class="panel"><pre>${escapeHtml(JSON.stringify(state.record, null, 2))}</pre></section>`;
 }
 
@@ -214,9 +247,10 @@ function printDocument() {
   const r = state.record;
   if (!r) return '';
   const claimRows = r.extracted_claims.map(c => `<tr><td>${escapeHtml(c.claim_id)}</td><td>${escapeHtml(c.normalized_claim)}</td><td>${escapeHtml(c.claim_type)}</td><td>${escapeHtml(c.materiality)}</td><td>${escapeHtml(c.required_evidence_type.join('; '))}</td><td>${escapeHtml(c.evidence_sufficiency_band)}</td><td>${escapeHtml(c.conflict_status)}</td></tr>`).join('');
+  const contradictions = contradictionHighlights(r).map(c => `<li>${escapeHtml(c.finding)}</li>`).join('') || '<li>No material contradiction highlighted by static rules.</li>';
   const missing = r.missing_support.slice(0, 12).map(m => `<li>${escapeHtml(m.claim_id)}: ${escapeHtml(m.finding)}</li>`).join('');
   const decisions = state.humanDecisions.length ? state.humanDecisions.map(d => `<p><strong>${escapeHtml(d.reviewer_role)}:</strong> ${escapeHtml(d.human_selected_action)}. ${escapeHtml(d.override_reason)}</p>`).join('') : '<p>No human decision has been recorded in this demo session.</p>';
-  return `<div class="print-page"><h1>CyberShield AI Trust Decision Record</h1><p><strong>Subject:</strong> AI Trust Decision Record for Vendor-Risk Recommendation Review</p><p><strong>Prepared by:</strong> Maximum Justice Cybersecurity using CyberShield AI Decision Assurance</p><p><strong>Human in the loop:</strong> Dr. Max Justice, vCISO | Security SME | Cybersecurity SME</p><div class="print-callout"><p><strong>Decision Readiness:</strong> ${escapeHtml(r.record_defensibility_band)}</p><p><strong>CyberShield Recommended Action:</strong> ${escapeHtml(r.recommended_action)}</p><p><strong>Risk If Wrong:</strong> ${escapeHtml(r.risk_if_wrong.band)}</p><p><strong>Confidence Band:</strong> ${escapeHtml(r.confidence_band)}</p><p><strong>Human Review Required:</strong> ${r.human_review.required ? 'Yes' : 'No'}</p><p><strong>Required Reviewers:</strong> ${escapeHtml(r.human_review.required_reviewer_role)}</p></div><h2>Executive Summary</h2><p>The AI-generated recommendation is not defensible as written based on the evidence currently available. The recommendation depends on material claims regarding SOC 2 coverage, encryption, customer data access, and vendor risk level. CyberShield identified missing, weak, stale, self-attested, or contradictory evidence that requires human review before approval.</p><h2>Recommendation Under Review</h2><p>${escapeHtml(r.original_ai_recommendation)}</p><h2>Decision Context</h2><p>${escapeHtml(r.decision_context)}</p><h2>Material Claims and Evidence Table</h2><table><thead><tr><th>ID</th><th>Claim</th><th>Type</th><th>Materiality</th><th>Required Evidence</th><th>Sufficiency</th><th>Conflict</th></tr></thead><tbody>${claimRows}</tbody></table><h2>Missing and Contradictory Evidence</h2><ul>${missing}</ul><h2>Risk If Wrong</h2><p>${escapeHtml(r.risk_if_wrong.consequence_summary)}</p><h2>Confidence Band</h2><p><strong>${escapeHtml(r.confidence_band)}:</strong> ${escapeHtml(r.confidence_rationale)}</p><h2>Human Review and Override</h2>${decisions}<h2>Limitations</h2><ul>${r.limitations.map(l => `<li>${escapeHtml(l)}</li>`).join('')}</ul><h2>Signature Block</h2><p><strong>Dr. Max Justice</strong><br><strong>vCISO | Security SME | Cybersecurity SME</strong><br><strong>CISSP | PMP | PhD, Technology & Innovation Management – Cybersecurity</strong><br>Creator, CHN vCISO GPT powered by Cyber Shield<br>U.S. Veteran<br>Maximum Justice Cybersecurity</p><p>Signature:</p><div class="signature-box"></div><p>Date:</p><div class="review-line"></div><p>Reviewer Decision: ☐ Approved  ☐ Approved with Caveat  ☐ Request Evidence  ☐ Escalate for Review  ☐ Reject</p><h2>Export Metadata</h2><p>Record ID: ${escapeHtml(r.record_id)} | Version: ${escapeHtml(r.export_version)} | Analysis: ${escapeHtml(r.analysis_version)} | Export Count: ${state.exportCount}</p><div class="footer">CyberShield AI Decision Assurance | ${escapeHtml(r.record_id)} | Prepared by Maximum Justice Cybersecurity</div></div>`;
+  return `<div class="print-page"><h1>CyberShield Trust Decision Record</h1><p><strong>Subject:</strong> Trust Decision Record for Vendor-Risk Recommendation Review</p><p><strong>Prepared by:</strong> Maximum Justice Cybersecurity using CyberShield Decision Assurance</p><p><strong>Human in the loop:</strong> Dr. Max Justice, vCISO | Security SME | Cybersecurity SME</p><div class="print-callout"><p><strong>Decision Readiness:</strong> ${escapeHtml(r.record_defensibility_band)}</p><p><strong>CyberShield Recommended Action:</strong> ${escapeHtml(r.recommended_action)}</p><p><strong>Risk If Wrong:</strong> ${escapeHtml(r.risk_if_wrong.band)}</p><p><strong>Confidence Band:</strong> ${escapeHtml(r.confidence_band)}</p><p><strong>Human Review Required:</strong> ${r.human_review.required ? 'Yes' : 'No'}</p><p><strong>Required Reviewers:</strong> ${escapeHtml(r.human_review.required_reviewer_role)}</p></div><h2>Executive Summary</h2><p>The AI-generated recommendation is not defensible as written based on the evidence currently available. The recommendation depends on material claims regarding SOC 2 coverage, encryption, customer data access, and vendor risk level. CyberShield identified missing, weak, self-attested, or contradictory evidence that requires human review before approval.</p><h2>Recommendation Under Review</h2><p>${escapeHtml(r.original_ai_recommendation)}</p><h2>Decision Context</h2><p>${escapeHtml(r.decision_context)}</p><h2>Material Claims and Evidence Table</h2><table><thead><tr><th>ID</th><th>Claim</th><th>Type</th><th>Materiality</th><th>Required Evidence</th><th>Sufficiency</th><th>Conflict</th></tr></thead><tbody>${claimRows}</tbody></table><h2>Contradictory Evidence</h2><ul>${contradictions}</ul><h2>Missing Support</h2><ul>${missing}</ul><h2>Risk If Wrong</h2><p>${escapeHtml(r.risk_if_wrong.consequence_summary)}</p><h2>Confidence Band</h2><p><strong>${escapeHtml(r.confidence_band)}:</strong> ${escapeHtml(r.confidence_rationale)}</p><h2>Human Review and Override</h2>${decisions}<h2>Limitations</h2><ul>${r.limitations.map(l => `<li>${escapeHtml(l)}</li>`).join('')}</ul><h2>Signature Block</h2><p><strong>Dr. Max Justice</strong><br><strong>vCISO | Security SME | Cybersecurity SME</strong><br><strong>CISSP | PMP | PhD, Technology & Innovation Management – Cybersecurity</strong><br>Creator, CHN vCISO GPT powered by Cyber Shield<br>U.S. Veteran<br>Maximum Justice Cybersecurity</p><p>Signature:</p><div class="signature-box"></div><p>Date:</p><div class="review-line"></div><p>Reviewer Decision: ☐ Approved  ☐ Approved with Caveat  ☐ Request Evidence  ☐ Escalate for Review  ☐ Reject</p><h2>Export Metadata</h2><p>Record ID: ${escapeHtml(r.record_id)} | Version: ${escapeHtml(r.export_version)} | Analysis: ${escapeHtml(r.analysis_version)} | Export Count: ${state.exportCount}</p><div class="footer">CyberShield Decision Assurance | ${escapeHtml(r.record_id)} | Prepared by Maximum Justice Cybersecurity</div></div>`;
 }
 
 function attachHandlers() {
