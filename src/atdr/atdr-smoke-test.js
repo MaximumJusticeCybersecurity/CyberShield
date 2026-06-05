@@ -43,13 +43,20 @@ function analyzeDemo(mode) {
 function runSmokeTest() {
   const analyses = DEMO_MODES.map(analyzeDemo);
   const defaultDemo = analyses[0];
+  const vendorClaims = defaultDemo.record.extracted_claims;
+  const vendorConflicts = vendorClaims.filter(c => c.conflict_status === 'Material conflict');
   const tests = [
     assert('All demo modes analyze', analyses.length === 3 && analyses.every(a => a.record.record_id), `${analyses.length} demo modes analyzed`),
-    assert('Default vendor-risk demo atomizes into seven claims', defaultDemo.record.extracted_claims.length === 7, `${defaultDemo.record.extracted_claims.length} claims found`),
+    assert('Default vendor-risk demo atomizes into ten claims', vendorClaims.length === 10, `${vendorClaims.length} claims found`),
+    assert('Vendor evidence repository includes nine synthetic documents', defaultDemo.demo.evidence_repository.length === 9, `${defaultDemo.demo.evidence_repository.length} evidence items found`),
+    assert('Vendor demo detects material contradictions', vendorConflicts.length >= 3, `${vendorConflicts.length} material conflicts found`),
+    assert('Vendor demo recommends Request Evidence', defaultDemo.record.recommended_action === 'Request Evidence', defaultDemo.record.recommended_action),
+    assert('Vendor demo is High Risk If Wrong', defaultDemo.record.risk_if_wrong.band === 'High', defaultDemo.record.risk_if_wrong.band),
+    assert('Vendor demo requires human review', defaultDemo.record.human_review.required === true, defaultDemo.record.human_review.required_reviewer_role),
     assert('Every demo has claims', analyses.every(a => a.record.extracted_claims.length > 0), analyses.map(a => `${a.mode.label}: ${a.record.extracted_claims.length}`).join('; ')),
     assert('Every demo has Risk If Wrong', analyses.every(a => ['High', 'Severe', 'Moderate', 'Low', 'Minimal'].includes(a.record.risk_if_wrong.band)), analyses.map(a => `${a.mode.label}: ${a.record.risk_if_wrong.band}`).join('; ')),
     assert('Every demo has conservative action', analyses.every(a => ['Request Evidence', 'Escalate for Review', 'Quarantine', 'Accept with Caveat'].includes(a.record.recommended_action)), analyses.map(a => `${a.mode.label}: ${a.record.recommended_action}`).join('; ')),
-    assert('Vendor demo detects unsupported leap', defaultDemo.record.extracted_claims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
+    assert('Vendor demo detects unsupported leap', vendorClaims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
     assert('Framework warnings are present where mappings exist', analyses.every(a => a.record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant'))), 'Framework warnings checked'),
     assert('Every JSON export is parseable', analyses.every(a => a.jsonParseable), 'exportJson(record) parsed for all demos'),
     assert('Every record includes limitations', analyses.every(a => a.record.limitations.length >= 3), analyses.map(a => `${a.mode.label}: ${a.record.limitations.length}`).join('; ')),
