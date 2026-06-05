@@ -89,17 +89,19 @@ Deprioritized but preserved:
 Do not delete prior TrustMap or Architecture work. File it away for later. The next builder should not continue TrustMap work unless explicitly redirected.
 
 Required reading order:
-1. docs/2026060415-successor-builder-handoff.md
-2. docs/2026060415-atdr-merge-readiness-plan.md
-3. docs/2026060420V1-static-mvp-release-note-draft.md
-4. docs/2026060415-atdr-engineering-plan-for-review.md
-5. docs/2026060415-demo-readiness-acceptance-checklist.md
-6. docs/2026060415-atdr-version-roadmap.md
-7. docs/2026060414-atdr-decision-assurance-build-record.md
-8. docs/2026060414-atdr-qa-status.md
-9. docs/2026060415-trust-kernel-naming-note.md
-10. README.md
-11. governance-summary.json
+1. docs/2026060416-20260607-atdr-next-version-build-plan.md
+2. docs/2026060415-successor-builder-handoff.md
+3. docs/2026060415-atdr-presenter-script.md
+4. docs/2026060415-atdr-merge-readiness-plan.md
+5. docs/2026060420V1-static-mvp-release-note-draft.md
+6. docs/2026060415-atdr-engineering-plan-for-review.md
+7. docs/2026060415-demo-readiness-acceptance-checklist.md
+8. docs/2026060415-atdr-version-roadmap.md
+9. docs/2026060414-atdr-decision-assurance-build-record.md
+10. docs/2026060414-atdr-qa-status.md
+11. docs/2026060415-trust-kernel-naming-note.md
+12. README.md
+13. governance-summary.json
 
 Historical pivot documents:
 - docs/2026060411-ai-trust-decision-record-pivot.md
@@ -122,14 +124,19 @@ Builder skills needed:
 - Browser-only prototype constraints
 
 Next recommended build package:
-2026060415V1 Prototype Polish and QA Hardening
+2026060416V1 Static Demo QA and Merge Candidate
 
 Then:
-2026060416V1 Executive Brief and Export Hardening
-2026060417V1 Demo Narrative and Sales Flow
+2026060417V1 Executive Brief Hardening
 2026060418V1 Evidence Workbench Expansion
 2026060419V1 Human Review Workflow Expansion
 2026060420V1 Static MVP Release Candidate
+20260605xxV1 Backend Architecture Package
+20260606xxV1 Production MVP Foundation
+20260607xxV1 Live Model Optionality
+
+Canonical next-version build plan:
+docs/2026060416-20260607-atdr-next-version-build-plan.md
 
 ATDR output should include:
 - Record ID
