@@ -41,7 +41,7 @@ Supporting routes:
 Current branch preview route:
 
 ```text
-https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/feature/2026060414-atdr-decision-assurance/demo.html
+https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/preview-atdr-2026060414/demo.html
 ```
 
 Live production route after merge:
@@ -192,7 +192,9 @@ Do not delete this work.  File it away.  CyberShield expects to return to these 
 Read these first:
 
 ```text
+docs/2026060416-20260607-atdr-next-version-build-plan.md
 docs/2026060415-successor-builder-handoff.md
+docs/2026060415-atdr-presenter-script.md
 docs/2026060415-atdr-merge-readiness-plan.md
 docs/2026060420V1-static-mvp-release-note-draft.md
 docs/2026060415-atdr-engineering-plan-for-review.md
@@ -335,23 +337,25 @@ No route overclaims compliance, legal, audit, production, or autonomous approval
 ## Recommended next build package
 
 ```text
-2026060415V1 Prototype Polish and QA Hardening
+2026060416V1 Static Demo QA and Merge Candidate
 ```
 
 Then:
 
 ```text
-2026060416V1 Executive Brief and Export Hardening
-2026060417V1 Demo Narrative and Sales Flow
+2026060417V1 Executive Brief Hardening
 2026060418V1 Evidence Workbench Expansion
 2026060419V1 Human Review Workflow Expansion
 2026060420V1 Static MVP Release Candidate
+20260605xxV1 Backend Architecture Package
+20260606xxV1 Production MVP Foundation
+20260607xxV1 Live Model Optionality
 ```
 
-Post-static architecture package:
+Canonical next-version build plan:
 
 ```text
-20260605xxV1 Backend Architecture Package
+docs/2026060416-20260607-atdr-next-version-build-plan.md
 ```
 
 Acceptance criteria for static MVP:
