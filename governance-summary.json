@@ -26,7 +26,7 @@
     "trust_kernel": "/index.html"
   },
   "live_prototype_after_merge": "https://maximumjusticecybersecurity.github.io/CyberShield/demo.html",
-  "branch_preview": "https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/feature/2026060414-atdr-decision-assurance/demo.html",
+  "branch_preview": "https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/preview-atdr-2026060414/demo.html",
   "naming_distinction": {
     "cybershield_atdr": "The workflow",
     "trust_kernel": "The underlying trust surface",
@@ -117,7 +117,9 @@
     "architecture_model_library_expansion": "Deferred unless needed directly for ATDR."
   },
   "required_reading_order": [
+    "docs/2026060416-20260607-atdr-next-version-build-plan.md",
     "docs/2026060415-successor-builder-handoff.md",
+    "docs/2026060415-atdr-presenter-script.md",
     "docs/2026060415-atdr-merge-readiness-plan.md",
     "docs/2026060420V1-static-mvp-release-note-draft.md",
     "docs/2026060415-atdr-engineering-plan-for-review.md",
@@ -166,12 +168,14 @@
     "No route overclaims compliance, legal, audit, production, or autonomous approval capability"
   ],
   "recommended_next_builds": [
-    "2026060415V1 Prototype Polish and QA Hardening",
-    "2026060416V1 Executive Brief and Export Hardening",
-    "2026060417V1 Demo Narrative and Sales Flow",
+    "2026060416V1 Static Demo QA and Merge Candidate",
+    "2026060417V1 Executive Brief Hardening",
     "2026060418V1 Evidence Workbench Expansion",
     "2026060419V1 Human Review Workflow Expansion",
     "2026060420V1 Static MVP Release Candidate",
-    "20260605xxV1 Backend Architecture Package"
-  ]
+    "20260605xxV1 Backend Architecture Package",
+    "20260606xxV1 Production MVP Foundation",
+    "20260607xxV1 Live Model Optionality"
+  ],
+  "canonical_next_version_build_plan": "docs/2026060416-20260607-atdr-next-version-build-plan.md"
 }
