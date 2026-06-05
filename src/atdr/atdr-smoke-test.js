@@ -9,11 +9,7 @@ function evidenceText(demo) {
 }
 
 function assert(name, condition, details = '') {
-  return {
-    name,
-    status: condition ? 'pass' : 'fail',
-    details
-  };
+  return { name, status: condition ? 'pass' : 'fail', details };
 }
 
 function analyzeDemo(mode) {
@@ -29,15 +25,49 @@ function analyzeDemo(mode) {
     decisionOwner: demo.decision_owner,
     createdBy: 'Smoke test'
   });
+  record.cyberShield_recommended_action = record.recommended_action;
+  record.human_decisions = [];
+  record.override_events = [];
+  record.human_selected_action = '';
+  record.override_status = 'No human decision recorded';
   const validation = validateTrustDecisionRecord(record);
   let jsonParseable = false;
-  try {
-    JSON.parse(exportJson(record));
-    jsonParseable = true;
-  } catch {
-    jsonParseable = false;
-  }
+  try { JSON.parse(exportJson(record)); jsonParseable = true; } catch { jsonParseable = false; }
   return { mode, demo, record, validation, jsonParseable };
+}
+
+function simulatedOverrideRecord(record) {
+  const humanDecision = {
+    human_decision_id: 'HD-SMOKE-001',
+    record_id: record.record_id,
+    cyberShield_recommended_action: record.cyberShield_recommended_action,
+    human_selected_action: 'Accept with Caveat',
+    override_status: 'Override recorded',
+    reviewer_role: 'Vendor-Risk Owner',
+    reviewer_name: 'Smoke Test Reviewer',
+    override_reason: 'Accepted with caveat for smoke-test validation only.',
+    residual_risk_acknowledgment: 'Residual risk acknowledged for smoke-test validation.',
+    reviewer_notes: 'Smoke-test override event preserves CyberShield recommendation separately.',
+    decision_timestamp: new Date().toISOString()
+  };
+  return {
+    ...record,
+    human_decisions: [humanDecision],
+    override_events: [{
+      override_event_id: 'OVR-HD-SMOKE-001',
+      record_id: record.record_id,
+      cyberShield_recommended_action: record.cyberShield_recommended_action,
+      human_selected_action: humanDecision.human_selected_action,
+      reviewer_role: humanDecision.reviewer_role,
+      reviewer_name: humanDecision.reviewer_name,
+      override_reason: humanDecision.override_reason,
+      residual_risk_acknowledgment: humanDecision.residual_risk_acknowledgment,
+      timestamp: humanDecision.decision_timestamp
+    }],
+    human_selected_action: humanDecision.human_selected_action,
+    override_status: humanDecision.override_status,
+    record_defensibility_band: 'Export-ready with caveat'
+  };
 }
 
 function runSmokeTest() {
@@ -45,12 +75,16 @@ function runSmokeTest() {
   const defaultDemo = analyses[0];
   const vendorClaims = defaultDemo.record.extracted_claims;
   const vendorConflicts = vendorClaims.filter(c => c.conflict_status === 'Material conflict');
+  const overrideRecord = simulatedOverrideRecord(defaultDemo.record);
+  let overrideJsonParseable = false;
+  try { JSON.parse(exportJson(overrideRecord)); overrideJsonParseable = true; } catch { overrideJsonParseable = false; }
   const tests = [
     assert('All demo modes analyze', analyses.length === 3 && analyses.every(a => a.record.record_id), `${analyses.length} demo modes analyzed`),
     assert('Default vendor-risk demo atomizes into ten claims', vendorClaims.length === 10, `${vendorClaims.length} claims found`),
     assert('Vendor evidence repository includes nine synthetic documents', defaultDemo.demo.evidence_repository.length === 9, `${defaultDemo.demo.evidence_repository.length} evidence items found`),
     assert('Vendor demo detects material contradictions', vendorConflicts.length >= 3, `${vendorConflicts.length} material conflicts found`),
     assert('Vendor demo recommends Request Evidence', defaultDemo.record.recommended_action === 'Request Evidence', defaultDemo.record.recommended_action),
+    assert('Vendor demo preserves CyberShield recommendation field', defaultDemo.record.cyberShield_recommended_action === defaultDemo.record.recommended_action, defaultDemo.record.cyberShield_recommended_action),
     assert('Vendor demo is High Risk If Wrong', defaultDemo.record.risk_if_wrong.band === 'High', defaultDemo.record.risk_if_wrong.band),
     assert('Vendor demo requires human review', defaultDemo.record.human_review.required === true, defaultDemo.record.human_review.required_reviewer_role),
     assert('Every demo has claims', analyses.every(a => a.record.extracted_claims.length > 0), analyses.map(a => `${a.mode.label}: ${a.record.extracted_claims.length}`).join('; ')),
@@ -59,6 +93,9 @@ function runSmokeTest() {
     assert('Vendor demo detects unsupported leap', vendorClaims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
     assert('Framework warnings are present where mappings exist', analyses.every(a => a.record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant'))), 'Framework warnings checked'),
     assert('Every JSON export is parseable', analyses.every(a => a.jsonParseable), 'exportJson(record) parsed for all demos'),
+    assert('V15 override JSON remains parseable', overrideJsonParseable, 'Simulated override export parsed'),
+    assert('V15 override preserves original CyberShield recommendation', overrideRecord.cyberShield_recommended_action === 'Request Evidence' && overrideRecord.human_selected_action === 'Accept with Caveat', `${overrideRecord.cyberShield_recommended_action} -> ${overrideRecord.human_selected_action}`),
+    assert('V15 override event captures rationale', overrideRecord.override_events.length === 1 && overrideRecord.override_events[0].override_reason.length > 0, `${overrideRecord.override_events.length} override event(s)`),
     assert('Every record includes limitations', analyses.every(a => a.record.limitations.length >= 3), analyses.map(a => `${a.mode.label}: ${a.record.limitations.length}`).join('; ')),
     assert('Every record passes schema validation', analyses.every(a => a.validation.valid), analyses.flatMap(a => a.validation.findings.map(f => `${a.mode.label}: ${f.code}: ${f.message}`)).join('; ') || 'No schema findings')
   ];
@@ -87,15 +124,9 @@ function render() {
       <div class="kpi"><span>Conservative Actions</span><strong>${conservativeActions}/${result.analyses.length}</strong></div>
     </section>
     <h2>Demo Scenario Results</h2>
-    <table>
-      <thead><tr><th>Demo</th><th>Claims</th><th>Risk</th><th>Confidence</th><th>Action</th><th>Review</th><th>Schema</th></tr></thead>
-      <tbody>${demoRows}</tbody>
-    </table>
+    <table><thead><tr><th>Demo</th><th>Claims</th><th>Risk</th><th>Confidence</th><th>Action</th><th>Review</th><th>Schema</th></tr></thead><tbody>${demoRows}</tbody></table>
     <h2>Readiness Checks</h2>
-    <table>
-      <thead><tr><th>Status</th><th>Check</th><th>Details</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
+    <table><thead><tr><th>Status</th><th>Check</th><th>Details</th></tr></thead><tbody>${rows}</tbody></table>
     <h2>Schema Findings</h2>
     <section class="card"><ul>${findings}</ul></section>`;
 }
