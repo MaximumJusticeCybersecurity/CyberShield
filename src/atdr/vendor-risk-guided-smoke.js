@@ -1,12 +1,13 @@
 import { analyzeRecommendation, exportJson } from './atdr-engine.js';
 import { VENDOR_RISK_CONTRADICTORY_DEMO } from './atdr-demo-data.js';
+import { REPORT_CAPTURE_ENDPOINT, CRM_SHEET_ID, REPORT_CAPTURE_MODE } from './report-capture-config.js';
 
 const evidenceText = VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository.map(e => `[${e.evidence_name}] ${e.text_extract}`).join('\n');
 const recommendation = 'AI recommends approving Vendor X because they have a SOC 2 report, encrypt customer data, and appear low risk.';
 const record = analyzeRecommendation({ recommendation, domain: 'vendor-risk', evidence: evidenceText, aiSource: 'Static guided route smoke test', sourceModel: 'Unknown', intendedUse: 'Vendor approval recommendation review before enterprise action', context: VENDOR_RISK_CONTRADICTORY_DEMO.decision_context, decisionOwner: 'Guided route QA', createdBy: 'Guided route smoke test' });
 let jsonParseable = false;
 try { JSON.parse(exportJson(record)); jsonParseable = true; } catch { jsonParseable = false; }
-const payload = { event_type: 'guided_route_smoke_capture', capture_timestamp: new Date().toISOString(), first_name: 'QA', company: 'Demo Company', vendor: 'Vendor X', email: 'qa@example.invalid', contradiction_type: 'all', contradiction_label: 'Show all evidence issues', report_capture_endpoint_configured: false, crm_sheet_id: '1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw', record_id: record.record_id, recommended_action: record.recommended_action, risk_if_wrong: record.risk_if_wrong.band, confidence_band: record.confidence_band, human_review_required: record.human_review.required, structured_record_json: record };
+const payload = { event_type: 'guided_route_smoke_capture', capture_timestamp: new Date().toISOString(), first_name: 'QA', company: 'Demo Company', vendor: 'Vendor X', email: 'qa@example.invalid', contradiction_type: 'all', contradiction_label: 'Show all evidence issues', report_capture_endpoint_configured: Boolean(REPORT_CAPTURE_ENDPOINT), report_capture_mode: REPORT_CAPTURE_MODE, crm_sheet_id: CRM_SHEET_ID, record_id: record.record_id, recommended_action: record.recommended_action, risk_if_wrong: record.risk_if_wrong.band, confidence_band: record.confidence_band, human_review_required: record.human_review.required, structured_record_json: record };
 
 function check(name, pass, detail = '') { return { name, pass, detail }; }
 const checks = [
@@ -20,7 +21,8 @@ const checks = [
   check('Framework mappings warn not verified compliant', record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant')), `${record.applicable_framework_references.length} mapping(s)`),
   check('JSON export is parseable', jsonParseable, 'exportJson(record)'),
   check('CRM payload includes structured record JSON', payload.structured_record_json?.record_id === record.record_id, payload.record_id),
-  check('CRM endpoint remains explicitly not configured', payload.report_capture_endpoint_configured === false, String(payload.report_capture_endpoint_configured))
+  check('CRM sheet ID comes from shared config', payload.crm_sheet_id === CRM_SHEET_ID && CRM_SHEET_ID.length > 20, CRM_SHEET_ID),
+  check('CRM endpoint mode is explicit', ['simulated', 'configured'].includes(payload.report_capture_mode), payload.report_capture_mode)
 ];
 
 const passed = checks.filter(c => c.pass).length;
