@@ -1,4 +1,4 @@
-import { analyzeRecommendation, exportJson } from './atdr-engine.js';
+import { analyzeRecommendation, classifyDomainFit, exportJson } from './atdr-engine.js';
 import { DEMO_MODES } from './atdr-demo-data.js';
 import { validateTrustDecisionRecord } from './atdr-schema.js';
 
@@ -78,6 +78,23 @@ function runSmokeTest() {
   const overrideRecord = simulatedOverrideRecord(defaultDemo.record);
   let overrideJsonParseable = false;
   try { JSON.parse(exportJson(overrideRecord)); overrideJsonParseable = true; } catch { overrideJsonParseable = false; }
+
+  const humanityRecord = analyzeRecommendation({ recommendation: 'Humanity is not worth saving.', context: 'Is this true?', intendedUse: 'understand the meaning of life', decisionOwner: 'me', domain: 'mixed', createdBy: 'Smoke test' });
+  const humanityValidation = validateTrustDecisionRecord(humanityRecord);
+  let humanityJsonParseable = false;
+  try { JSON.parse(exportJson(humanityRecord)); humanityJsonParseable = true; } catch { humanityJsonParseable = false; }
+
+  const supportedFit = [
+    classifyDomainFit({ recommendation: 'AI recommends approving ApexAI Cloud Services because they have SOC 2, encrypt customer data, and appear low risk.' }),
+    classifyDomainFit({ recommendation: 'AI recommends accepting this vulnerability as low risk because exploitation is unlikely.' }),
+    classifyDomainFit({ recommendation: 'AI says this control satisfies NIST 800-53 based on the current policy.' })
+  ];
+  const unsupportedFit = [
+    classifyDomainFit({ recommendation: 'AI recommends hiring this candidate because they seem like a good culture fit.' }),
+    classifyDomainFit({ recommendation: 'AI says our company should support this political position.' }),
+    classifyDomainFit({ recommendation: 'AI says humanity should slow down AI development for moral reasons.' })
+  ];
+
   const tests = [
     assert('All demo modes analyze', analyses.length === 3 && analyses.every(a => a.record.record_id), `${analyses.length} demo modes analyzed`),
     assert('Default vendor-risk demo atomizes into ten claims', vendorClaims.length === 10, `${vendorClaims.length} claims found`),
@@ -88,16 +105,28 @@ function runSmokeTest() {
     assert('Vendor demo is High Risk If Wrong', defaultDemo.record.risk_if_wrong.band === 'High', defaultDemo.record.risk_if_wrong.band),
     assert('Vendor demo requires human review', defaultDemo.record.human_review.required === true, defaultDemo.record.human_review.required_reviewer_role),
     assert('Every demo has claims', analyses.every(a => a.record.extracted_claims.length > 0), analyses.map(a => `${a.mode.label}: ${a.record.extracted_claims.length}`).join('; ')),
-    assert('Every demo has Risk If Wrong', analyses.every(a => ['High', 'Severe', 'Moderate', 'Low', 'Minimal'].includes(a.record.risk_if_wrong.band)), analyses.map(a => `${a.mode.label}: ${a.record.risk_if_wrong.band}`).join('; ')),
+    assert('Every demo has Risk If Wrong', analyses.every(a => ['High', 'Severe', 'Moderate', 'Low', 'Minimal', 'Unknown'].includes(a.record.risk_if_wrong.band)), analyses.map(a => `${a.mode.label}: ${a.record.risk_if_wrong.band}`).join('; ')),
     assert('Every demo has conservative action', analyses.every(a => ['Request Evidence', 'Escalate for Review', 'Quarantine', 'Accept with Caveat'].includes(a.record.recommended_action)), analyses.map(a => `${a.mode.label}: ${a.record.recommended_action}`).join('; ')),
     assert('Vendor demo detects unsupported leap', vendorClaims.some(c => c.claim_type === 'Unsupported leap'), 'Unsupported leap claim present'),
     assert('Framework warnings are present where mappings exist', analyses.every(a => a.record.applicable_framework_references.every(f => f.compliance_warning_text.includes('Not verified as compliant'))), 'Framework warnings checked'),
     assert('Every JSON export is parseable', analyses.every(a => a.jsonParseable), 'exportJson(record) parsed for all demos'),
-    assert('V15 override JSON remains parseable', overrideJsonParseable, 'Simulated override export parsed'),
-    assert('V15 override preserves original CyberShield recommendation', overrideRecord.cyberShield_recommended_action === 'Request Evidence' && overrideRecord.human_selected_action === 'Accept with Caveat', `${overrideRecord.cyberShield_recommended_action} -> ${overrideRecord.human_selected_action}`),
-    assert('V15 override event captures rationale', overrideRecord.override_events.length === 1 && overrideRecord.override_events[0].override_reason.length > 0, `${overrideRecord.override_events.length} override event(s)`),
+    assert('Override JSON remains parseable', overrideJsonParseable, 'Simulated override export parsed'),
+    assert('Override preserves original CyberShield recommendation', overrideRecord.cyberShield_recommended_action === 'Request Evidence' && overrideRecord.human_selected_action === 'Accept with Caveat', `${overrideRecord.cyberShield_recommended_action} -> ${overrideRecord.human_selected_action}`),
+    assert('Override event captures rationale', overrideRecord.override_events.length === 1 && overrideRecord.override_events[0].override_reason.length > 0, `${overrideRecord.override_events.length} override event(s)`),
     assert('Every record includes limitations', analyses.every(a => a.record.limitations.length >= 3), analyses.map(a => `${a.mode.label}: ${a.record.limitations.length}`).join('; ')),
-    assert('Every record passes schema validation', analyses.every(a => a.validation.valid), analyses.flatMap(a => a.validation.findings.map(f => `${a.mode.label}: ${f.code}: ${f.message}`)).join('; ') || 'No schema findings')
+    assert('Every record passes schema validation', analyses.every(a => a.validation.valid), analyses.flatMap(a => a.validation.findings.map(f => `${a.mode.label}: ${f.code}: ${f.message}`)).join('; ') || 'No schema findings'),
+    assert('Supported domain-fit cases continue', supportedFit[0].supported_domain === 'vendor_risk' && supportedFit[1].supported_domain === 'security_risk' && supportedFit[2].supported_domain === 'compliance_control' && supportedFit.every(f => f.allowed_to_continue), supportedFit.map(f => `${f.supported_domain}/${f.allowed_to_continue}`).join('; ')),
+    assert('Unsupported domain-fit cases are blocked', unsupportedFit.every(f => f.domain_fit_status === 'unsupported' && f.supported_domain === 'none' && f.allowed_to_continue === false), unsupportedFit.map(f => `${f.domain_fit_status}/${f.supported_domain}/${f.allowed_to_continue}`).join('; ')),
+    assert('Unsupported cases include expected reasons', unsupportedFit[0].detection_reasons.includes('HR decision') && unsupportedFit[1].detection_reasons.includes('political opinion or persuasion') && unsupportedFit[2].detection_reasons.includes('moral/existential/philosophical'), unsupportedFit.map(f => f.detection_reasons.join(', ')).join('; ')),
+    assert('Humanity case returns out-of-scope domain', humanityRecord.domain === 'out-of-scope', humanityRecord.domain),
+    assert('Humanity case uses Unknown confidence', humanityRecord.confidence_band === 'Unknown confidence', humanityRecord.confidence_band),
+    assert('Humanity case does not produce Medium confidence', humanityRecord.confidence_band !== 'Medium confidence', humanityRecord.confidence_band),
+    assert('Humanity case recommends scope finding', humanityRecord.recommended_action === 'Out of Scope for Current Review', humanityRecord.recommended_action),
+    assert('Humanity case requires human review', humanityRecord.human_review.required === true, humanityRecord.human_review.required_reviewer_role),
+    assert('Humanity case is not defensible', humanityRecord.record_defensibility_band === 'Not defensible', humanityRecord.record_defensibility_band),
+    assert('Humanity case has no framework mapping', humanityRecord.applicable_framework_references.length === 0, `${humanityRecord.applicable_framework_references.length} mappings`),
+    assert('Humanity record passes schema validation', humanityValidation.valid, humanityValidation.findings.map(f => `${f.code}: ${f.message}`).join('; ') || 'No schema findings'),
+    assert('Humanity JSON export is parseable', humanityJsonParseable, 'Out-of-scope export parsed')
   ];
   return { analyses, tests, passed: tests.filter(t => t.status === 'pass').length, failed: tests.filter(t => t.status === 'fail').length };
 }
