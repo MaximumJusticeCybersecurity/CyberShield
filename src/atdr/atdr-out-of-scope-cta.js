@@ -1,3 +1,5 @@
+import './atdr-vendor-risk-loop.js';
+
 const CTA_ID = 'outOfScopeRecoveryCta';
 
 function escapeHtml(value) {
