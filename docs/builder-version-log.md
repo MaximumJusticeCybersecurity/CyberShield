@@ -6,6 +6,57 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-2026061014-Decision-Assurance-Handoff
+
+Date: 2026-06-10
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, CyberShield Decision Assurance V12-V20 handoff session
+
+CyberShield versions affected:
+
+- 2026061014 Decision Assurance Successor Handoff
+- 2026061014 Versioning Standard
+- 20260610 root-route current Decision Assurance public entry update
+- Historical sprint labels V12 through V20 preserved as milestone labels only
+
+Files materially changed or created:
+
+- `index.html`
+- `trust-kernel-legacy.html`
+- `docs/20260610-successor-builder-handoff-decision-assurance.md`
+- `docs/2026061014-versioning-standard.md`
+- `docs/20260605xxV20-custom-input-safety-plan.md`
+- `docs/builder-version-log.md`
+- Decision Assurance route/library files created across V12-V19, including `atdr.html`, `demo-readiness.html`, `advisor-feedback.html`, `src/atdr/*`, and supporting docs
+
+Primary value add:
+
+Converted the active CyberShield public path from the older TrustMap-first Executive OS into the current AI Decision Assurance demo path while preserving the older Trust Kernel / TrustMap build at `trust-kernel-legacy.html`.  Captured a complete successor handoff for the next builder, including live routes, current architecture, build history, known limitations, product doctrine, root-route behavior, backup branch warnings, and the highest-priority next build: custom-input safety gating.
+
+What got better:
+
+- Root route now points to current CyberShield Decision Assurance.
+- Previous Trust Kernel / TrustMap experience is preserved through `trust-kernel-legacy.html` by loading the backup branch `backup-main-before-atdr-20260605`.
+- Successor-builder handoff documents the actual state of the Decision Assurance workflow.
+- New versioning standard requires timestamp-first versioning in `YYYYMMDDHH` format using a 24-hour clock.
+- V20 custom-input safety need is documented based on real user testing.
+- Main branch remains ahead of backup and behind by 0.
+
+Remaining risks or limitations:
+
+- V20 custom-input safety gating is planned but not coded yet.
+- The ATDR analyzer is deterministic/static, not live LLM-backed.
+- Decision context is captured but does not deeply drive analysis yet.
+- Browser Print / Save PDF is the current PDF path.
+- No production auth, persistence, tenant isolation, file scanning, or backend DOCX generation.
+- GitHub Pages refresh may lag behind commits.
+
+Next recommended build action:
+
+Read `docs/20260610-successor-builder-handoff-decision-assurance.md` and `docs/2026061014-versioning-standard.md`.  Then implement custom-input safety gating in `src/atdr/atdr-engine.js` so unsupported philosophical, existential, moral, vague, or out-of-scope claims return Unknown confidence, require human review, and do not produce a misleading business-risk-style result.
+
+---
+
 ### Builder-20260603-014
 
 Date: 2026-06-03
@@ -118,24 +169,22 @@ Files materially changed or created:
 
 Primary value add:
 
-Established the new CyberShield versioning schema for implemented builds after V60.3.30.  Future builds should use timestamp-based versioning in `YYYYMMDD-HHMM` format using 24-hour America/New_York time unless the user explicitly changes the project timezone.
+Established the earlier CyberShield versioning schema for implemented builds after V60.3.30.  This is superseded by the 2026061014 standard, which uses `YYYYMMDDHH` without separators.
 
 What got better:
 
-- Version identity is now chronological and unique.
-- The old V60.x sequence is preserved as historical release lineage.
-- V60.3.31 remains earmarked only for Integrating the World's Best Map Maker.
-- The next implemented build after V60.3.30 should use timestamp versioning.
-- `docs/versioning-schema.md` is now the canonical schema document.
+- Version identity became chronological and unique.
+- The old V60.x sequence was preserved as historical release lineage.
+- The next implemented build after V60.3.30 was moved toward timestamp versioning.
 
 Remaining risks or limitations:
 
-- Builders must remember not to continue the V60.x numbering for implemented builds unless explicitly directed.
-- Source-of-truth files must be updated to the timestamp version whenever the next implemented build ships.
+- Earlier schema used `YYYYMMDD-HHMM`; current schema now uses `YYYYMMDDHH`.
+- Builders must not continue V60.x numbering for implemented builds unless explicitly directed.
 
 Next recommended build action:
 
-Run V60.3.30 QA.  If another implemented build is needed after QA, name it using timestamp format, for example `YYYYMMDD-HHMM Short Build Name`, not `V60.3.32`.
+Use the 2026061014 standard: `YYYYMMDDHH`, no separator, 24-hour clock.
 
 ---
 
