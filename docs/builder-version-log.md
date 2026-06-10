@@ -6,6 +6,59 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-2026061015-Vendor-Risk-End-to-End-Loop
+
+Date: 2026-06-10
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, CyberShield vendor-risk first build session
+
+CyberShield versions affected:
+
+- 2026061015 Vendor-Risk End-to-End Loop
+- 2026061015 Vendor-Risk Onboarding Layer
+- 2026061015 Contradiction Selector
+- 2026061015 Report Capture Payload Readiness
+
+Files materially changed or created:
+
+- `src/atdr/atdr-vendor-risk-loop.js`
+- `src/atdr/atdr-out-of-scope-cta.js`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Added a vendor-risk-first loop layer on top of the existing ATDR workbench without replacing the underlying claim extraction, evidence mapping, gaps, risk, confidence, review, and export screens.  The new layer gives the viewer a first-name, optional company, optional vendor, contradiction-type selector, vendor-risk recommendation generator, validator summary, candidate action comparison, report-generation jump, email-at-report-generation field, and CRM/report-capture payload preparation.
+
+What got better:
+
+- The visible experience now starts with one complete vendor-risk trust decision loop instead of treating the workbench as a generic multi-domain tool.
+- Users can enter first name, optional company, and optional vendor.
+- Users can select a contradiction focus: all issues, SOC 2 scope conflict, data-use conflict, subprocessor gap, incident notification weakness, or self-attested evidence.
+- The generated recommendation keeps the core demo wedge: SOC 2 plus encryption does not justify automatic vendor approval.
+- The side brief now shows validator checks and candidate action comparison.
+- `Request Evidence` is presented as the strongest defensible action.
+- `Escalate for Review` and human review remain visible as required controls.
+- Report capture now prepares metadata plus structured record JSON for the configured CRM endpoint.
+- If `REPORT_CAPTURE_ENDPOINT` is blank, capture is simulated honestly and saved as pending browser-local data.  It does not claim Google Sheet submission succeeded.
+- The out-of-scope CTA module now imports the vendor-risk loop layer, avoiding a risky full-page rewrite.
+
+Remaining risks or limitations:
+
+- This is still a static GitHub Pages prototype.
+- The capture endpoint is intentionally blank until a Google Apps Script Web App or backend endpoint exists.
+- The module prepares CRM payloads but does not perform production Google Sheet writes without a configured endpoint.
+- The contradiction selector currently focuses the scenario and briefing language; deeper filtering of the synthetic evidence repository can be improved in a later pass.
+- The original multi-stage workbench remains visible under the vendor-risk loop layer.  A future pass can simplify or hide secondary paths more aggressively.
+- Browser Print / Save PDF remains the current PDF path.
+- No production persistence, authentication, tenant isolation, malware scanning, live model calls, server-side DOCX/PDF, or production integrations are active.
+- GitHub Pages refresh may lag behind commits.
+
+Next recommended build action:
+
+Build `2026061016-vendor-risk-flow-polish`.  Keep the same vendor-risk-only constraint.  Focus on reducing cognitive load, making the contradiction selector drive visible evidence emphasis, making validators first-class in the main flow, and ensuring report capture feels like a clean final step rather than an added panel.
+
+---
+
 ### Builder-2026061014-Custom-Input-Safety-Gating
 
 Date: 2026-06-10
