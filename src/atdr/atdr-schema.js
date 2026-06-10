@@ -39,10 +39,12 @@ const ALLOWED_ACTIONS = [
   'Accept',
   'Accept with Caveat',
   'Request Evidence',
+  'Request Clarification',
   'Revise Recommendation',
   'Escalate for Review',
   'Reject',
-  'Quarantine'
+  'Quarantine',
+  'Out of Scope for Current Review'
 ];
 
 const ALLOWED_CONFIDENCE_BANDS = [
@@ -50,10 +52,11 @@ const ALLOWED_CONFIDENCE_BANDS = [
   'Medium confidence',
   'Low confidence',
   'Unknown confidence',
-  'Contradicted'
+  'Contradicted',
+  'Insufficient Support'
 ];
 
-const ALLOWED_RISK_BANDS = ['Severe', 'High', 'Moderate', 'Low', 'Minimal'];
+const ALLOWED_RISK_BANDS = ['Severe', 'High', 'Moderate', 'Low', 'Minimal', 'Unknown'];
 
 function hasValue(record, key) {
   const value = record?.[key];
@@ -108,6 +111,18 @@ export function validateTrustDecisionRecord(record) {
       findings.push(finding('framework-warning-missing', 'error', 'Framework mappings must include non-compliance-proof warning language.', `applicable_framework_references.${index}.compliance_warning_text`));
     }
   });
+
+  if (record?.domain === 'out-of-scope' && mappings.length > 0) {
+    findings.push(finding('out-of-scope-framework-mapping', 'error', 'Out-of-scope records must not include framework or compliance mappings.', 'applicable_framework_references'));
+  }
+
+  if (record?.domain === 'out-of-scope' && record?.confidence_band !== 'Unknown confidence') {
+    findings.push(finding('out-of-scope-confidence', 'error', 'Out-of-scope records must use Unknown confidence.', 'confidence_band'));
+  }
+
+  if (record?.domain === 'out-of-scope' && record?.record_defensibility_band !== 'Not defensible') {
+    findings.push(finding('out-of-scope-defensibility', 'error', 'Out-of-scope records must be Not defensible.', 'record_defensibility_band'));
+  }
 
   if (record?.human_review?.required && !record.human_review.required_reviewer_role) {
     findings.push(finding('reviewer-role-missing', 'error', 'Human review is required but no reviewer role is specified.', 'human_review.required_reviewer_role'));
