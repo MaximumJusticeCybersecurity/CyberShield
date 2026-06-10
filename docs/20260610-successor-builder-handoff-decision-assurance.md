@@ -10,6 +10,40 @@ AI-generated recommendation in -> defensible Trust Decision Record out
 
 The first target workflow is AI-generated security, compliance, and vendor-risk recommendations, with vendor risk as the first demo wedge.
 
+## Versioning Standard
+
+Effective immediately, CyberShield versioning should use timestamp-first identifiers in this format:
+
+```text
+YYYYMMDDHH
+```
+
+Use a 24-hour clock. Example:
+
+```text
+2026061014
+```
+
+This means June 10, 2026 at 14:00 project local time.
+
+Do not use older control-plane version numbering as the primary source-of-truth version. Labels such as V20, V21, V55.2, or Control Plane V60 may be used informally as milestone names, but new release notes, handoffs, build plans, route manifests, and successor-builder documents should use timestamp-first versioning.
+
+Authoritative versioning standard:
+
+```text
+docs/2026061014-versioning-standard.md
+```
+
+Recommended future naming pattern:
+
+```text
+docs/2026061014-successor-builder-handoff-decision-assurance.md
+docs/2026061014-custom-input-safety-plan.md
+docs/2026061014-demo-readiness-release-note.md
+```
+
+Do not rename all historical `20260605xxV##` files unless doing a deliberate migration. Going forward, use `YYYYMMDDHH` first.
+
 ## Current Public Entry Points
 
 Current public root:
@@ -211,7 +245,7 @@ V20 plan exists:
 docs/20260605xxV20-custom-input-safety-plan.md
 ```
 
-V20 engine code is not complete. This should be the next builder's first code task.
+V20 engine code is not complete. This should be the next builder's first code task. Use new timestamp-first versioning when completing it.
 
 ## Current Technical Architecture
 
@@ -276,7 +310,11 @@ That page loads the preserved backup branch version.
 
 ## Highest Priority Next Build
 
-Build V20 custom-input safety gating.
+Build V20 custom-input safety gating, but use a timestamp-first version name such as:
+
+```text
+2026061014-custom-input-safety-gating
+```
 
 Tasks:
 
@@ -359,6 +397,7 @@ Relevant to framework/control. Not verified as compliant.
 
 ## Builder Warnings
 
+- Use `YYYYMMDDHH` timestamp-first versioning for all new work.
 - Do not overwrite the root page back to the old Trust Kernel.
 - Do not delete `trust-kernel-legacy.html`.
 - Do not delete `backup-main-before-atdr-20260605`.
@@ -377,10 +416,11 @@ Read these files first:
 README.md
 bots.txt
 docs/20260610-successor-builder-handoff-decision-assurance.md
+docs/2026061014-versioning-standard.md
 docs/20260605xxV20-custom-input-safety-plan.md
 src/atdr/atdr-engine.js
 src/atdr/atdr-app.js
 src/atdr/atdr-smoke-test.js
 ```
 
-Then implement V20 custom-input safety gating and update smoke tests.
+Then implement V20 custom-input safety gating and update smoke tests using timestamp-first versioning.
