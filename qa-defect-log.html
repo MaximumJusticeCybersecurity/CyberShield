@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield QA Defect Log</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--amber:#ffd166;--red:#ff7474;--green:#77e1a1}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1120px,calc(100vw - 28px));margin:0 auto;padding:28px 0 46px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}h1,h2{margin:.2rem 0 .7rem}p,label{color:var(--muted)}input,select,textarea{width:100%;background:#07111c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}textarea{min-height:110px}button{border:1px solid var(--line);border-radius:12px;background:#132232;color:var(--text);padding:10px 14px;cursor:pointer}button.primary{border-color:var(--blue);background:rgba(66,215,255,.18)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}pre{white-space:pre-wrap;max-height:360px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}a{color:var(--blue)}@media(max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>CyberShield QA Defect Log</h1><p>Use this during live demo QA. It stores defects in this browser only and lets you copy JSON for GitHub, email, or the next builder handoff. It does not submit anything to a server.</p><p><span class="tag warn">Local only</span><span class="tag good">No backend required</span><span class="tag bad">Do not enter secrets or customer data</span></p><p><a href="demo-operator-checklist.html">Operator Checklist</a> · <a href="vendor-risk.html">Guided Route</a> · <a href="vendor-risk-smoke.html">Smoke Test</a></p></section>
+<section class="card"><h2>Record a defect</h2><div class="grid3"><label>Route<select id="route"><option>/vendor-risk.html</option><option>/vendor-risk-smoke.html</option><option>/demo-operator-checklist.html</option><option>/atdr.html</option><option>/trust-kernel-legacy.html</option><option>/</option></select></label><label>Device<select id="device"><option>Desktop</option><option>Phone</option><option>Tablet</option><option>Unknown</option></select></label><label>Severity<select id="severity"><option>Blocker</option><option>High</option><option>Medium</option><option>Low</option></select></label></div><div class="grid2"><label>Browser / OS<input id="browser" placeholder="Chrome on Windows, Safari on iPhone, etc."></label><label>Step<input id="step" placeholder="Example: Step 4 Review Claims"></label></div><label>Expected behavior<textarea id="expected" placeholder="What should have happened?"></textarea></label><label>Actual behavior<textarea id="actual" placeholder="What happened instead?"></textarea></label><label>Notes / screenshot reference<textarea id="notes" placeholder="Optional. Do not paste secrets or customer data."></textarea></label><div class="actions"><button id="save" class="primary" type="button">Save Defect</button><button id="clearForm" type="button">Clear Form</button></div></section>
+<section class="card"><h2>Saved defects</h2><div class="actions"><button id="copyJson" class="primary" type="button">Copy Defect JSON</button><button id="downloadJson" type="button">Download Defect JSON</button><button id="clearAll" type="button">Clear All</button></div><pre id="defects">[]</pre></section>
+</main>
+<script>
+const KEY='cybershield_qa_defects_2026061024';
+const $=id=>document.getElementById(id);
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
+function save(items){localStorage.setItem(KEY,JSON.stringify(items));render()}
+function form(){return{defect_id:'DEF-'+new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,6).toUpperCase(),recorded_at:new Date().toISOString(),route:$('route').value,device:$('device').value,severity:$('severity').value,browser:$('browser').value.trim(),step:$('step').value.trim(),expected:$('expected').value.trim(),actual:$('actual').value.trim(),notes:$('notes').value.trim(),status:'new'}}
+function clearForm(){['browser','step','expected','actual','notes'].forEach(id=>$(id).value='')}
+function render(){const items=load();$('defects').textContent=JSON.stringify(items,null,2)}
+$('save').onclick=()=>{const item=form();if(!item.expected||!item.actual){alert('Expected behavior and actual behavior are required.');return}save([item,...load()].slice(0,50));clearForm()};
+$('clearForm').onclick=clearForm;
+$('clearAll').onclick=()=>{if(confirm('Clear all locally saved defects?'))save([])};
+$('copyJson').onclick=async()=>{const text=JSON.stringify(load(),null,2);try{await navigator.clipboard.writeText(text);alert('Defect JSON copied.')}catch{prompt('Copy defect JSON:',text)}};
+$('downloadJson').onclick=()=>{const blob=new Blob([JSON.stringify(load(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cybershield-qa-defects-'+Date.now()+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)};
+render();
+</script>
+</body>
+</html>
