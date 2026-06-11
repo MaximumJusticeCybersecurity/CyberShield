@@ -1,0 +1,117 @@
+{
+  "version": "2026061025-demo-route-manifest",
+  "product_direction": "AI-generated recommendation in -> defensible Trust Decision Record out",
+  "primary_wedge": "vendor-risk",
+  "doctrine": [
+    "AI confidence is not evidence.",
+    "The record is the product.",
+    "The workbench exists to produce the record.",
+    "Vendor risk is the first wedge.",
+    "Do not drift back to dashboard-first, TrustMap-first, runtime-agent-first, broad governance, generic trust-score, or autonomous-agent positioning until the record workflow works."
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "file": "index.html",
+      "status": "active",
+      "role": "public landing route",
+      "priority": "primary entry",
+      "expected_behavior": "Direct users to the guided vendor-risk demo first and redirect after 12 seconds.",
+      "must_not": ["restore TrustMap as root", "hide the guided vendor-risk route"]
+    },
+    {
+      "path": "/vendor-risk.html",
+      "file": "vendor-risk.html",
+      "status": "active",
+      "role": "primary guided demo route",
+      "priority": "primary demo",
+      "expected_behavior": "Six-step guided vendor-risk trust decision loop with record generation, print, JSON download, and simulated CRM payload prep.",
+      "expected_contract": {
+        "claims_extracted": 10,
+        "recommended_action": "Request Evidence",
+        "risk_if_wrong": "High",
+        "confidence_band": "Low confidence",
+        "human_review_required": true
+      }
+    },
+    {
+      "path": "/vendor-risk-smoke.html",
+      "file": "vendor-risk-smoke.html",
+      "status": "active",
+      "role": "guided route QA smoke test",
+      "priority": "QA",
+      "expected_behavior": "Show GO when the guided vendor-risk record contract passes."
+    },
+    {
+      "path": "/demo-operator-checklist.html",
+      "file": "demo-operator-checklist.html",
+      "status": "active",
+      "role": "operator checklist",
+      "priority": "QA",
+      "expected_behavior": "Provide one checklist for controlled demo validation and stop conditions."
+    },
+    {
+      "path": "/qa-defect-log.html",
+      "file": "qa-defect-log.html",
+      "status": "active",
+      "role": "local-only QA defect logger",
+      "priority": "QA",
+      "expected_behavior": "Capture local browser defect reports and allow copy/download JSON. No backend submission."
+    },
+    {
+      "path": "/atdr.html",
+      "file": "atdr.html",
+      "status": "active",
+      "role": "deep workbench",
+      "priority": "secondary",
+      "expected_behavior": "Provide deeper ATDR workbench inspection without replacing the guided route as primary demo."
+    },
+    {
+      "path": "/demo-readiness.html",
+      "file": "demo-readiness.html",
+      "status": "active",
+      "role": "legacy/current smoke readiness route",
+      "priority": "secondary QA",
+      "expected_behavior": "Support smoke-readiness review for existing ATDR workbench."
+    },
+    {
+      "path": "/advisor-feedback.html",
+      "file": "advisor-feedback.html",
+      "status": "active",
+      "role": "advisor feedback route",
+      "priority": "secondary",
+      "expected_behavior": "Collect or display advisor-feedback workflow without distracting from vendor-risk demo."
+    },
+    {
+      "path": "/trust-kernel-legacy.html",
+      "file": "trust-kernel-legacy.html",
+      "status": "preserved",
+      "role": "legacy Trust Kernel / TrustMap route",
+      "priority": "preservation only",
+      "expected_behavior": "Preserve prior Executive OS / Trust Kernel experience. Do not delete. Do not restore as root."
+    }
+  ],
+  "non_goals_until_vendor_risk_loop_is_done": [
+    "TrustMap-first rebuild",
+    "Runtime-agent positioning",
+    "Dashboard-first experience",
+    "Generic trust score",
+    "Autonomous agent workflow",
+    "Production persistence",
+    "Production authentication",
+    "Tenant isolation",
+    "Live LLM analyzer",
+    "Server-side DOCX/PDF generation",
+    "Live Google Sheet write without configured endpoint"
+  ],
+  "static_prototype_limitations": [
+    "No production persistence",
+    "No production authentication",
+    "No tenant isolation",
+    "No malware scanning",
+    "No live LLM-backed analyzer",
+    "No server-side DOCX/PDF generation",
+    "Browser Print / Save PDF is current PDF path",
+    "CRM capture is simulated until REPORT_CAPTURE_ENDPOINT is configured"
+  ]
+}
