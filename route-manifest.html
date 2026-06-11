@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Route Manifest</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1120px,calc(100vw - 28px));margin:0 auto;padding:28px 0 46px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}h1,h2,h3{margin:.2rem 0 .7rem}p,li{color:var(--muted)}a{color:var(--blue)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}pre{white-space:pre-wrap;max-height:360px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>CyberShield Route Manifest</h1><p>Live route map and doctrine guardrail for the current Decision Assurance build.</p><p><a href="vendor-risk.html">Guided Demo</a> · <a href="demo-operator-checklist.html">Operator Checklist</a> · <a href="qa-defect-log.html">QA Defect Log</a></p><div id="status"><span class="tag warn">Loading manifest...</span></div></section>
+<section class="card"><h2>Doctrine Check</h2><div id="doctrine"></div></section>
+<section class="card"><h2>Routes</h2><div id="routes" class="grid"></div></section>
+<section class="card"><h2>Static Prototype Limitations</h2><div id="limitations"></div></section>
+<section class="card"><h2>Raw Manifest</h2><pre id="raw">Loading...</pre></section>
+</main>
+<script>
+function esc(value){return String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function tag(text,cls='good'){return `<span class="tag ${cls}">${esc(text)}</span>`}
+function routeCard(route){const cls=route.priority&&String(route.priority).includes('primary')?'good':route.status==='preserved'?'warn':'';return `<article class="card"><h3><a href=".${esc(route.path)}">${esc(route.path)}</a></h3><p>${tag(route.status,cls)} ${tag(route.priority||'unprioritized',cls)}</p><p><strong>Role:</strong> ${esc(route.role)}</p><p>${esc(route.expected_behavior)}</p>${route.expected_contract?`<p>${Object.entries(route.expected_contract).map(([k,v])=>tag(`${k}: ${v}`,'good')).join('')}</p>`:''}</article>`}
+fetch('route-manifest.json',{cache:'no-store'}).then(r=>r.json()).then(manifest=>{
+  const routes=manifest.routes||[];
+  const primary=routes.find(r=>r.path==='/vendor-risk.html');
+  const root=routes.find(r=>r.path==='/');
+  const legacy=routes.find(r=>r.path==='/trust-kernel-legacy.html');
+  const ok=primary&&root&&legacy&&manifest.primary_wedge==='vendor-risk';
+  document.querySelector('#status').innerHTML=`${tag(ok?'Manifest OK':'Manifest needs review',ok?'good':'bad')} ${tag(manifest.version||'unknown version','warn')} ${tag(`Primary wedge: ${manifest.primary_wedge}`,'good')}`;
+  document.querySelector('#doctrine').innerHTML=`<ul>${(manifest.doctrine||[]).map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`;
+  document.querySelector('#routes').innerHTML=routes.map(routeCard).join('');
+  document.querySelector('#limitations').innerHTML=`<ul>${(manifest.static_prototype_limitations||[]).map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`;
+  document.querySelector('#raw').textContent=JSON.stringify(manifest,null,2);
+}).catch(error=>{
+  document.querySelector('#status').innerHTML=tag('Manifest failed to load','bad');
+  document.querySelector('#raw').textContent=String(error);
+});
+</script>
+</body>
+</html>
