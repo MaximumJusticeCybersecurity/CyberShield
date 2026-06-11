@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield QA Session</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}h1,h2{margin:.2rem 0 .7rem}p,label,li{color:var(--muted)}input,select,textarea{width:100%;background:#07111c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}textarea{min-height:90px}button{border:1px solid var(--line);border-radius:12px;background:#132232;color:var(--text);padding:10px 14px;cursor:pointer}button.primary{border-color:var(--blue);background:rgba(66,215,255,.18)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}table{width:100%;border-collapse:collapse}td,th{padding:9px;border-bottom:1px solid rgba(185,199,214,.18);text-align:left;vertical-align:top}th{color:#8eeaff;text-transform:uppercase;font-size:.8rem}pre{white-space:pre-wrap;max-height:360px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}a{color:var(--blue)}@media(max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>CyberShield QA Session Capture</h1><p>Use this to record a complete controlled-demo QA pass. It stores the session locally and lets you copy/download the JSON. It does not submit anything to a backend.</p><p><a href="vendor-risk.html">Guided Demo</a> · <a href="vendor-risk-smoke.html">Smoke</a> · <a href="record-contract.html">Record Contract</a> · <a href="route-manifest.html">Route Manifest</a> · <a href="qa-defect-log.html">Defect Log</a></p><p><span class="tag warn">Local only</span><span class="tag good">Release readiness support</span><span class="tag bad">No secrets or customer data</span></p></section>
+<section class="card"><h2>Session metadata</h2><div class="grid3"><label>Tester<input id="tester" placeholder="Name or initials"></label><label>Device<select id="device"><option>Desktop</option><option>Phone</option><option>Tablet</option><option>Mixed</option></select></label><label>Browser / OS<input id="browser" placeholder="Chrome on Windows, Safari on iPhone, etc."></label></div><label>Notes<textarea id="notes" placeholder="Overall observations, no secrets or customer data."></textarea></label></section>
+<section class="card"><h2>Required route checks</h2><table><thead><tr><th>Route</th><th>Expected</th><th>Status</th></tr></thead><tbody id="routeRows"></tbody></table></section>
+<section class="card"><h2>Readiness decision</h2><div class="grid2"><label>Decision<select id="decision"><option>GO for controlled demo</option><option>NO-GO: fix defects first</option><option>Limited demo only</option></select></label><label>Release label<input id="releaseLabel" value="2026061028-release-readiness-foundation"></label></div><div class="actions"><button id="save" class="primary" type="button">Save QA Session</button><button id="copy" type="button">Copy JSON</button><button id="download" type="button">Download JSON</button><button id="clear" type="button">Clear Local Session</button></div></section>
+<section class="card"><h2>Session JSON</h2><pre id="output">{}</pre></section>
+</main>
+<script>
+const KEY='cybershield_qa_session_2026061028';
+const routes=[
+ {path:'/vendor-risk.html',expected:'Six-step guided route loads, diagnostics Engine OK, 10 claims, Request Evidence, High Risk, Low confidence, Review Yes.'},
+ {path:'/vendor-risk-smoke.html',expected:'GO status and CRM payload includes structured record JSON.'},
+ {path:'/record-contract.html',expected:'GO status for vendor-risk and out-of-scope record contracts.'},
+ {path:'/route-manifest.html',expected:'Manifest OK and primary wedge is vendor-risk.'},
+ {path:'/demo-operator-checklist.html',expected:'Checklist opens and links to QA, smoke, route, contract, defect routes.'},
+ {path:'/qa-defect-log.html',expected:'Defect log opens and can save local defect JSON.'},
+ {path:'/atdr.html',expected:'Deep ATDR workbench still opens.'},
+ {path:'/trust-kernel-legacy.html',expected:'Legacy Trust Kernel route remains preserved.'}
+];
+const $=id=>document.getElementById(id);
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}}
+function row(route,index,status='Not tested'){return `<tr><td><a href=".${route.path}">${route.path}</a></td><td>${route.expected}</td><td><select data-index="${index}"><option ${status==='Not tested'?'selected':''}>Not tested</option><option ${status==='Pass'?'selected':''}>Pass</option><option ${status==='Fail'?'selected':''}>Fail</option><option ${status==='Blocked'?'selected':''}>Blocked</option></select></td></tr>`}
+function snapshot(){const statuses=[...document.querySelectorAll('[data-index]')].map((select,index)=>({path:routes[index].path,expected:routes[index].expected,status:select.value}));return{session_id:'QA-'+new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14),captured_at:new Date().toISOString(),tester:$('tester').value.trim(),device:$('device').value,browser:$('browser').value.trim(),notes:$('notes').value.trim(),release_label:$('releaseLabel').value.trim(),decision:$('decision').value,routes:statuses,summary:{passed:statuses.filter(r=>r.status==='Pass').length,failed:statuses.filter(r=>r.status==='Fail').length,blocked:statuses.filter(r=>r.status==='Blocked').length,not_tested:statuses.filter(r=>r.status==='Not tested').length}}}
+function render(){const saved=load();$('tester').value=saved.tester||'';$('device').value=saved.device||'Desktop';$('browser').value=saved.browser||'';$('notes').value=saved.notes||'';$('releaseLabel').value=saved.release_label||'2026061028-release-readiness-foundation';$('decision').value=saved.decision||'GO for controlled demo';$('routeRows').innerHTML=routes.map((r,i)=>row(r,i,saved.routes?.[i]?.status||'Not tested')).join('');updateOutput();document.querySelectorAll('[data-index]').forEach(s=>s.onchange=updateOutput);['tester','device','browser','notes','releaseLabel','decision'].forEach(id=>$(id).oninput=updateOutput)}
+function updateOutput(){const data=snapshot();$('output').textContent=JSON.stringify(data,null,2);return data}
+$('save').onclick=()=>{const data=updateOutput();localStorage.setItem(KEY,JSON.stringify(data));alert('QA session saved locally.')};
+$('copy').onclick=async()=>{const text=JSON.stringify(updateOutput(),null,2);try{await navigator.clipboard.writeText(text);alert('QA session JSON copied.')}catch{prompt('Copy QA JSON:',text)}};
+$('download').onclick=()=>{const blob=new Blob([JSON.stringify(updateOutput(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cybershield-qa-session-'+Date.now()+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)};
+$('clear').onclick=()=>{if(confirm('Clear local QA session?')){localStorage.removeItem(KEY);render()}};
+render();
+</script>
+</body>
+</html>
