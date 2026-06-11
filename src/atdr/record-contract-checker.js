@@ -4,6 +4,7 @@ import { VENDOR_RISK_CONTRADICTORY_DEMO } from './atdr-demo-data.js';
 function esc(value) { return String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
 function check(name, pass, detail = '') { return { name, pass, detail }; }
 function evidenceText() { return VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository.map(e => `[${e.evidence_name}] ${e.text_extract}`).join('\n'); }
+function toggle(sectionId, buttonId, showText, hideText) { const section = document.querySelector(sectionId); const button = document.querySelector(buttonId); if (!section || !button) return; section.classList.toggle('hidden'); button.textContent = section.classList.contains('hidden') ? showText : hideText; }
 
 const vendorRecord = analyzeRecommendation({
   recommendation: 'AI recommends approving Vendor X because they have a SOC 2 report, encrypt customer data, and appear low risk.',
@@ -34,7 +35,6 @@ try { JSON.parse(exportJson(outOfScopeRecord)); outOfScopeJsonParseable = true; 
 const contract = await fetch('record-contract.json', { cache: 'no-store' }).then(r => r.json());
 const expected = contract.vendor_risk_expected_record;
 const outExpected = contract.out_of_scope_expected_record;
-
 const claimTypes = new Set(vendorRecord.extracted_claims.map(c => c.claim_type));
 const frameworkWarningsOk = vendorRecord.applicable_framework_references.every(f => String(f.compliance_warning_text || '').includes(expected.required_framework_warning_text));
 const checks = [
@@ -64,3 +64,5 @@ document.querySelector('#summary').innerHTML = `<span class="tag ${failed ? 'fai
 document.querySelector('#checks').innerHTML = `<table><thead><tr><th>Status</th><th>Check</th><th>Detail</th></tr></thead><tbody>${rows}</tbody></table>`;
 document.querySelector('#record').textContent = JSON.stringify({ vendorRecord, outOfScopeRecord }, null, 2).slice(0, 9000);
 document.querySelector('#contract').textContent = JSON.stringify(contract, null, 2);
+document.querySelector('#toggleRecord')?.addEventListener('click', () => toggle('#recordSection', '#toggleRecord', 'Show Record JSON', 'Hide Record JSON'));
+document.querySelector('#toggleContract')?.addEventListener('click', () => toggle('#contractSection', '#toggleContract', 'Show Contract Manifest', 'Hide Contract Manifest'));
