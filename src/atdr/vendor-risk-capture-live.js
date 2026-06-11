@@ -103,15 +103,14 @@ async function saveFollowUp(event) {
   const originalText = button.textContent;
   button.textContent = 'Saving...';
   try {
-    const response = await fetch(REPORT_CAPTURE_ENDPOINT, {
+    await fetch(REPORT_CAPTURE_ENDPOINT, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      mode: 'no-cors',
       body: JSON.stringify(payload())
     });
-    const text = await response.text();
-    status(response.ok ? 'Follow-up saved to Google Sheets.' : `Google Sheets save failed with status ${response.status}: ${text}`);
+    status('Follow-up sent to Google Sheets. Check the CyberShield Report Captures tab for the new row.');
   } catch (error) {
-    status(`Google Sheets save failed: ${String(error)}`);
+    status(`Google Sheets send failed before submission: ${String(error)}`);
   } finally {
     button.disabled = false;
     button.textContent = originalText;
