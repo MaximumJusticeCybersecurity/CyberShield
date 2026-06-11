@@ -1,12 +1,14 @@
 {
-  "release_id": "2026061031-buyer-demo-surface-polish",
-  "release_name": "CyberShield Buyer Demo Surface Polish",
-  "release_date": "2026-06-10",
+  "release_id": "2026061113-buyer-first-decision-assurance-and-google-sheets-capture",
+  "release_name": "CyberShield Buyer-First AI Decision Assurance and Google Sheets Capture Prep",
+  "release_date": "2026-06-11",
   "primary_route": "/vendor-risk.html",
   "primary_wedge": "vendor-risk",
-  "status": "static prototype, buyer-facing guided demo surface hardened",
-  "root_behavior": "Root landing page directs visitors only to the guided vendor-risk route and redirects after 12 seconds.",
-  "core_workflow": "AI-generated vendor recommendation in -> defensible Trust Decision Record out",
+  "status": "static prototype, buyer-first positioning plus Google Sheets capture deployment prep",
+  "root_behavior": "Root landing page leads with broader AI Decision Assurance value and directs visitors to the guided vendor-risk sample.",
+  "north_star": "Before relying on AI, CyberShield shows whether the recommendation is defensible.",
+  "core_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
+  "first_proof_point": "AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out",
   "core_contract": {
     "claims_extracted": 10,
     "recommended_action": "Request Evidence",
@@ -19,6 +21,7 @@
     "/vendor-risk.html"
   ],
   "internal_routes": [
+    "/report-capture-test.html",
     "/vendor-risk-smoke.html",
     "/record-contract.html",
     "/route-manifest.html",
@@ -32,9 +35,10 @@
     "/trust-kernel-legacy.html"
   ],
   "release_guardrails": [
+    "Broader value message is AI Decision Assurance, but the first workflow remains vendor-risk recommendation review.",
     "Vendor-risk guided route remains the primary buyer-facing demo.",
     "ATDR workbench remains internal inspection only and must not be surfaced as the public demo.",
-    "Operator checklist route has been removed from the product surface.",
+    "Google Sheets capture is not live until a deployed Apps Script endpoint is configured and tested.",
     "Legacy Trust Kernel remains preserved and is not restored as root.",
     "Do not claim production readiness.",
     "Do not claim CRM/Google Sheet capture succeeded unless endpoint is configured and POST succeeds.",
@@ -53,8 +57,8 @@
     "CRM capture is local/pending until REPORT_CAPTURE_ENDPOINT is configured"
   ],
   "next_recommended_builds": [
-    "2026061032-google-sheets-endpoint-connection",
-    "2026061033-guided-demo-visual-polish",
-    "2026061034-executive-report-language-polish"
+    "2026061114-google-sheets-endpoint-enable-after-deployment",
+    "2026061115-guided-demo-visual-polish",
+    "2026061116-executive-report-language-polish"
   ]
 }
