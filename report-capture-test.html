@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Report Capture Test</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1080px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}h1,h2{margin:.2rem 0 .7rem}p,label,li{color:var(--muted)}input,textarea{width:100%;background:#07111c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}textarea{min-height:180px}button{border:1px solid var(--line);border-radius:12px;background:#132232;color:var(--text);padding:10px 14px;cursor:pointer}button.primary{border-color:var(--blue);background:rgba(66,215,255,.18)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}pre{white-space:pre-wrap;max-height:340px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}a{color:var(--blue)}@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>CyberShield Report Capture Test</h1><p>Use this internal test page after the Google Apps Script Web App is deployed. Paste the Web App URL, send a sample payload, and confirm the row appears in Google Sheets.</p><p><span class="tag warn">Internal test harness</span><span class="tag good">No secrets needed</span><span class="tag bad">Do not use customer data</span></p><p><a href="vendor-risk.html">Guided Demo</a> · <a href="route-manifest.html">Route Manifest</a></p></section>
+<section class="card"><h2>Endpoint</h2><label>Google Apps Script Web App URL<input id="endpoint" placeholder="https://script.google.com/macros/s/.../exec"></label><div class="actions"><button id="loadSample" type="button">Load Sample Payload</button><button id="send" class="primary" type="button">Send Test Capture</button></div></section>
+<section class="grid2"><article class="card"><h2>Payload</h2><textarea id="payload"></textarea></article><article class="card"><h2>Response</h2><pre id="response">No test sent yet.</pre></article></section>
+</main>
+<script type="module">
+const sampleRecord={record_id:'ATDR-TEST-'+Date.now(),domain:'vendor-risk',recommended_action:'Request Evidence',risk_if_wrong:{band:'High'},confidence_band:'Low confidence',human_review:{required:true},record_defensibility_band:'Not Defensible Yet'};
+const samplePayload={event_type:'report_capture_test',capture_timestamp:new Date().toISOString(),first_name:'Test',company:'CyberShield Test',vendor:'Vendor X',email:'test@example.invalid',contradiction_type:'all',contradiction_label:'Show all evidence issues',report_capture_endpoint_configured:true,report_capture_mode:'configured_test',crm_sheet_id:'1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw',record_id:sampleRecord.record_id,recommended_action:'Request Evidence',risk_if_wrong:'High',confidence_band:'Low confidence',human_review_required:true,structured_record_json:sampleRecord};
+function $(id){return document.getElementById(id)}
+function loadSample(){$('payload').value=JSON.stringify(samplePayload,null,2)}
+$('loadSample').onclick=loadSample;
+$('send').onclick=async()=>{const endpoint=$('endpoint').value.trim();if(!endpoint){alert('Paste the deployed Apps Script Web App URL first.');return}let body;try{body=JSON.parse($('payload').value)}catch(e){$('response').textContent='Invalid JSON payload: '+e;return}$('response').textContent='Sending...';try{const res=await fetch(endpoint,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});const text=await res.text();$('response').textContent=JSON.stringify({ok:res.ok,status:res.status,response:text},null,2)}catch(error){$('response').textContent=JSON.stringify({ok:false,error:String(error)},null,2)}};
+loadSample();
+</script>
+</body>
+</html>
