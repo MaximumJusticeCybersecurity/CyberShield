@@ -1,0 +1,76 @@
+{
+  "version": "2026061027-record-contract-manifest",
+  "contract_name": "CyberShield Vendor-Risk Trust Decision Record Contract",
+  "scope": "Guided vendor-risk demo and static deterministic ATDR engine",
+  "primary_route": "/vendor-risk.html",
+  "smoke_route": "/vendor-risk-smoke.html",
+  "required_product_doctrine": [
+    "AI confidence is not evidence.",
+    "SOC 2 is not automatic approval.",
+    "Framework mapping is not compliance proof.",
+    "The record is the product.",
+    "Vendor risk is the first wedge."
+  ],
+  "vendor_risk_expected_record": {
+    "domain": "vendor-risk",
+    "claims_extracted": 10,
+    "recommended_action": "Request Evidence",
+    "risk_if_wrong_band": "High",
+    "confidence_band": "Low confidence",
+    "human_review_required": true,
+    "record_defensibility_allowed": [
+      "Not Defensible Yet",
+      "Executive brief ready with limitations"
+    ],
+    "required_claim_types": [
+      "Recommendation step",
+      "Vendor claim",
+      "Security claim",
+      "Unsupported leap",
+      "Risk conclusion"
+    ],
+    "required_evidence_issue_types": [
+      "missing evidence",
+      "weak evidence",
+      "self-attested evidence",
+      "stale evidence",
+      "contradictory evidence",
+      "scope mismatch"
+    ],
+    "required_candidate_actions": [
+      "Approve",
+      "Accept with Caveat",
+      "Escalate for Review",
+      "Request Evidence"
+    ],
+    "strongest_defensible_action": "Request Evidence",
+    "required_framework_warning_text": "Not verified as compliant"
+  },
+  "out_of_scope_expected_record": {
+    "domain": "out-of-scope",
+    "confidence_band": "Unknown confidence",
+    "risk_if_wrong_band": "Unknown",
+    "recommended_action": "Out of Scope for Current Review",
+    "human_review_required": true,
+    "record_defensibility_band": "Not defensible",
+    "framework_mappings": 0
+  },
+  "must_not": [
+    "Do not return Medium confidence for unsupported philosophical, existential, moral, vague, or universal inputs.",
+    "Do not treat SOC 2 as automatic vendor approval.",
+    "Do not treat framework mapping as compliance proof.",
+    "Do not introduce fake numeric trust scores.",
+    "Do not claim production readiness.",
+    "Do not claim Google Sheet capture succeeded when endpoint mode is simulated."
+  ],
+  "static_prototype_limitations": [
+    "No production persistence",
+    "No production authentication",
+    "No tenant isolation",
+    "No malware scanning",
+    "No live LLM-backed analyzer",
+    "No server-side DOCX/PDF generation",
+    "Browser Print / Save PDF is the current PDF path",
+    "CRM capture is simulated until REPORT_CAPTURE_ENDPOINT is configured"
+  ]
+}
