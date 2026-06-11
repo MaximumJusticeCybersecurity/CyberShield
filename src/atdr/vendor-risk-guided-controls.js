@@ -1,4 +1,5 @@
 import './vendor-risk-validators.js';
+import './candidate-action-tournament.js';
 
 const STATE_KEY = 'cybershield_vendor_risk_guided_2026061029';
 const DEFAULT_STATE = { step: 0, firstName: '', company: '', vendor: 'Vendor X', contradiction: 'all', email: '' };
