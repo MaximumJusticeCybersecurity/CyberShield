@@ -1,11 +1,11 @@
 {
-  "release_id": "2026061028-release-readiness-foundation",
-  "release_name": "CyberShield Vendor-Risk Guided Demo Release Readiness Foundation",
+  "release_id": "2026061031-buyer-demo-surface-polish",
+  "release_name": "CyberShield Buyer Demo Surface Polish",
   "release_date": "2026-06-10",
   "primary_route": "/vendor-risk.html",
   "primary_wedge": "vendor-risk",
-  "status": "static prototype, controlled-demo readiness hardening",
-  "root_behavior": "Root landing page directs visitors to the guided vendor-risk route first and redirects after 12 seconds.",
+  "status": "static prototype, buyer-facing guided demo surface hardened",
+  "root_behavior": "Root landing page directs visitors only to the guided vendor-risk route and redirects after 12 seconds.",
   "core_workflow": "AI-generated vendor recommendation in -> defensible Trust Decision Record out",
   "core_contract": {
     "claims_extracted": 10,
@@ -14,24 +14,27 @@
     "confidence_band": "Low confidence",
     "human_review_required": true
   },
-  "primary_routes": [
-    "/vendor-risk.html",
+  "buyer_facing_routes": [
+    "/",
+    "/vendor-risk.html"
+  ],
+  "internal_routes": [
     "/vendor-risk-smoke.html",
     "/record-contract.html",
     "/route-manifest.html",
-    "/demo-operator-checklist.html",
     "/qa-session.html",
-    "/qa-defect-log.html"
-  ],
-  "secondary_routes": [
+    "/qa-defect-log.html",
     "/atdr.html",
     "/demo-readiness.html",
-    "/advisor-feedback.html",
+    "/advisor-feedback.html"
+  ],
+  "preserved_routes": [
     "/trust-kernel-legacy.html"
   ],
   "release_guardrails": [
-    "Vendor-risk guided route remains the primary demo.",
-    "ATDR workbench remains secondary.",
+    "Vendor-risk guided route remains the primary buyer-facing demo.",
+    "ATDR workbench remains internal inspection only and must not be surfaced as the public demo.",
+    "Operator checklist route has been removed from the product surface.",
     "Legacy Trust Kernel remains preserved and is not restored as root.",
     "Do not claim production readiness.",
     "Do not claim CRM/Google Sheet capture succeeded unless endpoint is configured and POST succeeds.",
@@ -47,12 +50,11 @@
     "No live LLM-backed analyzer",
     "No server-side DOCX/PDF generation",
     "Browser Print / Save PDF is current PDF path",
-    "CRM capture is simulated until REPORT_CAPTURE_ENDPOINT is configured"
+    "CRM capture is local/pending until REPORT_CAPTURE_ENDPOINT is configured"
   ],
   "next_recommended_builds": [
-    "2026061029-guided-route-mobile-polish",
-    "2026061030-guided-route-print-polish-v2",
-    "2026061031-report-capture-endpoint-test-harness",
-    "2026061035-executive-report-language-polish"
+    "2026061032-google-sheets-endpoint-connection",
+    "2026061033-guided-demo-visual-polish",
+    "2026061034-executive-report-language-polish"
   ]
 }
