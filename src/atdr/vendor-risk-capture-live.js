@@ -3,6 +3,7 @@ import { VENDOR_RISK_CONTRADICTORY_DEMO } from './atdr-demo-data.js';
 import { REPORT_CAPTURE_ENDPOINT, CRM_SHEET_ID, REPORT_CAPTURE_MODE } from './report-capture-config.js';
 
 const STATE_KEY = 'cybershield_vendor_risk_guided_2026061029';
+const CAPTURE_AUDIT_KEY = 'cybershield_capture_audit_2026061125';
 const FALLBACK_STATE = { firstName: '', company: '', vendor: 'Vendor X', contradiction: 'all', email: '' };
 const CONTRADICTION_LABELS = {
   all: 'Show all evidence issues',
@@ -19,6 +20,14 @@ const CONTRADICTION_SUMMARIES = {
   subprocessors: 'AI analytics subprocessors are not fully identified in the evidence package.',
   incident: 'Incident notification language lacks a fixed timeline.',
   self_attested: 'Encryption and questionnaire evidence are vendor assertions, not independent proof.'
+};
+const CAPTURE_STATES = {
+  ready: { label: 'Ready', className: 'good' },
+  blocked: { label: 'Blocked', className: 'bad' },
+  saving: { label: 'Saving', className: 'warn' },
+  submitted_for_verification: { label: 'Submitted, verify row', className: 'warn' },
+  failed: { label: 'Failed', className: 'bad' },
+  simulated: { label: 'Simulated only', className: 'warn' }
 };
 
 function escapeHtml(value) {
@@ -80,17 +89,79 @@ function payload(eventType = 'guided_report_capture_live') {
   };
 }
 
-function status(message) {
-  const el = document.querySelector('#captureStatus');
+function installCaptureStyles() {
+  if (document.querySelector('#captureValidationStyles')) return;
+  const style = document.createElement('style');
+  style.id = 'captureValidationStyles';
+  style.textContent = `
+    .capture-status-card{border-left:5px solid var(--amber);background:rgba(255,209,102,.08);border-radius:12px;padding:10px 12px;margin:10px 0;color:var(--muted)}
+    .capture-status-card.good{border-left-color:var(--green);background:rgba(119,225,161,.08)}
+    .capture-status-card.bad{border-left-color:var(--red);background:rgba(255,116,116,.08)}
+    .capture-status-card .capture-state-label{font-weight:800;color:var(--text)}
+    .capture-audit-list{max-height:220px;overflow:auto;font-size:.86rem;margin-top:8px}
+    .capture-audit-list code{white-space:normal;word-break:break-word}
+    @media print{.capture-status-card{display:none!important}}
+  `;
+  document.head.appendChild(style);
+}
+
+function auditEntries() {
+  try { return JSON.parse(localStorage.getItem(CAPTURE_AUDIT_KEY) || '[]'); }
+  catch { return []; }
+}
+
+function writeAudit(entry) {
+  const entries = [entry, ...auditEntries()].slice(0, 10);
+  localStorage.setItem(CAPTURE_AUDIT_KEY, JSON.stringify(entries));
+  renderCaptureAudit();
+}
+
+function stateConfig(stateKey) {
+  return CAPTURE_STATES[stateKey] || CAPTURE_STATES.ready;
+}
+
+function setCaptureStatus(stateKey, message, detail = '') {
+  installCaptureStyles();
+  let el = document.querySelector('#captureStatus');
+  if (!el) {
+    const captureButton = document.querySelector('#capture');
+    if (captureButton?.parentElement) {
+      el = document.createElement('div');
+      el.id = 'captureStatus';
+      captureButton.parentElement.insertAdjacentElement('afterend', el);
+    }
+  }
   if (!el) return;
+  const cfg = stateConfig(stateKey);
+  el.className = `capture-status-card ${cfg.className}`;
   el.style.display = 'block';
-  el.textContent = message;
+  el.innerHTML = `<span class="capture-state-label">${escapeHtml(cfg.label)}:</span> ${escapeHtml(message)}${detail ? `<br><small>${escapeHtml(detail)}</small>` : ''}`;
+}
+
+function renderCaptureAudit() {
+  installCaptureStyles();
+  const side = document.querySelector('#side');
+  if (!side) return;
+  let panel = document.querySelector('#captureAuditPanel');
+  if (!panel) {
+    panel = document.createElement('section');
+    panel.id = 'captureAuditPanel';
+    panel.className = 'brief-card';
+    side.appendChild(panel);
+  }
+  const entries = auditEntries();
+  panel.innerHTML = `
+    <span class="label">Capture Audit</span>
+    <p><span class="tag ${REPORT_CAPTURE_ENDPOINT ? 'good' : 'warn'}">${REPORT_CAPTURE_ENDPOINT ? 'Endpoint configured' : 'Endpoint not configured'}</span><span class="tag warn">Prototype capture</span></p>
+    <p>Capture status is auditable here, but Google Sheets row verification remains the final proof.</p>
+    <div class="capture-audit-list">${entries.length ? entries.map(entry => `<p><strong>${escapeHtml(entry.status)}</strong> · ${escapeHtml(entry.timestamp)}<br><code>${escapeHtml(entry.record_id || 'no-record-id')}</code><br>${escapeHtml(entry.message)}</p>`).join('') : '<p>No capture attempts in this browser.</p>'}</div>
+  `;
 }
 
 function markConnected() {
   document.querySelectorAll('input[readonly]').forEach(input => {
-    if (input.value && input.value.toLowerCase().includes('google sheets')) input.value = REPORT_CAPTURE_ENDPOINT ? 'Connected to Google Sheets endpoint' : 'Google Sheets connection pending';
-    if (input.value && input.value.toLowerCase().includes('connected')) input.value = REPORT_CAPTURE_ENDPOINT ? 'Connected to Google Sheets endpoint' : 'Google Sheets connection pending';
+    if (input.value && input.value.toLowerCase().includes('google sheets')) input.value = REPORT_CAPTURE_ENDPOINT ? 'Connected to Google Sheets endpoint, verify submitted rows' : 'Google Sheets endpoint not configured';
+    if (input.value && input.value.toLowerCase().includes('connected')) input.value = REPORT_CAPTURE_ENDPOINT ? 'Connected to Google Sheets endpoint, verify submitted rows' : 'Google Sheets endpoint not configured';
   });
 }
 
@@ -146,27 +217,34 @@ async function saveFollowUp(event) {
 
   const email = document.querySelector('#email')?.value?.trim() || '';
   saveState({ email });
+  const attempt = payload('guided_report_capture_attempt');
   if (!email) {
-    status('Enter an email before saving follow-up.');
+    setCaptureStatus('blocked', 'Enter an email before saving follow-up.', 'No payload was submitted.');
+    writeAudit({ timestamp: new Date().toISOString(), status: 'blocked_missing_email', record_id: attempt.record_id, message: 'Capture blocked because email was missing.' });
     return;
   }
   if (!REPORT_CAPTURE_ENDPOINT) {
-    status('Google Sheets endpoint is not configured yet. No follow-up was submitted.');
+    setCaptureStatus('simulated', 'Google Sheets endpoint is not configured. No follow-up was submitted.', 'This is safe prototype behavior.');
+    writeAudit({ timestamp: new Date().toISOString(), status: 'simulated_no_endpoint', record_id: attempt.record_id, message: 'Endpoint not configured. Capture was not submitted.' });
     return;
   }
 
   button.disabled = true;
   const originalText = button.textContent;
   button.textContent = 'Saving...';
+  setCaptureStatus('saving', 'Sending follow-up payload to configured endpoint.', 'Do not close the page until the send attempt finishes.');
+  writeAudit({ timestamp: new Date().toISOString(), status: 'saving', record_id: attempt.record_id, message: 'Capture send started.' });
   try {
     await fetch(REPORT_CAPTURE_ENDPOINT, {
       method: 'POST',
       mode: 'no-cors',
-      body: JSON.stringify(payload())
+      body: JSON.stringify({ ...attempt, event_type: 'guided_report_capture_live' })
     });
-    status('Follow-up was submitted to the configured Google Sheets endpoint. Because this prototype uses no-cors, verify the CyberShield Report Captures tab for the new row.');
+    setCaptureStatus('submitted_for_verification', 'Payload was submitted to the configured endpoint.', 'Because this prototype uses no-cors, browser success only means the request was sent. Verify the Google Sheet row before claiming capture success.');
+    writeAudit({ timestamp: new Date().toISOString(), status: 'submitted_for_verification', record_id: attempt.record_id, message: 'Request sent. Sheet row verification required.' });
   } catch (error) {
-    status(`Google Sheets send failed before submission: ${String(error)}`);
+    setCaptureStatus('failed', 'Google Sheets send failed before submission.', String(error));
+    writeAudit({ timestamp: new Date().toISOString(), status: 'failed_before_submission', record_id: attempt.record_id, message: String(error) });
   } finally {
     button.disabled = false;
     button.textContent = originalText;
@@ -174,6 +252,8 @@ async function saveFollowUp(event) {
 }
 
 document.addEventListener('click', saveFollowUp, true);
-new MutationObserver(() => { markConnected(); updatePrintReport(); }).observe(document.body, { childList: true, subtree: true });
+new MutationObserver(() => { markConnected(); updatePrintReport(); renderCaptureAudit(); }).observe(document.body, { childList: true, subtree: true });
+installCaptureStyles();
 markConnected();
 updatePrintReport();
+renderCaptureAudit();
