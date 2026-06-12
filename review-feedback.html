@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Review Feedback</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1040px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}h1,h2{margin:.2rem 0 .7rem}p,label,li{color:var(--muted)}a{color:var(--blue)}input,select,textarea{width:100%;background:#07111c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}textarea{min-height:92px}button{border:1px solid var(--line);border-radius:12px;background:#132232;color:var(--text);padding:10px 14px;cursor:pointer}button.primary{border-color:var(--blue);background:rgba(66,215,255,.18)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}pre{white-space:pre-wrap;max-height:360px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>CyberShield Review Feedback</h1><p>Collect controlled review feedback for the vendor-risk demo. Feedback is stored locally in this browser and can be copied or downloaded as JSON. Do not enter confidential data.</p><p><span class="tag good">Local only</span><span class="tag warn">No backend submission</span><span class="tag bad">No private data</span></p><p><a href="vendor-risk.html">Guided demo</a> · <a href="pilot-package.html">Pilot package</a> · <a href="demo-script.html">Demo script</a> · <a href="internal-qa.html">Internal QA</a></p></section>
+<section class="card"><h2>Review scores</h2><div class="grid"><label>Clarity<select id="clarity"><option>5 - Very clear</option><option>4 - Mostly clear</option><option>3 - Somewhat clear</option><option>2 - Confusing</option><option>1 - Not clear</option></select></label><label>Usefulness<select id="usefulness"><option>5 - Very useful</option><option>4 - Useful</option><option>3 - Possibly useful</option><option>2 - Limited use</option><option>1 - Not useful</option></select></label><label>Credibility<select id="credibility"><option>5 - Credible</option><option>4 - Mostly credible</option><option>3 - Needs proof</option><option>2 - Weak</option><option>1 - Not credible</option></select></label><label>Pilot readiness<select id="pilot"><option>5 - Ready for pilot conversation</option><option>4 - Close</option><option>3 - Needs polish</option><option>2 - Not yet</option><option>1 - No</option></select></label></div></section>
+<section class="card"><h2>Written feedback</h2><label>What is the strongest part of the demo?<textarea id="strongest"></textarea></label><label>What would make you dismiss this?<textarea id="dismiss"></textarea></label><label>What is missing before a paid pilot?<textarea id="missing"></textarea></label><label>Which buyer/title would understand this fastest?<textarea id="buyer"></textarea></label><label>What should be cut or simplified?<textarea id="cut"></textarea></label><label>Other notes<textarea id="notes"></textarea></label><div class="actions"><button id="save" class="primary" type="button">Save Feedback Locally</button><button id="copy" type="button">Copy JSON</button><button id="download" type="button">Download JSON</button><button id="clear" type="button">Clear</button></div></section>
+<section class="card"><h2>Feedback JSON</h2><pre id="output">{}</pre></section>
+</main>
+<script>
+const KEY='cybershield_review_feedback_2026061128';
+const ids=['clarity','usefulness','credibility','pilot','strongest','dismiss','missing','buyer','cut','notes'];
+const $=id=>document.getElementById(id);
+function snapshot(){return{feedback_id:'FB-'+new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14),captured_at:new Date().toISOString(),demo_scope:'vendor-risk guided demo',scores:{clarity:$('clarity').value,usefulness:$('usefulness').value,credibility:$('credibility').value,pilot_readiness:$('pilot').value},written:{strongest:$('strongest').value.trim(),dismiss_risk:$('dismiss').value.trim(),missing_before_paid_pilot:$('missing').value.trim(),buyer_title:$('buyer').value.trim(),cut_or_simplify:$('cut').value.trim(),notes:$('notes').value.trim()},privacy_note:'Local browser storage only. Do not include confidential data.'}}
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}}
+function render(data=load()){if(data.scores){$('clarity').value=data.scores.clarity||$('clarity').value;$('usefulness').value=data.scores.usefulness||$('usefulness').value;$('credibility').value=data.scores.credibility||$('credibility').value;$('pilot').value=data.scores.pilot_readiness||$('pilot').value}if(data.written){$('strongest').value=data.written.strongest||'';$('dismiss').value=data.written.dismiss_risk||'';$('missing').value=data.written.missing_before_paid_pilot||'';$('buyer').value=data.written.buyer_title||'';$('cut').value=data.written.cut_or_simplify||'';$('notes').value=data.written.notes||''}update()}
+function update(){const data=snapshot();$('output').textContent=JSON.stringify(data,null,2);return data}
+ids.forEach(id=>$(id).addEventListener('input',update));
+$('save').onclick=()=>{localStorage.setItem(KEY,JSON.stringify(update()));alert('Feedback saved locally.')};
+$('copy').onclick=async()=>{const text=JSON.stringify(update(),null,2);try{await navigator.clipboard.writeText(text);alert('Feedback JSON copied.')}catch{prompt('Copy feedback JSON:',text)}};
+$('download').onclick=()=>{const blob=new Blob([JSON.stringify(update(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cybershield-review-feedback-'+Date.now()+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)};
+$('clear').onclick=()=>{if(confirm('Clear local feedback?')){localStorage.removeItem(KEY);ids.forEach(id=>{if($(''+id).tagName==='TEXTAREA')$(''+id).value=''});update()}};
+render();
+</script>
+</body>
+</html>
