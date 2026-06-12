@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Controlled Review Checklist</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1080px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}h1,h2{margin:.2rem 0 .7rem}p,li,label{color:var(--muted)}a{color:var(--blue)}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid rgba(185,199,214,.18);text-align:left;vertical-align:top}th{color:#8eeaff;text-transform:uppercase;font-size:.8rem}select{background:#07111c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px;font:inherit}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}button{border:1px solid var(--line);border-radius:12px;background:#132232;color:var(--text);padding:10px 14px;cursor:pointer}button.primary{border-color:var(--blue);background:rgba(66,215,255,.18)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}pre{white-space:pre-wrap;max-height:300px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}@media(max-width:820px){table{font-size:.88rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>CyberShield Controlled Review Checklist</h1><p>Use this before external review. It stores status locally and exports JSON only when copied or downloaded.</p><p><a href="review-index.html">Review index</a> · <a href="vendor-risk.html">Guided demo</a> · <a href="internal-qa.html">Internal QA</a></p><p><span class="tag warn">Local only</span><span class="tag good">GO/NO-GO support</span><span class="tag bad">No production claims</span></p></section>
+<section class="card"><h2>Route checks</h2><table><thead><tr><th>Check</th><th>Expected</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table><div class="actions"><button id="save" class="primary" type="button">Save Locally</button><button id="copy" type="button">Copy JSON</button><button id="download" type="button">Download JSON</button><button id="clear" type="button">Clear</button></div></section>
+<section class="card"><h2>Readiness summary</h2><p id="summary"><span class="tag warn">Not checked</span></p><pre id="output">{}</pre></section>
+</main>
+<script>
+const KEY='cybershield_controlled_review_checklist_2026061130';
+const checks=[
+ ['Guided demo route','/vendor-risk.html loads and completes the core vendor-risk path.'],
+ ['Smoke route','/vendor-risk-smoke.html shows GO.'],
+ ['Record contract','/record-contract.html shows GO and out-of-scope case remains safe.'],
+ ['Route manifest','/route-manifest.html shows vendor-risk as primary wedge.'],
+ ['Pilot package','/pilot-package.html frames a controlled 3 to 5 recommendation pilot without SaaS overclaim.'],
+ ['Demo script','/demo-script.html supports a 3 to 5 minute talk track and avoids production claims.'],
+ ['Review feedback','/review-feedback.html captures local feedback JSON only.'],
+ ['Capture status','/vendor-risk.html capture status distinguishes submitted-for-verification from verified Sheet row.'],
+ ['Print report','Browser Print / Save PDF produces a readable AI Trust Decision Record.'],
+ ['Legacy route','/trust-kernel-legacy.html remains preserved and is not root.']
+];
+const $=id=>document.getElementById(id);
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}}
+function render(){const saved=load();$('rows').innerHTML=checks.map((c,i)=>`<tr><td>${c[0]}</td><td>${c[1]}</td><td><select data-i="${i}"><option ${saved.items?.[i]?.status==='Not checked'?'selected':''}>Not checked</option><option ${saved.items?.[i]?.status==='Pass'?'selected':''}>Pass</option><option ${saved.items?.[i]?.status==='Fail'?'selected':''}>Fail</option><option ${saved.items?.[i]?.status==='Blocked'?'selected':''}>Blocked</option></select></td></tr>`).join('');document.querySelectorAll('[data-i]').forEach(s=>s.onchange=update);update()}
+function snapshot(){const items=[...document.querySelectorAll('[data-i]')].map((s,i)=>({check:checks[i][0],expected:checks[i][1],status:s.value}));return{checklist_id:'CR-'+new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14),captured_at:new Date().toISOString(),release_label:'2026061130-final-controlled-review-qa-pass',items,summary:{pass:items.filter(i=>i.status==='Pass').length,fail:items.filter(i=>i.status==='Fail').length,blocked:items.filter(i=>i.status==='Blocked').length,not_checked:items.filter(i=>i.status==='Not checked').length},decision:items.some(i=>['Fail','Blocked'].includes(i.status))?'NO-GO':items.every(i=>i.status==='Pass')?'GO':'INCOMPLETE'}}
+function update(){const data=snapshot();$('summary').innerHTML=`<span class="tag ${data.decision==='GO'?'good':data.decision==='NO-GO'?'bad':'warn'}">${data.decision}</span><span class="tag good">${data.summary.pass} pass</span><span class="tag bad">${data.summary.fail} fail</span><span class="tag warn">${data.summary.blocked} blocked</span><span class="tag warn">${data.summary.not_checked} not checked</span>`;$('output').textContent=JSON.stringify(data,null,2);return data}
+$('save').onclick=()=>{localStorage.setItem(KEY,JSON.stringify(update()));alert('Checklist saved locally.')};
+$('copy').onclick=async()=>{const text=JSON.stringify(update(),null,2);try{await navigator.clipboard.writeText(text);alert('Checklist JSON copied.')}catch{prompt('Copy JSON:',text)}};
+$('download').onclick=()=>{const blob=new Blob([JSON.stringify(update(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cybershield-controlled-review-checklist-'+Date.now()+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)};
+$('clear').onclick=()=>{if(confirm('Clear local checklist?')){localStorage.removeItem(KEY);render()}};
+render();
+</script>
+</body>
+</html>
