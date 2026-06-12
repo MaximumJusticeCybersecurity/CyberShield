@@ -13,6 +13,18 @@
 <header class="topbar"><div class="brand"><img src="assets/mjc-logo-2026.png" alt="MJC logo"><span><span class="eyebrow">CyberShield Guided Demo</span><strong>Vendor-Risk Trust Decision Loop</strong></span></div><div class="actions"><button id="resetDemo" type="button">Reset Demo</button><button id="regenerateTop" class="primary" type="button">Regenerate Record</button><button id="printTop" type="button">Print / Save PDF</button></div></header>
 <main class="layout"><section class="panel" id="app"></section><aside class="side" id="side"><p>Loading guided route...</p><div class="stability-note"><strong>Stability mode:</strong> performance-heavy review add-ons are temporarily disabled. The core vendor-risk Trust Decision Record workflow remains active.</div></aside></main>
 <section class="print-report" id="printReport"></section>
+<script>
+try {
+  const key = 'cybershield_vendor_risk_guided_2026061029';
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has('preserveStep')) {
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    localStorage.setItem(key, JSON.stringify({ ...saved, step: 0 }));
+  }
+} catch {
+  localStorage.setItem('cybershield_vendor_risk_guided_2026061029', JSON.stringify({ step: 0, vendor: 'Vendor X', contradiction: 'all' }));
+}
+</script>
 <script type="module" src="src/atdr/vendor-risk-guided.js"></script>
 </body>
 </html>
