@@ -2,221 +2,141 @@
 
 ## Current strategic direction
 
-CyberShield is now focused on one primary workflow:
+CyberShield is focused on one workflow:
 
 ```text
 AI-generated recommendation in -> AI Trust Decision Record out
 ```
 
-Current active implementation line:
+The first proof point is:
 
 ```text
-2026060414V1 CyberShield AI Decision Assurance Prototype
+AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out
 ```
 
-Planned static MVP release candidate:
+The record is the product.
+
+## Current stability handoff
+
+Read this first:
 
 ```text
-2026060420V1 Static MVP Release Candidate
+docs/2026061133-successor-builder-handoff.md
 ```
 
-## Primary demo routes
-
-After this branch merges to `main`, the recommended public demo entry point is:
+Current stable label:
 
 ```text
-/demo.html
+2026061133-stability-handoff
 ```
 
-Supporting routes:
+Primary live root:
 
 ```text
-/launch.html       CyberShield AI Decision Assurance launch page
-/atdr.html         AI Trust Decision Record workbench
-/brief.html        Executive brief preview and print/PDF path
-/atdr-smoke.html   Demo readiness and schema smoke test
-/index.html        Trust Kernel
+https://maximumjusticecybersecurity.github.io/CyberShield/
 ```
 
-Current branch preview route:
+Primary guided demo:
 
 ```text
-https://raw.githack.com/MaximumJusticeCybersecurity/CyberShield/preview-atdr-2026060414/demo.html
+/vendor-risk.html
 ```
 
-Live production route after merge:
+Final review index:
 
 ```text
-https://maximumjusticecybersecurity.github.io/CyberShield/demo.html
+/review-index.html
 ```
 
-## Public naming rule
-
-Public product family:
+Internal QA hub:
 
 ```text
-CyberShield
+/internal-qa.html
 ```
 
-Focused workflow name:
+## Critical stability note
+
+The live `/vendor-risk.html` route is intentionally in stability mode.
+
+It currently loads only:
 
 ```text
-CyberShield AI Decision Assurance
+src/atdr/vendor-risk-guided.js
 ```
 
-Primary artifact:
+Optional route-layer modules were temporarily disabled from the live guided route after browser unresponsiveness was reported across multiple browsers. Do not re-enable optional route-layer modules until they are rebuilt as stable, bounded renderers and tested.
+
+## Fresh demo start rule
+
+A fresh demo must start on:
 
 ```text
-AI Trust Decision Record
+1. Identify
 ```
 
-Existing trust surface:
+Normal `/vendor-risk.html` page load now resets saved step state to Identify so stale browser state cannot open the demo at step 6, Record.
+
+Builder testing escape hatch:
 
 ```text
-Trust Kernel
+/vendor-risk.html?preserveStep=1
 ```
 
-Use this distinction:
+## Current route library
+
+Controlled review routes:
 
 ```text
-CyberShield ATDR is the workflow.
-Trust Kernel is the underlying trust surface.
-The AI Trust Decision Record is the product artifact.
+/review-index.html
+/vendor-risk.html
+/pilot-package.html
+/demo-script.html
+/review-feedback.html
+/controlled-review-checklist.html
+/internal-qa.html
+/vendor-risk-smoke.html
+/record-contract.html
+/route-manifest.html
+/report-capture-test.html
 ```
 
-Do not call the public build **CyberShield OS v8** unless the repo, README, loader, Settings/admin metadata, and public UX are intentionally changed to that version scheme.
-
-## Versioning rule
-
-After the V60.3 release train, new implemented AI-direction builds use timestamp-based versioning:
+Preserved routes:
 
 ```text
-YYYYMMDDHHV#
+/atdr.html
+/demo-readiness.html
+/advisor-feedback.html
+/trust-kernel-legacy.html
 ```
 
-Use 24-hour **America/New_York** time unless the user explicitly changes the project timezone.  Example:
+The preserved routes are not the primary buyer demo.
+
+## Current demo contract
+
+Expected vendor-risk sample output:
 
 ```text
-2026060414V1
+Domain: vendor-risk
+Claims extracted: 10
+Recommended Action: Request Evidence
+Risk If Wrong: High
+Confidence Band: Low confidence
+Human Review Required: Yes
 ```
 
-Canonical schema document:
+Expected out-of-scope safety output:
 
 ```text
-docs/versioning-schema.md
+Domain: out-of-scope
+Confidence Band: Unknown confidence
+Risk If Wrong: Unknown
+Recommended Action: Out of Scope for Current Review
+Human Review Required: Yes
+Record Defensibility: Not defensible
+Framework mappings: 0
 ```
 
-## Active priority
-
-The active priority is the AI Trust Decision Record workflow.
-
-First target workflow:
-
-```text
-AI-generated security, compliance, and vendor-risk recommendations
-```
-
-The system must:
-
-```text
-1. Ingest an AI-generated recommendation
-2. Extract claims
-3. Map evidence
-4. Identify missing support
-5. Identify weak, stale, incomplete, or contradicted evidence
-6. Classify Risk If Wrong
-7. Assign confidence bands
-8. Recommend action
-9. Require human review where needed
-10. Export a defensible AI Trust Decision Record
-```
-
-## Current demo modes
-
-The ATDR workbench currently supports:
-
-```text
-1. Vendor Risk: Contradictory Evidence
-2. Security: Vulnerability Risk Acceptance
-3. Compliance: NIST Control Claim
-```
-
-The vendor-risk demo remains the default sales wedge.
-
-## Current static prototype capabilities
-
-The current branch includes:
-
-```text
-Demo control room
-Launch page
-ATDR workbench
-Executive brief preview
-Smoke test readiness page
-Deterministic model-family engine
-Multi-domain claim atomization
-Synthetic evidence repository
-Local in-browser evidence upload
-Evidence notes
-Missing support detection
-Risk If Wrong classification
-Confidence banding
-Human review gate
-Human decision and override capture
-Structured JSON export
-Browser print/PDF path
-Demo Coach
-Schema validation
-Model contract registry
-Trust Kernel naming alignment
-```
-
-## Deprioritized but preserved work
-
-The following work is preserved for later phases, but is not the current build priority:
-
-```text
-TrustMap
-Dashboards
-Broad governance surfaces
-Runtime agents
-Generic trust scores
-Great Map visual system
-Architecture model library expansion
-```
-
-Do not delete this work.  File it away.  CyberShield expects to return to these capabilities after the AI Trust Decision Record workflow works.
-
-## Required next-builder reading order
-
-Read these first:
-
-```text
-docs/2026060416-20260607-atdr-next-version-build-plan.md
-docs/2026060415-successor-builder-handoff.md
-docs/2026060415-atdr-presenter-script.md
-docs/2026060415-atdr-merge-readiness-plan.md
-docs/2026060420V1-static-mvp-release-note-draft.md
-docs/2026060415-atdr-engineering-plan-for-review.md
-docs/2026060415-demo-readiness-acceptance-checklist.md
-docs/2026060415-atdr-version-roadmap.md
-docs/2026060414-atdr-decision-assurance-build-record.md
-docs/2026060414-atdr-qa-status.md
-docs/2026060415-trust-kernel-naming-note.md
-bots.txt
-governance-summary.json
-```
-
-Historical pivot documents:
-
-```text
-docs/2026060411-ai-trust-decision-record-pivot.md
-docs/2026060411-ai-trust-decision-record-builder-package.md
-```
-
-TrustMap documents explain what was built and why it is now deferred.  They are not the active next-build priority.
-
-## AI Trust Decision Record doctrine
+## Doctrine
 
 Do not ask only:
 
@@ -230,150 +150,56 @@ Ask:
 Can the organization defend acting on this AI-generated recommendation based on the evidence available at the time?
 ```
 
-Also ask:
-
-```text
-Which claims did the AI make?
-Which claims are material?
-What evidence supports each material claim?
-What evidence is missing, weak, stale, incomplete, or contradicted?
-What is the Risk If Wrong?
-How confident can CyberShield be based on evidence and review state?
-Who must review it?
-What action is defensible?
-Can the decision be defended later?
-```
-
 Internal doctrine:
 
 ```text
 AI confidence is not evidence.
 ```
 
-## Required ATDR output
+## Boundaries
 
-The AI Trust Decision Record should include:
+Do not claim:
 
 ```text
-Record ID
-Record type
-Created timestamp
-Created by
-Original AI recommendation
-AI source
-Source model if known
-Intended use
-Domain
-Recommendation type
-Decision context
-Applicable framework references
-Extracted claims
-Claim type
-Materiality
-Required evidence
-Evidence provided
-Evidence sufficiency
-Missing support severity
-Conflict status
-Confidence band
-Risk If Wrong
-Consequence summary
-Human review requirement
-Required reviewer role
-Review status
-Reviewer notes
-Recommended action
-Required next step
-Decision owner
-Record defensibility band
-Missing record fields
-Limitations
-Export timestamp
-Analysis version
+production readiness
+live model-backed analysis
+production persistence
+production authentication
+tenant isolation
+server-side DOCX/PDF generation
+production CRM infrastructure
+compliance certification
+SOC 2 as automatic approval
+framework mapping as compliance proof
+autonomous vendor approval
 ```
 
-## Builder skills needed next
+Browser Print / Save PDF is the current export path.
 
-The next builder should understand:
+Endpoint-backed capture, when enabled, is prototype-grade capture only, not production CRM infrastructure.
+
+## Next builder task
+
+The owner will provide an updated architecture document to the next engineer.
+
+Before coding, the next builder must:
 
 ```text
-JavaScript modular architecture
-Structured data modeling
-Claim extraction logic
-Evidence mapping logic
-Security and compliance vocabulary
-Vendor-risk workflow basics
-Confidence banding
-Risk If Wrong analysis
-Human-in-the-loop review
-Exportable decision records
-Audit trail design
-Defensive UX
-Product boundary discipline
-Browser-only prototype constraints
+1. Read docs/2026061133-successor-builder-handoff.md.
+2. Read the updated architecture document from the owner.
+3. Reconcile the new architecture against the current stability handoff.
+4. Update README, route-manifest.json, release-manifest.json, and record-contract.json if needed.
+5. Only then modify the live guided route.
 ```
 
-## Boundary
-
-The current public build is still a static advisory prototype.  The current ATDR build must not claim autonomous approval, live compliance certification, live vendor approval, legal determination, CMMC certification, audit opinion, production enforcement, live evidence retrieval, live internet verification, enterprise evidence storage, malware scanning, tenant isolation enforcement, or backend persistence unless those capabilities are explicitly built and validated later.
-
-## Merge readiness
-
-Before merging the ATDR branch into `main`, confirm:
+Recommended next build:
 
 ```text
-/demo.html loads
-/launch.html loads
-/atdr.html loads
-/brief.html loads
-/atdr-smoke.html loads
-/index.html loads as Trust Kernel
-Smoke test shows GO
-Vendor-risk demo works end-to-end
-Executive brief preview prints cleanly
-No route overclaims compliance, legal, audit, production, or autonomous approval capability
+2026061134-stability-first-route-architecture
 ```
 
-## Recommended next build package
+Goal:
 
 ```text
-2026060416V1 Static Demo QA and Merge Candidate
-```
-
-Then:
-
-```text
-2026060417V1 Executive Brief Hardening
-2026060418V1 Evidence Workbench Expansion
-2026060419V1 Human Review Workflow Expansion
-2026060420V1 Static MVP Release Candidate
-20260605xxV1 Backend Architecture Package
-20260606xxV1 Production MVP Foundation
-20260607xxV1 Live Model Optionality
-```
-
-Canonical next-version build plan:
-
-```text
-docs/2026060416-20260607-atdr-next-version-build-plan.md
-```
-
-Acceptance criteria for static MVP:
-
-```text
-User can open the demo control room
-User can launch ATDR workflow
-User can select one of three demo modes
-System extracts structured claims
-System maps available evidence
-System identifies missing support
-System classifies Risk If Wrong
-System assigns confidence band with reasons
-System recommends action
-System flags human review when required
-System exports structured JSON
-System renders a standalone executive brief preview
-System supports browser Print / Save PDF
-TrustMap is not the primary workflow
-Trust Kernel remains available
+Rebuild optional validator, evidence taxonomy, candidate-action, mobile polish, and capture panels as stable render-once components that cannot create page-freezing loops.
 ```
