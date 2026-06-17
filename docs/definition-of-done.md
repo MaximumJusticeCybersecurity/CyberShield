@@ -1,11 +1,11 @@
 # CyberShield Definition of Done
 
 Date: 2026-06-17
-Baseline: 2026061717 Harness Self-Improvement Requirements
+Baseline: 2026061721 Human Legibility and Agency Requirements
 
 ## Purpose
 
-A CyberShield build is not complete merely because code changed.  It is complete only when the repo, docs, requirements, QA, boundaries, harness assumptions, and handoff are aligned.
+A CyberShield build is not complete merely because code changed.  It is complete only when the repo, docs, requirements, QA, boundaries, harness assumptions, legibility requirements, and handoff are aligned.
 
 ## Definition of Done
 
@@ -30,7 +30,9 @@ A material build is done only when all of the following are true:
 17. reports/exports include boundary language when applicable
 18. affected harness assumptions are documented
 19. material model, workflow, source, permission, or proof changes trigger harness review
-20. future builder can understand what changed and what remains
+20. human legibility, meaningful human authority, and decision owner fields are updated when ATDR behavior changes
+21. challenge-tested status and sycophancy / over-agreement risk are addressed where applicable
+22. future builder can understand what changed and what remains
 
 ## Required files after every material build
 
@@ -45,6 +47,7 @@ Update when relevant:
 - docs/requirements-traceability-matrix.md
 - requirements docs affected by the change
 - harness or decision-assurance docs affected by the change
+- human legibility or meaningful human authority docs affected by the change
 
 ## Harness Definition of Done
 
@@ -57,6 +60,22 @@ When a build affects agents, AI-assisted workflows, AI Trust Decision Records, e
 5. Value / Usefulness
 
 The build is incomplete if the harness changed but the documentation does not explain the change.
+
+## Human Legibility Definition of Done
+
+When a build affects ATDR, decision review, recommendations, findings, reports, exports, or executive-facing explanations, the builder must document whether the change affects:
+
+1. Human legibility
+2. Meaningful human authority
+3. Decision owner clarity
+4. Facts / assumptions / inferences / recommendations separation
+5. Challenge-tested status
+6. Sycophancy / over-agreement risk
+7. Generic AI output risk
+8. Human agency risk
+9. Next human action
+
+The build is incomplete if the product asks a human to approve something the human cannot understand, challenge, reject, or escalate.
 
 ## Build failure conditions
 
@@ -74,10 +93,14 @@ A build fails Definition of Done if:
 - an agent or workflow silently changes job classification
 - model or workflow changes do not trigger harness review
 - proof trail is not inspectable where the UI claims evidence support
+- a human approval step is ceremonial rather than meaningful
+- facts, assumptions, inferences, and recommendations are blurred in a consequential decision record
+- AI-generated polish is presented as evidence
+- sycophancy / over-agreement risk is ignored where challenge is required
 - next builder cannot understand what to do next
 
 ## Acceptance statement
 
 Before handing off, every builder should be able to say:
 
-I updated the code, the requirements, the metadata, the builder log, the handoff, and the acceptance checklist.  I checked for dead clicks, overclaims, release drift, recurring regressions, harness drift, authority changes, source freshness, proof quality, and next-builder clarity.
+I updated the code, the requirements, the metadata, the builder log, the handoff, and the acceptance checklist.  I checked for dead clicks, overclaims, release drift, recurring regressions, harness drift, authority changes, source freshness, proof quality, human legibility, meaningful human authority, challenge-tested status, and next-builder clarity.
