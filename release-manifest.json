@@ -1,17 +1,23 @@
 {
-  "release_id": "2026061134-stability-first-route-architecture",
-  "release_name": "CyberShield Stability-First Vendor-Risk Decision Assurance",
+  "release_id": "2026061138-cross-browser-qa-and-promotion-decision",
+  "release_name": "CyberShield Preferred Vendor-Risk Next Demo with Stable Fallback",
   "release_date": "2026-06-17",
-  "primary_route": "/vendor-risk.html",
-  "experimental_route": "/vendor-risk-next.html",
+  "preferred_route": "/vendor-risk-next.html",
+  "fallback_route": "/vendor-risk.html",
   "primary_wedge": "vendor-risk",
-  "status": "static prototype with stable buyer route and richer experimental route",
-  "root_behavior": "Root landing page leads with AI Decision Assurance value and directs visitors to the guided vendor-risk sample.",
+  "status": "static prototype with preferred rich route and stable fallback route",
+  "root_behavior": "Root landing page leads with AI Decision Assurance value and redirects visitors to the preferred vendor-risk next demo.",
   "north_star": "Before relying on AI, CyberShield shows whether the recommendation is defensible.",
   "core_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
   "public_artifact_name": "AI Trust Decision Record",
   "pilot_positioning": "software-assisted advisory pilot",
   "first_proof_point": "AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out",
+  "promotion_basis": [
+    "Owner confirmed both /vendor-risk.html and /vendor-risk-next.html loaded quickly.",
+    "/vendor-risk-next.html avoids MutationObserver loops.",
+    "/vendor-risk-next.html uses sessionStorage.",
+    "Stable fallback route remains available."
+  ],
   "google_sheets_capture": {
     "mode": "configured",
     "endpoint_type": "Google Apps Script Web App",
@@ -29,11 +35,11 @@
   },
   "buyer_facing_routes": [
     "/",
+    "/vendor-risk-next.html",
     "/vendor-risk.html"
   ],
   "review_and_preview_routes": [
     "/review-index.html",
-    "/vendor-risk-next.html",
     "/pilot-package.html",
     "/demo-script.html",
     "/review-feedback.html"
@@ -41,6 +47,8 @@
   "internal_routes": [
     "/internal-qa.html",
     "/controlled-review-checklist.html",
+    "/vendor-risk-next-smoke.html",
+    "/trust-decision-record-schema-smoke.html",
     "/report-capture-test.html",
     "/vendor-risk-smoke.html",
     "/record-contract.html",
@@ -55,8 +63,8 @@
     "/trust-kernel-legacy.html"
   ],
   "release_guardrails": [
-    "Vendor-risk guided route remains the primary buyer-facing demo.",
-    "Richer panels belong on /vendor-risk-next.html until cross-browser performance is proven.",
+    "Use /vendor-risk-next.html as preferred high-touch demo route.",
+    "Use /vendor-risk.html as fallback if any browser slows down or freezes.",
     "Aegis remains internal for this build.",
     "Trust Kernel may be referenced as supporting architecture, not as the primary public message.",
     "ATDR workbench remains internal inspection only and must not be surfaced as the public demo.",
@@ -78,8 +86,8 @@
     "Google Sheets capture is endpoint-backed but not production CRM infrastructure"
   ],
   "next_recommended_builds": [
-    "2026061135-test-and-promote-vendor-risk-next",
-    "2026061136-session-storage-state-cleanup",
-    "2026061137-schema-contract-mapping"
+    "2026061139-stable-route-capture-cleanup",
+    "2026061140-report-print-polish",
+    "2026061141-feedback-integration-after-review"
   ]
 }
