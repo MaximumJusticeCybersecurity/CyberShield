@@ -1,7 +1,7 @@
 # CyberShield Requirements Traceability Matrix
 
 Date: 2026-06-17
-Baseline: 2026061717 Harness Self-Improvement Requirements
+Baseline: 2026061721 Human Legibility and Agency Requirements
 
 ## Purpose
 
@@ -52,8 +52,23 @@ This matrix tracks critical requirements from founder feedback, advisor feedback
 | REQ-HM-013 | CyberShield must not imply that self-improvement means autonomous authority expansion. | Founder decision + no-overclaim doctrine | Critical | 2026061717+ | Accepted | No product copy or UI implies uncontrolled self-modification. |
 | REQ-LEG-001 | CyberShield must make AI-influenced decisions legible, reviewable, and accountable. | Catie Cuan robotics lesson + founder decision | Critical | 2026061717+ | Accepted | ATDR explains what happened, why, evidence used, uncertainty, and human approval point. |
 | REQ-MHA-001 | Meaningful Human Authority requires legibility, contestability, rejection path, and residual risk acknowledgment. | Founder decision + decision assurance doctrine | Critical | 2026061717+ | Accepted | Human review screen shows what the reviewer is approving and allows override/rejection rationale. |
-| REQ-GAIN-001 | CyberShield should classify AI use as Give, Accelerate, Integrate, or No AI where relevant. | Dan Martell / Omar El-Takrori conversation + founder decision | Medium | Future | Accepted | AI adoption review supports task classification without broadening first demo. |
+| REQ-GAIN-001 | CyberShield should classify AI use as Give, Accelerate, Integrate, or No AI where relevant. | Dan Martell / Omar Eltakrori conversation + founder decision | Medium | Future | Accepted | AI adoption review supports task classification without broadening first demo. |
 | REQ-TALENT-001 | CyberShield should flag Talent Pipeline / Apprenticeship Risk when AI removes work that trains human judgment. | Ethan Mollick / Simon Sinek conversation + founder decision | Medium | Future | Accepted | Governance assessment includes training and judgment-development risk where applicable. |
+| REQ-HLA-001 | CyberShield must include a Human Legibility section in the AI Trust Decision Record. | Catie Cuan + Aegis Legibility doctrine | Critical | 2026061721+ | Accepted | ATDR shows what happened, why, evidence used, assumptions, uncertainty, and decision owner action. |
+| REQ-HLA-002 | CyberShield must include a Meaningful Human Authority check. | Human-AI Command doctrine + founder decision | Critical | 2026061721+ | Accepted | Reviewer can understand, accept, reject, modify, or escalate with rationale. |
+| REQ-HLA-003 | CyberShield must detect ceremonial approval risk. | Aegis Human Legibility and Agency doctrine | Critical | 2026061721+ | Accepted | Finding triggers when human review exists but decision basis is not legible. |
+| REQ-HLA-004 | CyberShield must include an AI Sycophancy / Over-Agreement check. | Simon Sinek / Ethan Mollick conversation | High | 2026061721+ | Accepted | Review asks whether AI challenged the premise or merely optimized around it. |
+| REQ-HLA-005 | CyberShield must distinguish facts, assumptions, inferences, and recommendations. | Aegis decision-governance doctrine | Critical | 2026061721+ | Accepted | ATDR separates these fields or labels them clearly in the narrative. |
+| REQ-HLA-006 | CyberShield must include a Why Gate for major AI-influenced decisions or agent workflows. | Catie Cuan + Simon Sinek Start With Why alignment | High | 2026061721+ | Accepted | Review captures why this AI use exists, why now, and what trust failure it prevents. |
+| REQ-HLA-007 | CyberShield must include a Productive Friction / Judgment Preservation check where applicable. | Ethan Mollick learning / effort lesson | Medium | Future | Accepted | Assessment flags whether automation removes work that trains human judgment or apprenticeship. |
+| REQ-HLA-008 | CyberShield must identify generic AI output risk. | Simon Sinek / Ethan Mollick voice and taste lesson | High | 2026061721+ | Accepted | Finding triggers when output is polished but non-specific, unsupported, or not operationally useful. |
+| REQ-HLA-009 | CyberShield must preserve accountable human ownership in every consequential ATDR. | Human-AI Command doctrine | Critical | 2026061721+ | Accepted | Export identifies the accountable human decision owner or shows owner missing. |
+| REQ-HLA-010 | CyberShield must make the model / app / harness distinction clear in builder and product documentation. | Ethan Mollick + Nate B. Jones harness lesson | Medium | 2026061721+ | Accepted | Docs and UI do not confuse model intelligence with controlled decision assurance. |
+| REQ-HLA-011 | CyberShield must include Taste / Expert Judgment as an evaluation input when reviewing strategy, policy, communications, or governance artifacts. | Simon Sinek / Ethan Mollick taste lesson | Medium | Future | Accepted | Assessment can record expert judgment notes and reviewer rationale. |
+| REQ-HLA-012 | CyberShield must include Legibility Failure in the risk taxonomy. | Catie Cuan + CyberShield decision assurance | Critical | 2026061721+ | Accepted | Risk taxonomy includes opaque recommendation, unclear assumption, missing proof, and ceremonial approval. |
+| REQ-HLA-013 | CyberShield must include Human Agency Erosion in the risk taxonomy. | Simon Sinek / Ethan Mollick agency lesson | High | Future | Accepted | Assessment flags when AI removes human judgment without a compensating control. |
+| REQ-HLA-014 | CyberShield must include Challenge-Tested status. | Ethan Mollick critic-mode lesson + Aegis Red Team doctrine | High | 2026061721+ | Accepted | ATDR records whether the AI recommendation was red-teamed, critiqued, or reviewed from a skeptical lens. |
+| REQ-HLA-015 | CyberShield must not overclaim live AI monitoring, autonomous enforcement, or model introspection unless implemented. | No-overclaim doctrine | Critical | All | Accepted | No-overclaim checklist passes. |
 
 ## Builder rule
 
