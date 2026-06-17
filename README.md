@@ -14,35 +14,51 @@ The first proof point is:
 AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out
 ```
 
-The record is the product.
-
-## Current stability handoff
-
-Read this first:
+The public artifact name is:
 
 ```text
+AI Trust Decision Record
+```
+
+The pilot positioning is:
+
+```text
+software-assisted advisory pilot
+```
+
+## Current architecture library
+
+PR #6 has been merged and is now part of the requirements library.
+
+Read these first:
+
+```text
+docs/engineer-next-build-instructions.md
+docs/cybershield-decision-assurance-requirements.md
+docs/cybershield-trust-kernel-lite-architecture.md
+docs/aegis-cybershield-architecture-boundary.md
+docs/trust-decision-record-schema.md
+docs/google-sheets-report-capture.md
 docs/2026061133-successor-builder-handoff.md
 ```
 
-Current stable label:
+Aegis remains internal for this build.  Public CyberShield language must stay focused on the buyer problem.
 
-```text
-2026061133-stability-handoff
-```
+## Current live route strategy
 
-Primary live root:
-
-```text
-https://maximumjusticecybersecurity.github.io/CyberShield/
-```
-
-Primary guided demo:
+Stable buyer route:
 
 ```text
 /vendor-risk.html
 ```
 
-Final review index:
+Richer experimental route:
+
+```text
+/vendor-risk-next.html
+```
+
+Review index:
 
 ```text
 /review-index.html
@@ -54,9 +70,9 @@ Internal QA hub:
 /internal-qa.html
 ```
 
-## Critical stability note
+## Stability rule
 
-The live `/vendor-risk.html` route is intentionally in stability mode.
+`/vendor-risk.html` remains the stable buyer route.
 
 It currently loads only:
 
@@ -64,7 +80,9 @@ It currently loads only:
 src/atdr/vendor-risk-guided.js
 ```
 
-Optional route-layer modules were temporarily disabled from the live guided route after browser unresponsiveness was reported across multiple browsers. Do not re-enable optional route-layer modules until they are rebuilt as stable, bounded renderers and tested.
+Do not re-enable optional route-layer modules on `/vendor-risk.html` until the richer route is tested.
+
+`/vendor-risk-next.html` is the place to rebuild richer behavior first.
 
 ## Fresh demo start rule
 
@@ -74,13 +92,9 @@ A fresh demo must start on:
 1. Identify
 ```
 
-Normal `/vendor-risk.html` page load now resets saved step state to Identify so stale browser state cannot open the demo at step 6, Record.
+`/vendor-risk.html` resets saved step state to Identify on normal page load.
 
-Builder testing escape hatch:
-
-```text
-/vendor-risk.html?preserveStep=1
-```
+`/vendor-risk-next.html` uses `sessionStorage` so stale browser state does not survive across sessions.
 
 ## Current route library
 
@@ -89,6 +103,7 @@ Controlled review routes:
 ```text
 /review-index.html
 /vendor-risk.html
+/vendor-risk-next.html
 /pilot-package.html
 /demo-script.html
 /review-feedback.html
@@ -136,6 +151,22 @@ Record Defensibility: Not defensible
 Framework mappings: 0
 ```
 
+## Capture source of truth
+
+Current configured Sheet ID is:
+
+```text
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
+```
+
+Source file:
+
+```text
+src/atdr/report-capture-config.js
+```
+
+Do not switch Sheet IDs unless the owner explicitly confirms a migration.
+
 ## Doctrine
 
 Do not ask only:
@@ -155,6 +186,8 @@ Internal doctrine:
 ```text
 AI confidence is not evidence.
 ```
+
+Trust Kernel language may be used as internal or supporting architecture language.  It should not dominate the public landing page.
 
 ## Boundaries
 
@@ -178,28 +211,28 @@ Browser Print / Save PDF is the current export path.
 
 Endpoint-backed capture, when enabled, is prototype-grade capture only, not production CRM infrastructure.
 
-## Next builder task
-
-The owner will provide an updated architecture document to the next engineer.
-
-Before coding, the next builder must:
-
-```text
-1. Read docs/2026061133-successor-builder-handoff.md.
-2. Read the updated architecture document from the owner.
-3. Reconcile the new architecture against the current stability handoff.
-4. Update README, route-manifest.json, release-manifest.json, and record-contract.json if needed.
-5. Only then modify the live guided route.
-```
+## Next engineering task
 
 Recommended next build:
 
 ```text
-2026061134-stability-first-route-architecture
+2026061135-test-and-promote-vendor-risk-next
 ```
 
 Goal:
 
 ```text
-Rebuild optional validator, evidence taxonomy, candidate-action, mobile polish, and capture panels as stable render-once components that cannot create page-freezing loops.
+Test /vendor-risk-next.html across Brave, Chrome, Firefox, and mobile.  If stable, promote its safe features into /vendor-risk.html or route buyers to /vendor-risk-next.html intentionally.
+```
+
+Acceptance:
+
+```text
+/vendor-risk.html remains stable.
+/vendor-risk-next.html loads quickly.
+/vendor-risk-next.html starts on Identify.
+Validators render without observer loops.
+Candidate action tournament renders without observer loops.
+AI Trust Decision Record print path works.
+Capture submits to configured endpoint or simulates honestly.
 ```
