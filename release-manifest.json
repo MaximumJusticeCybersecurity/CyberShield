@@ -1,19 +1,24 @@
 {
-  "release_id": "2026061113-google-sheets-capture-configured",
-  "release_name": "CyberShield Buyer-First AI Decision Assurance with Google Sheets Capture Configured",
-  "release_date": "2026-06-11",
+  "release_id": "2026061134-stability-first-route-architecture",
+  "release_name": "CyberShield Stability-First Vendor-Risk Decision Assurance",
+  "release_date": "2026-06-17",
   "primary_route": "/vendor-risk.html",
+  "experimental_route": "/vendor-risk-next.html",
   "primary_wedge": "vendor-risk",
-  "status": "static prototype, buyer-first positioning plus Google Sheets capture configured for live testing",
-  "root_behavior": "Root landing page leads with broader AI Decision Assurance value and directs visitors to the guided vendor-risk sample.",
+  "status": "static prototype with stable buyer route and richer experimental route",
+  "root_behavior": "Root landing page leads with AI Decision Assurance value and directs visitors to the guided vendor-risk sample.",
   "north_star": "Before relying on AI, CyberShield shows whether the recommendation is defensible.",
   "core_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
+  "public_artifact_name": "AI Trust Decision Record",
+  "pilot_positioning": "software-assisted advisory pilot",
   "first_proof_point": "AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out",
   "google_sheets_capture": {
     "mode": "configured",
     "endpoint_type": "Google Apps Script Web App",
-    "sheet_id": "1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw",
-    "test_route": "/report-capture-test.html"
+    "sheet_id": "1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w",
+    "config_file": "src/atdr/report-capture-config.js",
+    "test_route": "/report-capture-test.html",
+    "verification_rule": "Browser submission is not proof of row creation. Verify the Google Sheet row before claiming capture success."
   },
   "core_contract": {
     "claims_extracted": 10,
@@ -26,7 +31,16 @@
     "/",
     "/vendor-risk.html"
   ],
+  "review_and_preview_routes": [
+    "/review-index.html",
+    "/vendor-risk-next.html",
+    "/pilot-package.html",
+    "/demo-script.html",
+    "/review-feedback.html"
+  ],
   "internal_routes": [
+    "/internal-qa.html",
+    "/controlled-review-checklist.html",
     "/report-capture-test.html",
     "/vendor-risk-smoke.html",
     "/record-contract.html",
@@ -41,8 +55,10 @@
     "/trust-kernel-legacy.html"
   ],
   "release_guardrails": [
-    "Broader value message is AI Decision Assurance, but the first workflow remains vendor-risk recommendation review.",
     "Vendor-risk guided route remains the primary buyer-facing demo.",
+    "Richer panels belong on /vendor-risk-next.html until cross-browser performance is proven.",
+    "Aegis remains internal for this build.",
+    "Trust Kernel may be referenced as supporting architecture, not as the primary public message.",
     "ATDR workbench remains internal inspection only and must not be surfaced as the public demo.",
     "Google Sheets capture is configured through the deployed Apps Script endpoint, but this remains prototype-grade capture, not production CRM infrastructure.",
     "Legacy Trust Kernel remains preserved and is not restored as root.",
@@ -62,8 +78,8 @@
     "Google Sheets capture is endpoint-backed but not production CRM infrastructure"
   ],
   "next_recommended_builds": [
-    "2026061114-google-sheets-capture-validation",
-    "2026061115-guided-demo-visual-polish",
-    "2026061116-executive-report-language-polish"
+    "2026061135-test-and-promote-vendor-risk-next",
+    "2026061136-session-storage-state-cleanup",
+    "2026061137-schema-contract-mapping"
   ]
 }
