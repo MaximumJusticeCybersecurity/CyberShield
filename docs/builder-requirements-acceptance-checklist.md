@@ -1,11 +1,11 @@
 # Builder Requirements Acceptance Checklist
 
-Date: 2026-05-28
-Baseline: V51.1
+Date: 2026-06-17
+Baseline: 2026061721 Human Legibility and Agency Requirements
 
 ## Purpose
 
-Every future CyberShield builder must use this checklist before a build is accepted.  This checklist exists to prevent feature stacking, dead interactions, stale metadata, broken release chain, hidden scoring logic, generic demos, and overclaimed capabilities.
+Every future CyberShield builder must use this checklist before a build is accepted.  This checklist exists to prevent feature stacking, dead interactions, stale metadata, broken release chain, hidden scoring logic, generic demos, overclaimed capabilities, opaque AI recommendations, ceremonial approvals, and unmaintained harness drift.
 
 ## 1. Release-chain checklist
 
@@ -32,6 +32,7 @@ If a build changes app behavior, update:
 - README
 - QA/release checklist where relevant
 - any affected requirement doc
+- requirements traceability matrix
 
 Failure condition: code changed without documentation update.
 
@@ -44,7 +45,7 @@ Verify:
 - logic is not added to `index.html` when a registry/model file should own it
 - scoring logic is moving toward `/data/models/*.json`
 - role/industry/scenario/report logic is moving toward registries
-- model, evidence, decision, and report concerns remain separated
+- model, app, harness, evidence, decision, and report concerns remain separated
 
 Failure condition: single-file bloat increases without architecture justification.
 
@@ -97,7 +98,48 @@ For every score, verify:
 
 Failure condition: a score exists but no one can explain how it was calculated.
 
-## 7. Onboarding and dashboard checklist
+## 7. Human legibility checklist
+
+For every consequential ATDR, recommendation, finding, or export, verify:
+
+- the accountable human decision owner is visible or marked missing
+- facts are separated from assumptions
+- assumptions are separated from inferences
+- recommendations are separated from evidence
+- uncertainty is visible
+- sources checked and unavailable sources are visible where applicable
+- next human action is clear
+- risk-if-wrong is visible
+- approval is meaningful rather than ceremonial
+
+Failure condition: the UI asks a human to approve something the human cannot understand, challenge, reject, or escalate.
+
+## 8. Challenge and sycophancy checklist
+
+For AI-influenced recommendations, verify:
+
+- the premise was challenged where stakes justify it
+- the system records challenge-tested status
+- sycophancy / over-agreement risk is considered
+- generic AI output risk is considered
+- polished language is not treated as proof
+- expert judgment or reviewer rationale can be captured
+
+Failure condition: the recommendation looks polished but was never challenged or grounded.
+
+## 9. Harness Health checklist
+
+When the build affects agents, AI-assisted workflows, AI Trust Decision Records, evidence review, decision routing, scoring, or exports, verify:
+
+- Inputs / Sources are current and identified
+- Reach / Permissions are visible
+- Job / Purpose is classified
+- Proof / Evidence is inspectable
+- Value / Usefulness is assessed
+
+Failure condition: the harness changed but the documentation does not explain the change.
+
+## 10. Onboarding and dashboard checklist
 
 Verify onboarding answers affect:
 
@@ -112,7 +154,7 @@ Verify onboarding answers affect:
 
 Failure condition: user selects a role or industry but the dashboard remains generic.
 
-## 8. Industry-demo checklist
+## 11. Industry-demo checklist
 
 For each first-class industry path, verify sector credibility:
 
@@ -132,7 +174,7 @@ Each path must include:
 
 Failure condition: knowledgeable operator would call the demo shallow or generic.
 
-## 9. TrustMap checklist
+## 12. TrustMap checklist
 
 Verify:
 
@@ -149,7 +191,7 @@ Verify:
 
 Failure condition: TrustMap feels decorative, static, generic, or confusing.
 
-## 10. Report/export checklist
+## 13. Report/export checklist
 
 Verify:
 
@@ -158,11 +200,12 @@ Verify:
 - Operational Trust Roadmap path exists or is documented
 - Proof Pack path exists
 - reports include model version, evidence assumptions, limitations, and boundary language
+- reports include human legibility, decision owner, approval status, challenge-tested status, and next human action when applicable
 - downloadable/copyable outputs work when implemented
 
 Failure condition: insight exists but there is no path to export or share it.
 
-## 11. Boundary and overclaim checklist
+## 14. Boundary and overclaim checklist
 
 Verify the product does not claim live:
 
@@ -175,12 +218,14 @@ Verify the product does not claim live:
 - ticketing/notification
 - SIEM/EDR/IAM/GRC integration
 - production agent blocking
+- live model monitoring
+- autonomous model introspection
 
 unless actually implemented.
 
 Failure condition: UI, report, README, or docs imply live capability that does not exist.
 
-## 12. Performance and accessibility checklist
+## 15. Performance and accessibility checklist
 
 Verify:
 
@@ -194,13 +239,28 @@ Verify:
 
 Failure condition: page slows browser, especially Firefox.
 
-## 13. Rent-free memory requirement
+## 16. Rent-free memory requirement
 
 Verify the build supports the intended executive memory:
 
 > We probably do not currently have enough operational visibility into cyber and AI decision-making.
 
 Failure condition: user remembers the UI but not the operational realization.
+
+## 17. Architect / engineer handoff requirement
+
+Before handoff, verify the builder can state:
+
+- which requirement changed
+- which schema fields changed
+- which risk taxonomy entries changed
+- which UI sections changed
+- which exports changed
+- which tests were run
+- which capabilities are not implemented
+- what the next builder should do
+
+Failure condition: the next builder has to infer requirements from chat history.
 
 ## Final acceptance rule
 
@@ -212,4 +272,7 @@ A build is not complete until:
 - release chain is aligned
 - no-dead-click standard passes
 - overclaim boundary passes
+- harness health is documented
+- human legibility is documented
+- meaningful human authority is preserved
 - next builder can understand what changed and what to do next
