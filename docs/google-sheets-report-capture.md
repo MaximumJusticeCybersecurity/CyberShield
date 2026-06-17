@@ -11,13 +11,29 @@ This document defines how CyberShield captures email, report metadata, and full 
 
 ## 2. Target Google Sheet
 
-Target Google Sheet:
+Current configured source of truth is the Sheet ID already present in:
 
-https://docs.google.com/spreadsheets/d/1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw/edit?usp=sharing
+```text
+src/atdr/report-capture-config.js
+```
 
 Sheet ID:
 
-1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
+```text
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
+```
+
+The previously documented Sheet ID `1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw` is not the active configured target unless the owner later confirms a deliberate migration.
+
+If the target Sheet changes, update all of these together:
+
+```text
+src/atdr/report-capture-config.js
+release-manifest.json
+route-manifest.json
+this document
+Apps Script deployment notes
+```
 
 ## 3. Static GitHub Pages Constraint
 
@@ -37,45 +53,62 @@ Google Apps Script Web App endpoint connected to the target Sheet.
 
 ## 4. Configuration Value
 
-Add a configuration value:
+Configuration values live in:
 
+```text
+src/atdr/report-capture-config.js
+```
+
+Required values:
+
+```text
 REPORT_CAPTURE_ENDPOINT
+CRM_SHEET_ID
+REPORT_CAPTURE_MODE
+```
 
-If populated, the front end should POST the capture event to the endpoint.
+If `REPORT_CAPTURE_ENDPOINT` is populated, the front end should POST the capture event to the endpoint.
 
 If blank, the front end should simulate capture honestly.
 
 ## 5. If Endpoint Exists
 
-If REPORT_CAPTURE_ENDPOINT is configured:
+If `REPORT_CAPTURE_ENDPOINT` is configured:
 
 - POST the report capture event payload to the endpoint.
-- Show success or failure message.
+- Show submitted-for-verification language.
 - If save fails, keep the report available.
 - Do not block print or download if logging fails.
+- Do not claim Sheet-row success until the row is verified.
 
-Failure warning:
+Required user-facing language:
 
-Report generated.  Lead capture could not be saved.
+```text
+Payload submitted to configured endpoint. Verify the Google Sheet row before claiming capture success.
+```
 
 ## 6. If Endpoint Does Not Exist
 
-If REPORT_CAPTURE_ENDPOINT is blank:
+If `REPORT_CAPTURE_ENDPOINT` is blank:
 
-- Simulate successful report generation.
+- Simulate report generation honestly.
 - Store pending capture event in session storage or local storage.
 - Log the event to the browser console for developer validation.
 - Do not claim the record was saved to Google Sheets.
 
 User-facing language should say:
 
-Report generated.
+```text
+Report prepared. Capture simulated honestly because endpoint is not configured.
+```
 
 Do not say:
 
+```text
 Saved to Google Sheets.
+```
 
-unless the endpoint is configured and the POST succeeds.
+unless the endpoint is configured and the Sheet row is verified.
 
 ## 7. Email Capture Trigger
 
@@ -91,15 +124,21 @@ Ask for email only when the visitor chooses to:
 
 Modal title:
 
-Generate Trust Decision Record
+```text
+Generate AI Trust Decision Record
+```
 
 Modal copy:
 
+```text
 To generate, download, print, or send this executive report, enter your email address.
+```
 
 Consent copy:
 
-CyberShield will use this email to associate your Trust Decision Record with this demo request.
+```text
+CyberShield will use this email to associate your AI Trust Decision Record with this demo request.
+```
 
 ## 8. Required Payload Fields
 
@@ -123,6 +162,8 @@ Capture:
 - report_format_requested
 - page_url
 - browser_user_agent
+- crm_sheet_id
+- report_capture_mode
 - structured_record_json
 
 Allowed report actions:
@@ -133,10 +174,11 @@ Allowed report actions:
 - Download DOCX
 - Download JSON
 - Send report, future
+- Save follow-up
 
 ## 9. Structured Record JSON
 
-The structured_record_json field must contain the full Trust Decision Record object, including:
+The `structured_record_json` field must contain the full Trust Decision Record object, including:
 
 - Claims
 - Evidence items
@@ -173,7 +215,9 @@ The structured_record_json field must contain the full Trust Decision Record obj
 16. Report Format Requested
 17. Page URL
 18. Browser User Agent
-19. Structured Record JSON
+19. CRM Sheet ID
+20. Report Capture Mode
+21. Structured Record JSON
 
 ## 11. Minimum Apps Script Behavior
 
@@ -191,7 +235,7 @@ The Google Apps Script Web App should:
 
 Do not place Google credentials, service account keys, OAuth secrets, or private tokens in front-end code.
 
-Do not claim successful Google Sheet capture if the request fails.
+Do not claim successful Google Sheet capture unless the row has been verified.
 
 Do not store more personal data than required.
 
@@ -199,18 +243,20 @@ Do not ask for email before the user sees value.
 
 ## 13. Suggested Capture Function Behavior
 
-submitReportCaptureEvent(payload):
+`submitReportCaptureEvent(payload)`:
 
 - Validate required fields.
 - Ensure email format is valid.
 - Generate report ID if not already present.
 - Add page URL and browser user agent.
 - Serialize structured record JSON.
+- Include `CRM_SHEET_ID`.
+- Include `REPORT_CAPTURE_MODE`.
 - If endpoint exists, POST JSON.
-- If endpoint is blank, call simulateReportCaptureIfNoEndpoint().
+- If endpoint is blank, call `simulateReportCaptureIfNoEndpoint()`.
 - Never block report display, print, or download because of capture failure.
 
-simulateReportCaptureIfNoEndpoint(payload):
+`simulateReportCaptureIfNoEndpoint(payload)`:
 
 - Save pending payload locally.
 - Log payload to console.
@@ -218,4 +264,10 @@ simulateReportCaptureIfNoEndpoint(payload):
 
 ## 14. Open Item
 
-Confirm whether the engineer has already created and deployed the Google Apps Script Web App endpoint.  If yes, add the URL to REPORT_CAPTURE_ENDPOINT.  If not, implement it as part of the next build or keep honest simulation until ready.
+Confirm whether the existing Google Apps Script endpoint is writing to the configured Sheet ID:
+
+```text
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
+```
+
+If not, redeploy the Apps Script Web App or update `src/atdr/report-capture-config.js` only after the owner confirms the new destination.
