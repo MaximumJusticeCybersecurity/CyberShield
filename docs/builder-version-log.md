@@ -6,6 +6,53 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-2026061717-Harness-Self-Improvement-Requirements
+
+Date: 2026-06-17
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, CyberShield harness self-improvement requirements session
+
+CyberShield versions affected:
+
+- 2026061717 Harness Self-Improvement Requirements
+- 2026061717 Harness Health Assessment Requirements
+- 2026061717 Definition of Done Harness Update
+- 2026061717 Requirements Traceability Matrix Update
+
+Files materially changed or created:
+
+- `docs/2026061717-harness-self-improvement-requirements.md`
+- `docs/requirements-traceability-matrix.md`
+- `docs/definition-of-done.md`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Captured the harness maintenance and governed self-improvement requirements for CyberShield before product-code implementation.  The update converts the latest architecture work into traceable repo requirements for AI Decision Assurance plus Harness Health Assessment.
+
+What got better:
+
+- CyberShield now has documented requirements for Agent Maintenance / Harness Health Assessment.
+- Nate B. Jones's five-check model is now captured as Inputs / Sources, Reach / Permissions, Job / Purpose, Proof / Evidence, and Value / Usefulness.
+- Self-improvement is defined as governed harness maintenance, not autonomous self-modification.
+- Requirements matrix now includes harness maintenance, legibility, Meaningful Human Authority, GAIN, and Talent Pipeline / Apprenticeship Risk entries.
+- Definition of Done now requires harness assumption review when model, workflow, source, permission, proof, or export behavior changes.
+- The Sandeep advisor demo is explicitly scoped to Decision Assurance plus Harness Health Assessment.
+
+Remaining risks or limitations:
+
+- This commit is documentation and requirements only.
+- ATDR schema, UI, scoring, export, advisor feedback, and smoke tests still need product-code implementation.
+- The current product remains a static GitHub Pages prototype.
+- No live model calls, production integrations, autonomous agents, or persistence were added.
+- Aegis remains a broader architecture concept and is not implemented inside CyberShield.
+
+Next recommended build action:
+
+Build `2026061718-harness-health-assessment-ui`.  Keep the vendor-risk Decision Assurance wedge.  Add Harness Health Assessment fields to the ATDR schema, deterministic scoring for Inputs / Reach / Job / Proof / Value, export content, and smoke tests.  Do not broaden the first demo into the full Aegis architecture.
+
+---
+
 ### Builder-2026061015-Vendor-Risk-End-to-End-Loop
 
 Date: 2026-06-10
