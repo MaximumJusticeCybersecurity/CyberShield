@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Vendor-Risk Next Smoke</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1080px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}h1,h2{margin:.2rem 0 .7rem}p,li{color:var(--muted)}a{color:var(--blue)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid rgba(185,199,214,.18);text-align:left;vertical-align:top}th{color:#8eeaff;text-transform:uppercase;font-size:.8rem}iframe{width:100%;height:420px;border:1px solid var(--line);border-radius:14px;background:#fff}code{background:#07111c;border:1px solid var(--line);border-radius:8px;padding:2px 5px;color:#dff6ff}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>Vendor-Risk Next Smoke Test</h1><p>Checks that the richer route stays stable, starts on Identify, uses session storage, contains safe rich panels, and avoids open-ended observer loops.</p><p><a href="vendor-risk-next.html">Open vendor-risk-next.html</a> · <a href="review-index.html">Review index</a> · <a href="internal-qa.html">Internal QA</a></p><p id="summary"><span class="tag warn">Running...</span></p></section>
+<section class="card"><h2>Results</h2><table><thead><tr><th>Check</th><th>Status</th><th>Detail</th></tr></thead><tbody id="results"></tbody></table></section>
+<section class="card"><h2>Live route frame</h2><iframe id="frame" src="vendor-risk-next.html"></iframe></section>
+</main>
+<script>
+const checks=[];
+const add=(name,pass,detail='')=>checks.push({name,pass,detail});
+function render(){document.getElementById('results').innerHTML=checks.map(c=>`<tr><td>${c.name}</td><td><span class="tag ${c.pass?'good':'bad'}">${c.pass?'PASS':'FAIL'}</span></td><td>${c.detail}</td></tr>`).join('');const ok=checks.every(c=>c.pass);document.getElementById('summary').innerHTML=`<span class="tag ${ok?'good':'bad'}">${ok?'GO':'NO-GO'}</span><span class="tag warn">${checks.length} checks</span>`;}
+async function sourceChecks(){try{const text=await fetch('vendor-risk-next.html',{cache:'no-store'}).then(r=>r.text());add('Source loads',text.includes('Vendor-Risk AI Decision Assurance'),'/vendor-risk-next.html source fetched.');add('Uses sessionStorage',text.includes('sessionStorage'),'Prevents stale demo state across sessions.');add('No MutationObserver',!text.includes('MutationObserver'),'Route should not use open-ended DOM observers.');add('AI Trust Decision Record naming',text.includes('AI Trust Decision Record'),'Public artifact name is present.');add('Validator checks present',text.includes('Validator Checks')||text.includes('VALIDATORS'),'Validator layer present in route.');add('Candidate action tournament present',text.includes('Candidate Action Tournament')||text.includes('ACTIONS'),'Candidate action comparison present.');add('Reviewer block present',text.includes('Dr. Max Justice'),'Default reviewer/signature block present.');add('Aegis not public',!text.includes('Aegis'),'Aegis remains internal for this public/demo route.');}catch(e){add('Source loads',false,String(e));}}
+function frameChecks(){const frame=document.getElementById('frame');let done=false;const timeout=setTimeout(()=>{if(done)return;done=true;add('Frame load timeout',false,'Route did not become inspectable within 3 seconds.');render();},3000);frame.onload=()=>{if(done)return;done=true;clearTimeout(timeout);try{const doc=frame.contentDocument;const active=doc.querySelector('.step.active')?.textContent||'';add('Frame loads',true,'Iframe onload completed.');add('Starts on Identify',active.includes('1')&&active.includes('Identify'),`Active step: ${active.trim()}`);add('Decision brief renders',Boolean(doc.querySelector('#side')?.textContent.includes('Decision Brief')),'Side panel is populated.');add('No page error text',!doc.body.textContent.includes('failed to initialize'),'No route failure message detected.');}catch(e){add('Frame inspectable',false,String(e));}render();};}
+sourceChecks().then(()=>{render();frameChecks();});
+</script>
+</body>
+</html>
