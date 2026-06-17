@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield TDR Schema Smoke</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1080px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}h1,h2{margin:.2rem 0 .7rem}p,li{color:var(--muted)}a{color:var(--blue)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}pre{white-space:pre-wrap;max-height:520px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>Trust Decision Record Schema Smoke</h1><p>Verifies that the deterministic vendor-risk engine output can be mapped into the target AI Trust Decision Record schema.</p><p><a href="vendor-risk-next.html">Vendor-risk next</a> · <a href="record-contract.html">Record contract</a> · <a href="internal-qa.html">Internal QA</a></p><p id="summary"><span class="tag warn">Running...</span></p></section>
+<section class="card"><h2>Mapped Record JSON</h2><pre id="output">{}</pre></section>
+</main>
+<script type="module">
+import { analyzeRecommendation } from './src/atdr/atdr-engine.js';
+import { VENDOR_RISK_CONTRADICTORY_DEMO } from './src/atdr/atdr-demo-data.js';
+import { CRM_SHEET_ID, REPORT_CAPTURE_MODE } from './src/atdr/report-capture-config.js';
+import { buildTrustDecisionRecord, validateTrustDecisionRecordShape } from './src/atdr/trust-decision-record-schema-mapper.js';
+const evidence=VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository.map(e=>`[${e.evidence_name}] ${e.text_extract}`).join('\n');
+const recommendation='AI recommends approving Vendor X because they have a SOC 2 report, encrypt customer data, and appear low risk.';
+const engineRecord=analyzeRecommendation({recommendation,domain:'vendor-risk',evidence,aiSource:'User-pasted AI recommendation',sourceModel:'Unknown',intendedUse:'Vendor approval recommendation review before enterprise action',context:VENDOR_RISK_CONTRADICTORY_DEMO.decision_context,decisionOwner:'Pending vendor-risk owner assignment',createdBy:'Schema smoke test'});
+const validators=[{validator_name:'SOC 2 scope',status:'Needs Evidence',explanation:'SOC 2 must cover the evaluated AI service.'},{validator_name:'Framework mapping',status:'Failed',explanation:'Framework mapping is not compliance proof.'},{validator_name:'Human approval',status:'Failed',explanation:'Accountable human review is required.'}];
+const candidateActions=[{action_label:'Approve',reason:'Material gaps remain.',selected_as_recommendation:false},{action_label:'Request Evidence',reason:'Strongest defensible next action.',selected_as_recommendation:true},{action_label:'Escalate for Review',reason:'Human review required.',selected_as_recommendation:false}];
+const record=buildTrustDecisionRecord({engineRecord,state:{firstName:'Demo',company:'Demo Organization',vendor:'Vendor X',contradiction:'all',email:'demo@example.com',recommendation},evidenceItems:VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository,validators,candidateActions,reportAction:'schema_smoke',captureConfig:{CRM_SHEET_ID,REPORT_CAPTURE_MODE}});
+const validation=validateTrustDecisionRecordShape(record);
+const contractOk=record.decision_domain==='vendor_risk'&&record.cyberShield_recommended_action==='Request Evidence'&&record.risk_if_wrong_band==='High'&&record.confidence_band==='Low confidence'&&record.human_review_required===true&&record.claims.length===10;
+document.getElementById('summary').innerHTML=`<span class="tag ${validation.ok&&contractOk?'good':'bad'}">${validation.ok&&contractOk?'GO':'NO-GO'}</span><span class="tag warn">${record.claims.length} claims</span><span class="tag warn">${record.validator_results.length} validators</span><span class="tag warn">${record.candidate_actions.length} actions</span>`;
+document.getElementById('output').textContent=JSON.stringify({validation,contractOk,record},null,2);
+</script>
+</body>
+</html>
