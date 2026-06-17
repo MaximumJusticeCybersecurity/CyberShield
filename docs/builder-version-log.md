@@ -6,6 +6,52 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-2026061721-Human-Legibility-Agency-Requirements
+
+Date: 2026-06-17
+
+Builder / agent identifier: GPT-5.5 Thinking, JAFO, CyberShield human-legibility and agency requirements session
+
+CyberShield versions affected:
+
+- 2026061721 Human Legibility and Agency Requirements
+- 2026061721 Requirements Traceability Matrix Update
+- 2026061721 Definition of Done Legibility Update
+- 2026061721 Builder Acceptance Checklist Update
+
+Files materially changed or created:
+
+- `docs/2026061721-human-legibility-agency-requirements.md`
+- `docs/requirements-traceability-matrix.md`
+- `docs/definition-of-done.md`
+- `docs/builder-requirements-acceptance-checklist.md`
+- `docs/builder-version-log.md`
+
+Primary value add:
+
+Captured human legibility, meaningful human authority, agency preservation, challenge-tested status, sycophancy / over-agreement risk, generic AI output risk, and productive friction requirements for CyberShield before product-code implementation.
+
+What got better:
+
+- CyberShield now has a dedicated requirements document for Human Legibility and Agency.
+- ATDR requirements now include decision owner, facts, assumptions, inferences, recommendations, uncertainty, challenge-tested status, and next human action.
+- Requirements matrix now includes REQ-HLA-001 through REQ-HLA-015.
+- Definition of Done now fails builds where human approval is ceremonial or AI-generated polish is treated as proof.
+- Builder checklist now includes Human Legibility, Challenge / Sycophancy, and Architect / Engineer handoff checks.
+- The product boundary remains narrow: Decision Assurance plus Harness Health Assessment, not full Aegis.
+
+Remaining risks or limitations:
+
+- This commit is documentation and requirements only.
+- ATDR schema, UI fields, risk taxonomy implementation, scoring, export language, and smoke tests still need product-code implementation.
+- No live AI monitoring, autonomous enforcement, production integrations, autonomous agents, or model introspection were added.
+
+Next recommended build action:
+
+Build `2026061722-human-legibility-atdr-fields`.  Keep the vendor-risk Decision Assurance wedge.  Add deterministic schema fields and UI/export text for Human Legibility, Meaningful Human Authority, Challenge-Tested status, Sycophancy / Over-Agreement Risk, Generic AI Output Risk, and Next Human Action.  Do not broaden the demo into the full Aegis architecture.
+
+---
+
 ### Builder-2026061717-Harness-Self-Improvement-Requirements
 
 Date: 2026-06-17
@@ -238,150 +284,3 @@ Next recommended build action:
 Read `docs/20260610-successor-builder-handoff-decision-assurance.md` and `docs/2026061014-versioning-standard.md`.  Then implement custom-input safety gating in `src/atdr/atdr-engine.js` so unsupported philosophical, existential, moral, vague, or out-of-scope claims return Unknown confidence, require human review, and do not produce a misleading business-risk-style result.
 
 ---
-
-### Builder-20260603-014
-
-Date: 2026-06-03
-
-Builder / agent identifier: GPT-5.5 Thinking, JAFO, 20260603-0648 source-of-truth drift guard session
-
-CyberShield versions affected:
-
-- 20260603-0648 Source-of-Truth Drift Guard
-- 20260603-0638 Timestamp Governance Runtime Alignment, preserved as prior timestamp alignment
-- 20260602-1735 Layer 1 v2 Source Rewrite Shim, preserved as active runtime lineage
-
-Files materially changed or created:
-
-- `src/ui/20260603-0648-source-of-truth-drift-guard.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `governance-summary.json`
-- `bots.txt`
-- `docs/builder-version-log.md`
-
-Primary value add:
-
-Implemented an admin/runtime source-of-truth drift guard.  The guard records whether timestamp schema, current build metadata, previous runtime alignment, Layer 1 v2 rewrite metadata, and release-train metadata are observed.  This helps future builders detect source-of-truth disagreement before more code is added.
-
-What got better:
-
-- Runtime loader now imports the 20260603-0648 drift guard.
-- Admin payload now exposes `source_of_truth_drift_guard`.
-- Drift guard reports `aligned` or `watch` with blockers.
-- README, bots, and governance-summary now identify 20260603-0648 as current.
-- Layer 1 v2 rewrite and Great Map doctrine lineage remain preserved.
-
-Remaining risks or limitations:
-
-- Drift guard is metadata/audit support, not a live repository validator.
-- Watch blockers can appear during startup before all modules have written metadata.
-- Phone/browser QA is still required after GitHub Pages deploys.
-- Full v2 visual value still depends on correctly named optimized asset binaries.
-
-Next recommended build action:
-
-Run phone/browser QA on the 20260603-0648 test URL.  Confirm `source_of_truth_drift_guard` appears in admin payload, status is aligned or explains watch blockers, v2 asset fallback still works, TrustMap opens on demand, no new top-level tab exists, and source-of-truth files agree on 20260603-0648.
-
----
-
-### Builder-20260603-013
-
-Date: 2026-06-03
-
-Builder / agent identifier: GPT-5.5 Thinking, JAFO, 20260603-0638 timestamp governance runtime alignment session
-
-CyberShield versions affected:
-
-- 20260603-0638 Timestamp Governance Runtime Alignment
-- 20260602-1735 Layer 1 v2 Source Rewrite Shim, preserved as active runtime lineage
-- 20260602-1730 Layer 1 v2 Asset Integration and Great Map Doctrine Intake, preserved as source-of-truth lineage
-
-Files materially changed or created:
-
-- `src/ui/20260603-0638-timestamp-governance-runtime-alignment.js`
-- `src/ui/v52-7-operational-layer.js`
-- `README.md`
-- `governance-summary.json`
-- `bots.txt`
-- `docs/builder-version-log.md`
-
-Primary value add:
-
-Implemented the first post-V60.3 timestamp-aligned runtime metadata build.  This build reconciles the active runtime loader, admin payload, README, bots, and governance-summary around timestamp versioning while preserving the earlier Layer 1 v2 asset integration and source rewrite work.
-
-What got better:
-
-- Runtime/admin metadata now identifies `20260603-0638 Timestamp Governance Runtime Alignment` as the active current build.
-- The operational loader imports the timestamp governance runtime alignment module.
-- README and governance-summary now preserve lineage for V60.3.30, 20260602-1730, 20260602-1735, and 20260603-0638.
-- Versioning schema is enforced as timestamp-based for future implemented builds.
-- Layer 1 v2 source rewrite remains active and is not overwritten.
-
-Remaining risks or limitations:
-
-- Hands-on browser QA is still required after GitHub Pages deploys.
-- The v2 image binaries must still be present and correctly named for full visual value.
-- Great Map doctrine remains intake guidance, not a full mapmaker implementation.
-
-Next recommended build action:
-
-Run phone/browser QA on the 20260603-0638 test URL.  Confirm timestamp governance metadata appears in admin payload, v2 asset fallback still works, TrustMap still opens on demand, no new top-level tab exists, and source-of-truth files agree on 20260603-0638.
-
----
-
-### Builder-20260602-012
-
-Date: 2026-06-02
-
-Builder / agent identifier: GPT-5.5 Thinking, JAFO, timestamp versioning schema session
-
-CyberShield versions affected:
-
-- V60.3.30 Release Hardening and Source-of-Truth Reconciliation
-- Future post-V60.3 timestamp versioning schema
-
-Files materially changed or created:
-
-- `docs/versioning-schema.md`
-- `README.md`
-- `governance-summary.json`
-- `docs/builder-version-log.md`
-- `docs/successor-builder-handoff-and-job-docket.md`
-
-Primary value add:
-
-Established the earlier CyberShield versioning schema for implemented builds after V60.3.30.  This is superseded by the 2026061014 standard, which uses `YYYYMMDDHH` without separators.
-
-What got better:
-
-- Version identity became chronological and unique.
-- The old V60.x sequence was preserved as historical release lineage.
-- The next implemented build after V60.3.30 was moved toward timestamp versioning.
-
-Remaining risks or limitations:
-
-- Earlier schema used `YYYYMMDD-HHMM`; current schema now uses `YYYYMMDDHH`.
-- Builders must not continue V60.x numbering for implemented builds unless explicitly directed.
-
-Next recommended build action:
-
-Use the 2026061014 standard: `YYYYMMDDHH`, no separator, 24-hour clock.
-
----
-
-### Builder-20260602-011
-
-Date: 2026-06-02
-
-Builder / agent identifier: GPT-5.5 Thinking, JAFO, V60.3.25 through V60.3.30 safe release-train buildout session
-
-CyberShield versions affected:
-
-- V60.3.25 Asset Optimization and Format Upgrade Path
-- V60.3.26 Mobile TrustMap Fidelity Mode
-- V60.3.27 No-Dead-Click and Interaction Meaning Pass
-- V60.3.28 Model Trace and Evidence Trust Alignment
-- V60.3.29 Artifact Trust Scenario Scaffold
-- V60.3.30 Release Hardening and Source-of-Truth Reconciliation
-- V60.3.31 Integrating the World's Best Map Maker, earmarked only
