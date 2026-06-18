@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Feedback Triage</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1080px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}h1,h2{margin:.2rem 0 .7rem}p,label,li{color:var(--muted)}a{color:var(--blue)}input,select,textarea{width:100%;background:#07111c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}textarea{min-height:96px}button{border:1px solid var(--line);border-radius:12px;background:#132232;color:var(--text);padding:10px 14px;cursor:pointer}.primary{border-color:var(--blue);background:rgba(66,215,255,.18)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}pre{white-space:pre-wrap;max-height:360px;overflow:auto;background:#07111c;border:1px solid var(--line);border-radius:12px;padding:12px;color:#dff6ff}@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>Feedback Triage</h1><p>Classify review feedback after demos. Local browser storage only. Do not enter confidential data.</p><p><a href="review-feedback.html">Review feedback form</a> · <a href="review-index.html">Review index</a> · <a href="internal-qa.html">Internal QA</a></p><p><span class="tag warn">Local only</span><span class="tag good">Post-review triage</span><span class="tag bad">No confidential data</span></p></section>
+<section class="card"><h2>Add feedback item</h2><div class="grid"><label>Source / reviewer type<select id="source"><option>SMB owner/operator</option><option>CISO / vCISO</option><option>Vendor-risk lead</option><option>GRC / compliance lead</option><option>Enterprise advisor</option><option>Other</option></select></label><label>Category<select id="category"><option>Critical fix before next demo</option><option>Important fix</option><option>Later</option><option>Rejected / out of scope</option><option>Question to answer</option></select></label></div><label>Feedback<textarea id="feedback" placeholder="What did the reviewer say?"></textarea></label><label>Recommended response or action<textarea id="action" placeholder="What should we do with it?"></textarea></label><div class="actions"><button id="add" class="primary" type="button">Add Item</button><button id="copy" type="button">Copy JSON</button><button id="download" type="button">Download JSON</button><button id="clear" type="button">Clear</button></div></section>
+<section class="card"><h2>Triage JSON</h2><pre id="output">[]</pre></section>
+</main>
+<script>
+const KEY='cybershield_feedback_triage_2026061141';
+const $=id=>document.getElementById(id);
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
+function save(items){localStorage.setItem(KEY,JSON.stringify(items));render()}
+function render(){const items=load();$('output').textContent=JSON.stringify({triage_id:'FT-'+new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14),captured_at:new Date().toISOString(),items,summary:{critical:items.filter(i=>i.category==='Critical fix before next demo').length,important:items.filter(i=>i.category==='Important fix').length,later:items.filter(i=>i.category==='Later').length,rejected:items.filter(i=>i.category==='Rejected / out of scope').length,questions:items.filter(i=>i.category==='Question to answer').length}},null,2)}
+$('add').onclick=()=>{const feedback=$('feedback').value.trim();if(!feedback){alert('Enter feedback first.');return}const items=load();items.push({id:'FB-'+Date.now(),created_at:new Date().toISOString(),source:$('source').value,category:$('category').value,feedback,action:$('action').value.trim()});$('feedback').value='';$('action').value='';save(items)};
+$('copy').onclick=async()=>{const text=$('output').textContent;try{await navigator.clipboard.writeText(text);alert('Triage JSON copied.')}catch{prompt('Copy JSON:',text)}};
+$('download').onclick=()=>{const blob=new Blob([$('output').textContent],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cybershield-feedback-triage-'+Date.now()+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)};
+$('clear').onclick=()=>{if(confirm('Clear local triage?')){localStorage.removeItem(KEY);render()}};
+render();
+</script>
+</body>
+</html>
