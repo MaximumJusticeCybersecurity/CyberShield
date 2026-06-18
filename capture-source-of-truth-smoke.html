@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield Capture Source Smoke</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--amber:#ffd166;--red:#ff7474}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06111c,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1080px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:#101923;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}h1,h2{margin:.2rem 0 .7rem}p,li{color:var(--muted)}a{color:var(--blue)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px;color:var(--muted)}.good{color:var(--green);border-color:rgba(119,225,161,.55)}.warn{color:var(--amber);border-color:rgba(255,209,102,.55)}.bad{color:var(--red);border-color:rgba(255,116,116,.55)}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid rgba(185,199,214,.18);text-align:left;vertical-align:top}th{color:#8eeaff;text-transform:uppercase;font-size:.8rem}code{background:#07111c;border:1px solid var(--line);border-radius:8px;padding:2px 5px;color:#dff6ff}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="card"><h1>Capture Source of Truth Smoke Test</h1><p>Checks whether capture config, docs, and routes agree on the active Google Sheet ID.</p><p><a href="report-capture-test.html">Report capture test</a> · <a href="internal-qa.html">Internal QA</a></p><p id="summary"><span class="tag warn">Running...</span></p></section>
+<section class="card"><h2>Results</h2><table><thead><tr><th>Check</th><th>Status</th><th>Detail</th></tr></thead><tbody id="results"></tbody></table></section>
+</main>
+<script type="module">
+import { CRM_SHEET_ID, REPORT_CAPTURE_ENDPOINT, REPORT_CAPTURE_MODE } from './src/atdr/report-capture-config.js';
+const EXPECTED='1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w';
+const OLD='1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw';
+const checks=[];
+const add=(name,pass,detail)=>checks.push({name,pass,detail});
+function render(){document.getElementById('results').innerHTML=checks.map(c=>`<tr><td>${c.name}</td><td><span class="tag ${c.pass?'good':'bad'}">${c.pass?'PASS':'FAIL'}</span></td><td>${c.detail}</td></tr>`).join('');const ok=checks.every(c=>c.pass);document.getElementById('summary').innerHTML=`<span class="tag ${ok?'good':'bad'}">${ok?'GO':'NO-GO'}</span><span class="tag warn">${checks.length} checks</span>`;}
+async function run(){add('Config Sheet ID',CRM_SHEET_ID===EXPECTED,`Configured: ${CRM_SHEET_ID}`);add('Endpoint mode visible',Boolean(REPORT_CAPTURE_MODE),`Mode: ${REPORT_CAPTURE_MODE}; endpoint ${REPORT_CAPTURE_ENDPOINT?'configured':'blank'}`);const docs=await fetch('docs/google-sheets-report-capture.md',{cache:'no-store'}).then(r=>r.text()).catch(e=>String(e));add('Capture doc names expected ID',docs.includes(EXPECTED),'docs/google-sheets-report-capture.md includes configured Sheet ID.');add('Capture doc flags old ID',docs.includes(OLD)&&docs.includes('inactive'),'Old architect Sheet ID is documented as inactive unless migrated.');const next=await fetch('vendor-risk-next.html',{cache:'no-store'}).then(r=>r.text()).catch(e=>String(e));add('Next route imports config',next.includes('report-capture-config.js'),'vendor-risk-next imports shared config module.');add('Next route avoids old hard-coded ID',!next.includes(OLD),'vendor-risk-next should not hard-code the inactive Sheet ID.');const stable=await fetch('src/atdr/vendor-risk-guided.js',{cache:'no-store'}).then(r=>r.text()).catch(e=>String(e));add('Stable route legacy capture cleanup needed',!stable.includes(OLD),'If FAIL, stable fallback still contains old hard-coded capture ID and should be cleaned in a focused refactor.');render();}
+run();
+</script>
+</body>
+</html>
