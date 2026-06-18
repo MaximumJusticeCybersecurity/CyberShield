@@ -1,11 +1,11 @@
 {
-  "release_id": "2026061138-cross-browser-qa-and-promotion-decision",
-  "release_name": "CyberShield Preferred Vendor-Risk Next Demo with Stable Fallback",
+  "release_id": "2026061141-capture-print-feedback-qa",
+  "release_name": "CyberShield Preferred Vendor-Risk Next Demo with QA and Feedback Triage",
   "release_date": "2026-06-17",
   "preferred_route": "/vendor-risk-next.html",
   "fallback_route": "/vendor-risk.html",
   "primary_wedge": "vendor-risk",
-  "status": "static prototype with preferred rich route and stable fallback route",
+  "status": "static prototype with preferred rich route, stable fallback route, QA smoke routes, and local feedback triage",
   "root_behavior": "Root landing page leads with AI Decision Assurance value and redirects visitors to the preferred vendor-risk next demo.",
   "north_star": "Before relying on AI, CyberShield shows whether the recommendation is defensible.",
   "core_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
@@ -24,6 +24,7 @@
     "sheet_id": "1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w",
     "config_file": "src/atdr/report-capture-config.js",
     "test_route": "/report-capture-test.html",
+    "source_of_truth_test": "/capture-source-of-truth-smoke.html",
     "verification_rule": "Browser submission is not proof of row creation. Verify the Google Sheet row before claiming capture success."
   },
   "core_contract": {
@@ -42,13 +43,16 @@
     "/review-index.html",
     "/pilot-package.html",
     "/demo-script.html",
-    "/review-feedback.html"
+    "/review-feedback.html",
+    "/feedback-triage.html"
   ],
   "internal_routes": [
     "/internal-qa.html",
     "/controlled-review-checklist.html",
     "/vendor-risk-next-smoke.html",
     "/trust-decision-record-schema-smoke.html",
+    "/capture-source-of-truth-smoke.html",
+    "/report-print-qa.html",
     "/report-capture-test.html",
     "/vendor-risk-smoke.html",
     "/record-contract.html",
@@ -85,9 +89,13 @@
     "Browser Print / Save PDF is current PDF path",
     "Google Sheets capture is endpoint-backed but not production CRM infrastructure"
   ],
+  "known_follow_up": [
+    "capture-source-of-truth-smoke.html intentionally flags legacy capture mismatch if the stable fallback script still contains the inactive Sheet ID.",
+    "Prefer fixing stable fallback capture in a focused refactor rather than broad rewriting the stable route."
+  ],
   "next_recommended_builds": [
-    "2026061139-stable-route-capture-cleanup",
-    "2026061140-report-print-polish",
-    "2026061141-feedback-integration-after-review"
+    "2026061142-focused-stable-capture-refactor",
+    "2026061143-report-layout-polish-after-print-test",
+    "2026061144-feedback-integration-after-review"
   ]
 }
