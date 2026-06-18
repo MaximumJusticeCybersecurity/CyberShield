@@ -28,34 +28,49 @@ software-assisted advisory pilot
 
 ## Current architecture library
 
-PR #6 has been merged and is now part of the requirements library.
-
 Read these first:
 
 ```text
 docs/engineer-next-build-instructions.md
+docs/aegis-cybershield-architecture-boundary.md
+docs/2026061815-first-codex-agent-requirements-steward.md
+docs/2026061815-sandeep-demo-path-and-advisor-briefing.md
+docs/2026061815-cybershield-business-case.md
 docs/cybershield-decision-assurance-requirements.md
 docs/cybershield-trust-kernel-lite-architecture.md
-docs/aegis-cybershield-architecture-boundary.md
 docs/trust-decision-record-schema.md
+docs/2026061717-harness-self-improvement-requirements.md
+docs/2026061721-human-legibility-agency-requirements.md
 docs/google-sheets-report-capture.md
 docs/2026061133-successor-builder-handoff.md
 ```
 
 Aegis remains internal for this build.  Public CyberShield language must stay focused on the buyer problem.
 
-## Current live route strategy
+## First Codex-style agent
 
-Stable buyer route:
+The first Codex-style CyberShield agent is the Requirements Steward Agent.
+
+Canonical file:
 
 ```text
-/vendor-risk.html
+docs/2026061815-first-codex-agent-requirements-steward.md
 ```
 
-Richer experimental route:
+The Requirements Steward Agent must run before code changes that affect demo scope, positioning, routes, ATDR schema, risk logic, claims, evidence, Harness Health, Human Legibility, exports, production claims, or the Aegis / CyberShield boundary.
+
+## Current live route strategy
+
+Advisor golden path:
 
 ```text
 /vendor-risk-next.html
+```
+
+Fallback route:
+
+```text
+/vendor-risk.html
 ```
 
 Review index:
@@ -72,13 +87,9 @@ Internal QA hub:
 
 ## Stability rule
 
-`/vendor-risk.html` remains the stable buyer route.
+`/vendor-risk-next.html` is the formal golden path for Sandeep and advisor review.
 
-It currently loads only:
-
-```text
-src/atdr/vendor-risk-guided.js
-```
+`/vendor-risk.html` remains the fallback buyer route until the owner intentionally promotes or retires routes.
 
 Do not re-enable optional route-layer modules on `/vendor-risk.html` until the richer route is tested.
 
@@ -216,23 +227,23 @@ Endpoint-backed capture, when enabled, is prototype-grade capture only, not prod
 Recommended next build:
 
 ```text
-2026061135-test-and-promote-vendor-risk-next
+2026061816-human-legibility-harness-demo-package
 ```
 
 Goal:
 
 ```text
-Test /vendor-risk-next.html across Brave, Chrome, Firefox, and mobile.  If stable, promote its safe features into /vendor-risk.html or route buyers to /vendor-risk-next.html intentionally.
+Use the Requirements Steward Agent first.  Then tighten the /vendor-risk-next.html advisor golden path with Human Legibility, Harness Health Assessment, Sandeep advisor briefing support, business-case pilot packaging, export language, and smoke checks.
 ```
 
 Acceptance:
 
 ```text
-/vendor-risk.html remains stable.
-/vendor-risk-next.html loads quickly.
-/vendor-risk-next.html starts on Identify.
-Validators render without observer loops.
-Candidate action tournament renders without observer loops.
+Requirements Steward packet exists before implementation.
+/vendor-risk-next.html remains the advisor golden path.
+/vendor-risk.html remains fallback.
+Human Legibility and Harness Health fields are visible or explicitly scoped for implementation.
 AI Trust Decision Record print path works.
 Capture submits to configured endpoint or simulates honestly.
+No production or autonomous-agent capability is overclaimed.
 ```
