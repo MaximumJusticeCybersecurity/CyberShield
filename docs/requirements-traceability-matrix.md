@@ -1,7 +1,7 @@
 # CyberShield Requirements Traceability Matrix
 
-Date: 2026-06-17
-Baseline: 2026061721 Human Legibility and Agency Requirements
+Date: 2026-06-18
+Baseline: 2026061815 First Codex Agent and Advisor Package
 
 ## Purpose
 
@@ -79,6 +79,16 @@ This matrix tracks critical requirements from founder feedback, advisor feedback
 | REQ-VRDA-008 | Google Sheet capture must use a configurable Apps Script endpoint and simulate honestly if the endpoint is not configured. | Founder decision + static GitHub Pages constraint | Critical | Next vendor-risk build | Accepted | No front-end credentials.  Save success is not claimed unless POST succeeds. |
 | REQ-VRDA-009 | Report generation must support on-screen report, browser print, and PDF or print-to-PDF before polished client-side DOCX/PDF generation. | Founder decision | High | Next vendor-risk build | Accepted | Visitor can print or save a polished executive report after email capture. |
 | REQ-VRDA-010 | Add a single engineer handoff document that points builders to the current requirements library. | Founder decision | Critical | Next vendor-risk build | Accepted | `docs/engineer-next-build-instructions.md` exists and names source docs. |
+| REQ-RSA-001 | The first Codex-style agent must be the CyberShield Requirements Steward Agent, not a code-writing implementation agent. | Founder decision + Requirements Steward package | Critical | 2026061815+ | Accepted | `docs/2026061815-first-codex-agent-requirements-steward.md` exists and is referenced in handoff. |
+| REQ-RSA-002 | Requirements Steward must use the defined source-of-truth precedence order when repo docs conflict. | Agent question response + founder direction | Critical | 2026061815+ | Accepted | Steward file contains precedence order and conflict rule. |
+| REQ-RSA-003 | Requirements Steward checks are required before code changes that touch demo scope, positioning, routes, ATDR schema, risk logic, claims, evidence, harness, legibility, exports, production claims, or Aegis / CyberShield boundary. | Agent question response + founder direction | Critical | 2026061815+ | Accepted | Steward file defines when checks are mandatory. |
+| REQ-RSA-004 | Requirements Steward output must use the compact packet: Requirements Alignment Check, Scope Boundary Check, Builder Instructions, Definition of Done, and PR Summary Draft. | Agent question response + founder direction | High | 2026061815+ | Accepted | Steward file defines output packet. |
+| REQ-RSA-005 | Requirements Steward may block work in written guidance when accepted boundaries are violated and may require owner approval for ambiguous exceptions. | Agent question response + founder direction | Critical | 2026061815+ | Accepted | Steward file defines Do not implement and Requires owner approval outcomes. |
+| REQ-RSA-006 | Dr. Max Justice is the approval authority for boundary exceptions, demo expansion, public Aegis positioning, production claims, live integrations, autonomous-agent authority, pilot-offer changes, route changes, and recommendation logic changes. | Agent question response + founder decision | Critical | 2026061815+ | Accepted | Steward file defines approval authority. |
+| REQ-RSA-007 | Systems other than Aegis and CyberShield are reserved until explicitly defined by Dr. Max Justice. | Agent question response + founder direction | Medium | 2026061815+ | Accepted | Steward file includes reserved-boundary rule. |
+| REQ-RSA-008 | `/vendor-risk-next.html` is the formal golden path for Sandeep and advisor review; `/vendor-risk.html` remains fallback. | Agent question response + founder direction | Critical | 2026061815+ | Accepted | Advisor briefing and steward docs identify golden path and fallback. |
+| REQ-BIZ-001 | CyberShield first pilot should be AI Decision Assurance plus Harness Health Assessment for 3 to 5 AI-generated recommendations. | Founder decision + business-case package | Critical | 2026061815+ | Accepted | Business-case doc and advisor briefing define the first paid pilot. |
+| REQ-BIZ-002 | CyberShield must be positioned as decision evidence before action, not broad AI safety or full production SaaS. | Founder decision + business-case package | Critical | 2026061815+ | Accepted | Business-case doc uses decision evidence language and no-overclaim boundaries. |
 
 ## Builder rule
 

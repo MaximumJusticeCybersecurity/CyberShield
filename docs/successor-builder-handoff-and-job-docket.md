@@ -1,126 +1,217 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
-Date: 2026-06-03
-Current implemented build: 20260603-0648 Source-of-Truth Drift Guard
+Date: 2026-06-18
+Current documentation baseline: 2026061815 First Codex Agent and Advisor Package
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
-Primary live file: `index.html`
-Test URL: https://maximumjusticecybersecurity.github.io/CyberShield/?v=20260603-0648-source-of-truth-drift-guard&reset=onboarding
+Advisor golden path: `/vendor-risk-next.html`
+Fallback route: `/vendor-risk.html`
+Builder log entry: `docs/2026061815-builder-log-codex-agent-advisor-package.md`
 
 ## Purpose
 
 This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
 
-20260603-0648 adds an admin/runtime source-of-truth drift guard.  It preserves timestamp governance alignment, Layer 1 v2 source rewrite, Great Map doctrine intake, fast shell loading, and TrustMap on-demand loading.
+The current repo direction is AI Decision Assurance plus Harness Health Assessment.  CyberShield remains the narrow commercial proof point.  Aegis remains the broader trusted partner architecture and doctrine library.
 
-## Release chain status
-
-20260603-0648 is now the current implemented build.
-
-Governance-summary, README, bots.txt, builder-version-log, and this handoff must identify 20260603-0648 as current.  Build/version wording must remain out of the executive-facing dashboard surface.
-
-## Versioning rule
-
-Future implemented builds use timestamp-based versioning:
+## Current strategic direction
 
 ```text
-YYYYMMDD-HHMM
+AI-generated recommendation in -> AI Trust Decision Record out
 ```
 
-Use 24-hour America/New_York time unless the user explicitly changes the project timezone.
-
-Canonical schema document:
+First proof point:
 
 ```text
-docs/versioning-schema.md
+AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out
 ```
 
-V60.3.31 remains an earmarked concept only for Integrating the World's Best Map Maker.  Do not implement it under V60.x numbering unless explicitly directed.
+Current advisor message:
+
+```text
+CyberShield makes AI-influenced decisions legible, reviewable, and accountable.
+```
+
+## Required first step for future agents
+
+Before implementation work, run the Requirements Steward Agent pattern.
+
+Canonical file:
+
+```text
+docs/2026061815-first-codex-agent-requirements-steward.md
+```
+
+The steward check is required before code changes that affect demo scope, positioning, routes, ATDR schema, risk logic, claims, evidence, Harness Health, Human Legibility, exports, production claims, or the Aegis / CyberShield boundary.
+
+## Source-of-truth precedence
+
+When docs conflict, use this precedence order:
+
+1. Direct owner decision from Dr. Max Justice in the current task or latest accepted repo document.
+2. `docs/aegis-cybershield-architecture-boundary.md`
+3. `docs/2026061815-first-codex-agent-requirements-steward.md`
+4. `docs/cybershield-decision-assurance-requirements.md`
+5. `docs/2026061815-sandeep-demo-path-and-advisor-briefing.md`
+6. `docs/2026061815-cybershield-business-case.md`
+7. `docs/2026061717-harness-self-improvement-requirements.md`
+8. `docs/2026061721-human-legibility-agency-requirements.md`
+9. `docs/trust-decision-record-schema.md`
+10. `docs/cybershield-trust-kernel-lite-architecture.md`
+11. `docs/requirements-traceability-matrix.md`
+12. `docs/definition-of-done.md`
+13. `docs/builder-requirements-acceptance-checklist.md`
+14. `README.md`
+15. `bots.txt`
+16. `docs/builder-version-log.md`
+17. older handoff files, unless explicitly marked current
 
 ## Required builder reading order
 
 1. `README.md`
-2. `bots.txt`
-3. `governance-summary.json`
-4. `docs/versioning-schema.md`
-5. `docs/source-of-truth-hierarchy.md`
-6. `docs/product-invariants.md`
-7. `docs/definition-of-done.md`
-8. `docs/builder-requirements-acceptance-checklist.md`
-9. `docs/recurring-build-issues-and-regression-watchlist.md`
-10. `docs/builder-lessons-learned.md`
-11. `docs/v60-3-23-to-v60-3-30-engineering-roadmap.md`
-12. `docs/v60-3-24-to-v60-3-31-release-engineering-packages.md`
-13. `docs/builder-version-log.md`
-14. this handoff and job docket
+2. `docs/aegis-cybershield-architecture-boundary.md`
+3. `docs/2026061815-first-codex-agent-requirements-steward.md`
+4. `docs/2026061815-sandeep-demo-path-and-advisor-briefing.md`
+5. `docs/2026061815-cybershield-business-case.md`
+6. `docs/cybershield-decision-assurance-requirements.md`
+7. `docs/2026061717-harness-self-improvement-requirements.md`
+8. `docs/2026061721-human-legibility-agency-requirements.md`
+9. `docs/trust-decision-record-schema.md`
+10. `docs/cybershield-trust-kernel-lite-architecture.md`
+11. `docs/requirements-traceability-matrix.md`
+12. `docs/definition-of-done.md`
+13. `docs/builder-requirements-acceptance-checklist.md`
+14. `docs/builder-version-log.md`
+15. `docs/2026061815-builder-log-codex-agent-advisor-package.md`
+16. this handoff and job docket
+17. `docs/2026061014-versioning-standard.md`
+18. `docs/2026061138-cross-browser-qa-and-promotion-decision.md`
 
-## Current lineage
+## Current route strategy
 
-- V60.3.30 = completed safe V60.3 release train through hardening
-- 20260602-1730 = Layer 1 v2 asset integration and Great Map doctrine intake
-- 20260602-1735 = Layer 1 v2 source rewrite shim active in runtime loader
-- 20260603-0638 = timestamp governance runtime alignment
-- 20260603-0648 = source-of-truth drift guard
+Advisor golden path:
 
-## What changed in 20260603-0648
+```text
+/vendor-risk-next.html
+```
 
-- Added `src/ui/20260603-0648-source-of-truth-drift-guard.js`
-- Updated `src/ui/v52-7-operational-layer.js` to import the drift guard
-- Updated README, bots, governance-summary, and builder log to identify 20260603-0648 as current
-- Added admin payload metadata under `source_of_truth_drift_guard`
-- Preserved the Layer 1 v2 source rewrite shim
-- Preserved Great Map doctrine intake
-- Preserved fast shell and TrustMap on-demand loading
+Fallback route:
 
-## Current user-facing navigation
+```text
+/vendor-risk.html
+```
 
-- Briefing
-- TrustMap
-- Runtime
-- Evidence
-- Proof Pack
-- Architecture
-- Settings
+Preserved older routes:
 
-No new top-level tabs were added.
+```text
+/atdr.html
+/demo-readiness.html
+/advisor-feedback.html
+/trust-kernel-legacy.html
+```
 
-## Current asset doctrine
+The preserved routes are not the primary buyer demo.
 
-The current PNG files remain valid fallbacks.  Future rebuilt assets should enter through `data/trustmap/v60-3-23-asset-manifest.json`.  Optimized future paths are preferred only when a manifest slot marks them available.
+## Current demo contract
 
-Layer 1 v2 binaries, when available, should use the expected filenames documented in README and Great Map guidance.
+Expected vendor-risk sample output:
 
-## Current next-build doctrine
+```text
+Domain: vendor-risk
+Claims extracted: 10
+Recommended Action: Request Evidence
+Risk If Wrong: High
+Confidence Band: Low confidence
+Human Review Required: Yes
+```
 
-The next implemented build after 20260603-0648 should use timestamp versioning, not V60.x numbering.
+Expected out-of-scope safety output:
 
-If the next build is mapmaker-related, do not guess the mapmaker or method.  Wait for the user-provided source material and design intent.
+```text
+Domain: out-of-scope
+Confidence Band: Unknown confidence
+Risk If Wrong: Unknown
+Recommended Action: Out of Scope for Current Review
+Human Review Required: Yes
+Record Defensibility: Not defensible
+Framework mappings: 0
+```
 
-If the next build is asset-related, do not solve oversized or inconsistent assets with more JavaScript.  Optimize files and route them through the manifest.
+## Sandeep advisor walkthrough
 
-## Known limitations
+Use `docs/2026061815-sandeep-demo-path-and-advisor-briefing.md`.
 
-- Hands-on phone QA is required after GitHub Pages deploys.
-- Drift guard is metadata/audit support, not a live repository validator.
-- Full v2 visual value depends on the optimized Layer 1 image binaries being present and correctly named.
-- Great Map doctrine remains intake guidance, not a full mapmaker implementation.
-- Artifact Trust and model trace remain static scaffolds unless future builds add real data sources and validation.
+Open with the buyer problem, not Aegis:
+
+```text
+Organizations are starting to rely on AI-generated recommendations, but they still need to prove whether those recommendations are defensible before acting.  CyberShield takes an AI recommendation and turns it into an AI Trust Decision Record.
+```
+
+Show:
+
+   - AI recommendation
+   - claims
+   - evidence gaps
+   - contradiction checks
+   - candidate actions
+   - Request Evidence as strongest defensible action
+   - Risk If Wrong
+   - Confidence Band
+   - Human Review Required
+   - AI Trust Decision Record
+
+## Current business case
+
+Use `docs/2026061815-cybershield-business-case.md`.
+
+First paid offer:
+
+```text
+AI Decision Assurance plus Harness Health Assessment for 3 to 5 AI-generated recommendations.
+```
+
+Primary output:
+
+```text
+AI Trust Decision Records plus executive-ready decision evidence.
+```
 
 ## Prototype boundary
 
-The current public build is a static advisory prototype.  Do not represent it as having production integrations, production automation, certification authority, validated scoring, or backend persistence unless those capabilities are actually built and verified.
+The current public build is a static advisory prototype.  Do not represent it as having production integrations, production automation, certification authority, validated scoring, live model-backed analysis, autonomous vendor approval, or backend persistence unless those capabilities are actually built and verified.
 
-## What the successor should do first
+## Approval authority
 
-1. Read the required builder files above.
-2. Run release-chain check: governance-summary, README, bots, builder log, and this handoff must agree on 20260603-0648.
-3. Confirm `docs/versioning-schema.md` is followed for the next implemented build.
-4. Open the 20260603-0648 reset URL after GitHub Pages deploys.
-5. Test guided onboarding.
-6. Confirm app shell remains fast on phone.
-7. Confirm source_of_truth_drift_guard appears in admin payload.
-8. Confirm drift guard status is aligned or explains watch blockers.
-9. Confirm v2 asset fallback still works.
-10. Confirm TrustMap still opens on demand.
-11. Confirm no new top-level tab exists.
-12. Confirm no capability overclaims appear.
+Dr. Max Justice is the owner approval authority for:
+
+   - Aegis / CyberShield boundary exceptions
+   - demo expansion beyond vendor risk
+   - public Aegis positioning
+   - production-readiness claims
+   - live model, CRM, integration, or persistence claims
+   - autonomous-agent authority
+   - buyer and pilot-offer changes
+   - major route changes
+   - recommendation logic changes
+
+## Next recommended build
+
+```text
+2026061816-human-legibility-harness-demo-package
+```
+
+Goal:
+
+```text
+Use the Requirements Steward Agent first.  Then tighten /vendor-risk-next.html with Human Legibility, Harness Health Assessment, Sandeep advisor briefing support, business-case pilot packaging, export language, and smoke checks.
+```
+
+Acceptance:
+
+   - Requirements Steward packet exists before implementation.
+   - `/vendor-risk-next.html` remains the advisor golden path.
+   - `/vendor-risk.html` remains fallback.
+   - Human Legibility and Harness Health fields are visible or explicitly scoped for implementation.
+   - AI Trust Decision Record print path works.
+   - Capture submits to configured endpoint or simulates honestly.
+   - No production or autonomous-agent capability is overclaimed.
