@@ -6,6 +6,7 @@ Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Advisor golden path: `/vendor-risk-next.html`
 Fallback route: `/vendor-risk.html`
+Builder log entry: `docs/2026061815-builder-log-codex-agent-advisor-package.md`
 
 ## Purpose
 
@@ -81,9 +82,10 @@ When docs conflict, use this precedence order:
 12. `docs/definition-of-done.md`
 13. `docs/builder-requirements-acceptance-checklist.md`
 14. `docs/builder-version-log.md`
-15. this handoff and job docket
-16. `docs/2026061014-versioning-standard.md`
-17. `docs/2026061138-cross-browser-qa-and-promotion-decision.md`
+15. `docs/2026061815-builder-log-codex-agent-advisor-package.md`
+16. this handoff and job docket
+17. `docs/2026061014-versioning-standard.md`
+18. `docs/2026061138-cross-browser-qa-and-promotion-decision.md`
 
 ## Current route strategy
 
