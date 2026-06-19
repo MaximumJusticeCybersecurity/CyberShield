@@ -1,146 +1,227 @@
 # Engineer Next Build Instructions
 
-Date: 2026-06-17
+Version: 2026061909
 Owner: Dr. Max Justice
-Target: Next vendor-risk build
-Audience: Engineer
+Audience: Engineer, architect, builder
 
-## 1. Build This First
+## 1. Governing Build Direction
 
-Build the vendor-risk AI Decision Assurance demo end to end.
+CyberShield is focused on one workflow:
 
-Everything else is subordinate.
+```text
+AI-generated recommendation in -> AI Trust Decision Record out
+```
 
-If a task does not directly help the vendor-risk demo produce a defensible Trust Decision Record, it is secondary.
+The record is the product.
 
-## 2. North Star
+The first proof point remains vendor-risk Decision Assurance.
 
-Before relying on AI, CyberShield shows whether the recommendation is defensible.
+## 2. Required Reading Order
 
-Working product flow:
+Read these before changing code:
 
-AI-generated recommendation in.  Defensible Trust Decision Record out.
+```text
+docs/2026061909-forward-build-plan.md
+docs/2026061815-first-codex-agent-requirements-steward.md
+docs/cybershield-decision-assurance-requirements.md
+docs/cybershield-trust-kernel-lite-architecture.md
+docs/aegis-cybershield-architecture-boundary.md
+docs/trust-decision-record-schema.md
+docs/google-sheets-report-capture.md
+docs/requirements-traceability-matrix.md
+README.md
+release-manifest.json
+route-manifest.json
+```
 
-## 3. Public Demo Priority
+Run the Requirements Steward process before implementation that affects scope, routes, schema, risk logic, evidence, exports, claims, public positioning, or the Aegis/CyberShield boundary.
 
-Do not build six half-working tabs.
+## 3. Current Route Hierarchy
 
-Build one complete vendor-risk trust decision loop that makes the buyer say:
+Preferred high-touch route:
 
-I need this before my team approves AI-generated vendor recommendations.
+```text
+/vendor-risk-next.html
+```
 
-## 4. First Visible Flow
+Stable fallback route:
 
-The first visible build must let the visitor complete this path:
+```text
+/vendor-risk.html
+```
 
-1. See plain-English landing page.
-2. Enter first name, optional company, optional vendor.
-3. Select contradiction type.
-4. Review AI-generated vendor approval recommendation.
-5. See claims extracted.
-6. See material claims identified.
-7. See required evidence mapped.
-8. See synthetic evidence repository.
-9. See missing, weak, stale, self-attested, or contradictory evidence.
-10. See validator checks.
-11. See candidate action comparison.
-12. See Request Evidence as strongest defensible action.
-13. See Escalate for Review triggered.
-14. See Risk If Wrong.
-15. See Confidence Band.
-16. See Human Review Required.
-17. Generate Trust Decision Record.
-18. Enter email only at report generation.
-19. Print or download the executive report.
-20. Capture metadata plus structured record JSON if Google Sheet endpoint is configured.
+Do not retire the fallback route until the owner approves it.
 
-## 5. Do Not Prioritize Yet
+Do not make a QA route or workbench the public demo.
 
-Do not prioritize these until the vendor-risk demo works end to end:
+## 4. Current Public Positioning
 
-- TrustMap
-- Runtime
-- Settings
-- Architecture tab polish
-- Multiple industries
-- Multi-domain demos
-- Full dashboard
-- Full multi-tenant behavior
-- Real model integration
-- Advanced upload processing
-- Agentic workflows
-- Analytics
-- General governance screens
-- Extra visual effects
-- Aegis public positioning
+Public artifact name:
 
-## 6. Landing Page Copy
+```text
+AI Trust Decision Record
+```
 
-Hero:
+Pilot positioning:
 
+```text
+software-assisted advisory pilot
+```
+
+Public buyer problem:
+
+```text
 Before relying on AI, know whether the recommendation is defensible.
+```
 
-Subheadline:
+Aegis remains internal for this build.
 
-CyberShield turns AI-generated recommendations into clear decision records showing claims, evidence, gaps, Risk If Wrong, confidence, and required human review.
+Trust Kernel may be referenced as supporting architecture, but it must not dominate public buyer messaging.
 
-Primary CTA:
+## 5. Current Capture Source of Truth
 
-Try a Vendor-Risk Sample
+Use the configured Sheet ID from:
 
-Secondary CTA:
+```text
+src/atdr/report-capture-config.js
+```
 
-Request a Demo
+Current Sheet ID:
 
-Tertiary link:
+```text
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
+```
 
-Contact Maximum Justice Cybersecurity
+Do not use the inactive architect placeholder Sheet ID unless the owner explicitly approves a migration.
 
-## 7. Aegis Boundary
+Never place Google credentials, service-account keys, OAuth secrets, or private tokens in front-end code.
 
-Use very little Aegis language in the CyberShield public demo.
+Until a Sheet row is verified, say:
 
-Aegis is internal for this build.  CyberShield buyers should not need to understand Aegis.
+```text
+Payload submitted to the configured endpoint. Verify the Google Sheet row before claiming capture success.
+```
 
-Do not put Aegis OS, digital twin, personal trusted partner, or identity continuity language on the main CyberShield landing page.
+## 6. Immediate Build Sequence
 
-## 8. Main Engineering Files
+Follow the sequence in:
 
-Use these docs as the current library for the next build:
+```text
+docs/2026061909-forward-build-plan.md
+```
 
-- docs/cybershield-decision-assurance-requirements.md
-- docs/cybershield-trust-kernel-lite-architecture.md
-- docs/aegis-cybershield-architecture-boundary.md
-- docs/trust-decision-record-schema.md
-- docs/google-sheets-report-capture.md
-- docs/requirements-traceability-matrix.md
+Current order:
 
-## 9. Google Sheet Capture
+```text
+2026061143-report-layout-polish-after-print-test
+2026061144-feedback-integration-after-review
+2026061145-route-manifest-refresh
+2026061146-canonical-record-unification
+2026061147-google-sheet-row-verification
+```
 
-Use the provided Google Sheet ID:
+Do not skip forward into broad platform expansion unless the owner changes priority.
 
-1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
+## 7. Next Build
 
-If a Google Apps Script endpoint already exists, configure REPORT_CAPTURE_ENDPOINT.
+Build next:
 
-If the endpoint does not exist, implement it or simulate capture honestly until it is ready.
+```text
+2026061143-report-layout-polish-after-print-test
+```
 
-Never put Google credentials in front-end code.
+Objective:
 
-## 10. Report Output
+Improve the browser Print / Save PDF AI Trust Decision Record based on actual print review.
 
-Minimum:
+Required acceptance:
 
-- On-screen executive report
-- Browser print
-- PDF download or print-to-PDF path
+- AI Trust Decision Record title is clear.
+- Executive decision is visible on page one.
+- Request Evidence, High Risk If Wrong, Low confidence, and Human Review Required are easy to locate.
+- Claims, validators, evidence, and candidate-action tables remain readable.
+- Dr. Max Justice reviewer/signature block appears by default.
+- Limitations remain visible.
+- No production or autonomous-approval claims appear.
+- Preferred and fallback routes continue loading quickly.
 
-Client-side DOCX and fully polished PDF generation may follow after the vendor-risk loop works.
+## 8. Canonical Record Rule
 
-## 11. Acceptance Gate
+The shared mapper is:
 
-The build is ready for review only when the user can complete the vendor-risk loop from landing page to Trust Decision Record export without hitting dead screens, unexplained buttons, or future-state placeholders.
+```text
+src/atdr/trust-decision-record-schema-mapper.js
+```
 
-## 12. Failure Gate
+The target state is one canonical AI Trust Decision Record object used for:
 
-The build fails if it leads with TrustMap, Runtime, general dashboards, Aegis public concepts, broad scoring, or multi-industry expansion before the vendor-risk Decision Assurance demo works end to end.
+- on-screen display
+- JSON download
+- Google Sheet capture
+- Print / Save PDF
+- future DOCX export
+
+Do not create another route-specific record contract when the shared mapper can be extended.
+
+## 9. Required QA Order
+
+Before external review, check:
+
+```text
+/vendor-risk-next.html
+/vendor-risk.html
+/vendor-risk-next-smoke.html
+/vendor-risk-smoke.html
+/trust-decision-record-schema-smoke.html
+/record-contract.html
+/capture-source-of-truth-smoke.html
+/report-capture-test.html
+/report-print-qa.html
+/review-index.html
+/internal-qa.html
+```
+
+Stop if a required smoke route is NO-GO.
+
+## 10. Engineering Guardrails
+
+Do not introduce:
+
+- open-ended body-level MutationObserver loops
+- repeated uncontrolled DOM rewrites
+- stale hard-coded Sheet IDs
+- parallel record schemas
+- public Aegis positioning
+- TrustMap-first navigation
+- generic trust-score claims
+- autonomous vendor approval
+- production-readiness claims
+- compliance-certification claims
+- SOC 2 as automatic approval
+- framework mapping as compliance proof
+
+## 11. Deferred Scope
+
+Do not prioritize yet:
+
+- Runtime agents
+- public Aegis positioning
+- TrustMap-first rebuild
+- broad governance dashboards
+- generic trust scores
+- multi-industry demos before vendor-risk is proven
+- autonomous approval
+- broad multi-tenant platform claims
+- production authentication claims
+- live LLM claims unless implemented and tested
+
+## 12. Acceptance Gate
+
+A build is ready for owner review only when:
+
+- it maps to an approved requirement, defect, or buyer-observed problem;
+- the preferred route remains fast;
+- the fallback route remains operational;
+- schema and capture source-of-truth checks pass;
+- documentation and traceability are updated;
+- no deferred capability is implied as current.
