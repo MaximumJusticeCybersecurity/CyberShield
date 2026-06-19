@@ -1,26 +1,28 @@
 # CyberShield Architect and Engineer Start Here
 
-Current version: 2026061909
+Current version: 2026061910
 
-## Governing Plan
+## Governing Hierarchy
 
-Read first:
+Follow this order:
+
+1. Forward build plan
+2. Architecture library status
+3. Engineer next-build instructions
+4. Requirements Steward
+5. Current Decision Assurance requirements
+6. Trust Kernel Lite architecture
+7. Aegis/CyberShield boundary
+8. Canonical Trust Decision Record schema
+9. Current capture requirements
+10. Historical documents only for provenance
+
+## Read First
 
 ```text
 docs/2026061909-forward-build-plan.md
-```
-
-## Engineer Instructions
-
-Then read:
-
-```text
+docs/architecture-library-status.md
 docs/engineer-next-build-instructions.md
-```
-
-## Required Architecture and Requirements Library
-
-```text
 docs/2026061815-first-codex-agent-requirements-steward.md
 docs/cybershield-decision-assurance-requirements.md
 docs/cybershield-trust-kernel-lite-architecture.md
@@ -31,6 +33,38 @@ docs/requirements-traceability-matrix.md
 README.md
 release-manifest.json
 route-manifest.json
+```
+
+Do not build from an older architecture, route description, Sheet ID, or decision record merely because it remains in the repository.
+
+## Current Architecture Layers
+
+```text
+Presentation
+Interaction
+Governance and Meaningful Human Authority
+Trust Kernel Lite decision logic
+Evidence
+Decision and routing
+Canonical record and report
+Boundary, audit, and source-of-truth
+```
+
+## Active Decision Assurance Flow
+
+```text
+Recommendation Intake
+-> Domain Fit
+-> Claims
+-> Evidence Requirements
+-> Evidence and Contradictions
+-> Validators
+-> Risk If Wrong and Confidence
+-> Candidate Actions
+-> Meaningful Human Authority
+-> Human Decision
+-> Canonical AI Trust Decision Record
+-> Screen, JSON, Print, and Capture
 ```
 
 ## Current Product State
@@ -61,6 +95,8 @@ software-assisted advisory pilot
 
 Aegis remains internal.
 
+Trust Kernel Lite supports the decision. It does not replace the buyer-facing Decision Assurance workflow.
+
 ## Immediate Build Order
 
 ```text
@@ -83,7 +119,9 @@ Source:
 src/atdr/report-capture-config.js
 ```
 
-## Do Not Prioritize Yet
+Do not use an older Sheet ID found in historical documents unless the owner explicitly approves migration.
+
+## Deferred Scope
 
 - Public Aegis positioning
 - TrustMap-first rebuild
@@ -94,10 +132,12 @@ src/atdr/report-capture-config.js
 - Autonomous approval
 - Production-readiness claims
 
+## Conflict Rule
+
+If a historical record conflicts with the forward build plan, architecture library status, engineer instructions, current requirements, route manifest, release manifest, or capture config, the current governing source controls.
+
+If two current governing sources conflict, stop and run the Requirements Steward process before coding.
+
 ## First Required Action
 
-Run the Requirements Steward process, then begin:
-
-```text
-2026061143-report-layout-polish-after-print-test
-```
+Run the Requirements Steward process, then continue the active build sequence.
