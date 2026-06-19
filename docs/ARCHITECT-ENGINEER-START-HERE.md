@@ -10,6 +10,16 @@ Read first:
 docs/2026061909-forward-build-plan.md
 ```
 
+## Architecture Library Status
+
+Then read:
+
+```text
+docs/architecture-library-status.md
+```
+
+This index identifies current, supporting, superseded, and historical documents.  Do not build from an older architecture or decision record merely because it remains in the repository.
+
 ## Engineer Instructions
 
 Then read:
@@ -83,6 +93,8 @@ Source:
 src/atdr/report-capture-config.js
 ```
 
+Do not use an older Sheet ID found in historical documents unless the owner explicitly approves a migration.
+
 ## Do Not Prioritize Yet
 
 - Public Aegis positioning
@@ -93,6 +105,12 @@ src/atdr/report-capture-config.js
 - Multi-industry demos before vendor-risk is proven
 - Autonomous approval
 - Production-readiness claims
+
+## Conflict Rule
+
+If a historical decision record conflicts with the forward build plan, current engineer instructions, architecture library status, route manifest, or capture configuration, the current governing documents control.
+
+If two current documents conflict, stop and run the Requirements Steward process before coding.
 
 ## First Required Action
 
