@@ -6,6 +6,50 @@ This file records who built what, which CyberShield version they advanced, and t
 
 ## Current builder log
 
+### Builder-2026061816-Human-Legibility-Harness-Demo-Package
+
+Date: 2026-06-18
+
+Builder / agent identifier: Codex, Requirements Steward governed implementation pass
+
+CyberShield versions affected:
+
+- 2026061816 Human Legibility Harness Demo Package
+- 2026061816 Advisor Golden Path ATDR Update
+- 2026061816 Requirements Traceability Matrix Update
+
+Files materially changed or created:
+
+- `vendor-risk-next.html`
+- `docs/requirements-traceability-matrix.md`
+- `docs/builder-version-log.md`
+- `docs/successor-builder-handoff-and-job-docket.md`
+
+Primary value add:
+
+Implemented the next scoped advisor-route pass after the Requirements Steward packet.  The golden path now shows Human Legibility and Harness Health Assessment in the decision flow and includes those fields in the AI Trust Decision Record payload and print report.
+
+What got better:
+
+- `/vendor-risk-next.html` remains the Sandeep/advisor golden path and now shows decision owner, meaningful human authority, facts, assumptions, inferences, challenge-tested status, and next human action.
+- Harness Health Assessment now shows Inputs / Sources, Reach / Permissions, Job / Purpose, Proof / Evidence, and Value / Usefulness.
+- The generated AI Trust Decision Record payload includes `human_legibility` and `harness_health` objects.
+- The print report includes Human Legibility and Harness Health sections.
+- `/vendor-risk.html` remains untouched as fallback.
+
+Remaining risks or limitations:
+
+- This remains a static GitHub Pages prototype.
+- Browser smoke testing is still required after the branch or PR preview is available.
+- Capture remains prototype-grade and must not be represented as production CRM infrastructure.
+- No live model calls, live verification, production integrations, autonomous vendor approval, compliance certification, or full Aegis implementation were added.
+
+Next recommended build action:
+
+Smoke test `/vendor-risk-next.html`, verify print / save PDF output, verify downloaded JSON includes `human_legibility` and `harness_health`, confirm `/vendor-risk.html` fallback is unchanged, and then decide whether to promote the advisor route after review.
+
+---
+
 ### Builder-2026061721-Human-Legibility-Agency-Requirements
 
 Date: 2026-06-17

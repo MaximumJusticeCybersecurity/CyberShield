@@ -90,6 +90,16 @@ This matrix tracks critical requirements from founder feedback, advisor feedback
 | REQ-BIZ-001 | CyberShield first pilot should be AI Decision Assurance plus Harness Health Assessment for 3 to 5 AI-generated recommendations. | Founder decision + business-case package | Critical | 2026061815+ | Accepted | Business-case doc and advisor briefing define the first paid pilot. |
 | REQ-BIZ-002 | CyberShield must be positioned as decision evidence before action, not broad AI safety or full production SaaS. | Founder decision + business-case package | Critical | 2026061815+ | Accepted | Business-case doc uses decision evidence language and no-overclaim boundaries. |
 
+## 2026061816 Implementation Trace
+
+`/vendor-risk-next.html` now partially implements the advisor-route Human Legibility and Harness Health demo package.  The update adds visible Human Legibility, Meaningful Human Authority, Challenge-Tested, next human action, and Harness Health Assessment content to the Sandeep/advisor golden path and carries those fields into the AI Trust Decision Record payload and print report.
+
+Affected requirement IDs: `REQ-HM-001` through `REQ-HM-006`, `REQ-HM-013`, `REQ-HLA-001` through `REQ-HLA-006`, `REQ-HLA-008` through `REQ-HLA-010`, `REQ-HLA-012`, `REQ-HLA-014`, `REQ-HLA-015`, `REQ-VRDA-001`, `REQ-VRDA-005`, `REQ-VRDA-009`, `REQ-RSA-003`, `REQ-RSA-008`, `REQ-BIZ-001`, and `REQ-BIZ-002`.
+
+Status note: implemented for the static `/vendor-risk-next.html` advisor route only.  `/vendor-risk.html` remains fallback.  No live model-backed analysis, production CRM infrastructure, compliance certification, autonomous vendor approval, autonomous enforcement, or full Aegis expansion was added.
+
+Test / acceptance note: inline module syntax was checked with the bundled Node runtime.  Browser smoke testing remains required after GitHub Pages publishes the branch or PR preview.
+
 ## Builder rule
 
 Update this matrix when:

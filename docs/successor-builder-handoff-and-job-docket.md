@@ -1,12 +1,12 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
 Date: 2026-06-18
-Current documentation baseline: 2026061815 First Codex Agent and Advisor Package
+Current documentation baseline: 2026061816 Human Legibility Harness Demo Package
 Repository: MaximumJusticeCybersecurity/CyberShield
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
 Advisor golden path: `/vendor-risk-next.html`
 Fallback route: `/vendor-risk.html`
-Builder log entry: `docs/2026061815-builder-log-codex-agent-advisor-package.md`
+Builder log entry: `docs/builder-version-log.md`
 
 ## Purpose
 
@@ -194,24 +194,24 @@ Dr. Max Justice is the owner approval authority for:
    - major route changes
    - recommendation logic changes
 
-## Next recommended build
+## Current implementation state
 
 ```text
 2026061816-human-legibility-harness-demo-package
 ```
 
-Goal:
+Implemented on the advisor golden path only: `/vendor-risk-next.html` now includes visible Human Legibility and Harness Health Assessment sections and carries those fields into the AI Trust Decision Record payload and print report.
 
-```text
-Use the Requirements Steward Agent first.  Then tighten /vendor-risk-next.html with Human Legibility, Harness Health Assessment, Sandeep advisor briefing support, business-case pilot packaging, export language, and smoke checks.
-```
+Acceptance status:
 
-Acceptance:
-
-   - Requirements Steward packet exists before implementation.
+   - Requirements Steward packet existed before implementation.
    - `/vendor-risk-next.html` remains the advisor golden path.
-   - `/vendor-risk.html` remains fallback.
-   - Human Legibility and Harness Health fields are visible or explicitly scoped for implementation.
-   - AI Trust Decision Record print path works.
-   - Capture submits to configured endpoint or simulates honestly.
+   - `/vendor-risk.html` remains fallback and was not changed.
+   - Human Legibility and Harness Health fields are visible in the advisor route.
+   - AI Trust Decision Record print path includes the new sections.
+   - Capture still submits to configured endpoint or simulates honestly.
    - No production or autonomous-agent capability is overclaimed.
+
+## Next recommended build
+
+Smoke test `/vendor-risk-next.html`, verify print / save PDF, verify JSON export fields, and review the Sandeep walkthrough for clarity before any route promotion decision.
