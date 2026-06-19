@@ -1,5 +1,7 @@
 # 2026061022 Report Capture Apps Script Contract
 
+> **Superseded contract.**  This document preserves the original report-capture design, but its Sheet ID and route references are stale.  Current capture requirements are governed by `docs/google-sheets-report-capture.md`, `docs/architecture-library-status.md`, `src/atdr/report-capture-config.js`, and `docs/2026061909-forward-build-plan.md`.
+
 ## Purpose
 
 Define a safe Google Apps Script Web App pattern for CyberShield CRM/report capture without putting Google credentials, API keys, or secrets into the GitHub Pages front end.
@@ -11,22 +13,34 @@ Define a safe Google Apps Script Web App pattern for CyberShield CRM/report capt
 
 ## Contract Summary
 
-CyberShield front end prepares a report capture payload. A deployed Apps Script Web App receives the payload and writes it to the CRM Google Sheet.
+CyberShield front end prepares a report capture payload. A deployed Apps Script Web App receives the payload and writes it to the approved Google Sheet.
 
 The public front end remains safe because:
 
-- `REPORT_CAPTURE_ENDPOINT` is blank until deployment.
 - Google authentication lives inside Apps Script, not in GitHub Pages code.
 - No Google credentials are committed to the repository.
 - The route continues to simulate capture honestly when no endpoint exists.
+- Capture success is not claimed until an actual Sheet row is verified.
 
-## Target Sheet
+## Historical Target Sheet
 
 ```text
 1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
 ```
 
-Apps Script should store this value as a Script Property:
+This value is historical.  Current Sheet ID must be read from:
+
+```text
+src/atdr/report-capture-config.js
+```
+
+Current configured value at the time of this supersession notice:
+
+```text
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
+```
+
+Apps Script should store the owner-approved current value as Script Property:
 
 ```text
 CRM_SHEET_ID
@@ -97,43 +111,28 @@ Columns:
 - `record_defensibility_band`
 - `record_json`
 
-## Deployment Steps
+## Current Deployment Rule
 
-1. Create a Google Apps Script project owned by Maximum Justice Cybersecurity.
+1. Use an Apps Script project owned by Maximum Justice Cybersecurity.
 2. Paste `examples/google-apps-script/report-capture-web-app.gs` into the Apps Script editor.
-3. In Apps Script project settings, set Script Property:
-
-```text
-CRM_SHEET_ID = 1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
-```
-
+3. Set `CRM_SHEET_ID` to the current owner-approved Sheet ID.
 4. Deploy as a Web App.
 5. Test with a controlled POST using a sample payload.
 6. Only after testing, update `src/atdr/report-capture-config.js` with the Web App URL.
-7. Confirm `/vendor-risk-smoke.html` still shows GO.
-8. Confirm `/vendor-risk.html` capture status changes from simulated to configured.
+7. Confirm `/vendor-risk-next.html` submits the expected payload.
+8. Confirm `/vendor-risk.html` remains operational as fallback.
+9. Confirm `/capture-source-of-truth-smoke.html`, `/report-capture-test.html`, and `/trust-decision-record-schema-smoke.html` remain GO.
+10. Verify an actual row before claiming capture success.
 
 ## Security Rules
 
 Do not commit:
 
 - Google credentials
-- API keys
 - service-account JSON
 - OAuth secrets
-- Web App deployment secrets
+- API keys
+- personal access tokens
 - private customer data
 
-The front end may only contain the endpoint URL after deployment approval.
-
-## Known Limitations
-
-- Apps Script Web Apps may need CORS/response testing depending on deployment settings.
-- Google account permissions must be handled in Apps Script deployment, not in CyberShield.
-- This sample writes raw record JSON into a single column for early CRM validation. A future backend may normalize fields into separate tables.
-
-## Next Recommended Build
-
-`2026061023-report-capture-contract-qa`
-
-Only proceed after the Apps Script endpoint is deployed or a test endpoint is available. Without an endpoint, keep the front end in simulated mode.
+The deployed Web App URL may be present in front-end configuration only after owner-approved deployment and testing.
