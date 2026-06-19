@@ -1,0 +1,69 @@
+{
+  "manifest_version": "1.0",
+  "version_timestamp": "2026061909",
+  "status": "controlled-adoption-pending-canonical-merge",
+  "canonical_repository": "MaximumJusticeCybersecurity/Aegis",
+  "canonical_branch": "main",
+  "canonical_pull_request_dependency": 2,
+  "canonical_policy_path": "15_security/2026061909-agentic-security-identity-and-protection-standard.md",
+  "canonical_codex_instructions_path": "15_security/2026061909-codex-security-guardian-agent-build-instructions.md",
+  "canonical_policy_version": "2026061909",
+  "canonical_policy_integrity": {
+    "algorithm": "git-blob-sha",
+    "value": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
+    "verification_required_after_canonical_merge": true
+  },
+  "required_documents": [
+    {
+      "repository": "MaximumJusticeCybersecurity/CyberShield",
+      "path": "AGENTS.md",
+      "required": true
+    },
+    {
+      "repository": "MaximumJusticeCybersecurity/CyberShield",
+      "path": "SECURITY.md",
+      "required": true
+    },
+    {
+      "repository": "MaximumJusticeCybersecurity/Aegis",
+      "path": "15_security/2026061909-agentic-security-identity-and-protection-standard.md",
+      "required": true
+    },
+    {
+      "repository": "MaximumJusticeCybersecurity/Aegis",
+      "path": "15_security/2026061909-codex-security-guardian-agent-build-instructions.md",
+      "required": true
+    },
+    {
+      "repository": "MaximumJusticeCybersecurity/CyberShield",
+      "path": "docs/2026061908-trusted-authority-ethical-influence-standard.md",
+      "required": true
+    }
+  ],
+  "startup_attestation_required": true,
+  "protected_write_quorum_required": true,
+  "minimum_independent_verifiers": 2,
+  "human_approval_required_for": [
+    "merge-to-protected-branch",
+    "production-deployment",
+    "public-release",
+    "recommendation-logic-change",
+    "risk-logic-change",
+    "trust-decision-record-schema-change",
+    "irreversible-action",
+    "root-trust-change",
+    "security-control-reduction",
+    "security-policy-authority-change"
+  ],
+  "fail_closed_on": [
+    "canonical-policy-not-merged",
+    "missing-policy",
+    "stale-policy",
+    "integrity-mismatch",
+    "invalid-identity",
+    "missing-quorum",
+    "expired-attestation",
+    "missing-required-human-approval",
+    "audit-log-failure"
+  ]
+}
