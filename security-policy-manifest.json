@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.0",
   "version_timestamp": "2026061909",
-  "status": "controlled-adoption-pending-canonical-merge",
+  "status": "active",
   "canonical_repository": "MaximumJusticeCybersecurity/Aegis",
   "canonical_branch": "main",
   "canonical_pull_request_dependency": 2,
@@ -11,7 +11,7 @@
   "canonical_policy_integrity": {
     "algorithm": "git-blob-sha",
     "value": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
-    "verification_required_after_canonical_merge": true
+    "verified_on_main": true
   },
   "required_documents": [
     {
@@ -56,7 +56,6 @@
     "security-policy-authority-change"
   ],
   "fail_closed_on": [
-    "canonical-policy-not-merged",
     "missing-policy",
     "stale-policy",
     "integrity-mismatch",
