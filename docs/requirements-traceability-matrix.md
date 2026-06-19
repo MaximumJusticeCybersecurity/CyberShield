@@ -1,7 +1,7 @@
 # CyberShield Requirements Traceability Matrix
 
-Date: 2026-06-18
-Baseline: 2026061815 First Codex Agent and Advisor Package
+Date: 2026-06-19
+Baseline: 2026061909 Decision Assurance Implementation Agent Package
 
 ## Purpose
 
@@ -89,6 +89,13 @@ This matrix tracks critical requirements from founder feedback, advisor feedback
 | REQ-RSA-008 | `/vendor-risk-next.html` is the formal golden path for Sandeep and advisor review; `/vendor-risk.html` remains fallback. | Agent question response + founder direction | Critical | 2026061815+ | Accepted | Advisor briefing and steward docs identify golden path and fallback. |
 | REQ-BIZ-001 | CyberShield first pilot should be AI Decision Assurance plus Harness Health Assessment for 3 to 5 AI-generated recommendations. | Founder decision + business-case package | Critical | 2026061815+ | Accepted | Business-case doc and advisor briefing define the first paid pilot. |
 | REQ-BIZ-002 | CyberShield must be positioned as decision evidence before action, not broad AI safety or full production SaaS. | Founder decision + business-case package | Critical | 2026061815+ | Accepted | Business-case doc uses decision evidence language and no-overclaim boundaries. |
+| REQ-DAIA-001 | The second Codex-style agent must be the Decision Assurance Implementation Agent and must operate after the Requirements Steward Agent. | Founder decision | Critical | 2026061909+ | Accepted | Agent contract exists and README, AGENTS.md, bots, governance, and handoff identify the sequence. |
+| REQ-DAIA-002 | Material implementation requires a task-specific Requirements Steward decision of Proceed or Proceed with constraints. | Founder decision + agent separation-of-duties doctrine | Critical | 2026061909+ | Accepted | AGENTS.md and implementation-agent contract contain the authorization gate. |
+| REQ-DAIA-003 | The implementation agent must implement only approved scope and must not redefine requirements, recommendation logic, risk logic, product positioning, or its own authority. | Founder decision + boundary doctrine | Critical | 2026061909+ | Accepted | Agent contract defines allowed and prohibited authority. |
+| REQ-DAIA-004 | Material implementation must use a task branch and review packet or pull request; the agent may not merge without human approval. | Founder decision + human authority doctrine | Critical | 2026061909+ | Accepted | AGENTS.md and agent contract define branch, PR, and no-autonomous-merge rules. |
+| REQ-DAIA-005 | The implementation agent must verify behavior at the strongest available level and must not claim browser, print, capture, or accessibility success from source inspection alone. | Founder decision + evidence doctrine | Critical | 2026061909+ | Accepted | Agent contract and first mission define the verification hierarchy and actual-print requirement. |
+| REQ-DAIA-006 | Every material implementation run must produce a completion packet and update traceability, builder history, and successor handoff. | Founder decision + repo continuity doctrine | High | 2026061909+ | Accepted | Agent contract defines the completion packet and documentation obligations. |
+| REQ-TAEI-001 | All CyberShield builders and agents must conform to the Trusted Authority and Ethical Influence Standard. | Founder decision + Luxury Academy lesson synthesis | Critical | 2026061908+ | Accepted | Standard is in repo and required reading in AGENTS.md, engineer instructions, README, bots, and governance summary. |
 
 ## 2026061816 Implementation Trace
 
@@ -99,6 +106,14 @@ Affected requirement IDs: `REQ-HM-001` through `REQ-HM-006`, `REQ-HM-013`, `REQ-
 Status note: implemented for the static `/vendor-risk-next.html` advisor route only.  `/vendor-risk.html` remains fallback.  No live model-backed analysis, production CRM infrastructure, compliance certification, autonomous vendor approval, autonomous enforcement, or full Aegis expansion was added.
 
 Test / acceptance note: inline module syntax was checked with the bundled Node runtime.  Browser smoke testing remains required after GitHub Pages publishes the branch or PR preview.
+
+## 2026061909 Agent Governance and First-Mission Trace
+
+The repository now contains the Decision Assurance Implementation Agent contract, repo-level `AGENTS.md`, task-specific Requirements Steward packet, and first mission for `2026061143-report-layout-polish-after-print-test`.
+
+Affected requirement IDs: `REQ-REL-001`, `REQ-VRDA-009`, `REQ-RSA-003`, `REQ-DAIA-001` through `REQ-DAIA-006`, and `REQ-TAEI-001`.
+
+Status note: the agent framework and first-mission instructions are accepted and documented.  The report-layout code change has not yet been implemented.  Actual browser print or saved PDF inspection remains required before that mission can be accepted.
 
 ## Builder rule
 
