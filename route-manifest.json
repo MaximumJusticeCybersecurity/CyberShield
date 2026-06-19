@@ -1,15 +1,16 @@
 {
-  "version": "2026061134-stability-first-route-architecture",
+  "version": "2026061909-agent-ready-route-architecture",
   "product_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
   "public_artifact_name": "AI Trust Decision Record",
   "primary_wedge": "vendor-risk",
-  "route_strategy": "Keep /vendor-risk.html stable. Use /vendor-risk-next.html for richer panels until tested.",
+  "route_strategy": "Use /vendor-risk-next.html as the advisor golden path and preferred high-touch route. Preserve /vendor-risk.html as the stable fallback buyer route.",
   "doctrine": [
     "AI confidence is not evidence.",
     "The record is the product.",
     "Vendor risk is the first wedge.",
     "Aegis remains internal for this build.",
-    "Buyer-facing routes should lead to the vendor-risk Decision Assurance demo."
+    "Buyer-facing routes should lead to vendor-risk Decision Assurance.",
+    "Actual browser print output must be inspected before report quality is accepted."
   ],
   "routes": [
     {
@@ -18,16 +19,36 @@
       "status": "active",
       "role": "public landing route",
       "priority": "primary entry",
-      "expected_behavior": "Direct users to the vendor-risk Decision Assurance demo and review package.",
-      "must_not": ["restore TrustMap as root", "surface Aegis as public positioning", "surface workbench as the public demo"]
+      "expected_behavior": "Lead with AI Decision Assurance and direct users to the preferred vendor-risk route.",
+      "must_not": [
+        "restore TrustMap as root",
+        "surface Aegis as public positioning",
+        "surface the deep workbench as the primary buyer demo"
+      ]
+    },
+    {
+      "path": "/vendor-risk-next.html",
+      "file": "vendor-risk-next.html",
+      "status": "active-preferred",
+      "role": "advisor golden path and preferred high-touch vendor-risk demo",
+      "priority": "preferred demo",
+      "expected_behavior": "Session-storage six-step vendor-risk Decision Assurance route with validators, candidate actions, Human Legibility, Harness Health Assessment, AI Trust Decision Record, print path, reviewer block, and prototype capture.",
+      "expected_contract": {
+        "claims_extracted": 10,
+        "recommended_action": "Request Evidence",
+        "risk_if_wrong": "High",
+        "confidence_band": "Low confidence",
+        "human_review_required": true
+      },
+      "current_task": "2026061143-report-layout-polish-after-print-test"
     },
     {
       "path": "/vendor-risk.html",
       "file": "vendor-risk.html",
-      "status": "active-stable",
-      "role": "stable buyer demo route",
-      "priority": "primary demo",
-      "expected_behavior": "Stable core six-step vendor-risk trust decision loop. Fresh load starts on Identify. Optional route-layer add-ons remain disabled here until tested.",
+      "status": "active-stable-fallback",
+      "role": "stable fallback buyer demo route",
+      "priority": "fallback",
+      "expected_behavior": "Stable core six-step vendor-risk trust decision loop. Fresh load starts on Identify. Optional richer modules remain disabled until tested.",
       "expected_contract": {
         "claims_extracted": 10,
         "recommended_action": "Request Evidence",
@@ -37,109 +58,138 @@
       }
     },
     {
-      "path": "/vendor-risk-next.html",
-      "file": "vendor-risk-next.html",
-      "status": "experimental-rich",
-      "role": "rich vendor-risk next route",
-      "priority": "internal/buyer-preview after testing",
-      "expected_behavior": "Session-storage route with validators, candidate action tournament, AI Trust Decision Record report, default reviewer block, and prototype capture using configured endpoint when present.",
-      "promotion_gate": "Promote only after Brave, Chrome, Firefox, and mobile testing confirms no freeze or slow-load behavior."
-    },
-    {
       "path": "/review-index.html",
       "file": "review-index.html",
       "status": "internal",
-      "role": "final review index",
-      "priority": "internal QA and review navigation",
-      "expected_behavior": "Expose stable route, next route, pilot package, demo script, feedback, and QA checks."
+      "role": "review navigation",
+      "priority": "internal review"
     },
     {
       "path": "/pilot-package.html",
       "file": "pilot-package.html",
       "status": "internal",
       "role": "software-assisted advisory pilot package",
-      "priority": "pilot framing",
-      "expected_behavior": "Frame a 3 to 5 recommendation pilot without claiming finished SaaS."
+      "priority": "pilot framing"
     },
     {
       "path": "/demo-script.html",
       "file": "demo-script.html",
       "status": "internal",
       "role": "demo talk track",
-      "priority": "review support",
-      "expected_behavior": "Support a 3 to 5 minute demo without production-readiness claims."
+      "priority": "review support"
     },
     {
       "path": "/review-feedback.html",
       "file": "review-feedback.html",
       "status": "internal",
-      "role": "local-only review feedback",
-      "priority": "review support",
-      "expected_behavior": "Capture reviewer feedback in local browser JSON only."
+      "role": "local review feedback",
+      "priority": "review support"
+    },
+    {
+      "path": "/feedback-triage.html",
+      "file": "feedback-triage.html",
+      "status": "internal",
+      "role": "controlled feedback triage",
+      "priority": "future build support"
     },
     {
       "path": "/controlled-review-checklist.html",
       "file": "controlled-review-checklist.html",
       "status": "internal",
       "role": "controlled review checklist",
-      "priority": "internal QA",
-      "expected_behavior": "Support GO/NO-GO checks before review."
+      "priority": "internal QA"
     },
     {
       "path": "/internal-qa.html",
       "file": "internal-qa.html",
       "status": "internal",
       "role": "internal QA hub",
-      "priority": "internal QA",
-      "expected_behavior": "Link stable demo, next demo, review package, and QA routes."
+      "priority": "internal QA"
+    },
+    {
+      "path": "/vendor-risk-next-smoke.html",
+      "file": "vendor-risk-next-smoke.html",
+      "status": "internal",
+      "role": "preferred-route smoke test",
+      "priority": "required QA"
     },
     {
       "path": "/vendor-risk-smoke.html",
       "file": "vendor-risk-smoke.html",
       "status": "internal",
-      "role": "guided route QA smoke test",
-      "priority": "internal QA",
-      "expected_behavior": "Show GO when the guided vendor-risk record contract passes."
+      "role": "fallback-route smoke test",
+      "priority": "required QA"
+    },
+    {
+      "path": "/trust-decision-record-schema-smoke.html",
+      "file": "trust-decision-record-schema-smoke.html",
+      "status": "internal",
+      "role": "canonical record schema smoke test",
+      "priority": "required QA"
     },
     {
       "path": "/record-contract.html",
       "file": "record-contract.html",
       "status": "internal",
       "role": "record contract checker",
-      "priority": "internal QA",
-      "expected_behavior": "Validate expected Trust Decision Record contract and out-of-scope behavior."
+      "priority": "required QA"
+    },
+    {
+      "path": "/capture-source-of-truth-smoke.html",
+      "file": "capture-source-of-truth-smoke.html",
+      "status": "internal",
+      "role": "capture source-of-truth smoke test",
+      "priority": "required QA"
+    },
+    {
+      "path": "/report-capture-test.html",
+      "file": "report-capture-test.html",
+      "status": "internal",
+      "role": "prototype capture configuration test",
+      "priority": "required QA"
+    },
+    {
+      "path": "/report-print-qa.html",
+      "file": "report-print-qa.html",
+      "status": "internal",
+      "role": "print report QA route",
+      "priority": "current task QA",
+      "verification_rule": "Automated source checks are supporting evidence only. Actual print preview or saved PDF inspection is required."
     },
     {
       "path": "/route-manifest.html",
       "file": "route-manifest.html",
       "status": "internal",
       "role": "route governance viewer",
-      "priority": "internal governance",
-      "expected_behavior": "Validate route doctrine and confirm vendor-risk remains primary."
-    },
-    {
-      "path": "/report-capture-test.html",
-      "file": "report-capture-test.html",
-      "status": "internal",
-      "role": "capture configuration test",
-      "priority": "internal QA",
-      "expected_behavior": "Test configured report capture endpoint and honest simulation."
+      "priority": "internal governance"
     },
     {
       "path": "/atdr.html",
       "file": "atdr.html",
       "status": "internal",
       "role": "deep workbench",
-      "priority": "internal inspection",
-      "expected_behavior": "Provide deeper ATDR workbench inspection without replacing vendor-risk as the primary demo."
+      "priority": "internal inspection"
+    },
+    {
+      "path": "/demo-readiness.html",
+      "file": "demo-readiness.html",
+      "status": "preserved",
+      "role": "legacy readiness surface",
+      "priority": "preservation"
+    },
+    {
+      "path": "/advisor-feedback.html",
+      "file": "advisor-feedback.html",
+      "status": "preserved",
+      "role": "legacy advisor feedback surface",
+      "priority": "preservation"
     },
     {
       "path": "/trust-kernel-legacy.html",
       "file": "trust-kernel-legacy.html",
       "status": "preserved",
       "role": "legacy Trust Kernel / TrustMap route",
-      "priority": "preservation only",
-      "expected_behavior": "Preserve prior Trust Kernel experience. Do not restore as root."
+      "priority": "preservation only"
     }
   ],
   "non_goals_until_vendor_risk_loop_is_done": [
@@ -162,7 +212,7 @@
     "No malware scanning",
     "No live LLM-backed analyzer",
     "No server-side DOCX/PDF generation",
-    "Browser Print / Save PDF is current PDF path",
+    "Browser Print / Save PDF is the current PDF path",
     "Google Sheet capture is prototype-grade and must be verified by row inspection"
   ]
 }
