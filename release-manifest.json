@@ -1,32 +1,41 @@
 {
-  "release_id": "2026061142-focused-stable-capture-refactor",
-  "release_name": "CyberShield Preferred Vendor-Risk Next Demo with Clean Stable Fallback Capture",
-  "release_date": "2026-06-17",
+  "release_id": "2026061910-forward-plan-implementation",
+  "release_name": "CyberShield Decision Assurance Forward Plan Implementation",
+  "release_date": "2026-06-19",
   "preferred_route": "/vendor-risk-next.html",
   "fallback_route": "/vendor-risk.html",
   "primary_wedge": "vendor-risk",
-  "status": "static prototype with preferred rich route, clean stable fallback route, QA smoke routes, and local feedback triage",
-  "root_behavior": "Root landing page leads with AI Decision Assurance value and redirects visitors to the preferred vendor-risk next demo.",
+  "status": "static prototype with preferred rich route, stable fallback, canonical executive report, canonical record verification, feedback integration, and Sheet row verification workflow",
+  "root_behavior": "Root directs visitors to the preferred vendor-risk Decision Assurance route.",
   "north_star": "Before relying on AI, CyberShield shows whether the recommendation is defensible.",
   "core_workflow": "AI-generated recommendation in -> AI Trust Decision Record out",
   "public_artifact_name": "AI Trust Decision Record",
   "pilot_positioning": "software-assisted advisory pilot",
-  "first_proof_point": "AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out",
-  "promotion_basis": [
-    "Owner confirmed both /vendor-risk.html and /vendor-risk-next.html loaded quickly.",
-    "/vendor-risk-next.html avoids MutationObserver loops.",
-    "/vendor-risk-next.html uses sessionStorage.",
-    "/vendor-risk.html now uses a stable shared-config module instead of the retired legacy guided script."
+  "architecture_layers": [
+    "Presentation",
+    "Interaction",
+    "Governance and Meaningful Human Authority",
+    "Trust Kernel Lite decision logic",
+    "Evidence",
+    "Decision and routing",
+    "Canonical record and report",
+    "Boundary, audit, and source-of-truth"
   ],
+  "forward_plan_status": {
+    "2026061143-report-layout-polish-after-print-test": "implemented as /ai-trust-decision-record-report.html; manual print inspection still required",
+    "2026061144-feedback-integration-after-review": "implemented as /feedback-triage.html and /feedback-integration-review.html; awaits real reviewer feedback",
+    "2026061145-route-manifest-refresh": "implemented",
+    "2026061146-canonical-record-unification": "implemented through shared mapper, executive report, and /canonical-record-unification.html; preferred-route direct mapper migration remains a later refactor",
+    "2026061147-google-sheet-row-verification": "verification workflow implemented; actual Sheet row verification remains operationally required"
+  },
   "google_sheets_capture": {
     "mode": "configured",
     "endpoint_type": "Google Apps Script Web App",
     "sheet_id": "1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w",
     "config_file": "src/atdr/report-capture-config.js",
-    "preferred_route_module": "vendor-risk-next.html inline module using report-capture-config.js",
-    "fallback_route_module": "src/atdr/vendor-risk-stable.js",
     "test_route": "/report-capture-test.html",
     "source_of_truth_test": "/capture-source-of-truth-smoke.html",
+    "row_verification_route": "/google-sheet-row-verification.html",
     "verification_rule": "Browser submission is not proof of row creation. Verify the Google Sheet row before claiming capture success."
   },
   "core_contract": {
@@ -39,65 +48,52 @@
   "buyer_facing_routes": [
     "/",
     "/vendor-risk-next.html",
-    "/vendor-risk.html"
+    "/vendor-risk.html",
+    "/ai-trust-decision-record-report.html"
   ],
   "review_and_preview_routes": [
     "/review-index.html",
     "/pilot-package.html",
     "/demo-script.html",
     "/review-feedback.html",
-    "/feedback-triage.html"
+    "/feedback-triage.html",
+    "/feedback-integration-review.html"
   ],
   "internal_routes": [
     "/internal-qa.html",
     "/controlled-review-checklist.html",
     "/vendor-risk-next-smoke.html",
-    "/trust-decision-record-schema-smoke.html",
-    "/capture-source-of-truth-smoke.html",
-    "/report-print-qa.html",
-    "/report-capture-test.html",
     "/vendor-risk-smoke.html",
+    "/trust-decision-record-schema-smoke.html",
+    "/canonical-record-unification.html",
+    "/capture-source-of-truth-smoke.html",
+    "/report-capture-test.html",
+    "/google-sheet-row-verification.html",
+    "/report-print-qa.html",
     "/record-contract.html",
     "/route-manifest.html",
     "/qa-session.html",
     "/qa-defect-log.html",
-    "/atdr.html",
-    "/demo-readiness.html",
-    "/advisor-feedback.html"
+    "/atdr.html"
   ],
   "preserved_routes": [
+    "/demo-readiness.html",
+    "/advisor-feedback.html",
     "/trust-kernel-legacy.html"
   ],
   "release_guardrails": [
+    "Vendor-risk Decision Assurance remains first.",
     "Use /vendor-risk-next.html as preferred high-touch demo route.",
-    "Use /vendor-risk.html as fallback if any browser slows down or freezes.",
-    "Aegis remains internal for this build.",
-    "Trust Kernel may be referenced as supporting architecture, not as the primary public message.",
-    "ATDR workbench remains internal inspection only and must not be surfaced as the public demo.",
-    "Google Sheets capture is configured through the deployed Apps Script endpoint, but this remains prototype-grade capture, not production CRM infrastructure.",
-    "Legacy Trust Kernel remains preserved and is not restored as root.",
-    "Do not claim production readiness.",
-    "Do not treat SOC 2 as automatic approval.",
-    "Do not treat framework mapping as compliance proof.",
-    "Do not return Medium confidence for unsupported out-of-scope inputs."
+    "Use /vendor-risk.html as fallback if any browser slows or freezes.",
+    "Aegis remains internal.",
+    "TrustMap, Runtime agents, generic trust scores, broad dashboards, and multi-industry expansion remain deferred.",
+    "No Google Sheet success claim is allowed until a real row is verified.",
+    "Do not claim production readiness, compliance certification, or autonomous vendor approval."
   ],
-  "static_prototype_limitations": [
-    "No production persistence beyond prototype Google Sheet capture",
-    "No production authentication",
-    "No tenant isolation",
-    "No malware scanning",
-    "No live LLM-backed analyzer",
-    "No server-side DOCX/PDF generation",
-    "Browser Print / Save PDF is current PDF path",
-    "Google Sheets capture is endpoint-backed but not production CRM infrastructure"
-  ],
-  "known_follow_up": [
-    "Run capture-source-of-truth-smoke.html after GitHub Pages refresh to confirm all active routes use the configured Sheet ID.",
-    "Run report-print-qa.html before using printed output as proof artifact."
-  ],
-  "next_recommended_builds": [
-    "2026061143-report-layout-polish-after-print-test",
-    "2026061144-feedback-integration-after-review",
-    "2026061145-route-manifest-refresh"
+  "manual_gates_remaining": [
+    "Inspect actual browser Print / Save PDF output from /ai-trust-decision-record-report.html.",
+    "Load real reviewer feedback into /feedback-triage.html and run /feedback-integration-review.html.",
+    "Submit a real capture and complete /google-sheet-row-verification.html.",
+    "Consider a later preferred-route refactor to call the shared canonical mapper directly."
   ]
 }
