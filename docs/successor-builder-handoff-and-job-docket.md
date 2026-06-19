@@ -1,23 +1,20 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
-Date: 2026-06-18
-Current documentation baseline: 2026061816 Human Legibility Harness Demo Package
-Repository: MaximumJusticeCybersecurity/CyberShield
-Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/
-Advisor golden path: `/vendor-risk-next.html`
+Date: 2026-06-19  
+Current documentation baseline: 2026061909 Decision Assurance Implementation Agent Package  
+Repository: MaximumJusticeCybersecurity/CyberShield  
+Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/  
+Advisor golden path: `/vendor-risk-next.html`  
 Fallback route: `/vendor-risk.html`
-Builder log entry: `docs/builder-version-log.md`
 
-## Purpose
+## 1. Purpose
 
-This document is the successor builder handoff and job docket for CyberShield.  It must be updated after every material build.
+This is the current successor-builder handoff and job docket for CyberShield.  It identifies the governing product direction, agent sequence, required reading, current authorized task, acceptance boundaries, and next human decision.
 
-The current repo direction is AI Decision Assurance plus Harness Health Assessment.  CyberShield remains the narrow commercial proof point.  Aegis remains the broader trusted partner architecture and doctrine library.
-
-## Current strategic direction
+## 2. Current strategic direction
 
 ```text
-AI-generated recommendation in -> AI Trust Decision Record out
+AI-generated recommendation in -> defensible AI Trust Decision Record out
 ```
 
 First proof point:
@@ -26,93 +23,165 @@ First proof point:
 AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out
 ```
 
+The record is the product.
+
 Current advisor message:
 
 ```text
 CyberShield makes AI-influenced decisions legible, reviewable, and accountable.
 ```
 
-## Required first step for future agents
+Aegis remains the broader trusted-partner architecture and internal doctrine library.  Public CyberShield language remains focused on the buyer problem.
 
-Before implementation work, run the Requirements Steward Agent pattern.
+## 3. Agent entry point
 
-Canonical file:
+Every agent and builder starts with:
+
+```text
+AGENTS.md
+```
+
+Current sequence:
+
+1. Requirements Steward Agent.
+2. Decision Assurance Implementation Agent.
+3. Verification and Repo Closeout Agent, planned but not yet separately authorized.
+
+Canonical agent files:
 
 ```text
 docs/2026061815-first-codex-agent-requirements-steward.md
+docs/2026061909-second-codex-agent-decision-assurance-implementation.md
 ```
 
-The steward check is required before code changes that affect demo scope, positioning, routes, ATDR schema, risk logic, claims, evidence, Harness Health, Human Legibility, exports, production claims, or the Aegis / CyberShield boundary.
+The Requirements Steward decides what may be built.  The Decision Assurance Implementation Agent builds only the approved task and does not merge without owner approval.
 
-## Source-of-truth precedence
+## 4. Current authorized task
 
-When docs conflict, use this precedence order:
+```text
+2026061143-report-layout-polish-after-print-test
+```
 
-1. Direct owner decision from Dr. Max Justice in the current task or latest accepted repo document.
-2. `docs/aegis-cybershield-architecture-boundary.md`
-3. `docs/2026061815-first-codex-agent-requirements-steward.md`
-4. `docs/cybershield-decision-assurance-requirements.md`
-5. `docs/2026061815-sandeep-demo-path-and-advisor-briefing.md`
-6. `docs/2026061815-cybershield-business-case.md`
-7. `docs/2026061717-harness-self-improvement-requirements.md`
-8. `docs/2026061721-human-legibility-agency-requirements.md`
-9. `docs/trust-decision-record-schema.md`
-10. `docs/cybershield-trust-kernel-lite-architecture.md`
-11. `docs/requirements-traceability-matrix.md`
-12. `docs/definition-of-done.md`
-13. `docs/builder-requirements-acceptance-checklist.md`
-14. `README.md`
-15. `bots.txt`
-16. `docs/builder-version-log.md`
-17. older handoff files, unless explicitly marked current
+Task-specific steward packet:
 
-## Required builder reading order
+```text
+docs/2026061909-requirements-steward-packet-report-layout-polish.md
+```
 
-1. `README.md`
-2. `docs/aegis-cybershield-architecture-boundary.md`
-3. `docs/2026061815-first-codex-agent-requirements-steward.md`
-4. `docs/2026061815-sandeep-demo-path-and-advisor-briefing.md`
-5. `docs/2026061815-cybershield-business-case.md`
-6. `docs/cybershield-decision-assurance-requirements.md`
-7. `docs/2026061717-harness-self-improvement-requirements.md`
-8. `docs/2026061721-human-legibility-agency-requirements.md`
-9. `docs/trust-decision-record-schema.md`
-10. `docs/cybershield-trust-kernel-lite-architecture.md`
-11. `docs/requirements-traceability-matrix.md`
-12. `docs/definition-of-done.md`
-13. `docs/builder-requirements-acceptance-checklist.md`
-14. `docs/builder-version-log.md`
-15. `docs/2026061815-builder-log-codex-agent-advisor-package.md`
-16. this handoff and job docket
-17. `docs/2026061014-versioning-standard.md`
-18. `docs/2026061138-cross-browser-qa-and-promotion-decision.md`
+Implementation instructions:
 
-## Current route strategy
+```text
+docs/2026061909-decision-assurance-implementation-agent-first-mission.md
+```
 
-Advisor golden path:
+Required branch:
+
+```text
+agent/2026061909-report-layout-polish
+```
+
+Steward decision:
+
+```text
+Proceed with constraints
+```
+
+## 5. Required first response from the implementation agent
+
+Before editing, the agent must return a completed Implementation Preflight containing:
+
+- task ID
+- steward decision
+- objective
+- intended user
+- current baseline observed
+- in-scope and out-of-scope items
+- affected requirements
+- expected files
+- human validation zones
+- security, compliance, and claims impact
+- verification plan
+- rollback or fallback
+- decision to implement or return to steward
+
+## 6. Required reading order
+
+1. `AGENTS.md`
+2. `docs/2026061909-requirements-steward-packet-report-layout-polish.md`
+3. `docs/2026061909-decision-assurance-implementation-agent-first-mission.md`
+4. `docs/2026061909-second-codex-agent-decision-assurance-implementation.md`
+5. `docs/2026061908-trusted-authority-ethical-influence-standard.md`
+6. `docs/engineer-next-build-instructions.md`
+7. `docs/2026061909-forward-build-plan.md`
+8. `docs/2026061815-first-codex-agent-requirements-steward.md`
+9. `docs/aegis-cybershield-architecture-boundary.md`
+10. `docs/cybershield-decision-assurance-requirements.md`
+11. `docs/trust-decision-record-schema.md`
+12. `docs/requirements-traceability-matrix.md`
+13. `docs/definition-of-done.md`
+14. `docs/builder-requirements-acceptance-checklist.md`
+15. `docs/builder-version-log.md`
+16. `docs/2026061909-builder-log-decision-assurance-implementation-agent-package.md`
+17. `README.md`
+18. `bots.txt`
+19. `governance-summary.json`
+20. `release-manifest.json`
+21. `route-manifest.json`
+
+## 7. Source-of-truth precedence
+
+When documents conflict, use this order:
+
+1. Direct current owner decision from Dr. Max Justice.
+2. Task-specific Requirements Steward packet.
+3. `AGENTS.md`.
+4. `docs/aegis-cybershield-architecture-boundary.md`.
+5. `docs/2026061909-second-codex-agent-decision-assurance-implementation.md`.
+6. `docs/2026061908-trusted-authority-ethical-influence-standard.md`.
+7. `docs/2026061815-first-codex-agent-requirements-steward.md`.
+8. `docs/engineer-next-build-instructions.md`.
+9. `docs/2026061909-forward-build-plan.md`.
+10. Current requirements, schema, RTM, Definition of Done, and acceptance checklist.
+11. README, bots, governance summary, release manifest, and route manifest.
+12. Older handoffs and historical build plans unless explicitly marked current.
+
+Rule:
+
+```text
+Boundary beats feature request.  Scope beats polish.  Evidence beats enthusiasm.  Current accepted docs beat older docs.
+```
+
+## 8. Current route contract
+
+Advisor golden path and preferred high-touch route:
 
 ```text
 /vendor-risk-next.html
 ```
 
-Fallback route:
+Stable fallback buyer route:
 
 ```text
 /vendor-risk.html
 ```
 
-Preserved older routes:
+The implementation agent may polish the preferred route print artifact.  It must not retire or materially change the fallback route.
+
+Required QA routes:
 
 ```text
-/atdr.html
-/demo-readiness.html
-/advisor-feedback.html
-/trust-kernel-legacy.html
+/vendor-risk-next-smoke.html
+/vendor-risk-smoke.html
+/trust-decision-record-schema-smoke.html
+/record-contract.html
+/capture-source-of-truth-smoke.html
+/report-capture-test.html
+/report-print-qa.html
+/review-index.html
+/internal-qa.html
 ```
 
-The preserved routes are not the primary buyer demo.
-
-## Current demo contract
+## 9. Current demo contract
 
 Expected vendor-risk sample output:
 
@@ -137,81 +206,128 @@ Record Defensibility: Not defensible
 Framework mappings: 0
 ```
 
-## Sandeep advisor walkthrough
+The current task does not authorize changing these values or the logic producing them.
 
-Use `docs/2026061815-sandeep-demo-path-and-advisor-briefing.md`.
+## 10. First-mission objective
 
-Open with the buyer problem, not Aegis:
+Inspect actual browser Print / Save PDF output from `/vendor-risk-next.html`, document observed defects, and make the smallest bounded changes required to produce a polished executive AI Trust Decision Record.
 
-```text
-Organizations are starting to rely on AI-generated recommendations, but they still need to prove whether those recommendations are defensible before acting.  CyberShield takes an AI recommendation and turns it into an AI Trust Decision Record.
-```
-
-Show:
-
-   - AI recommendation
-   - claims
-   - evidence gaps
-   - contradiction checks
-   - candidate actions
-   - Request Evidence as strongest defensible action
-   - Risk If Wrong
-   - Confidence Band
-   - Human Review Required
-   - AI Trust Decision Record
-
-## Current business case
-
-Use `docs/2026061815-cybershield-business-case.md`.
-
-First paid offer:
+The agent must create:
 
 ```text
-AI Decision Assurance plus Harness Health Assessment for 3 to 5 AI-generated recommendations.
+docs/2026061909-report-print-test-observations.md
 ```
 
-Primary output:
+The agent must not claim print acceptance from source inspection alone.
+
+## 11. Required first-page decision content
+
+The printed first page must visibly include:
+
+- AI Trust Decision Record
+- vendor or subject
+- Request Evidence
+- Risk If Wrong: High
+- Confidence Band: Low confidence
+- Human Review Required: Yes
+- accountable decision owner or pending assignment
+- next human action
+- record ID and generated timestamp when available
+
+## 12. Current capture source of truth
 
 ```text
-AI Trust Decision Records plus executive-ready decision evidence.
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
 ```
 
-## Prototype boundary
+Configuration:
 
-The current public build is a static advisory prototype.  Do not represent it as having production integrations, production automation, certification authority, validated scoring, live model-backed analysis, autonomous vendor approval, or backend persistence unless those capabilities are actually built and verified.
+```text
+src/atdr/report-capture-config.js
+```
 
-## Approval authority
+Browser submission is not proof of row creation.  Verify the resulting Sheet row before claiming capture success.
+
+## 13. Trusted authority baseline
+
+Conform to:
+
+```text
+docs/2026061908-trusted-authority-ethical-influence-standard.md
+```
+
+The implementation must preserve evidence before confidence, restraint before expansion, non-alarmist executive presentation, meaningful human authority, dissent, override, and legitimate no-action or defer outcomes.
+
+## 14. Prototype boundaries
+
+Do not represent the current build as having:
+
+- production readiness
+- live model-backed analysis
+- live evidence verification
+- production persistence or authentication
+- tenant isolation
+- server-side DOCX or PDF generation
+- production CRM infrastructure
+- compliance certification
+- autonomous vendor approval
+- SOC 2 automatic approval
+- framework mapping as compliance proof
+
+## 15. Approval authority
 
 Dr. Max Justice is the owner approval authority for:
 
-   - Aegis / CyberShield boundary exceptions
-   - demo expansion beyond vendor risk
-   - public Aegis positioning
-   - production-readiness claims
-   - live model, CRM, integration, or persistence claims
-   - autonomous-agent authority
-   - buyer and pilot-offer changes
-   - major route changes
-   - recommendation logic changes
+- merge approval
+- route promotion or retirement
+- Aegis / CyberShield boundary exceptions
+- demo expansion beyond vendor risk
+- public Aegis positioning
+- production-readiness or integration claims
+- autonomous-agent authority
+- buyer and pilot-offer changes
+- recommendation, risk, or confidence logic changes
+- material AI Trust Decision Record semantic changes
 
-## Current implementation state
+## 16. Required completion packet
+
+The implementation agent must return the completion packet defined in its operating contract, including:
+
+- branch and commits
+- implemented requirements
+- files changed
+- user-visible and internal changes
+- baseline and post-change checks
+- actual print or browser evidence
+- failures, warnings, and unverified criteria
+- security, claims, harness, human-legibility, and trusted-authority impact
+- rollback path
+- documentation updated
+- PR summary
+- recommended owner decision
+
+## 17. Current documentation package status
+
+The following have been aligned to the agent package:
+
+- `AGENTS.md`
+- `README.md`
+- `bots.txt`
+- `governance-summary.json`
+- `route-manifest.json`
+- `docs/engineer-next-build-instructions.md`
+- `docs/requirements-traceability-matrix.md`
+- this handoff
+- dated builder-log entry
+
+The report-layout code change itself has not yet been implemented.
+
+## 18. Next planned build
+
+After successful owner review and merge of the print-polish task:
 
 ```text
-2026061816-human-legibility-harness-demo-package
+2026061144-feedback-integration-after-review
 ```
 
-Implemented on the advisor golden path only: `/vendor-risk-next.html` now includes visible Human Legibility and Harness Health Assessment sections and carries those fields into the AI Trust Decision Record payload and print report.
-
-Acceptance status:
-
-   - Requirements Steward packet existed before implementation.
-   - `/vendor-risk-next.html` remains the advisor golden path.
-   - `/vendor-risk.html` remains fallback and was not changed.
-   - Human Legibility and Harness Health fields are visible in the advisor route.
-   - AI Trust Decision Record print path includes the new sections.
-   - Capture still submits to configured endpoint or simulates honestly.
-   - No production or autonomous-agent capability is overclaimed.
-
-## Next recommended build
-
-Smoke test `/vendor-risk-next.html`, verify print / save PDF, verify JSON export fields, and review the Sandeep walkthrough for clarity before any route promotion decision.
+Do not begin that work during the current mission.
