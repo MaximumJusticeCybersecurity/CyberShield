@@ -22,6 +22,7 @@ Read these before changing code:
 
 ```text
 docs/2026061909-forward-build-plan.md
+docs/2026061908-trusted-authority-ethical-influence-standard.md
 docs/2026061815-first-codex-agent-requirements-steward.md
 docs/cybershield-decision-assurance-requirements.md
 docs/cybershield-trust-kernel-lite-architecture.md
@@ -33,6 +34,8 @@ README.md
 release-manifest.json
 route-manifest.json
 ```
+
+The Trusted Authority and Ethical Influence Standard is an approved baseline.  It requires evidence before confidence, restraint before expansion, constructive resistance, anti-sycophancy behavior, legitimate no-action outcomes, preserved human agency, and disclosure of material commercial incentives.
 
 Run the Requirements Steward process before implementation that affects scope, routes, schema, risk logic, evidence, exports, claims, public positioning, or the Aegis/CyberShield boundary.
 
@@ -199,6 +202,8 @@ Do not introduce:
 - compliance-certification claims
 - SOC 2 as automatic approval
 - framework mapping as compliance proof
+- manufactured urgency, scarcity, or unsupported authority
+- recommendation logic that cannot return no action, monitor, defer, or insufficient evidence
 
 ## 11. Deferred Scope
 
@@ -220,6 +225,7 @@ Do not prioritize yet:
 A build is ready for owner review only when:
 
 - it maps to an approved requirement, defect, or buyer-observed problem;
+- it conforms to `docs/2026061908-trusted-authority-ethical-influence-standard.md`;
 - the preferred route remains fast;
 - the fallback route remains operational;
 - schema and capture source-of-truth checks pass;
