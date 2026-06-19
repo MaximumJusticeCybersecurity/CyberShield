@@ -1,166 +1,295 @@
 # Layered Control Plane Requirements
 
-Date: 2026-05-28
-Baseline: V51.1
+Version: 2026061909
+Owner: Dr. Max Justice
+Status: Supporting architecture, refreshed for the current Decision Assurance build
 
-## Purpose
+## 1. Purpose
 
-CyberShield must be built as a layered control plane, not a monolithic dashboard or single-file demo.  The architecture must separate presentation, interaction, model logic, evidence, decisions, proof, and audit boundaries.
+CyberShield must remain layered rather than collapsing product logic into a monolithic page or route-specific implementation.
 
-## Required control-plane layers
+This document originally described the V51.1 dashboard architecture.  The layered principle remains valid, but the former TrustMap-first top-level navigation, generic score-first flow, and Proof Pack terminology are no longer the governing public architecture.
 
-### 1. UI Layer
+Current governing flow:
 
-What the user sees.
+```text
+AI-generated recommendation in -> AI Trust Decision Record out
+```
 
-Includes:
+Current preferred route:
 
-- Briefing
-- TrustMap
-- Runtime
+```text
+/vendor-risk-next.html
+```
+
+Current stable fallback:
+
+```text
+/vendor-risk.html
+```
+
+The vendor-risk Decision Assurance workflow overrides TrustMap-first navigation, Runtime-first navigation, multi-industry dashboards, and broad score-driven expansion.
+
+## 2. Required Current Layers
+
+### 2.1 Presentation Layer
+
+What the buyer sees.
+
+Current surfaces:
+
+- Buyer-focused landing experience
+- Intake and personalization
+- Recommendation under review
+- Claims
 - Evidence
-- Proof Pack
-- Architecture
-- Settings
+- Gaps and contradictions
+- Validator checks
+- Candidate actions
+- Risk If Wrong
+- Confidence Band
+- Human Review Required
+- Decision Brief
+- AI Trust Decision Record
+- Export and capture actions
 
-Requirement: no new top-level tabs unless explicitly approved.
+Requirements:
 
-### 2. Interaction Layer
+- Plain-English buyer value must appear before architecture language.
+- Aegis remains internal.
+- TrustMap and Runtime must not lead the public experience.
+- No visible internal build numbers in the application or report.
 
-How the user explores, clicks, hovers, drills down, selects, filters, improves, and exports.
+### 2.2 Interaction Layer
 
-Includes:
-
-- click actions
-- hover explanations
-- selected state
-- detail panel update
-- route-to-model
-- route-to-evidence
-- route-to-report
-- download/export actions
-
-Requirement: every visible interactive object must explain, route, calculate, download, or trigger a next step.
-
-### 3. Governance Layer
-
-The conceptual ownership and accountability layer.
+How the visitor moves through the decision review.
 
 Includes:
 
-- owner assignment
-- accountable role
+- onboarding and personalization
+- vendor and contradiction selection
+- sample recommendation loading
+- claim inspection
+- evidence inspection
+- contradiction selection
+- validator explanation
+- candidate-action comparison
+- human decision and override
+- report generation
+- browser print and Save PDF
+- capture submission
+
+Requirement:
+
+Every visible interactive object must explain, route, calculate, download, record a decision, or trigger a defined next step.  No dead clicks.
+
+### 2.3 Governance and Meaningful Human Authority Layer
+
+The ownership, accountability, contestability, and approval layer.
+
+Includes:
+
+- decision owner
+- accountable reviewer
+- reviewer role
 - escalation path
 - authority boundary
-- approval logic
-- governance legitimacy
-- executive accountability
+- ability to reject or defer
+- residual-risk acknowledgment
+- override rationale
+- ceremonial-approval detection
 
-Requirement: every decision-relevant object must show who owns the gap or response.
+Requirement:
 
-### 4. Model Registry Layer
+A human approval is not valid unless the reviewer can understand the recommendation, inspect evidence, see alternatives, challenge it, slow the process, reject it, document rationale, and knowingly accept residual risk.
 
-The version-controlled scoring and decision model layer.
+### 2.4 Trust Kernel Lite / Decision Logic Layer
+
+The structured decision-evaluation harness.
 
 Includes:
 
-- model registry
-- model version
-- source frameworks
-- model status
-- inputs
-- weights
-- thresholds
-- scoring factors
-- limitations
-- change log
+- domain-fit classification
+- recommendation classification
+- claim extraction
+- materiality
+- evidence requirement mapping
+- evidence sufficiency
+- missing evidence
+- contradiction detection
+- deterministic validators
+- Risk If Wrong
+- Confidence Band
+- candidate-action ranking
+- human review gate
+- recommended action
+- record defensibility
 
-Requirement: scoring logic must move out of `index.html` into `/data/models/*.json` or equivalent registry files.
+Requirement:
 
-### 5. Evidence Layer
+Decision logic must live in shared modules, registries, mappers, or equivalent structured services rather than being duplicated across routes or embedded as uncontrolled UI logic.
 
-The proof and evidence maturity layer.
+### 2.5 Evidence Layer
+
+The source, proof, and contradiction layer.
 
 Includes:
 
 - evidence type
-- evidence confidence
-- evidence freshness
-- evidence owner
-- evidence requirement
+- source type
+- evidence date and freshness
+- scope
+- independence
+- self-attestation
+- relevance
+- completeness
 - missing evidence
-- conflicting evidence
+- contradictory evidence
 - source trace
+- synthetic-demo labeling
 
-Requirement: every score and decision must identify supporting evidence and missing evidence.
+Requirement:
 
-### 6. Decision Layer
+Every material claim must identify its required evidence, available evidence, missing evidence, contradictory evidence, and limitations.
 
-The operational admissibility layer.
+### 2.6 Decision and Routing Layer
 
-Decision ladder:
+The admissibility and next-action layer.
 
-- Allow
-- Constrain
-- Escalate
-- Block
+Current candidate actions:
 
-Requirement: every runtime scenario must explain what CyberShield decided, why it matters, and what happens next.
+- Accept
+- Accept with Caveat
+- Request Evidence
+- Revise Recommendation
+- Escalate for Review
+- Reject
+- Quarantine
+- Defer or No Action where appropriate
 
-### 7. Proof / Report Layer
+Current vendor-risk default:
 
-The exportable evidence and leadership communication layer.
+```text
+Request Evidence
+```
 
-Primary reports:
+Secondary trigger:
 
-1. Executive Briefing Summary
-2. TrustMap / Authenticity Trust Summary
-3. Operational Trust Roadmap
-4. Proof Pack
+```text
+Escalate for Review
+```
 
-Requirement: report outputs must include model version, evidence assumptions, prototype boundary, selected role, selected industry, selected scenario, generated date, and limitations.
+Requirement:
 
-### 8. Boundary / Audit Layer
+CyberShield must explain why the selected action is more defensible than the alternatives.
 
-The trust-calibration and chain-of-custody layer.
+### 2.7 Canonical Record and Report Layer
+
+The shared decision artifact layer.
+
+Primary artifact:
+
+```text
+AI Trust Decision Record
+```
+
+Canonical mapper:
+
+```text
+src/atdr/trust-decision-record-schema-mapper.js
+```
+
+The same canonical object must support:
+
+- on-screen record
+- JSON download
+- Google Sheet capture
+- browser Print / Save PDF
+- future DOCX export
+
+Requirement:
+
+Do not create parallel route-specific record contracts when the shared mapper can be extended.
+
+### 2.8 Boundary, Audit, and Source-of-Truth Layer
+
+The capability-truth and provenance layer.
 
 Includes:
 
+- route status
+- preferred and fallback designation
 - prototype boundary
-- model version
-- report version
-- decision record ID
+- report ID
 - generated timestamp
-- data source status
-- live capability status
-- export metadata
+- source status
+- simulated versus configured capability
+- current capture configuration
+- limitations
+- release metadata
+- requirement traceability
 
-Requirement: CyberShield must clearly distinguish available-now, assessment-driven, analyst-assisted, preview, planned, and not-yet-implemented capabilities.
+Requirements:
 
-## Layer depth definition
+- Clearly distinguish implemented, simulated, configured-but-unverified, planned, and deferred capabilities.
+- Do not claim Google Sheet success until a real row is verified.
+- Do not claim production readiness, live model analysis, autonomous enforcement, or compliance certification unless implemented and tested.
 
-Layer depth is the interaction depth behind every visible object.
+## 3. Current Layer Flow
 
-- Layer 1: visible executive card, score, node, edge, or widget
-- Layer 2: tooltip, popover, explanation, or selected detail panel
-- Layer 3: model, evidence requirement, scenario, or workflow action
-- Layer 4: downloadable/exportable proof, recommendation, or report
+```text
+Recommendation Intake
+-> Domain Fit
+-> Claim Extraction
+-> Evidence Requirements
+-> Evidence Sufficiency and Contradictions
+-> Validator Checks
+-> Risk If Wrong and Confidence Band
+-> Candidate Action Comparison
+-> Meaningful Human Authority
+-> Human Decision or Override
+-> Canonical AI Trust Decision Record
+-> Screen / JSON / Print / Capture
+```
 
-Requirement: critical dashboard objects should support at least Layer 2 and Layer 3.  Core product objects should support Layer 4.
+## 4. Historical Terminology Mapping
 
-## Control-plane flow
+The following older terms may remain in historical routes or documents but are not current buyer-facing primary terms:
 
-Input determines context.
-Context determines model.
-Model determines score.
-Score determines decision.
-Decision determines evidence need.
-Evidence determines proof strength.
-Proof strength determines report.
-Report determines advisory path.
+| Historical term | Current treatment |
+|---|---|
+| Proof Pack | AI Trust Decision Record |
+| Trust score | Plain bands and explainable findings |
+| TrustMap-first navigation | Deferred supporting view |
+| Runtime-first navigation | Deferred supporting architecture |
+| Executive OS | Not current public positioning |
+| Operational Trust Control Plane | Internal architecture only, not above the fold |
+| Allow / Constrain / Escalate / Block only | Expanded candidate-action comparison |
 
-## No-overclaim boundary
+## 5. Deferred Layers and Views
 
-The current GitHub Pages build is a static advisory prototype.  It does not perform live enforcement, live takedown automation, marketplace scanning, ad-platform enforcement, live identity verification, CRM sync, ticketing, notifications, SIEM/EDR/IAM/GRC integration, or production agent blocking.
+Do not prioritize until the immediate forward build sequence is complete:
 
-This boundary must appear in shareable reports and admin/builder metadata.
+- TrustMap-first rebuild
+- Runtime agents
+- broad governance dashboards
+- multi-industry templates
+- generic trust scores
+- autonomous action
+- production integrations
+
+## 6. Conflict Rule
+
+This document is supporting architecture.
+
+If it conflicts with any of the following, the newer governing source controls:
+
+1. `docs/2026061909-forward-build-plan.md`
+2. `docs/ARCHITECT-ENGINEER-START-HERE.md`
+3. `docs/architecture-library-status.md`
+4. `docs/engineer-next-build-instructions.md`
+5. `docs/requirements-traceability-matrix.md`
+6. `release-manifest.json`
+7. `route-manifest.json`
+
+If current governing documents conflict with one another, stop and run the Requirements Steward process before implementation.
