@@ -1,7 +1,7 @@
 # CyberShield Security Policy
 
-Version timestamp: 2026061909  
-Status: Controlled adoption pending merge of Aegis canonical security PR #2  
+Version timestamp: 2026061912  
+Status: Active controlled adoption; canonical Aegis PR #2 merged and policy integrity verified  
 Owner and final human authority: Dr. Max Justice, vCISO, Security SME, and Cybersecurity SME  
 Canonical source: `MaximumJusticeCybersecurity/Aegis/15_security/2026061909-agentic-security-identity-and-protection-standard.md`
 
@@ -32,6 +32,21 @@ Before a protected repository write or live operational change, require:
 - Required human approval.
 
 The initiating agent cannot verify itself, control both verifiers, approve itself, push directly to `main`, merge its own work, or deploy its own unreviewed output.
+
+### Transitional review-branch rule
+
+The cryptographic workload-identity, Change Intent Envelope, independent-verifier quorum, and deterministic authorization services are requirements and are not yet represented as operational unless separately implemented and evidenced.
+
+Until those services are operational, an explicitly authorized agent may prepare a bounded change only on a task-specific review branch when all of the following are true:
+
+- The canonical policy and manifest integrity checks pass.
+- A current Requirements Steward packet authorizes the task.
+- The agent records that identity, envelope, and verifier services are `Not yet implemented` rather than claiming successful enforcement.
+- The agent does not push directly to `main`, merge, deploy, release publicly, change root trust, weaken security controls, or perform an irreversible action.
+- The exact patch remains subject to human review and approval.
+- Any change to the patch, branch target, policy, or task invalidates prior review and requires a new attestation.
+
+A review-branch commit prepared under this transitional rule is an untrusted proposal, not an authorized production or protected-branch change.
 
 ## CyberShield protected resources
 
@@ -134,9 +149,15 @@ For suspected impersonation, agent jacking, credential compromise, unauthorized 
 - Recover from a known-good state.
 - Update policies, tests, and detection logic.
 
-## Merge dependency
+## Canonical dependency status
 
-This staged policy shall not be merged before Aegis PR #2 establishes the canonical source on `main`.  After the canonical merge, verify the manifest integrity value before merging this repository's adoption pull request.
+Aegis PR #2 was merged into `MaximumJusticeCybersecurity/Aegis` `main` on June 19, 2026.  The canonical policy exists at the path identified above.  Its Git blob SHA is:
+
+```text
+9936634b8187f78e38b03f3bbe1c670fdeda1884
+```
+
+That value matches `security-policy-manifest.json`.  Future material changes to the canonical policy require a manifest integrity update and invalidate prior startup attestations.
 
 ## Core rule
 
