@@ -1,13 +1,29 @@
 # 2026061113 Google Sheets Capture Deployment Guide
 
+> **Superseded deployment guide.**  This document preserves the original deployment procedure, but its Sheet ID and primary-route references are stale.  Use `docs/google-sheets-report-capture.md`, `docs/architecture-library-status.md`, `src/atdr/report-capture-config.js`, and `docs/2026061909-forward-build-plan.md` for the current source of truth.
+
 ## Purpose
 
 Connect CyberShield's `Save Follow-Up` action to a Google Sheet through a Google Apps Script Web App while keeping credentials out of the static GitHub Pages front end.
 
-## Current Target Sheet
+## Historical Target Sheet
 
 ```text
 1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
+```
+
+This is not the current configured Sheet ID unless the owner explicitly approves a migration.
+
+Current configured Sheet ID is read from:
+
+```text
+src/atdr/report-capture-config.js
+```
+
+At the time of this supersession notice, the configured Sheet ID is:
+
+```text
+1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
 ```
 
 ## Required Files
@@ -32,7 +48,7 @@ src/atdr/report-capture-config.js
 
 ## Deployment Steps
 
-1. Open the target Google Sheet.
+1. Open the currently approved target Google Sheet.
 2. Go to Extensions → Apps Script.
 3. Paste the contents of:
 
@@ -41,10 +57,10 @@ examples/google-apps-script/report-capture-web-app.gs
 ```
 
 4. In Apps Script, open Project Settings.
-5. Add Script Property:
+5. Add Script Property using the owner-approved current Sheet ID:
 
 ```text
-CRM_SHEET_ID = 1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
+CRM_SHEET_ID = <CURRENT_APPROVED_SHEET_ID>
 ```
 
 6. Save the Apps Script project.
@@ -62,9 +78,10 @@ CRM_SHEET_ID = 1B4bAykvCN_zi7_oJuvhasq33pHPgGnRPMRwpzO1r-Vw
 13. Paste the Web App URL.
 14. Click `Load Sample Payload`.
 15. Click `Send Test Capture`.
-16. Confirm a row appears in the `CyberShield Report Captures` sheet tab.
-17. Confirm the response is JSON and indicates success.
-18. Only after the test succeeds, update:
+16. Confirm a row appears in the approved capture sheet tab.
+17. Confirm the response is JSON and indicates receipt.
+18. Verify the actual Sheet row before claiming capture success.
+19. Only after the test succeeds, update:
 
 ```text
 src/atdr/report-capture-config.js
@@ -76,8 +93,9 @@ Set:
 const REPORT_CAPTURE_ENDPOINT = '<APPROVED_WEB_APP_URL>';
 ```
 
-19. Confirm `/vendor-risk.html` shows CRM connected or successfully saves follow-up.
-20. Confirm `/vendor-risk-smoke.html` and `/record-contract.html` remain healthy.
+20. Confirm `/vendor-risk-next.html` submits the expected payload.
+21. Confirm `/vendor-risk.html` remains operational as the fallback.
+22. Confirm `/capture-source-of-truth-smoke.html`, `/report-capture-test.html`, and `/trust-decision-record-schema-smoke.html` remain healthy.
 
 ## Security Rules
 
@@ -116,16 +134,16 @@ The Apps Script endpoint should write:
 
 ## Acceptance Criteria
 
-- Save Follow-Up writes a row to Google Sheets when endpoint is configured.
+- Report generation or Save Follow-Up submits a row when endpoint is configured.
 - Failed POST does not claim success.
-- Missing endpoint shows a pending/local capture state.
+- Missing endpoint shows a pending or simulated capture state.
 - No credentials are exposed in GitHub.
-- Buyer-facing demo remains `/vendor-risk.html`.
+- Preferred buyer-facing demo remains `/vendor-risk-next.html`.
+- Stable fallback remains `/vendor-risk.html`.
 - Workbench and QA routes remain internal.
+- Actual Sheet row is verified before using saved-success language.
 
 ## Product Positioning Guardrail
-
-This connection supports the broader product value while keeping the first workflow narrow:
 
 ```text
 Before relying on AI, CyberShield shows whether the recommendation is defensible.
