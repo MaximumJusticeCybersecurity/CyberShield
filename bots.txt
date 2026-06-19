@@ -1,182 +1,119 @@
 CyberShield AI Decision Assurance
-Current strategic direction: AI-generated recommendation in -> AI Trust Decision Record out
-Active implementation line: 2026060414V1 CyberShield AI Decision Assurance Prototype
-Planned static MVP release candidate: 2026060420V1
-Build direction date: 2026-06-04
+Version: 2026061909
+Owner: Dr. Max Justice
 
 Purpose:
-Machine-readable context for CyberShield builders and AI readers.
+Machine-readable context for CyberShield agents, builders, reviewers, and AI readers.
 
-Primary workflow now:
-AI-generated recommendation in -> AI Trust Decision Record out.
+Primary workflow:
+AI-generated recommendation in -> defensible AI Trust Decision Record out.
 
 Primary artifact:
 AI Trust Decision Record.
 
-Existing underlying trust surface:
-Trust Kernel.
+First proof point:
+AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out.
 
-Use this distinction:
-CyberShield ATDR is the workflow.
-Trust Kernel is the underlying trust surface.
-The AI Trust Decision Record is the product artifact.
-
-Primary demo route after merge:
-/demo.html
-
-Supporting routes:
-/launch.html       CyberShield AI Decision Assurance launch page
-/atdr.html         AI Trust Decision Record workbench
-/brief.html        Executive brief preview and browser print/PDF path
-/atdr-smoke.html   Demo readiness and schema smoke test
-/index.html        Trust Kernel
-
-First target workflow:
-AI-generated security, compliance, and vendor-risk recommendations.
-
-Current demo modes:
-1. Vendor Risk: Contradictory Evidence
-2. Security: Vulnerability Risk Acceptance
-3. Compliance: NIST Control Claim
-
-Current priority:
-Make the static ATDR prototype demo-worthy before dashboards, TrustMap, broad governance, runtime agents, or generic trust scores.
-
-Required ATDR workflow:
-1. Ingest an AI-generated recommendation
-2. Extract claims
-3. Map evidence
-4. Identify missing support
-5. Identify weak, stale, incomplete, or contradicted evidence
-6. Classify Risk If Wrong
-7. Assign confidence bands
-8. Recommend action
-9. Require human review where needed
-10. Export a defensible AI Trust Decision Record
-
-Current static prototype capabilities:
-- Demo control room
-- Launch page
-- ATDR workbench
-- Executive brief preview
-- Smoke test readiness page
-- Deterministic model-family engine
-- Multi-domain claim atomization
-- Synthetic evidence repository
-- Local in-browser evidence upload
-- Evidence notes
-- Missing support detection
-- Risk If Wrong classification
-- Confidence banding
-- Human review gate
-- Human decision and override capture
-- Structured JSON export
-- Browser print/PDF path
-- Demo Coach
-- Schema validation
-- Model contract registry
-- Trust Kernel naming alignment
-
-Deprioritized but preserved:
-- TrustMap
-- Dashboards
-- Broad governance surfaces
-- Runtime agents
-- Generic trust scores
-- Great Map visual system
-- Architecture Model Library expansion
-
-Do not delete prior TrustMap or Architecture work. File it away for later. The next builder should not continue TrustMap work unless explicitly redirected.
-
-Required reading order:
-1. docs/2026060416-20260607-atdr-next-version-build-plan.md
-2. docs/2026060415-successor-builder-handoff.md
-3. docs/2026060415-atdr-presenter-script.md
-4. docs/2026060415-atdr-merge-readiness-plan.md
-5. docs/2026060420V1-static-mvp-release-note-draft.md
-6. docs/2026060415-atdr-engineering-plan-for-review.md
-7. docs/2026060415-demo-readiness-acceptance-checklist.md
-8. docs/2026060415-atdr-version-roadmap.md
-9. docs/2026060414-atdr-decision-assurance-build-record.md
-10. docs/2026060414-atdr-qa-status.md
-11. docs/2026060415-trust-kernel-naming-note.md
-12. README.md
-13. governance-summary.json
-
-Historical pivot documents:
-- docs/2026060411-ai-trust-decision-record-pivot.md
-- docs/2026060411-ai-trust-decision-record-builder-package.md
-
-Builder skills needed:
-- JavaScript modular architecture
-- Structured data modeling
-- Claim extraction logic
-- Evidence mapping logic
-- Security and compliance vocabulary
-- Vendor-risk workflow basics
-- Confidence banding
-- Risk If Wrong analysis
-- Human-in-the-loop review design
-- Exportable decision records
-- Audit trail design
-- Defensive UX
-- Product boundary discipline
-- Browser-only prototype constraints
-
-Next recommended build package:
-2026060416V1 Static Demo QA and Merge Candidate
-
-Then:
-2026060417V1 Executive Brief Hardening
-2026060418V1 Evidence Workbench Expansion
-2026060419V1 Human Review Workflow Expansion
-2026060420V1 Static MVP Release Candidate
-20260605xxV1 Backend Architecture Package
-20260606xxV1 Production MVP Foundation
-20260607xxV1 Live Model Optionality
-
-Canonical next-version build plan:
-docs/2026060416-20260607-atdr-next-version-build-plan.md
-
-ATDR output should include:
-- Record ID
-- Record type
-- Created timestamp
-- Created by
-- Original AI recommendation
-- AI source
-- Source model if known
-- Intended use
-- Domain
-- Recommendation type
-- Decision context
-- Applicable framework references
-- Extracted claims
-- Claim type
-- Materiality
-- Required evidence
-- Evidence provided
-- Evidence sufficiency
-- Missing support severity
-- Conflict status
-- Confidence band
-- Risk If Wrong
-- Consequence summary
-- Human review requirement
-- Required reviewer role
-- Review status
-- Reviewer notes
-- Recommended action
-- Required next step
-- Decision owner
-- Record defensibility band
-- Limitations
-- Export timestamp
-- Analysis version
-
-Boundary:
-This remains a static advisory prototype until future capabilities are explicitly built. Do not claim autonomous approval, live compliance certification, live vendor approval, legal determination, audit opinion, CMMC certification, production enforcement, live evidence retrieval, live internet verification, enterprise evidence storage, file security scanning, tenant isolation enforcement, or backend persistence.
+Pilot positioning:
+Software-assisted advisory pilot.
 
 Core doctrine:
 AI confidence is not evidence.
-Do not ask only, "Do we trust the AI?" Ask, "Can the organization defend acting on this AI-generated recommendation based on the evidence available at the time?"
+The record is the product.
+Before relying on AI, determine whether the recommendation is defensible based on the evidence available at the time.
+
+Agent entry point:
+AGENTS.md
+
+Current agent sequence:
+1. Requirements Steward Agent: determines what may be built and under what constraints.
+2. Decision Assurance Implementation Agent: implements only an approved steward packet.
+3. Verification and Repo Closeout Agent: planned, not yet authorized as a standalone agent.
+
+Canonical agent files:
+- docs/2026061815-first-codex-agent-requirements-steward.md
+- docs/2026061909-second-codex-agent-decision-assurance-implementation.md
+
+Trusted authority standard:
+- docs/2026061908-trusted-authority-ethical-influence-standard.md
+
+Current task packet:
+- docs/2026061909-requirements-steward-packet-report-layout-polish.md
+- docs/2026061909-decision-assurance-implementation-agent-first-mission.md
+
+Current authorized build:
+2026061143-report-layout-polish-after-print-test
+
+Current route contract:
+- /vendor-risk-next.html = advisor golden path and preferred high-touch route
+- /vendor-risk.html = stable fallback buyer route
+- /review-index.html = review navigation
+- /internal-qa.html = internal QA hub
+- /report-print-qa.html = print QA route
+
+Current expected sample contract:
+- Domain: vendor-risk
+- Claims extracted: 10
+- Recommended Action: Request Evidence
+- Risk If Wrong: High
+- Confidence Band: Low confidence
+- Human Review Required: Yes
+
+Current capture source of truth:
+- Sheet ID: 1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w
+- Config: src/atdr/report-capture-config.js
+- Browser submission is not proof of row creation. Verify the row before claiming success.
+
+Required reading order:
+1. AGENTS.md
+2. task-specific Requirements Steward packet
+3. docs/2026061909-second-codex-agent-decision-assurance-implementation.md
+4. docs/2026061908-trusted-authority-ethical-influence-standard.md
+5. docs/engineer-next-build-instructions.md
+6. docs/2026061909-forward-build-plan.md
+7. docs/2026061815-first-codex-agent-requirements-steward.md
+8. docs/aegis-cybershield-architecture-boundary.md
+9. docs/cybershield-decision-assurance-requirements.md
+10. docs/trust-decision-record-schema.md
+11. docs/requirements-traceability-matrix.md
+12. docs/definition-of-done.md
+13. docs/builder-requirements-acceptance-checklist.md
+14. docs/successor-builder-handoff-and-job-docket.md
+15. docs/builder-version-log.md
+
+Implementation authorization:
+Material implementation requires a task-specific steward decision of Proceed or Proceed with constraints.
+The implementation agent must use a task branch, prepare a pull request or owner-review packet, and must not merge without human approval.
+
+Current first-mission branch:
+agent/2026061909-report-layout-polish
+
+Current first-mission verification rule:
+Actual browser print preview or saved PDF must be inspected. Static source inspection alone does not prove print quality.
+
+Trusted implementation rules:
+- Evidence before confidence.
+- Restraint before expansion.
+- Preserve human authority, dissent, and override.
+- Support no action, monitor, defer, and insufficient evidence as legitimate outcomes.
+- Do not use polished language or formatting as proof.
+- Do not manufacture urgency, scarcity, exclusivity, status pressure, or unsupported authority.
+
+Prototype boundaries:
+Do not claim production readiness, live model-backed analysis, production persistence, production authentication, tenant isolation, server-side DOCX/PDF generation, production CRM infrastructure, compliance certification, autonomous vendor approval, SOC 2 as automatic approval, or framework mapping as compliance proof.
+
+Current export path:
+Browser Print / Save PDF.
+
+Deprioritized until the vendor-risk record workflow is proven:
+- public Aegis positioning
+- TrustMap-first rebuild
+- runtime agents
+- broad dashboards
+- generic trust scores
+- multi-industry expansion
+- autonomous approval
+- production platform claims
+
+Next planned build after owner acceptance:
+2026061144-feedback-integration-after-review
