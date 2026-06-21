@@ -1,7 +1,7 @@
 # CyberShield Successor Builder Handoff and Job Docket
 
-Date: 2026-06-19  
-Current documentation baseline: 2026061909 Decision Assurance Implementation Agent Package  
+Date: 2026-06-21
+Current documentation baseline: 2026061143 Report Print Verification and Polish Proposal
 Repository: MaximumJusticeCybersecurity/CyberShield  
 Live prototype: https://maximumjusticecybersecurity.github.io/CyberShield/  
 Advisor golden path: `/vendor-risk-next.html`  
@@ -320,7 +320,9 @@ The following have been aligned to the agent package:
 - this handoff
 - dated builder-log entry
 
-The report-layout code change itself has not yet been implemented.
+The report-layout proposal has now been implemented and verified on branch `agent/2026061909-report-layout-polish`. Actual Chromium Print / Save PDF evidence is recorded in `docs/2026061909-report-print-test-observations.md`. The proposal is not merged and remains subject to Dr. Max Justice's review.
+
+Known verification gaps remain explicit: Firefox print preview is unverified, `/vendor-risk-next-smoke.html` has pre-existing session/literal-source-check failures, and `/capture-source-of-truth-smoke.html` flags an inactive historical Sheet ID. The preferred advisor route completed through Record, the fallback loaded, report print QA passed 7 checks, and fallback smoke, schema smoke, and record contract were GO.
 
 ## 18. Next planned build
 
