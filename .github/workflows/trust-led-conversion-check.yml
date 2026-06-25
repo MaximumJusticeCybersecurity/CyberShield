@@ -29,6 +29,6 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       - name: Run trust-led conversion static checks
         run: node tools/trust-led-conversion-static-check.mjs
