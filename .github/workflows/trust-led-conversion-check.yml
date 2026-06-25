@@ -7,6 +7,7 @@ on:
       - vendor-risk-next.html
       - pilot-package.html
       - src/vercel-analytics.js
+      - src/trust-led-conversion-ui.js
       - route-manifest.json
       - governance-summary.json
       - tools/trust-led-conversion-static-check.mjs
@@ -14,6 +15,7 @@ on:
       - docs/2026062312-vercel-web-analytics.md
       - docs/2026062510-trust-led-conversion-traceability.md
       - docs/2026062510-trust-led-conversion-completion-packet.md
+      - docs/builder-version-log/2026062510-trust-led-conversion.md
       - .github/workflows/trust-led-conversion-check.yml
   workflow_dispatch:
 
@@ -61,7 +63,7 @@ jobs:
           cat /tmp/cybershield-http.log
           exit 1
 
-      - name: Exercise browser flow and capture screenshots
+      - name: Exercise browser flow and capture evidence
         shell: bash
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.path }}
