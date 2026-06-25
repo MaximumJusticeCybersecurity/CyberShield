@@ -45,6 +45,17 @@ async function getJson(url, options = {}, attempts = 50) {
   throw lastError;
 }
 
+async function waitForFile(directory, predicate, timeoutMs = 10000) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    const files = fs.readdirSync(directory).filter(name => !name.endsWith('.crdownload'));
+    const match = files.find(predicate);
+    if (match) return path.join(directory, match);
+    await delay(150);
+  }
+  throw new Error('Expected browser download did not appear');
+}
+
 class CdpClient {
   constructor(url) {
     this.url = url;
@@ -155,7 +166,7 @@ async function heading(client) {
 async function click(client, selector) {
   const clicked = await evaluate(client, `(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!element) return false; element.click(); return true; })()`);
   assert(clicked, `Found and clicked ${selector}`);
-  await delay(250);
+  await delay(300);
 }
 
 let client;
@@ -166,6 +177,9 @@ try {
   await client.connect();
   await client.send('Page.enable');
   await client.send('Runtime.enable');
+  await client.send('Page.addScriptToEvaluateOnNewDocument', {
+    source: `window.__conversionEvents = []; window.addEventListener('cybershield:conversion', event => window.__conversionEvents.push(event.detail));`
+  });
 
   await setViewport(client, 1440, 1100, false);
   await navigate(client, `${baseUrl}/index.html`);
@@ -208,6 +222,36 @@ try {
   assert(!(await evaluate(client, `document.body.textContent.includes('Sheet ID source of truth')`)), 'Visible route does not expose the Sheet ID label');
   await screenshot(client, 'record-desktop.png');
 
+  try {
+    await client.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: artifactDir, eventsEnabled: true });
+  } catch {
+    await client.send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath: artifactDir });
+  }
+  await click(client, '#download');
+  const jsonPath = await waitForFile(artifactDir, name => /^cybershield-ai-trust-decision-record-.*\.json$/.test(name));
+  const downloadedRecord = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  assert(!Object.hasOwn(downloadedRecord, 'visitor_email'), 'Downloaded JSON excludes visitor email');
+  assert(!Object.hasOwn(downloadedRecord, 'crm_sheet_id'), 'Downloaded JSON excludes internal Sheet ID');
+  assert(downloadedRecord.cyberShield_recommended_action === 'Request Evidence', 'Downloaded JSON preserves the controlled recommendation');
+  assert(Boolean(downloadedRecord.human_legibility && downloadedRecord.harness_health), 'Downloaded JSON preserves human-legibility and harness-health fields');
+
+  const pdfResponse = await client.send('Page.printToPDF', {
+    printBackground: true,
+    preferCSSPageSize: true
+  });
+  const pdfBuffer = Buffer.from(pdfResponse.data, 'base64');
+  fs.writeFileSync(path.join(artifactDir, 'record-print.pdf'), pdfBuffer);
+  assert(pdfBuffer.subarray(0, 4).toString() === '%PDF' && pdfBuffer.length > 10000, 'Record stage generates a non-empty print PDF');
+
+  const conversionEvents = await evaluate(client, `window.__conversionEvents || []`);
+  const eventNames = conversionEvents.map(event => event.name);
+  assert(eventNames.includes('buyer_judgment_selected'), 'Conversion events record buyer judgment');
+  assert(eventNames.includes('evidence_problem_viewed'), 'Conversion events record evidence view');
+  assert(eventNames.includes('decision_record_viewed'), 'Conversion events record record view');
+  assert(eventNames.includes('report_json_downloaded'), 'Conversion events record JSON download');
+  const allowedKeys = new Set(['route', 'stage', 'choice', 'destination']);
+  assert(conversionEvents.every(event => Object.keys(event.properties || {}).every(key => allowedKeys.has(key))), 'Conversion events contain only approved property keys');
+
   await setViewport(client, 1440, 1100, false);
   await navigate(client, `${baseUrl}/pilot-package.html`);
   assert((await evaluate(client, `document.querySelector('h1')?.textContent || ''`)).includes('Controlled AI Decision Assurance Pilot'), 'Pilot page renders');
@@ -215,7 +259,7 @@ try {
   assert(!(await evaluate(client, `Boolean(document.querySelector('a[href="internal-qa.html"]'))`)), 'Pilot page contains no Internal QA link');
   await screenshot(client, 'pilot-desktop.png');
 
-  const result = { status: 'pass', checks };
+  const result = { status: 'pass', checks, downloadedJson: path.basename(jsonPath), printPdf: 'record-print.pdf' };
   fs.writeFileSync(path.join(artifactDir, 'browser-smoke-results.json'), JSON.stringify(result, null, 2));
   console.log(`BROWSER_SMOKE_PASS: ${checks.length} checks`);
   checks.forEach(item => console.log(`  ✓ ${item.message}`));
