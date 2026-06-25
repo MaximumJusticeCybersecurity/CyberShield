@@ -6,6 +6,7 @@ Owner and final human authority: Dr. Max Justice
 Requirements steward: Aegis / My AI Business Partner  
 Implementation branch: `agent/2026062510-trust-led-conversion`  
 Requirements Steward decision: Proceed with constraints  
+Implementation pull request: `#20`  
 Merge status: Not authorized in this packet  
 Deployment status: Not authorized
 
@@ -50,6 +51,7 @@ Evidence Maturity, Decision Ceiling, Minimum Trust Experiment, outcome calibrati
    - Exact price and delivery timing remain unpublished and owner-gated.
    - Privacy-minimized conversion-event helper added.
    - Route manifest, analytics documentation, governance summary, traceability addendum, and builder history updated.
+   - Read-only pull-request workflow added for the static checker.
 
 ## Files changed or created
 
@@ -61,6 +63,7 @@ Evidence Maturity, Decision Ceiling, Minimum Trust Experiment, outcome calibrati
    - `governance-summary.json`
    - `docs/2026062312-vercel-web-analytics.md`
    - `tools/trust-led-conversion-static-check.mjs`
+   - `.github/workflows/trust-led-conversion-check.yml`
    - `docs/2026062510-trust-led-conversion-traceability.md`
    - `docs/builder-version-log/2026062510-trust-led-conversion.md`
    - `docs/2026062510-trust-led-conversion-completion-packet.md`
@@ -87,6 +90,7 @@ Improvements:
    - Conversion analytics uses an explicit four-key allowlist.
    - Recommendation text, evidence, names, company, vendor, email, report IDs, endpoints, and Sheet identifiers are excluded from analytics.
    - Analytics failure is non-blocking.
+   - The PR workflow has `contents: read` only and uses no secrets, write token, deployment, or external communication.
 
 Unchanged boundaries:
 
@@ -122,15 +126,30 @@ Local observability event:
 cybershield:conversion
 ```
 
-## Verification prepared
+## Verification completed
 
-Static checker:
+Workflow:
+
+```text
+Trust-Led Conversion Check
+```
+
+Latest successful run:
+
+```text
+Run ID: 28181028697
+Job ID: 83470415692
+Conclusion: success
+Node version requested: 24
+```
+
+The read-only GitHub Actions job checked out the pull-request merge ref and successfully ran:
 
 ```text
 node tools/trust-led-conversion-static-check.mjs
 ```
 
-The checker validates:
+The successful checker validates:
 
    - Forced redirect removal.
    - Required CTA and objection language.
@@ -142,9 +161,8 @@ The checker validates:
 
 ## Verification not yet completed
 
-The following cannot be claimed from repository source inspection alone:
+The following require browser or deployed-environment evidence and cannot be claimed from static checks:
 
-   - Static checker execution in a real repository checkout.
    - Browser rendering.
    - Judgment-button behavior.
    - Step navigation and session storage behavior.
@@ -177,11 +195,10 @@ These remain required before merge or public release, as applicable.
 
 ## Recommended owner decision
 
-Review the implementation pull request and its available checks.
+Review PR #20 and its successful static check.
 
 Do not merge until:
 
-   - The static checker passes.
    - Browser navigation and judgment flow are inspected.
    - Print and JSON outputs are inspected.
    - Mobile and desktop views are acceptable.
