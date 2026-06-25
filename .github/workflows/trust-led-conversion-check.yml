@@ -1,0 +1,34 @@
+name: Trust-Led Conversion Check
+
+on:
+  pull_request:
+    paths:
+      - index.html
+      - vendor-risk-next.html
+      - pilot-package.html
+      - src/vercel-analytics.js
+      - route-manifest.json
+      - governance-summary.json
+      - tools/trust-led-conversion-static-check.mjs
+      - docs/2026062312-vercel-web-analytics.md
+      - docs/2026062510-trust-led-conversion-traceability.md
+      - docs/2026062510-trust-led-conversion-completion-packet.md
+      - .github/workflows/trust-led-conversion-check.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out reviewed commit
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run trust-led conversion static checks
+        run: node tools/trust-led-conversion-static-check.mjs
