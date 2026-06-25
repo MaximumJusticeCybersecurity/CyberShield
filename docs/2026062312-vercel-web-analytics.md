@@ -1,82 +1,124 @@
 # 2026062312 Vercel Web Analytics
 
-Date: 2026-06-23
-
-Status: Implemented in repo, dashboard enablement still required
+Version timestamp: 2026062510  
+Status: Page-view loader and privacy-minimized conversion helper implemented in repo; dashboard receipt still requires deployment verification
 
 ## Purpose
 
-Measure CyberShield visitor and page-view activity on the Vercel-hosted static site without introducing a new JavaScript framework or build system.
+Measure CyberShield visitor and customer-action activity on the Vercel-hosted static site without introducing a new JavaScript framework, collecting sensitive recommendation content, or confusing browser instrumentation with verified downstream analytics receipt.
 
-## Implementation
+## Page-view implementation
 
-CyberShield is currently a static HTML site and did not have a `package.json` or application framework that could mount the `@vercel/analytics` component directly.
-
-The implementation therefore uses Vercel's static analytics script endpoint:
+CyberShield is a static HTML site and uses Vercel's static analytics script endpoint:
 
 ```html
 <script defer src="/_vercel/insights/script.js" data-sdk="vercel-analytics"></script>
 ```
 
-A shared loader also exists at:
+A shared loader and conversion helper exists at:
 
 ```text
 src/vercel-analytics.js
 ```
 
-The vendor-risk golden path and fallback load the shared analytics loader through:
+The helper loads the Vercel page-view script when available and exports:
 
 ```text
-src/atdr/report-capture-config.js
+trackConversion(name, properties)
 ```
 
-The public root route loads the script directly in `index.html`.
+## Public routes measured
 
-## Initial routes measured
+   - `/`
+   - `/vendor-risk-next.html`
+   - `/vendor-risk.html`
+   - `/pilot-package.html`
 
-- `/`
-- `/vendor-risk-next.html`
-- `/vendor-risk.html`
+These cover the public landing page, preferred vendor-risk example, preserved fallback route, and controlled pilot page.
 
-These cover the public landing page, advisor golden path, and stable fallback route.
+## Conversion events
 
-## Vercel dashboard step
+The trust-led customer journey defines:
 
-Web Analytics must be enabled for the Vercel project in the Vercel dashboard.  After the next deployment, verify a request to the Vercel analytics view endpoint in the browser Network panel.
+   - `example_started`
+   - `buyer_judgment_selected`
+   - `evidence_problem_viewed`
+   - `decision_record_viewed`
+   - `real_recommendation_review_clicked`
+   - `pilot_clicked`
+   - `report_print_clicked`
+   - `report_json_downloaded`
 
-## Initial measurement plan
+Allowed properties are limited to:
 
-Track these baseline metrics first:
+   - `route`
+   - `stage`
+   - `choice`
+   - `destination`
 
-- unique visitors
-- page views
-- top pages
-- referrers
-- browser and device mix
-- geography at Vercel's anonymized reporting level
-- traffic split between `/vendor-risk-next.html` and `/vendor-risk.html`
+The helper drops all other property keys.
 
-## Next measurement phase
+## Local verification path
 
-After page-view data is flowing, add custom events only for meaningful funnel actions, such as:
+Every conversion call emits a browser event:
 
-- `demo_started`
-- `contradiction_selected`
-- `record_generated`
-- `print_or_pdf_started`
-- `json_downloaded`
-- `follow_up_saved`
-- `demo_request_clicked`
+```text
+cybershield:conversion
+```
 
-Do not send recommendation content, email addresses, vendor names, company names, or AI Trust Decision Record content as analytics event properties.
+Example console listener:
+
+```js
+window.addEventListener('cybershield:conversion', event => {
+  console.log(event.detail);
+});
+```
+
+This allows a reviewer to confirm the event name and privacy-minimized properties without a production deployment.
+
+A locally observed CustomEvent proves only that the browser instrumentation ran.  It does not prove that Vercel received, retained, or displayed the custom event.
+
+## Vercel event path
+
+When the supported Vercel browser analytics function is available, the helper queues a custom event using the same privacy-minimized payload.  Analytics failure is intentionally non-blocking and must not interrupt the customer journey.
+
+Custom-event availability can depend on the active Vercel analytics plan and dashboard configuration.  Do not claim custom-event success until receipt is verified in the deployed Vercel project.
 
 ## Privacy and data minimization
 
-Analytics must remain separate from report capture.  Do not send sensitive decision content, personally identifiable information, or evidence text to Vercel Analytics.
+Never send any of the following to Vercel Analytics:
+
+   - Recommendation text.
+   - Evidence text or evidence identifiers.
+   - First name.
+   - Company or organization.
+   - Vendor name.
+   - Email address.
+   - AI Trust Decision Record ID or report ID.
+   - Capture endpoint.
+   - Google Sheet ID.
+   - Contract, policy, incident, or customer information.
+
+Analytics remains separate from report follow-up capture.
+
+## Vercel dashboard verification
+
+After an approved deployment:
+
+1. Confirm Web Analytics is enabled for the Vercel project.
+2. Confirm the page-view script loads without blocking the page.
+3. Verify page views for the public routes.
+4. Exercise each conversion action using non-sensitive synthetic data.
+5. Confirm only the approved event names and property keys appear.
+6. Record events that are unavailable because of plan or dashboard constraints.
+7. Do not infer downstream report-capture success from analytics.
 
 ## Acceptance criteria
 
-- Vercel Analytics is enabled in the Vercel dashboard.
-- The next production deployment serves the analytics script successfully.
-- Page views appear for the root, advisor golden path, and fallback route.
-- No sensitive CyberShield decision content is included in analytics events.
+   - The page-view loader remains present.
+   - The landing, preferred example, fallback, and pilot routes load without analytics errors.
+   - The eight conversion events are locally observable.
+   - Only route, stage, choice, and destination properties are emitted.
+   - No sensitive CyberShield decision content is included.
+   - Missing analytics support does not break navigation, analysis, print, download, or capture.
+   - Production receipt remains unverified until an approved deployment and dashboard inspection occur.
