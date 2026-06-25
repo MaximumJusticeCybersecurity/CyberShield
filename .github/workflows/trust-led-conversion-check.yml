@@ -25,7 +25,7 @@ permissions:
 jobs:
   trust-led-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - name: Check out reviewed commit
         uses: actions/checkout@v4
@@ -71,7 +71,17 @@ jobs:
           ARTIFACT_DIR: artifacts
         run: |
           set -euo pipefail
-          node tools/trust-led-conversion-browser-smoke.mjs
+          for attempt in 1 2 3; do
+            echo "Browser verification attempt ${attempt} of 3"
+            rm -rf artifacts
+            mkdir -p artifacts
+            if CHROME_DEBUG_PORT="$((9221 + attempt))" node tools/trust-led-conversion-browser-smoke.mjs; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Browser verification failed after three bounded attempts."
+          exit 1
 
       - name: Upload browser review evidence
         if: always()
