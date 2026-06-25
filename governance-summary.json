@@ -5,7 +5,7 @@
   "current_strategic_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
   "first_proof_point": "AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out",
   "pilot_positioning": "software-assisted advisory pilot",
-  "version": "2026061909",
+  "version": "2026062312",
   "owner": "Dr. Max Justice",
   "owner_roles": [
     "vCISO",
@@ -13,6 +13,18 @@
     "Cybersecurity SME"
   ],
   "agent_entry_point": "AGENTS.md",
+  "current_content_requirements": "docs/2026062312-trust-led-customer-action-content-requirements.md",
+  "feedback_currency_requirements": "docs/2026062312-feedback-currency-and-requirement-supersession.md",
+  "content_conversion_direction": {
+    "primary_customer_action": "Challenge One AI Recommendation",
+    "secondary_customer_action": "See the 3-Minute Vendor-Risk Example",
+    "commercial_next_step": "Explore a controlled 3-to-5 recommendation pilot",
+    "proof_before_capture": true,
+    "human_authority_required": true,
+    "remove_internal_route_language_from_public_pages": true,
+    "exact_pilot_pricing_status": "proposed-owner-approval-required",
+    "exact_delivery_timing_status": "proposed-owner-approval-required"
+  },
   "agent_sequence": [
     {
       "order": 1,
@@ -64,6 +76,8 @@
   "required_reading_order": [
     "AGENTS.md",
     "task-specific Requirements Steward packet",
+    "docs/2026062312-trust-led-customer-action-content-requirements.md",
+    "docs/2026062312-feedback-currency-and-requirement-supersession.md",
     "docs/2026061909-second-codex-agent-decision-assurance-implementation.md",
     "docs/2026061908-trusted-authority-ethical-influence-standard.md",
     "docs/engineer-next-build-instructions.md",
@@ -96,7 +110,10 @@
     "Preserve dissent and override",
     "Support no action, monitor, defer, and insufficient evidence outcomes",
     "Do not use polish or formatting as proof",
-    "Do not manufacture urgency, scarcity, exclusivity, status pressure, or unsupported authority"
+    "Do not manufacture urgency, scarcity, exclusivity, status pressure, or unsupported authority",
+    "Show useful value before requesting unnecessary personal information",
+    "Do not expose internal route, build, capture, or QA language on public buyer pages",
+    "Do not treat delayed feedback as current authority without a recorded currency and supersession decision"
   ],
   "prototype_boundary": [
     "No production readiness claim",
@@ -110,6 +127,13 @@
     "No autonomous vendor approval claim",
     "SOC 2 is not automatic approval",
     "Framework mapping is not compliance proof"
+  ],
+  "superseded_primary_conversion_directions": [
+    "TrustMap-first CyberShield conversion",
+    "Multiple equal-weight homepage CTAs",
+    "Collecting first name and company before the first useful insight",
+    "Generic demo request as the strongest available CTA",
+    "Runtime intervention as the immediate commercial proof"
   ],
   "deferred_scope": [
     "Public Aegis positioning",
