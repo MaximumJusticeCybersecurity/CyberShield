@@ -1,3 +1,5 @@
+import './trust-led-conversion-ui.js';
+
 // CyberShield Vercel Web Analytics loader and privacy-minimized conversion helper.
 // Page views are sent only when the Vercel Analytics endpoint is available.
 // Conversion events never include recommendation text, evidence, identity fields,
