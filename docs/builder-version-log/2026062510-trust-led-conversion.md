@@ -4,6 +4,7 @@ Version timestamp: 2026062510
 Builder / integration agent: Aegis / My AI Business Partner  
 Task ID: `2026062510-trust-led-conversion-implementation`  
 Branch: `agent/2026062510-trust-led-conversion`  
+Pull request: `#20`  
 Requirements Steward decision: Proceed with constraints
 
 ## Baseline
@@ -21,8 +22,10 @@ CyberShield main after:
    - `pilot-package.html`
    - `src/vercel-analytics.js`
    - `route-manifest.json`
+   - `governance-summary.json`
    - `docs/2026062312-vercel-web-analytics.md`
    - `tools/trust-led-conversion-static-check.mjs`
+   - `.github/workflows/trust-led-conversion-check.yml`
    - `docs/2026062510-trust-led-conversion-traceability.md`
    - `docs/builder-version-log/2026062510-trust-led-conversion.md`
    - `docs/2026062510-trust-led-conversion-completion-packet.md`
@@ -69,11 +72,24 @@ Challenge one AI recommendation
    - Evidence Maturity, Decision Ceiling, Minimum Trust Experiment, and outcome calibration remain separate protected implementation work.
    - No deployment or public release.
 
-## Verification status
+## Verification completed
 
-### Source-level verification prepared
+Read-only GitHub Actions workflow:
 
-`tools/trust-led-conversion-static-check.mjs` checks:
+```text
+Trust-Led Conversion Check
+Run ID: 28181028697
+Job ID: 83470415692
+Conclusion: success
+```
+
+The job checked out the PR merge ref and successfully ran:
+
+```text
+node tools/trust-led-conversion-static-check.mjs
+```
+
+Verified by the checker:
 
    - Forced redirect removal.
    - Required CTA and objection language.
@@ -83,10 +99,10 @@ Challenge one AI recommendation
    - Analytics privacy allowlist.
    - Inline module syntax with `node --check`.
 
-### Not yet verified
+## Not yet verified
 
-   - The static checker has not been executed in this connector-only session.
    - Browser rendering and navigation.
+   - Judgment-button behavior and session storage.
    - Mobile and desktop visual QA.
    - Print preview and saved PDF inspection.
    - JSON download through a browser.
@@ -96,4 +112,4 @@ Challenge one AI recommendation
 
 ## Required next review
 
-Run the static checker and browser review against the pull-request branch.  Inspect landing, preferred demo, pilot, print, JSON, capture-status language, conversion events, and fallback preservation.  Obtain Dr. Max Justice's approval before merge.  Obtain separate approval before deployment or public release.
+Inspect the pull-request preview or a local checkout in a browser.  Review landing, preferred demo, pilot, print, JSON, capture-status language, conversion events, and fallback preservation.  Obtain Dr. Max Justice's approval before merge.  Obtain separate approval before deployment or public release.
