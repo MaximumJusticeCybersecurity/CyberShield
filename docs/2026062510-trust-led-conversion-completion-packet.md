@@ -7,8 +7,8 @@ Requirements steward: Aegis / My AI Business Partner
 Implementation branch: `agent/2026062510-trust-led-conversion`  
 Requirements Steward decision: Proceed with constraints  
 Implementation pull request: `#20`  
-Merge status: Not authorized in this packet  
-Deployment status: Not authorized
+Merge status: Owner approval required  
+Deployment status: Separate explicit owner approval required
 
 ## Policy and governance
 
@@ -50,8 +50,9 @@ Evidence Maturity, Decision Ceiling, Minimum Trust Experiment, outcome calibrati
    - Pilot page converted to buyer-facing controlled advisory scope.
    - Exact price and delivery timing remain unpublished and owner-gated.
    - Privacy-minimized conversion-event helper added.
+   - Print-only correction removes the blank dark trailing PDF page.
    - Route manifest, analytics documentation, governance summary, traceability addendum, and builder history updated.
-   - Read-only pull-request workflow added for the static checker.
+   - Read-only pull-request workflow performs static and headless-browser verification.
 
 ## Files changed or created
 
@@ -59,10 +60,12 @@ Evidence Maturity, Decision Ceiling, Minimum Trust Experiment, outcome calibrati
    - `vendor-risk-next.html`
    - `pilot-package.html`
    - `src/vercel-analytics.js`
+   - `src/trust-led-conversion-ui.js`
    - `route-manifest.json`
    - `governance-summary.json`
    - `docs/2026062312-vercel-web-analytics.md`
    - `tools/trust-led-conversion-static-check.mjs`
+   - `tools/trust-led-conversion-browser-smoke.mjs`
    - `.github/workflows/trust-led-conversion-check.yml`
    - `docs/2026062510-trust-led-conversion-traceability.md`
    - `docs/builder-version-log/2026062510-trust-led-conversion.md`
@@ -128,28 +131,25 @@ cybershield:conversion
 
 ## Verification completed
 
-Workflow:
+Latest fully inspected run before final documentation refresh:
 
 ```text
-Trust-Led Conversion Check
-```
-
-Latest successful run:
-
-```text
-Run ID: 28181028697
-Job ID: 83470415692
+Workflow: Trust-Led Conversion Check
+Run ID: 28182454279
+Job ID: 83475467540
 Conclusion: success
-Node version requested: 24
+Artifact ID: 7883351906
+Browser assertions: 38 passed
 ```
 
-The read-only GitHub Actions job checked out the pull-request merge ref and successfully ran:
+The read-only workflow checked out the pull-request merge ref and ran:
 
 ```text
 node tools/trust-led-conversion-static-check.mjs
+node tools/trust-led-conversion-browser-smoke.mjs
 ```
 
-The successful checker validates:
+### Static checks passed
 
    - Forced redirect removal.
    - Required CTA and objection language.
@@ -157,24 +157,60 @@ The successful checker validates:
    - Pilot commercial boundary.
    - Route-manifest JSON and current route contract.
    - Analytics privacy allowlist.
-   - Inline module JavaScript syntax using `node --check`.
+   - Module syntax and inline JavaScript execution path.
 
-## Verification not yet completed
+### Browser-flow checks passed
 
-The following require browser or deployed-environment evidence and cannot be claimed from static checks:
+   - Desktop landing renders.
+   - Mobile landing renders.
+   - Recommendation challenge is the first step.
+   - No first-name field appears initially.
+   - Three judgment choices render.
+   - Judgment advances to evidence.
+   - Personalization follows initial value and remains optional.
+   - Claims and validators render.
+   - Candidate actions render.
+   - AI Trust Decision Record renders.
+   - Real-recommendation and pilot CTAs render.
+   - Print and JSON actions remain available.
+   - Visible route does not expose the Sheet ID label.
+   - Pilot page renders and contains no Internal QA link.
 
-   - Browser rendering.
-   - Judgment-button behavior.
-   - Step navigation and session storage behavior.
-   - Mobile and desktop visual QA.
-   - Print preview and saved PDF inspection.
-   - Downloaded JSON inspection through a browser.
-   - Capture submission and downstream row verification.
+### JSON and conversion checks passed
+
+   - Browser-generated JSON downloaded and parsed successfully.
+   - JSON excludes `visitor_email` and `crm_sheet_id`.
+   - JSON preserves `Request Evidence` and human-legibility and harness-health fields.
+   - Browser conversion events record judgment, evidence view, record view, and JSON download.
+   - Event payloads contain only route, stage, choice, and destination keys.
+
+### Visual review passed
+
+Inspected artifacts:
+
+   - Desktop landing screenshot.
+   - Mobile landing screenshot.
+   - Desktop AI Trust Decision Record screenshot.
+   - Desktop controlled-pilot screenshot.
+
+No clipping, overlap, unreadable text, internal QA leakage, or broken glyphs were observed in the inspected screenshots.
+
+### Print verification passed
+
+   - Chrome generated `record-print.pdf`.
+   - PDF rendered at 160 DPI into two pages.
+   - The earlier blank dark third page was corrected.
+   - Executive brief, claims, validators, human review, harness health, limitations, and signature block are visible.
+   - No clipping, overlap, black squares, or broken glyphs were observed.
+
+## Remaining external verification
+
+   - Report follow-up submission and downstream Google Sheet row verification.
    - Vercel page-view receipt.
    - Vercel custom-event receipt.
-   - Deployment behavior.
+   - Approved deployment behavior and rollback exercise.
 
-These remain required before merge or public release, as applicable.
+These require an approved live or connected environment and are not prerequisites for owner review of the implementation patch.  They remain prerequisites before claiming deployed analytics or capture success.
 
 ## Rollback path
 
@@ -195,13 +231,13 @@ These remain required before merge or public release, as applicable.
 
 ## Recommended owner decision
 
-Review PR #20 and its successful static check.
+PR #20 is technically ready for owner content review and merge decision.
 
-Do not merge until:
+The remaining owner checks are judgment calls rather than unresolved technical failures:
 
-   - Browser navigation and judgment flow are inspected.
-   - Print and JSON outputs are inspected.
-   - Mobile and desktop views are acceptable.
-   - The customer-facing copy and CTA hierarchy are approved.
+   - Approve the customer-facing headline and CTA hierarchy.
+   - Approve the credibility language.
+   - Approve the controlled-pilot presentation.
+   - Approve merge of PR #20.
 
 Do not deploy or publicly release solely because the implementation pull request is merged.  Deployment remains a separate explicit decision.
