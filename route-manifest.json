@@ -1,9 +1,12 @@
 {
-  "version": "2026061910-decision-assurance-complete-plan",
+  "version": "2026062510-trust-led-conversion-review",
   "product_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
   "public_artifact_name": "AI Trust Decision Record",
   "primary_wedge": "vendor-risk",
-  "route_strategy": "Use /vendor-risk-next.html as the preferred high-touch route and preserve /vendor-risk.html as the stable fallback.",
+  "primary_customer_action": "Challenge One AI Recommendation",
+  "secondary_customer_action": "See the 3-Minute Vendor-Risk Example",
+  "commercial_next_step": "Explore the controlled 3-to-5 recommendation pilot",
+  "route_strategy": "Use /vendor-risk-next.html as the preferred proof-before-capture route, preserve /vendor-risk.html as the stable fallback, and keep internal QA routes out of buyer-facing navigation.",
   "architecture_layers": [
     "Presentation",
     "Interaction",
@@ -15,23 +18,23 @@
     "Boundary, audit, and source-of-truth"
   ],
   "active_flow": [
-    "Recommendation Intake",
-    "Domain Fit",
-    "Claims",
-    "Evidence Requirements",
-    "Evidence and Contradictions",
-    "Validators",
-    "Risk If Wrong and Confidence",
-    "Candidate Actions",
+    "Challenge the AI recommendation",
+    "Buyer judgment",
+    "Evidence and contradictions",
+    "Optional personalization",
+    "Claims and validators",
+    "Risk If Wrong and confidence",
+    "Candidate actions",
     "Meaningful Human Authority",
-    "Human Decision",
     "Canonical AI Trust Decision Record",
-    "Screen, JSON, Print, and Capture"
+    "Real-recommendation review or controlled pilot",
+    "Screen, sanitized JSON, print, and optional follow-up capture"
   ],
   "routes": [
-    {"path":"/","file":"index.html","status":"active","role":"public landing route","priority":"primary entry"},
-    {"path":"/vendor-risk-next.html","file":"vendor-risk-next.html","status":"active-preferred","role":"preferred vendor-risk Decision Assurance demo","priority":"preferred demo","expected_contract":{"claims_extracted":10,"recommended_action":"Request Evidence","risk_if_wrong":"High","confidence_band":"Low confidence","human_review_required":true}},
-    {"path":"/vendor-risk.html","file":"vendor-risk.html","status":"active-stable-fallback","role":"stable fallback buyer demo","priority":"fallback"},
+    {"path":"/","file":"index.html","status":"active","role":"public Decision Assurance landing route","priority":"primary entry","primary_cta":"Challenge One AI Recommendation","forced_redirect":false},
+    {"path":"/vendor-risk-next.html","file":"vendor-risk-next.html","status":"active-preferred-review","role":"preferred proof-before-capture vendor-risk Decision Assurance example","priority":"preferred example","expected_contract":{"claims_extracted":10,"recommended_action":"Request Evidence","risk_if_wrong":"High","confidence_band":"Low confidence","human_review_required":true}},
+    {"path":"/pilot-package.html","file":"pilot-package.html","status":"active-controlled-pilot","role":"buyer-facing software-assisted advisory pilot package","priority":"commercial next step","pricing_status":"confirmed after scope review"},
+    {"path":"/vendor-risk.html","file":"vendor-risk.html","status":"active-stable-fallback","role":"stable fallback buyer demo","priority":"fallback-preserved-not-primary-navigation"},
     {"path":"/ai-trust-decision-record-report.html","file":"ai-trust-decision-record-report.html","status":"active-report","role":"canonical executive AI Trust Decision Record report","priority":"report proof artifact"},
     {"path":"/canonical-record-unification.html","file":"canonical-record-unification.html","status":"internal","role":"screen JSON print capture consistency verification","priority":"required QA"},
     {"path":"/feedback-triage.html","file":"feedback-triage.html","status":"internal","role":"local feedback capture and triage","priority":"review support"},
@@ -47,7 +50,6 @@
     {"path":"/report-capture-test.html","file":"report-capture-test.html","status":"internal","role":"capture endpoint test","priority":"required QA"},
     {"path":"/report-print-qa.html","file":"report-print-qa.html","status":"internal","role":"manual and automated print QA","priority":"required QA"},
     {"path":"/route-manifest.html","file":"route-manifest.html","status":"internal","role":"route governance viewer","priority":"internal governance"},
-    {"path":"/pilot-package.html","file":"pilot-package.html","status":"internal","role":"software-assisted advisory pilot package","priority":"pilot framing"},
     {"path":"/demo-script.html","file":"demo-script.html","status":"internal","role":"demo talk track","priority":"review support"},
     {"path":"/controlled-review-checklist.html","file":"controlled-review-checklist.html","status":"internal","role":"controlled review checklist","priority":"internal QA"},
     {"path":"/atdr.html","file":"atdr.html","status":"internal","role":"deep workbench","priority":"internal inspection"},
@@ -55,10 +57,29 @@
     {"path":"/advisor-feedback.html","file":"advisor-feedback.html","status":"preserved","role":"legacy feedback surface","priority":"provenance"},
     {"path":"/trust-kernel-legacy.html","file":"trust-kernel-legacy.html","status":"preserved","role":"legacy Trust Kernel and TrustMap route","priority":"provenance"}
   ],
+  "conversion_events": [
+    "example_started",
+    "buyer_judgment_selected",
+    "evidence_problem_viewed",
+    "decision_record_viewed",
+    "real_recommendation_review_clicked",
+    "pilot_clicked",
+    "report_print_clicked",
+    "report_json_downloaded"
+  ],
+  "analytics_privacy_rule": "Conversion events may include route, stage, choice, or destination only. Do not send recommendation text, evidence, names, organization, vendor, email, record ID, capture endpoint, or Sheet ID.",
   "capture_source_of_truth": {
     "config_file": "src/atdr/report-capture-config.js",
     "sheet_id": "1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w",
+    "public_display_allowed": false,
     "success_gate": "No success claim until a real Sheet row is verified."
+  },
+  "implementation_boundary": {
+    "evidence_maturity_logic": "separate protected implementation task",
+    "decision_ceiling_logic": "separate protected implementation task",
+    "minimum_trust_experiment_logic": "separate protected implementation task",
+    "record_schema_change": "not included",
+    "deployment": "not authorized by this review branch"
   },
   "deferred": [
     "Public Aegis positioning",
@@ -68,6 +89,7 @@
     "Broad governance dashboards",
     "Multi-industry expansion",
     "Autonomous approval",
-    "Production-readiness claims"
+    "Production-readiness claims",
+    "Exact public pilot pricing and delivery commitment"
   ]
 }
