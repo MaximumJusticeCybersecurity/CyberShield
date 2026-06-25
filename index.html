@@ -4,19 +4,74 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CyberShield AI Decision Assurance</title>
+<meta name="description" content="Challenge an AI-generated vendor, security, or compliance recommendation before your organization acts on it.">
 <link rel="icon" href="assets/mjc-logo-2026.png">
-<meta http-equiv="refresh" content="18; url=vendor-risk-next.html">
 <style>
-:root{--bg:#07131f;--panel:#101d29;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--amber:#ffd166;--green:#77e1a1;--shadow:0 18px 46px rgba(0,0,0,.32)}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 0,rgba(66,215,255,.12),transparent 34rem),linear-gradient(180deg,#081522,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.5}.wrap{width:min(1120px,calc(100vw - 30px));margin:0 auto;padding:36px 0 50px}.hero,.card{background:linear-gradient(180deg,rgba(16,29,41,.96),rgba(9,20,31,.98));border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:24px}.hero{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:center}.brand{display:flex;gap:14px;align-items:center;margin-bottom:14px}.brand img{width:64px;height:64px;object-fit:contain}.eyebrow{color:var(--blue);font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;font-weight:900}h1{font-size:clamp(2.1rem,5vw,3.75rem);line-height:1.03;margin:.25rem 0}h2{margin:.2rem 0 .7rem}.muted,li,p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.step{background:rgba(255,255,255,.045);border:1px solid rgba(66,215,255,.18);border-radius:14px;padding:12px}.step strong{color:var(--text)}.btn{display:inline-block;color:var(--text);text-decoration:none;border:1px solid var(--blue);border-radius:999px;padding:10px 14px;background:rgba(66,215,255,.14);font-weight:800}.btn.primary{background:rgba(66,215,255,.26)}.btn.small{font-size:.9rem;border-color:rgba(185,199,214,.45);background:rgba(255,255,255,.04)}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.status{border-left:5px solid var(--amber);padding:12px 14px;background:rgba(255,209,102,.08);border-radius:14px;color:var(--muted)}.pill{display:inline-block;border:1px solid rgba(119,225,161,.45);border-radius:999px;color:var(--green);padding:4px 9px;margin:2px;font-size:.86rem}.release{margin-top:10px;color:var(--muted);font-size:.9rem}@media(max-width:880px){.hero,.grid,.steps{grid-template-columns:1fr}.wrap{padding-top:24px}}
+:root{--bg:#07131f;--panel:#101d29;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--amber:#ffd166;--green:#77e1a1;--shadow:0 18px 46px rgba(0,0,0,.32)}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 0,rgba(66,215,255,.12),transparent 34rem),linear-gradient(180deg,#081522,#07131f);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.5}.wrap{width:min(1120px,calc(100vw - 30px));margin:0 auto;padding:36px 0 50px}.hero,.card{background:linear-gradient(180deg,rgba(16,29,41,.96),rgba(9,20,31,.98));border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:24px}.hero{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:center}.brand{display:flex;gap:14px;align-items:center;margin-bottom:14px}.brand img{width:64px;height:64px;object-fit:contain}.eyebrow{color:var(--blue);font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;font-weight:900}h1{font-size:clamp(2.1rem,5vw,3.75rem);line-height:1.03;margin:.25rem 0}h2{margin:.2rem 0 .7rem}.muted,li,p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.step{background:rgba(255,255,255,.045);border:1px solid rgba(66,215,255,.18);border-radius:14px;padding:12px}.step strong{color:var(--text)}.btn{display:inline-block;color:var(--text);text-decoration:none;border:1px solid var(--blue);border-radius:999px;padding:11px 15px;background:rgba(66,215,255,.14);font-weight:800}.btn.primary{background:rgba(66,215,255,.26)}.btn.secondary{border-color:rgba(185,199,214,.48);background:rgba(255,255,255,.04)}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.status{border-left:5px solid var(--amber);padding:14px;background:rgba(255,209,102,.08);border-radius:14px;color:var(--muted)}.trust{border-left:5px solid var(--green);padding:12px 14px;background:rgba(119,225,161,.07);border-radius:14px;color:var(--muted);margin-top:16px}.pill{display:inline-block;border:1px solid rgba(119,225,161,.45);border-radius:999px;color:var(--green);padding:4px 9px;margin:2px;font-size:.86rem}.small{font-size:.92rem}@media(max-width:880px){.hero,.grid,.steps{grid-template-columns:1fr}.wrap{padding-top:24px}}
 </style>
-<script defer src="/_vercel/insights/script.js" data-sdk="vercel-analytics"></script>
 </head>
 <body>
 <main class="wrap">
-<section class="hero"><div><div class="brand"><img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo"><div><div class="eyebrow">CyberShield by Maximum Justice Cybersecurity</div><strong>AI Decision Assurance</strong></div></div><h1>Before relying on AI, know whether the recommendation is defensible.</h1><p class="muted">CyberShield helps teams review AI-generated recommendations before acting on them by showing what was claimed, what evidence supports it, what is missing, what could go wrong, and who should review it.</p><div class="btns"><a class="btn primary" href="vendor-risk-next.html">Try the Vendor-Risk Decision Assurance Demo</a><a class="btn" href="review-index.html">Open Review Package</a><a class="btn small" href="vendor-risk.html">Stable Fallback Demo</a><a class="btn small" href="mailto:max@maximumjusticecybersecurity.com?subject=CyberShield%20Demo%20Request">Request a Demo</a></div><p class="release">Current controlled-review release: 2026061138. This page redirects to the preferred vendor-risk next demo.</p></div><aside class="status"><strong>What goes in?</strong><br>An AI-generated recommendation.<br><br><strong>What comes out?</strong><br>An AI Trust Decision Record with claims, evidence gaps, Risk If Wrong, confidence, and human review needs.<br><br><strong>First proof point:</strong><br>Vendor-risk recommendation review.</aside></section>
-<section class="card"><h2>How it works</h2><div class="steps"><div class="step"><strong>1. Load an AI recommendation</strong><p>Start with the recommendation your team is considering.</p></div><div class="step"><strong>2. Claims are separated</strong><p>CyberShield breaks polished AI output into reviewable claims.</p></div><div class="step"><strong>3. Evidence gaps are exposed</strong><p>Unsupported assumptions, weak evidence, and contradictions become visible.</p></div><div class="step"><strong>4. Risk If Wrong is classified</strong><p>The record shows what could go wrong if the recommendation is trusted too quickly.</p></div><div class="step"><strong>5. Human review is triggered</strong><p>Escalation is called out where accountable review is needed.</p></div><div class="step"><strong>6. A decision record is created</strong><p>The output is a defensible AI Trust Decision Record.</p></div></div></section>
-<section class="grid"><article class="card"><h2>Built for teams that must defend AI-influenced decisions</h2><p><span class="pill">Vendor-risk teams</span><span class="pill">GRC and compliance</span><span class="pill">CISOs and vCISOs</span><span class="pill">Security reviewers</span><span class="pill">AI governance leaders</span><span class="pill">Executives reviewing high-impact recommendations</span></p></article><article class="card"><h2>Use CyberShield before relying on AI to</h2><ul><li>Approve a vendor.</li><li>Accept a security risk.</li><li>Submit a compliance response.</li><li>Rely on an AI-generated executive summary.</li><li>Act on an AI-generated recommendation.</li><li>Send a customer-facing answer based on AI output.</li></ul></article></section>
-<section class="grid"><article class="card"><h2>Why add this step?</h2><ul><li>Find unsupported claims faster.</li><li>Expose missing evidence before action.</li><li>Know what needs human review.</li><li>Create a defensible record before the decision is challenged.</li><li>Reduce costly mistakes from polished but unsupported AI output.</li></ul></article><article class="card"><h2>The current proof point</h2><p>An AI recommendation says Vendor X looks low risk and should be approved. CyberShield shows why SOC 2 and encryption claims are not enough, why Risk If Wrong is High, why human review is required, and why Request Evidence is the strongest defensible action.</p><div class="btns"><a class="btn primary" href="vendor-risk-next.html">Try the Vendor-Risk Next Demo</a><a class="btn small" href="vendor-risk.html">Stable Fallback</a><a class="btn small" href="review-index.html">Open Review Index</a></div></article></section>
+<section class="hero">
+  <div>
+    <div class="brand"><img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo"><div><div class="eyebrow">CyberShield by Maximum Justice Cybersecurity</div><strong>AI Decision Assurance</strong></div></div>
+    <h1>Before you approve a vendor based on AI, prove the recommendation can survive challenge.</h1>
+    <p class="muted">CyberShield shows what the AI claimed, what evidence supports it, what is missing or contradictory, what could happen if it is wrong, who must review it, and the strongest defensible next action.</p>
+    <div class="btns">
+      <a class="btn primary" data-conversion="example_started" data-destination="vendor-risk-next" href="vendor-risk-next.html">Challenge One AI Recommendation</a>
+      <a class="btn secondary" data-conversion="example_started" data-destination="vendor-risk-example" href="vendor-risk-next.html?mode=example">See the 3-Minute Vendor-Risk Example</a>
+    </div>
+    <div class="trust"><strong>No integration required for the initial review.  No autonomous approval.  Your organization retains the decision.</strong></div>
+  </div>
+  <aside class="status"><strong>What goes in?</strong><br>An AI-generated recommendation.<br><br><strong>What comes out?</strong><br>An AI Trust Decision Record with claims, evidence gaps, Risk If Wrong, confidence, and required human review.<br><br><strong>First proof point:</strong><br>Vendor-risk recommendation review.</aside>
+</section>
+
+<section class="card">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step"><strong>1. Challenge the recommendation</strong><p>Start with the AI recommendation your team is considering.</p></div>
+    <div class="step"><strong>2. Separate the claims</strong><p>CyberShield breaks polished AI output into reviewable statements.</p></div>
+    <div class="step"><strong>3. Inspect the evidence</strong><p>Missing, stale, self-reported, scope-limited, and contradictory support becomes visible.</p></div>
+    <div class="step"><strong>4. Classify consequence</strong><p>Risk If Wrong shows what could happen if the organization acts too quickly.</p></div>
+    <div class="step"><strong>5. Preserve human authority</strong><p>Accountable reviewers remain responsible for approval, rejection, deferment, or override.</p></div>
+    <div class="step"><strong>6. Create the record</strong><p>The result is a defensible AI Trust Decision Record with limitations.</p></div>
+  </div>
+</section>
+
+<section class="grid">
+  <article class="card"><h2>Built for teams that must defend AI-influenced decisions</h2><p><span class="pill">Vendor-risk teams</span><span class="pill">GRC and compliance</span><span class="pill">CISOs and vCISOs</span><span class="pill">Security reviewers</span><span class="pill">AI governance leaders</span><span class="pill">Accountable executives</span></p></article>
+  <article class="card"><h2>Use CyberShield before relying on AI to</h2><ul><li>Approve a vendor.</li><li>Accept a security risk.</li><li>Submit a compliance response.</li><li>Rely on an AI-generated executive summary.</li><li>Act on an AI-generated recommendation.</li><li>Send a customer-facing answer based on AI output.</li></ul></article>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h2>Is this another AI judging the first AI?</h2>
+    <p>No.  CyberShield does not treat a second model's opinion as proof.  It separates the recommendation into claims, maps those claims to evidence, identifies missing and contradictory support, applies defined checks, classifies Risk If Wrong, and preserves the accountable human decision.</p>
+  </article>
+  <article class="card">
+    <h2>The controlled vendor-risk example</h2>
+    <p>An AI recommendation says a vendor appears low risk and should be approved.  For this evidence set, CyberShield shows why SOC 2 and encryption claims are not enough, why Risk If Wrong is High, why human review is required, and why Request Evidence is the strongest defensible action.</p>
+    <p class="small">Controlled demonstration using synthetic vendor evidence.  CyberShield does not approve vendors or replace accountable human review.</p>
+  </article>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h2>Designed by Dr. Max Justice</h2>
+    <p>CISSP, Ph.D., vCISO, and cybersecurity leader with more than 25 years of experience across high-impact federal, healthcare, cloud, and enterprise environments.</p>
+  </article>
+  <article class="card">
+    <h2>Ready to examine more than one recommendation?</h2>
+    <p>Explore a controlled 3-to-5 recommendation pilot with one defined decision domain, available evidence, and one accountable decision owner.</p>
+    <div class="btns"><a class="btn secondary" data-conversion="pilot_clicked" data-destination="pilot-package" href="pilot-package.html">Explore the Controlled Pilot</a></div>
+  </article>
+</section>
 </main>
+<script type="module">
+import { trackConversion } from './src/vercel-analytics.js';
+document.querySelectorAll('[data-conversion]').forEach(link=>{
+  link.addEventListener('click',()=>trackConversion(link.dataset.conversion,{route:'landing',destination:link.dataset.destination||'unknown'}));
+});
+</script>
 </body>
 </html>
