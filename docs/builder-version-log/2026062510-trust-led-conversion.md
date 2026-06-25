@@ -21,10 +21,12 @@ CyberShield main after:
    - `vendor-risk-next.html`
    - `pilot-package.html`
    - `src/vercel-analytics.js`
+   - `src/trust-led-conversion-ui.js`
    - `route-manifest.json`
    - `governance-summary.json`
    - `docs/2026062312-vercel-web-analytics.md`
    - `tools/trust-led-conversion-static-check.mjs`
+   - `tools/trust-led-conversion-browser-smoke.mjs`
    - `.github/workflows/trust-led-conversion-check.yml`
    - `docs/2026062510-trust-led-conversion-traceability.md`
    - `docs/builder-version-log/2026062510-trust-led-conversion.md`
@@ -58,6 +60,7 @@ Challenge one AI recommendation
    - Made the pilot page buyer-facing without publishing unapproved commercial terms.
    - Added privacy-minimized conversion events and local browser observability.
    - Sanitized public JSON download by removing visitor email and internal Sheet ID.
+   - Removed a blank dark trailing print page discovered during PDF inspection.
 
 ## Preserved boundaries
 
@@ -74,42 +77,80 @@ Challenge one AI recommendation
 
 ## Verification completed
 
-Read-only GitHub Actions workflow:
+Latest fully inspected read-only workflow run:
 
 ```text
-Trust-Led Conversion Check
-Run ID: 28181028697
-Job ID: 83470415692
+Workflow: Trust-Led Conversion Check
+Run ID: 28182454279
+Job ID: 83475467540
 Conclusion: success
+Artifact ID: 7883351906
 ```
 
-The job checked out the PR merge ref and successfully ran:
+The workflow checked out the pull-request merge ref and ran:
 
 ```text
 node tools/trust-led-conversion-static-check.mjs
+node tools/trust-led-conversion-browser-smoke.mjs
 ```
 
-Verified by the checker:
+### Static verification
 
-   - Forced redirect removal.
-   - Required CTA and objection language.
-   - Prohibited public route and Sheet language.
-   - Pilot commercial boundary.
-   - Route-manifest JSON.
-   - Analytics privacy allowlist.
-   - Inline module syntax with `node --check`.
+   - Forced redirect removed.
+   - Required CTA and objection language present.
+   - Prohibited public review, fallback, build, endpoint, and Sheet language absent.
+   - Pilot commercial boundary present.
+   - Route-manifest JSON parses.
+   - Analytics property allowlist preserved.
+   - Browser modules and inline modules execute without syntax failure.
 
-## Not yet verified
+### Browser verification
 
-   - Browser rendering and navigation.
-   - Judgment-button behavior and session storage.
-   - Mobile and desktop visual QA.
-   - Print preview and saved PDF inspection.
-   - JSON download through a browser.
-   - Capture submission and downstream row verification.
-   - Vercel page-view or custom-event receipt.
-   - Deployment behavior.
+Thirty-eight Chrome DevTools Protocol assertions passed, including:
 
-## Required next review
+   - Desktop landing renders.
+   - Mobile landing renders.
+   - Recommendation challenge is the first step.
+   - No initial first-name field.
+   - Three judgment choices render.
+   - Judgment advances to evidence.
+   - Optional personalization follows initial value.
+   - Claims and validator rows render.
+   - Candidate-action comparison renders.
+   - Record stage renders.
+   - Real-review, pilot, print, and JSON actions remain available.
+   - Visible route does not expose the Sheet ID label.
+   - Pilot page renders and contains no Internal QA link.
 
-Inspect the pull-request preview or a local checkout in a browser.  Review landing, preferred demo, pilot, print, JSON, capture-status language, conversion events, and fallback preservation.  Obtain Dr. Max Justice's approval before merge.  Obtain separate approval before deployment or public release.
+### Download and analytics verification
+
+   - Browser-generated JSON downloaded successfully.
+   - JSON excludes `visitor_email` and `crm_sheet_id`.
+   - JSON preserves `Request Evidence`, human-legibility, and harness-health data.
+   - Local conversion events recorded judgment, evidence view, record view, and JSON download.
+   - Event properties were restricted to route, stage, choice, and destination.
+
+### Print verification
+
+   - Chrome generated the record PDF.
+   - PDF rendered at 160 DPI in two clean pages.
+   - No clipped tables, dark trailing page, or broken glyphs were observed.
+   - Executive brief, claims, validators, human review, harness health, limitations, and signature block were visible.
+
+### Visual artifacts inspected
+
+   - Desktop landing.
+   - Mobile landing.
+   - Desktop record stage.
+   - Desktop pilot page.
+   - Two-page print PDF.
+
+## Remaining external verification
+
+   - Report follow-up submission and downstream Google Sheet row verification.
+   - Vercel page-view and custom-event receipt.
+   - Approved deployment behavior and rollback exercise.
+
+## Required owner decision
+
+PR #20 is technically ready for owner content review.  Dr. Max Justice must approve the customer-facing language and merge.  Deployment and public release remain separate explicit decisions.
