@@ -1,0 +1,102 @@
+name: Trust-Led Conversion Check
+
+on:
+  pull_request:
+    paths:
+      - index.html
+      - vendor-risk-next.html
+      - pilot-package.html
+      - src/vercel-analytics.js
+      - src/trust-led-conversion-ui.js
+      - route-manifest.json
+      - governance-summary.json
+      - tools/trust-led-conversion-static-check.mjs
+      - tools/trust-led-conversion-browser-smoke.mjs
+      - docs/2026062312-vercel-web-analytics.md
+      - docs/2026062510-trust-led-conversion-traceability.md
+      - docs/2026062510-trust-led-conversion-completion-packet.md
+      - docs/builder-version-log/2026062510-trust-led-conversion.md
+      - .github/workflows/trust-led-conversion-check.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trust-led-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out reviewed commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run trust-led conversion static checks
+        run: node tools/trust-led-conversion-static-check.mjs
+
+      - name: Locate headless Chrome
+        id: chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
+          test -n "$CHROME"
+          echo "path=$CHROME" >> "$GITHUB_OUTPUT"
+          "$CHROME" --version
+
+      - name: Start local static server
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/cybershield-http.log 2>&1 &
+          echo $! > /tmp/cybershield-http.pid
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null; then
+              exit 0
+            fi
+            sleep 0.5
+          done
+          cat /tmp/cybershield-http.log
+          exit 1
+
+      - name: Exercise browser flow and capture evidence
+        shell: bash
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.path }}
+          CYBERSHIELD_BASE_URL: http://127.0.0.1:4173
+          ARTIFACT_DIR: artifacts
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            echo "Browser verification attempt ${attempt} of 3"
+            rm -rf artifacts
+            mkdir -p artifacts
+            if CHROME_DEBUG_PORT="$((9221 + attempt))" node tools/trust-led-conversion-browser-smoke.mjs; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Browser verification failed after three bounded attempts."
+          exit 1
+
+      - name: Upload browser review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trust-led-conversion-browser-evidence
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Stop local static server
+        if: always()
+        shell: bash
+        run: |
+          if test -f /tmp/cybershield-http.pid; then
+            kill "$(cat /tmp/cybershield-http.pid)" || true
+          fi
+          cat /tmp/cybershield-http.log || true

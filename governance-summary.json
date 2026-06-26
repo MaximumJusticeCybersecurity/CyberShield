@@ -5,7 +5,7 @@
   "current_strategic_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
   "first_proof_point": "AI-generated vendor-risk recommendation in -> defensible AI Trust Decision Record out",
   "pilot_positioning": "software-assisted advisory pilot",
-  "version": "2026062312",
+  "version": "2026062510",
   "owner": "Dr. Max Justice",
   "owner_roles": [
     "vCISO",
@@ -15,6 +15,9 @@
   "agent_entry_point": "AGENTS.md",
   "current_content_requirements": "docs/2026062312-trust-led-customer-action-content-requirements.md",
   "feedback_currency_requirements": "docs/2026062312-feedback-currency-and-requirement-supersession.md",
+  "evidence_maturity_requirements": "docs/2026062510-evidence-maturity-decision-ceiling-and-trust-experiment-requirements.md",
+  "current_steward_packet": "docs/2026062510-requirements-steward-packet-trust-led-conversion.md",
+  "current_traceability_addendum": "docs/2026062510-trust-led-conversion-traceability.md",
   "content_conversion_direction": {
     "primary_customer_action": "Challenge One AI Recommendation",
     "secondary_customer_action": "See the 3-Minute Vendor-Risk Example",
@@ -47,14 +50,18 @@
   ],
   "trusted_authority_standard": "docs/2026061908-trusted-authority-ethical-influence-standard.md",
   "current_task": {
-    "build_id": "2026061143-report-layout-polish-after-print-test",
-    "steward_packet": "docs/2026061909-requirements-steward-packet-report-layout-polish.md",
-    "implementation_instructions": "docs/2026061909-decision-assurance-implementation-agent-first-mission.md",
-    "required_branch": "agent/2026061909-report-layout-polish",
-    "merge_authority": "Human owner approval required"
+    "build_id": "2026062510-trust-led-conversion-implementation",
+    "steward_packet": "docs/2026062510-requirements-steward-packet-trust-led-conversion.md",
+    "implementation_branch": "agent/2026062510-trust-led-conversion",
+    "decision": "Proceed with constraints",
+    "status": "implemented-on-review-branch-verification-pending",
+    "merge_authority": "Human owner approval required",
+    "deployment_authority": "Separate explicit human approval required"
   },
   "route_contract": {
-    "advisor_golden_path": "/vendor-risk-next.html",
+    "public_landing": "/",
+    "preferred_vendor_risk_route": "/vendor-risk-next.html",
+    "controlled_pilot_route": "/pilot-package.html",
     "fallback_buyer_route": "/vendor-risk.html",
     "review_index": "/review-index.html",
     "internal_qa": "/internal-qa.html",
@@ -63,19 +70,39 @@
   "core_contract": {
     "domain": "vendor-risk",
     "claims_extracted": 10,
-    "recommended_action": "Request Evidence",
+    "controlled_example_recommended_action": "Request Evidence",
     "risk_if_wrong": "High",
     "confidence_band": "Low confidence",
-    "human_review_required": true
+    "human_review_required": true,
+    "result_scope": "controlled synthetic evidence set, not universal outcome"
   },
   "capture_source_of_truth": {
     "sheet_id": "1SDfqw-rRuluqBdPUT6Ex4UIajO-CCEtny84OTMKhQ3w",
     "config_file": "src/atdr/report-capture-config.js",
+    "public_display_allowed": false,
     "verification_rule": "Browser submission is not proof of row creation. Verify the resulting row before claiming capture success."
+  },
+  "conversion_measurement": {
+    "helper": "src/vercel-analytics.js",
+    "local_event": "cybershield:conversion",
+    "allowed_properties": ["route", "stage", "choice", "destination"],
+    "events": [
+      "example_started",
+      "buyer_judgment_selected",
+      "evidence_problem_viewed",
+      "decision_record_viewed",
+      "real_recommendation_review_clicked",
+      "pilot_clicked",
+      "report_print_clicked",
+      "report_json_downloaded"
+    ],
+    "production_receipt_status": "unverified-until-approved-deployment-and-dashboard-inspection"
   },
   "required_reading_order": [
     "AGENTS.md",
     "task-specific Requirements Steward packet",
+    "docs/2026062510-requirements-steward-packet-trust-led-conversion.md",
+    "docs/2026062510-evidence-maturity-decision-ceiling-and-trust-experiment-requirements.md",
     "docs/2026062312-trust-led-customer-action-content-requirements.md",
     "docs/2026062312-feedback-currency-and-requirement-supersession.md",
     "docs/2026061909-second-codex-agent-decision-assurance-implementation.md",
@@ -87,10 +114,12 @@
     "docs/cybershield-decision-assurance-requirements.md",
     "docs/trust-decision-record-schema.md",
     "docs/requirements-traceability-matrix.md",
+    "docs/2026062510-trust-led-conversion-traceability.md",
     "docs/definition-of-done.md",
     "docs/builder-requirements-acceptance-checklist.md",
     "docs/successor-builder-handoff-and-job-docket.md",
-    "docs/builder-version-log.md"
+    "docs/builder-version-log.md",
+    "docs/builder-version-log/2026062510-trust-led-conversion.md"
   ],
   "implementation_authorization": {
     "allowed_steward_decisions": [
@@ -99,9 +128,10 @@
     ],
     "branch_required": true,
     "pull_request_or_review_packet_required": true,
-    "autonomous_merge_allowed": false
+    "autonomous_merge_allowed": false,
+    "autonomous_deployment_allowed": false
   },
-  "current_export_path": "Browser Print / Save PDF",
+  "current_export_path": "Browser Print / Save PDF and sanitized JSON",
   "print_verification_rule": "Actual browser print preview or saved PDF inspection is required. Static source inspection alone is insufficient.",
   "trusted_implementation_rules": [
     "Evidence before confidence",
@@ -113,7 +143,9 @@
     "Do not manufacture urgency, scarcity, exclusivity, status pressure, or unsupported authority",
     "Show useful value before requesting unnecessary personal information",
     "Do not expose internal route, build, capture, or QA language on public buyer pages",
-    "Do not treat delayed feedback as current authority without a recorded currency and supersession decision"
+    "Do not treat delayed feedback as current authority without a recorded currency and supersession decision",
+    "Describe Request Evidence as the result for the controlled evidence set, not a universal outcome",
+    "Do not silently implement evidence maturity, Decision Ceiling, Minimum Trust Experiment, outcome calibration, or schema changes"
   ],
   "prototype_boundary": [
     "No production readiness claim",
@@ -126,7 +158,16 @@
     "No compliance certification claim",
     "No autonomous vendor approval claim",
     "SOC 2 is not automatic approval",
-    "Framework mapping is not compliance proof"
+    "Framework mapping is not compliance proof",
+    "Locally observed analytics event is not proof of Vercel receipt"
+  ],
+  "protected_separate_scope": [
+    "Evidence Maturity classification logic",
+    "Decision Ceiling logic",
+    "Minimum Trust Experiment logic",
+    "Outcome calibration",
+    "AI Trust Decision Record schema changes",
+    "Recommendation and risk logic changes"
   ],
   "superseded_primary_conversion_directions": [
     "TrustMap-first CyberShield conversion",
@@ -143,7 +184,8 @@
     "Generic trust scores",
     "Multi-industry expansion",
     "Autonomous approval",
-    "Production platform claims"
+    "Production platform claims",
+    "Exact public pilot pricing and delivery commitment"
   ],
-  "next_planned_build_after_owner_acceptance": "2026061144-feedback-integration-after-review"
+  "next_required_action": "Run static checker and browser review, then obtain owner decision on implementation PR."
 }
