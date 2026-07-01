@@ -115,6 +115,16 @@ Affected requirement IDs: `REQ-REL-001`, `REQ-VRDA-009`, `REQ-RSA-003`, `REQ-DAI
 
 Status note: the agent framework and first-mission instructions are accepted and documented.  The report-layout code change has not yet been implemented.  Actual browser print or saved PDF inspection remains required before that mission can be accepted.
 
+## 2026061143 Report Print Verification and Polish Trace
+
+The canonical executive report at `/ai-trust-decision-record-report.html` was inspected through an actual Chromium-generated three-page Letter PDF. The implementation corrects print-only responsive-grid collapse, adds first-page decision owner and next action, preserves Human Legibility and Meaningful Human Authority, and presents the accepted five-part Harness Health Assessment without changing the canonical mapper, decision contract, recommendation, risk, confidence, evidence, validator, candidate-action, or capture semantics.
+
+Affected requirement IDs: `REQ-VRDA-001`, `REQ-VRDA-005`, `REQ-VRDA-009`, `REQ-HLA-001`, `REQ-HLA-002`, `REQ-HLA-005`, `REQ-HLA-009`, `REQ-HLA-014`, `REQ-HLA-015`, `REQ-RSA-003`, `REQ-RSA-008`, `REQ-DAIA-002` through `REQ-DAIA-006`, `REQ-TAEI-001`, `TAEI-005`, `CS-TAEI-006`, and `CS-TAEI-008`.
+
+Verification evidence: `docs/2026061909-report-print-test-observations.md`. Chromium/Edge 149 produced a tagged three-page Letter PDF; every rendered page was inspected at 144 DPI. `/report-print-qa.html` passed 7 automated checks. The fallback smoke, schema smoke, and record contract were GO. Firefox print preview remains unverified, and two unrelated current-main smoke routes remain `NO-GO` as explicitly documented.
+
+Status note: ready for owner review as a bounded review-branch proposal. `/vendor-risk-next.html` remains the advisor golden path and `/vendor-risk.html` remains unchanged fallback. No production, certification, autonomous-approval, live-analysis, public-Aegis, or production-CRM capability was added or implied.
+
 ## Builder rule
 
 Update this matrix when:
