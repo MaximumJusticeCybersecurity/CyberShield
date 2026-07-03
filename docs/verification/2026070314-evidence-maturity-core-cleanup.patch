@@ -1,0 +1,18 @@
+diff --git a/src/atdr/evidence-maturity.js b/src/atdr/evidence-maturity.js
+--- a/src/atdr/evidence-maturity.js
++++ b/src/atdr/evidence-maturity.js
+@@ -1,3 +1,5 @@
++export { calculateDecisionCeiling } from './decision-ceiling.js';
++
+ const MATURITY_ORDER = [
+   'Claimed',
+   'Observed',
+@@ -202,7 +204,7 @@ function actionRank(action = '') {
+   return 7;
+ }
+ 
+-export function calculateDecisionCeiling(input = {}) {
++function calculateDecisionCeilingProvisional(input = {}) {
+   const claims = input.claims || [];
+   const missing = input.missing_support || input.missing || [];
+   const risk = input.risk_if_wrong || input.risk || {};
