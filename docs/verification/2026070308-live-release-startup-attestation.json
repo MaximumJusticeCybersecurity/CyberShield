@@ -1,0 +1,29 @@
+{
+  "version_timestamp": "2026070308",
+  "task": "read-only-live-release-verification",
+  "repository": "MaximumJusticeCybersecurity/CyberShield",
+  "branch": "verification/2026070308-live-release-audit",
+  "owner": "Dr. Max Justice",
+  "policy_version": "2026061909",
+  "required_integrity": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
+  "observed_integrity": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
+  "integrity_result": "match",
+  "mode": "review-branch-read-only-verification",
+  "identity_evidence": "not-yet-implemented",
+  "independent_verifier_evidence": "not-yet-implemented",
+  "permit_evidence": "not-yet-implemented",
+  "allowed": [
+    "fetch-public-pages",
+    "verify-status-and-content",
+    "compute-route-hashes",
+    "upload-verification-evidence",
+    "prepare-pull-request"
+  ],
+  "not_allowed": [
+    "modify-public-pages",
+    "deploy",
+    "merge",
+    "publish-new-release",
+    "change-product-logic"
+  ]
+}
