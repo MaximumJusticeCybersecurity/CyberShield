@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import {
   buildMinimumTrustExperiment,
-  calculateDecisionCeiling,
   classifyEvidenceMaturity,
   enrichEvidenceMaturity,
   summarizeEvidenceMaturity,
 } from './evidence-maturity.js';
+import { calculateDecisionCeiling } from './decision-ceiling.js';
 
 function evidence(text, extra = {}) {
   return {
@@ -17,6 +17,11 @@ function evidence(text, extra = {}) {
     freshness_band: 'Unknown',
     ...extra,
   };
+}
+
+function enrichedEvidence(text, extra = {}) {
+  const item = evidence(text, extra);
+  return { ...item, ...classifyEvidenceMaturity(item) };
 }
 
 const claimed = classifyEvidenceMaturity(evidence('The vendor states encryption is enabled.', {
@@ -72,6 +77,7 @@ const missing = [{
 
 const currentDemoCeiling = calculateDecisionCeiling({
   claims: [{ claim_id: 'C-001', conflict_status: 'Material conflict' }],
+  evidence: [],
   missing_support: missing,
   risk_if_wrong: { band: 'High' },
   confidence: { band: 'Low confidence' },
@@ -83,6 +89,7 @@ assert.equal(currentDemoCeiling.requested_action_exceeds_ceiling, false);
 
 const approvalExceeds = calculateDecisionCeiling({
   claims: [{ conflict_status: 'Material conflict' }],
+  evidence: [],
   missing_support: missing,
   risk_if_wrong: { band: 'High' },
   confidence: { band: 'Low confidence' },
@@ -98,8 +105,42 @@ const quarantineCeiling = calculateDecisionCeiling({
 assert.equal(quarantineCeiling.level, 'Do not proceed');
 assert.equal(quarantineCeiling.requested_action_exceeds_ceiling, true);
 
+const staleIndependent = enrichedEvidence('Independent assessment and SOC 2 report cover the stated period.', {
+  independence_band: 'Independent or contractual',
+  freshness_band: 'Stale',
+  scope_status: 'In scope',
+});
+const staleCeiling = calculateDecisionCeiling({
+  evidence: [staleIndependent],
+  risk_if_wrong: { band: 'Moderate' },
+  confidence: { band: 'Medium confidence' },
+  human_review: { required: false },
+  requested_action: 'Approve vendor',
+});
+assert.equal(staleCeiling.level, 'Continue investigation');
+assert.equal(staleCeiling.requested_action_exceeds_ceiling, true);
+
+const outOfScopeTest = enrichedEvidence('A configuration validation test result passed.', {
+  freshness_band: 'Current',
+  scope_status: 'Out of scope',
+});
+const scopeCeiling = calculateDecisionCeiling({
+  evidence: [outOfScopeTest],
+  risk_if_wrong: { band: 'Moderate' },
+  confidence: { band: 'Medium confidence' },
+  human_review: { required: false },
+  requested_action: 'Accept with Caveat',
+});
+assert.equal(scopeCeiling.level, 'Continue investigation');
+assert.equal(scopeCeiling.requested_action_exceeds_ceiling, true);
+
+const currentTest = enrichedEvidence('A configuration validation test result passed.', {
+  freshness_band: 'Current',
+  scope_status: 'In scope',
+});
 const scopedApproval = calculateDecisionCeiling({
   claims: [{ conflict_status: 'No conflict' }],
+  evidence: [currentTest],
   missing_support: [],
   risk_if_wrong: { band: 'Moderate' },
   confidence: { band: 'Medium confidence' },
@@ -108,6 +149,46 @@ const scopedApproval = calculateDecisionCeiling({
 });
 assert.equal(scopedApproval.level, 'Approval within verified scope and conditions');
 assert.equal(scopedApproval.requested_action_exceeds_ceiling, false);
+
+const observedHighRisk = enrichedEvidence('Current policy and configuration record show the control design.', {
+  freshness_band: 'Current',
+  scope_status: 'In scope',
+});
+const observedHighRiskCeiling = calculateDecisionCeiling({
+  evidence: [observedHighRisk],
+  risk_if_wrong: { band: 'High' },
+  confidence: { band: 'Medium confidence' },
+  human_review: { required: false },
+  requested_action: 'Approve vendor',
+});
+assert.equal(observedHighRiskCeiling.level, 'Obtain specified missing evidence');
+assert.equal(observedHighRiskCeiling.requested_action_exceeds_ceiling, true);
+
+const pilotCeiling = calculateDecisionCeiling({
+  evidence: [observedHighRisk],
+  risk_if_wrong: { band: 'Moderate' },
+  confidence: { band: 'Medium confidence' },
+  human_review: { required: false },
+  reversible_pilot: true,
+  requested_action: 'Constrained pilot',
+});
+assert.equal(pilotCeiling.level, 'Constrained pilot');
+assert.equal(pilotCeiling.requested_action_exceeds_ceiling, false);
+
+const claimedOnly = enrichedEvidence('The vendor states all controls are effective.', {
+  freshness_band: 'Current',
+  scope_status: 'In scope',
+  independence_band: 'Self-attested',
+});
+const claimedOnlyCeiling = calculateDecisionCeiling({
+  evidence: [claimedOnly],
+  risk_if_wrong: { band: 'Moderate' },
+  confidence: { band: 'Medium confidence' },
+  human_review: { required: false },
+  requested_action: 'Accept with Caveat',
+});
+assert.equal(claimedOnlyCeiling.level, 'Continue investigation');
+assert.equal(claimedOnlyCeiling.requested_action_exceeds_ceiling, true);
 
 const experiment = buildMinimumTrustExperiment({
   missing_support: missing,
@@ -125,4 +206,4 @@ assert.equal(buildMinimumTrustExperiment({
 }), null);
 
 console.log('Evidence Maturity core tests passed.');
-console.log('Assertions: 24');
+console.log('Assertions: 34');
