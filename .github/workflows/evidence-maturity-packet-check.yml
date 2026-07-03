@@ -1,0 +1,89 @@
+name: Evidence Maturity Packet Check
+
+on:
+  pull_request:
+    paths:
+      - docs/requirements-steward/2026070308-evidence-maturity-startup-attestation.json
+      - docs/requirements-steward/2026070308-evidence-maturity-implementation-packet.json
+      - docs/requirements-steward/2026070308-evidence-maturity-verification-matrix.json
+      - .github/workflows/evidence-maturity-packet-check.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out reviewed commit
+        uses: actions/checkout@v4
+
+      - name: Parse packet files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool docs/requirements-steward/2026070308-evidence-maturity-startup-attestation.json > /dev/null
+          python -m json.tool docs/requirements-steward/2026070308-evidence-maturity-implementation-packet.json > /dev/null
+          python -m json.tool docs/requirements-steward/2026070308-evidence-maturity-verification-matrix.json > /dev/null
+
+      - name: Verify requirements authority and boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python - <<'PY' | tee artifacts/evidence-maturity-packet-validation.txt
+          import json
+          from pathlib import Path
+
+          root = Path('docs/requirements-steward')
+          attestation = json.loads((root / '2026070308-evidence-maturity-startup-attestation.json').read_text())
+          packet = json.loads((root / '2026070308-evidence-maturity-implementation-packet.json').read_text())
+          matrix = json.loads((root / '2026070308-evidence-maturity-verification-matrix.json').read_text())
+
+          failures = []
+          def check(condition, message):
+              if not condition:
+                  failures.append(message)
+
+          check(attestation.get('integrity_result') == 'match', 'canonical policy integrity must match')
+          check(attestation.get('mode') == 'requirements-only-review-branch', 'attestation must remain requirements-only')
+          check(packet.get('steward_decision') == 'Proceed with constraints', 'steward decision is missing')
+          check(packet.get('implementation_status') == 'not-started', 'packet must not claim implementation')
+          check(packet.get('merge_or_release_authorized') is False, 'packet must not authorize merge or release')
+
+          expected_maturity = {'Claimed', 'Observed', 'Tested', 'Independently validated', 'Outcome validated'}
+          check(set(packet.get('evidence_maturity', {}).get('values', [])) == expected_maturity, 'maturity ladder is incomplete')
+          check(packet.get('decision_ceiling', {}).get('current_vendor_demo_expected_level') == 'Obtain specified missing evidence', 'vendor demo ceiling is incorrect')
+          check(packet.get('decision_ceiling', {}).get('current_vendor_demo_expected_action') == 'Request Evidence', 'vendor demo action is incorrect')
+
+          separation = packet.get('separation_of_duties', {})
+          check(separation.get('implementation_agent_must_be_separate') is True, 'separate implementation role is required')
+          check(separation.get('verification_agent_should_be_separate') is True, 'separate verification role is required')
+          check(separation.get('requirements_steward_may_not_certify_implementation') is True, 'steward self-certification must be prohibited')
+
+          checks = matrix.get('checks', [])
+          ids = [item.get('id') for item in checks]
+          check(len(checks) >= 18, 'verification matrix is incomplete')
+          check(len(ids) == len(set(ids)), 'verification IDs must be unique')
+          check(matrix.get('implementation_may_merge_or_release') is False, 'verification matrix must preserve the owner gate')
+
+          if failures:
+              for failure in failures:
+                  print(f'FAIL: {failure}')
+              raise SystemExit(1)
+
+          print('Evidence Maturity requirements packet passed.')
+          print(f'verification_checks={len(checks)}')
+          print('implementation_status=not-started')
+          print('merge_or_release_authorized=false')
+          print('separation_of_duties=preserved')
+          PY
+
+      - name: Upload packet evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-maturity-packet-validation
+          path: artifacts/evidence-maturity-packet-validation.txt
+          retention-days: 14
