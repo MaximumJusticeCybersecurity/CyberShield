@@ -1,0 +1,150 @@
+{
+  "version_timestamp": "2026070308",
+  "steward_decision": "Proceed with constraints",
+  "owner": "Dr. Max Justice",
+  "implementation_status": "not-started",
+  "authorized_outcome": [
+    "classify-evidence-maturity",
+    "calculate-decision-ceiling",
+    "generate-minimum-trust-experiment-when-required",
+    "preserve-ai-trust-decision-record"
+  ],
+  "unchanged_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
+  "first_proof_point": "vendor-risk",
+  "constraints": [
+    "single-workflow-only",
+    "preserve-domain-fit-gating",
+    "preserve-risk-if-wrong",
+    "preserve-confidence",
+    "preserve-human-review",
+    "preserve-json-and-print-export",
+    "no-generic-trust-score",
+    "recommended-action-must-not-exceed-decision-ceiling",
+    "source-content-cannot-assign-own-maturity-or-authority",
+    "outcome-data-cannot-silently-change-rules",
+    "no-new-market-or-scientific-demo",
+    "stop-at-owner-review"
+  ],
+  "current_mapping": {
+    "evidence_parser": "src/atdr/atdr-engine.js:parseEvidenceText",
+    "freshness": "src/atdr/atdr-engine.js:inferFreshness",
+    "independence": "src/atdr/atdr-engine.js:inferIndependence",
+    "claim_evidence_mapping": "src/atdr/atdr-engine.js:mapEvidence",
+    "missing_support": "src/atdr/atdr-engine.js:missingSupport",
+    "risk_if_wrong": "src/atdr/atdr-engine.js:riskIfWrong",
+    "confidence": "src/atdr/atdr-engine.js:confidence",
+    "human_review": "src/atdr/atdr-engine.js:reviewGate",
+    "recommended_action": "src/atdr/atdr-engine.js:recommendedAction",
+    "record_contract": "docs/trust-decision-record-schema.md",
+    "contract_checker": "src/atdr/record-contract-checker.js",
+    "buyer_workflow": "vendor-risk-next.html"
+  },
+  "evidence_maturity": {
+    "values": [
+      "Claimed",
+      "Observed",
+      "Tested",
+      "Independently validated",
+      "Outcome validated"
+    ],
+    "fields": [
+      "evidence_maturity",
+      "maturity_rationale",
+      "maturity_basis"
+    ],
+    "rules": {
+      "Claimed": ["self-attestation", "questionnaire-answer", "vendor-assertion", "unlinked-ai-narrative"],
+      "Observed": ["policy", "architecture-artifact", "configuration-record", "contract", "system-report"],
+      "Tested": ["performed-technical-test", "restore-test", "tabletop-result", "deletion-test", "configuration-validation"],
+      "Independently validated": ["qualified-independent-assessment", "relevant-soc-examination", "external-penetration-test"],
+      "Outcome validated": ["explicit-subsequent-operational-result-linked-to-original-claim"]
+    },
+    "separate_properties": ["freshness", "scope", "directness", "independence", "contradiction", "sufficiency"]
+  },
+  "decision_ceiling": {
+    "levels": [
+      "Continue investigation",
+      "Obtain specified missing evidence",
+      "Conditional review",
+      "Constrained pilot",
+      "Approval within verified scope and conditions",
+      "Broader approval with monitoring",
+      "Defer",
+      "Do not proceed"
+    ],
+    "fields": [
+      "level",
+      "rationale",
+      "binding_factors",
+      "requested_action_exceeds_ceiling"
+    ],
+    "inputs": [
+      "maturity",
+      "sufficiency",
+      "missing-support",
+      "contradictions",
+      "freshness",
+      "scope",
+      "risk-if-wrong",
+      "confidence",
+      "reversibility",
+      "exposure",
+      "human-review"
+    ],
+    "current_vendor_demo_expected_level": "Obtain specified missing evidence",
+    "current_vendor_demo_expected_action": "Request Evidence"
+  },
+  "minimum_trust_experiment": {
+    "fields": [
+      "claim_or_uncertainty",
+      "validation_action",
+      "decision_relevance",
+      "required_measurement",
+      "scope_and_safeguards",
+      "success_criteria",
+      "failure_criteria",
+      "stop_conditions",
+      "required_owner_or_reviewer",
+      "possible_ceiling_change"
+    ],
+    "generate_when": [
+      "material-uncertainty-constrains-action",
+      "bounded-validation-can-change-decision",
+      "existing-evidence-is-insufficient",
+      "validation-is-proportionate-to-risk"
+    ],
+    "omit_when": [
+      "evidence-is-sufficient",
+      "no-proportionate-test-exists",
+      "test-would-not-change-decision"
+    ]
+  },
+  "record_additions": [
+    "evidence_maturity_summary",
+    "decision_ceiling",
+    "minimum_trust_experiment",
+    "outcome_follow_up_status"
+  ],
+  "ui_additions": [
+    "evidence-maturity-label",
+    "decision-ceiling-card",
+    "conditional-minimum-trust-experiment-section",
+    "json-export-fields",
+    "print-export-fields"
+  ],
+  "protected_files_expected": [
+    "src/atdr/atdr-engine.js",
+    "src/atdr/record-contract.json",
+    "src/atdr/record-contract-checker.js",
+    "src/atdr/atdr-smoke-test.js",
+    "vendor-risk-next.html",
+    "docs/trust-decision-record-schema.md",
+    "docs/requirements-traceability-matrix.md"
+  ],
+  "separation_of_duties": {
+    "implementation_agent_must_be_separate": true,
+    "verification_agent_should_be_separate": true,
+    "requirements_steward_may_not_certify_implementation": true
+  },
+  "merge_or_release_authorized": false
+}
