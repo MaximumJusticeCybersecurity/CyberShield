@@ -1,3 +1,5 @@
+export { calculateDecisionCeiling } from './decision-ceiling.js';
+
 const MATURITY_ORDER = [
   'Claimed',
   'Observed',
@@ -200,7 +202,7 @@ function actionRank(action = '') {
   return 7;
 }
 
-export function calculateDecisionCeiling(input = {}) {
+function calculateDecisionCeilingProvisional(input = {}) {
   const claims = input.claims || [];
   const missing = input.missing_support || input.missing || [];
   const risk = input.risk_if_wrong || input.risk || {};
