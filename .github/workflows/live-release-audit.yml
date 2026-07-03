@@ -1,0 +1,91 @@
+name: CyberShield Live Release Audit
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/live-release-audit.yml
+      - docs/verification/2026070308-live-release-startup-attestation.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-live-routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out reviewed commit
+        uses: actions/checkout@v4
+
+      - name: Fetch live routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/live
+          fetch() {
+            local name="$1"
+            local url="$2"
+            local code
+            code="$(curl --location --silent --show-error --retry 3 --max-time 30 --dump-header "artifacts/live/${name}.headers" --output "artifacts/live/${name}.html" --write-out '%{http_code}' "$url")"
+            printf '%s %s %s\n' "$name" "$code" "$url" | tee -a artifacts/live-release-report.txt
+            test "$code" = '200'
+          }
+          fetch root 'https://maximumjusticecybersecurity.github.io/CyberShield/'
+          fetch vendor-risk-next 'https://maximumjusticecybersecurity.github.io/CyberShield/vendor-risk-next.html'
+          fetch pilot-package 'https://maximumjusticecybersecurity.github.io/CyberShield/pilot-package.html'
+
+      - name: Verify live customer journey
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq '<title>CyberShield AI Decision Assurance</title>' artifacts/live/root.html
+          grep -Fq 'Challenge One AI Recommendation' artifacts/live/root.html
+          grep -Fq 'AI Trust Decision Record' artifacts/live/root.html
+          grep -Fq 'No autonomous approval' artifacts/live/root.html
+          grep -Fq '<title>Challenge One AI Recommendation | CyberShield</title>' artifacts/live/vendor-risk-next.html
+          grep -Fq "const STEPS=['Challenge','Evidence','Personalize','Review','Decide','Record']" artifacts/live/vendor-risk-next.html
+          grep -Fq 'Request Evidence' artifacts/live/vendor-risk-next.html
+          grep -Fq 'Human Legibility' artifacts/live/vendor-risk-next.html
+          grep -Fq '<title>CyberShield Controlled Pilot</title>' artifacts/live/pilot-package.html
+          grep -Fq 'Review 3 to 5 AI-generated recommendations' artifacts/live/pilot-package.html
+          grep -Fq 'Pilot pricing and delivery schedule are confirmed after scope review.' artifacts/live/pilot-package.html
+          ! grep -Fq 'Generate Your TrustMap' artifacts/live/root.html
+          ! grep -Fq 'Internal QA' artifacts/live/root.html
+
+      - name: Compare served pages with repository main content
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo
+            echo 'SHA-256 comparison'
+            sha256sum index.html artifacts/live/root.html
+            sha256sum vendor-risk-next.html artifacts/live/vendor-risk-next.html
+            sha256sum pilot-package.html artifacts/live/pilot-package.html
+          } | tee -a artifacts/live-release-report.txt
+          cmp --silent index.html artifacts/live/root.html
+          cmp --silent vendor-risk-next.html artifacts/live/vendor-risk-next.html
+          cmp --silent pilot-package.html artifacts/live/pilot-package.html
+          echo 'served_content_matches_reviewed_repository=true' | tee -a artifacts/live-release-report.txt
+
+      - name: Record release boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo 'audit_mode=read-only'
+            echo 'deployment_performed=false'
+            echo 'public_content_modified=false'
+            echo 'analytics_receipt_verified=false'
+            echo 'downstream_capture_verified=false'
+          } | tee -a artifacts/live-release-report.txt
+
+      - name: Upload live release evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cybershield-live-release-audit
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 14
