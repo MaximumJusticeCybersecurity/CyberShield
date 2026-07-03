@@ -1,4 +1,4 @@
-# Validation revision 2.  The workflow already exists on this protected branch.
+# Validation revision 3.  Includes the hardened Decision Ceiling module.
 name: Evidence Maturity Core Check
 
 on:
@@ -7,11 +7,13 @@ on:
       - agent/2026070314-evidence-maturity-implementation
     paths:
       - src/atdr/evidence-maturity.js
+      - src/atdr/decision-ceiling.js
       - src/atdr/evidence-maturity-test.js
       - .github/workflows/evidence-maturity-core-check.yml
   pull_request:
     paths:
       - src/atdr/evidence-maturity.js
+      - src/atdr/decision-ceiling.js
       - src/atdr/evidence-maturity-test.js
       - .github/workflows/evidence-maturity-core-check.yml
   workflow_dispatch:
@@ -37,6 +39,7 @@ jobs:
         run: |
           set -euo pipefail
           node --check src/atdr/evidence-maturity.js
+          node --check src/atdr/decision-ceiling.js
           node --check src/atdr/evidence-maturity-test.js
 
       - name: Run deterministic core tests
