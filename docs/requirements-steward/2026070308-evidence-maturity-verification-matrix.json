@@ -1,0 +1,25 @@
+{
+  "version_timestamp": "2026070308",
+  "status": "requirements-verification-contract",
+  "checks": [
+    {"id": "M1", "category": "maturity", "expected": "self-reported-evidence-maps-to-Claimed"},
+    {"id": "M2", "category": "maturity", "expected": "artifact-without-performed-validation-maps-to-Observed"},
+    {"id": "M3", "category": "maturity", "expected": "performed-validation-maps-to-Tested"},
+    {"id": "M4", "category": "maturity", "expected": "independent-assessment-maps-with-scope-and-period"},
+    {"id": "M5", "category": "maturity", "expected": "outcome-state-requires-linked-later-result"},
+    {"id": "M6", "category": "maturity", "expected": "maturity-remains-separate-from-freshness-scope-and-sufficiency"},
+    {"id": "C1", "category": "ceiling", "expected": "current-demo-ceiling-is-Obtain-specified-missing-evidence"},
+    {"id": "C2", "category": "ceiling", "expected": "final-action-does-not-exceed-ceiling"},
+    {"id": "C3", "category": "ceiling", "expected": "contradictory-or-out-of-scope-support-cannot-raise-ceiling"},
+    {"id": "E1", "category": "experiment", "expected": "bounded-validation-created-for-material-gap"},
+    {"id": "E2", "category": "experiment", "expected": "validation-omitted-when-current-evidence-is-sufficient"},
+    {"id": "E3", "category": "experiment", "expected": "validation-omitted-when-it-cannot-change-the-decision"},
+    {"id": "R1", "category": "regression", "expected": "current-demo-action-remains-Request-Evidence"},
+    {"id": "R2", "category": "regression", "expected": "existing-out-of-scope-record-behavior-remains"},
+    {"id": "R3", "category": "regression", "expected": "risk-confidence-human-review-and-candidate-actions-remain"},
+    {"id": "X1", "category": "export", "expected": "new-structured-fields-appear-in-json"},
+    {"id": "X2", "category": "export", "expected": "new-fields-appear-in-print-output"},
+    {"id": "X3", "category": "export", "expected": "desktop-and-mobile-review-remain-usable"}
+  ],
+  "implementation_may_merge_or_release": false
+}

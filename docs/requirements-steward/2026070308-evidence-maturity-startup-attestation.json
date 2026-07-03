@@ -1,0 +1,40 @@
+{
+  "version_timestamp": "2026070308",
+  "task": "requirements-steward-evidence-maturity-decision-ceiling-minimum-trust-experiment",
+  "repository": "MaximumJusticeCybersecurity/CyberShield",
+  "branch": "steward/2026070308-evidence-maturity-packet",
+  "owner": "Dr. Max Justice",
+  "policy_version": "2026061909",
+  "required_integrity": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
+  "observed_integrity": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
+  "integrity_result": "match",
+  "mode": "requirements-only-review-branch",
+  "required_sources_reviewed": [
+    "AGENTS.md",
+    "SECURITY.md",
+    "security-policy-manifest.json",
+    "governance-summary.json",
+    "docs/2026062510-evidence-maturity-decision-ceiling-and-trust-experiment-requirements.md",
+    "docs/trust-decision-record-schema.md",
+    "src/atdr/atdr-engine.js",
+    "src/atdr/record-contract-checker.js"
+  ],
+  "identity_evidence": "not-yet-implemented",
+  "independent_verifier_evidence": "not-yet-implemented",
+  "permit_evidence": "not-yet-implemented",
+  "allowed": [
+    "map-current-contract",
+    "define-smallest-change",
+    "define-acceptance-tests",
+    "prepare-requirements-packet",
+    "prepare-pull-request"
+  ],
+  "not_allowed": [
+    "change-engine-code",
+    "change-record-contract",
+    "change-public-copy",
+    "deploy",
+    "merge",
+    "public-release"
+  ]
+}
