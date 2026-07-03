@@ -1,6 +1,13 @@
 name: Evidence Maturity Core Check
 
 on:
+  push:
+    branches:
+      - agent/2026070314-evidence-maturity-implementation
+    paths:
+      - src/atdr/evidence-maturity.js
+      - src/atdr/evidence-maturity-test.js
+      - .github/workflows/evidence-maturity-core-check.yml
   pull_request:
     paths:
       - src/atdr/evidence-maturity.js
