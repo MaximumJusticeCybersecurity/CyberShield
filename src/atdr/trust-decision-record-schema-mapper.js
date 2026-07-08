@@ -1,6 +1,8 @@
 // CyberShield Trust Decision Record schema mapper
 // Maps the current deterministic engine output into the target AI Trust Decision Record payload shape.
 
+import { attachTrustedAgentSpine, validateTrustedAgentSpine } from './trusted-agent-spine.js';
+
 function reportId(now = new Date()) {
   return `CS-${now.toISOString().replace(/[-:.TZ]/g, '').slice(0, 12)}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
 }
@@ -16,11 +18,12 @@ function mapClaims(engineRecord = {}) {
     required_evidence_type: claim.required_evidence || claim.required_evidence_type || '',
     evidence_status: claim.evidence_status || claim.evidence_sufficiency || 'unknown',
     unsupported_leap_flag: Boolean(claim.unsupported_leap_flag || claim.conflict_status === 'Material conflict'),
-    evidence_sufficiency_band: claim.evidence_sufficiency || '',
+    evidence_sufficiency_band: claim.evidence_sufficiency || claim.evidence_sufficiency_band || '',
     missing_support_severity: claim.missing_support_severity || '',
     conflict_status: claim.conflict_status || 'none',
     confidence_band: claim.confidence_band || engineRecord.confidence_band || 'Unknown Confidence',
-    risk_if_wrong_band: claim.risk_if_wrong_band || engineRecord.risk_if_wrong?.band || 'Unknown'
+    risk_if_wrong_band: claim.risk_if_wrong_band || engineRecord.risk_if_wrong?.band || 'Unknown',
+    evidence_links: claim.evidence_links || []
   }));
 }
 
@@ -34,12 +37,14 @@ function mapEvidenceItems(evidenceItems = [], recordId = '') {
     date: item.date || item.evidence_date || 'unknown',
     freshness: item.freshness || item.freshness_band || 'unknown',
     scope_status: item.scope_status || 'unclear',
-    independence_status: item.independence_status || item.source_authority_band || 'unknown',
+    independence_status: item.independence_status || item.independence_band || item.source_authority_band || 'unknown',
     self_attestation_flag: Boolean(item.self_attestation_flag),
     synthetic_demo_data_flag: item.synthetic_demo_data_flag !== false,
-    relevant_claims: item.relevant_claims || item.claim_ids || [],
+    relevant_claims: item.relevant_claims || item.related_claims || item.claim_ids || [],
     contradiction_flag: Boolean(item.contradiction_flag),
-    evidence_summary: item.caveat || item.text_extract || item.evidence_summary || ''
+    evidence_summary: item.caveat || item.text_extract || item.evidence_summary || '',
+    text_extract: item.text_extract || '',
+    caveat: item.caveat || ''
   }));
 }
 
@@ -88,7 +93,7 @@ function buildTrustDecisionRecord({
 } = {}) {
   const record = engineRecord || {};
   const recordId = record.record_id || `ATDR-${now.getTime()}`;
-  return {
+  const baseRecord = {
     record_id: recordId,
     report_id: reportId(now),
     created_timestamp: record.created_at || now.toISOString(),
@@ -100,7 +105,7 @@ function buildTrustDecisionRecord({
     decision_owner: record.decision_owner || state.firstName || 'Pending vendor-risk owner assignment',
     decision_domain: 'vendor_risk',
     selected_contradiction_type: state.contradiction || 'all',
-    original_ai_recommendation: state.recommendation || '',
+    original_ai_recommendation: state.recommendation || record.original_recommendation || '',
     ai_source: record.ai_source || 'User-pasted AI recommendation',
     ai_influence_type: 'AI-generated recommendation',
     recommendation_type: 'vendor-risk approval recommendation',
@@ -139,6 +144,14 @@ function buildTrustDecisionRecord({
       report_capture_mode: captureConfig.report_capture_mode || captureConfig.REPORT_CAPTURE_MODE || 'unknown'
     }
   };
+
+  return attachTrustedAgentSpine(baseRecord, {
+    engineRecord: record,
+    state: { ...state, recommendation: baseRecord.original_ai_recommendation },
+    evidenceItems: baseRecord.evidence_items,
+    missingSupport: record.missing_support || [],
+    now
+  });
 }
 
 function validateTrustDecisionRecordShape(record = {}) {
@@ -164,9 +177,16 @@ function validateTrustDecisionRecordShape(record = {}) {
     'export_metadata'
   ];
   const missing = required.filter(key => !(key in record));
+  const spine = validateTrustedAgentSpine(record);
   return {
-    ok: missing.length === 0 && Array.isArray(record.claims) && Array.isArray(record.evidence_items) && Array.isArray(record.validator_results) && Array.isArray(record.candidate_actions),
-    missing
+    ok: missing.length === 0
+      && Array.isArray(record.claims)
+      && Array.isArray(record.evidence_items)
+      && Array.isArray(record.validator_results)
+      && Array.isArray(record.candidate_actions)
+      && spine.ok,
+    missing: [...missing, ...spine.missing],
+    spine
   };
 }
 
