@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trusted-Agent Spine Smoke | CyberShield</title>
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#07131f;--panel:#101923;--line:#2d4358;--text:#f7fbff;--muted:#b9c7d6;--blue:#42d7ff;--green:#77e1a1;--red:#ff7474;--amber:#ffd166}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.45}.wrap{width:min(1100px,calc(100vw - 28px));margin:0 auto;padding:28px 0 48px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin:12px 0}h1,h2{margin:.2rem 0 .7rem}p,li{color:var(--muted)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:2px}.good{color:var(--green);border-color:var(--green)}.bad{color:var(--red);border-color:var(--red)}.warn{color:var(--amber);border-color:var(--amber)}code,pre{background:#06111c;border:1px solid var(--line);border-radius:10px;color:#dff6ff}code{padding:2px 5px}pre{padding:12px;white-space:pre-wrap;overflow:auto;max-height:420px}a{color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<section class="card"><h1>Trusted-Agent Spine Smoke</h1><p>Internal-only validation of the additive Context Pack, Source, Missing Evidence, Human Gate, and Agent Work Receipt objects.</p><p><a href="internal-qa.html">Back to Internal QA</a> · <a href="vendor-risk-next.html">Preferred route</a></p><div id="overall"></div></section>
+<section class="grid" id="checks"></section>
+<section class="card"><h2>Compact Work Receipt Summary</h2><div id="receipt"></div></section>
+<section class="card"><h2>Structured Record</h2><pre id="record"></pre></section>
+</main>
+<script type="module">
+import { analyzeRecommendation } from './src/atdr/atdr-engine.js';
+import { VENDOR_RISK_CONTRADICTORY_DEMO } from './src/atdr/atdr-demo-data.js';
+import { attachTrustedAgentSpine, HUMAN_GATE_DECISIONS, validateTrustedAgentSpine } from './src/atdr/trusted-agent-spine.js';
+
+const evidence=VENDOR_RISK_CONTRADICTORY_DEMO.evidence_repository;
+const evidenceText=evidence.map(item=>`[${item.evidence_name}] ${item.text_extract}`).join('\n');
+const engineRecord=analyzeRecommendation({
+  recommendation:VENDOR_RISK_CONTRADICTORY_DEMO.original_ai_recommendation,
+  domain:'vendor-risk',
+  evidence:evidenceText,
+  aiSource:'Synthetic smoke fixture',
+  sourceModel:'Unknown',
+  intendedUse:VENDOR_RISK_CONTRADICTORY_DEMO.intended_use,
+  context:VENDOR_RISK_CONTRADICTORY_DEMO.decision_context,
+  decisionOwner:'Internal QA reviewer',
+  createdBy:'CyberShield smoke test'
+});
+const base={
+  record_id:engineRecord.record_id,
+  created_timestamp:engineRecord.created_at,
+  decision_domain:'vendor_risk',
+  recommendation_type:'vendor-risk approval recommendation',
+  original_ai_recommendation:VENDOR_RISK_CONTRADICTORY_DEMO.original_ai_recommendation,
+  decision_owner:'Internal QA reviewer',
+  claims:engineRecord.extracted_claims,
+  evidence_items:evidence,
+  required_reviewer_roles:['Vendor-Risk Owner','Security SME','Legal/Privacy Reviewer','Business Owner'],
+  cyberShield_recommended_action:engineRecord.recommended_action
+};
+const record=attachTrustedAgentSpine(base,{
+  engineRecord,
+  state:{firstName:'Internal QA reviewer',reviewerRole:'Security SME',humanDecision:'defer',humanRationale:'Collect missing evidence before approval.',residualRiskAcknowledgment:'not_accepted',recommendation:base.original_ai_recommendation},
+  evidenceItems:evidence,
+  missingSupport:engineRecord.missing_support,
+  now:new Date('2026-07-08T22:30:00.000Z')
+});
+const validation=validateTrustedAgentSpine(record);
+const checks=[
+  ['Legacy compatibility','The module attaches objects to a copy and does not require legacy records to contain them.',base.context_pack===undefined],
+  ['One Context Pack','Exactly one context object is present.',Boolean(record.context_pack?.context_pack_id)],
+  ['Structured Sources','Every evidence item references a Source object.',validation.unlinked_evidence_ids.length===0&&record.sources.length===evidence.length],
+  ['Missing Evidence','Missing support is represented as structured records linked to claims.',record.missing_evidence_records.length>0&&record.missing_evidence_records.every(item=>item.claim_id)],
+  ['Human Gate choices','Accept, reject, modify, defer, and escalate are permitted.',HUMAN_GATE_DECISIONS.join('|')==='accept|reject|modify|defer|escalate'],
+  ['Human rationale','The selected decision preserves rationale and residual-risk status.',record.human_gate.selected_decision==='defer'&&record.human_gate.rationale!=='not_recorded'],
+  ['Work Receipt','Operations, sources, limitations, unresolved findings, and candidate reference are present.',record.agent_work_receipt.operations_performed.length>0&&record.agent_work_receipt.input_source_ids.length>0&&Boolean(record.agent_work_receipt.candidate_digest)],
+  ['No autonomous action','Authority boundary remains analysis and recommendation only.',record.context_pack.authority_boundary.includes('Accountable humans')],
+  ['Overall schema',validation.ok?'Trusted-agent spine validates.':JSON.stringify(validation),validation.ok]
+];
+const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+document.querySelector('#overall').innerHTML=`<span class="tag ${checks.every(check=>check[2])?'good':'bad'}">${checks.every(check=>check[2])?'GO: all smoke checks passed':'NO-GO: one or more checks failed'}</span>`;
+document.querySelector('#checks').innerHTML=checks.map(([name,detail,ok])=>`<article class="card"><h2>${esc(name)}</h2><p><span class="tag ${ok?'good':'bad'}">${ok?'PASS':'FAIL'}</span></p><p>${esc(detail)}</p></article>`).join('');
+const receipt=record.agent_work_receipt;
+document.querySelector('#receipt').innerHTML=`<p><strong>Agent role:</strong> ${esc(receipt.canonical_role)}<br><strong>Work performed:</strong> ${esc(receipt.operations_performed.join('; '))}<br><strong>Sources used:</strong> ${esc(receipt.input_source_ids.join(', '))}<br><strong>Unresolved evidence gaps:</strong> ${esc(String(receipt.unresolved_findings.length))}<br><strong>Human Gate:</strong> ${esc(record.human_gate.selected_decision)}<br><strong>Candidate reference:</strong> <code>${esc(receipt.candidate_digest)}</code><br><strong>Verification status:</strong> ${esc(receipt.verification_status)}</p><p class="tag warn">The receipt is evidence of work performed. It is not proof that the conclusion is true.</p>`;
+document.querySelector('#record').textContent=JSON.stringify(record,null,2);
+</script></body></html>
