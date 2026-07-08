@@ -24,6 +24,7 @@ Add structured Context Pack, Source, Missing Evidence, Human Gate, and Agent Wor
 - Internal QA smoke route renders the compact receipt summary and deterministic checks.
 - Route manifest identifies the new internal QA route and expected golden-path contract.
 - Static Node check covers module behavior, mapper integration, all Human Gate decisions, evidence-source links, missing-evidence records, receipt presence, route integration, and manifest parsing.
+- Pull-request CI uses immutable checkout, read-only repository permission, module syntax checks, manifest parsing, deterministic regression, and dependency-boundary checks.
 
 ## Preserved
 
@@ -50,6 +51,7 @@ Add structured Context Pack, Source, Missing Evidence, Human Gate, and Agent Wor
 
 ## Files
 
+- `.github/workflows/trusted-agent-spine-tests.yml`
 - `src/atdr/trusted-agent-spine.js`
 - `src/atdr/trust-decision-record-schema-mapper.js`
 - `vendor-risk-next.html`
@@ -67,10 +69,23 @@ Add structured Context Pack, Source, Missing Evidence, Human Gate, and Agent Wor
 - Extracted smoke-route module script syntax check: PASS
 - `node tools/trusted-agent-spine-static-check.mjs`: PASS
 - Route-manifest JSON parse: PASS
+- No package-lock or Node dependency tree introduced: PASS
+
+## Repository CI
+
+The pull-request workflow is configured to run on the exact candidate and performs:
+
+- Immutable checkout without persisted credentials.
+- Read-only `contents` permission.
+- Node syntax checks.
+- Route-manifest JSON parse.
+- Deterministic static regression.
+- Verification that the receipt remains labeled `unverified_static_prototype` and `fnv1a32-demo-only`.
+
+Exact-head workflow result remains unverified until GitHub completes the run for the final candidate head.
 
 ## Unverified until repository review or browser execution
 
-- Actual GitHub Actions status, if any.
 - Full browser interaction across supported browsers.
 - Browser Print / Save PDF pagination and visual readability.
 - Actual JSON file download from the served route.
@@ -84,7 +99,7 @@ All reviewers must inspect the same exact candidate commit and patch.
 
 ### Verifier A
 
-Review requirements traceability, module and mapper correctness, static checks, browser-test gaps, rollback, and completion-claim accuracy.
+Review requirements traceability, module and mapper correctness, local and repository test evidence, browser-test gaps, rollback, and completion-claim accuracy.
 
 ### Verifier B
 
@@ -92,7 +107,7 @@ Review owner intent, scope, claim/evidence separation, provenance, missing-evide
 
 ### Verifier C
 
-Review policy prerequisites, source and input handling, prompt-injection exposure, secrets, public data leakage, prototype digest wording, capture path, rollback, incident implications, and control overclaim.
+Review policy prerequisites, source and input handling, prompt-injection exposure, secrets, workflow supply chain, public data leakage, prototype digest wording, capture path, rollback, incident implications, and control overclaim.
 
 Required result: `GO`, `GO WITH CONDITIONS`, or `NO-GO`, bound to the exact commit.
 
@@ -106,6 +121,7 @@ Merge only after:
 
 1. The policy-sync prerequisite is merged.
 2. The P1 candidate is rebased or confirmed against the resulting `main` head.
-3. Verifier A, B, and C each record an independent decision on the same exact commit.
-4. Required browser and print evidence is complete or explicitly accepted with conditions.
-5. Dr. Max Justice approves the exact merge candidate.
+3. GitHub Actions succeeds on the exact candidate head.
+4. Verifier A, B, and C each record an independent decision on the same exact commit.
+5. Required browser and print evidence is complete or explicitly accepted with conditions.
+6. Dr. Max Justice approves the exact merge candidate.
