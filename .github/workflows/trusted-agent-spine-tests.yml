@@ -3,14 +3,18 @@ name: Trusted Agent Spine Tests
 on:
   pull_request:
     paths:
+      - 'src/agent-spine/reusable-agent-spine.js'
+      - 'src/domain-packs/recruiting-opportunity-pack.js'
       - 'src/atdr/trusted-agent-spine.js'
       - 'src/atdr/trust-decision-record-schema-mapper.js'
       - 'tools/trusted-agent-spine-static-check.mjs'
+      - 'tools/reusable-agent-spine-p2-check.mjs'
       - 'vendor-risk-next.html'
       - 'trusted-agent-spine-smoke.html'
       - 'internal-qa.html'
       - 'route-manifest.json'
       - 'docs/20260708-trusted-agent-spine-p1-completion-packet.md'
+      - 'docs/20260709-reusable-agent-spine-p2-completion-packet.md'
       - '.github/workflows/trusted-agent-spine-tests.yml'
   workflow_dispatch:
 
@@ -32,19 +36,27 @@ jobs:
 
       - name: Check reusable modules
         run: |
+          node --check src/agent-spine/reusable-agent-spine.js
+          node --check src/domain-packs/recruiting-opportunity-pack.js
           node --check src/atdr/trusted-agent-spine.js
           node --check src/atdr/trust-decision-record-schema-mapper.js
           node --check tools/trusted-agent-spine-static-check.mjs
+          node --check tools/reusable-agent-spine-p2-check.mjs
 
       - name: Parse route contract
         run: node -e "JSON.parse(require('fs').readFileSync('route-manifest.json','utf8'))"
 
-      - name: Run deterministic static regression
+      - name: Run CyberShield deterministic regression
         run: node tools/trusted-agent-spine-static-check.mjs
+
+      - name: Run reusable core and second-domain proof
+        run: node tools/reusable-agent-spine-p2-check.mjs
 
       - name: Verify no package or external-action dependency was introduced
         run: |
           test ! -f package-lock.json
           test ! -f node_modules/.package-lock.json
           grep -q "unverified_static_prototype" src/atdr/trusted-agent-spine.js
-          grep -q "fnv1a32-demo-only" src/atdr/trusted-agent-spine.js
+          grep -q "fnv1a32-demo-only" src/agent-spine/reusable-agent-spine.js
+          ! grep -R -E "from ['\"](axios|puppeteer|playwright|selenium|@octokit|googleapis|child_process)['\"]" src/agent-spine src/domain-packs
+          ! grep -R -E "\bfetch\s*\(" src/agent-spine src/domain-packs
