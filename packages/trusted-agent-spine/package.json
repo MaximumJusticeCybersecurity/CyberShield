@@ -1,0 +1,28 @@
+{
+  "name": "@maximumjustice/trusted-agent-spine",
+  "version": "0.1.0",
+  "description": "Private, domain-neutral trusted-agent decision-record spine for approved MJC repositories.",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {"node": ">=20"},
+  "files": ["src", "schemas", "compatibility.json", "package-manifest.json", "sbom.spdx.json", "README.md", "CONSUMER-CONTRACT.md", "MIGRATION.md", "ROLLBACK.md", "DEPRECATION.md"],
+  "exports": {
+    ".": "./src/index.js",
+    "./core": "./src/core.js",
+    "./validators": "./src/validators.js",
+    "./context-pack": "./src/context-pack.js",
+    "./source-citation": "./src/source-citation.js",
+    "./missing-evidence": "./src/missing-evidence.js",
+    "./human-gate": "./src/human-gate.js",
+    "./agent-work-receipt": "./src/agent-work-receipt.js",
+    "./compatibility": "./compatibility.json",
+    "./schemas/context-pack": "./schemas/context-pack.schema.json",
+    "./schemas/source-record": "./schemas/source-record.schema.json",
+    "./schemas/missing-evidence": "./schemas/missing-evidence.schema.json",
+    "./schemas/human-gate": "./schemas/human-gate.schema.json",
+    "./schemas/agent-work-receipt": "./schemas/agent-work-receipt.schema.json"
+  },
+  "scripts": {"test": "node ../../tools/trusted-agent-spine-package-check.mjs"},
+  "publishConfig": {"access": "restricted", "registry": "https://npm.pkg.github.com"}
+}
