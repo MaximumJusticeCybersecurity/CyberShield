@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'packages/trusted-agent-spine/**'
+      - 'packages/trusted-agent-spine.integrity.json'
       - 'src/agent-spine/reusable-agent-spine.js'
       - 'src/domain-packs/recruiting-opportunity-pack.js'
       - 'src/atdr/trusted-agent-spine.js'
@@ -12,6 +13,7 @@ on:
       - 'tools/reusable-agent-spine-p2-check.mjs'
       - 'tools/trusted-agent-spine-package-check.mjs'
       - 'tools/trusted-agent-spine-consumer-check.mjs'
+      - 'docs/20260709-trusted-agent-spine-package-v0.1.0-completion.md'
       - '.github/workflows/trusted-agent-spine-tests.yml'
   workflow_dispatch:
 
@@ -41,7 +43,9 @@ jobs:
           node --check tools/trusted-agent-spine-package-check.mjs
           node --check tools/trusted-agent-spine-consumer-check.mjs
       - name: Parse package contracts and schemas
-        run: find packages/trusted-agent-spine -type f -name '*.json' -print0 | xargs -0 -n1 node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))"
+        run: |
+          find packages/trusted-agent-spine -type f -name '*.json' -print0 | xargs -0 -n1 node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('packages/trusted-agent-spine.integrity.json','utf8'))"
       - name: Run existing CyberShield and Recruiting regressions
         run: node tools/trusted-agent-spine-static-check.mjs && node tools/reusable-agent-spine-p2-check.mjs
       - name: Run package contract checks
@@ -59,6 +63,16 @@ jobs:
           SHA=$(sha256sum "artifacts/$TARBALL" | awk '{print $1}')
           node -e "const fs=require('fs');const p=require('./artifacts/pack.json')[0];fs.writeFileSync('artifacts/package-integrity.json',JSON.stringify({package:'@maximumjustice/trusted-agent-spine',version:'0.1.0',filename:p.filename,sha256:process.argv[1],size:p.size,files:p.files.map(f=>f.path).sort(),commit:process.env.GITHUB_SHA},null,2)+'\n')" "$SHA"
           cat artifacts/package-integrity.json
+      - name: Verify exact package SHA-256 and file manifest
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const expected=JSON.parse(fs.readFileSync('packages/trusted-agent-spine.integrity.json','utf8'));
+          const actual=JSON.parse(fs.readFileSync('artifacts/package-integrity.json','utf8'));
+          for(const key of ['package','version','filename','sha256','size']) if(actual[key]!==expected[key]) throw new Error(`${key} mismatch: ${actual[key]} != ${expected[key]}`);
+          if(JSON.stringify(actual.files)!==JSON.stringify(expected.files)) throw new Error('package file manifest mismatch');
+          console.log(`package_integrity=pass sha256=${actual.sha256}`);
+          NODE
       - name: Verify no authority or external-action dependency was introduced
         run: |
           test ! -f package-lock.json
@@ -67,7 +81,7 @@ jobs:
           grep -q "compatibility-re-export" packages/trusted-agent-spine/compatibility.json
           ! grep -R -E "from ['\"](axios|puppeteer|playwright|selenium|@octokit|googleapis|child_process)['\"]" packages/trusted-agent-spine/src src/agent-spine src/domain-packs
           ! grep -R -E "\bfetch\s*\(" packages/trusted-agent-spine/src src/agent-spine src/domain-packs
-      - name: Upload candidate package integrity evidence
+      - name: Upload verified package integrity evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: trusted-agent-spine-package-integrity
