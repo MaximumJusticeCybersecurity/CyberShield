@@ -1,68 +1,61 @@
 {
-  "manifest_version": "1.0",
-  "version_timestamp": "2026061909",
-  "status": "active",
+  "manifest_version": "1.1",
+  "version_timestamp": "20260708",
+  "status": "active-synchronized-mirror",
   "canonical_repository": "MaximumJusticeCybersecurity/Aegis",
   "canonical_branch": "main",
-  "canonical_pull_request_dependency": 2,
   "canonical_policy_path": "15_security/2026061909-agentic-security-identity-and-protection-standard.md",
-  "canonical_codex_instructions_path": "15_security/2026061909-codex-security-guardian-agent-build-instructions.md",
   "canonical_policy_version": "2026061909",
   "canonical_policy_integrity": {
     "algorithm": "git-blob-sha",
     "value": "9936634b8187f78e38b03f3bbe1c670fdeda1884",
-    "verified_on_main": true
+    "verified_on_main": true,
+    "note": "Canonical policy content remains unchanged; verifier governance was synchronized from Aegis on 2026-07-08."
+  },
+  "verifier_role_registry": {
+    "canonical_repository": "MaximumJusticeCybersecurity/Aegis",
+    "canonical_path": "VERIFIER_ROLES.md",
+    "canonical_blob_sha": "5aa6c49e5988291cfa2f46a6b15423b0df43f5f3",
+    "owner_designated_model": "three-independent-verifiers",
+    "verifier_a": "decision-assurance-implementer-agent",
+    "verifier_b": "aegis-agent",
+    "verifier_c": "security-agent",
+    "deterministic_policy_agent_counts_as_verifier": false,
+    "llm_evaluator_counts_as_verifier": false,
+    "controlled_subagents_count_as_independent_verifiers": false,
+    "same_exact_candidate_required": true,
+    "conflicted_or_unavailable_verifier_behavior": "fail-closed-until-owner-approved-independent-replacement"
   },
   "required_documents": [
-    {
-      "repository": "MaximumJusticeCybersecurity/CyberShield",
-      "path": "AGENTS.md",
-      "required": true
-    },
-    {
-      "repository": "MaximumJusticeCybersecurity/CyberShield",
-      "path": "SECURITY.md",
-      "required": true
-    },
-    {
-      "repository": "MaximumJusticeCybersecurity/Aegis",
-      "path": "15_security/2026061909-agentic-security-identity-and-protection-standard.md",
-      "required": true
-    },
-    {
-      "repository": "MaximumJusticeCybersecurity/Aegis",
-      "path": "15_security/2026061909-codex-security-guardian-agent-build-instructions.md",
-      "required": true
-    },
-    {
-      "repository": "MaximumJusticeCybersecurity/CyberShield",
-      "path": "docs/2026061908-trusted-authority-ethical-influence-standard.md",
-      "required": true
-    }
+    {"repository":"MaximumJusticeCybersecurity/CyberShield","path":"AGENTS.md","required":true},
+    {"repository":"MaximumJusticeCybersecurity/CyberShield","path":"SECURITY.md","required":true},
+    {"repository":"MaximumJusticeCybersecurity/Aegis","path":"VERIFIER_ROLES.md","required":true},
+    {"repository":"MaximumJusticeCybersecurity/Aegis","path":"15_security/2026061909-agentic-security-identity-and-protection-standard.md","required":true},
+    {"repository":"MaximumJusticeCybersecurity/Aegis","path":"15_security/2026061909-codex-security-guardian-agent-build-instructions.md","required":true},
+    {"repository":"MaximumJusticeCybersecurity/Aegis","path":"15_security/2026062017-multi-agent-verifier-routing-and-collaboration-standard.md","required":true},
+    {"repository":"MaximumJusticeCybersecurity/CyberShield","path":"docs/2026061908-trusted-authority-ethical-influence-standard.md","required":true}
   ],
+  "operational_control_status": {
+    "cryptographic_workload_identity": "not-yet-implemented",
+    "change_intent_envelope_service": "not-yet-implemented",
+    "verifier_a_identity": "not-yet-implemented",
+    "verifier_b_identity": "not-yet-implemented",
+    "verifier_c_identity": "not-yet-implemented",
+    "independent_verifier_quorum_service": "not-yet-implemented",
+    "deterministic_policy_gate": "not-yet-implemented",
+    "single_use_permit_service": "not-yet-implemented",
+    "protected_audit_ledger": "not-yet-implemented"
+  },
+  "bootstrap_review_branch_mode": {
+    "status": "owner-authorized-temporary-build-path",
+    "allowed": ["local-nonproduction-discovery","task-specific-review-branch-proposal","architecture-and-documentation","schemas-policies-tests-and-bounded-code","pull-request-preparation"],
+    "prohibited": ["direct-main-push","autonomous-merge","deployment","public-release","production-credentials","destructive-action","root-trust-change","security-control-reduction","cross-domain-execution"],
+    "proposal_trust_state": "untrusted-until-exact-candidate-review-and-owner-merge"
+  },
   "startup_attestation_required": true,
   "protected_write_quorum_required": true,
-  "minimum_independent_verifiers": 2,
-  "human_approval_required_for": [
-    "merge-to-protected-branch",
-    "production-deployment",
-    "public-release",
-    "recommendation-logic-change",
-    "risk-logic-change",
-    "trust-decision-record-schema-change",
-    "irreversible-action",
-    "root-trust-change",
-    "security-control-reduction",
-    "security-policy-authority-change"
-  ],
-  "fail_closed_on": [
-    "missing-policy",
-    "stale-policy",
-    "integrity-mismatch",
-    "invalid-identity",
-    "missing-quorum",
-    "expired-attestation",
-    "missing-required-human-approval",
-    "audit-log-failure"
-  ]
+  "minimum_independent_verifiers": 3,
+  "same_exact_candidate_required": true,
+  "human_approval_required_for": ["merge-to-protected-branch","production-deployment","public-release","recommendation-logic-change","risk-logic-change","trust-decision-record-schema-change","irreversible-action","root-trust-change","security-control-reduction","security-policy-authority-change","verifier-role-change"],
+  "fail_closed_on": ["missing-policy","stale-policy","integrity-mismatch","invalid-identity","unknown-verifier-role","verifier-role-ambiguity","missing-verifier-a","missing-verifier-b","missing-verifier-c","conflicted-verifier","candidate-digest-mismatch","missing-quorum","expired-attestation","missing-required-human-approval","audit-log-failure","unsafe-fallback","material-unresolved-contradiction"]
 }
