@@ -1,0 +1,444 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://maximumjusticecybersecurity.com/schemas/trust-decision-record-vnext.schema.json",
+  "title": "CyberShield Trust Decision Record vNext",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "schema_version",
+    "record_status",
+    "created_at",
+    "updated_at",
+    "responsible_actor",
+    "recommendation_input",
+    "claims",
+    "evidence_items",
+    "missing_evidence",
+    "assumptions",
+    "contradictions",
+    "risk_if_wrong",
+    "evidence_sufficiency",
+    "confidence_assessment",
+    "candidate_actions",
+    "strongest_defensible_action",
+    "review_requirement",
+    "human_decision",
+    "override_event",
+    "limitations",
+    "audit_events",
+    "operational_status",
+    "integrity"
+  ],
+  "properties": {
+    "record_id": {"type": "string", "minLength": 1, "maxLength": 160},
+    "schema_version": {"type": "string", "const": "2026070913-vnext"},
+    "record_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "analysis_complete",
+        "awaiting_human_review",
+        "human_decision_recorded",
+        "superseded",
+        "expired",
+        "closed_no_action"
+      ]
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "responsible_actor": {"type": "string", "minLength": 1},
+    "decision_owner": {"type": ["string", "null"]},
+    "recommendation_domain": {
+      "type": "string",
+      "enum": ["security", "compliance", "vendor_risk", "architecture", "policy", "business", "other", "unknown"]
+    },
+    "domain_adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter_id", "adapter_version", "support_level", "limitations"],
+      "properties": {
+        "adapter_id": {"type": "string", "minLength": 1},
+        "adapter_version": {"type": "string", "minLength": 1},
+        "support_level": {"type": "string", "enum": ["generic", "pilot", "validated", "unsupported"]},
+        "limitations": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "recommendation_input": {"$ref": "#/$defs/recommendationInput"},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "evidence_items": {"type": "array", "items": {"$ref": "#/$defs/evidenceItem"}},
+    "missing_evidence": {"type": "array", "items": {"$ref": "#/$defs/missingEvidence"}},
+    "assumptions": {"type": "array", "items": {"$ref": "#/$defs/assumption"}},
+    "contradictions": {"type": "array", "items": {"$ref": "#/$defs/contradiction"}},
+    "risk_if_wrong": {"$ref": "#/$defs/riskIfWrong"},
+    "evidence_sufficiency": {"$ref": "#/$defs/evidenceSufficiency"},
+    "confidence_assessment": {"$ref": "#/$defs/confidenceAssessment"},
+    "candidate_actions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/candidateAction"}},
+    "strongest_defensible_action": {"$ref": "#/$defs/strongestDefensibleAction"},
+    "review_requirement": {"$ref": "#/$defs/reviewRequirement"},
+    "human_decision": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/humanDecision"}
+      ]
+    },
+    "override_event": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/overrideEvent"}
+      ]
+    },
+    "residual_risk": {"$ref": "#/$defs/stringArray"},
+    "limitations": {"$ref": "#/$defs/stringArray"},
+    "domain_extension": {"type": "object"},
+    "audit_events": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/auditEvent"}},
+    "operational_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["data_type", "analysis_mode", "verification_status", "production_status", "unimplemented_controls"],
+      "properties": {
+        "data_type": {"type": "string", "enum": ["synthetic_demo", "user_supplied", "internal", "production", "mixed"]},
+        "analysis_mode": {"type": "string", "enum": ["deterministic", "llm_assisted", "hybrid", "manual"]},
+        "verification_status": {"type": "string", "enum": ["unverified", "partially_verified", "verified_for_pilot", "independently_verified"]},
+        "production_status": {"type": "string", "enum": ["requirements_only", "static_prototype", "nonproduction_pilot", "production_candidate", "operational"]},
+        "unimplemented_controls": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "integrity": {"$ref": "#/$defs/integrity"}
+  },
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "recommendationInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "original_recommendation",
+        "intended_action",
+        "decision_context",
+        "originating_ai_or_source",
+        "originating_rationale",
+        "originating_confidence",
+        "evidence_supplied",
+        "deadline_or_urgency",
+        "input_limitations"
+      ],
+      "properties": {
+        "original_recommendation": {"type": "string", "minLength": 1},
+        "intended_action": {"type": "string", "minLength": 1},
+        "decision_context": {"type": "string"},
+        "originating_ai_or_source": {"type": ["string", "null"]},
+        "originating_model": {"type": ["string", "null"]},
+        "originating_provider": {"type": ["string", "null"]},
+        "originating_rationale": {"type": ["string", "null"]},
+        "originating_confidence": {"type": ["string", "number", "null"]},
+        "evidence_supplied": {"type": "boolean"},
+        "deadline_or_urgency": {"type": ["string", "null"]},
+        "input_limitations": {"$ref": "#/$defs/stringArray"},
+        "source_digest": {"type": ["string", "null"]}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "original_text",
+        "normalized_claim",
+        "claim_type",
+        "materiality",
+        "required_evidence",
+        "supporting_evidence_ids",
+        "contradictory_evidence_ids",
+        "evidence_status",
+        "assumption_ids",
+        "contradiction_ids",
+        "unsupported_leap",
+        "confidence_basis",
+        "risk_if_wrong"
+      ],
+      "properties": {
+        "claim_id": {"type": "string", "minLength": 1},
+        "original_text": {"type": "string", "minLength": 1},
+        "normalized_claim": {"type": "string", "minLength": 1},
+        "claim_type": {"type": "string", "enum": ["fact", "prediction", "causal", "normative", "comparative", "eligibility", "risk", "action", "other"]},
+        "materiality": {"type": "string", "enum": ["material", "non_material", "unknown"]},
+        "required_evidence": {"$ref": "#/$defs/stringArray"},
+        "supporting_evidence_ids": {"$ref": "#/$defs/stringArray"},
+        "contradictory_evidence_ids": {"$ref": "#/$defs/stringArray"},
+        "evidence_status": {"type": "string", "enum": ["supported", "partially_supported", "unsupported", "contradicted", "unknown"]},
+        "assumption_ids": {"$ref": "#/$defs/stringArray"},
+        "contradiction_ids": {"$ref": "#/$defs/stringArray"},
+        "unsupported_leap": {"type": "boolean"},
+        "confidence_basis": {"$ref": "#/$defs/stringArray"},
+        "risk_if_wrong": {"type": "string", "enum": ["minimal", "low", "moderate", "high", "severe", "unknown"]}
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "title",
+        "source_locator",
+        "source_type",
+        "author_or_provider",
+        "created_or_published_at",
+        "retrieved_at",
+        "freshness",
+        "relevance",
+        "scope_status",
+        "independence_status",
+        "authenticity_status",
+        "synthetic_demo",
+        "affected_claim_ids",
+        "relationship_to_claims",
+        "summary",
+        "limitations",
+        "content_digest"
+      ],
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "source_locator": {"type": ["string", "null"]},
+        "source_type": {"type": "string", "enum": ["independent", "internal", "vendor", "self_attested", "uploaded", "policy", "contract", "technical_test", "observation", "synthetic_demo", "other", "unknown"]},
+        "author_or_provider": {"type": ["string", "null"]},
+        "created_or_published_at": {"type": ["string", "null"]},
+        "retrieved_at": {"type": ["string", "null"], "format": "date-time"},
+        "freshness": {"type": "string", "enum": ["current", "aging", "stale", "unknown"]},
+        "relevance": {"type": "string", "enum": ["direct", "indirect", "weak", "irrelevant", "unknown"]},
+        "scope_status": {"type": "string", "enum": ["in_scope", "partially_in_scope", "out_of_scope", "unclear"]},
+        "independence_status": {"type": "string", "enum": ["independent", "partially_independent", "self_attested", "dependent", "unknown"]},
+        "authenticity_status": {"type": "string", "enum": ["verified", "partially_verified", "unverified", "synthetic", "unknown"]},
+        "synthetic_demo": {"type": "boolean"},
+        "affected_claim_ids": {"$ref": "#/$defs/stringArray"},
+        "relationship_to_claims": {"type": "string", "enum": ["supports", "contradicts", "qualifies", "context_only", "mixed"]},
+        "summary": {"type": "string"},
+        "limitations": {"$ref": "#/$defs/stringArray"},
+        "content_digest": {"type": ["string", "null"]}
+      }
+    },
+    "missingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["missing_evidence_id", "affected_claim_ids", "evidence_needed", "why_it_matters", "severity", "blocks_action", "expected_provider", "next_step", "closure_condition"],
+      "properties": {
+        "missing_evidence_id": {"type": "string", "minLength": 1},
+        "affected_claim_ids": {"$ref": "#/$defs/stringArray"},
+        "evidence_needed": {"type": "string", "minLength": 1},
+        "why_it_matters": {"type": "string", "minLength": 1},
+        "severity": {"type": "string", "enum": ["informational", "low", "moderate", "high", "critical"]},
+        "blocks_action": {"type": "boolean"},
+        "expected_provider": {"type": ["string", "null"]},
+        "next_step": {"type": "string", "minLength": 1},
+        "closure_condition": {"type": "string", "minLength": 1}
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assumption_id", "statement", "origin", "affected_claim_ids", "support_status", "consequence_if_false", "test_required", "disposition"],
+      "properties": {
+        "assumption_id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "origin": {"type": "string", "enum": ["explicit", "inferred"]},
+        "affected_claim_ids": {"$ref": "#/$defs/stringArray"},
+        "support_status": {"type": "string", "enum": ["supported", "partially_supported", "unsupported", "contradicted", "unknown"]},
+        "consequence_if_false": {"type": "string", "minLength": 1},
+        "test_required": {"type": ["string", "null"]},
+        "disposition": {"type": "string", "enum": ["accepted_for_pilot", "requires_evidence", "rejected", "unknown"]}
+      }
+    },
+    "contradiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contradiction_id", "description", "claim_ids", "evidence_ids", "severity", "resolution_status", "decision_effect"],
+      "properties": {
+        "contradiction_id": {"type": "string", "minLength": 1},
+        "description": {"type": "string", "minLength": 1},
+        "claim_ids": {"$ref": "#/$defs/stringArray"},
+        "evidence_ids": {"$ref": "#/$defs/stringArray"},
+        "severity": {"type": "string", "enum": ["informational", "low", "moderate", "high", "critical"]},
+        "resolution_status": {"type": "string", "enum": ["unresolved", "partially_resolved", "resolved", "not_resolvable"]},
+        "decision_effect": {"type": "string", "enum": ["none", "qualifies_action", "blocks_action", "requires_review", "changes_recommendation"]}
+      }
+    },
+    "riskIfWrong": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overall_band", "categories", "affected_parties", "reversibility", "time_to_harm", "containment_or_rollback", "uncertainties"],
+      "properties": {
+        "overall_band": {"type": "string", "enum": ["minimal", "low", "moderate", "high", "severe", "unknown"]},
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["category", "severity", "likelihood_basis", "description", "residual_risk"],
+            "properties": {
+              "category": {"type": "string", "enum": ["security", "compliance", "financial", "operational", "reputational", "privacy_data_protection", "legal_contractual", "safety_human_impact", "other"]},
+              "severity": {"type": "string", "enum": ["minimal", "low", "moderate", "high", "severe", "unknown"]},
+              "likelihood_basis": {"type": "string"},
+              "description": {"type": "string"},
+              "residual_risk": {"type": "string"}
+            }
+          }
+        },
+        "affected_parties": {"$ref": "#/$defs/stringArray"},
+        "reversibility": {"type": "string", "enum": ["fully_reversible", "mostly_reversible", "partially_reversible", "irreversible", "unknown"]},
+        "time_to_harm": {"type": "string"},
+        "containment_or_rollback": {"$ref": "#/$defs/stringArray"},
+        "uncertainties": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "evidenceSufficiency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["band", "explanation", "claim_results", "blocking_gaps"],
+      "properties": {
+        "band": {"type": "string", "enum": ["sufficient", "partially_sufficient", "insufficient", "contradicted", "unknown"]},
+        "explanation": {"type": "string", "minLength": 1},
+        "claim_results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["claim_id", "result", "explanation"],
+            "properties": {
+              "claim_id": {"type": "string", "minLength": 1},
+              "result": {"type": "string", "enum": ["meets_threshold", "partially_meets_threshold", "does_not_meet_threshold", "contradicted", "unknown"]},
+              "explanation": {"type": "string"}
+            }
+          }
+        },
+        "blocking_gaps": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "confidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["band", "explanation", "strongest_basis", "weakest_material_basis", "limiting_factors", "contradictions", "assumptions", "change_conditions"],
+      "properties": {
+        "band": {"type": "string", "enum": ["high", "moderate", "low", "unknown", "contradicted", "insufficient_support"]},
+        "explanation": {"type": "string", "minLength": 1},
+        "strongest_basis": {"$ref": "#/$defs/stringArray"},
+        "weakest_material_basis": {"$ref": "#/$defs/stringArray"},
+        "limiting_factors": {"$ref": "#/$defs/stringArray"},
+        "contradictions": {"$ref": "#/$defs/stringArray"},
+        "assumptions": {"$ref": "#/$defs/stringArray"},
+        "change_conditions": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "candidateAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_id", "action", "rationale", "evidence_sufficiency", "risk_treatment", "required_review", "conditions", "residual_risk", "defensibility_rank", "selected", "non_selection_reason"],
+      "properties": {
+        "action_id": {"type": "string", "minLength": 1},
+        "action": {"$ref": "#/$defs/action"},
+        "rationale": {"type": "string", "minLength": 1},
+        "evidence_sufficiency": {"type": "string"},
+        "risk_treatment": {"type": "string"},
+        "required_review": {"$ref": "#/$defs/stringArray"},
+        "conditions": {"$ref": "#/$defs/stringArray"},
+        "residual_risk": {"$ref": "#/$defs/stringArray"},
+        "defensibility_rank": {"type": "integer", "minimum": 1},
+        "selected": {"type": "boolean"},
+        "non_selection_reason": {"type": ["string", "null"]}
+      }
+    },
+    "strongestDefensibleAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "rationale", "evidence_basis", "blocking_gaps", "conditions", "required_review", "residual_risk", "expires_or_reassess_at", "reassessment_triggers", "change_conditions"],
+      "properties": {
+        "action": {"$ref": "#/$defs/action"},
+        "rationale": {"type": "string", "minLength": 1},
+        "evidence_basis": {"$ref": "#/$defs/stringArray"},
+        "blocking_gaps": {"$ref": "#/$defs/stringArray"},
+        "conditions": {"$ref": "#/$defs/stringArray"},
+        "required_review": {"$ref": "#/$defs/stringArray"},
+        "residual_risk": {"$ref": "#/$defs/stringArray"},
+        "expires_or_reassess_at": {"type": ["string", "null"], "format": "date-time"},
+        "reassessment_triggers": {"$ref": "#/$defs/stringArray"},
+        "change_conditions": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "reviewRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "required_roles", "role_reasons", "decision_authority", "review_deadline", "unresolved_questions", "action_blocked_pending_review"],
+      "properties": {
+        "level": {"type": "string", "enum": ["no_additional_escalation", "analyst_review", "accountable_owner_or_manager_approval", "executive_approval", "legal_or_privacy_review", "multi_role_review"]},
+        "required_roles": {"$ref": "#/$defs/stringArray"},
+        "role_reasons": {"$ref": "#/$defs/stringArray"},
+        "decision_authority": {"type": ["string", "null"]},
+        "review_deadline": {"type": ["string", "null"], "format": "date-time"},
+        "unresolved_questions": {"$ref": "#/$defs/stringArray"},
+        "action_blocked_pending_review": {"type": "boolean"}
+      }
+    },
+    "humanDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewer_identity", "reviewer_role", "selected_action", "rationale", "conditions", "residual_risk_acknowledgment", "decided_at", "approval_scope", "expires_or_revalidate_at", "follow_up_obligations"],
+      "properties": {
+        "reviewer_identity": {"type": "string", "minLength": 1},
+        "reviewer_role": {"type": "string", "minLength": 1},
+        "selected_action": {"$ref": "#/$defs/action"},
+        "rationale": {"type": "string", "minLength": 1},
+        "conditions": {"$ref": "#/$defs/stringArray"},
+        "residual_risk_acknowledgment": {"type": "string"},
+        "decided_at": {"type": "string", "format": "date-time"},
+        "approval_scope": {"type": "string", "minLength": 1},
+        "expires_or_revalidate_at": {"type": ["string", "null"], "format": "date-time"},
+        "follow_up_obligations": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "overrideEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cybershield_action", "human_selected_action", "override_reason", "evidence_considered", "risk_accepted", "conditions", "responsible_human", "timestamp"],
+      "properties": {
+        "cybershield_action": {"$ref": "#/$defs/action"},
+        "human_selected_action": {"$ref": "#/$defs/action"},
+        "override_reason": {"type": "string", "minLength": 1},
+        "evidence_considered": {"$ref": "#/$defs/stringArray"},
+        "risk_accepted": {"$ref": "#/$defs/stringArray"},
+        "conditions": {"$ref": "#/$defs/stringArray"},
+        "responsible_human": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"}
+      }
+    },
+    "auditEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "timestamp", "actor", "event_type", "description", "previous_digest", "resulting_digest"],
+      "properties": {
+        "event_id": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string", "minLength": 1},
+        "event_type": {"type": "string", "enum": ["created", "analyzed", "validated", "modified", "review_requested", "human_decision", "override", "exported", "expired", "superseded", "closed"]},
+        "description": {"type": "string", "minLength": 1},
+        "previous_digest": {"type": ["string", "null"]},
+        "resulting_digest": {"type": ["string", "null"]}
+      }
+    },
+    "action": {
+      "type": "string",
+      "enum": ["proceed", "proceed_with_conditions", "request_evidence", "modify_and_reassess", "defer_or_monitor", "escalate", "reject", "no_additional_action_justified", "insufficient_evidence_to_decide"]
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "record_digest", "digest_scope"],
+      "properties": {
+        "algorithm": {"type": "string", "enum": ["sha256", "prototype_demo_digest", "none"]},
+        "record_digest": {"type": ["string", "null"]},
+        "digest_scope": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
