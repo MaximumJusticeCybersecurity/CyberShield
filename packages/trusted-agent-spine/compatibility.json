@@ -1,0 +1,14 @@
+{
+  "package_name": "@maximumjustice/trusted-agent-spine",
+  "package_version": "0.1.0",
+  "consumer_contract_version": "1.0.0",
+  "core_spine_version": "20260709-p2",
+  "node": ">=20",
+  "module_format": "ESM",
+  "supported_domain_proofs": ["cybershield-decision-assurance", "recruiting-opportunity"],
+  "legacy_imports": [{"path": "src/agent-spine/reusable-agent-spine.js", "status": "compatibility-re-export"}],
+  "breaking_change_policy": "major-version-only",
+  "authority_inheritance": false,
+  "credentials_inherited": false,
+  "network_access_inherited": false
+}
