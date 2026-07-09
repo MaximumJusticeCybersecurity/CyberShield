@@ -1,15 +1,19 @@
-# CyberShield Pilot vNext Architect Review
+# CyberShield Pilot vNext Architect Pre-Review Questions and Proposed Answers
 
 Version timestamp: 2026070913  
-Status: architect review and implementation recommendation  
+Status: requirements-steward architecture preflight; not the designated Architect's verdict  
 Prepared by: Aegis / My AI Business Partner  
 Owner: Dr. Max Justice
 
-## Executive conclusion
+## Authority notice
 
-`PROCEED WITH CONSTRAINTS`
+This document gives the Requirements Steward's preliminary architecture analysis so the designated Architect can challenge a concrete proposal.  It does not satisfy the Architect gate, authorize engineering, or replace the Architect response required by `docs/2026070913-pilot-vnext-architect-gate-and-handoff.md`.
 
-The proposed vNext direction is aligned with CyberShield's existing product pivot and can be implemented cleanly without rebuilding the product around TrustMap, multi-agent orchestration, or a dashboard.
+## Preliminary conclusion
+
+`PROCEED TO ARCHITECT REVIEW`
+
+The proposed vNext direction is aligned with CyberShield's existing product pivot and appears implementable without rebuilding the product around TrustMap, multi-agent orchestration, or a dashboard.  The designated Architect must confirm, revise, or reject that conclusion against the exact candidate.
 
 The current repository already contains:
 
@@ -19,13 +23,13 @@ The current repository already contains:
 - a reusable Context Pack, Source, Missing Evidence, Human Gate, and Agent Work Receipt spine; and
 - export and report paths.
 
-The primary architecture work is not inventing a new product.  It is normalizing the current vendor-risk implementation into a domain-neutral Trust Decision Record core while preserving the current demonstration.
+The proposed architecture work is not a new product.  It is normalization of the current vendor-risk implementation into a domain-neutral Trust Decision Record core while preserving the current demonstration.
 
 ## Question 1: Is the Trust Decision Record schema complete?
 
-Not yet.
+Preliminary answer: not yet.
 
-The existing schema is strong for the vendor-risk prototype but is incomplete as a universal decision-assurance record.  The vNext schema must add or strengthen:
+The existing schema is strong for the vendor-risk prototype but is incomplete as a universal decision-assurance record.  The vNext schema should add or strengthen:
 
 - recommendation context and intended action;
 - originating AI, model, provider, and supplied confidence when known;
@@ -51,9 +55,9 @@ The existing vendor-specific identity fields may remain in a domain extension bu
 
 ## Question 2: Can the workflow be implemented cleanly with the current architecture?
 
-Yes, with an additive refactor.
+Preliminary answer: yes, with an additive refactor, subject to Architect confirmation.
 
-Recommended architecture:
+Proposed architecture:
 
 ```text
 RecommendationInput
@@ -71,7 +75,7 @@ RecommendationInput
 -> Export and Audit
 ```
 
-Reuse:
+Proposed reuse:
 
 - `src/atdr/trust-decision-record-schema-mapper.js`
 - `src/atdr/trusted-agent-spine.js`
@@ -80,7 +84,7 @@ Reuse:
 - current preferred and fallback routes
 - current print and JSON export patterns
 
-Refactor:
+Proposed refactor:
 
 - remove hard-coded `decision_domain: vendor_risk` from the universal mapper;
 - move vendor name, vendor dependency, SOC 2, subprocessor, and DPA concepts into a vendor-risk domain adapter;
@@ -92,7 +96,7 @@ Refactor:
 
 ## Question 3: What data-model changes are needed?
 
-### New or normalized objects
+### Proposed new or normalized objects
 
 1. `RecommendationInput`
 2. `DecisionContext`
@@ -111,7 +115,7 @@ Refactor:
 15. `AuditEvent`
 16. `TrustDecisionRecord`
 
-### Relationship rules
+### Proposed relationship rules
 
 - Claims link to evidence, missing evidence, assumptions, contradictions, risk, and candidate actions.
 - Evidence links to sources and claims.
@@ -123,7 +127,7 @@ Refactor:
 
 ## Question 4: What should be deterministic versus LLM-generated?
 
-### Deterministic
+### Proposed deterministic behavior
 
 - schema and input validation;
 - required-field enforcement;
@@ -143,7 +147,7 @@ Refactor:
 - export validation; and
 - audit events.
 
-### LLM-assisted
+### Proposed LLM-assisted behavior
 
 - claim extraction;
 - assumption extraction;
@@ -154,7 +158,7 @@ Refactor:
 - rationale drafting; and
 - executive summary generation.
 
-### Hybrid
+### Proposed hybrid behavior
 
 - claim materiality;
 - evidence relevance;
@@ -163,11 +167,11 @@ Refactor:
 - recommended conditions; and
 - candidate-action ranking.
 
-Hybrid functions shall use LLM assistance but remain bounded by deterministic rules, source links, and accountable review.
+Hybrid functions should use LLM assistance but remain bounded by deterministic rules, source links, and accountable review.
 
 ## Question 5: How do we preserve auditability?
 
-Pilot 1 shall preserve:
+Pilot 1 should preserve:
 
 - immutable original recommendation text;
 - input and source timestamps;
@@ -187,22 +191,22 @@ Pilot 1 shall preserve:
 - record status history; and
 - responsible actor.
 
-For the static pilot, a local append-only event array and deterministic digest are acceptable as a prototype audit substitute.  They shall not be described as protected audit, cryptographic attestation, or non-repudiation.
+For the static pilot, a local append-only event array and deterministic digest appear acceptable as a prototype audit substitute.  They shall not be described as protected audit, cryptographic attestation, or non-repudiation.
 
 ## Question 6: What can be built fastest for a credible pilot?
 
-The fastest credible implementation is an additive vNext layer over the current vendor-risk workflow.
+The preliminary recommendation is an additive vNext layer over the current vendor-risk workflow.
 
 ### P0: Before Sandeep presentation
 
-- merge the vNext requirements, schema, architect review, and briefing;
+- place the vNext requirements, schema, preflight, and briefing into an Architect-review pull request;
 - preserve the current working vendor-risk route;
 - use the existing synthetic evidence and record rendering;
 - explain the corrected review and confidence model;
 - show one defensible record; and
-- disclose that domain-neutral vNext implementation follows the presentation.
+- disclose that domain-neutral vNext implementation is pending Architect and owner approval.
 
-### P1: Smallest working vNext build
+### Proposed P1 after Architect and owner approval
 
 1. Add a universal Recommendation Input object.
 2. Add the vNext Trust Decision Record schema.
@@ -216,11 +220,11 @@ The fastest credible implementation is an additive vNext layer over the current 
 10. Render and export the vNext record.
 11. Add deterministic regression and abuse tests.
 
-This produces a credible vNext without a new dashboard, new agent system, live retrieval, or a second complete domain adapter.
+This would produce a credible vNext without a new dashboard, new agent system, live retrieval, or a second complete domain adapter.
 
 ## Question 7: What should be deferred?
 
-Defer:
+Preliminary deferrals:
 
 - TrustMap as the pilot surface;
 - multi-agent orchestration;
@@ -234,60 +238,58 @@ Defer:
 - enterprise graph or trust fabric;
 - broad dashboarding;
 - model marketplace behavior;
-- production authentication, tenancy, policy gate, verifier quorum, or protected audit claims;
+- production authentication, tenancy, Policy Gate, verifier quorum, or protected audit claims;
 - multiple fully implemented domain adapters before the vendor-risk vNext mapping passes; and
 - generic numeric trust scores.
 
-## Principal architecture risks
+## Principal architecture risks for Architect review
 
 ### 1. Generality without evidence depth
 
 Allowing any recommendation input may create the impression that every domain is equally validated.
 
-Control: disclose the domain adapter, evidence template, and generic-analysis limitations.
+Proposed control: disclose the domain adapter, evidence template, and generic-analysis limitations.
 
 ### 2. AI judging AI objection
 
 A second model opinion is not independent proof.
 
-Control: show source-linked evidence, deterministic rules, explicit uncertainty, and human accountability.
+Proposed control: show source-linked evidence, deterministic rules, explicit uncertainty, and human accountability.
 
 ### 3. Confidence and consequence collapse
 
 Combining confidence with Risk If Wrong creates misleading outputs.
 
-Control: keep epistemic confidence, evidence sufficiency, consequence, action threshold, and review separate.
+Proposed control: keep epistemic confidence, evidence sufficiency, consequence, action threshold, and review separate.
 
 ### 4. Review as false assurance
 
 A required human review does not cure missing evidence.
 
-Control: preserve missing evidence and action blocks after escalation.
+Proposed control: preserve missing evidence and action blocks after escalation.
 
 ### 5. Overloaded executive record
 
 A universal schema can overwhelm the five-minute experience.
 
-Control: progressive disclosure.  Page one is the Executive Decision Brief; the structured detail remains available for auditors.
+Proposed control: progressive disclosure.  Page one is the Executive Decision Brief; structured detail remains available for auditors.
 
 ### 6. Historical schema fragmentation
 
 Multiple record contracts may drift.
 
-Control: make vNext the universal core, preserve historical records, and map prior vendor-risk records through a versioned migration adapter.
+Proposed control: make vNext the universal core, preserve historical records, and map prior vendor-risk records through a versioned migration adapter.
 
-## Recommended owner decision
+## Recommended next decision
 
-Approve the vNext requirements and schema as the controlling future build contract.
+Submit this exact candidate to the designated Architect.
 
 Preserve the current vendor-risk golden path for tomorrow's presentation.
 
-Authorize Forge to implement only P1 after the requirements baseline is merged.
+Do not authorize Forge or another engineer until the Architect returns `READY FOR ENGINEERING` or `READY FOR ENGINEERING WITH CONDITIONS`, Aegis reconciles the result, and Dr. Max Justice accepts the exact revised candidate.
 
-Do not delay the presentation for a multi-domain runtime rebuild.
+## Preflight conclusion
 
-## Architect verdict
+CyberShield appears to need one cleaner record contract, not more surface area.  The Architect should test that premise against the current code, migration risk, schema complexity, and acceptance criteria.
 
-CyberShield does not need more surface area.  It needs one cleaner record contract.
-
-The differentiator is not that another AI gives an opinion.  The differentiator is that CyberShield forces the recommendation, evidence, assumptions, consequence, confidence, oversight, and human decision into one defensible chain.
+The proposed differentiator is not that another AI gives an opinion.  The proposed differentiator is that CyberShield forces the recommendation, evidence, assumptions, consequence, confidence, oversight, and human decision into one defensible chain.
