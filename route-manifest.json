@@ -1,5 +1,5 @@
 {
-  "version": "2026062510-trust-led-conversion-review",
+  "version": "20260708-trusted-agent-spine-p1-candidate",
   "product_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
   "public_artifact_name": "AI Trust Decision Record",
   "primary_wedge": "vendor-risk",
@@ -15,6 +15,7 @@
     "Evidence",
     "Decision and routing",
     "Canonical record and report",
+    "Context Pack, Source, Missing Evidence, Human Gate, and Agent Work Receipt",
     "Boundary, audit, and source-of-truth"
   ],
   "active_flow": [
@@ -26,13 +27,15 @@
     "Risk If Wrong and confidence",
     "Candidate actions",
     "Meaningful Human Authority",
+    "Human Gate decision and rationale",
     "Canonical AI Trust Decision Record",
+    "Agent Work Receipt and structured source provenance",
     "Real-recommendation review or controlled pilot",
     "Screen, sanitized JSON, print, and optional follow-up capture"
   ],
   "routes": [
     {"path":"/","file":"index.html","status":"active","role":"public Decision Assurance landing route","priority":"primary entry","primary_cta":"Challenge One AI Recommendation","forced_redirect":false},
-    {"path":"/vendor-risk-next.html","file":"vendor-risk-next.html","status":"active-preferred-review","role":"preferred proof-before-capture vendor-risk Decision Assurance example","priority":"preferred example","expected_contract":{"claims_extracted":10,"recommended_action":"Request Evidence","risk_if_wrong":"High","confidence_band":"Low confidence","human_review_required":true}},
+    {"path":"/vendor-risk-next.html","file":"vendor-risk-next.html","status":"active-preferred-review","role":"preferred proof-before-capture vendor-risk Decision Assurance example","priority":"preferred example","expected_contract":{"claims_extracted":10,"recommended_action":"Request Evidence","risk_if_wrong":"High","confidence_band":"Low confidence","human_review_required":true,"context_pack":true,"structured_sources":true,"missing_evidence_records":true,"human_gate":true,"agent_work_receipt":true}},
     {"path":"/pilot-package.html","file":"pilot-package.html","status":"active-controlled-pilot","role":"buyer-facing software-assisted advisory pilot package","priority":"commercial next step","pricing_status":"confirmed after scope review"},
     {"path":"/vendor-risk.html","file":"vendor-risk.html","status":"active-stable-fallback","role":"stable fallback buyer demo","priority":"fallback-preserved-not-primary-navigation"},
     {"path":"/ai-trust-decision-record-report.html","file":"ai-trust-decision-record-report.html","status":"active-report","role":"canonical executive AI Trust Decision Record report","priority":"report proof artifact"},
@@ -44,6 +47,7 @@
     {"path":"/internal-qa.html","file":"internal-qa.html","status":"internal","role":"internal QA hub","priority":"internal QA"},
     {"path":"/vendor-risk-next-smoke.html","file":"vendor-risk-next-smoke.html","status":"internal","role":"preferred-route smoke test","priority":"required QA"},
     {"path":"/vendor-risk-smoke.html","file":"vendor-risk-smoke.html","status":"internal","role":"fallback-route smoke test","priority":"required QA"},
+    {"path":"/trusted-agent-spine-smoke.html","file":"trusted-agent-spine-smoke.html","status":"internal","role":"Context Pack, Source, Missing Evidence, Human Gate, and Agent Work Receipt smoke test","priority":"required QA"},
     {"path":"/trust-decision-record-schema-smoke.html","file":"trust-decision-record-schema-smoke.html","status":"internal","role":"canonical schema smoke test","priority":"required QA"},
     {"path":"/record-contract.html","file":"record-contract.html","status":"internal","role":"record contract checker","priority":"required QA"},
     {"path":"/capture-source-of-truth-smoke.html","file":"capture-source-of-truth-smoke.html","status":"internal","role":"capture source-of-truth smoke test","priority":"required QA"},
@@ -57,16 +61,7 @@
     {"path":"/advisor-feedback.html","file":"advisor-feedback.html","status":"preserved","role":"legacy feedback surface","priority":"provenance"},
     {"path":"/trust-kernel-legacy.html","file":"trust-kernel-legacy.html","status":"preserved","role":"legacy Trust Kernel and TrustMap route","priority":"provenance"}
   ],
-  "conversion_events": [
-    "example_started",
-    "buyer_judgment_selected",
-    "evidence_problem_viewed",
-    "decision_record_viewed",
-    "real_recommendation_review_clicked",
-    "pilot_clicked",
-    "report_print_clicked",
-    "report_json_downloaded"
-  ],
+  "conversion_events": ["example_started","buyer_judgment_selected","evidence_problem_viewed","decision_record_viewed","real_recommendation_review_clicked","pilot_clicked","report_print_clicked","report_json_downloaded"],
   "analytics_privacy_rule": "Conversion events may include route, stage, choice, or destination only. Do not send recommendation text, evidence, names, organization, vendor, email, record ID, capture endpoint, or Sheet ID.",
   "capture_source_of_truth": {
     "config_file": "src/atdr/report-capture-config.js",
@@ -78,18 +73,8 @@
     "evidence_maturity_logic": "separate protected implementation task",
     "decision_ceiling_logic": "separate protected implementation task",
     "minimum_trust_experiment_logic": "separate protected implementation task",
-    "record_schema_change": "not included",
-    "deployment": "not authorized by this review branch"
+    "record_schema_change": "additive and backward-compatible trusted-agent-spine objects authorized by CyberShield issue #25",
+    "deployment": "requires exact-candidate Verifier A, B, and C review plus owner approval"
   },
-  "deferred": [
-    "Public Aegis positioning",
-    "TrustMap-first rebuild",
-    "Runtime agents",
-    "Generic trust scores",
-    "Broad governance dashboards",
-    "Multi-industry expansion",
-    "Autonomous approval",
-    "Production-readiness claims",
-    "Exact public pilot pricing and delivery commitment"
-  ]
+  "deferred": ["Public Aegis positioning","TrustMap-first rebuild","Runtime agents","Generic trust scores","Broad governance dashboards","Multi-industry expansion","Autonomous approval","Production-readiness claims","Exact public pilot pricing and delivery commitment"]
 }
