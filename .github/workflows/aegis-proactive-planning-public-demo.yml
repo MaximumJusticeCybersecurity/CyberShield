@@ -1,0 +1,60 @@
+name: Aegis Proactive Planning Public Demo
+
+on:
+  pull_request:
+    paths:
+      - 'aegis-proactive-planning.html'
+      - 'index.html'
+      - '.github/workflows/aegis-proactive-planning-public-demo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-public-demo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Check out exact candidate without persisted credentials
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+      - name: Parse public HTML
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          class Parser(HTMLParser):
+              pass
+          for name in ('index.html','aegis-proactive-planning.html'):
+              text=Path(name).read_text(encoding='utf-8')
+              parser=Parser(); parser.feed(text); parser.close()
+              assert '<html' in text.lower() and '</html>' in text.lower()
+              print(f'{name}: html_parse=pass')
+          PY
+      - name: Validate inline demo JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('aegis-proactive-planning.html').read_text(encoding='utf-8')
+          script=text.rsplit('<script>',1)[1].split('</script>',1)[0]
+          Path('/tmp/aegis-public-demo.js').write_text(script,encoding='utf-8')
+          PY
+          node --check /tmp/aegis-public-demo.js
+      - name: Verify synthetic-only public boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('aegis-proactive-planning.html').read_text(encoding='utf-8')
+          lower=text.lower()
+          required=['synthetic public demonstration','60 deterministic and abuse tests','pcw is not a permit','nothing shown here is scheduled or sent']
+          missing=[item for item in required if item not in lower]
+          assert not missing, missing
+          forbidden=['fetch(', 'xmlhttprequest', 'websocket', '<form', 'password=', 'api_key=', 'authorization: bearer', 'localstorage', 'sessionstorage']
+          present=[item for item in forbidden if item in lower]
+          assert not present, present
+          assert '<script src=' not in lower
+          assert 'aegis-proactive-planning.html' in Path('index.html').read_text(encoding='utf-8')
+          print('public_boundary=synthetic_only live_connectors=0 credential_paths=0')
+          PY

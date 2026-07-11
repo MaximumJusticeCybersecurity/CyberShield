@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aegis Proactive Planning | Synthetic Public Demonstration</title>
+<meta name="description" content="See how Aegis detects missing preparation, plans backward from future outcomes, protects realistic capacity, and keeps the owner in control.">
+<link rel="icon" href="assets/mjc-logo-2026.png">
+<style>
+:root{--bg:#06111c;--panel:#0e1d2b;--panel2:#122638;--line:#29445c;--text:#f7fbff;--muted:#afc1d2;--cyan:#45d9ff;--blue:#78a9ff;--green:#7be0a3;--amber:#ffd166;--red:#ff7b88;--violet:#bf9cff;--shadow:0 18px 50px rgba(0,0,0,.32)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 10% 0,rgba(69,217,255,.12),transparent 32rem),radial-gradient(circle at 92% 16%,rgba(191,156,255,.09),transparent 28rem),linear-gradient(180deg,#081521,#06111c);color:var(--text);font-family:Aptos,Calibri,Arial,sans-serif;line-height:1.5}.wrap{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:28px 0 56px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:50px;height:50px;object-fit:contain}.eyebrow{color:var(--cyan);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;font-weight:900}.back{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 13px}.hero,.panel{background:linear-gradient(180deg,rgba(14,29,43,.97),rgba(7,18,29,.98));border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.hero{padding:28px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:20px}.hero h1{font-size:clamp(2.2rem,5vw,4.35rem);line-height:1.02;margin:.3rem 0 .8rem}.hero p{max-width:760px}.muted,p,li{color:var(--muted)}.callout{background:rgba(69,217,255,.07);border:1px solid rgba(69,217,255,.28);border-radius:16px;padding:16px}.callout strong{color:var(--cyan)}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{border-radius:999px;padding:5px 10px;font-size:.82rem;font-weight:800;border:1px solid var(--line);color:var(--muted)}.pill.green{color:var(--green);border-color:rgba(123,224,163,.45)}.pill.amber{color:var(--amber);border-color:rgba(255,209,102,.45)}.pill.cyan{color:var(--cyan);border-color:rgba(69,217,255,.45)}.dashboard{margin-top:16px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px}.panel{padding:19px}.nav h2,.panel h2{margin:.1rem 0 .7rem}.horizon-btn{width:100%;text-align:left;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--text);border-radius:14px;padding:13px;margin:6px 0;cursor:pointer;font:inherit}.horizon-btn.active{border-color:var(--cyan);background:rgba(69,217,255,.12)}.horizon-btn small{display:block;color:var(--muted);margin-top:3px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}.stat{border:1px solid var(--line);border-radius:14px;padding:13px;background:rgba(255,255,255,.025)}.stat b{font-size:1.55rem;display:block}.stat span{color:var(--muted);font-size:.82rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border:1px solid var(--line);border-radius:16px;padding:15px;background:rgba(255,255,255,.026)}.card h3{margin:.1rem 0 .6rem;font-size:1.05rem}.record{border-left:4px solid var(--cyan);padding:9px 11px;margin:9px 0;background:rgba(69,217,255,.055);border-radius:0 11px 11px 0}.record.risk{border-left-color:var(--amber);background:rgba(255,209,102,.055)}.record.blocked{border-left-color:var(--red);background:rgba(255,123,136,.055)}.record.safe{border-left-color:var(--green);background:rgba(123,224,163,.055)}.record .meta{font-size:.78rem;color:var(--muted);margin-top:4px}.timeline{position:relative;margin-top:10px;padding-left:24px}.timeline:before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--line)}.time-item{position:relative;margin:0 0 13px}.time-item:before{content:"";position:absolute;left:-22px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(69,217,255,.1)}.time-item.confirmed:before{background:var(--blue)}.time-item.proposed:before{background:var(--green)}.time-item.protected:before{background:var(--amber)}.time-item strong{display:block}.owner-gate{margin-top:14px;border:1px solid rgba(255,209,102,.4);background:rgba(255,209,102,.07);border-radius:16px;padding:15px}.owner-gate h3{margin:.1rem 0}.assurance{margin-top:16px}.obligations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.obligation{border:1px solid rgba(123,224,163,.3);border-radius:12px;padding:10px;background:rgba(123,224,163,.05);display:flex;gap:9px;align-items:flex-start}.check{color:var(--green);font-weight:900}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin-top:12px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.footer{margin-top:16px;text-align:center;color:var(--muted);font-size:.9rem}.hidden{display:none}@media(max-width:900px){.hero,.dashboard,.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.obligations{grid-template-columns:1fr}.topbar{align-items:flex-start}.hero{padding:21px}}@media(max-width:480px){.stats{grid-template-columns:1fr}.wrap{width:min(100% - 18px,1180px)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topbar">
+    <div class="brand"><img src="assets/mjc-logo-2026.png" alt="Maximum Justice Cybersecurity logo"><div><div class="eyebrow">Aegis by Maximum Justice Cybersecurity</div><strong>Proactive Planning + Proof-Carrying Work</strong></div></div>
+    <a class="back" href="index.html">Back to CyberShield</a>
+  </div>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Synthetic public demonstration</div>
+      <h1>The owner should not need to remember to remember.</h1>
+      <p>Aegis looks ahead, works backward from future outcomes, identifies missing preparation, tests whether the work can realistically fit, and produces owner-reviewable tasks and time blocks. It does not turn an inference into a commitment.</p>
+      <div class="pills"><span class="pill cyan">24-hour / 7-day / 30-day horizons</span><span class="pill green">60 deterministic and abuse tests</span><span class="pill amber">Human approval retained</span></div>
+    </div>
+    <aside class="callout"><strong>Public-demo boundary</strong><p>This page uses synthetic records only. It has no access to Gmail, Calendar, Aegis Brain, private repositories, credentials, people, purchases, or external systems. Nothing shown here is scheduled or sent.</p></aside>
+  </section>
+
+  <section class="dashboard">
+    <aside class="panel nav">
+      <h2>Look-ahead</h2>
+      <p class="muted">Choose a horizon to inspect what Aegis sees.</p>
+      <button class="horizon-btn active" data-horizon="day"><strong>Next 24 hours</strong><small>Immediate preparation and day feasibility</small></button>
+      <button class="horizon-btn" data-horizon="week"><strong>Next 7 days</strong><small>Trip preparation, continuity, and coverage</small></button>
+      <button class="horizon-btn" data-horizon="month"><strong>Next 30 days</strong><small>Multi-stage deliverables and lead-time risk</small></button>
+      <div class="legend"><span><i class="dot" style="background:var(--blue)"></i>confirmed</span><span><i class="dot" style="background:var(--green)"></i>proposed</span><span><i class="dot" style="background:var(--amber)"></i>protected</span></div>
+    </aside>
+
+    <div class="panel">
+      <div id="day" class="horizon-view">
+        <div class="stats"><div class="stat"><b>1</b><span>material outcome</span></div><div class="stat"><b>2</b><span>required prerequisites</span></div><div class="stat"><b>1</b><span>existing task matched</span></div><div class="stat"><b>1</b><span>owner decision</span></div></div>
+        <div class="grid">
+          <article class="card"><h3>What Aegis detected</h3><div class="record"><strong>Executive planning review</strong><div class="meta">Confirmed source event · today at 4:00 PM</div></div><div class="record safe"><strong>Gather meeting materials</strong><div class="meta">Equivalent scheduled task found · duplicate suppressed</div></div><div class="record risk"><strong>Prepare meeting agenda</strong><div class="meta">Missing prerequisite · High risk if omitted · latest safe finish 2:00 PM</div></div></article>
+          <article class="card"><h3>Capacity-aware proposal</h3><div class="timeline"><div class="time-item protected"><strong>12:00–12:45 PM · Meal protected</strong><span class="muted">Basic-needs invariant</span></div><div class="time-item proposed"><strong>1:15–1:45 PM · Prepare meeting agenda</strong><span class="muted">Proposed local block, not a calendar event</span></div><div class="time-item confirmed"><strong>4:00–5:00 PM · Executive planning review</strong><span class="muted">Confirmed source event</span></div><div class="time-item protected"><strong>5:00–6:00 PM · White space retained</strong><span class="muted">Not every minute is optimized</span></div></div></article>
+        </div>
+      </div>
+
+      <div id="week" class="horizon-view hidden">
+        <div class="stats"><div class="stat"><b>3</b><span>material outcomes</span></div><div class="stat"><b>6</b><span>prerequisites</span></div><div class="stat"><b>1</b><span>coverage gap</span></div><div class="stat"><b>1</b><span>continuity gap</span></div></div>
+        <div class="grid">
+          <article class="card"><h3>Customer trip preparation</h3><div class="record risk"><strong>Complete trip laundry</strong><div class="meta">Required 48 hours before departure</div></div><div class="record risk"><strong>Pack clothing and equipment</strong><div class="meta">Depends on laundry · High risk if omitted</div></div><div class="record blocked"><strong>Verify travel documents</strong><div class="meta">Critical risk if omitted · owner review required</div></div><div class="record"><strong>Prepare departure and travel buffer</strong><div class="meta">Latest safe finish three hours before departure</div></div></article>
+          <article class="card"><h3>Operational exceptions</h3><div class="record risk"><strong>Customer coverage gap</strong><div class="meta">No responsible person or backup available · latest safe resolution Friday 6:00 PM</div></div><div class="record risk"><strong>Weekly meal plan ends</strong><div class="meta">Continuity gap begins tomorrow · not intentionally paused</div></div><div class="record safe"><strong>Vendor onsite: inspect spare equipment</strong><div class="meta">Optional bundle · 20 incremental minutes · no added cost</div></div></article>
+        </div>
+      </div>
+
+      <div id="month" class="horizon-view hidden">
+        <div class="stats"><div class="stat"><b>4</b><span>material outcomes</span></div><div class="stat"><b>9</b><span>prerequisites</span></div><div class="stat"><b>1</b><span>information gap</span></div><div class="stat"><b>0</b><span>external actions</span></div></div>
+        <div class="grid">
+          <article class="card"><h3>Security proposal due July 30</h3><div class="timeline"><div class="time-item proposed"><strong>Research deliverable evidence</strong><span class="muted">Three-hour quiet-work requirement · 14-day lead</span></div><div class="time-item proposed"><strong>Draft deliverable</strong><span class="muted">Four hours · depends on research</span></div><div class="time-item proposed"><strong>Review and correct</strong><span class="muted">Two hours · required before submission preparation</span></div><div class="time-item confirmed"><strong>Proposal deadline</strong><span class="muted">Confirmed system-of-record outcome</span></div></div></article>
+          <article class="card"><h3>Aegis refuses to invent work</h3><div class="record blocked"><strong>Unclassified deadline</strong><div class="meta">No approved procedure supports prerequisites</div></div><div class="record"><strong>Question for the owner</strong><div class="meta">“What preparation procedure should apply?” Recommended answer and consequence of delay included.</div></div><p>No task is generated until the missing rule or owner decision exists.</p></article>
+        </div>
+      </div>
+
+      <div class="owner-gate"><h3>Owner gate</h3><p>Aegis may propose, explain, suppress duplicates, and preserve evidence. Dr. Max Justice may accept, edit, reject, hold, delegate back, declare no action, or mark not applicable. Only accepted records may project into the local Aegis Brain. A calendar write additionally requires an expiring exact-action permit and a dedicated planning calendar.</p></div>
+    </div>
+  </section>
+
+  <section class="panel assurance">
+    <div class="eyebrow">Proof-Carrying Work</div>
+    <h2>The planner carries evidence about what it was allowed to do.</h2>
+    <p>For this synthetic demonstration, the attached Phase 0 assurance case checks ten bounded obligations. These deterministic checks are not formal proof and do not authorize execution.</p>
+    <div class="obligations">
+      <div class="obligation"><span class="check">✓</span><span>Protected-branch write excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Merge excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Deployment and public release excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Destructive action excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Root-trust change excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Security reduction excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Cross-domain execution excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Unknown actions denied</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Downstream authority expansion excluded</span></div>
+      <div class="obligation"><span class="check">✓</span><span>Owner merge and release authority remains external</span></div>
+    </div>
+    <div class="pills"><span class="pill green">Evidence integrity checked</span><span class="pill cyan">Failed evidence preserved</span><span class="pill amber">PCW is not a Permit</span></div>
+  </section>
+
+  <p class="footer">Aegis Proactive Planning public demonstration · synthetic data only · designed by Dr. Max Justice, vCISO, Security SME, and Cybersecurity SME</p>
+</main>
+<script>
+const buttons=[...document.querySelectorAll('.horizon-btn')];
+const views=[...document.querySelectorAll('.horizon-view')];
+buttons.forEach(button=>button.addEventListener('click',()=>{
+  buttons.forEach(item=>item.classList.toggle('active',item===button));
+  views.forEach(view=>view.classList.toggle('hidden',view.id!==button.dataset.horizon));
+}));
+</script>
+</body>
+</html>
