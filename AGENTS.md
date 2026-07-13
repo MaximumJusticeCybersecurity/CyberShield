@@ -1,6 +1,6 @@
 # CyberShield Agent Operating Instructions
 
-Version: 2026071310  
+Version: 2026071311  
 Owner: Dr. Max Justice  
 Applies to: all agents, Codex sessions, builders, reviewers, subagents, tools, and automations in this repository
 
@@ -33,7 +33,7 @@ A protected repository write or live operational change requires:
 
 - Valid cryptographic workload identity.
 - A signed Change Intent Envelope bound to the exact task, repository, branch, environment, operation, and digest.
-- Two independent authorized verifier attestations.
+- Three independent authorized verifier attestations from Verifiers A, B, and C for the same exact candidate.
 - Deterministic policy authorization outside the model.
 - Required human approval.
 
