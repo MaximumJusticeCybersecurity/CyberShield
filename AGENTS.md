@@ -1,6 +1,6 @@
 # CyberShield Agent Operating Instructions
 
-Version: 2026062312  
+Version: 2026071311  
 Owner: Dr. Max Justice  
 Applies to: all agents, Codex sessions, builders, reviewers, subagents, tools, and automations in this repository
 
@@ -18,10 +18,14 @@ Before material work:
 2. Read `security-policy-manifest.json`.
 3. Read every required document listed in the manifest.
 4. Verify the canonical policy version and integrity value.
-5. Record a startup policy attestation for the session.
-6. Stop if the canonical Aegis policy is not merged, unavailable, stale, inconsistent, or unverifiable.
+5. Review repository changes made since the agent's prior response or session.
+6. Read `docs/aida/README.md` and the AIDA library required for the task.
+7. Record a startup policy attestation for the session.
+8. Stop if the canonical Aegis policy is not merged, unavailable, stale, inconsistent, or unverifiable.
 
-A prior session acknowledgement does not carry forward.  A material policy update invalidates prior attestations.
+A prior session acknowledgement does not carry forward.  A material policy, AIDA, requirement, branch, candidate, or source-of-truth update invalidates affected prior attestations.
+
+An agent shall not claim to have reviewed the repository, AIDA library, or recent changes unless that review was actually performed.
 
 ## Protected-change rule
 
@@ -29,7 +33,7 @@ A protected repository write or live operational change requires:
 
 - Valid cryptographic workload identity.
 - A signed Change Intent Envelope bound to the exact task, repository, branch, environment, operation, and digest.
-- Two independent authorized verifier attestations.
+- Three independent authorized verifier attestations from Verifiers A, B, and C for the same exact candidate.
 - Deterministic policy authorization outside the model.
 - Required human approval.
 
@@ -67,6 +71,31 @@ Challenge One AI Recommendation
 
 Exact pilot pricing and delivery timing remain owner-gated until explicitly approved.
 
+## AIDA governance rule
+
+AIDA is the owner-approved methodology and strategic workstream for AI Decision Assurance.
+
+```text
+The methodology defines the product.  The product does not define the methodology.
+```
+
+Before proposing a material feature, architecture change, requirement, workflow, score, visualization, report, agent, integration, or commercial offer, trace it to:
+
+- an AIDA principle;
+- an observed or explicitly labeled customer pain point;
+- a buyer and accountable user;
+- a measurable business or mission outcome;
+- an AI Trust Decision Record element; and
+- a verification path.
+
+Governing product rule:
+
+> If a proposed feature does not improve an organization's ability to determine whether an AI-generated recommendation should be trusted before action is taken, it does not belong in the current product.
+
+AIDA and CyberShield shall remain model-agnostic, vendor-neutral, and compatible with current and future AI platforms.  Provider-specific integrations shall not redefine the core methodology.
+
+AIDA documentation does not by itself authorize changes to protected AI Trust Decision Record schema, recommendation logic, risk logic, human-review rules, security authority, public claims, routes, deployment behavior, or third-party intellectual property.
+
 ## Agent sequence and separation of duties
 
 1. **Requirements Steward Agent** determines whether work is aligned, constrained, owner-gated, deferred, or prohibited.
@@ -90,21 +119,32 @@ Read in this order:
 8. `docs/2026062312-trust-led-customer-action-content-requirements.md`.
 9. `docs/2026062312-feedback-currency-and-requirement-supersession.md`.
 10. `docs/source-of-truth-hierarchy.md`.
-11. `docs/2026061909-second-codex-agent-decision-assurance-implementation.md`.
-12. `docs/2026061908-trusted-authority-ethical-influence-standard.md`.
-13. `docs/engineer-next-build-instructions.md`.
-14. `docs/2026061909-forward-build-plan.md`.
-15. `docs/2026061815-first-codex-agent-requirements-steward.md`.
-16. `docs/aegis-cybershield-architecture-boundary.md`.
-17. `docs/cybershield-decision-assurance-requirements.md`.
-18. `docs/trust-decision-record-schema.md`.
-19. `docs/requirements-traceability-matrix.md`.
-20. `docs/definition-of-done.md`.
-21. `docs/builder-requirements-acceptance-checklist.md`.
-22. `docs/successor-builder-handoff-and-job-docket.md`.
-23. `docs/builder-version-log.md`.
+11. `docs/aida/README.md`.
+12. `docs/aida/aida-manifesto-v1.0.md`.
+13. `docs/aida/program-charter-and-roadmap.md`.
+14. `docs/aida/decision-assurance-lexicon.md`.
+15. `docs/aida/decision-assurance-playbook-v0.1.md`.
+16. `docs/aida/trust-decision-record-standard-v0.1.md`.
+17. `docs/aida/customer-discovery-guide.md`.
+18. `docs/aida/feature-traceability-matrix.md`.
+19. `docs/aida/repository-governance-and-contributor-process.md`.
+20. `docs/2026061909-second-codex-agent-decision-assurance-implementation.md`.
+21. `docs/2026061908-trusted-authority-ethical-influence-standard.md`.
+22. `docs/engineer-next-build-instructions.md`.
+23. `docs/2026061909-forward-build-plan.md`.
+24. `docs/2026061815-first-codex-agent-requirements-steward.md`.
+25. `docs/aegis-cybershield-architecture-boundary.md`.
+26. `docs/cybershield-decision-assurance-requirements.md`.
+27. `docs/trust-decision-record-schema.md`.
+28. `docs/requirements-traceability-matrix.md`.
+29. `docs/definition-of-done.md`.
+30. `docs/builder-requirements-acceptance-checklist.md`.
+31. `docs/successor-builder-handoff-and-job-docket.md`.
+32. `docs/builder-version-log.md`.
 
 When an older document conflicts with the current dated content requirements, use the supersession record rather than silently choosing the older instruction.
+
+When AIDA guidance conflicts with an existing protected schema, security policy, owner instruction, or current source-of-truth record, stop and route the conflict through the Requirements Steward and owner rather than silently superseding the protected source.
 
 ## Implementation authorization
 
@@ -151,6 +191,7 @@ Do not introduce or imply without explicit owner approval:
 - operational identity or quorum controls that have not been implemented and tested
 - exact pilot pricing, guarantees, delivery commitments, scarcity, or urgency
 - quantified ROI, savings, or risk reduction without evidence
+- ownership or rights to SafeAI, TIVM, Trustworthy AI, or other third-party intellectual property without a written agreement
 
 ## Customer-action rules
 
@@ -168,7 +209,7 @@ Public content and funnels shall:
 
 State the verification path before implementation.  Run available checks after implementation and report exact results.
 
-Never claim a capability, test, identity check, quorum, policy check, deployment check, conversion event, downstream capture, or security control succeeded unless it was actually performed and evidenced.
+Never claim a capability, test, identity check, quorum, policy check, deployment check, conversion event, downstream capture, security control, customer validation, product-market fit, or commercial outcome succeeded unless it was actually performed and evidenced.
 
 If the required environment is unavailable, mark the task incomplete or conditionally complete and identify the exact unverified criteria.
 
@@ -189,6 +230,16 @@ Human approval status:
 Requirements implemented:
 Requirements superseded:
 Feedback currency review:
+Repository changes since prior session reviewed:
+AIDA documents reviewed:
+AIDA principle(s) supported:
+Customer evidence supporting the change:
+Buyer / accountable user:
+Measurable outcome:
+AI Trust Decision Record element affected:
+Platform-neutrality impact:
+Feature Traceability Matrix updated:
+Customer assumptions still unvalidated:
 Files changed:
 Tests and checks run:
 Observed results:
@@ -222,6 +273,9 @@ Stop and report when:
 - The action cannot be bound to an exact digest and target.
 - Older or delayed feedback conflicts with current requirements and has not been reconciled.
 - Pricing, delivery, proof, credibility, or outcome claims lack owner approval or evidence.
+- A proposed feature lacks AIDA traceability and has not been explicitly deferred or owner-approved.
+- Customer assumptions are presented as validated facts without field evidence.
+- Third-party intellectual property is proposed for implementation without verified rights and explicit approval.
 
 ## Current mission
 
@@ -235,6 +289,6 @@ Canonical task instructions:
 docs/2026061909-decision-assurance-implementation-agent-first-mission.md
 ```
 
-The new content requirements are recorded but do not replace the need for a task-specific Requirements Steward implementation packet.
+The AIDA workstream is recorded and integrated into startup and change governance, but it does not replace the need for a task-specific Requirements Steward implementation packet.
 
-Create the decision record before implementation.  Security-policy startup and protected-change requirements are additional gates.
+Create the decision record before implementation.  Security-policy startup, AIDA traceability, customer-evidence discipline, and protected-change requirements are additional gates.
