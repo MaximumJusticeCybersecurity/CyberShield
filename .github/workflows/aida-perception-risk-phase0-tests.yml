@@ -1,0 +1,50 @@
+name: AIDA Perception Risk Phase 0 Tests
+
+on:
+  pull_request:
+    paths:
+      - 'aida/perception-risk/phase0/**'
+      - '.github/workflows/aida-perception-risk-phase0-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate without persisted credentials
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+      - name: Report Node runtime
+        run: node --version
+      - name: Parse controlled JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('aida/perception-risk/phase0/fixtures/aida-perception-risk.synthetic.json','utf8'))"
+      - name: Run deterministic and abuse tests
+        run: node --test aida/perception-risk/phase0/tests/aida-perception-phase0.test.mjs
+      - name: Exercise CLI report generation
+        run: |
+          node aida/perception-risk/phase0/aida-perception-phase0.mjs aida/perception-risk/phase0/fixtures/aida-perception-risk.synthetic.json --output /tmp/aida-prdi-run.json
+          node - <<'JS'
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('/tmp/aida-prdi-run.json', 'utf8'));
+          if (report.record_type !== 'AIDAPerceptionRiskPhase0Run') throw new Error('wrong record type');
+          if (report.trust_decision_record_adapter.strongest_defensible_action !== 'no_action_until_human_review') throw new Error('wrong action');
+          if (report.external_action !== false) throw new Error('external action not false');
+          if (!report.not_yet_implemented.includes('public_route_activation')) throw new Error('missing boundary');
+          console.log('aida_perception_risk_phase0_cli=pass');
+          JS
+      - name: Verify no browser network credential or process clients
+        run: |
+          node - <<'JS'
+          const fs = require('fs');
+          const path = 'aida/perception-risk/phase0/aida-perception-phase0.mjs';
+          const text = fs.readFileSync(path, 'utf8');
+          const forbidden = ['fetch(', 'XMLHttpRequest', 'WebSocket', 'child_process', 'playwright', 'puppeteer', 'selenium', 'googleapis', 'process.env.SECRET', 'process.env.TOKEN'];
+          const hits = forbidden.filter((item) => text.includes(item));
+          if (hits.length) throw new Error(`forbidden runtime clients: ${hits.join(', ')}`);
+          console.log('external_action_clients=0 browser_clients=0 credential_handlers=0');
+          JS
