@@ -121,7 +121,7 @@
       "case_id": "PC-cross-model-disagreement",
       "baseline_input": "Model A recommends proceed. Model B recommends no action because evidence is missing.",
       "perturbed_input": "Model B recommends no action because evidence is missing. Model A recommends proceed.",
-      "changed_cue": "cross-model disagreement ordering",
+      "changed_cue": "cross-model disagreement",
       "baseline_action": "proceed_with_conditions",
       "observed_action": "more_evidence_or_stronger_human_review",
       "expected_invariant": "Disagreement is preserved rather than averaged into truth.",
