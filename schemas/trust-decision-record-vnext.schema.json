@@ -28,7 +28,12 @@
     "limitations",
     "audit_events",
     "operational_status",
-    "integrity"
+    "integrity",
+    "context_pack",
+    "sources",
+    "missing_evidence_records",
+    "human_gate",
+    "agent_work_receipt"
   ],
   "properties": {
     "record_id": {"type": "string", "minLength": 1, "maxLength": 160},
@@ -56,11 +61,14 @@
     "domain_adapter": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["adapter_id", "adapter_version", "support_level", "limitations"],
+      "required": ["adapter_id", "adapter_version", "support_level", "extension_schema_id", "extension_schema_digest", "registry_version", "limitations"],
       "properties": {
         "adapter_id": {"type": "string", "minLength": 1},
         "adapter_version": {"type": "string", "minLength": 1},
         "support_level": {"type": "string", "enum": ["generic", "pilot", "validated", "unsupported"]},
+        "extension_schema_id": {"type": "string", "minLength": 1},
+        "extension_schema_digest": {"type": "string", "minLength": 1},
+        "registry_version": {"type": "string", "minLength": 1},
         "limitations": {"$ref": "#/$defs/stringArray"}
       }
     },
@@ -104,7 +112,12 @@
         "unimplemented_controls": {"$ref": "#/$defs/stringArray"}
       }
     },
-    "integrity": {"$ref": "#/$defs/integrity"}
+    "integrity": {"$ref": "#/$defs/integrity"},
+    "context_pack": {"type": "object"},
+    "sources": {"type": "array", "items": {"type": "object"}},
+    "missing_evidence_records": {"type": "array", "items": {"type": "object"}},
+    "human_gate": {"type": "object"},
+    "agent_work_receipt": {"type": "object"}
   },
   "$defs": {
     "stringArray": {
@@ -201,6 +214,7 @@
       ],
       "properties": {
         "evidence_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": ["string", "null"]},
         "title": {"type": "string", "minLength": 1},
         "source_locator": {"type": ["string", "null"]},
         "source_type": {"type": "string", "enum": ["independent", "internal", "vendor", "self_attested", "uploaded", "policy", "contract", "technical_test", "observation", "synthetic_demo", "other", "unknown"]},

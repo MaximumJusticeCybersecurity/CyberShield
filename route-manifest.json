@@ -1,5 +1,5 @@
 {
-  "version": "20260708-trusted-agent-spine-p1-candidate",
+  "version": "20260716-pilot-vnext-p1-review-candidate",
   "product_direction": "AI-generated recommendation in -> defensible AI Trust Decision Record out",
   "public_artifact_name": "AI Trust Decision Record",
   "primary_wedge": "vendor-risk",
@@ -48,6 +48,7 @@
     {"path":"/vendor-risk-next-smoke.html","file":"vendor-risk-next-smoke.html","status":"internal","role":"preferred-route smoke test","priority":"required QA"},
     {"path":"/vendor-risk-smoke.html","file":"vendor-risk-smoke.html","status":"internal","role":"fallback-route smoke test","priority":"required QA"},
     {"path":"/trusted-agent-spine-smoke.html","file":"trusted-agent-spine-smoke.html","status":"internal","role":"Context Pack, Source, Missing Evidence, Human Gate, and Agent Work Receipt smoke test","priority":"required QA"},
+    {"path":"/pilot-vnext-qa.html","file":"pilot-vnext-qa.html","status":"internal-noindex-review-candidate","role":"bounded Pilot vNext migration, semantic validation, legacy comparison, JSON, and print QA","priority":"P1 engineering review"},
     {"path":"/trust-decision-record-schema-smoke.html","file":"trust-decision-record-schema-smoke.html","status":"internal","role":"canonical schema smoke test","priority":"required QA"},
     {"path":"/record-contract.html","file":"record-contract.html","status":"internal","role":"record contract checker","priority":"required QA"},
     {"path":"/capture-source-of-truth-smoke.html","file":"capture-source-of-truth-smoke.html","status":"internal","role":"capture source-of-truth smoke test","priority":"required QA"},
@@ -73,7 +74,7 @@
     "evidence_maturity_logic": "separate protected implementation task",
     "decision_ceiling_logic": "separate protected implementation task",
     "minimum_trust_experiment_logic": "separate protected implementation task",
-    "record_schema_change": "additive and backward-compatible trusted-agent-spine objects authorized by CyberShield issue #25",
+    "record_schema_change": "additive Pilot vNext migration and trusted-agent-spine reuse authorized by CyberShield issue #38; public routes remain unchanged",
     "deployment": "requires exact-candidate Verifier A, B, and C review plus owner approval"
   },
   "deferred": ["Public Aegis positioning","TrustMap-first rebuild","Runtime agents","Generic trust scores","Broad governance dashboards","Multi-industry expansion","Autonomous approval","Production-readiness claims","Exact public pilot pricing and delivery commitment"]
