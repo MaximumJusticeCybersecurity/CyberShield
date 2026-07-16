@@ -22,6 +22,8 @@ CyberShield succeeds when an executive can state:
 AI-generated recommendation in
 -> claims and assumptions identified
 -> evidence and missing evidence evaluated
+-> perception dependencies and latent variables identified
+-> decision stability under controlled perturbation evaluated where warranted
 -> risk if wrong classified
 -> confidence explained
 -> required human authority determined
@@ -40,6 +42,9 @@ Read in this order:
 6. `docs/aida/customer-discovery-guide.md`
 7. `docs/aida/feature-traceability-matrix.md`
 8. `docs/aida/repository-governance-and-contributor-process.md`
+9. `docs/aida/2026071611-model-perception-research-application-note.md`
+10. `docs/aida/2026071611-perception-risk-and-decision-invariance-requirements.md`
+11. `docs/aida/2026071611-perception-risk-architect-handoff.md`
 
 ## Governing product rule
 
@@ -48,6 +53,12 @@ If a proposed feature does not improve an organization's ability to determine wh
 ## Platform neutrality
 
 AIDA must remain model-agnostic, vendor-neutral, and portable across current and future AI platforms, including closed models, open-source models, copilots, autonomous agents, multi-agent systems, and technologies not yet created.
+
+## Perception and invariance rule
+
+AIDA shall distinguish whether a recommendation is supported from whether the decision remains materially stable under controlled changes that should not alter the result.
+
+Perception Risk, Decision Invariance, Evidence Sufficiency, confidence, Risk If Wrong, provenance, and human-review status are separate decision dimensions.  None is a universal truth score.
 
 ## Relationship to current CyberShield sources
 
